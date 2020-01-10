@@ -96,7 +96,7 @@
         <?php
         require 'uiAssets/homeTab.php';
         //testgraph
-        include "uiAssets/linechartyear.php"
+        include "uiAssets/testLineChartYear.php"
         ?>
     </div>
     <div class="tab-pane" id="profile-attr" role="tabpanel" aria-labelledby="profile-tab-attr">

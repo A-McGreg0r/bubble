@@ -51,12 +51,7 @@ $arrayTotal = array_sum($randData);
 //a avg of the entire contence of the array
 $arrayAvg = array_sum($randData) / count($randData);
 
-echo "<br>";
-echo "test output<br>";
-echo $arrayAvg;
-echo "<br>";
-
-?>
+?><!--TODO intagrate database qurry -->
 <canvas id="lineChart"></canvas>
 <script type="text/javascript">
     //line
@@ -70,12 +65,17 @@ echo "<br>";
     //dataset avgrege
     $arrayAvg = json_encode($arrayAvg);
     echo "var js_data_avg = " . $arrayAvg . ";\n";
-    js_data_avg
+
     ?>
 
 
 
     var ctxL = document.getElementById("lineChart").getContext('2d');
+
+    var gradientFill = ctxL.createLinearGradient(0, 0, 0, 750);
+    gradientFill.addColorStop(0, "rgba(242, 38, 19, 1)");
+    gradientFill.addColorStop(1, "rgba(0, 230, 64, 1)");
+
     var myLineChart = new Chart(ctxL, {
         type: 'line',
         data: {
@@ -83,9 +83,7 @@ echo "<br>";
             datasets: [{
                 label: "My First dataset",
                 data: js_data,
-                backgroundColor: [
-                    'rgba(105, 0, 132, .2)',
-                ],
+                backgroundColor: gradientFill,
                 borderColor: [
                     'rgba(200, 99, 132, .7)',
                 ],

@@ -116,3 +116,7 @@
 
     <!--navbar-->
 </body>
+<script>
+    $('.md-tabs').bcSwipe({threshold: 50});
+
+</script>

@@ -30,13 +30,8 @@
     <link rel="stylesheet" href="css/mdb.min.css" type="text/css"/>
     <!-- Your custom styles (optional) -->
     <link rel="stylesheet" href="css/style.css" type="text/css"/>
+    <title>testing</title>
 </head>
-
-<!-- Grid container -->
-<div class="container">
-    <canvas id="lineChart"></canvas>
-</div>
-
 <?php
 //will be change later to get data from data base
 //randome genarated grapth (temp)
@@ -44,71 +39,75 @@ $first = strtotime('first day this month');
 $months = array();
 $randData = array();
 
-for ($i = 12; $i >= 1; $i--) {
+for ($i = 11; $i >= 0; $i--) {
     array_push($months, date('M', strtotime("-$i month", $first)));
 }
 //geanarat rand data for display
-for ($i = 12; $i >= 1; $i--) {
+for ($i = 11; $i >= 0; $i--) {
     array_push($randData, rand(0, 1000));
 }
 //a sum of the entire contence of the array
 $arrayTotal = array_sum($randData);
 //a avg of the entire contence of the array
-$arrayAvg = array_sum($randData) / (count($randData));
+$arrayAvg = array_sum($randData) / count($randData);
 
-echo "<br><br>";
-echo "test output<br><br>";
-echo $arrayTotal;
 echo "<br>";
+echo "test output<br>";
 echo $arrayAvg;
+echo "<br>";
+
 ?>
-
+<canvas id="lineChart"></canvas>
 <script type="text/javascript">
-    let js_months =;
-    let js_array =<?php echo json_encode($randData);?>;
-    let avg =;
-    const ctxL = document.getElementById("lineChart").getContext('2d');
-    const gradientFill = ctxL.createLinearGradient(0, 0, 0, 290);
-    gradientFill.addColorStop(0, "rgba(173, 53, 186, 1)");
-    gradientFill.addColorStop(1, "rgba(173, 53, 186, 0.1)");
+    //line
+    <?php
+    //list of months
+    $php_Months = json_encode($months);
+    echo "var js_months = " . $php_Months . ";\n";
+    //dataset
+    $php_Data = json_encode($randData);
+    echo "var js_data = " . $php_Data . ";\n";
+    //dataset avgrege
+    $arrayAvg = json_encode($arrayAvg);
+    echo "var js_data_avg = " . $arrayAvg . ";\n";
+    js_data_avg
+    ?>
 
-    const myLineChart = new Chart(ctxL,
-        {
-            type: 'line',
-            data:
+
+
+    var ctxL = document.getElementById("lineChart").getContext('2d');
+    var myLineChart = new Chart(ctxL, {
+        type: 'line',
+        data: {
+            labels: js_months,
+            datasets: [{
+                label: "My First dataset",
+                data: js_data,
+                backgroundColor: [
+                    'rgba(105, 0, 132, .2)',
+                ],
+                borderColor: [
+                    'rgba(200, 99, 132, .7)',
+                ],
+                borderWidth: 2
+            },
                 {
-                    labels: [js_months[0], js_months[1], js_months[2], js_months[3], js_months[4], js_months[5], js_months[6], js_months[7], js_months[8], js_months[9], js_months[10], js_months[11]],
-                    datasets:
-                        [
-                            {
-                                label: "Power Usage",
-                                data: [js_array[0], js_array[1], js_array[2], js_array[3], js_array[4], js_array[5], js_array[6], js_array[7], js_array[8], js_array[9], js_array[10], js_array[11]],
-                                backgroundColor: gradientFill,
-                                borderColor:
-                                    [
-                                        '#AD35BA',
-                                    ],
+                    label: "My Second dataset",
+                    data: [js_data_avg, js_data_avg, js_data_avg, js_data_avg, js_data_avg, js_data_avg, js_data_avg, js_data_avg, js_data_avg, js_data_avg, js_data_avg, js_data_avg,],
+                    backgroundColor: [
+                        'rgba(0, 137, 132, .1)',
+                    ],
+                    borderColor: [
+                        'rgba(0, 10, 130, .4)',
+                    ],
+                    borderWidth: 2
+                }
+            ]
+        },
+        options: {
+            responsive: true
+        }
+    });
 
-                                borderWidth: 3,
-                                pointBorderColor: "#fff",
-                                pointBackgroundColor: "rgba(173, 53, 186, 1)",
-                            },
 
-                            {
-                                label: "avage power usage",
-                                data: [avg, avg, avg, avg, avg, avg, avg, avg, avg, avg, avg, avg],
-                                backgroundColor: 'rgba(0, 137, 132, .01)',
-                                borderColor:
-                                    [
-                                        '#AbbABA',
-                                    ],
-
-                                borderWidth: 1,
-                                pointBorderColor: "#aff",
-                                pointBackgroundColor: "rgba(105,125,12,1)",
-                            },
-
-                        ]
-                },
-        });
 </script>

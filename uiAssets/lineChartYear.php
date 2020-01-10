@@ -57,6 +57,7 @@ for ($i = 12; $i >= 1; $i--) {
 }
 
 
+
 $arrayTotal = array_sum($randData);
 
 
@@ -73,12 +74,15 @@ echo $arrayAvg;
 ?>
 
 <script type="text/javascript">
-    var js_months =<?php echo json_encode($months);?>;
-    var js_array =<?php echo json_encode($randData);?>;
-    var avg =<?php echo json_encode($arrayAvg);?>;
+    let js_months =;
+    let js_array =<?php echo json_encode($randData);?>;
+    let avg =;
+    for each(js_array) {
+        js_array
+    }
 
-    var ctxL = document.getElementById("lineChart").getContext('2d');
-    var gradientFill = ctxL.createLinearGradient(0, 0, 0, 290);
+    const ctxL = document.getElementById("lineChart").getContext('2d');
+    const gradientFill = ctxL.createLinearGradient(0, 0, 0, 290);
     gradientFill.addColorStop(0, "rgba(173, 53, 186, 1)");
     gradientFill.addColorStop(1, "rgba(173, 53, 186, 0.1)");
 

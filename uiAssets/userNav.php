@@ -117,6 +117,7 @@
     <!--navbar-->
 </body>
 <script>
-    $('.md-tabs').bcSwipe({threshold: 50});
-
+    $('.nav').carousel({
+        touch: true // default
+    })
 </script>

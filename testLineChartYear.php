@@ -6,7 +6,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <!--icon Change me-->
-    <link rel="icon" href="../img/mdb-favicon.ico" type="image/x-icon">
+    <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
@@ -25,11 +25,11 @@
     <!--Scripts-->
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="./css/bootstrap.min.css" type="text/css"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
     <!-- Material Design Bootstrap -->
-    <link rel="stylesheet" href="./css/mdb.min.css" type="text/css"/>
+    <link rel="stylesheet" href="css/mdb.min.css" type="text/css"/>
     <!-- Your custom styles (optional) -->
-    <link rel="stylesheet" href="./css/style.css" type="text/css"/>
+    <link rel="stylesheet" href="css/style.css" type="text/css"/>
 </head>
 
 <!-- Grid container -->
@@ -47,16 +47,14 @@ $randData = array();
 for ($i = 12; $i >= 1; $i--) {
     array_push($months, date('M', strtotime("-$i month", $first)));
 }
-
+//geanarat rand data for display
 for ($i = 12; $i >= 1; $i--) {
     array_push($randData, rand(0, 1000));
 }
+//a sum of the entire contence of the array
 $arrayTotal = array_sum($randData);
-
-//add waning limits uppper
+//a avg of the entire contence of the array
 $arrayAvg = array_sum($randData) / (count($randData));
-//add prase limit lower
-
 
 echo "<br><br>";
 echo "test output<br><br>";
@@ -69,16 +67,12 @@ echo $arrayAvg;
     let js_months =;
     let js_array =<?php echo json_encode($randData);?>;
     let avg =;
-    for each(js_array) {
-        js_array
-    }
-
     const ctxL = document.getElementById("lineChart").getContext('2d');
     const gradientFill = ctxL.createLinearGradient(0, 0, 0, 290);
     gradientFill.addColorStop(0, "rgba(173, 53, 186, 1)");
     gradientFill.addColorStop(1, "rgba(173, 53, 186, 0.1)");
 
-    var myLineChart = new Chart(ctxL,
+    const myLineChart = new Chart(ctxL,
         {
             type: 'line',
             data:

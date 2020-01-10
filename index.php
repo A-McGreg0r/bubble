@@ -25,11 +25,11 @@
     <!--Scripts-->
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="./css/bootstrap.min.css" type="text/css"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
     <!-- Material Design Bootstrap -->
-    <link rel="stylesheet" href="./css/mdb.min.css" type="text/css"/>
+    <link rel="stylesheet" href="css/mdb.min.css" type="text/css"/>
     <!-- Your custom styles (optional) -->
-    <link rel="stylesheet" href="./css/style.css" type="text/css"/>
+    <link rel="stylesheet" href="css/style.css" type="text/css"/>
 </head>
 
 <body class="black-skin">

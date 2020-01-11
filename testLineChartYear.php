@@ -25,7 +25,6 @@
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/js/mdb.min.js"></script>
     <!--Scripts-->
-
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
     <!-- Material Design Bootstrap -->
@@ -40,7 +39,6 @@
 $first = strtotime('first day this month');
 $months = array();
 $randData = array();
-
 for ($i = 11; $i >= 0; $i--) {
     //list of months
     array_push($months, date('M', strtotime("-$i month", $first)));
@@ -51,8 +49,8 @@ for ($i = 11; $i >= 0; $i--) {
 $arrayTotal = array_sum($randData);
 //a avg of the entire contence of the array
 $arrayAvg = array_sum($randData) / count($randData);
-
 ?>
+
 <!--TODO intagrate database qurry -->
 <canvas id="lineChart"></canvas>
 <script type="text/javascript">
@@ -68,14 +66,11 @@ $arrayAvg = array_sum($randData) / count($randData);
     $arrayAvg = json_encode($arrayAvg);
     echo "var js_data_avg = " . $arrayAvg . ";\n";
     ?>
-
-    var ctxL = document.getElementById("lineChart").getContext('2d');
-
-    var gradientFill = ctxL.createLinearGradient(0, 0, 0, 750);
+    const ctxL = document.getElementById("lineChart").getContext('2d');
+    const gradientFill = ctxL.createLinearGradient(0, 0, 0, 750);
     gradientFill.addColorStop(0, "rgba(242,38,19,0.61)");
     gradientFill.addColorStop(1, "rgba(0,230,64,0.6)");
-
-    var myLineChart = new Chart(ctxL, {
+    let myLineChart = new Chart(ctxL, {
         type: 'line',
         data: {
             labels: js_months,
@@ -105,6 +100,4 @@ $arrayAvg = array_sum($randData) / count($randData);
             responsive: true
         }
     });
-
-
 </script>

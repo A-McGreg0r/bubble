@@ -43,11 +43,10 @@ $randData = array();
 
 for ($i = 11; $i >= 0; $i--) {
     array_push($months, date('M', strtotime("-$i month", $first)));
-}
-//geanarat rand data for display
-for ($i = 11; $i >= 0; $i--) {
+    //geanarat rand data for display
     array_push($randData, rand(0, 1000));
 }
+
 //a sum of the entire contence of the array
 $arrayTotal = array_sum($randData);
 //a avg of the entire contence of the array

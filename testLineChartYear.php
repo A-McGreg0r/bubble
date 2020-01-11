@@ -1,4 +1,5 @@
-<!-- TODO remove header as elaments will not be need after completion -->
+<!-- TODO spelling and gramer check -->
+<!-- TODO remove header as elaments html tag and doc type as required after completion -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,27 +36,27 @@
 </head>
 <?php
 //TODO remove once data base it implmented
-//will be change later to get data from data base
 //randome genarated grapth (temp)
 $first = strtotime('first day this month');
 $months = array();
 $randData = array();
 
 for ($i = 11; $i >= 0; $i--) {
+    //list of months
     array_push($months, date('M', strtotime("-$i month", $first)));
     //geanarat rand data for display
     array_push($randData, rand(0, 1000));
 }
-
 //a sum of the entire contence of the array
 $arrayTotal = array_sum($randData);
 //a avg of the entire contence of the array
 $arrayAvg = array_sum($randData) / count($randData);
 
-?><!--TODO intagrate database qurry -->
+?>
+<!--TODO intagrate database qurry -->
 <canvas id="lineChart"></canvas>
 <script type="text/javascript">
-    //line
+    //converts php querry to js for graph
     <?php
     //list of months
     $php_Months = json_encode($months);
@@ -66,38 +67,35 @@ $arrayAvg = array_sum($randData) / count($randData);
     //dataset avgrege
     $arrayAvg = json_encode($arrayAvg);
     echo "var js_data_avg = " . $arrayAvg . ";\n";
-
     ?>
-
-
 
     var ctxL = document.getElementById("lineChart").getContext('2d');
 
     var gradientFill = ctxL.createLinearGradient(0, 0, 0, 750);
-    gradientFill.addColorStop(0, "rgba(242, 38, 19, 1)");
-    gradientFill.addColorStop(1, "rgba(0, 230, 64, 1)");
+    gradientFill.addColorStop(0, "rgba(242,38,19,0.61)");
+    gradientFill.addColorStop(1, "rgba(0,230,64,0.6)");
 
     var myLineChart = new Chart(ctxL, {
         type: 'line',
         data: {
             labels: js_months,
             datasets: [{
-                label: "My First dataset",
-                data: js_data,
-                backgroundColor: gradientFill,
+                label: "Avrages usage",
+                data: [js_data_avg, js_data_avg, js_data_avg, js_data_avg, js_data_avg, js_data_avg, js_data_avg, js_data_avg, js_data_avg, js_data_avg, js_data_avg, js_data_avg,],
+                backgroundColor: [
+                    'rgba(0, 137, 132, .1)',
+                ],
                 borderColor: [
-                    'rgba(200, 99, 132, .7)',
+                    'rgba(0, 10, 130, .4)',
                 ],
                 borderWidth: 2
             },
                 {
-                    label: "My Second dataset",
-                    data: [js_data_avg, js_data_avg, js_data_avg, js_data_avg, js_data_avg, js_data_avg, js_data_avg, js_data_avg, js_data_avg, js_data_avg, js_data_avg, js_data_avg,],
-                    backgroundColor: [
-                        'rgba(0, 137, 132, .1)',
-                    ],
+                    label: "power used",
+                    data: js_data,
+                    backgroundColor: gradientFill,
                     borderColor: [
-                        'rgba(0, 10, 130, .4)',
+                        'rgba(200, 99, 132, .7)',
                     ],
                     borderWidth: 2
                 }

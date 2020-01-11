@@ -6,10 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-
     <!--icon Change me-->
     <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon">
-
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
     <!--Scripts-->
@@ -33,29 +31,25 @@
     <link rel="stylesheet" href="css/style.css" type="text/css"/>
     <title>testing</title>
 </head>
-<?php
-//TODO remove once data base it implmented
-//randome genarated grapth (temp)
-$first = strtotime('first day this month');
-$months = array();
-$randData = array();
-for ($i = 11; $i >= 0; $i--) {
-    //list of months
-    array_push($months, date('M', strtotime("-$i month", $first)));
-    //geanarat rand data for display
-    array_push($randData, rand(0, 1000));
-}
-//a sum of the entire contence of the array
-$arrayTotal = array_sum($randData);
-//a avg of the entire contence of the array
-$arrayAvg = array_sum($randData) / count($randData);
-?>
-
 <!--TODO intagrate database qurry -->
 <canvas id="lineChart"></canvas>
 <script type="text/javascript">
     //converts php querry to js for graph
     <?php
+    //TODO remove once data base it implmented
+    //randome genarated grapth (temp)
+    $first = strtotime('first day this month');
+    $months = array();
+    $randData = array();
+    $arrayAvg = array();
+    for ($i = 11; $i >= 0; $i--) {
+        //list of months
+        array_push($months, date('M', strtotime("-$i month", $first)));
+        //geanarat rand data for display
+        array_push($randData, rand(0, 1000));
+        //a avg of the entire contence of the array
+        array_push($arrayAvg = array_sum($randData) / count($randData));
+    }
     //list of months
     $php_Months = json_encode($months);
     echo "var js_months = " . $php_Months . ";\n";
@@ -78,10 +72,10 @@ $arrayAvg = array_sum($randData) / count($randData);
                 label: "Avrages usage",
                 data: [js_data_avg, js_data_avg, js_data_avg, js_data_avg, js_data_avg, js_data_avg, js_data_avg, js_data_avg, js_data_avg, js_data_avg, js_data_avg, js_data_avg,],
                 backgroundColor: [
-                    'rgba(0, 137, 132, .1)',
+                    'rgba(0, 137, 132, .0)',
                 ],
                 borderColor: [
-                    'rgba(0, 10, 130, .4)',
+                    'rgba(0, 10, 130, .1)',
                 ],
                 borderWidth: 2
             },
@@ -89,9 +83,7 @@ $arrayAvg = array_sum($randData) / count($randData);
                     label: "power used",
                     data: js_data,
                     backgroundColor: gradientFill,
-                    borderColor: [
-                        'rgba(200, 99, 132, .7)',
-                    ],
+                    borderColor: gradientFill,
                     borderWidth: 2
                 }
             ]

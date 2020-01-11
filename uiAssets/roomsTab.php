@@ -1,7 +1,7 @@
 <!-- Card deck -->
 <?php
 $y = 1;
-
+//TODO FIND OUT WHAT ELCE SHOULD BE IMPLMENTED
 while ($y <= 10) {
     echo '
   <!-- Card -->

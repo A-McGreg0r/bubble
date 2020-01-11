@@ -5,6 +5,8 @@
     <hr class="mb-0">
 
     <?php
+    //TODO FIND OUT WHAT ELCE SHOULD BE IMPLMENTED
+    //TODO implment lineChart.php after completing it
     $x = 1;
     //for building more than one chart
     $chartId = "chartId" . $x . "";

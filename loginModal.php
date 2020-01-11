@@ -114,8 +114,15 @@
                         <!--Footer-->
                         <div class="modal-footer">
                             <div class="options text-right">
-                                <p class="pt-1">Already have an account? <a href="#" class="blue-text">Log In</a></p>
+                                <p class="pt-2">Already have an account? <a href="#" class="blue-text">Log In</a></p>
                             </div>
+
+                            <!-- TODO implment sso for gogle-->
+                            <button type="button" class="btn btn-outline-info waves-effect ml-auto"
+                                    data-dismiss="modal">Close
+                            </button>
+
+                            <!-- TODO -->
                             <button type="button" class="btn btn-outline-info waves-effect ml-auto"
                                     data-dismiss="modal">Close
                             </button>

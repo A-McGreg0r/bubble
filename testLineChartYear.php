@@ -1,3 +1,4 @@
+<!-- TODO remove header as elaments will not be need after completion -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,6 +34,7 @@
     <title>testing</title>
 </head>
 <?php
+//TODO remove once data base it implmented
 //will be change later to get data from data base
 //randome genarated grapth (temp)
 $first = strtotime('first day this month');

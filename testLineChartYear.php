@@ -33,6 +33,7 @@
 </head>
 <!--TODO intagrate database qurry -->
 <canvas id="lineChart"></canvas>
+
 <script type="text/javascript">
     //converts php querry to js for graph
     <?php
@@ -61,9 +62,9 @@
     echo "var js_data_avg = " . $arrayAvg . ";\n";
     ?>
     const ctxL = document.getElementById("lineChart").getContext('2d');
-    const gradientFill = ctxL.createLinearGradient(0, 0, 0, 750);
-    gradientFill.addColorStop(0, "rgba(242,38,19,0.61)");
-    gradientFill.addColorStop(1, "rgba(0,230,64,0.6)");
+    const gradientFill = ctxL.createLinearGradient(0, 0, 0, 350);
+    gradientFill.addColorStop(0, "rgba(242,38,19,0.5)");
+    gradientFill.addColorStop(1, "rgba(0,230,64,0.5)");
     let myLineChart = new Chart(ctxL, {
         type: 'line',
         data: {

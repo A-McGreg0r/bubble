@@ -72,10 +72,7 @@
 </nav>
 <!--sub nav-->
 
-<?php
-require "tabs.php";
 
-?>
 
 <!--navbar-->
 

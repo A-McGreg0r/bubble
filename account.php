@@ -31,19 +31,20 @@
 </head>
 
 <?php
-echo "account";
+require "uiAssets/userNav.php";
 ?>
 
 <div class="container">
-    <div class="row">
-        <div class="col-sm">
-            One of three columns
+    <div class="d-flex flex-wrap-reverse mb-4 mt-xl-5">
+        <!--left-->
+        <div class="col-md-6">
+            Account details Account details Account details Account details Account details Account details Account
+            details Account details Account details Account details
         </div>
-        <div class="col-LG">
-            CONTENT
-        </div>
-        <div class="col-sm">
-            One of three columns
+        <!--right-->
+        <div class="col-md-6">
+            device details device detailsdevice detailsdevice detailsdevice details
         </div>
     </div>
 </div>
+

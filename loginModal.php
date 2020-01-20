@@ -32,6 +32,8 @@
                                 <i class="fas fa-envelope prefix"></i>
                                 <input type="email" id="modalLRInput10" class="form-control form-control-sm validate">
                                 <label data-error="wrong" data-success="right" for="modalLRInput10">Your email</label>
+
+
                             </div>
 
                             <div class="md-form form-sm mb-4">

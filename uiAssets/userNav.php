@@ -26,11 +26,11 @@
     <!--Scripts-->
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
     <!-- Material Design Bootstrap -->
-    <link rel="stylesheet" href="../css/mdb.min.css" type="text/css"/>
+    <link rel="stylesheet" href="css/mdb.min.css" type="text/css"/>
     <!-- Your custom styles (optional) -->
-    <link rel="stylesheet" href="../css/style.css" type="text/css"/>
+    <link rel="stylesheet" href="css/style.css" type="text/css"/>
     <title>stuff</title>
 </head>
 
@@ -50,10 +50,10 @@
         <!-- Links -->
         <ul class="navbar-nav mr-auto mt-lg-0">
             <li class="nav-item active">
-                <a class="nav-link" href="../index.php">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../account.php">Account</a>
+                <a class="nav-link" href="account.php">Account</a>
             </li>
 
 

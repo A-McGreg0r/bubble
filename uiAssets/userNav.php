@@ -7,7 +7,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <!--icon Change me-->
-    <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../img/mdb-favicon.ico" type="image/x-icon">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
@@ -26,11 +26,12 @@
     <!--Scripts-->
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="./css/bootstrap.min.css" type="text/css"/>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css"/>
     <!-- Material Design Bootstrap -->
-    <link rel="stylesheet" href="./css/mdb.min.css" type="text/css"/>
+    <link rel="stylesheet" href="../css/mdb.min.css" type="text/css"/>
     <!-- Your custom styles (optional) -->
-    <link rel="stylesheet" href="./css/style.css" type="text/css"/>
+    <link rel="stylesheet" href="../css/style.css" type="text/css"/>
+    <title>stuff</title>
 </head>
 
 <body class="black-skin">
@@ -47,13 +48,12 @@
     <!-- Collapsible content -->
     <div class="collapse navbar-collapse " id="navbarToggler">
         <!-- Links -->
-        <a class="navbar-brand" href="index.php"><i class="fas fa-comment"></i></a>
         <ul class="navbar-nav mr-auto mt-lg-0">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="../index.php">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Account</a>
+                <a class="nav-link" href="../account.php">Account</a>
             </li>
 
 
@@ -72,58 +72,11 @@
 </nav>
 <!--sub nav-->
 
-<!-- Nav tabs -->
-<ul class="nav nav-tabs md-tabs nav-justified  elegant-color sticky-top" id="myTabAttr" role="tablist">
-    <li class="nav-item">
-        <a class="nav-link active" id="home-tab-attr" data-toggle="tab" href="#home-attr" role="tab"
-           aria-controls="home-attr"
-           aria-selected="true">Home</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link " id="profile-tab-attr" data-toggle="tab" href="#profile-attr" role="tab"
-           aria-controls="profile-attr"
-           aria-selected="false">Room</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" id="messages-tab-attr" data-toggle="tab" href="#messages-attr" role="tab"
-           aria-controls="messages-attr"
-           aria-selected="false">Device</a>
-    </li>
-</ul>
+<?php
+require "tabs.php";
 
-<!-- Tab panes -->
-<div class="tab-content">
-    <div class="tab-pane active" id="home-attr" role="tabpanel" aria-labelledby="home-tab-attr">
-        <?php
-        require 'homeTab.php';
-        ?>
-    </div>
-    <div class="tab-pane" id="profile-attr" role="tabpanel" aria-labelledby="profile-tab-attr">
-        <?php
-        require 'roomsTab.php';
-        ?>
-    </div>
+?>
 
-    <div class="tab-pane" id="messages-attr" role="tabpanel" aria-labelledby="messages-tab-attr">
-        <?php
-        require 'deviceTab.php';
-        ?>
-
-    </div>
-
-    <!--sub nav-->
-
-    <!--navbar-->
+<!--navbar-->
 
 </body>
-<script>//TODO get swipe navatation working between tabs currently not working
-    $(".tab").swipe({
-        swipeLeft: function (event, direction, distance, duration, fingerCount) {
-            $(".nav-tabs li.active").next('li').find('a').tab('show');
-        },
-        swipeRight: function (event, direction, distance, duration, fingerCount) {
-            $(".nav-tabs li.active").prev('li').find('a').tab('show');
-        },
-    });
-
-</script>

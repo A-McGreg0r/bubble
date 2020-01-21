@@ -46,6 +46,7 @@
 
 
 <script type="text/javascript">
+    //TODO output varabuls to php for posting to DB.
     function openQRCamera(node) {
         var reader = new FileReader();
         reader.onload = function () {

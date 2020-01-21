@@ -77,17 +77,9 @@
     target.addEventListener('dragover', (e) => {
         e.stopPropagation();
         e.preventDefault();
-
         e.dataTransfer.dropEffect = 'copy';
     });
-    <
-    textarea
-    id = "target" > Paste
-    an
-    image
-    here < /textarea>
 
-    const target = document.getElementById('target');
 
     target.addEventListener('paste', (e) => {
         e.preventDefault();

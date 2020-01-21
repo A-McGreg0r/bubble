@@ -17,26 +17,28 @@
     </li>
 </ul>
 
+
 <!-- Tab panes -->
 <div class="tab-content">
     <div class="tab-pane active" id="home-attr" role="tabpanel" aria-labelledby="home-tab-attr">
         <?php
-        require 'homeTab.php';
+        require 'homeTab.php';//content for this tab
         ?>
     </div>
     <div class="tab-pane" id="profile-attr" role="tabpanel" aria-labelledby="profile-tab-attr">
         <?php
-        require 'roomsTab.php';
+        require 'roomsTab.php';//content for this tab
         ?>
     </div>
 
     <div class="tab-pane" id="messages-attr" role="tabpanel" aria-labelledby="messages-tab-attr">
         <?php
-        require 'deviceTab.php';
+        require 'deviceTab.php';//content for this tab
         ?>
 
     </div>
-    <!--sub nav-->
+
+
     <script>//TODO get swipe navatation working between tabs currently not working
         $(".tab").swipe({
             swipeLeft: function (event, direction, distance, duration, fingerCount) {
@@ -46,5 +48,4 @@
                 $(".nav-tabs li.active").prev('li').find('a').tab('show');
             },
         });
-
     </script>

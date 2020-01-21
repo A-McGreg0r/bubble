@@ -1,4 +1,6 @@
-
+<head>
+    <title>Account </title>
+</head>
 <?php
 require "uiAssets/userNav.php";
 ?>

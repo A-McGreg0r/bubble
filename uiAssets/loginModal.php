@@ -1,3 +1,6 @@
+<!--TODO Iplment regester form with data base calls-->
+<!--TODO ipmplmetn login form with database calls-->
+<!--TODO wrap in php echo statment to and alter vars to sute -->
 <!--Modal: Login / Register Form-->
 <div class="modal fade" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog cascading-modal" role="document">
@@ -142,7 +145,7 @@
 
 <div class="text-center">
 
-    <a class="btn btn-flat btn-sm" data-toggle="modal" data-target="#modalLRForm"><i class="fas fa-sign-in-alt"></i></i>
+    <a class="btn btn-flat btn-sm" data-toggle="modal" data-target="#modalLRForm"><i class="fas fa-sign-in-alt"></i>
         LogIn/Register</a>
 </div>
 

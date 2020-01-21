@@ -24,6 +24,9 @@
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/js/mdb.min.js"></script>
     <!--Scripts-->
+    <script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js">
+    </script>
+
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
     <!-- Material Design Bootstrap -->

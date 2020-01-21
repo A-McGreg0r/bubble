@@ -35,14 +35,18 @@
     <link rel="stylesheet" href="css/style.css" type="text/css"/>
     <title>testing</title>
 </head>
+
+<?php
+require "uiAssets/userNav.php";
+?>
+
 <label>
+    <!--TODo put in flx box  -->
     <input type=text size=16 placeholder="Tracking Code" class=qrcode-text>
 </label>
 <label class=qrcode-text-btn><input type=file accept="image/*" capture=environment tabindex=-1>
 </label>
 <input type=button value="Go" disabled>
-<?php
-?>
 
 
 <script type="text/javascript">

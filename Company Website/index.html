@@ -1,0 +1,305 @@
+<head>
+    <title> e-Saving Solutions </title>
+    <link href="style.css" type="text/css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet"/>
+</head>
+<body scroll="no" style="overflow: hidden">
+
+    <div class="page" id="wrapper">
+        <div class="top-container" id="home">
+            <div class="top">
+                <header>
+                    <div id="main">
+                        <div class="title">
+                            <div class="titleContainer">
+                                <!--<img src="Images/logo.png">-->
+                                <h1 id="sitetitle"> <strong> e-Saving </strong> Solutions </h1>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+        
+                <hr>
+        
+                <nav>
+                    <ul>
+                        <a href="#about" onclick="aboutScreen()"><li><h3 class="nav-bar">about us</h3></li></a>
+                        <a href="#team" onclick="teamScreen()"><li><h3 class="nav-bar">the team</h3></li></a>
+                        <a href="#beliefs" onclick="beliefScreen()"><li><h3 class="nav-bar">beliefs</h3></li></a>
+                        <a href="#projects" onclick="projectScreen()"><li><h3 class="nav-bar">projects</h3></li></a>
+                        <a href="#contact" onclick="contactScreen()"><li><h3 class="nav-bar">contact</h3></li></a>
+                    </ul>
+                </nav>
+        
+                <hr>
+            </div>
+
+            <a href="#about"><img src="Images/arrow-down.png" class="down-arrow" id="home-down" onclick="aboutScreen()"></a>
+        </div>
+
+        <div id="middle-wrap">
+            <div class="middle-container" id="about">
+                <a href="#home"><img src="Images/arrow-up.png" class="up-arrow" id="about-up" onclick="homeScreen()"></a>
+                <a href="#home"><img src="Images/home.png" class="home" id="about-home" onclick="homeScreen()"></a>
+                <div class="middle" data-color="1">
+                    <div class="section-content">
+                        <div class="section-title">
+                            <h2><strong>about us</strong></h2>
+                        </div>
+                        <div class="section-info">
+                            <h3>Here at e-Saving Solutions, we find modern solutions for modern problems</h3>
+                            <hr>
+                            <h4>Established in 2019 as a University based software development team, e-Saving Solutions has been working towards technological success, 
+                                while maintaining an environmentally friendly outlook. Our aim is to provide efficient and effective solutions that
+                                tackle our clients problems in an energy saving manner that is beneficial to our clients, ourselves as a company, and
+                                the environment as a whole.
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+                <a href="#team"><img src="Images/arrow-down.png" class="down-arrow" id="about-down" onclick="teamScreen()"></a>
+            </div>
+            
+            <div class="middle-container" id="team">
+                <a href="#about"><img src="Images/arrow-up.png" class="up-arrow" id="team-up" onclick="aboutScreen()"></a>
+                <a href="#home"><img src="Images/home.png" class="home" id="team-home" onclick="homeScreen()"></a>
+                <div class="middle" data-color="2">
+                    <div class="section-content">
+                        <div class="section-title">
+                            <h2><strong>the team</strong></h2>
+                        </div>
+                        <div class="section-info">
+                            <h3>Our team consists of...</h3>
+                                <hr>
+                                <table align="center" class="table">
+                                    <tr onclick="openModal('organisational-modal')">
+                                        <td>Organisational Manager</td>
+                                        <td><strong>&nbsp |</strong></td>
+                                        <td>&nbsp Jamie Rice</td>
+                                    </tr>
+                                    <tr onclick="openModal('technical-modal')">
+                                        <td>Technical Manager</td>
+                                        <td><strong>&nbsp |</strong></td>
+                                        <td>&nbsp Bruce Wilson</td>
+                                    </tr>
+                                    <tr onclick="openModal('reporting-modal')">
+                                        <td>Reporting Officer</td>
+                                        <td><strong>&nbsp |</strong></td>
+                                        <td>&nbsp Mark Kostryckyj</td>
+                                    </tr>
+                                    <tr onclick="openModal('liaison-modal')">
+                                        <td>Liaison Officer</td>
+                                        <td><strong>&nbsp |</strong></td>
+                                        <td>&nbsp Rory Dobson</td>
+                                    </tr>
+                                    <tr onclick="openModal('software-modal')">
+                                        <td>Software Developer</td>
+                                        <td><strong>&nbsp |</strong></td>
+                                        <td> &nbsp Michael Linton</td>
+                                    </tr>
+                                    <tr onclick="openModal('web-modal')">
+                                        <td>Web Developer</td>
+                                        <td><strong>&nbsp |</strong></td>
+                                        <td>&nbsp Andrew McGregor</td>
+                                    </tr>
+                                </table>
+                                <h5 class="moreInfo">To explore a team role further, try clicking one above!</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal" id="organisational-modal">
+                    <div class="modal-content">
+                        <h3 class="modalTitle">
+                            <strong>Organisational Manager</strong>
+                        </h3>
+                        <span class="close" onclick="closeModal('organisational-modal')"><strong>x</strong></span>
+                        <h4>
+                            The role of the organisational manager is to organise the team and oversee all sub tasks. 
+                            The organisational manager is responsible for planning out the sprints of the project, 
+                            ensuring everyone is doing their tasks on time and delegating any unassigned jobs.
+                        </h4>
+                        <hr>
+                        <h3 class="modalTitle">
+                            <strong>Jamie Rice</strong>
+                        </h3>
+                    </div>
+                </div>
+
+                <div class="modal" id="technical-modal">
+                    <div class="modal-content">
+                        <h3 class="modalTitle">
+                            <strong>Technical Manager</strong>
+                        </h3>
+                        <span class="close" onclick="closeModal('technical-modal')"><strong>x</strong></span>
+                        
+                        <h4>
+                            The technical manager will review all code and ensure everything submitted is up to a 
+                            sufficient standard as well as writing code themselves. They are in charge or delegating 
+                            coding tasks and supporting the developers.
+                        </h4>
+                        <hr>
+                        <h3 class="modalTitle">
+                            <strong>Bruce Wilson</strong>
+                        </h3>
+                        <h4>
+                            Bruce is a 3rd year Computing Science student at Heriot Watt University, alongside working 
+                            for the University as an intern software developer.
+                            He volunteers for the Scottish Huntington's Association, as a youth ambassador with SHAYP 
+                            (Scottish Huntington's Association Youth Project).
+                            He has experience using programming languages such as Java and Python, and web development systems including nodeJS, PHP and apache.
+                        </h4>
+                    </div>
+                </div>
+
+                <div class="modal" id="reporting-modal">
+                    <div class="modal-content">
+                        <h3 class="modalTitle">
+                            <strong>Reporting Officer</strong>
+                        </h3>
+                        <span class="close" onclick="closeModal('reporting-modal')"><strong>x</strong></span>
+                        <h4>
+                            The job of the reporting officer is to keep track of all of the decisions made by the 
+                            group and to take minutes of meetings.
+                        </h4>
+                        <hr>
+                        <h3 class="modalTitle">
+                            <strong>Mark Kostryckyj</strong>
+                        </h3>
+                    </div>
+                </div>
+
+                <div class="modal" id="liaison-modal">
+                    <div class="modal-content">
+                        <h3 class="modalTitle">
+                            <strong>Liaison Officer</strong>
+                        </h3>
+                        <span class="close" onclick="closeModal('liaison-modal')"><strong>x</strong></span>
+                        <h4>
+                            The liaison officer is responsible for maintaining regular contact with the group manager, 
+                            and to ensure strong communication in the team. This facilitates a strong working connection 
+                            between all group members.
+                        </h4>
+                        <hr>
+                        <h3 class="modalTitle">
+                            <strong>Rory Dobson</strong>
+                        </h3>
+                        <h4>
+                            <img src="Images/Rory2.jpg" class="portrait">
+                            As part of his course, Rory has recently been studying multiple programming languages including 
+                            Java and Python, as well as growing his general fundamental knowledge in software design and development.
+                            He has worked on several university projects, most notably his work on an autocorrect program, 
+                            a flight planner, and a C based image encoder. He has also been developing his front-end skills in HTML, 
+                            CSS and JavaScript through the creation of a website and an app. 
+                        </h4>
+                    </div>
+                </div>
+
+                <div class="modal" id="software-modal">
+                    <div class="modal-content">
+                        <h3 class="modalTitle">
+                            <strong>Software Developer</strong>
+                        </h3>
+                        <span class="close" onclick="closeModal('software-modal')"><strong>x</strong></span>
+                        <h4>
+                            The software developer will develop the software components, integrate and test them. 
+                            They are responsible for the design of functionality as well as the implementation. 
+                            This role is shared with other position titles.
+                        </h4>
+                        <hr>
+                        <h3 class="modalTitle">
+                            <strong>Michael Linton</strong>
+                        </h3>
+                    </div>
+                </div>
+
+                <div class="modal" id="web-modal">
+                    <div class="modal-content">
+                        <h3 class="modalTitle">
+                            <strong>Web Developer</strong>
+                        </h3>
+                        <span class="close" onclick="closeModal('web-modal')"><strong>x</strong></span>
+                        <h4>
+                            The Web Developer will be responsible for implementing the majority of the web app’s user 
+                            interface and integrating it with some parts of the severside software to display data to 
+                            the user while aiming to achieve a well made user interface that it is both easy to use and 
+                            to understand.
+                        </h4>
+                        <hr>
+                        <h3 class="modalTitle">
+                            <strong>Andrew McGregor</strong>
+                        </h3>
+                    </div>
+                </div>
+
+                <a href="#beliefs"><img src="Images/arrow-down.png" class="down-arrow" id="team-down" onclick="beliefScreen()"></a>
+            </div>
+            
+            <div class="middle-container" id="beliefs">
+                <a href="#team"><img src="Images/arrow-up.png" class="up-arrow" id="belief-up" onclick="teamScreen()"></a>
+                <a href="#home"><img src="Images/home.png" class="home" id="belief-home" onclick="homeScreen()"></a>
+                <div class="middle" data-color="3">
+                    <div class="section-content">
+                        <div class="section-title">
+                            <h2><strong>beliefs</strong></h2>
+                        </div>
+                        <div class="section-info">
+                            <h3>We believe...</h3>
+                            <hr>
+                            <h4>
+                                ...in equal pay and equal rights among our workforce. We believe in employee satisfaction, and we
+                                understand that the key to that is a healthy work-life balance. Blah blah blah...
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+                <a href="#projects"><img src="Images/arrow-down.png" class="down-arrow" id="belief-down" onclick="projectScreen()"></a>
+            </div>
+            
+            <div class="middle-container" id="projects">
+                <a href="#beliefs"><img src="Images/arrow-up.png" class="up-arrow" id="project-up" onclick="beliefScreen()"></a>
+                <a href="#home"><img src="Images/home.png" class="home" id="project-home" onclick="homeScreen()"></a>
+                <div class="middle" data-color="4">
+                    <div class="section-content">
+                        <div class="section-title">
+                            <h2><strong>projects</strong></h2>
+                        </div>
+                        <div class="section-info">
+                            <h3>We have worked on projects such as...</h3>
+                            <hr>
+                            <h5 class="moreInfo">Click for more info</h5>
+                            <h4 class="project">
+                                Bubble home
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+                <a href="#contact"><img src="Images/arrow-down.png" class="down-arrow" id="project-down" onclick="contactScreen()"></a>
+            </div>
+            
+            <div class="middle-container" id="contact">
+                <a href="#projects"><img src="Images/arrow-up.png" class="up-arrow" id="contact-up" onclick="projectScreen()"></a>
+                <a href="#home"><img src="Images/home.png" class="home" id="contact-home" onclick="homeScreen()"></a>
+                <div class="middle" data-color="5">
+                    <div class="section-content">
+                        <div class="section-title">
+                            <h2><strong>contact</strong></h2>
+                        </div>
+                        <div class="section-info">
+                            <h3>If you have any queries...</h3>
+                            <hr>
+                            <h4>
+                                Please get in contact with the liaison officer, Rory Dobson, at 
+                                <a href="mailto:webmaster@example.com">rmd5@hw.ac.uk</a><br/>
+                                You will receive a response within 24hrs
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="js.js"></script>
+</body>

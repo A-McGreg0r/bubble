@@ -9,7 +9,7 @@
 //gets the navbar.php file for testing
 require "uiAssets/userNav.php";
 
-
+//TODO implment sql injection preventions on all posts
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     # Initialize an error array.
     $errors = array();

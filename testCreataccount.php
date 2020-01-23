@@ -1,10 +1,14 @@
 <?php
 # Check form submitted.
 
-//connextst to the db
+//reg script
+
+//connects to the db
 //require 'required/connect_db.php';
+
 //gets the navbar.php file for testing
 require "uiAssets/userNav.php";
+
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     # Initialize an error array.
@@ -76,7 +80,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (empty($errors)) {
         $q = "SELECT * FROM Berwick_users WHERE email=$e";
         $r = @mysqli_query($link, $q);
-        if (mysqli_num_rows($r) != 0) $errors[] = 'Email address already registered. <a href="index.php">Login</a>';//TODO change it to display a meesege to the user
+        if (mysqli_num_rows($r) != 0) {
+            $errors[] = 'Email address already registered. <a href="index.php">Login</a>';
+        }//TODO change it to display a meesege to the user
     }
 
     # On success register user inserting into 'users' database table.
@@ -103,7 +109,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         mysqli_close($link);
     }
 }
+?>
 
+<?php
+//login script
+
+//connect to the db
+require 'required/connect_db.php';
+//body content
+
+# DISPLAY COMPLETE LOGIN PAGE.
+# Display any error messages if present.
+if (isset($errors) && !empty($errors)) {
+    echo '<p id="err_msg">Oops! There was a problem:<br>';
+    foreach ($errors as $msg) {
+        echo " - $msg<br>";
+    }
+    echo 'Please try again or create account.</p>';
+}
 ?>
 
 <form action="testCreataccount.php" method="post">
@@ -135,31 +158,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                     <!-- Tab panels -->
                     <div class="tab-content ">
-                        <!--Panel 7-->
+                        <!--Panel 7 Login -->
                         <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
 
                             <!--Body-->
                             <div class="modal-body mb-1">
+
                                 <div class="md-form form-sm mb-5">
                                     <i class="fas fa-envelope prefix"></i>
                                     <input type="email" id="modalLRInput10"
-                                           class="form-control form-control-sm validate">
+                                           class="form-control form-control-sm validate"
+                                           placeholder="Email"
+                                           name="email">
                                     <label data-error="wrong" data-success="right" for="modalLRInput10">Your
-                                        email</label>
-
-
+                                        E-mail</label>
                                 </div>
 
                                 <div class="md-form form-sm mb-4">
                                     <i class="fas fa-lock prefix"></i>
                                     <input type="password" id="modalLRInput11"
-                                           class="form-control form-control-sm validate">
-                                    <label data-error="wrong" data-success="right" for="modalLRInput11">Your
-                                        password</label>
+                                           class="form-control form-control-sm validate"
+                                           placeholder="Password"
+                                           name="pass">
+                                    <label data-error="wrong" data-success="right" for="modalLRInput11">Password</label>
                                 </div>
+
                                 <div class="text-center mt-2">
                                     <button class="btn btn-info">Log in <i class="fas fa-sign-in ml-1"></i></button>
                                 </div>
+
                             </div>
                             <!--Footer-->
                             <div class="modal-footer">
@@ -176,7 +203,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </div>
                         <!--/.Panel 7-->
 
-                        <!--Panel 8-->
+
+                        <!--Panel 8 register-->
                         <div class="tab-pane fade" id="panel8" role="tabpanel">
 
                             <!--Body-->

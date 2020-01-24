@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     # Check if email address already registered.
     if (empty($errors)) {
-        $q = "SELECT * FROM Berwick_users WHERE email=$e";
+        $q = "SELECT * FROM Berwick_users WHERE email=SHA1('$e')";
         $r = @mysqli_query($link, $q);
         if (mysqli_num_rows($r) != 0) {
             $errors[] = 'Email address already registered. <a href="index.php">Login</a>';
@@ -88,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     # On success register user inserting into 'users' database table.
     if (empty($errors)) {
         // not posting to database
-        $q = "INSERT INTO Berwick_users (Email, FirstName, LastName, Address_1, Address_2, Pcode, Pnum, pass, reg_date) VALUES ( '$e', '$fn', '$ln', '$A1', '$A2', '$Pc', '$Pn', SHA1('$p'), NOW() )";
+        $q = "INSERT INTO Berwick_users (Email, FirstName, LastName, Address_1, Address_2, Pcode, Pnum, pass, reg_date) VALUES ( SHA1('$e'), SHA1('$fn'), SHA1('$ln'), SHA1('$A1'), SHA1('$A2'), SHA1('$Pc'), SHA1('$Pn'), SHA1('$p'), NOW() )";
         $r = @mysqli_query($link, $q);
         if ($r) {
             echo '<div class="container"><h1>Registered!</h1><p>You are now registered.</p><p><a href="index.php">Login</a></p>';

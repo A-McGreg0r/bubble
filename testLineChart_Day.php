@@ -14,13 +14,13 @@ require "uiAssets/userNav.php";
     //TODO remove once data base it implmented
     //randome genarated grapth (temp)
 
-    $numOfDays = cal_days_in_month(CAL_GREGORIAN, date('m'), date('y'));
+    $numOfHours = cal_days_in_month(CAL_GREGORIAN, date('m'), date('y'));
 
     $first = strtotime('first day this month');
     $days = array();
     $randData = array();
     $arrayAvg = array();
-    for ($i = 1; $i <= $numOfDays; $i++) {
+    for ($i = 1; $i <= $numOfHours; $i++) {
         //list of months
         array_push($days, "day :" . $i);
         //geanarat rand data for display

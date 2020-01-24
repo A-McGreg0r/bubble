@@ -4,7 +4,7 @@
 //reg script
 
 //connects to the db
-//require 'required/connect_db.php';
+require 'required/connect_db.php';
 
 //gets the navbar.php file for testing
 require "uiAssets/userNav.php";

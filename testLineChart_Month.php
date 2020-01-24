@@ -2,35 +2,9 @@
 <!-- TODO remove header as elaments html tag and doc type as required after completion -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <!--icon Change me-->
-    <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
-    <!--Scripts-->
-    <!-- JQuery -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <!-- Bootstrap tooltips -->
-    <script type="text/javascript"
-            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
-    <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript"
-            src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <!-- MDB core JavaScript -->
-    <script type="text/javascript"
-            src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/js/mdb.min.js"></script>
-    <!--Scripts-->
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
-    <!-- Material Design Bootstrap -->
-    <link rel="stylesheet" href="css/mdb.min.css" type="text/css"/>
-    <!-- Your custom styles (optional) -->
-    <link rel="stylesheet" href="css/style.css" type="text/css"/>
-    <title>testing</title>
-</head>
+<?php
+require "uiAssets/userNav.php";
+?>
 <!--TODO intagrate database qurry -->
 <canvas id="lineChart"></canvas>
 
@@ -39,21 +13,24 @@
     <?php
     //TODO remove once data base it implmented
     //randome genarated grapth (temp)
+
+    $numOfDays = cal_days_in_month(CAL_GREGORIAN, date('m'), date('y'));
+
     $first = strtotime('first day this month');
-    $months = array();
+    $days = array();
     $randData = array();
     $arrayAvg = array();
-    for ($i = 11; $i >= 0; $i--) {
+    for ($i = 1; $i <= $numOfDays; $i++) {
         //list of months
-        array_push($months, date('M', strtotime("-$i month", $first)));
+        array_push($days, date('M', strtotime("-$i month", $first)));
         //geanarat rand data for display
         array_push($randData, rand(0, 1000));
         //a avg of the entire contence of the array
         array_push($arrayAvg = array_sum($randData) / count($randData));
     }
     //list of months
-    $php_Months = json_encode($months);
-    echo "var js_months = " . $php_Months . ";\n";
+    $php_Days = json_encode($days);
+    echo "var js_months = " . $php_Days . ";\n";
     //dataset
     $php_Data = json_encode($randData);
     echo "var js_data = " . $php_Data . ";\n";
@@ -71,7 +48,7 @@
             labels: js_months,
             datasets: [{
                 label: "Avrages usage",
-                data: [js_data_avg, js_data_avg, js_data_avg, js_data_avg, js_data_avg, js_data_avg, js_data_avg, js_data_avg, js_data_avg, js_data_avg, js_data_avg, js_data_avg,],
+                data: [js_data_avg],
                 backgroundColor: [
                     'rgba(0, 137, 132, .0)',
                 ],

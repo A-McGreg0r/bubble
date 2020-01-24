@@ -1,6 +1,7 @@
 <?php
 //TODO spell cheack.
 //TODO mach the varabuls max lenth to the database once that fixed.
+//TODO testing
 # Check form submitted.
 //reg script
 //connects to the db
@@ -272,11 +273,10 @@ if (isset($errors) && !empty($errors)) {
                                     <label data-error="wrong" data-success="right" for="modalLRInput12">Postcode</label>
                                     <input type="text"
                                            id="modalLRInput12"
-                                           class="form-control form-control-sm validate">
-                                    name="Pcode"
-                                    required size="10"
-                                    value="<?php if (isset($_POST['Pcode'])) echo $_POST['Pcode']; ?>">
-
+                                           class="form-control form-control-sm validate"
+                                           name="Pcode"
+                                           required size="10"
+                                           value="<?php if (isset($_POST['Pcode'])) echo $_POST['Pcode']; ?>">
                                 </div>
 
                                 <div class="md-form form-sm mb-5">

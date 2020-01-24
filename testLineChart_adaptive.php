@@ -7,6 +7,9 @@ $range = array();
 $Data = array();
 $arrayAvg = array();
 
+for ($i = count($arrayAvg); $i <= count($range); $i++) {
+    array_push($arrayAvg = array_sum($randData[$i]) / (count($randData)));
+}
 //list x axsies
 $php_range = json_encode($range);
 echo "var js_days = " . $php_range . ";\n";

@@ -1,4 +1,5 @@
 <?php
+//TODO chane sql escap strings to prpared statments
 //TODO spell cheack.
 //TODO mach the varabuls to there corasoponding one in the database and data dictonory
 //TODO mach the varabuls max lenth to the database once that fixed.

@@ -8,6 +8,7 @@
 
     //TODO FIND OUT WHAT ELCE SHOULD BE IMPLMENTED
     //TODO implment lineChart.php after completing it
+    //TODO enable chate to apper more than once
     $x = 1;
     //for building more than one chart
     $chartId = "chartId" . $x . "";

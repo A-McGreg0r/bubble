@@ -1,12 +1,6 @@
 <!-- TODO spelling and gramer check -->
 <!-- TODO remove header as elaments html tag and doc type as required after completion -->
-<!DOCTYPE html>
-<html lang="en">
-<?php
-require "uiAssets/userNav.php";
-?>
-<!--TODO intagrate database qurry -->
-<canvas id="lineChart"></canvas>
+
 
 <script type="text/javascript">
     //converts php querry to js for graph
@@ -37,7 +31,7 @@ require "uiAssets/userNav.php";
     ?>
     const ctxL = document.getElementById("lineChart").getContext('2d');
     const gradientFill = ctxL.createLinearGradient(0, 0, 0, 350);
-    gradientFill.addColorStop(0, "rgba(242,38,19,0.5)");
+    gradientFill.addColorStop(0, "rgba(242,38,19,.5)");
     gradientFill.addColorStop(1, "rgba(0,230,64,0.5)");
     let myLineChart = new Chart(ctxL, {
         type: 'line',

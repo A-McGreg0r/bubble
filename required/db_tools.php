@@ -55,26 +55,26 @@ function validate($link, $email = '', $pwd = '')
     return array(false, $errors);
 }
 
-function regester()
-{
+//function regester()
+//{
 //not yet implmented
 //require 'required/connect_db.php';
 
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        # Initialize an error array.
-        $errors = array();
-        $A2 = NULL;
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    # Initialize an error array.
+    $errors = array();
+    $A2 = NULL;
 # Check for a E-mail.
-        if (empty($_POST['Email'])) {
-            $errors[] = 'Enter your email address.';
-        } else {
-            $e = mysqli_real_escape_string($link, trim($_POST['Email']));
-        }
+    if (empty($_POST['Email'])) {
+        $errors[] = 'Enter your email address.';
+    } else {
+        $e = mysqli_real_escape_string($link, trim($_POST['Email']));
+    }
 
-        # Check for a first name.
-        if (empty($_POST['FirstName'])) {
-            $errors[] = 'Enter your first name.';
+    # Check for a first name.
+    if (empty($_POST['FirstName'])) {
+        $errors[] = 'Enter your first name.';
         } else {
             $fn = mysqli_real_escape_string($link, trim($_POST['FirstName']));
         }
@@ -157,7 +157,7 @@ function regester()
             # Close database connection.
             mysqli_close($link);
         }
-    }
+    //}
 
 
 }

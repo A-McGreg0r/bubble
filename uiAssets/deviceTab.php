@@ -12,29 +12,20 @@ while ($y <= 10) {
     </div>
 
     <!--Card content-->
-    <div class="card-body d-flex flex-wrap-reverse mb-4 mt-xl-5">
+    <div class="card-body d-flex justify-content-between">
 
-      <!--Title-->
-      
-        <div class="col-md">
-            <h4 class="card-title">
-                Devive ' . $y . '
-            </h4>
-        </div>
-        
-        <div class="col-md">
-        
-             <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="roomSwitche' . $y . '">
-            <label class="custom-control-label" for="roomSwitche' . $y . '">on/off</label>
-            </div>  
-              
-        </div>
-      
-      <!--Text-->
-      <p class="card-text"></p>
-      <!-- Default switch -->
-
+      <!--Title-->      
+            <div class="d-flex flex-column">  
+                    Devive ' . $y . '
+            </div>
+           
+            <div class="d-flex flex-column">
+           <!-- Default switch -->
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="deviveSwitche' . $y . '">
+                    <label class="custom-control-label" for="deviveSwitche' . $y . '">on/off</label>
+                </div>  
+            </div>
     </div>
 
   </div>

@@ -5,29 +5,27 @@ $y = 1;
 while ($y <= 10) {
     echo '
   <!-- Card -->
-  <div class="card mb-4">
-
+  <div class="card mb-4 container">
     <!--Card image-->
     <div class="view overlay">
-
         <div class="mask rgba-white-slight"></div>
-      </a>
     </div>
 
     <!--Card content-->
-    <div class="card-body">
+    <div class="card-body d-flex justify-content-between">
 
-      <!--Title-->
-      <h4 class="card-title">Room ' . $y . '</h4>
-      <!--Text-->
-      <p class="card-text"></p>
-      <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-
-      <!-- Default switch -->
-        <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="roomSwitche' . $y . '">
-            <label class="custom-control-label" for="roomSwitche' . $y . '">on/off</label>
-        </div>
+      <!--Title-->      
+            <div class="d-flex flex-column">  
+                    Room ' . $y . '
+            </div>
+           
+            <div class="d-flex flex-column">
+           <!-- Default switch -->
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="roomSwitche' . $y . '">
+                    <label class="custom-control-label" for="roomSwitche' . $y . '">on/off</label>
+                </div>  
+            </div>
     </div>
 
   </div>

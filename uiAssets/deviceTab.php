@@ -1,38 +1,45 @@
 <!-- Card deck -->
-<!-- ToDO: intagrated to data base -->
-<!-- ToDO: add sql qurry  -->
 <?php
-$x = 1;
-
-while ($x <= 10) {
+$y = 1;
+//TODO FIND OUT WHAT ELCE SHOULD BE IMPLMENTED
+while ($y <= 10) {
     echo '
   <!-- Card -->
-  <div class="card mb-4">
-
+  <div class="card mb-4 container">
     <!--Card image-->
     <div class="view overlay">
         <div class="mask rgba-white-slight"></div>
     </div>
 
     <!--Card content-->
-    <div class="card-body">
+    <div class="card-body d-flex flex-wrap-reverse mb-4 mt-xl-5">
+
       <!--Title-->
-      <!-- ToDO: change to get device name form database -->
-      <h4 class="card-title">Device ' . $x . '</h4>
-      <!-- Default switch -->
-        <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="deviceSwitche' . $x . '">
-            <label class="custom-control-label" for="deviceSwitche' . $x . '">on/off</label>
+      
+        <div class="col-md">
+            <h4 class="card-title">
+                Devive ' . $y . '
+            </h4>
         </div>
+        
+        <div class="col-md">
+        
+             <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="roomSwitche' . $y . '">
+            <label class="custom-control-label" for="roomSwitche' . $y . '">on/off</label>
+            </div>  
+              
+        </div>
+      
       <!--Text-->
-      <!-- ToDO add any contnt-->
-      <p class="card-text">
-      </p>
-      <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+      <p class="card-text"></p>
+      <!-- Default switch -->
+
     </div>
+
   </div>
   <!-- Card -->
       ';
-    $x++;
+    $y++;
 }
 ?>

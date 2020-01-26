@@ -155,7 +155,7 @@ if (isset($errors) && !empty($errors)) {
                                 Register</a>
                         </li>
                     </ul>
-
+                    <!-- login -->
                     <!-- Tab panels -->
                     <div class="tab-content ">
                         <!--Panel 7 Login -->
@@ -166,19 +166,20 @@ if (isset($errors) && !empty($errors)) {
 
                                 <div class="md-form form-sm mb-5">
                                     <i class="fas fa-envelope prefix"></i>
+                                    <label data-error="wrong" data-success="right" for="modalLRInput10">Your
+                                        E-mail</label>
                                     <input type="email" id="modalLRInput10"
                                            class="form-control form-control-sm validate"
                                            name="email">
-                                    <label data-error="wrong" data-success="right" for="modalLRInput10">Your
-                                        E-mail</label>
                                 </div>
 
                                 <div class="md-form form-sm mb-4">
                                     <i class="fas fa-lock prefix"></i>
+                                    <label data-error="wrong" data-success="right" for="modalLRInput11">Password</label>
                                     <input type="password" id="modalLRInput11"
                                            class="form-control form-control-sm validate"
                                            name="pass">
-                                    <label data-error="wrong" data-success="right" for="modalLRInput11">Password</label>
+
                                 </div>
 
                                 <div class="text-center mt-2">
@@ -215,8 +216,7 @@ if (isset($errors) && !empty($errors)) {
                                            id="modalLRInput12"
                                            class="form-control form-control-sm validate"
                                            name="Email"
-                                           required
-                                           size="20"
+                                           required size="20"
                                            value="<?php if (isset($_POST['Email'])) echo $_POST['Email']; ?>">
                                 </div>
 
@@ -254,7 +254,6 @@ if (isset($errors) && !empty($errors)) {
                                            name="Address_1"
                                            required size="20"
                                            value="<?php if (isset($_POST['Address_1'])) echo $_POST['Address_1']; ?>">
-
                                 </div>
 
                                 <div class="md-form form-sm mb-5">
@@ -283,8 +282,7 @@ if (isset($errors) && !empty($errors)) {
 
                                 <div class="md-form form-sm mb-5">
                                     <i class="fas fa-envelope prefix"></i>
-                                    <input type="text" id="modalLRInput12"
-                                           class="form-control form-control-sm validate">
+
                                     <label data-error="wrong" data-success="right" for="modalLRInput12">Contact
                                         Number</label>
                                     <input type="text"
@@ -301,7 +299,6 @@ if (isset($errors) && !empty($errors)) {
                                     <label data-error="wrong" data-success="right" for="modalLRInput13">Password</label>
                                     <input type="password" id="modalLRInput13"
                                            class="form-control form-control-sm validate"
-                                           placeholder="Create Password"
                                            name="pass1"
                                            required size="20"
                                            value="<?php if (isset($_POST['pass1'])) echo $_POST['pass1']; ?>">
@@ -309,10 +306,9 @@ if (isset($errors) && !empty($errors)) {
 
                                 <div class="md-form form-sm mb-4">
                                     <i class="fas fa-lock prefix"></i>
-                                    <input type="password" id="modalLRInput14"
                                     <label data-error="wrong" data-success="right" for="modalLRInput14">Repeat
                                         password</label>
-                                    <input type="password" id="modalLRInput13"
+                                    <input type="password" id="modalLRInput14"
                                            class="form-control form-control-sm validate"
                                            name="pass2"
                                            required size="20"

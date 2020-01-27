@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (empty($_POST['username'])) {
         $errors[] = 'Enter A username.';
     } else {
-        $un = mysqli_real_escape_string($link, trim($_POST['username']));
+        $ur = mysqli_real_escape_string($link, trim($_POST['username']));
     }
 
     if (empty($_POST['email'])) {
@@ -89,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     # On success register user inserting into 'users' database table.
     if (empty($errors)) {
         // not posting to database
-        $q = "INSERT INTO users_info (username,email, pass, first_name, surname,address_l1, address_l2, Pcode, postcode, reg_date) VALUES ( SHA1('$e'), SHA1('$fn'), SHA1('$ln'), SHA1('$A1'), SHA1('$A2'), SHA1('$Pc'), SHA1('$p'), NOW() )";
+        $q = "INSERT INTO users_info (username,email, pass, first_name, surname,address_l1, address_l2, postcode, reg_date) VALUES ( SHA1('$ur'),SHA1('$e'), SHA1('$fn'), SHA1('$ln'), SHA1('$A1'), SHA1('$A2'), SHA1('$Pc'), SHA1('$p'), NOW() )";
         $r = @mysqli_query($link, $q);
         if ($r) {
             echo '<div class="container"><h1>Registered!</h1><p>You are now registered.</p><p><a href="index.php">Login</a></p>';
@@ -243,7 +243,7 @@ if (isset($errors) && !empty($errors)) {
                                            class="form-control form-control-sm validate"
                                            name="first_name"
                                            required size="20"
-                                           value="<?php if (isset($_POST['first_name'])) echo $_POST['first_name']; ?>">
+                                           value="<?php if (isset($_POST['first_name'])) echo $_POST['first_name']; ?> ">
                                 </div>
 
                                 <div class="md-form form-sm mb-5">

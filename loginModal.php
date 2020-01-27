@@ -89,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     # On success register user inserting into 'users' database table.
     if (empty($errors)) {
         // not posting to database
-        $q = "INSERT INTO users_info (username,email, pass, first_name, surname,address_l1, address_l2, postcode, reg_date) VALUES ( SHA1('$ur'),SHA1('$e'), SHA1('$fn'), SHA1('$ln'), SHA1('$A1'), SHA1('$A2'), SHA1('$Pc'), SHA1('$p'), NOW() )";
+        $q = "INSERT INTO users_info (username,email, pass, first_name, surname,address_l1, address_l2, postcode, reg_date) VALUES ( SHA1('$ur'),SHA1('$e'), SHA1('$p'), SHA1('$fn'), SHA1('$ln'), SHA1('$A1'), SHA1('$A2'), SHA1('$Pc'), NOW() )";
         $r = @mysqli_query($link, $q);
         if ($r) {
             echo '<div class="container"><h1>Registered!</h1><p>You are now registered.</p><p><a href="index.php">Login</a></p>';

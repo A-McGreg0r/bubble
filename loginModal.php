@@ -89,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     # On success register user inserting into 'users' database table.
     if (empty($errors)) {
         // not posting to database
-        $q = "INSERT INTO users_info (username,email, pass, first_name, surname, address_l2, Pcode, postcode, reg_date) VALUES ( SHA1('$e'), SHA1('$fn'), SHA1('$ln'), SHA1('$A1'), SHA1('$A2'), SHA1('$Pc'), SHA1('$p'), NOW() )";
+        $q = "INSERT INTO users_info (username,email, pass, first_name, surname,address_l1, address_l2, Pcode, postcode, reg_date) VALUES ( SHA1('$e'), SHA1('$fn'), SHA1('$ln'), SHA1('$A1'), SHA1('$A2'), SHA1('$Pc'), SHA1('$p'), NOW() )";
         $r = @mysqli_query($link, $q);
         if ($r) {
             echo '<div class="container"><h1>Registered!</h1><p>You are now registered.</p><p><a href="index.php">Login</a></p>';
@@ -99,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo 'I ran';
         exit();
     } else # Or report errors.
-    {
+    {//todo redirect with pop up or other way to display info
         echo '<div class="container"><h1>Error!</h1><p id="err_msg">The following error(s) occurred:<br>';
         foreach ($errors as $msg) {
             echo " - $msg<br>";
@@ -224,10 +224,10 @@ if (isset($errors) && !empty($errors)) {
 
                                 <div class="md-form form-sm mb-5">
                                     <i class="fas fa-envelope prefix"></i>
-                                    <label data-error="wrong" data-success="right" for="modalLRInput12">Your
+                                    <label data-error="wrong" data-success="right" for="modalLRInput13">Your
                                         Email</label>
                                     <input type="email"
-                                           id="modalLRInput12"
+                                           id="modalLRInput13"
                                            class="form-control form-control-sm validate"
                                            name="email"
                                            required size="20"
@@ -236,69 +236,70 @@ if (isset($errors) && !empty($errors)) {
 
                                 <div class="md-form form-sm mb-5">
                                     <i class="fas fa-envelope prefix"></i>
-                                    <label data-error="wrong" data-success="right" for="modalLRInput12">Your
+                                    <label data-error="wrong" data-success="right" for="modalLRInput14">Your
                                         Name</label>
                                     <input type="text"
-                                           id="modalLRInput12"
+                                           id="modalLRInput14"
                                            class="form-control form-control-sm validate"
-                                           name="FirstName"
+                                           name="first_name"
                                            required size="20"
-                                           value="<?php if (isset($_POST['FirstName'])) echo $_POST['FirstName']; ?>">
+                                           value="<?php if (isset($_POST['first_name'])) echo $_POST['first_name']; ?>">
                                 </div>
 
                                 <div class="md-form form-sm mb-5">
                                     <i class="fas fa-envelope prefix"></i>
-                                    <label data-error="wrong" data-success="right" for="modalLRInput12">Name</label>
+                                    <label data-error="wrong" data-success="right" for="modalLRInput15">Name</label>
                                     <input type="text"
-                                           id="modalLRInput12"
+                                           id="modalLRInput15"
                                            class="form-control form-control-sm validate"
-                                           name="LastName"
+                                           name="surname"
                                            required size="20"
-                                           value="<?php if (isset($_POST['LastName'])) echo $_POST['LastName']; ?>">
+                                           value="<?php if (isset($_POST['surname'])) echo $_POST['surname']; ?>">
                                 </div>
 
 
                                 <div class="md-form form-sm mb-5">
                                     <i class="fas fa-envelope prefix"></i>
-                                    <label data-error="wrong" data-success="right" for="modalLRInput12">Address
+                                    <label data-error="wrong" data-success="right" for="modalLRInput16">Address
                                         line-1</label>
                                     <input type="text"
-                                           id="modalLRInput12"
+                                           id="modalLRInput16"
                                            class="form-control form-control-sm validate"
-                                           name="Address_1"
+                                           name="address_l1"
                                            required size="20"
-                                           value="<?php if (isset($_POST['Address_1'])) echo $_POST['Address_1']; ?>">
+                                           value="<?php if (isset($_POST['address_l1'])) echo $_POST['address_l1']; ?>">
                                 </div>
 
                                 <div class="md-form form-sm mb-5">
                                     <i class="fas fa-envelope prefix"></i>
-                                    <label data-error="wrong" data-success="right" for="modalLRInput12">Address
+                                    <label data-error="wrong" data-success="right" for="modalLRInput17">Address
                                         line-2</label>
                                     <input type="text"
-                                           id="modalLRInput12"
+                                           id="modalLRInput17"
                                            class="form-control form-control-sm validate"
-                                           name="Address_2"
+                                           name="address_l2"
                                            required size="20"
-                                           value="<?php if (isset($_POST['Address_2'])) echo $_POST['Address_2']; ?>">
+                                           value="<?php if (isset($_POST['address_l2'])) echo $_POST['address_l2']; ?>">
 
                                 </div>
 
                                 <div class="md-form form-sm mb-5">
                                     <i class="fas fa-envelope prefix"></i>
-                                    <label data-error="wrong" data-success="right" for="modalLRInput12">Postcode</label>
+                                    <label data-error="wrong" data-success="right" for="modalLRInput18">Postcode</label>
                                     <input type="text"
-                                           id="modalLRInput12"
+                                           id="modalLRInput18"
                                            class="form-control form-control-sm validate"
-                                           name="Pcode"
+                                           name="postcode"
                                            required size="10"
-                                           value="<?php if (isset($_POST['Pcode'])) echo $_POST['Pcode']; ?>">
+                                           value="<?php if (isset($_POST['postcode'])) echo $_POST['postcode']; ?>">
                                 </div>
 
 
                                 <div class="md-form form-sm mb-5">
                                     <i class="fas fa-lock prefix"></i>
-                                    <label data-error="wrong" data-success="right" for="modalLRInput13">Password</label>
-                                    <input type="password" id="modalLRInput13"
+                                    <label data-error="wrong" data-success="right" for="modalLRInput19">Password</label>
+                                    <input type="password"
+                                           id="modalLRInput19"
                                            class="form-control form-control-sm validate"
                                            name="pass1"
                                            required size="20"
@@ -307,9 +308,10 @@ if (isset($errors) && !empty($errors)) {
 
                                 <div class="md-form form-sm mb-4">
                                     <i class="fas fa-lock prefix"></i>
-                                    <label data-error="wrong" data-success="right" for="modalLRInput14">Repeat
+                                    <label data-error="wrong" data-success="right" for="modalLRInput20">Repeat
                                         password</label>
-                                    <input type="password" id="modalLRInput14"
+                                    <input type="password"
+                                           id="modalLRInput20"
                                            class="form-control form-control-sm validate"
                                            name="pass2"
                                            required size="20"
@@ -326,7 +328,7 @@ if (isset($errors) && !empty($errors)) {
                             <div class="modal-footer">
                                 <div class="options text-right">
                                     <p class="pt-2">Already have an account?<br>
-                                        <a href="#panel6" class="blue-text">Log In</a>
+                                        <a href="#" class="blue-text">Log In</a>
                                     </p>
                                 </div>
 

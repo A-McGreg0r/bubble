@@ -3,6 +3,7 @@
 //TODO spell cheack.
 //TODO mach the varabuls to there corasoponding one in the database and data dictonory
 //TODO mach the varabuls max lenth to the database once that fixed.
+//todo get buttons working at the bottom of the page
 //TODO testing
 # Check form submitted.
 //reg script
@@ -15,55 +16,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $errors = array();
     $A2 = NULL;
 # Check for a E-mail.
-    if (empty($_POST['Email'])) {
+    if (empty($_POST['username'])) {
+        $errors[] = 'Enter A username.';
+    } else {
+        $un = mysqli_real_escape_string($link, trim($_POST['username']));
+    }
+
+    if (empty($_POST['email'])) {
         $errors[] = 'Enter your email address.';
     } else {
-        $e = mysqli_real_escape_string($link, trim($_POST['Email']));
+        $e = mysqli_real_escape_string($link, trim($_POST['email']));
     }
-
-    # Check for a first name.
-    if (empty($_POST['FirstName'])) {
-        $errors[] = 'Enter your first name.';
-    } else {
-        $fn = mysqli_real_escape_string($link, trim($_POST['FirstName']));
-    }
-
-    # Check for a last name.
-    if (empty($_POST['LastName'])) {
-        $errors[] = 'Enter your last name.';
-    } else {
-        $ln = mysqli_real_escape_string($link, trim($_POST['LastName']));
-    }
-
-    # Check for a adress line 1.
-    if (empty($_POST['Address_1'])) {
-        $errors[] = 'Enter your Address 1';
-    } else {
-        $A1 = mysqli_real_escape_string($link, trim($_POST['Address_1']));
-    }
-
-    # Check for a adress line 2.
-    # Check for a adress line 1.
-    if (empty($_POST['Address_2'])) {
-        $errors[] = 'Enter your Address 2';
-    } else {
-        $A2 = mysqli_real_escape_string($link, trim($_POST['Address_2']));
-    }
-
-    # Check for a postcode
-    if (empty($_POST['Pcode'])) {
-        $errors[] = 'Enter your postcode.';
-    } else {
-        $Pc = mysqli_real_escape_string($link, trim($_POST['Pcode']));
-    }
-
-    # Check for a phone nuber
-    if (empty($_POST['Pnum'])) {
-        $errors[] = 'Enter your phone number.';
-    } else {
-        $Pn = mysqli_real_escape_string($link, trim($_POST['Pnum']));
-    }
-
 
     # Check for a password and matching input passwords.
     if (!empty($_POST['pass1'])) {
@@ -76,9 +39,47 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $errors[] = 'Enter your password.';
     }
 
+    # Check for a first name.
+    if (empty($_POST['first_name'])) {
+        $errors[] = 'Enter your first name.';
+    } else {
+        $fn = mysqli_real_escape_string($link, trim($_POST['first_name']));
+    }
+
+    # Check for a last name.
+    if (empty($_POST['surname'])) {
+        $errors[] = 'Enter your surname.';
+    } else {
+        $ln = mysqli_real_escape_string($link, trim($_POST['surname']));
+    }
+
+    # Check for a adress line 1.
+    if (empty($_POST['address_l1'])) {
+        $errors[] = 'Enter your Address 1';
+    } else {
+        $A1 = mysqli_real_escape_string($link, trim($_POST['address_l1']));
+    }
+
+    # Check for a adress line 2.
+    # Check for a adress line 1.
+    if (empty($_POST['address_l2'])) {
+        $errors[] = 'Enter your Address 2';
+    } else {
+        $A2 = mysqli_real_escape_string($link, trim($_POST['address_l2']));
+    }
+
+    # Check for a postcode
+    if (empty($_POST['postcode'])) {
+        $errors[] = 'Enter your postcode.';
+    } else {
+        $Pc = mysqli_real_escape_string($link, trim($_POST['postcode']));
+    }
+
+
+
     # Check if email address already registered.
     if (empty($errors)) {
-        $q = "SELECT * FROM Berwick_users WHERE email=SHA1('$e')";
+        $q = "SELECT * FROM user_info WHERE email=SHA1('$e')";
         $r = @mysqli_query($link, $q);
         if (mysqli_num_rows($r) != 0) {
             $errors[] = 'Email address already registered. <a href="index.php">Login</a>';
@@ -88,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     # On success register user inserting into 'users' database table.
     if (empty($errors)) {
         // not posting to database
-        $q = "INSERT INTO users_info (Email, FirstName, LastName, Address_1, Address_2, Pcode, Pnum, pass, reg_date) VALUES ( SHA1('$e'), SHA1('$fn'), SHA1('$ln'), SHA1('$A1'), SHA1('$A2'), SHA1('$Pc'), SHA1('$Pn'), SHA1('$p'), NOW() )";
+        $q = "INSERT INTO users_info (username,email, pass, first_name, surname, address_l2, Pcode, postcode, reg_date) VALUES ( SHA1('$e'), SHA1('$fn'), SHA1('$ln'), SHA1('$A1'), SHA1('$A2'), SHA1('$Pc'), SHA1('$p'), NOW() )";
         $r = @mysqli_query($link, $q);
         if ($r) {
             echo '<div class="container"><h1>Registered!</h1><p>You are now registered.</p><p><a href="index.php">Login</a></p>';
@@ -168,7 +169,8 @@ if (isset($errors) && !empty($errors)) {
                                     <i class="fas fa-envelope prefix"></i>
                                     <label data-error="wrong" data-success="right" for="modalLRInput10">Your
                                         E-mail</label>
-                                    <input type="email" id="modalLRInput10"
+                                    <input type="email"
+                                           id="modalLRInput10"
                                            class="form-control form-control-sm validate"
                                            name="email">
                                 </div>
@@ -179,7 +181,6 @@ if (isset($errors) && !empty($errors)) {
                                     <input type="password" id="modalLRInput11"
                                            class="form-control form-control-sm validate"
                                            name="pass">
-
                                 </div>
 
                                 <div class="text-center mt-2">
@@ -208,6 +209,19 @@ if (isset($errors) && !empty($errors)) {
 
                             <!--Body-->
                             <div class="modal-body">
+
+                                <div class="md-form form-sm mb-5">
+                                    <i class="fas fa-envelope prefix"></i>
+                                    <label data-error="wrong" data-success="right" for="modalLRInput12">Your
+                                        Username</label>
+                                    <input type="text"
+                                           id="modalLRInput12"
+                                           class="form-control form-control-sm validate"
+                                           name="username"
+                                           required size="20"
+                                           value="<?php if (isset($_POST['username'])) echo $_POST['username']; ?>">
+                                </div>
+
                                 <div class="md-form form-sm mb-5">
                                     <i class="fas fa-envelope prefix"></i>
                                     <label data-error="wrong" data-success="right" for="modalLRInput12">Your
@@ -215,9 +229,9 @@ if (isset($errors) && !empty($errors)) {
                                     <input type="email"
                                            id="modalLRInput12"
                                            class="form-control form-control-sm validate"
-                                           name="Email"
+                                           name="email"
                                            required size="20"
-                                           value="<?php if (isset($_POST['Email'])) echo $_POST['Email']; ?>">
+                                           value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>">
                                 </div>
 
                                 <div class="md-form form-sm mb-5">
@@ -280,19 +294,6 @@ if (isset($errors) && !empty($errors)) {
                                            value="<?php if (isset($_POST['Pcode'])) echo $_POST['Pcode']; ?>">
                                 </div>
 
-                                <div class="md-form form-sm mb-5">
-                                    <i class="fas fa-envelope prefix"></i>
-
-                                    <label data-error="wrong" data-success="right" for="modalLRInput12">Contact
-                                        Number</label>
-                                    <input type="text"
-                                           id="modalLRInput12"
-                                           class="form-control form-control-sm validate"
-                                           name="Pnum"
-                                           required size="20"
-                                           value="<?php if (isset($_POST['Pnum'])) echo $_POST['Pnum']; ?>">
-                                </div>
-
 
                                 <div class="md-form form-sm mb-5">
                                     <i class="fas fa-lock prefix"></i>
@@ -324,7 +325,8 @@ if (isset($errors) && !empty($errors)) {
                             <!--Footer-->
                             <div class="modal-footer">
                                 <div class="options text-right">
-                                    <p class="pt-2">Already have an account? <a href="#" class="blue-text">Log In</a>
+                                    <p class="pt-2">Already have an account?<br>
+                                        <a href="#panel6" class="blue-text">Log In</a>
                                     </p>
                                 </div>
 

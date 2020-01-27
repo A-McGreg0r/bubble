@@ -290,7 +290,7 @@ if (isset($errors) && !empty($errors)) {
                                            id="modalLRInput18"
                                            class="form-control form-control-sm validate"
                                            name="postcode"
-                                           required size="10"
+                                           required size="12"
                                            value="<?php if (isset($_POST['postcode'])) echo $_POST['postcode']; ?>">
                                 </div>
 

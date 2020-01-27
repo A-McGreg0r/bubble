@@ -1,5 +1,6 @@
 <?php
-require "connectdb.php";
+//not used yet
+require "connect_db.php";
 
 
 # LOGIN HELPER FUNCTIONS.

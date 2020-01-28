@@ -2,7 +2,7 @@
 # Open database connection.
 require('connect_db.php');
 # Get connection, load, and validate functions.
-require('loginTools.php');
+require('functionTesting.php');
 # Check form submitted.
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -17,17 +17,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['FirstName'] = $data['FirstName'];
         $_SESSION['LastName'] = $data['LastName'];
         $_SESSION['Sub'] = $data['Sub'];
-        load('../index.php');#return to index.php
+        load('../appCore.php');#return to appCore.php
     } # Or on failure set errors.
     else {
         echo "error";
         $errors = $data;
     }
-
     # Close database connection.
     mysqli_close($link);
 }
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Added to script:::Continue to display login page on failure.
-load('../index.php');#return to index.php
+load('../appCore.php');#return to appCore.php
 ?>

@@ -47,7 +47,9 @@
                         </select>
                   </div>
                  <!--TODO intagrate database qurry -->
-                    <canvas id="lineChart"></canvas>
+                    <canvas id="lineChart_Year"></canvas>
+                    <canvas id="lineChart_Month"></canvas>
+                    <canvas id="lineChart_Day"></canvas>
                   </div>
                   
             </div>
@@ -60,6 +62,8 @@
 </div>
 
 <?php
-require "charts/LineChart_Year.php";
+//require "charts/lineChart_Year.php";
+//require "charts/lineChart_Month.php";
+require "charts/lineChart_Day.php";
 ?>
 <!--/.Accordion wrapper-->

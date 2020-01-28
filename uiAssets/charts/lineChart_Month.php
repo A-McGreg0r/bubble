@@ -1,26 +1,20 @@
 <!-- TODO spelling and gramer check -->
 <!-- TODO remove header as elaments html tag and doc type as required after completion -->
-<!DOCTYPE html>
-<html lang="en">
-<?php
-require "uiAssets/userNav.php";
-?>
 <!--TODO intagrate database qurry -->
-<canvas id="lineChart"></canvas>
 
 <script type="text/javascript">
     //converts php querry to js for graph
+
     <?php
     //TODO remove once data base it implmented
     //randome genarated grapth (temp)
-
-    $numOfHours = cal_days_in_month(CAL_GREGORIAN, date('m'), date('y'));
+    $numOfDays = cal_days_in_month(CAL_GREGORIAN, date('m'), date('y'));
 
     $first = strtotime('first day this month');
     $days = array();
     $randData = array();
     $arrayAvg = array();
-    for ($i = 1; $i <= $numOfHours; $i++) {
+    for ($i = 1; $i <= $numOfDays; $i++) {
         //list of months
         array_push($days, "day :" . $i);
         //geanarat rand data for display
@@ -38,7 +32,7 @@ require "uiAssets/userNav.php";
     $arrayAvg = json_encode($arrayAvg);
     echo "var js_data_avg = " . $arrayAvg . ";\n";
     ?>
-    const ctxL = document.getElementById("lineChart").getContext('2d');
+    const ctxL = document.getElementById("lineChart_Month").getContext('2d');
     const gradientFill = ctxL.createLinearGradient(0, 0, 0, 350);
     gradientFill.addColorStop(0, "rgba(242,38,19,0.5)");
     gradientFill.addColorStop(1, "rgba(0,230,64,0.5)");

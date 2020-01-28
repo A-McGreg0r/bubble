@@ -50,7 +50,7 @@
         <!-- Links -->
         <ul class="navbar-nav mr-auto mt-lg-0">
             <li class="nav-item active">
-                <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="appCore.php">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="account.php">Account</a>
@@ -58,22 +58,8 @@
 
 
         </ul>
-        <ul class="navbar-nav ml-auto nav-flex-icons">
-            <li class="nav-item">
-                <?php
-                //do if to togall between login and logout
-                require 'loginModal.php';
-                ?>
-            </li>
-
-
-        </ul>
     </div>
 </nav>
 <!--sub nav-->
-
-
-
 <!--navbar-->
-
 </body>

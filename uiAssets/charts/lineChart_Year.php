@@ -2,6 +2,7 @@
 <!-- TODO remove header as elaments html tag and doc type as required after completion -->
 <script type="text/javascript">
     //converts php querry to js for graph
+
     <?php
     //TODO remove once data base it implmented
     //randome genarated grapth (temp)
@@ -27,7 +28,7 @@
     $arrayAvg = json_encode($arrayAvg);
     echo "var js_data_avg = " . $arrayAvg . ";\n";
     ?>
-    const ctxL = document.getElementById("lineChart").getContext('2d');
+    const ctxL = document.getElementById("lineChart_Year").getContext('2d');
     const gradientFill = ctxL.createLinearGradient(0, 0, 0, 350);
     gradientFill.addColorStop(0, "rgba(242,38,19,.5)");
     gradientFill.addColorStop(1, "rgba(0,230,64,0.5)");

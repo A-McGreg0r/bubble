@@ -1,7 +1,5 @@
 <!-- TODO spelling and gramer check -->
 <!-- TODO remove header as elaments html tag and doc type as required after completion -->
-
-
 <script type="text/javascript">
     //converts php querry to js for graph
     <?php

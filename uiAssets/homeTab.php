@@ -60,6 +60,6 @@
 </div>
 
 <?php
-include "testLineChart_Year.php";
+require "charts/LineChart_Year.php";
 ?>
 <!--/.Accordion wrapper-->

@@ -17,9 +17,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['FirstName'] = $data['FirstName'];
         $_SESSION['LastName'] = $data['LastName'];
         $_SESSION['Sub'] = $data['Sub'];
-        load('index.php');#return to index.php
+        load('../index.php');#return to index.php
     } # Or on failure set errors.
     else {
+        echo "error";
         $errors = $data;
     }
 
@@ -28,5 +29,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Added to script:::Continue to display login page on failure.
-include('index.php');
+load('../index.php');#return to index.php
 ?>

@@ -1,12 +1,11 @@
 <?php # PROCESS LOGIN ATTEMPT.
-
+# Open database connection.
+require('connect_db.php');
+# Get connection, load, and validate functions.
+require('loginTools.php');
 # Check form submitted.
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    # Open database connection.
-    require('required/connect_db.php');
-    # Get connection, load, and validate functions.
-    require('required/loginTools.php');
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     # Check login.
     list ($check, $data) = validate($link, $_POST['email'], $_POST['pass']);
 

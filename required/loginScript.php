@@ -25,11 +25,11 @@ function validate($link, $email = '', $pwd = '')
     if (empty($email)) {
         $errors[] = 'Enter your email address.';
     } else {
-        $e = mysqli_real_escape_string($link, trim($email));
+        $e = mysqli_real_escape_string($link, trim($e));
     }
 
     # Check password field.
-    if (empty($pwd)) {
+    if (empty($p)) {
         $errors[] = 'Enter your password.';
     } else {
         $p = mysqli_real_escape_string($link, trim($pwd));

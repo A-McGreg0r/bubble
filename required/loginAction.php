@@ -7,7 +7,7 @@
 # Check form submitted.
 echo "start";
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    echo "pass if";
+    echo "sever if";
 
 
     # Check login.
@@ -15,14 +15,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     echo "list";
     # On success set session data and display logged in page.
     if ($check) {
-        echo "pass if";
+        echo "check if";
         # Access session.
         session_start();
         $_SESSION['UserID'] = $data['UserID'];
         $_SESSION['FirstName'] = $data['FirstName'];
         $_SESSION['LastName'] = $data['LastName'];
-        $_SESSION['Sub'] = $data['Sub'];
-        load('index.php');#need to chance index to php
+
+        load('../aapCore.php');#need to chance index to php
     } # Or on failure set errors.
     else {
         $errors = $data;

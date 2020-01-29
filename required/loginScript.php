@@ -18,6 +18,7 @@ function load($page = 'login.php')
 # Function to check email address and password.
 function validate($link, $email = '', $pwd = '')
 {
+    echo "validateing";
     # Initialize errors array.
     $errors = array();
 
@@ -25,11 +26,11 @@ function validate($link, $email = '', $pwd = '')
     if (empty($email)) {
         $errors[] = 'Enter your email address.';
     } else {
-        $e = mysqli_real_escape_string($link, trim($e));
+        $e = mysqli_real_escape_string($link, trim($email));
     }
 
     # Check password field.
-    if (empty($p)) {
+    if (empty($pwd)) {
         $errors[] = 'Enter your password.';
     } else {
         $p = mysqli_real_escape_string($link, trim($pwd));

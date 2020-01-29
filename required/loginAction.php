@@ -2,22 +2,21 @@
 # Open database connection.
 
 # Get connection, load, and validate functions.
+require "loginScript.php";
 
 # PROCESS LOGIN ATTEMPT.
 # Check form submitted.
-echo "start";
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     echo "sever if";
 
 
     # Check login.
     list ($check, $data) = validate($link, $_POST['email'], $_POST['pass']);
-    echo "list";
     # On success set session data and display logged in page.
     if ($check) {
-        echo "check if";
         # Access session.
         session_start();
+        //todo get sessions set up
         $_SESSION['UserID'] = $data['UserID'];
         $_SESSION['FirstName'] = $data['FirstName'];
         $_SESSION['LastName'] = $data['LastName'];
@@ -30,10 +29,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     # Close database connection.
     mysqli_close($link);
-    echo "sesion info" . $_SESSION;
+
 }
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Added to script:::Continue to display login page on failure.
 
-include('../appCore.php');
+load('../appCore.php');
 ?>

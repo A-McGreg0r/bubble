@@ -34,138 +34,149 @@
     <title>stuff</title>
 </head>
 
-<body class="black-skin elegant-color-dark">
+<body class="black-skin elegant-color-dark ">
 
 
 <!--Content-->
-<div class="container-fluid text-light">
+<div class="container-fluid  text-light">
 
     <!--Modal cascading tabs-->
+    <div class="col col-lg-2">
 
-    <!-- Nav tabs -->
-    <ul class="nav nav-tabs  tabs-2 elegant-color align-content-around" role="tablist">
-        <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="#panel1" role="tab">
-                <i class="fas fa-user mr-1"></i>Login</a>
-        </li>
+    </div>
 
-        <li class="nav-item ">
-            <a class="nav-link" data-toggle="tab" href="#panel2" role="tab">
-                <i class="fas fa-user-plus mr-1"></i>Sign up</a>
-        </li>
-    </ul>
-    <!-- Nav tabs -->
+    <div class="col-12 col-md-auto">
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs  tabs-2 elegant-color align-content-around" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#panel1" role="tab">
+                    <i class="fas fa-user mr-1"></i>Login</a>
+            </li>
+
+            <li class="nav-item ">
+                <a class="nav-link" data-toggle="tab" href="#panel2" role="tab">
+                    <i class="fas fa-user-plus mr-1"></i>Sign up</a>
+            </li>
+        </ul>
+        <!-- Nav tabs -->
 
 
-    <!-- Tab panels -->
-    <div class="tab-content ">
-        <!--Panel 1 login Tab panel -->
-        <div class="tab-pane fade in show active" id="panel1" role="tabpanel">
+        <!-- Tab panels -->
+        <div class="tab-content ">
+            <!--Panel 1 login Tab panel -->
+            <div class="tab-pane fade in show active" id="panel1" role="tabpanel">
 
-            <!--Body-->
-            <div class="modal-body mb-1">
-                <!--modal-login-->
-                <!-- Material form login -->
-                <!--Card content-->
+                <!--Body-->
+                <div class="modal-body mb-1">
+                    <!--modal-login-->
+                    <!-- Material form login -->
+                    <!--Card content-->
 
-                <!-- Form -->
-                <form class="text-center elegant-color-dark " action="#">
+                    <!-- Form -->
+                    <form class="text-center elegant-color-dark " action="required/loginAction.php" method="POST">
 
-                    <!-- Email -->
-                    <div class="md-form">
-                        <label for="materialLoginFormEmail">E-mail</label>
-                        <input type="email"
-                               id="materialLoginFormEmail"
-                               class="form-control form-control-sm validate"
-                               name="email"
-                               required size="20"
-                               value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>">
-                    </div>
+                        <!-- Email -->
+                        <div class="md-form">
+                            <label for="materialLoginFormEmail">E-mail</label>
+                            <input type="email"
+                                   id="materialLoginFormEmail"
+                                   class="form-control form-control-sm validate"
+                                   name="email"
+                                   required size="20"
+                                   value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>">
+                        </div>
 
-                    <!-- Password -->
-                    <div class="md-form">
-                        <input type="password" id="materialLoginFormPassword"
-                               class="form-control">
-                        <label for="materialLoginFormPassword">Password</label>
-                    </div>
+                        <!-- Password -->
+                        <div class="md-form">
+                            <input type="password" id="materialLoginFormPassword"
+                                   class="form-control">
+                            <label for="materialLoginFormPassword">Password</label>
+                        </div>
 
-                    <div class="d-flex justify-content-around">
-                        <div>
-                            <!-- Remember me -->
-                            <div class="form-check">
-                                <input type="checkbox"
-                                       class="form-check-input"
-                                       id="materialLoginFormRemember">
-                                <label class="form-check-label"
-                                       for="materialLoginFormRemember">Remember me</label>
+                        <div class="d-flex justify-content-around">
+                            <div>
+                                <!-- Remember me -->
+                                <div class="form-check">
+                                    <label class="form-check-label" for="materialLoginFormRemember">Remember me</label>
+                                    <input type="checkbox"
+                                           class="form-check-input"
+                                           id="materialLoginFormRemember">
+                                </div>
+                            </div>
+                            <div>
+                                <!-- Forgot password -->
+                                <a href="">Forgot password?</a>
                             </div>
                         </div>
-                        <div>
-                            <!-- Forgot password -->
-                            <a href="">Forgot password?</a>
-                        </div>
-                    </div>
 
-                    <!-- Sign in button -->
-                    <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0"
-                            type="submit">Sign up
-                    </button>
+                        <!-- Sign in button -->
+                        <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0"
+                                type="submit" value="submit">Log in
+                        </button>
 
 
-                    <!-- Social login -->
-                    <p>or sign in with:</p>
-                    <a type="button" class="btn-floating btn-fb btn-sm">
-                        <i class="fab fa-facebook-f white-text disabled"></i>
-                    </a>
-                    <a type="button" class="btn-floating btn-tw btn-sm">
-                        <i class="fab fa-twitter white-text disabled"></i>
-                    </a>
-                    <a type="button" class="btn-floating btn-li btn-sm">
-                        <i class="fab fa-linkedin-in white-text disabled"></i>
-                    </a>
-                    <a type="button" class="btn-floating btn-git btn-sm">
-                        <i class="fab fa-github white-text disabled"></i>
-                    </a>
-                    <!--t-->
-                    <a type="button" href="appCore.php" class="btn-floating btn-git btn-sm text-light">
-                        <i class="far fa-arrow-alt-circle-right"></i>
-                    </a>
+                        <!-- Social login -->
+                        <p>or sign in with:</p>
+                        <a type="button" class="btn-floating btn-fb btn-sm">
+                            <i class="fab fa-facebook-f white-text disabled"></i>
+                        </a>
+                        <a type="button" class="btn-floating btn-tw btn-sm">
+                            <i class="fab fa-twitter white-text disabled"></i>
+                        </a>
+                        <a type="button" class="btn-floating btn-li btn-sm">
+                            <i class="fab fa-linkedin-in white-text disabled"></i>
+                        </a>
+                        <a type="button" class="btn-floating btn-git btn-sm">
+                            <i class="fab fa-github white-text disabled"></i>
+                        </a>
+                        <!--t-->
+                        <a type="button" href="appCore.php" class="btn-floating btn-git btn-sm text-light">
+                            <i class="far fa-arrow-alt-circle-right"></i>
+                        </a>
 
 
-                </form>
-                <!-- Form -->
+                    </form>
+                    <!-- Form -->
 
-                <!-- Material form login -->
+                    <!-- Material form login -->
+                </div>
+                <!--modal-footer-->
             </div>
-            <!--modal-footer-->
-        </div>
-        <!--Panel 1 login Tab -->
+            <!--Panel 1 login Tab -->
 
 
-        <!--Panel 2 register-->
-        <div class="tab-pane fade" id="panel2" role="tabpanel">
+            <!--Panel 2 register-->
+            <div class="tab-pane fade" id="panel2" role="tabpanel">
 
-            <!--Body-->
-            <form action="#" method="post">
-
-
-                <!-- Material form register -->
-
-
+                <!--Body-->
                 <!--Card content-->
                 <div class="card-body px-lg-5 pt-0">
 
                     <!-- Form -->
-                    <form class="text-center" style="color: #757575;" action="#!">
+                    <form class="text-center" style="color: #757575;" action="required/regScript.php" method="POST">
 
+                        <!-- username -->
                         <div class="md-form form-sm mb-5">
-                            <label data-error="wrong" data-success="right" for="modalLRInput12">Username</label>
+                            <label data-error="wrong" data-success="right"
+                                   for="materialLoginFormUsername">Username</label>
                             <input type="text"
-                                   id="modalLRInput12"
+                                   id="materialLoginFormUsername"
                                    class="form-control form-control-sm validate"
                                    name="username"
                                    required size="20"
                                    value="<?php if (isset($_POST['username'])) echo $_POST['username']; ?>">
+                        </div>
+
+                        <!-- Email -->
+                        <div class="md-form">
+                            <label for="materialLoginFormEmail">E-mail</label>
+                            <input type="email"
+                                   id="materialLoginFormEmail"
+                                   class="form-control form-control-sm validate"
+                                   name="email"
+                                   required size="20"
+                                   value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>">
                         </div>
 
                         <div class="form-row">
@@ -220,6 +231,17 @@
                                    value="<?php if (isset($_POST['address_l2'])) echo $_POST['address_l2']; ?>"
                         </div>
 
+                        <div class="md-form">
+                            <label for="materialRegisterFormPostcode">Postcode</label>
+                            <input type="text"
+                                   id="materialRegisterFormPostcode"
+                                   class="form-control form-control-sm validate"
+                                   name="postcode"
+                                   required size="20"
+                                   aria-describedby=""
+                                   value="<?php if (isset($_POST['postcode'])) echo $_POST['postcode']; ?>"
+                        </div>
+
                         <!-- Password -->
                         <div class="md-form">
                             <label data-error="wrong" data-success="right"
@@ -238,7 +260,7 @@
 
                         <div class="md-form">
                             <label data-error="wrong" data-success="right"
-                                   for="materialRegisterFormPassword2">Password</label>
+                                   for="materialRegisterFormPassword2">Repet Password</label>
                             <input type="password"
                                    id="materialRegisterFormPassword2"
                                    class="form-control form-control-sm validate"
@@ -248,20 +270,11 @@
                                    value="<?php if (isset($_POST['pass2'])) echo $_POST['pass2']; ?>">
                         </div>
 
-                        <!-- Phone number -->
-                        <div class="md-form">
-                            <input type="text"
-                                   id="materialRegisterFormPhone"
-                                   class="form-control"
-                                   aria-describedby="materialRegisterFormPhoneHelpBlock">
-                            <label for="materialRegisterFormPhone">Phone number</label>
-                        </div>
-
 
                         <!-- Sign up button -->
                         <div>
                             <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0"
-                                    type="submit">Sign up
+                                    type="submit" value="submit">Sign up
                             </button>
                         </div>
 
@@ -290,11 +303,17 @@
                     </form>
                     <!-- Form -->
                 </div>
+
+                <!-- Material form register -->
+            </div>
         </div>
-        <!-- Material form register -->
+
+
+        <!--Panel 2 register-->
     </div>
-    <!--Panel 2 register-->
-</div>
+    <div class="col col-lg-2">
+
+    </div>
 </body>
 <!--Modal: Login / Register Form-->
 

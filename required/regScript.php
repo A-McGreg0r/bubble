@@ -1,6 +1,7 @@
 <?php
 //connextst to the db
 require 'connect_db.php';
+require 'db_tools.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   # Initialize an error array.
@@ -78,8 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // not posting to database
     $q = "INSERT INTO user_info (email, pass, first_name, surname, address_l1, address_l2, postcode, pass, reg_date) VALUES ( '$e', '$fn', '$ln', '$A1', '$A2', '$Pc', SHA1('$p'), NOW() )";
     $r = @mysqli_query($link, $q);
-    echo $q;
-    echo $link;
+
     if ($r) {
       echo "r passed";
       echo '<div class="container"><h1>Registered!</h1><p>You are now registered.</p><p><a href="../index.php">Login</a></p>';

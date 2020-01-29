@@ -2,7 +2,8 @@
 # Open database connection.
 
 # Get connection, load, and validate functions.
-require "loginScript.php";
+require 'connect_db.php';
+require 'db_tools.php';
 
 # PROCESS LOGIN ATTEMPT.
 # Check form submitted.

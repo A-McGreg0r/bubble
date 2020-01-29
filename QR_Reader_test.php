@@ -46,13 +46,12 @@ require "uiAssets/userNav.php";
 </label>
 <label class=qrcode-text-btn><input type=file accept="image/*" capture=environment tabindex=-1>
 </label>
-<input type=button value="Go" disabled>
 
 
 <script type="text/javascript">
     //TODO output varabuls to php for posting to DB.
     function openQRCamera(node) {
-        var reader = new FileReader();
+        const reader = new FileReader();
         reader.onload = function () {
             node.value = "";
             qrcode.callback = function (res) {
@@ -64,7 +63,7 @@ require "uiAssets/userNav.php";
             };
             qrcode.decode(reader.result);
         };
-        reader.readAsDataURL(node.files[0]);
+        reader.readAsText(node.files[0]);
     }
 </script>
 

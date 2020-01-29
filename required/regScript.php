@@ -87,6 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     # Close database connection.
     mysqli_close($link);
     echo 'I ran';
+    //load('../appCore.php');
     exit();
   } else # Or report errors.
   {

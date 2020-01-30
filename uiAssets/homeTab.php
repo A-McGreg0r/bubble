@@ -9,6 +9,7 @@
     //TODO FIND OUT WHAT ELCE SHOULD BE IMPLMENTED
     //TODO implment lineChart.php after completing it
     //TODO enable chate to apper more than once
+    //todo a querry to cheack how meny hose some has
     $x = 1;
     //for building more than one chart
     $chartId = "chartId" . $x . "";
@@ -39,17 +40,21 @@
                         <p class="lead align-content-center">
                           <span class="badge info-color-dark p-2">Date range</span>
                         </p>-->
-                         <select class="browser-default custom-select">
-                          <option selected>Choose time period</option>
-                          <option value="1">Week</option>
-                          <option value="2">Month</option>
-                          <option value="3">Year</option>
-                        </select>
+                        <form id="myForm">                        
+                             <select class="browser-default md-form custom-select" id="myChart" onchange="myFunction(this.value)" >
+                                <option value="0" disabled="disabled" selected>Choose time period</option>
+                                <option value="1" id="chico1"">Week</option>
+                                <option value="2" id="chico2"">Month</option>
+                                <option value="3" id="chico3"">Year</option>
+                             </select>
+                       
+                        </form>
                   </div>
                  <!--TODO intagrate database qurry -->
+                   
                     <canvas id="lineChart_Year"></canvas>
-                    <canvas id="lineChart_Month"></canvas>
-                    <canvas id="lineChart_Day"></canvas>
+             
+                       
                   </div>
                   
             </div>
@@ -62,8 +67,16 @@
 </div>
 
 <?php
-//require "charts/lineChart_Year.php";
-//require "charts/lineChart_Month.php";
+require "charts/lineChart_Year.php";
+require "charts/lineChart_Month.php";
 require "charts/lineChart_Day.php";
 ?>
 <!--/.Accordion wrapper-->
+
+
+<script>
+
+    $('#myChart').change(function () {
+
+    });
+</script>

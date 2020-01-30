@@ -49,6 +49,7 @@
             },
                 {
                     label: "power used",
+                    toolTipContent: "{label}: {js_data}%",
                     data: js_data,
                     backgroundColor: gradientFill,
                     borderColor: gradientFill,

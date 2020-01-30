@@ -63,4 +63,43 @@
             responsive: true
         }
     });
+
+    function f() {
+        // Grasp the inputs
+        var form1 = $('#form1')
+        var form2 = $('#form2')
+        var form3 = $('#form3')
+        var form4 = $('#form4')
+
+// Create a submit function and prevent it from reloading the page
+        $('#myForm').submit(function (e) {
+            e.preventDefault();
+
+// Then input a new data object, with form values as data
+            myChart.data = {
+                labels: ["Red", "Blue", "Yellow", "Green"],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [form1.val(), form2.val(), form3.val(), form4.val()],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            }
+// Finally, update the chart with
+            myChart.update();
+        });
+
+    }
+
 </script>

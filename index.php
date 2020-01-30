@@ -1,16 +1,12 @@
 <?php
     //////////////////////////////// BUBBLE APP WEB GENERATOR /////////////////////////////////////
     //SETUP REQUIREMENTS
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
-
-    require "config.php";
-
+    require "./required/config.php";
+    require $libDir."connect_db.php";
+    
     //REQUIRES SESSIONS
     session_start();
 
-    echo $_SESSION['user_id'];
     //SETUP VARIABLES
     $isLoggedIn = isset($_SESSION['user_id']);
 
@@ -52,6 +48,7 @@
 
 
     function generate_loggedInContent(){
+        global $db;
         include "appCore.php";
     }
 ?>

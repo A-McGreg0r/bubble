@@ -1,6 +1,6 @@
 <?php
 # LOGIN HELPER FUNCTIONS.
-
+include "config.php";
 # Function to load specified or default URL.
 function load($page = 'login.php')
 {
@@ -19,13 +19,13 @@ function load($page = 'login.php')
 
 
 # Function to check email address and password.
-function validateLogin($link, $email = '', $pwd = '')
+function validateLogin($db, $email = '', $pwd = '')
 {
     require 'PepperedPasswords.php';
     # Initialize errors array.
     $errors = array();
 
-    $stmt = $link->prepare("SELECT user_id, first_name, last_name, pass FROM user_info WHERE email=?");
+    $stmt = $db->prepare("SELECT user_id, first_name, last_name, pass FROM user_info WHERE email=?");
 
     # Check email field.
     if (empty($email)) {
@@ -42,9 +42,8 @@ function validateLogin($link, $email = '', $pwd = '')
     }
 
     //TODO STORE THIS SOMEWHERE ELSE AND GENERATE LONG STRONG
-    $config['pepper'] = hex2bin('012345679ABCDEF012345679ABCDEF012345679ABCDEF012345679ABCDEF');
 
-    $hasher = new PepperedPasswords($config['pepper']);
+    $hasher = new PepperedPasswords($pepper);
 
     # On success retrieve user_id, first_name, and last name from 'user' database.
     if (empty($errors)) {

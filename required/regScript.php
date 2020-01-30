@@ -1,5 +1,6 @@
 <?php
 //Connect to the db
+require 'config.php'
 require 'connect_db.php';
 require 'db_tools.php';
 require 'PepperedPasswords.php';
@@ -9,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     # Initialize an error array.
     $errors = array();
     $A2 = NULL;
-    $stmt = $link->prepare("INSERT INTO user_info (email, pass, first_name, last_name, address_l1, address_l2, postcode) VALUES ( ?, ?, ?, ?, ?, ?, ? )");
+    $stmt = $db->prepare("INSERT INTO user_info (email, pass, first_name, last_name, address_l1, address_l2, postcode) VALUES ( ?, ?, ?, ?, ?, ?, ? )");
     $valuesArr = array();
 
     # Check for a E-mail.
@@ -59,10 +60,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($_POST['pass1'] != $_POST['pass2']) {
             $errors[] = 'Passwords do not match.';
         } else {
-            //Using pepperedpasswords, generates a salted and peppered password to be stored in db
-            //TODO STORE THIS SOMEWHERE ELSE AND GENERATE LONG STRONG
-            $config['pepper'] = hex2bin('012345679ABCDEF012345679ABCDEF012345679ABCDEF012345679ABCDEF');
-            $hasher = new PepperedPasswords($config['pepper']);
+            //Using pepperedpasswords, generates a salted and peppered password to be stored in db            
+            $hasher = new PepperedPasswords($pepper);
             $valuesArr["password"] = $hasher->hash(trim($_POST['pass1']));
         }
     } else {
@@ -72,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     # Check if email address already registered.
     if (empty($errors)) {
-        $stmt2 = $link->prepare("SELECT * FROM user_info WHERE email = ?");
+        $stmt2 = $db->prepare("SELECT * FROM user_info WHERE email = ?");
         $stmt2->bind_param("s", $valuesArr["email"]);
         $stmt2->execute();
         if ($stmt2->num_rows != 0) {
@@ -92,10 +91,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if($stmt->affected_rows === 1){
             echo '<div class="container"><h1>Registered!</h1><p>You are now registered.</p><p><a href="../index.php">Login</a></p>';
         }else{
-            echo "failed for some reason?";
+            echo "Reg failed!";
         }
         # Close database connection.
-        $link->close();
+        $db->close();
         
         exit();
     } else { #Or report errors
@@ -106,7 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo 'Please try again.</p></div>';
 
         # Close database connection.
-        $link->close();
+        $db->close();
     }
 }
 ?>

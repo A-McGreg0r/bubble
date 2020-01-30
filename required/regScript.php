@@ -1,10 +1,5 @@
 <?php
 //Connect to the db
-
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 require 'connect_db.php';
 require 'db_tools.php';
 require 'PepperedPasswords.php';
@@ -14,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     # Initialize an error array.
     $errors = array();
     $A2 = NULL;
-    $stmt = $link->prepare("INSERT INTO user_info (email, pass, first_name, surname, address_l1, address_l2, postcode) VALUES ( ?, ?, ?, ?, ?, ?, ? )");
+    $stmt = $link->prepare("INSERT INTO user_info (email, pass, first_name, last_name, address_l1, address_l2, postcode) VALUES ( ?, ?, ?, ?, ?, ?, ? )");
     $valuesArr = array();
 
     # Check for a E-mail.
@@ -32,10 +27,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     # Check for a last name.
-    if (empty($_POST['surname'])) {
+    if (empty($_POST['last_name'])) {
         $errors[] = 'Enter your last name.';
     } else {
-        $valuesArr["surname"] = trim($_POST['surname']);
+        $valuesArr["last_name"] = trim($_POST['last_name']);
     }
 
     # Check for a adress line 1.
@@ -80,21 +75,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt2 = $link->prepare("SELECT * FROM user_info WHERE email = ?");
         $stmt2->bind_param("s", $valuesArr["email"]);
         $stmt2->execute();
-        $stmt2->get_result();
         if ($stmt2->num_rows != 0) {
             $errors[] = 'Email address already registered. <a href="../appCore.php">Login</a>';
         }
+        $stmt2->close();
     }
 
     # On success register user inserting into 'users' database table.
     if (empty($errors)) {
         // not posting to database
-        $stmt->bind_param("sssssss", $valuesArr["email"], $valuesArr["password"], $valuesArr["first_name"], $valuesArr["surname"], $valuesArr["address_l1"], $valuesArr["address_l2"], $valuesArr["postcode"]);
+        $stmt->bind_param("sssssss", $valuesArr["email"], $valuesArr["password"], $valuesArr["first_name"], $valuesArr["last_name"], $valuesArr["address_l1"], $valuesArr["address_l2"], $valuesArr["postcode"]);
         if (!$stmt->execute()) {
             echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
         } 
+
         if($stmt->affected_rows === 1){
-            echo "r passed";
             echo '<div class="container"><h1>Registered!</h1><p>You are now registered.</p><p><a href="../index.php">Login</a></p>';
         }else{
             echo "failed for some reason?";

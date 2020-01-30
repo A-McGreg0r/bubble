@@ -185,9 +185,9 @@
                                     <input type="text"
                                            id="materialRegisterFormLastName"
                                            class="form-control form-control-sm validate"
-                                           name="surname"
+                                           name="last_name"
                                            required size="20"
-                                           value="<?php if (isset($_POST['surname'])) echo $_POST['surname']; ?>">
+                                           value="<?php if (isset($_POST['last_name'])) echo $_POST['last_name']; ?>">
                                     <label for="materialRegisterFormLastName">Last name</label>
                                 </div>
                             </div>

@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     # Check login.
-    list ($check, $data) = validate($link, $_POST['email'], $_POST['pass']);
+    list ($check, $data) = validateLogin($link, $_POST['email'], $_POST['pass']);
     # On success set session data and display logged in page.
     if ($check) {
         # Access session.
@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['FirstName'] = $data['FirstName'];
         $_SESSION['LastName'] = $data['LastName'];
 
-        load('../aapCore.php');#need to chance index to php
+        load('../appCore.php');#need to chance index to php
     } # Or on failure set errors.
     else {
         $errors = $data;

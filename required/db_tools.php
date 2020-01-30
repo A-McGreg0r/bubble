@@ -24,6 +24,7 @@ function load($page = 'login.php')
 # Function to check email address and password.
 function validateLogin($db, $email = '', $pwd = '')
 {
+    global $pepper;
     require 'PepperedPasswords.php';
     # Initialize errors array.
     $errors = array();

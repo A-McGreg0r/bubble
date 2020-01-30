@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $errors[] = 'Passwords do not match.';
         } else {
             //Using pepperedpasswords, generates a salted and peppered password to be stored in db
-            use Netsilik/Lib/PepperedPasswords;
+            require_once 'PepperedPasswords.php';
             //TODO STORE THIS SOMEWHERE ELSE AND GENERATE LONG STRONG
             $config['pepper'] = hex2bin('012345679ABCDEF012345679ABCDEF012345679ABCDEF012345679ABCDEF');
             $hasher = new PepperedPasswords($config['pepper']);

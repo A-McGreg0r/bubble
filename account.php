@@ -26,8 +26,6 @@ require "uiAssets/userNav.php";
                 surname
             </div>
         </div>
-
-
     </div>
 
 </div>

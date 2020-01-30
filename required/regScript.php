@@ -80,6 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt2 = $link->prepare("SELECT * FROM user_info WHERE email = ?");
         $stmt2->bind_param("s", $valuesArr["email"]);
         $stmt2->execute();
+        $stmt2->get_result();
         if ($stmt2->num_rows != 0) {
             $errors[] = 'Email address already registered. <a href="../appCore.php">Login</a>';
         }

@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //TODO STORE THIS SOMEWHERE ELSE AND GENERATE LONG STRONG
             $config['pepper'] = hex2bin('012345679ABCDEF012345679ABCDEF012345679ABCDEF012345679ABCDEF');
             $hasher = new PepperedPasswords($config['pepper']);
-            $valuesArr["postcode"] = $hasher->hash(trim($_POST['password']));
+            $valuesArr["password"] = $hasher->hash(trim($_POST['pass1']));
         }
     } else {
         $errors[] = 'Enter your password.';

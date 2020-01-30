@@ -1,10 +1,11 @@
 <?php
     //////////////////////////////// BUBBLE APP WEB GENERATOR /////////////////////////////////////
     //SETUP REQUIREMENTS
-    require "config.php";
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
+
+    require "config.php";
 
     //REQUIRES SESSIONS
     session_start();
@@ -14,7 +15,7 @@
 
 
     //BEGIN GENERATING MAIN PAGE
-    $html = 'Test';
+    $html = '';
     //GENERATE HEADER AND HEAD
     $html .= file_get_contents($templatesDir."header.html");
     $html .= file_get_contents($templatesDir."head.html");

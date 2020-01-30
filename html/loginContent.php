@@ -46,7 +46,7 @@
                     <!-- Password -->
                     <div class="md-form">
                         <label for="materialLoginFormPassword">Password</label>
-                        <input type="password" id="materialLoginFormPassword" class="form-control"/>
+                        <input type="password" id="materialLoginFormPassword" class="form-control" name="password"/>
                     </div>
 
                     <div class="d-flex justify-content-around">

@@ -1,5 +1,4 @@
 <?php
-
 # LOGIN HELPER FUNCTIONS.
 
 # Function to load specified or default URL.

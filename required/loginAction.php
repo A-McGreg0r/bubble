@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     # Check login.
-    list ($check, $data) = validateLogin($link, $_POST['email'], $_POST['pass']);
+    list ($check, $data) = validateLogin($link, $_POST['email'], $_POST['password']);
     # On success set session data and display logged in page.
     if ($check) {
         # Access session.
@@ -27,9 +27,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     else {
         $errors = $data;
     }
-
-    # Close database connection.
-    mysqli_close($link);
 
 }
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

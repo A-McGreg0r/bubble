@@ -1,5 +1,5 @@
 <?php
-$link = mysqli_connect('localhost', 'bubble', 'bubble', 'bubbleDB');
+$link = mysqli_connect('localhost', 'bubble', 'bubble', 'bubble-db');
 
 if (!$link) {
 

@@ -155,19 +155,6 @@
 
                     <!-- Form -->
                     <form class="text-center" style="color: #757575;" action="required/regScript.php" method="POST">
-
-                        <!-- username -->
-                        <div class="md-form form-sm mb-5">
-                            <label data-error="wrong" data-success="right"
-                                   for="materialLoginFormUsername">Username</label>
-                            <input type="text"
-                                   id="materialLoginFormUsername"
-                                   class="form-control form-control-sm validate"
-                                   name="username"
-                                   required size="20"
-                                   value="<?php if (isset($_POST['username'])) echo $_POST['username']; ?>">
-                        </div>
-
                         <!-- Email -->
                         <div class="md-form">
                             <label for="materialLoginFormEmail">E-mail</label>
@@ -216,7 +203,7 @@
                                    name="address_l1"
                                    required size="20"
                                    aria-describedby="materialRegisterFormPasswordHelpBlock"
-                                   value="<?php if (isset($_POST['address_l1'])) echo $_POST['address_l1']; ?>"
+                                   value="<?php if (isset($_POST['address_l1'])) echo $_POST['address_l1']; ?>"/>
                         </div>
 
                         <!-- Address line 2 -->
@@ -228,7 +215,7 @@
                                    name="address_l2"
                                    required size="20"
                                    aria-describedby=""
-                                   value="<?php if (isset($_POST['address_l2'])) echo $_POST['address_l2']; ?>"
+                                   value="<?php if (isset($_POST['address_l2'])) echo $_POST['address_l2']; ?>"/>
                         </div>
 
                         <div class="md-form">
@@ -239,7 +226,7 @@
                                    name="postcode"
                                    required size="20"
                                    aria-describedby=""
-                                   value="<?php if (isset($_POST['postcode'])) echo $_POST['postcode']; ?>"
+                                   value="<?php if (isset($_POST['postcode'])) echo $_POST['postcode']; ?>"/>
                         </div>
 
                         <!-- Password -->

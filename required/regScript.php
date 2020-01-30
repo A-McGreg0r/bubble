@@ -1,5 +1,10 @@
 <?php
 //Connect to the db
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 require 'connect_db.php';
 require 'db_tools.php';
 

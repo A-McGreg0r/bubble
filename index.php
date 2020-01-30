@@ -1,9 +1,12 @@
 <?php
     //////////////////////////////// BUBBLE APP WEB GENERATOR /////////////////////////////////////
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
     //SETUP REQUIREMENTS
     require "./required/config.php";
     require $libDir."connect_db.php";
-    
+
     //REQUIRES SESSIONS
     session_start();
 
@@ -29,11 +32,6 @@
     //END MAIN PAGE CONTENTS
     $html .= file_get_contents($templatesDir."bodyEnd.html");
 
-
-
-
-
-
     //ECHO HTML TO PAGE
     echo $html;
     exit();
@@ -44,8 +42,6 @@
         global $templatesDir;
         include $templatesDir."loginContent.php";
     }
-
-
 
     function generate_loggedInContent(){
         global $db;

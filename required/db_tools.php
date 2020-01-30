@@ -1,6 +1,9 @@
 <?php
+//TO USE THIS CLASS YOU JUST NEED TO include config.php!
+//OTHERWISE IT WILL NOT WORK!
+
+
 # LOGIN HELPER FUNCTIONS.
-include "config.php";
 # Function to load specified or default URL.
 function load($page = 'login.php')
 {

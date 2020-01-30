@@ -1,8 +1,6 @@
 <?php
 //Connect to the db
 require 'config.php'
-require 'connect_db.php';
-require 'db_tools.php';
 require 'PepperedPasswords.php';
 
 //Check server has request in POST

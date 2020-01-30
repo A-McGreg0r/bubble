@@ -2,8 +2,7 @@
 # Open database connection.
 
 # Get connection, load, and validate functions.
-require 'connect_db.php';
-require 'db_tools.php';
+require 'config.php'
 
 # PROCESS LOGIN ATTEMPT.
 # Check form submitted.

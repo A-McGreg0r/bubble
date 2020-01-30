@@ -35,5 +35,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Added to script:::Continue to display login page on failure.
 
-load('../index.php');
+load('../err.php');
 ?>

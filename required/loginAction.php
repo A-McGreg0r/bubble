@@ -13,6 +13,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     # Check login.
     list ($check, $data) = validateLogin($link, $_POST['email'], $_POST['password']);
+    echo $data;
+
     # On success set session data and display logged in page.
     if ($check) {
         # Access session.
@@ -32,5 +34,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Added to script:::Continue to display login page on failure.
 
-load('../err.php');
+//load('../err.php');
 ?>

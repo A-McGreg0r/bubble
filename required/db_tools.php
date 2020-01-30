@@ -40,6 +40,7 @@ function validateLogin($link, $email = '', $pwd = '')
     } else {
         $pwd = trim($pwd);
     }
+    echo "Pass basics!";
 
     //TODO STORE THIS SOMEWHERE ELSE AND GENERATE LONG STRONG
     $config['pepper'] = hex2bin('012345679ABCDEF012345679ABCDEF012345679ABCDEF012345679ABCDEF');

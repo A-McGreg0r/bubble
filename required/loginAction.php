@@ -18,9 +18,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         # Access session.
         session_start();
         //todo get sessions set up
-        $_SESSION['UserID'] = $data['UserID'];
-        $_SESSION['FirstName'] = $data['FirstName'];
-        $_SESSION['LastName'] = $data['LastName'];
+        $_SESSION['user_id'] = $data['user_id'];
+        $_SESSION['first_name'] = $data['first_name'];
+        $_SESSION['last_name'] = $data['last_name'];
 
         load('../appCore.php');#need to chance index to php
     } # Or on failure set errors.

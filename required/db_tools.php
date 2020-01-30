@@ -17,6 +17,8 @@ function load($page = 'login.php')
     exit();
 }
 
+
+
 # Function to check email address and password.
 function validateLogin($link, $email = '', $pwd = '')
 {
@@ -40,6 +42,7 @@ function validateLogin($link, $email = '', $pwd = '')
         $pwd = trim($pwd);
     }
 
+    //TODO STORE THIS SOMEWHERE ELSE AND GENERATE LONG STRONG
     $config['pepper'] = hex2bin('012345679ABCDEF012345679ABCDEF012345679ABCDEF012345679ABCDEF');
 
     $hasher = new PepperedPasswords($config['pepper']);

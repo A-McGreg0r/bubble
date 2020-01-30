@@ -89,13 +89,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (empty($errors)) {
         // not posting to database
         $stmt->bind_param("sssssss", $valuesArr["email"], $valuesArr["password"], $valuesArr["first_name"], $valuesArr["surname"], $valuesArr["address_l1"], $valuesArr["address_l2"], $valuesArr["postcode"]);
-        $stmt->execute();   
+        if (!$stmt->execute()) {
+            echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+        } 
         if($stmt->affected_rows === 1){
             echo "r passed";
             echo '<div class="container"><h1>Registered!</h1><p>You are now registered.</p><p><a href="../index.php">Login</a></p>';
         }else{
             echo "failed for some reason?";
-            echo $stmt->error;
         }
         # Close database connection.
         $link->close();

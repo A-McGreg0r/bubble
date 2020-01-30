@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['first_name'] = $data['first_name'];
         $_SESSION['last_name'] = $data['last_name'];
 
-        load('../appCore.php');#need to chance index to php
+        load('../index.php');#need to chance index to php
     } # Or on failure set errors.
     else {
         $errors = $data;
@@ -35,5 +35,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Added to script:::Continue to display login page on failure.
 
-load('../appCore.php');
+load('../index.php');
 ?>

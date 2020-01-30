@@ -51,7 +51,7 @@
 
 
     function generate_loggedInContent(){
-
+        include "appCore.php";
     }
 ?>
 

@@ -2,38 +2,34 @@
 # Open database connection.
 
 # Get connection, load, and validate functions.
-require 'connect_db.php';
-require 'db_tools.php';
+require 'config.php'
 
 # PROCESS LOGIN ATTEMPT.
 # Check form submitted.
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    echo "sever if";
 
 
     # Check login.
-    list ($check, $data) = validate($link, $_POST['email'], $_POST['pass']);
+    list ($check, $data) = validateLogin($db, $_POST['email'], $_POST['password']);
+
     # On success set session data and display logged in page.
     if ($check) {
         # Access session.
         session_start();
         //todo get sessions set up
-        $_SESSION['UserID'] = $data['UserID'];
-        $_SESSION['FirstName'] = $data['FirstName'];
-        $_SESSION['LastName'] = $data['LastName'];
+        $_SESSION['user_id'] = $data['user_id'];
+        $_SESSION['first_name'] = $data['first_name'];
+        $_SESSION['last_name'] = $data['last_name'];
 
-        load('../aapCore.php');#need to chance index to php
+        load('../index.php');#need to chance index to php
     } # Or on failure set errors.
     else {
         $errors = $data;
     }
 
-    # Close database connection.
-    mysqli_close($link);
-
 }
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Added to script:::Continue to display login page on failure.
 
-load('../appCore.php');
+load('../index.php');
 ?>

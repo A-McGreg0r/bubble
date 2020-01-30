@@ -1,8 +1,9 @@
 <?php
-//not used yet
+//TO USE THIS CLASS YOU JUST NEED TO include config.php!
+//OTHERWISE IT WILL NOT WORK!
+
 
 # LOGIN HELPER FUNCTIONS.
-
 # Function to load specified or default URL.
 function load($page = 'login.php')
 {
@@ -18,38 +19,63 @@ function load($page = 'login.php')
     exit();
 }
 
+
+
 # Function to check email address and password.
-function validate($link, $email = '', $pwd = '')
+function validateLogin($db, $email = '', $pwd = '')
 {
-    echo "validateing";
+    global $pepper;
+    require 'PepperedPasswords.php';
     # Initialize errors array.
     $errors = array();
+
+    $stmt = $db->prepare("SELECT user_id, first_name, last_name, pass FROM user_info WHERE email=?");
 
     # Check email field.
     if (empty($email)) {
         $errors[] = 'Enter your email address.';
     } else {
-        $e = mysqli_real_escape_string($link, trim($email));
+        $email = trim($email);
     }
 
     # Check password field.
     if (empty($pwd)) {
         $errors[] = 'Enter your password.';
     } else {
-        $p = mysqli_real_escape_string($link, trim($pwd));
+        $pwd = trim($pwd);
     }
+
+    //TODO STORE THIS SOMEWHERE ELSE AND GENERATE LONG STRONG
+
+    $hasher = new PepperedPasswords($pepper);
 
     # On success retrieve user_id, first_name, and last name from 'user' database.
     if (empty($errors)) {
-        $q = "SELECT user_id, first_name, surname FROM user_info WHERE email='$e' AND pass=SHA1('$p')";
-        $r = mysqli_query($link, $q);
-        if (@mysqli_num_rows($r) == 1) {
-            $row = mysqli_fetch_array($r, MYSQLI_ASSOC);
-            return array(true, $row);
-        } # Or on failure set error message.
-        else {
-            $errors[] = 'Email address and password not found.';
+        $stmt->bind_param("s", $email);
+        if (!$stmt->execute()) {
+            echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+        } 
+
+        $result = $stmt->get_result();
+     
+        if($result->num_rows === 1){
+            $row = $result->fetch_assoc();
+            $checked = $hasher->verify($pwd, $row['pass']);
+            if($checked){
+                return array(true, $row);
+            }else{
+                $errors[] = 'Email address and password not found.';
+            }
+        } else {
+            echo "Error! Multiple rows when expecting 1!";
         }
+ 
+     
+        /* free results */
+        $stmt->free_result();
+     
+        /* close statement */
+        $stmt->close();
     }
     # On failure retrieve error message/s.
     return array(false, $errors);

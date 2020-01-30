@@ -95,6 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo '<div class="container"><h1>Registered!</h1><p>You are now registered.</p><p><a href="../index.php">Login</a></p>';
         }else{
             echo "failed for some reason?";
+            echo $stmt->error;
         }
         # Close database connection.
         $link->close();

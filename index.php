@@ -10,6 +10,7 @@
     //REQUIRES SESSIONS
     session_start();
 
+    echo $_SESSION['user_id'];
     //SETUP VARIABLES
     $isLoggedIn = isset($_SESSION['user_id']);
 

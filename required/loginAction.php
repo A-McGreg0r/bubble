@@ -8,12 +8,10 @@ require 'db_tools.php';
 # PROCESS LOGIN ATTEMPT.
 # Check form submitted.
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    echo "sever if";
 
 
     # Check login.
     list ($check, $data) = validateLogin($link, $_POST['email'], $_POST['password']);
-    echo $data;
 
     # On success set session data and display logged in page.
     if ($check) {

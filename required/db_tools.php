@@ -40,7 +40,6 @@ function validateLogin($link, $email = '', $pwd = '')
     } else {
         $pwd = trim($pwd);
     }
-    echo "Pass basics!";
 
     //TODO STORE THIS SOMEWHERE ELSE AND GENERATE LONG STRONG
     $config['pepper'] = hex2bin('012345679ABCDEF012345679ABCDEF012345679ABCDEF012345679ABCDEF');
@@ -53,11 +52,10 @@ function validateLogin($link, $email = '', $pwd = '')
         if (!$stmt->execute()) {
             echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
         } 
-        $result = $stmt->get_result();
 
-        $num_of_rows = $stmt->num_rows;
+        $result = $stmt->get_result();
      
-        if($num_of_rows === 1){
+        if($result->num_rows === 1){
             $row = $result->fetch_assoc();
             $checked = $hasher->verify($pwd, $row['pass']);
             if($checked){

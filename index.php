@@ -2,6 +2,10 @@
     //////////////////////////////// BUBBLE APP WEB GENERATOR /////////////////////////////////////
     //SETUP REQUIREMENTS
     require "config.php";
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+
     //REQUIRES SESSIONS
     session_start();
 
@@ -39,16 +43,14 @@
     //////////////////////////////////////////////////////////////////// FUNCTIONS ///////////////////////////////////////////////////////////////////////
 
     function generate_loginPage(){
-
-
-
+        global $templatesDir;
+        include $templatesDir."loginContent.php";
     }
 
 
 
     function generate_loggedInContent(){
-        global $templatesDir;
-        include $templatesDir."loginContent.php";
+
     }
 ?>
 

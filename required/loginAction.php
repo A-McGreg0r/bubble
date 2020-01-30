@@ -2,7 +2,7 @@
 # Open database connection.
 
 # Get connection, load, and validate functions.
-require 'config.php'
+require 'config.php';
 
 # PROCESS LOGIN ATTEMPT.
 # Check form submitted.

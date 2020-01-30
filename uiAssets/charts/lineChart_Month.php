@@ -54,7 +54,7 @@
             },
                 {
                     label: "power used",
-                    data: js_data,
+                    data:  js_data,
                     backgroundColor: gradientFill,
                     borderColor: gradientFill,
                     borderWidth: 2

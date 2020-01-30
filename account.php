@@ -5,17 +5,34 @@
 require "uiAssets/userNav.php";
 ?>
 
-<div class="container">
-    <div class="d-flex flex-wrap-reverse mb-4 mt-xl-5">
         <!--left-->
-        <div class="col-md-6">
-            Account details Account details Account details Account details Account details Account details Account
-            details Account details Account details Account details
-        </div>
-        <!--right-->
-        <div class="col-md-6">
-            device details device detailsdevice detailsdevice detailsdevice details
-        </div>
-    </div>
-</div>
+
+        <div class="card justify-content-center ">
+            <!--Title-->
+            <h4 class="card-title"><a><strong>My Account</strong></a></h4>
+            <!-- Card content -->
+            <div class="card-body ">
+
+
+
+                    <div class="flex-row">
+                        e:mail
+                    </div>
+
+                    <div class="flex-row justify-content-between">
+                        <div class="col-md-6">
+                            firss name
+                        </div>
+                        <div class="col-md-6">
+                            surname
+                        </div>
+                    </div>
+
+
+                    </div>
+
+                </div>
+
+<!-- Card -->
+
 

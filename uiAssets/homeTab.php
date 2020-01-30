@@ -76,7 +76,7 @@ require "charts/lineChart_Day.php";
 
 <script>
 
-    $('#myChart').change(function () {
+$('#myChart').change(function() {
 
-    });
+});
 </script>

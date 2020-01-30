@@ -1,6 +1,6 @@
 <?php
 //Connect to the db
-require 'config.php'
+require 'config.php';
 require 'PepperedPasswords.php';
 
 //Check server has request in POST
@@ -40,7 +40,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     # Check for a adress line 2.
-    # Check for a adress line 1.
     if (!empty($_POST['address_l2'])) {
         $valuesArr["address_l2"] = trim($_POST['address_l2']);
     }
@@ -51,7 +50,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         $valuesArr["postcode"] = trim($_POST['postcode']);
     }
-
 
     # Check for a password and matching input passwords.
     if (!empty($_POST['pass1'])) {
@@ -65,7 +63,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         $errors[] = 'Enter your password.';
     }
-
 
     # Check if email address already registered.
     if (empty($errors)) {

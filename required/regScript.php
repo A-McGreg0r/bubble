@@ -7,6 +7,7 @@ error_reporting(E_ALL);
 
 require 'connect_db.php';
 require 'db_tools.php';
+require 'PepperedPasswords.php';
 
 //Check server has request in POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -64,7 +65,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $errors[] = 'Passwords do not match.';
         } else {
             //Using pepperedpasswords, generates a salted and peppered password to be stored in db
-            require_once 'PepperedPasswords.php';
             //TODO STORE THIS SOMEWHERE ELSE AND GENERATE LONG STRONG
             $config['pepper'] = hex2bin('012345679ABCDEF012345679ABCDEF012345679ABCDEF012345679ABCDEF');
             $hasher = new PepperedPasswords($config['pepper']);

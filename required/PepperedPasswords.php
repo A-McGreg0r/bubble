@@ -1,5 +1,4 @@
 <?php
-namespace Netsilik\Lib;
 
 /**
  * @package Scepino\Lib

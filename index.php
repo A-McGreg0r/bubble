@@ -4,7 +4,7 @@
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
     //SETUP REQUIREMENTS
-    require './required/config.php'
+    require './required/config.php';
 
 
     //REQUIRES SESSIONS

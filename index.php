@@ -14,7 +14,7 @@
 
 
     //BEGIN GENERATING MAIN PAGE
-    $html = '';
+    $html = 'Test';
     //GENERATE HEADER AND HEAD
     $html .= file_get_contents($templatesDir."header.html");
     $html .= file_get_contents($templatesDir."head.html");

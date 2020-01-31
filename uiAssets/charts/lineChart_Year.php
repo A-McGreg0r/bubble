@@ -21,8 +21,8 @@
     //list of months
     $php_Months = json_encode($months);
     echo "var js_months = " . $php_Months . ";\n";
-    //dataset
-    $php_Data = json_encode($randData);
+
+    $php_Data = json_encode($randData); //dataset
     echo "var js_data = " . $php_Data . ";\n";
     //dataset avgrege
     $arrayAvg = json_encode($arrayAvg);

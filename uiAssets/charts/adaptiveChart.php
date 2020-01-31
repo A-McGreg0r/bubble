@@ -16,19 +16,17 @@ for ($i = 11; $i >= 0; $i--) {
     //a avg of the entire contence of the array
     array_push($php_avg = array_sum($randData) / count($randData));
 }
-//list of months
-$php_labals = json_encode($months);
-//dataset
-$php_Data = json_encode($randData);
-//dataset avgrege
-$php_avg = json_encode($php_avg);
+
+$php_labals = json_encode($months);//lables
+$php_Data = json_encode($randData);//dataset
+$php_avg = json_encode($php_avg);//dataset avgrege
 ?>
 
 <script>
-    var name = <?php echo json_encode($php_labals); ?>;
-    var labels = <?php echo json_encode($php_labals); ?>;
-    var data = <?php echo json_encode($php_Data); ?>;
-    var avg = <?php echo json_encode($php_avg); ?>;
+    var name = <?php echo json_encode($php_labals); ?>;//name of chart
+    var labels = <?php echo json_encode($php_labals); ?>;//lables
+    var data = <?php echo json_encode($php_Data); ?>;//dataset 1
+    var avg = <?php echo json_encode($php_avg); ?>;//dataset 2 avgrege
 
 
     function AdaptiveLineChart(name, labels, data, avg) {

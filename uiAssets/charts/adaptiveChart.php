@@ -1,41 +1,25 @@
 <?php
 //todo consider seting up dom
 //TODO remove once data base it implmented
-//randome genarated grapth (temp)
-$first = strtotime('first day this month');
-//todo replace with querry
-$months = array();
-$randData = array();
-$php_avg = array();
-//todo replace with querry
-for ($i = 11; $i >= 0; $i--) {
-    //list of months
-    array_push($months, date('M', strtotime("-$i month", $first)));
-    //geanarat rand data for display
-    array_push($randData, rand(0, 1000));
-    //a avg of the entire contence of the array
-    array_push($php_avg = array_sum($randData) / count($randData));
-}
 
-$php_labals = json_encode($months);//lables
-$php_Data = json_encode($randData);//dataset
-$php_avg = json_encode($php_avg);//dataset avgrege
+//todo add querry
+
+//todo cahge avrege calculation in to data.lenth
+
 ?>
 
 <script>
-    var name = <?php echo json_encode($php_labals); ?>;//name of chart
-    var labels = <?php echo json_encode($php_labals); ?>;//lables
-    var data = <?php echo json_encode($php_Data); ?>;//dataset 1
-    var avg = <?php echo json_encode($php_avg); ?>;//dataset 2 avgrege
-
-
-    function AdaptiveLineChart(name, labels, data, avg) {
         //converts php querry to js for graph
+        function AdaptiveLineChart(name, labels, data, ) {
 
         let chartId = this.name;
-        let lable = this.labels
+        let lable = this.labels;
         let graphdata = this.data;
-        let graphavg = this.avg;
+        let calArray =graphdata;
+        let graphavg;
+
+
+
 
         //coulers for all graphs
         const ctxL = document.getElementById(chartId).getContext('2d');
@@ -44,12 +28,12 @@ $php_avg = json_encode($php_avg);//dataset avgrege
         gradientFill.addColorStop(1, "rgba(0,230,64,0.5)");
 
 
-        if (ranage.length > 0)//months
+        if (graphdata.length > 0)//months
         {
-            chartId = new Chart(ctxL, {
+            let myLineChart = new Chart(ctxL, {
                 type: 'line',
                 data: {
-                    labels: range,
+                    labels: lable,
                     datasets: [{
                         label: "Average Usage",
                         data: graphavg,

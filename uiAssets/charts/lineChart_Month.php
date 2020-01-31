@@ -36,7 +36,7 @@
     const gradientFill = ctxL.createLinearGradient(0, 0, 0, 350);
     gradientFill.addColorStop(0, "rgba(242,38,19,0.5)");
     gradientFill.addColorStop(1, "rgba(0,230,64,0.5)");
-    let myLineChart = new Chart(ctxL, {
+    let LineChartMonth = new Chart(ctxL, {
 
         type: 'line',
         data: {

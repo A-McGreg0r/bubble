@@ -21,8 +21,8 @@
     //list of months
     $php_Months = json_encode($months);
     echo "var js_months = " . $php_Months . ";\n";
-
-    $php_Data = json_encode($randData); //dataset
+    //dataset
+    $php_Data = json_encode($randData);
     echo "var js_data = " . $php_Data . ";\n";
     //dataset avgrege
     $arrayAvg = json_encode($arrayAvg);
@@ -32,7 +32,7 @@
     const gradientFill = ctxL.createLinearGradient(0, 0, 0, 350);
     gradientFill.addColorStop(0, "rgba(242,38,19,.5)");
     gradientFill.addColorStop(1, "rgba(0,230,64,0.5)");
-    let myLineChart = new Chart(ctxL, {
+    let LineChartYear = new Chart(ctxL, {
         type: 'line',
         data: {
             labels: js_months,

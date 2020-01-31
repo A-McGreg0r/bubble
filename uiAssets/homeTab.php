@@ -1,3 +1,4 @@
+
 <!--Accordion wrapper-->
 <div class="accordion md-accordion z-depth-1-half" id="accordionEx194" role="tablist"
      aria-multiselectable="true">
@@ -12,7 +13,7 @@
     //todo a querry to cheack how meny hose some has
     $x = 1;
     //for building more than one chart
-    $chartId = "chartId" . $x . "";
+
 
     while ($x <= 1) {
         //TODO fix drop dowp fucntion
@@ -41,19 +42,29 @@
                           <span class="badge info-color-dark p-2">Date range</span>
                         </p>-->
                         <form id="myForm">                        
-                             <select class="browser-default md-form custom-select" id="myChart" onchange="myFunction(this.value)" >
-                                <option value="0" disabled="disabled" selected>Choose time period</option>
-                                <option value="1" id="chico1"">Week</option>
-                                <option value="2" id="chico2"">Month</option>
-                                <option value="3" id="chico3"">Year</option>
-                             </select>
+                            <div class="select-area card">
+                                <select name="choose" id="choose" class="input-select">
+                                    <option value="nul" selected>date range</option>
+                                    <option value="opt1">year</option>
+                                    <option value="opt2">month</option>
+                                    <option value="opt3">day</option>
+                                    </select>
+                            </div>
                        
                         </form>
                   </div>
                  <!--TODO intagrate database qurry -->
-                   
-                    <canvas id="lineChart_Year"></canvas>
-             
+                 
+                    <section class="jqueryOptions opt1">
+                        <canvas id="lineChart_Year"></canvas>
+                    </section>
+                    <section class="jqueryOptions opt2">
+                        <canvas id="lineChart_Month"></canvas>
+                    </section>
+                    
+                    <section class="jqueryOptions opt3">
+                        <canvas id="lineChart_Day"></canvas>
+                    </section>
                        
                   </div>
                   
@@ -66,17 +77,24 @@
     ?>
 </div>
 
-<?php
-require "charts/lineChart_Year.php";
-require "charts/lineChart_Month.php";
-require "charts/lineChart_Day.php";
-?>
+
 <!--/.Accordion wrapper-->
 
-
 <script>
+    $(function() {
+        $('.jqueryOptions').hide();
 
-    $('#myChart').change(function () {
-
+        $('#choose').change(function () {
+            $('.jqueryOptions').slideUp();
+            $('.jqueryOptions').removeClass('current-opt');
+            $("." + $(this).val()).slideDown();
+            $("." + $(this).val()).addClass('current-opt');
+        });
     });
 </script>
+
+<?php
+//require "charts/lineChart_Year.php";
+//require "charts/lineChart_Month.php";
+require "charts/lineChart_Day.php";
+?>

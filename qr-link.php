@@ -15,6 +15,7 @@ function valid_hub($id){
 		if(preg_match($pattern, $id)){return true;}
 		else{return false;}
 	}
+	return false;
 }
 // Create connection
 if (valid_hub($hub)){

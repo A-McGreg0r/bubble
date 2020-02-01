@@ -17,11 +17,13 @@
     //BEGIN GENERATING MAIN PAGE
     $html = '';
     //GENERATE HEADER AND HEAD
-    $html .= file_get_contents($templatesDir."header.html");
-    $html .= file_get_contents($templatesDir."head.html");
+    include $templatesDir."header.php");
+    include $templatesDir."head.php";
     //MAIN PAGE CONTENTS
-    $html .= file_get_contents($templatesDir."bodyStart.html");
+    include $templatesDir."bodyStart.php";
 
+    echo $html;
+    $html = '';
     //GENERATE REMAINING PAGE
     if($isLoggedIn){
         generate_loggedInContent();
@@ -30,8 +32,8 @@
     }
 
     //END MAIN PAGE CONTENTS
-    $html .= file_get_contents($templatesDir."bodyEnd.html");
-    $html .= file_get_contents($templatesDir."footer.html");
+    include $templatesDir."bodyEnd.php";
+    include $templatesDir."footer.php";
 
     //ECHO HTML TO PAGE
     echo $html;

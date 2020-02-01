@@ -1,4 +1,4 @@
-<?php
+
 $email = '';
 if (isset($_POST['email'])) $email = $_POST['email'];
 $first_name = '';
@@ -246,5 +246,3 @@ $html = <<<html
         </div>
     </div>
 html;
-
-?>

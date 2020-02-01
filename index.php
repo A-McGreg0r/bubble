@@ -47,15 +47,15 @@
         include $templatesDir."loginContent.php";
 
         //SWITCH DEPENDING ON URL ACTION
-        switch($action){
-            case 'registerComplete':
-                echo file_get_contents($templatesDir."registerComplete.html");
-            break
-            case 'registerFailed':
+        // switch($action){
+        //     case 'registerComplete':
+        //         echo file_get_contents($templatesDir."registerComplete.html");
+        //     break
+        //     case 'registerFailed':
 
-            break;
-            default:
-        }
+        //     break;
+        //     default:
+        // }
 
     }
 

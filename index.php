@@ -20,7 +20,7 @@
     if($isLoggedIn){
         $content = generate_loggedInContent();
     }else{
-        // $content = generate_loginPage();
+        $content = generate_loginPage();
     }
 
     $pageHTML = str_replace('$MAIN_BODY', $content, $pageHTML);
@@ -31,30 +31,30 @@
 
     //////////////////////////////////////////////////////////////////// FUNCTIONS ///////////////////////////////////////////////////////////////////////
 
-    // function generate_loginPage(){
-    //     global $templatesDir;
-    //     //GET URL ACTION
-    //     $action = '';
-    //     if(isset($_GET['action'])) $action = $_GET['action'];
-    //     $html = '';
+    function generate_loginPage(){
+        global $templatesDir;
+        //GET URL ACTION
+        $action = '';
+        if(isset($_GET['action'])) $action = $_GET['action'];
+        $html = '';
 
-    //     // SWITCH DEPENDING ON URL ACTION
-    //     switch($action){
-    //         case 'registerComplete':
-    //             // echo file_get_contents($templatesDir."registerComplete.html");
-    //         break
-    //         case 'registerFailed':
+        // SWITCH DEPENDING ON URL ACTION
+        switch($action){
+            case 'registerComplete':
+                // echo file_get_contents($templatesDir."registerComplete.html");
+            break
+            case 'registerFailed':
 
-    //         break;
-    //         default:
-    //             include $templatesDir."loginContent.php";
-    //             $html .= generateLoginPage();
-    //         break;
-    //     }
+            break;
+            default:
+                include "./uiAssets/loginContent.php";
+                $html .= generateLoginPage();
+            break;
+        }
 
 
-    //     return $html;
-    // }
+        return $html;
+    }
 
     function generate_loggedInContent(){
         //GET URL ACTION

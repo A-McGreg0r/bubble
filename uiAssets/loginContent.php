@@ -12,13 +12,13 @@ function generateLoginPage(){
     if (isset($_POST['address_l2'])) $address_l2 = $_POST['address_l2'];
     $postcode = '';
     if (isset($_POST['postcode'])) $postcode = $_POST['postcode'];
+    
     $html = <<<html
     <div class="col col-lg-2">
 
     </div>
 
     <p>Welcome to Bubble.</p>
-    </br>
     <p>For the simplest smart home.</p>
 
 

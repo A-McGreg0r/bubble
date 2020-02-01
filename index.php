@@ -13,30 +13,20 @@
     //SETUP VARIABLES
     $isLoggedIn = isset($_SESSION['user_id']);
 
+    $pageHTML = file_get_contents($templatesDir.'mainTemplate.html');
 
-    //BEGIN GENERATING MAIN PAGE
-    $html = '';
-    //GENERATE HEADER AND HEAD
-    include $templatesDir."header.php";
-    include $templatesDir."head.php";
-    //MAIN PAGE CONTENTS
-    include $templatesDir."bodyStart.php";
-
-    echo $html;
-    $html = '';
+    $content = '';
     //GENERATE REMAINING PAGE
     if($isLoggedIn){
-        generate_loggedInContent();
+        $content = generate_loggedInContent();
     }else{
-        generate_loginPage();
+        $content = generate_loginPage();
     }
 
-    //END MAIN PAGE CONTENTS
-    include $templatesDir."bodyEnd.php";
-    include $templatesDir."footer.php";
+    $pageHTML = str_replace('$MAIN_BODY', $content, $pageHTML);
 
     //ECHO HTML TO PAGE
-    echo $html;
+    echo $pageHTML;
     exit();
 
     //////////////////////////////////////////////////////////////////// FUNCTIONS ///////////////////////////////////////////////////////////////////////
@@ -46,42 +36,48 @@
         //GET URL ACTION
         $action = '';
         if(isset($_GET['action'])) $action = $_GET['action'];
-        include $templatesDir."loginContent.php";
+        $html = '';
 
-        //SWITCH DEPENDING ON URL ACTION
-        // switch($action){
-        //     case 'registerComplete':
-        //         echo file_get_contents($templatesDir."registerComplete.html");
-        //     break
-        //     case 'registerFailed':
+        // SWITCH DEPENDING ON URL ACTION
+        switch($action){
+            case 'registerComplete':
+                // echo file_get_contents($templatesDir."registerComplete.html");
+            break
+            case 'registerFailed':
 
-        //     break;
-        //     default:
-        // }
+            break;
+            default:
+                include $templatesDir."loginContent.php";
+                $html = generateLoginPage();
+        }
 
+
+        return $html;
     }
 
     function generate_loggedInContent(){
         //GET URL ACTION
         $action = '';
         if(isset($_GET['action'])) $action = $_GET['action'];
-
+        $html = '';
         //TODO CHECK DOES USER HAVE A HUB? IF NOT ADD HUB
 
         //ALL PAGES NEED NAVIGATION
         include './uiAssets/userNav.php';
+        $html .= generateUserNav();
 
-        //SWITCH DEPENDING ON URL ACTION
-        switch($action){
-            case 'logout':
-                include $libDir.'logoutAction.php';
-            break;
-            case 'adddevice':
-                include "qr-reader.php";
-            break;
-            default:
-                include "appCore.php";
-        }
+        // //SWITCH DEPENDING ON URL ACTION
+        // switch($action){
+        //     case 'logout':
+        //         include $libDir.'logoutAction.php';
+        //     break;
+        //     case 'adddevice':
+        //         include "qr-reader.php";
+        //     break;
+        //     default:
+        //         include "appCore.php";
+        // }
+        return $html;
     }
 ?>
 

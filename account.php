@@ -1,11 +1,6 @@
 <head>
     <title>Account </title>
 </head>
-
-<?php
-require "uiAssets/userNav.php";
-?>
-
 <!--left-->
 
 <div class="card justify-content-center ">

@@ -8,12 +8,12 @@
     <li class="nav-item">
         <a class="nav-link " id="profile-tab-attr" data-toggle="tab" href="#profile-attr" role="tab"
            aria-controls="profile-attr"
-           aria-selected="false">Room</a>
+           aria-selected="false">Rooms</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" id="messages-tab-attr" data-toggle="tab" href="#messages-attr" role="tab"
            aria-controls="messages-attr"
-           aria-selected="false">Device</a>
+           aria-selected="false">Devices</a>
     </li>
 </ul>
 

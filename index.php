@@ -53,7 +53,7 @@
 
             break;
             default:
-                return eval(file_get_content($templatesDir."loginContent.php")
+                return eval(file_get_content($templatesDir."loginContent.php");
         }
 
     }
@@ -62,6 +62,12 @@
         //GET URL ACTION
         $action = '';
         if(isset($_GET['action'])) $action = $_GET['action'];
+        $html = '';
+
+        //TODO CHECK DOES USER HAVE A HUB? IF NOT ADD HUB
+
+        //ALL PAGES NEED NAVIGATION
+        $html .= eval(file_get_content("./uiAssets/userNav.php"));
 
         //SWITCH DEPENDING ON URL ACTION
         switch($action){
@@ -72,7 +78,7 @@
                 include 'qr-reader.php';
             break;
             default:
-                include "appCore.php";
+                return eval(file_get_content("appCore.php"));
             break;
         }
     }

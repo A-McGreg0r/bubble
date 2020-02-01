@@ -20,8 +20,6 @@ for ($i = 11; $i >= 0; $i--) {
     array_push($dataAvg, array_sum($dataPoints)/count($dataPoints));
 
 }
-
-
 ?>
 
 

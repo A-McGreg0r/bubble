@@ -13,7 +13,7 @@ function generateLoginPage(){
     $postcode = '';
     if (isset($_POST['postcode'])) $postcode = $_POST['postcode'];
     
-    $html = <<<html
+    $html = <<<htmlPage
     <div class="col col-lg-2">
 
     </div>
@@ -248,7 +248,7 @@ function generateLoginPage(){
                 </div>
             </div>
         </div>
-    html;
+htmlPage;
     return $html;
 }
 ?>

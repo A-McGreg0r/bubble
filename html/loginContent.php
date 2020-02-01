@@ -1,9 +1,9 @@
+<p>Welcome to Bubble.</p>
+<p>For the simplest smart home.</p>
 
 <!--Modal cascading tabs-->
 <div class="col col-lg-2">
-    <p>Welcome to Bubble.</p>
-    </br>
-    <p>For the simplest smart home.</p>
+
 
 </div>
 
@@ -235,3 +235,4 @@
             </div>
         </div>
     </div>
+</div>

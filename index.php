@@ -52,7 +52,7 @@
 
             break;
             default:
-                return eval(file_get_content($templatesDir."loginContent.php"));
+                return eval(file_get_contents($templatesDir."loginContent.php"));
         }
 
     }
@@ -66,7 +66,7 @@
         //TODO CHECK DOES USER HAVE A HUB? IF NOT ADD HUB
 
         //ALL PAGES NEED NAVIGATION
-        $html .= eval(file_get_content("./uiAssets/userNav.php"));
+        $html .= eval(file_get_contents("./uiAssets/userNav.php"));
 
         //SWITCH DEPENDING ON URL ACTION
         switch($action){
@@ -74,10 +74,10 @@
                 include $libDir.'logoutAction.php';
             break;
             case 'adddevice':
-                return eval(file_get_content("qr-reader.php"));
+                return eval(file_get_contents("qr-reader.php"));
             break;
             default:
-                return eval(file_get_content("appCore.php"));
+                return eval(file_get_contents("appCore.php"));
         }
     }
 ?>

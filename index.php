@@ -67,17 +67,18 @@
         include './uiAssets/userNav.php';
         $html .= generateUserNav();
 
-        // //SWITCH DEPENDING ON URL ACTION
-        // switch($action){
-        //     case 'logout':
-        //         include $libDir.'logoutAction.php';
-        //     break;
-        //     case 'adddevice':
-        //         include "qr-reader.php";
-        //     break;
-        //     default:
-        //         include "appCore.php";
-        // }
+        //SWITCH DEPENDING ON URL ACTION
+        switch($action){
+            case 'logout':
+                include $libDir.'logoutAction.php';
+                $html .= generateLogout();
+            break;
+            case 'adddevice':
+                include "qr-reader.php";
+            break;
+            default:
+                include "appCore.php";
+        }
         return $html;
     }
 ?>

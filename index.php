@@ -42,13 +42,13 @@
         switch($action){
             case 'registerComplete':
                 // echo file_get_contents($templatesDir."registerComplete.html");
-            break
+            break;
             case 'registerFailed':
 
             break;
             default:
-                // include "./uiAssets/loginContent.php";
-                // $html .= generateLoginPage();
+                include "./uiAssets/loginContent.php";
+                $html .= generateLoginPage();
             break;
         }
 

@@ -35,6 +35,7 @@
 
     //END MAIN PAGE CONTENTS
     $html .= file_get_contents($templatesDir."bodyEnd.html");
+    $html .= file_get_contents($templatesDir."footer.html");
 
     //ECHO HTML TO PAGE
     echo $html;

@@ -13,11 +13,13 @@ $postcode = '';
 if (isset($_POST['postcode'])) $postcode = $_POST['postcode'];
 $html = <<<html
 <div class="col col-lg-2">
-    <p>Welcome to Bubble.</p>
-    </br>
-    <p>For the simplest smart home.</p>
 
 </div>
+
+<p>Welcome to Bubble.</p>
+</br>
+<p>For the simplest smart home.</p>
+
 
 <div class="col-12 col-md-auto">
     <!-- Nav tabs -->

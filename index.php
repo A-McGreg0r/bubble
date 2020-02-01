@@ -21,10 +21,6 @@
     $html .= file_get_contents($templatesDir."head.html");
     //MAIN PAGE CONTENTS
     $html .= file_get_contents($templatesDir."bodyStart.html");
-    
-    //ECHO STARTING HTML TO PAGE
-    echo $html;
-    $html = '';
 
     //GENERATE REMAINING PAGE
     if($isLoggedIn){
@@ -48,16 +44,17 @@
         //GET URL ACTION
         $action = '';
         if(isset($_GET['action'])) $action = $_GET['action'];
+        include $templatesDir."loginContent.php";
 
         //SWITCH DEPENDING ON URL ACTION
         switch($action){
             case 'registerComplete':
                 echo file_get_contents($templatesDir."registerComplete.html");
+            break
             case 'registerFailed':
 
             break;
             default:
-                include $templatesDir."loginContent.php";
         }
 
     }

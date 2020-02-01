@@ -16,11 +16,6 @@ $html = <<<html
 
 </div>
 
-<p>Welcome to Bubble.</p>
-</br>
-<p>For the simplest smart home.</p>
-
-
 <div class="col-12 col-md-auto">
     <!-- Nav tabs -->
     <ul class="nav nav-tabs  tabs-2 elegant-color align-content-around" role="tablist">

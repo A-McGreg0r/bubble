@@ -21,6 +21,10 @@
     $html .= file_get_contents($templatesDir."head.html");
     //MAIN PAGE CONTENTS
     $html .= file_get_contents($templatesDir."bodyStart.html");
+    
+    //ECHO STARTING HTML TO PAGE
+    echo $html;
+    $html = '';
 
     //GENERATE REMAINING PAGE
     if($isLoggedIn){

@@ -246,3 +246,4 @@ $html = <<<html
         </div>
     </div>
 html;
+echo $html;

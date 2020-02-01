@@ -3,19 +3,19 @@
 <!--TODO intagrate database qurry -->
 
 
-    <?php
-    //TODO remove once data base it implmented
-    //randome genarated grapth (temp)
+<?php
+//TODO remove once data base it implmented
+//randome genarated grapth (temp)
 
 
-    $first = strtotime('first day this month');
+$first = strtotime('first day this month');
 
-        for ($i = 1; $i <= $numOfDays; $i++) {
-            //list of months
-            array_push($days, "day :" . $i);
-            //geanarat rand data for display
-        }
-    ?>
+for ($i = 1; $i <= $numOfDays; $i++) {
+    //list of months
+    array_push($days, "day :" . $i);
+    //geanarat rand data for display
+}
+?>
 
 <?php
 //TODO remove once data base it implmented

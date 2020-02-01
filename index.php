@@ -21,12 +21,16 @@
     $html .= file_get_contents($templatesDir."head.html");
     //MAIN PAGE CONTENTS
     $html .= file_get_contents($templatesDir."bodyStart.html");
+    
+    //ECHO STARTING HTML TO PAGE
+    echo $html;
+    $html = '';
 
-
+    //GENERATE REMAINING PAGE
     if($isLoggedIn){
-        $html .= generate_loggedInContent();
+        generate_loggedInContent();
     }else{
-        $html .= generate_loginPage();
+        generate_loginPage();
     }
 
     //END MAIN PAGE CONTENTS
@@ -47,12 +51,12 @@
         //SWITCH DEPENDING ON URL ACTION
         switch($action){
             case 'registerComplete':
-                return file_get_contents($templatesDir."registerComplete.html");
+                echo file_get_contents($templatesDir."registerComplete.html");
             case 'registerFailed':
 
             break;
             default:
-                return eval(file_get_contents($templatesDir."loginContent.php"));
+                include $templatesDir."loginContent.php";
         }
 
     }
@@ -61,12 +65,11 @@
         //GET URL ACTION
         $action = '';
         if(isset($_GET['action'])) $action = $_GET['action'];
-        $html = '';
 
         //TODO CHECK DOES USER HAVE A HUB? IF NOT ADD HUB
 
         //ALL PAGES NEED NAVIGATION
-        $html .= file_get_contents("./uiAssets/userNav.php");
+        include './uiAssets/userNav.php';
 
         //SWITCH DEPENDING ON URL ACTION
         switch($action){
@@ -74,10 +77,10 @@
                 include $libDir.'logoutAction.php';
             break;
             case 'adddevice':
-                return file_get_contents("qr-reader.php");
+                include "qr-reader.php";
             break;
             default:
-                return eval(file_get_contents("appCore.php"));
+                include "appCore.php";
         }
     }
 ?>

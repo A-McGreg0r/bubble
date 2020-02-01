@@ -71,7 +71,7 @@
         switch($action){
             case 'logout':
                 include './required/logoutAction.php';
-                $html .= generateLogout();
+                $html .= generateLogout($_SESSION);
             break;
             case 'adddevice':
                 // include "qr-reader.php";

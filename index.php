@@ -17,7 +17,7 @@
     //BEGIN GENERATING MAIN PAGE
     $html = '';
     //GENERATE HEADER AND HEAD
-    include $templatesDir."header.php");
+    include $templatesDir."header.php";
     include $templatesDir."head.php";
     //MAIN PAGE CONTENTS
     include $templatesDir."bodyStart.php";

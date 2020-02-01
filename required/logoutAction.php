@@ -5,3 +5,4 @@ function logout($Current_SESSION){
         session_destroy();
     }else{};
 }
+?>

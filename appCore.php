@@ -1,4 +1,8 @@
 <?php
-require "uiAssets/tabs.php";
+function generateAppCore(){
+    require "uiAssets/tabs.php";
+    // return generateTabs();
+    return '';
+}
 ?>
 

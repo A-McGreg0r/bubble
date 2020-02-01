@@ -70,14 +70,15 @@
         //SWITCH DEPENDING ON URL ACTION
         switch($action){
             case 'logout':
-                include $libDir.'logoutAction.php';
+                include './required/logoutAction.php';
                 $html .= generateLogout();
             break;
             case 'adddevice':
-                include "qr-reader.php";
+                // include "qr-reader.php";
             break;
             default:
                 include "appCore.php";
+                $html .= generateAppCore();
         }
         return $html;
     }

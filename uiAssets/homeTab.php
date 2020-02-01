@@ -39,16 +39,19 @@
                         <p class="lead align-content-center">
                           <span class="badge info-color-dark p-2">Date range</span>
                         </p>-->
-                         <select class="browser-default custom-select">
-                          <option selected>Choose time period</option>
-                          <option value="1">Week</option>
-                          <option value="2">Month</option>
-                          <option value="3">Year</option>
+                         <select class="browser-default custom-select" id="chartList" onselect="chartSwap();">
+                            <option selected value="0">Choose time period</option>
+                            <option value="lineChart_Day">Day</option>
+                            <option value="lineChart_Month">Month</option>
+                            <option value="lineChart_Year">Year</option>
                         </select>
+                        <canvas id="chartToSwap" onselect="chartSwap();"/>
                   </div>
-                 <!--TODO intagrate database qurry -->
+                 <!--TODO get chat sqapabul -->
+                 
+                 
                    
-                    <canvas id="lineChart_Day"></canvas>
+             
                   </div>
                   
             </div>
@@ -59,10 +62,18 @@
     }
     ?>
 </div>
+<script>
+        function chartSwap(){
+            var canvas = document.getElementById("chartToSwap");
+            var chart = document.getElementById("chartList");
+            canvas.id = chart.value;
+        }
+</script>
 
+</script>
 <?php
-//require "charts/lineChart_Year.php";
-//require "charts/lineChart_Month.php";
+require "charts/lineChart_Year.php";
+require "charts/lineChart_Month.php";
 require "charts/lineChart_Day.php";
 ?>
 <!--/.Accordion wrapper-->

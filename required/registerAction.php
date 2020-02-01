@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt2->bind_param("s", $valuesArr["email"]);
         $stmt2->execute();
         if ($stmt2->num_rows != 0) {
-            $errors[] = 'Email address already registered. <a href="../appCore.php">Login</a>';
+            $errors[] = 'Email address already registered. <a href="../index.php">Login</a>';
         }
         $stmt2->close();
     }
@@ -87,9 +87,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } 
 
         if($stmt->affected_rows === 1){
-            echo '<div class="container"><h1>Registered!</h1><p>You are now registered.</p><p><a href="../index.php">Login</a></p>';
+            load("..index.php?action=registerComplete");
         }else{
-            echo "Reg failed!";
+            load("..index.php?action=registerFailed");
         }
         # Close database connection.
         $db->close();

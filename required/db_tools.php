@@ -45,8 +45,6 @@ function validateLogin($db, $email = '', $pwd = '')
         $pwd = trim($pwd);
     }
 
-    //TODO STORE THIS SOMEWHERE ELSE AND GENERATE LONG STRONG
-
     $hasher = new PepperedPasswords($pepper);
 
     # On success retrieve user_id, first_name, and last name from 'user' database.

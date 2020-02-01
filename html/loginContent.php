@@ -1,6 +1,9 @@
 
 <!--Modal cascading tabs-->
 <div class="col col-lg-2">
+    <p>Welcome to Bubble.</p>
+    </br>
+    <p>For the simplest smart home.</p>
 
 </div>
 
@@ -100,7 +103,7 @@
             <div class="card-body px-lg-5 pt-0">
 
                 <!-- Form -->
-                <form class="text-center" style="color: #757575;" action="required/regScript.php" method="POST">
+                <form class="text-center" style="color: #757575;" action="required/registerAction.php" method="POST">
                     <!-- Email -->
                     <div class="md-form">
                         <label for="materialLoginFormEmail">E-mail</label>

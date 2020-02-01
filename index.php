@@ -40,12 +40,41 @@
 
     function generate_loginPage(){
         global $templatesDir;
-        include $templatesDir."loginContent.php";
+        //GET URL ACTION
+        $action = '';
+        if(isset($_GET['action'])) $action = $_GET['action'];
+
+        //SWITCH DEPENDING ON URL ACTION
+        switch($action){
+            case 'registerComplete':
+                return file_get_contents($templatesDir."registerComplete.html");
+            break;
+            case 'registerFailed':
+
+            break;
+            default:
+                return eval(file_get_content($templatesDir."loginContent.php")
+        }
+
     }
 
     function generate_loggedInContent(){
-        global $db;
-        include "appCore.php";
+        //GET URL ACTION
+        $action = '';
+        if(isset($_GET['action'])) $action = $_GET['action'];
+
+        //SWITCH DEPENDING ON URL ACTION
+        switch($action){
+            case 'logout':
+                include $libDir.'logoutAction.php';
+            break;
+            case 'adddevice':
+                include 'qr-reader.php';
+            break;
+            default:
+                include "appCore.php";
+            break;
+        }
     }
 ?>
 

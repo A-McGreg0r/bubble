@@ -18,9 +18,9 @@
     $content = '';
     //GENERATE REMAINING PAGE
     if($isLoggedIn){
-        $content = generate_loggedInContent();
+        // $content = generate_loggedInContent();
     }else{
-        $content = generate_loginPage();
+        // $content = generate_loginPage();
     }
 
     $pageHTML = str_replace('$MAIN_BODY', $content, $pageHTML);
@@ -31,55 +31,55 @@
 
     //////////////////////////////////////////////////////////////////// FUNCTIONS ///////////////////////////////////////////////////////////////////////
 
-    function generate_loginPage(){
-        global $templatesDir;
-        //GET URL ACTION
-        $action = '';
-        if(isset($_GET['action'])) $action = $_GET['action'];
-        $html = '';
+    // function generate_loginPage(){
+    //     global $templatesDir;
+    //     //GET URL ACTION
+    //     $action = '';
+    //     if(isset($_GET['action'])) $action = $_GET['action'];
+    //     $html = '';
 
-        // SWITCH DEPENDING ON URL ACTION
-        switch($action){
-            case 'registerComplete':
-                // echo file_get_contents($templatesDir."registerComplete.html");
-            break
-            case 'registerFailed':
+    //     // SWITCH DEPENDING ON URL ACTION
+    //     switch($action){
+    //         case 'registerComplete':
+    //             // echo file_get_contents($templatesDir."registerComplete.html");
+    //         break
+    //         case 'registerFailed':
 
-            break;
-            default:
-                include $templatesDir."loginContent.php";
-                $html .= generateLoginPage();
-            break;
-        }
+    //         break;
+    //         default:
+    //             include $templatesDir."loginContent.php";
+    //             $html .= generateLoginPage();
+    //         break;
+    //     }
 
 
-        return $html;
-    }
+    //     return $html;
+    // }
 
-    function generate_loggedInContent(){
-        //GET URL ACTION
-        $action = '';
-        if(isset($_GET['action'])) $action = $_GET['action'];
-        $html = '';
-        //TODO CHECK DOES USER HAVE A HUB? IF NOT ADD HUB
+    // function generate_loggedInContent(){
+    //     //GET URL ACTION
+    //     $action = '';
+    //     if(isset($_GET['action'])) $action = $_GET['action'];
+    //     $html = '';
+    //     //TODO CHECK DOES USER HAVE A HUB? IF NOT ADD HUB
 
-        //ALL PAGES NEED NAVIGATION
-        include './uiAssets/userNav.php';
-        $html .= generateUserNav();
+    //     //ALL PAGES NEED NAVIGATION
+    //     include './uiAssets/userNav.php';
+    //     $html .= generateUserNav();
 
-        // //SWITCH DEPENDING ON URL ACTION
-        // switch($action){
-        //     case 'logout':
-        //         include $libDir.'logoutAction.php';
-        //     break;
-        //     case 'adddevice':
-        //         include "qr-reader.php";
-        //     break;
-        //     default:
-        //         include "appCore.php";
-        // }
-        return $html;
-    }
+    //     // //SWITCH DEPENDING ON URL ACTION
+    //     // switch($action){
+    //     //     case 'logout':
+    //     //         include $libDir.'logoutAction.php';
+    //     //     break;
+    //     //     case 'adddevice':
+    //     //         include "qr-reader.php";
+    //     //     break;
+    //     //     default:
+    //     //         include "appCore.php";
+    //     // }
+    //     return $html;
+    // }
 ?>
 
 

@@ -47,8 +47,8 @@
 
             break;
             default:
-                include "./uiAssets/loginContent.php";
-                $html .= generateLoginPage();
+                // include "./uiAssets/loginContent.php";
+                // $html .= generateLoginPage();
             break;
         }
 

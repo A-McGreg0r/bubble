@@ -47,11 +47,8 @@
                         </select>
                         <canvas id="chartToSwap" onselect="chartSwap();"/>
                   </div>
-                 <!--TODO get chat sqapabul -->
-                 
-                 
-                   
-             
+                 <!--TODO get chat swapabul -->
+
                   </div>
                   
             </div>

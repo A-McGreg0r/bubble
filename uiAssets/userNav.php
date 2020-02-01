@@ -58,9 +58,13 @@
 
 
         </ul>
-        <ul class="navbar-nav ml-auto nav-flex-icons">
+        <ul class="navbar-nav ml-auto nav-flex-icons ">
+            <?php
+            require "required/logoutAction.php";
+            logout($_SESSION);
+            ?>
             <li class="nav-item">
-                <a class="nav-link" href="QR_Reader_test.php">Add Device</a>
+                <a class="nav-link" href="qr-reader.php">Add Device</a>
             </li>
 
 

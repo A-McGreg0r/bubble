@@ -28,7 +28,7 @@ for ($i = 11; $i >= 0; $i--) {
 <script type="text/javascript">
     //converts php querry to js for graph
 
-    const ctxL = document.getElementById("lineChart_Year").getContext('2d');
+    const ctxL = document.getElementById("lineChart_).getContext('2d');
     const gradientFill = ctxL.createLinearGradient(0, 0, 0, 350);
     gradientFill.addColorStop(0, "rgba(242,38,19,0.5)");
     gradientFill.addColorStop(1, "rgba(0,230,64,0.5)");

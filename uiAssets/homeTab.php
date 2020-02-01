@@ -47,8 +47,7 @@
                         </select>
                   </div>
                  <!--TODO intagrate database qurry -->
-                    <canvas id="lineChart_Year"></canvas>
-                    <canvas id="lineChart_Month"></canvas>
+                   
                     <canvas id="lineChart_Day"></canvas>
                   </div>
                   

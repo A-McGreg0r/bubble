@@ -1,7 +1,7 @@
 <?php
 
 function generateUserNav(){
-    return <<<html
+    $html = <<<html
         <!--navbar-->
         <nav class="navbar  navbar-expand-lg navbar-dark elegant-color-dark">
             <!-- Collapse button -->
@@ -38,5 +38,8 @@ function generateUserNav(){
             </div>
         </nav>
 html;
+    return $html;
 }
+
+?>
 

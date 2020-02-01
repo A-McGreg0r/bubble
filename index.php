@@ -48,7 +48,8 @@
             break;
             default:
                 include $templatesDir."loginContent.php";
-                $html = generateLoginPage();
+                $html .= generateLoginPage();
+            break;
         }
 
 

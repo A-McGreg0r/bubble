@@ -1,18 +1,9 @@
-<?php
-$email = '';
-if (isset($_POST['email'])) $email = $_POST['email'];
-$first_name = '';
-if (isset($_POST['first_name'])) $first_name = $_POST['first_name'];
-$last_name = '';
-if (isset($_POST['last_name'])) $last_name = $_POST['last_name'];
-$address_l1 = '';
-if (isset($_POST['address_l1'])) $address_l1 = $_POST['address_l1'];
-$address_l2 = '';
-if (isset($_POST['address_l2'])) $address_l2 = $_POST['address_l2'];
-$postcode = '';
-if (isset($_POST['postcode'])) $postcode = $_POST['postcode'];
-$html = <<<html
+
+<!--Modal cascading tabs-->
 <div class="col col-lg-2">
+    <p>Welcome to Bubble.</p>
+    </br>
+    <p>For the simplest smart home.</p>
 
 </div>
 
@@ -52,7 +43,7 @@ $html = <<<html
                             class="form-control form-control-sm validate"
                             name="email"
                             required size="20"
-                            value="$email"/>
+                            value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>"/>
                     </div>
 
                     <!-- Password -->
@@ -121,7 +112,7 @@ $html = <<<html
                             class="form-control form-control-sm validate"
                             name="email"
                             required size="20"
-                            value="$email"/>
+                            value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>"/>
                     </div>
 
                     <div class="form-row">
@@ -134,7 +125,7 @@ $html = <<<html
                                     class="form-control form-control-sm validate"
                                     name="first_name"
                                     required size="20"
-                                    value="$first_name"/>
+                                    value="<?php if (isset($_POST['first_name'])) echo $_POST['first_name']; ?>"/>
                             </div>
                         </div>
                         <div class="col-sm form-sm mb-5">
@@ -146,7 +137,7 @@ $html = <<<html
                                     class="form-control form-control-sm validate"
                                     name="last_name"
                                     required size="20"
-                                    value="$last_name"/>
+                                    value="<?php if (isset($_POST['last_name'])) echo $_POST['last_name']; ?>"/>
                             </div>
                         </div>
                     </div>
@@ -160,7 +151,7 @@ $html = <<<html
                             name="address_l1"
                             required size="20"
                             aria-describedby="materialRegisterFormPasswordHelpBlock"
-                            value="$address_l1"/>
+                            value="<?php if (isset($_POST['address_l1'])) echo $_POST['address_l1']; ?>"/>
                     </div>
 
                     <!-- Address line 2 -->
@@ -172,7 +163,7 @@ $html = <<<html
                             name="address_l2"
                             required size="20"
                             aria-describedby=""
-                            value="$address_l2"/>
+                            value="<?php if (isset($_POST['address_l2'])) echo $_POST['address_l2']; ?>"/>
                     </div>
 
                     <div class="md-form">
@@ -183,7 +174,7 @@ $html = <<<html
                             name="postcode"
                             required size="20"
                             aria-describedby=""
-                            value="$postcode"/>
+                            value="<?php if (isset($_POST['postcode'])) echo $_POST['postcode']; ?>"/>
                     </div>
 
                     <!-- Password -->
@@ -195,7 +186,8 @@ $html = <<<html
                             id="materialRegisterFormPassword1"
                             name="pass1"
                             required
-                            size="20" type="password"/>
+                            size="20" type="password"
+                            value="<?php if (isset($_POST['pass1'])) echo $_POST['pass1']; ?>"/>
                         <small id="materialRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
                             At least 8 characters and 1 digit
                         </small>
@@ -208,7 +200,8 @@ $html = <<<html
                             class="form-control form-control-sm validate"
                             aria-describedby="materialRegisterFormPasswordHelpBlock"
                             name="pass2"
-                            required size="20"/>
+                            required size="20"
+                            value="<?php if (isset($_POST['pass2'])) echo $_POST['pass2']; ?>"/>
                     </div>
 
 
@@ -242,6 +235,3 @@ $html = <<<html
             </div>
         </div>
     </div>
-html;
-echo $html;
-?>

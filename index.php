@@ -52,7 +52,7 @@
 
             break;
             default:
-                return eval(file_get_content($templatesDir."loginContent.php");
+                return eval(file_get_content($templatesDir."loginContent.php"));
         }
 
     }

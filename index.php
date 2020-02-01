@@ -18,7 +18,7 @@
     $content = '';
     //GENERATE REMAINING PAGE
     if($isLoggedIn){
-        // $content = generate_loggedInContent();
+        $content = generate_loggedInContent();
     }else{
         // $content = generate_loginPage();
     }
@@ -56,30 +56,30 @@
     //     return $html;
     // }
 
-    // function generate_loggedInContent(){
-    //     //GET URL ACTION
-    //     $action = '';
-    //     if(isset($_GET['action'])) $action = $_GET['action'];
-    //     $html = '';
-    //     //TODO CHECK DOES USER HAVE A HUB? IF NOT ADD HUB
+    function generate_loggedInContent(){
+        //GET URL ACTION
+        $action = '';
+        if(isset($_GET['action'])) $action = $_GET['action'];
+        $html = '';
+        //TODO CHECK DOES USER HAVE A HUB? IF NOT ADD HUB
 
-    //     //ALL PAGES NEED NAVIGATION
-    //     include './uiAssets/userNav.php';
-    //     $html .= generateUserNav();
+        //ALL PAGES NEED NAVIGATION
+        include './uiAssets/userNav.php';
+        $html .= generateUserNav();
 
-    //     // //SWITCH DEPENDING ON URL ACTION
-    //     // switch($action){
-    //     //     case 'logout':
-    //     //         include $libDir.'logoutAction.php';
-    //     //     break;
-    //     //     case 'adddevice':
-    //     //         include "qr-reader.php";
-    //     //     break;
-    //     //     default:
-    //     //         include "appCore.php";
-    //     // }
-    //     return $html;
-    // }
+        // //SWITCH DEPENDING ON URL ACTION
+        // switch($action){
+        //     case 'logout':
+        //         include $libDir.'logoutAction.php';
+        //     break;
+        //     case 'adddevice':
+        //         include "qr-reader.php";
+        //     break;
+        //     default:
+        //         include "appCore.php";
+        // }
+        return $html;
+    }
 ?>
 
 

@@ -1,7 +1,7 @@
 <?php
 
 function generateUserNav(){
-    $html = <<<html
+    $html = <<<htmlPage
         <!--navbar-->
         <nav class="navbar  navbar-expand-lg navbar-dark elegant-color-dark">
             <!-- Collapse button -->
@@ -37,7 +37,7 @@ function generateUserNav(){
                 </ul>
             </div>
         </nav>
-html;
+htmlPage;
     return $html;
 }
 

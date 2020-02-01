@@ -66,7 +66,7 @@
         //TODO CHECK DOES USER HAVE A HUB? IF NOT ADD HUB
 
         //ALL PAGES NEED NAVIGATION
-        $html .= eval(file_get_contents("./uiAssets/userNav.php"));
+        $html .= file_get_contents("./uiAssets/userNav.php");
 
         //SWITCH DEPENDING ON URL ACTION
         switch($action){
@@ -74,7 +74,7 @@
                 include $libDir.'logoutAction.php';
             break;
             case 'adddevice':
-                return eval(file_get_contents("qr-reader.php"));
+                return file_get_contents("qr-reader.php");
             break;
             default:
                 return eval(file_get_contents("appCore.php"));

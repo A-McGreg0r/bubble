@@ -48,7 +48,6 @@
         switch($action){
             case 'registerComplete':
                 return file_get_contents($templatesDir."registerComplete.html");
-            break;
             case 'registerFailed':
 
             break;
@@ -75,11 +74,10 @@
                 include $libDir.'logoutAction.php';
             break;
             case 'adddevice':
-                include 'qr-reader.php';
+                return eval(file_get_content("qr-reader.php"));
             break;
             default:
                 return eval(file_get_content("appCore.php"));
-            break;
         }
     }
 ?>

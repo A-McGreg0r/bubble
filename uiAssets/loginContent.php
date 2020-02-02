@@ -14,7 +14,7 @@ function generateLoginPage(){
     if (isset($_POST['postcode'])) $postcode = $_POST['postcode'];
     
     $html = <<<htmlPage
-    <!--Model Cascating Tabs-->
+    <!--Modal cascading tabs-->
     <div class="col col-lg-2">
 
     </div>

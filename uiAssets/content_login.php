@@ -16,9 +16,9 @@ function generateLoginPage(){
     $html = <<<htmlPage
     <!--Modal cascading tabs-->
     <div class="col-12 col-md-auto">
-        <table style="height: 100vh;">
+        <table style="height: 100vh;" class="align-middle text-centre">
             <tr>
-                <td class="align-middle text-centre">
+                <td class="align-middle">
                     <div class="text-center">
                         <h2>Welcome to Bubble.</h2>
                         <h2>The simple smart home.</h2>

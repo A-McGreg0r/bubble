@@ -41,13 +41,9 @@ function generateLineChart_Day(){
             datasets: [{
                 label: "Expected Usage",
                 data: $jsonEncode2,
-                backgroundColor: [
-                    'rgba(0,0,0,0)',
-                ],
-                borderColor: [
-                    'rgba(0, 10, 130, .1)',
-                ],
-                borderWidth: 2
+                backgroundColor: ['rgba(0,0,0,0)',],
+                borderColor: ['rgba(0, 10, 130, .1)',],
+                borderWidth: ['2'],
             },
                 {
                     label: "Power Used",
@@ -58,9 +54,7 @@ function generateLineChart_Day(){
                 }
             ]
         },
-        options: {
-            responsive: true
-        }
+        options: {responsive: true}
     });
     </script>
 

@@ -29,9 +29,9 @@ function generateHomeTab(){
                 <div id="collapse' . $x . '" class="collapse show" role="tabpanel" aria-labelledby="heading' . $x . '" data-parent="#accordionEx194">
                     <div class="card-body pt-0">
                         <div class="flex-sm-row justify-content-center">     
-                            <div class="container">
+                            <div class="container mt-2">
                                 <div class="row row-cols-2 mb-1">
-                                    <div class="col border border-primary">
+                                    <div class="col border border-primary rounded mb-0">
                                         <h3>Heating Usage</h3>
                                         <canvas style="width:100%" id="heatingUsage"></canvas>
                                         <script>
@@ -53,7 +53,7 @@ function generateHomeTab(){
                                             });
                                         </script>
                                     </div>
-                                    <div class="col border border-primary">
+                                    <div class="col border border-primary rounded mb-0">
                                         <h3>Heating Usage</h3>
                                         <canvas style="width:100%" id="heatingUsage1"></canvas>
                                         <script>
@@ -75,7 +75,7 @@ function generateHomeTab(){
                                             });
                                         </script>
                                     </div>
-                                    <div class="col border border-primary">
+                                    <div class="col border border-primary rounded mb-0">
                                         <h3>Heating Usage</h3>
                                         <canvas style="width:100%" id="heatingUsage2"></canvas>
                                         <script>
@@ -97,7 +97,7 @@ function generateHomeTab(){
                                             });
                                         </script>
                                     </div>
-                                    <div class="col border border-primary">
+                                    <div class="col border border-primary rounded mb-0">
                                         <h3>Heating Usage</h3>
                                         <canvas style="width:100%" id="heatingUsage3"></canvas>
                                         <script>

@@ -52,6 +52,8 @@ function generateHomeTab(){
         ';//echo end
         $x++;//+1 to x for steting
     }
+
+    $html .= "</div>";
     require "charts/lineChart_Year.php";
     require "charts/lineChart_Month.php";
     require "charts/lineChart_Day.php";

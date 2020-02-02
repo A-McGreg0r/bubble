@@ -33,6 +33,11 @@ function generateLoginPage(){
                     <i class="fas fa-user-plus mr-1"></i>Sign up
                 </a>
             </li>
+            <li class="nav-item ">
+                <a class="nav-link" data-toggle="tab" href="#panel3" role="tab">
+                    <i class="fas fa-user-plus mr-1"></i>Forgot Password
+                </a>
+            </li>
         </ul>
 
 
@@ -45,7 +50,7 @@ function generateLoginPage(){
                 <div class="modal-body mb-1">
 
                     <!-- Form -->
-                    <form class="text-center elegant-color-dark " action="required/loginAction.php" method="POST">
+                    <form class="text-center elegant-color-dark " action="required/action_login.php" method="POST">
 
                         <!-- Email -->
                         <div class="md-form">
@@ -68,8 +73,8 @@ function generateLoginPage(){
                             <div>
                                 <!-- Remember me -->
                                 <div class="form-check">
-                                    <label class="form-check-label" for="materialLoginFormRemember">Remember me</label>
                                     <input type="checkbox" class="form-check-input" id="materialLoginFormRemember"/>
+                                    <label class="form-check-label" for="materialLoginFormRemember">Remember me</label>
                                 </div>
                             </div>
                             <div>
@@ -115,7 +120,7 @@ function generateLoginPage(){
                 <div class="card-body px-lg-5 pt-0">
 
                     <!-- Form -->
-                    <form class="text-center" style="color: #757575;" action="required/registerAction.php" method="POST">
+                    <form class="text-center" style="color: #757575;" action="required/action_register.php" method="POST">
                         <!-- Email -->
                         <div class="md-form">
                             <label for="materialLoginFormEmail">E-mail</label>
@@ -244,6 +249,37 @@ function generateLoginPage(){
                     <!-- Form -->
                 </div>
             </div>
+            <!--Panel 3 Forgot Password Tab panel -->
+            <div class="tab-pane fade in show" id="panel3" role="tabpanel">
+
+                <!--Body-->
+                <div class="modal-body mb-1">
+
+                    <!-- Form -->
+                    <form class="text-center elegant-color-dark " action="required/action_forgotPassword.php" method="POST">
+
+                        <!-- Email -->
+                        <div class="md-form">
+                            <label for="materialLoginFormEmail">E-mail</label>
+                            <input type="email"
+                                id="materialLoginFormEmail"
+                                class="form-control form-control-sm validate"
+                                name="email"
+                                required size="20"
+                                value="$email"/>
+                        </div>
+
+                        <!-- Sign in button -->
+                        <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit" value="submit">Submit</button>
+
+                    </form>
+                </div>
+            </div>
+            <!--Panel 3 Forgot Password Tab -->
+
+        
+        
+        
         </div>
 htmlPage;
     return $html;

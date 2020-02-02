@@ -1,6 +1,6 @@
 <?php
 function generateAppCore(){
-    require "uiAssets/tabs.php";
+    require "uiAssets/content_tabs.php";
     return generateTabs();
     // return '';
 }

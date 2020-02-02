@@ -1,6 +1,6 @@
 
 function toggleRoom(room_id){
-    var url = "/required/device.php?type=room&id="+room_id;
+    var url = "/required/action_device.php?type=room&id="+room_id;
     var request = new XMLHttpRequest();
     request.open('POST', url, true);
     request.onload = function() { 
@@ -18,7 +18,7 @@ function toggleRoom(room_id){
 
 
 function toggleDevice(room_id){
-    var url = "/required/device.php?type=device&id="+room_id;
+    var url = "/required/action_device.php?type=device&id="+room_id;
     var request = new XMLHttpRequest();
     request.open('POST', url, true);
     request.onload = function() { 

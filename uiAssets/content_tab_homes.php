@@ -36,9 +36,9 @@ function generateHomeTab(){
                                         <canvas id="doughnutChart"></canvas>
                                         <script>
                                             //doughnut
-                                            var ctxD = document.getElementById("doughnutChart").getContext('2d');
+                                            var ctxD = document.getElementById("doughnutChart").getContext("2d");
                                             var myLineChart = new Chart(ctxD, {
-                                            type: 'doughnut',
+                                            type: "doughnut",
                                             data: {
                                             labels: ["Red"],
                                             datasets: [{

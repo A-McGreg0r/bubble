@@ -33,10 +33,10 @@ function generateHomeTab(){
                                 <div class="row row-cols-2 mb-1">
                                     <div class="col border border-primary">
                                         <h3>Heating Usage</h3>
-                                        <canvas id="doughnutChart"></canvas>
+                                        <canvas id="heatingUsage"></canvas>
                                         <script>
                                             //doughnut
-                                            var ctxD = document.getElementById("doughnutChart").getContext("2d");
+                                            var ctxD = document.getElementById("heatingUsage").getContext("2d");
                                             var myLineChart = new Chart(ctxD, {
                                             type: "doughnut",
                                             data: {
@@ -54,13 +54,70 @@ function generateHomeTab(){
                                         </script>
                                     </div>
                                     <div class="col border border-primary">
-
+                                        <h3>Heating Usage</h3>
+                                        <canvas id="heatingUsage"></canvas>
+                                        <script>
+                                            //doughnut
+                                            var ctxD = document.getElementById("heatingUsage").getContext("2d");
+                                            var myLineChart = new Chart(ctxD, {
+                                            type: "doughnut",
+                                            data: {
+                                            labels: ["Red"],
+                                            datasets: [{
+                                            data: [200, 100],
+                                            backgroundColor: ["#F7464A", "#FFFFFF00"],
+                                            hoverBackgroundColor: ["#FF5A5E", "#FFFFFF00"]
+                                            }]
+                                            },
+                                            options: {
+                                            responsive: true
+                                            }
+                                            });
+                                        </script>
                                     </div>
                                     <div class="col border border-primary">
-
+                                        <h3>Heating Usage</h3>
+                                        <canvas id="heatingUsage"></canvas>
+                                        <script>
+                                            //doughnut
+                                            var ctxD = document.getElementById("heatingUsage").getContext("2d");
+                                            var myLineChart = new Chart(ctxD, {
+                                            type: "doughnut",
+                                            data: {
+                                            labels: ["Red"],
+                                            datasets: [{
+                                            data: [200, 100],
+                                            backgroundColor: ["#F7464A", "#FFFFFF00"],
+                                            hoverBackgroundColor: ["#FF5A5E", "#FFFFFF00"]
+                                            }]
+                                            },
+                                            options: {
+                                            responsive: true
+                                            }
+                                            });
+                                        </script>
                                     </div>
                                     <div class="col border border-primary">
-
+                                        <h3>Heating Usage</h3>
+                                        <canvas id="heatingUsage"></canvas>
+                                        <script>
+                                            //doughnut
+                                            var ctxD = document.getElementById("heatingUsage").getContext("2d");
+                                            var myLineChart = new Chart(ctxD, {
+                                            type: "doughnut",
+                                            data: {
+                                            labels: ["Red"],
+                                            datasets: [{
+                                            data: [200, 100],
+                                            backgroundColor: ["#F7464A", "#FFFFFF00"],
+                                            hoverBackgroundColor: ["#FF5A5E", "#FFFFFF00"]
+                                            }]
+                                            },
+                                            options: {
+                                            responsive: true
+                                            }
+                                            });
+                                        </script>
                                     </div>
                                 </div>
                             </div>

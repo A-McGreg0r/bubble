@@ -33,7 +33,7 @@ function generateHomeTab(){
                                 <div class="row row-cols-2 mb-1">
                                     <div class="col border border-primary">
                                         <h3>Heating Usage</h3>
-                                        <canvas id="heatingUsage"></canvas>
+                                        <canvas style="width:100%" id="heatingUsage"></canvas>
                                         <script>
                                             //doughnut
                                             var ctxD = document.getElementById("heatingUsage").getContext("2d");
@@ -55,7 +55,7 @@ function generateHomeTab(){
                                     </div>
                                     <div class="col border border-primary">
                                         <h3>Heating Usage</h3>
-                                        <canvas id="heatingUsage1"></canvas>
+                                        <canvas style="width:100%" id="heatingUsage1"></canvas>
                                         <script>
                                             //doughnut
                                             var ctxD = document.getElementById("heatingUsage1").getContext("2d");
@@ -77,7 +77,7 @@ function generateHomeTab(){
                                     </div>
                                     <div class="col border border-primary">
                                         <h3>Heating Usage</h3>
-                                        <canvas id="heatingUsage2"></canvas>
+                                        <canvas style="width:100%" id="heatingUsage2"></canvas>
                                         <script>
                                             //doughnut
                                             var ctxD = document.getElementById("heatingUsage2").getContext("2d");
@@ -99,7 +99,7 @@ function generateHomeTab(){
                                     </div>
                                     <div class="col border border-primary">
                                         <h3>Heating Usage</h3>
-                                        <canvas id="heatingUsage3"></canvas>
+                                        <canvas style="width:100%" id="heatingUsage3"></canvas>
                                         <script>
                                             //doughnut
                                             var ctxD = document.getElementById("heatingUsage3").getContext("2d");

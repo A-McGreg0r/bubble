@@ -39,7 +39,7 @@ function generateDeviceTab(){
                                 <form onsubmit="toggleDevice($device_id);" method="POST">
 
                                     <input type="checkbox" class="custom-control-input" id="roomSwitche">
-                                    <label class="custom-control-label" for="roomSwitche">on/off</label>
+                                    <label class="custom-control-label" for="roomSwitche">off/on</label>
                                 </form>
                             </div>  
                         </div>

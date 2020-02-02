@@ -81,6 +81,10 @@
                 include './qr-reader.php';
                 $html .= generateQRReader($_SESSION);
             break;
+            case 'account':
+                include './account.php';
+                $html .= generateAccount();
+            break;
             default:
                 include "appCore.php";
                 $html .= generateAppCore();

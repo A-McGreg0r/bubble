@@ -15,10 +15,10 @@ function generateUserNav(){
                 <!-- Links -->
                 <ul class="navbar-nav mr-auto mt-lg-0">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="index.php">Home<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="account.php">Account</a>
+                        <a class="nav-link" href="index.php?action=account">Account</a>
                     </li>
 
 

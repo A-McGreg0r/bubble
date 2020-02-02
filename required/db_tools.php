@@ -84,7 +84,7 @@ function userHasHub(){
         return true;
     }
 
-    
+
     global $db;
     $stmt = $db->prepare("SELECT hub_id FROM hub_users WHERE user_id=?");
     $stmt->bind_param("s", $_SESSION['user_id']);
@@ -94,6 +94,10 @@ function userHasHub(){
     $result = $stmt->get_result();
  
     if($result->num_rows === 0){
+        $stmt->getresult();
+        $row = $result->fetch_assoc();
+
+        $_SESSION['hub_id'] = $row['hub_id'];
         $stmt->free_result();
         $stmt->close();
        return false;

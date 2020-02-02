@@ -15,18 +15,13 @@ function generateLoginPage(){
     
     $html = <<<htmlPage
     <!--Modal cascading tabs-->
-
-    <div class="col col-lg-2">
-
-    </div>
-
     <div class="col-12 col-md-auto">
         <table style="height: 100vh;">
             <tr>
-                <td class="align-middle">
+                <td class="align-middle text-centre">
                     <div class="text-center">
                         <h2>Welcome to Bubble.</h2>
-                        <h2>The simple smart home</h2>
+                        <h2>The simple smart home.</h2>
                     </div>
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs  tabs-2 elegant-color align-content-around" role="tablist">

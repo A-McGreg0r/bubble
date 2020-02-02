@@ -29,45 +29,47 @@ function generateHomeTab(){
                 <div id="collapse' . $x . '" class="collapse show" role="tabpanel" aria-labelledby="heading' . $x . '" data-parent="#accordionEx194">
                     <div class="card-body pt-0">
                         <div class="flex-sm-row justify-content-center">     
-                            <div class="row row-cols-2">
-                                <div class="col">
-                                    <span class="border border-primary">
-                                        <h3>Heating Usage</h3>
-                                        <canvas id="doughnutChart"></canvas>
-                                        <script>
-                                            //doughnut
-                                            var ctxD = document.getElementById("doughnutChart").getContext("2d");
-                                            var myLineChart = new Chart(ctxD, {
-                                            type: "doughnut",
-                                            data: {
-                                            labels: ["Red"],
-                                            datasets: [{
-                                            data: [200, 100],
-                                            backgroundColor: ["#F7464A", "#FFFFFF00"],
-                                            hoverBackgroundColor: ["#FF5A5E", "#FFFFFF00"]
-                                            }]
-                                            },
-                                            options: {
-                                            responsive: true
-                                            }
-                                            });
-                                        </script>
-                                    </span>
-                                </div>
-                                <div class="col">
-                                    <span class="border border-primary">
-                                    
-                                    </span>
-                                </div>
-                                <div class="col">
-                                    <span class="border border-primary">
-                                    
-                                    </span>
-                                </div>
-                                <div class="col">
-                                    <span class="border border-primary">
-                                    
-                                    </span>
+                            <div class="container">
+                                <div class="row row-cols-2 mb-1">
+                                    <div class="col">
+                                        <span class="border border-primary">
+                                            <h3>Heating Usage</h3>
+                                            <canvas id="doughnutChart"></canvas>
+                                            <script>
+                                                //doughnut
+                                                var ctxD = document.getElementById("doughnutChart").getContext("2d");
+                                                var myLineChart = new Chart(ctxD, {
+                                                type: "doughnut",
+                                                data: {
+                                                labels: ["Red"],
+                                                datasets: [{
+                                                data: [200, 100],
+                                                backgroundColor: ["#F7464A", "#FFFFFF00"],
+                                                hoverBackgroundColor: ["#FF5A5E", "#FFFFFF00"]
+                                                }]
+                                                },
+                                                options: {
+                                                responsive: true
+                                                }
+                                                });
+                                            </script>
+                                        </span>
+                                    </div>
+                                    <div class="col">
+                                        <span class="border border-primary">
+                                        
+                                        </span>
+                                    </div>
+                                    <div class="col">
+                                        <span class="border border-primary">
+                                        
+                                        </span>
+                                    </div>
+                                    <div class="col">
+                                        <span class="border border-primary">
+                                        
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                             <!--Grid column-->

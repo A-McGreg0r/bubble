@@ -8,6 +8,7 @@
 function generateLineChart_Month(){
     $first = strtotime('first day this month');
     $numOfDays = cal_days_in_month(CAL_GREGORIAN, date('m'), date('y'));
+    $days = array();
 
     for ($i = 1; $i <= $numOfDays; $i++) {
         //list of months

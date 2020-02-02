@@ -1,6 +1,6 @@
 <!-- Card deck -->
 <?php
-include_once '/bubble/required/config.php';
+include_once '/required/config.php';
 
 function generateRoomTab(){
     $html = '';

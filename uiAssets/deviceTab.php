@@ -35,10 +35,9 @@ function generateDeviceTab(){
                             </div>
                             
                             <div class="d-flex flex-column">
-                            <!-- Default switch -->
+                                <!-- Default switch -->
                                 <div class="custom-control custom-switch">
                                     <input type="checkbox" class="custom-control-input" id="roomSwitche">
-                                    <label class="custom-control-label" for="roomSwitche">on/off</label>
                                 </div>  
                             </div>
                         </form>

@@ -1,9 +1,7 @@
 <?php
 
 function generateHomeTab(){
-    require "charts/lineChart_Year.php";
-    require "charts/lineChart_Month.php";
-    require "charts/lineChart_Day.php";
+
     $html = '<div class="accordion md-accordion z-depth-1-half" id="accordionEx194" role="tablist" aria-multiselectable="true">
         <hr class="mb-0">';
     $x = 1;
@@ -54,7 +52,13 @@ function generateHomeTab(){
         ';//echo end
         $x++;//+1 to x for steting
     }
-
+    require "charts/lineChart_Year.php";
+    require "charts/lineChart_Month.php";
+    require "charts/lineChart_Day.php";
+    $html .= generateLineChart_Year();
+    $html .= generateLineChart_Month();
+    $html .= generateLineChart_Day();
+    
     return $html;
 }
 

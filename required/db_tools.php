@@ -80,6 +80,11 @@ function validateLogin($db, $email = '', $pwd = '')
 }
 
 function userHasHub(){
+    if(isset($_SESSION['hub_id'])){
+        return true;
+    }
+
+    
     global $db;
     $stmt = $db->prepare("SELECT hub_id FROM hub_users WHERE user_id=?");
     $stmt->bind_param("s", $_SESSION['user_id']);

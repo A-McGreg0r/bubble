@@ -14,13 +14,10 @@ function generateLoginPage(){
     if (isset($_POST['postcode'])) $postcode = $_POST['postcode'];
     
     $html = <<<htmlPage
+    <!--Model Cascating Tabs-->
     <div class="col col-lg-2">
 
     </div>
-
-    <p>Welcome to Bubble.</p>
-    <p>For the simplest smart home.</p>
-
 
     <div class="col-12 col-md-auto">
         <!-- Nav tabs -->

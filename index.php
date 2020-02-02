@@ -63,7 +63,7 @@
         $html = '';        
         
         if($action != 'adddevice' && !userHasHub()){
-            load('../index.php?action=adddevice');
+            load('./index.php?action=adddevice');
             exit();
         }
 

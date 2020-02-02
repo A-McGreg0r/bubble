@@ -6,7 +6,7 @@ function generateDeviceTab(){
     $html = '';
     global $db;
     if(isset($_SESSION['hub_id'])){
-        $html .= "<p>Devices</p>"
+        $html .= "<p>Devices</p>";
         $hub_id = $_SESSION['hub_id'];
         
         $stmt = $db->prepare("SELECT * FROM device_info WHERE hub_id = ?");

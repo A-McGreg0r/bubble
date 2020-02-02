@@ -29,18 +29,20 @@ function generateDeviceTab(){
                     <div class="card-body d-flex justify-content-between">
                 
                         <!--Title-->      
-                        <form onsubmit="toggleDevice($device_id);" method="POST">
-                            <div class="d-flex flex-column">  
-                                $device_name
-                            </div>
-                            
-                            <div class="d-flex flex-column">
-                                <!-- Default switch -->
-                                <div class="custom-control custom-switch">
+                        <div class="d-flex flex-column">  
+                            $device_name
+                        </div>
+                        
+                        <div class="d-flex flex-column">
+                            <!-- Default switch -->
+                            <div class="custom-control custom-switch">
+                                <form onsubmit="toggleDevice($device_id);" method="POST">
+
                                     <input type="checkbox" class="custom-control-input" id="roomSwitche">
-                                </div>  
-                            </div>
-                        </form>
+                                    <label class="custom-control-label" for="roomSwitche">on/off</label>
+                                </form>
+                            </div>  
+                        </div>
 
                     </div>
                 </div>

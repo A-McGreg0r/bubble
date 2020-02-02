@@ -6,14 +6,11 @@ function generateDeviceTab(){
     $html = '';
     global $db;
     if(isset($_SESSION['hub_id'])){
-        $html .= "<p>Devices</p>";
         $hub_id = $_SESSION['hub_id'];
         
         $stmt = $db->prepare("SELECT * FROM device_info WHERE hub_id = ?");
         $stmt->bind_param("i", $hub_id);
         $stmt->execute();
-        $html .= "$stmt->num_rows";
-        $html .= "$hub_id";
         $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
@@ -30,21 +27,23 @@ function generateDeviceTab(){
               
                     <!--Card content-->
                     <div class="card-body d-flex justify-content-between">
-              
-                    <!--Title-->      
-                        <div class="d-flex flex-column">  
-                            $device_name
-                        </div>
-                        
-                        <div class="d-flex flex-column">
-                        <!-- Default switch -->
-                            <div class="custom-control custom-switch">
-                                <form onsubmit="toggleDevice($device_id);" method="POST">
-                                    <input type="checkbox" class="custom-control-input" id="roomSwitch">
-                                </form>
-                            </div>  
-                        </div>
-                  </div>
+                
+                        <!--Title-->      
+                        <form onsubmit="toggleDevice($device_id);" method="POST">
+                            <div class="d-flex flex-column">  
+                                $device_name
+                            </div>
+                            
+                            <div class="d-flex flex-column">
+                            <!-- Default switch -->
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="roomSwitche">
+                                    <label class="custom-control-label" for="roomSwitche">on/off</label>
+                                </div>  
+                            </div>
+                        </form>
+
+                    </div>
                 </div>
 html;
             }

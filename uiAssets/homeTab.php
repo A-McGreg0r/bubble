@@ -43,7 +43,7 @@ function generateHomeTab(){
                     </div>
                     <!--TODO intagrate database qurry -->
                     
-                    <canvas id="lineChart_Month"></canvas>
+                    <canvas id="lineChart_Year"></canvas>
                     </div>
                     
             </div>

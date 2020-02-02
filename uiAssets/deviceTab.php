@@ -49,6 +49,7 @@ html;
     } else{
         exit("Error, user is not logged in!");
     }
+    return $html;
 }
    
 ?>

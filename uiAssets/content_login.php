@@ -17,8 +17,8 @@ function generateLoginPage(){
     <!--Modal cascading tabs-->
     <div class="align-middle">
         <div class="text-center">
-            <p>Welcome to Bubble.</p>
-            <p>The simple smart home</p>
+            <h2>Welcome to Bubble.</h2>
+            <h2>The simple smart home</h2>
 
         </div>
         <div class="col col-lg-2">

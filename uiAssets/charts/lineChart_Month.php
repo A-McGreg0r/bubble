@@ -38,7 +38,7 @@ function generateLineChart_Month(){
     $jsonEncode1 = json_encode($dataLables, JSON_NUMERIC_CHECK);
     $jsonEncode2 = json_encode($dataAvg, JSON_NUMERIC_CHECK);
     $jsonEncode3 = json_encode($dataPoints, JSON_NUMERIC_CHECK);
-    $html = <<<pageHTML    
+    $html = <<<pageHTML
     <script type="text/javascript">
         //converts php querry to js for graph
     
@@ -83,3 +83,4 @@ pageHTML;
 //TODO remove once data base it implmented
 //randome genarated grapth (temp)
 
+?>

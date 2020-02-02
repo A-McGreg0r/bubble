@@ -67,3 +67,4 @@ function generateLineChart_Year(){
 h;
     return $html;
 }
+?>

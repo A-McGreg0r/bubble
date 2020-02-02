@@ -1,19 +1,20 @@
 <!-- Card deck -->
 <?php
-
+function generateRoomTab(){
+    $html = '';
     include_once '../required/config.php';
-    if(isset($_SESSION['user_id'])){
-        $user_id = $_SESSION['user_id'];
+    if(isset($_SESSION['hub_id'])){
+        $hub_id = $_SESSION['hub_id'];
         
-        $stmt = $db->prepare("SELECT * FROM rooms WHERE user_id = ?");
-        $stmt->bind_param("s", $user_id);
+        $stmt = $db->prepare("SELECT * FROM room_info WHERE hub_id = ?");
+        $stmt->bind_param("s", $hub_id);
         $stmt->execute();
         if ($stmt->num_rows > 0) {
             $result = $stmt->get_result();
             while($row = $result->fetch_assoc()) {
                 $room_id = $row['room_id'];
                 $room_name = $row['room_name'];
-                echo <<<html
+                $html .= <<<html
                 <!-- Card -->
                 <div class="card mb-4 container">
                     <!--Card image-->
@@ -32,7 +33,7 @@
                         <div class="d-flex flex-column">
                         <!-- Default switch -->
                             <div class="custom-control custom-switch">
-                                <form onsubmit="toggleSwitch($room_id);" method="POST">
+                                <form onsubmit="toggleRoom($room_id);" method="POST">
                                     <input type="checkbox" class="custom-control-input" id="roomSwitch">
                                 </form>
                             </div>  
@@ -46,4 +47,6 @@ html;
     } else{
         exit("Error, user is not logged in!");
     }
+}
+   
 ?>

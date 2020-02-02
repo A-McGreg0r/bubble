@@ -79,4 +79,22 @@ function validateLogin($db, $email = '', $pwd = '')
     return array(false, $errors);
 }
 
+function userHasHub(){
+    global $db;
+    $stmt = $db->prepare("SELECT hub_id FROM hub_info WHERE user_id=?");
+    $stmt->bind_param("i", $_SESSION['user_id']);
+
+    $result = $stmt->get_result();
+ 
+    if($result->num_rows === 0){
+        $stmt->free_result();
+        $stmt->close();
+       return false;
+    }
+    $stmt->free_result();
+    $stmt->close();
+    return true;
+
+}
+
 

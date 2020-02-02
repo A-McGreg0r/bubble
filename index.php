@@ -60,8 +60,12 @@
         //GET URL ACTION
         $action = '';
         if(isset($_GET['action'])) $action = $_GET['action'];
-        $html = '';
-        //TODO CHECK DOES USER HAVE A HUB? IF NOT ADD HUB
+        $html = '';        
+        
+        if($action != 'adddevice' && !userHasHub()){
+            load('../index.php?action=adddevice');
+            exit();
+        }
 
         //ALL PAGES NEED NAVIGATION
         include './uiAssets/userNav.php';
@@ -74,7 +78,8 @@
                 $html .= generateLogout($_SESSION);
             break;
             case 'adddevice':
-                // include "qr-reader.php";
+                include './qr-reader.php';
+                $html .= generateQRReader($_SESSION);
             break;
             default:
                 include "appCore.php";

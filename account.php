@@ -28,6 +28,14 @@
         <div class="flex-row">
             addr2
         </div>
+        <div class="flex-row">
+            postcode:
+        </div>
+
+        <button onclick=deleteAccount()>
+
+
+        </button>
 
     </div>
 

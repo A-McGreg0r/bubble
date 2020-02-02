@@ -14,9 +14,9 @@ function generateDeviceTab(){
         $stmt->execute();
         $html .= "$stmt->num_rows";
         $html .= "$hub_id";
+        $result = $stmt->get_result();
 
-        if ($stmt->num_rows > 0) {
-            $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
                 $device_id = $row['device_id'];
                 $device_name = $row['device_name'];

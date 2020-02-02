@@ -98,7 +98,7 @@ function userHasHub(){
         $stmt->close();
        return false;
     }
-    $stmt->getresult();
+    $stmt->get_result();
     $row = $result->fetch_assoc();
 
     $_SESSION['hub_id'] = $row['hub_id'];

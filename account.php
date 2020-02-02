@@ -41,6 +41,7 @@
 
 
     <!-- Editable table -->
+    <!-- TODO replace with mroe solid and less Editable ver  -->
     <div class="card">
         <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Devices</h3>
         <div class="card-body">

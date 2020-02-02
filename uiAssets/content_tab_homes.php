@@ -2,8 +2,7 @@
 
 function generateHomeTab(){
 
-    $html = '<div class="accordion md-accordion z-depth-1-half" id="accordionEx194" role="tablist" aria-multiselectable="true">
-        <hr class="mb-0">';
+    $html = '<div class="accordion md-accordion z-depth-1-half" id="accordionEx194" role="tablist" aria-multiselectable="true">';
     $x = 1;
     //for building more than one chart
     $chartId = "chartId" . $x . "";
@@ -30,6 +29,28 @@ function generateHomeTab(){
                 <div id="collapse' . $x . '" class="collapse show" role="tabpanel" aria-labelledby="heading' . $x . '" data-parent="#accordionEx194">
                     <div class="card-body pt-0">
                         <div class="flex-sm-row justify-content-center">     
+                            <div class="row row-cols-2">
+                                <div class="col">
+                                    <span class="border border-primary">
+                                    
+                                    </span>
+                                </div>
+                                <div class="col">
+                                    <span class="border border-primary">
+                                    
+                                    </span>
+                                </div>
+                                <div class="col">
+                                    <span class="border border-primary">
+                                    
+                                    </span>
+                                </div>
+                                <div class="col">
+                                    <span class="border border-primary">
+                                    
+                                    </span>
+                                </div>
+                            </div>
                             <!--Grid column-->
                             <!--Date select
                             <p class="lead align-content-center">

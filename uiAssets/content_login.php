@@ -15,7 +15,7 @@ function generateLoginPage(){
     
     $html = <<<htmlPage
     <!--Modal cascading tabs-->
-    <div class="row align-items-center">
+    <div class="col-xs-1 text-center">
         <div class="text-center">
             <h2>Welcome to Bubble.</h2>
             <h2>The simple smart home</h2>

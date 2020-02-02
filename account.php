@@ -32,6 +32,11 @@
             postcode:
         </div>
 
+        <button onclick=deleteAccount()>
+
+
+        </button>
+
     </div>
 
 

@@ -31,44 +31,36 @@ function generateHomeTab(){
                         <div class="flex-sm-row justify-content-center">     
                             <div class="container">
                                 <div class="row row-cols-2 mb-1">
-                                    <div class="col">
-                                        <span class="border border-primary">
-                                            <h3>Heating Usage</h3>
-                                            <canvas id="doughnutChart"></canvas>
-                                            <script>
-                                                //doughnut
-                                                var ctxD = document.getElementById("doughnutChart").getContext("2d");
-                                                var myLineChart = new Chart(ctxD, {
-                                                type: "doughnut",
-                                                data: {
-                                                labels: ["Red"],
-                                                datasets: [{
-                                                data: [200, 100],
-                                                backgroundColor: ["#F7464A", "#FFFFFF00"],
-                                                hoverBackgroundColor: ["#FF5A5E", "#FFFFFF00"]
-                                                }]
-                                                },
-                                                options: {
-                                                responsive: true
-                                                }
-                                                });
-                                            </script>
-                                        </span>
+                                    <div class="col border border-primary">
+                                        <h3>Heating Usage</h3>
+                                        <canvas id="doughnutChart"></canvas>
+                                        <script>
+                                            //doughnut
+                                            var ctxD = document.getElementById("doughnutChart").getContext("2d");
+                                            var myLineChart = new Chart(ctxD, {
+                                            type: "doughnut",
+                                            data: {
+                                            labels: ["Red"],
+                                            datasets: [{
+                                            data: [200, 100],
+                                            backgroundColor: ["#F7464A", "#FFFFFF00"],
+                                            hoverBackgroundColor: ["#FF5A5E", "#FFFFFF00"]
+                                            }]
+                                            },
+                                            options: {
+                                            responsive: true
+                                            }
+                                            });
+                                        </script>
                                     </div>
-                                    <div class="col">
-                                        <span class="border border-primary">
-                                        
-                                        </span>
+                                    <div class="col border border-primary">
+
                                     </div>
-                                    <div class="col">
-                                        <span class="border border-primary">
-                                        
-                                        </span>
+                                    <div class="col border border-primary">
+
                                     </div>
-                                    <div class="col">
-                                        <span class="border border-primary">
-                                        
-                                        </span>
+                                    <div class="col border border-primary">
+
                                     </div>
                                 </div>
                             </div>

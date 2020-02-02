@@ -55,10 +55,10 @@ function generateHomeTab(){
                                     </div>
                                     <div class="col border border-primary">
                                         <h3>Heating Usage</h3>
-                                        <canvas id="heatingUsage"></canvas>
+                                        <canvas id="heatingUsage1"></canvas>
                                         <script>
                                             //doughnut
-                                            var ctxD = document.getElementById("heatingUsage").getContext("2d");
+                                            var ctxD = document.getElementById("heatingUsage1").getContext("2d");
                                             var myLineChart = new Chart(ctxD, {
                                             type: "doughnut",
                                             data: {
@@ -77,10 +77,10 @@ function generateHomeTab(){
                                     </div>
                                     <div class="col border border-primary">
                                         <h3>Heating Usage</h3>
-                                        <canvas id="heatingUsage"></canvas>
+                                        <canvas id="heatingUsage2"></canvas>
                                         <script>
                                             //doughnut
-                                            var ctxD = document.getElementById("heatingUsage").getContext("2d");
+                                            var ctxD = document.getElementById("heatingUsage2").getContext("2d");
                                             var myLineChart = new Chart(ctxD, {
                                             type: "doughnut",
                                             data: {
@@ -99,10 +99,10 @@ function generateHomeTab(){
                                     </div>
                                     <div class="col border border-primary">
                                         <h3>Heating Usage</h3>
-                                        <canvas id="heatingUsage"></canvas>
+                                        <canvas id="heatingUsage3"></canvas>
                                         <script>
                                             //doughnut
-                                            var ctxD = document.getElementById("heatingUsage").getContext("2d");
+                                            var ctxD = document.getElementById("heatingUsage3").getContext("2d");
                                             var myLineChart = new Chart(ctxD, {
                                             type: "doughnut",
                                             data: {

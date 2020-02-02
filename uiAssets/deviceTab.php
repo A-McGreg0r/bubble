@@ -10,7 +10,7 @@ function generateDeviceTab(){
         $hub_id = $_SESSION['hub_id'];
         
         $stmt = $db->prepare("SELECT * FROM device_info WHERE hub_id = ?");
-        $stmt->bind_param("s", $hub_id);
+        $stmt->bind_param("i", $hub_id);
         $stmt->execute();
         $html .= "$stmt->num_rows";
         if ($stmt->num_rows > 0) {

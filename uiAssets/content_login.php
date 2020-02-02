@@ -15,7 +15,7 @@ function generateLoginPage(){
     
     $html = <<<htmlPage
     <!--Modal cascading tabs-->
-    <table style="height: 100%;">
+    <table style="height: 100vh;">
         <tr>
             <td class="align-middle">
                 <div class="text-center">

@@ -32,7 +32,7 @@ function generateHomeTab(){
                             <div class="container mt-2">
                                 <div class="row row-cols-2 mb-1">
                                     <div class="col border border-primary rounded m-2">
-                                        <h3 class="text-centre">Heating Usage</h3>
+                                        <h4 class="text-centre align-middle">Heating Usage</h4>
                                         <canvas style="width:100%" id="heatingUsage"></canvas>
                                         <script>
                                             //doughnut
@@ -54,7 +54,7 @@ function generateHomeTab(){
                                         </script>
                                     </div>
                                     <div class="col border border-primary rounded m-2">
-                                        <h3 class="text-centre">Heating Usage</h3>
+                                        <h4 class="text-centre align-middle">Heating Usage</h4>
                                         <canvas style="width:100%" id="heatingUsage1"></canvas>
                                         <script>
                                             //doughnut
@@ -76,7 +76,7 @@ function generateHomeTab(){
                                         </script>
                                     </div>
                                     <div class="col border border-primary rounded m-2">
-                                        <h3 class="text-centre">Heating Usage</h3>
+                                        <h4 class="text-centre align-middle">Heating Usage</h4>
                                         <canvas style="width:100%" id="heatingUsage2"></canvas>
                                         <script>
                                             //doughnut
@@ -98,7 +98,7 @@ function generateHomeTab(){
                                         </script>
                                     </div>
                                     <div class="col border border-primary rounded m-2">
-                                        <h3 class="text-centre">Heating Usage</h3>
+                                        <h4 class="text-centre align-middle">Heating Usage</h4>
                                         <canvas style="width:100%" id="heatingUsage3"></canvas>
                                         <script>
                                             //doughnut

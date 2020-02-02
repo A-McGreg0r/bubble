@@ -7,6 +7,7 @@
 
 function generateLineChart_Month(){
     $first = strtotime('first day this month');
+    $numOfDays = cal_days_in_month(CAL_GREGORIAN, date('m'), date('y'));
 
     for ($i = 1; $i <= $numOfDays; $i++) {
         //list of months
@@ -17,7 +18,6 @@ function generateLineChart_Month(){
     //TODO remove once data base it implmented
     //randome genarated grapth (temp)
     $dataTitle ="lineChart_Months";
-    $numOfDays = cal_days_in_month(CAL_GREGORIAN, date('m'), date('y'));
     $first = strtotime('first day this month');
     $dataLables = array();
     $dataPoints = array();

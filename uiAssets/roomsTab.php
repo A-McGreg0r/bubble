@@ -1,8 +1,10 @@
 <!-- Card deck -->
 <?php
+include_once '/bubble/required/config.php';
+
 function generateRoomTab(){
     $html = '';
-    include_once '../required/config.php';
+    global $db;
     if(isset($_SESSION['hub_id'])){
         $hub_id = $_SESSION['hub_id'];
         

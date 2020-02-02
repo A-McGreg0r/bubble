@@ -83,7 +83,9 @@ function userHasHub(){
     global $db;
     $stmt = $db->prepare("SELECT hub_id FROM hub_users WHERE user_id=?");
     $stmt->bind_param("s", $_SESSION['user_id']);
-
+    if (!$stmt->execute()) {
+        echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+    } 
     $result = $stmt->get_result();
  
     if($result->num_rows === 0){

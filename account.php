@@ -28,6 +28,9 @@
         <div class="flex-row">
             addr2
         </div>
+        <div class="flex-row">
+            postcode:
+        </div>
 
     </div>
 

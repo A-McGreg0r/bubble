@@ -16,7 +16,7 @@ function generateLineChart_Day(){
         //geanarat rand data for display
         array_push($dataPoints, rand(0, 100));
         //a avg of the entire contence of the array
-        //todo consider changeing it to look at all past years to provide a more accurit estamit
+        //todo consider changeing it to look at all past years to provide a more accurate estamit
         $dataPoints = array_filter($dataPoints);
         array_push($dataAvg, array_sum($dataPoints)/count($dataPoints));
 

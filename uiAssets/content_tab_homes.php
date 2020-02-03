@@ -19,9 +19,8 @@ function generateHomeTab(){
                 $stmt1->bind_param("i", $hub_id);
                 $stmt1->execute();
                 $result1 = $stmt1->get_result();
-                $html .= "$result1->num_rows - $hub_id";
 
-                if ($result1->num_rows === 0) {
+                if ($result1->num_rows === 1) {
                     $row1 = $result1->fetch_assoc();
                     $hub_name = $row1['hub_name'];
                     if(empty($hub_name)){

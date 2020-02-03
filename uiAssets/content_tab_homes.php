@@ -153,16 +153,16 @@ function generateHomeTab(){
                                     </select>
                                 </div>             
                                 <div style='display:none;' id='Year'>chart year<br/>&nbsp;
-                                year
-                                    <canvas id="lineChart_Year"></canvas>     
-                                </div> 
-                                <div style='display:none;' id='Day'>chart year<br/>&nbsp;
-                                month
+                                <h1>year</h1>
                                     <canvas id="lineChart_Year"></canvas>     
                                 </div> 
                                 <div style='display:none;' id='Month'>chart year<br/>&nbsp;
-                                day
-                                    <canvas id="lineChart_Year"></canvas>     
+                                <h1>month</h1>
+                                    <canvas id="lineChart_Month"></canvas>     
+                                </div> 
+                                <div style='display:none;' id='Day'>chart year<br/>&nbsp;
+                                <h1>day</h1>
+                                    <canvas id="lineChart_Day"></canvas>     
                                 </div> 
 
                                          

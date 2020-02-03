@@ -75,10 +75,16 @@ html;
                         while($row2 = $result2->fetch_assoc()) {
                             $device_name = $row2['device_name'];
                             $device_type = $row2['device_type'];
+                            $stmt3 = $db->prepare("SELECT * FROM device_types WHERE type_id = ?");
+                            $stmt3->bind_param("i", $device_type);
+                            $stmt3->execute();
+                            $result3 = $stmt3->get_result();
+                            $row3 = $result3->fetch_assoc();
+                            $icon = $row3['type_icon'];
 
                             $html .= <<<device
                                 <tr>
-                                    <td class="pt-3-half" contenteditable="true">$device_type $device_name</td>
+                                    <td class="pt-3-half" contenteditable="true">$icon $device_name</td>
                                     <td class="pt-3-half" contenteditable="true">8w</td>
                                     <td class="pt-3-half">
                                         <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i></a></span>

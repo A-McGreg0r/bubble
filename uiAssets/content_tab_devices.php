@@ -37,9 +37,8 @@ function generateDeviceTab(){
                             <!-- Default switch -->
                             <div class="custom-control custom-switch">
                                 <form onsubmit="toggleDevice($device_id);" method="POST">
-
-                                    <input type="checkbox" class="custom-control-input" id="roomSwitche">
-                                    <label class="custom-control-label" for="roomSwitche">off/on</label>
+                                    <input type="checkbox" class="custom-control-input" id="deviceSwitch">
+                                    <label class="custom-control-label" for="deviceSwitch">off/on</label>
                                 </form>
                             </div>  
                         </div>

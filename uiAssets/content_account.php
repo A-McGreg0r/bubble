@@ -16,9 +16,7 @@ function generateAccount(){
             <div class="card justify-content-center ">
             <!--Title-->
             <h4 class="card-title mb-0 mt-3">
-                <div class="row">
-                    <strong>My Account</strong>
-                </div>
+                <strong>My Account</strong>
             </h4>
             <!-- Card content -->
             <div class="card-body">

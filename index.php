@@ -82,6 +82,10 @@
                 include './uiAssets/content_adddevice.php';
                 $html .= generateQRReader($_SESSION);
             break;
+            case 'addroom':
+                include './uiAssets/content_addroom.php';
+                $html .= generateAddRoom();
+            break;
             case 'account':
                 include './uiAssets/content_account.php';
                 $html .= generateAccount();

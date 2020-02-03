@@ -50,8 +50,8 @@ function generateHomeTab(){
                                     <div class="container mt-2">
                                         <div class="row row-cols-2 mb-1">
                                             <div class="col border border-primary rounded m-2">
-                                                <h4 class="text-centre align-middle">Heating Usage</h4>
-                                                <canvas style="max-width:70%" id="heatingUsage" class="justify-content-lg-around"></canvas>
+                                                <h4 class="text-centre justify-content-center">Heating Usage</h4>
+                                                <canvas style="max-width:50% min-width:30%" id="heatingUsage" "></canvas>
                                                 <script>
                                                     //doughnut
                                                     var ctxD = document.getElementById("heatingUsage").getContext("2d");
@@ -153,7 +153,7 @@ function generateHomeTab(){
                                     </select>
                                 </div>                        
                                 
-                                <iframe id="ChartDispaly"></iframe>
+                                <iframe id="ChartDispaly src='myiframeContent.html"></iframe>
                                
                             </div>
                         </div>
@@ -182,7 +182,7 @@ html;
 ?>
 <script>
 
-    let x = document.getElementById("chartPicker");
+    let e = document.getElementById("chartPicker");
     let chart = e.options[x.selectedIndex].value;
 
     if (chart===3){

@@ -1,8 +1,8 @@
 <?php
 function generateTabs(){
-    require 'homeTab.php';
-    require 'roomsTab.php';
-    require 'deviceTab.php';
+    require 'content_tab_homes.php';
+    require 'content_tab_rooms.php';
+    require 'content_tab_devices.php';
 
     $html = '
 

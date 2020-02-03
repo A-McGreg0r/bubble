@@ -9,10 +9,11 @@ function generateDeviceTab(){
         $hub_id = $_SESSION['hub_id'];
         
         $stmt = $db->prepare("SELECT * FROM device_info WHERE hub_id = ?");
-        $stmt->bind_param("s", $hub_id);
+        $stmt->bind_param("i", $hub_id);
         $stmt->execute();
-        if ($stmt->num_rows > 0) {
-            $result = $stmt->get_result();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
                 $device_id = $row['device_id'];
                 $device_name = $row['device_name'];
@@ -26,21 +27,24 @@ function generateDeviceTab(){
               
                     <!--Card content-->
                     <div class="card-body d-flex justify-content-between">
-              
-                    <!--Title-->      
+                
+                        <!--Title-->      
                         <div class="d-flex flex-column">  
                             $device_name
                         </div>
                         
                         <div class="d-flex flex-column">
-                        <!-- Default switch -->
+                            <!-- Default switch -->
                             <div class="custom-control custom-switch">
                                 <form onsubmit="toggleDevice($device_id);" method="POST">
-                                    <input type="checkbox" class="custom-control-input" id="roomSwitch">
+
+                                    <input type="checkbox" class="custom-control-input" id="roomSwitche">
+                                    <label class="custom-control-label" for="roomSwitche">off/on</label>
                                 </form>
                             </div>  
                         </div>
-                  </div>
+
+                    </div>
                 </div>
 html;
             }
@@ -49,6 +53,7 @@ html;
     } else{
         exit("Error, user is not logged in!");
     }
+    return $html;
 }
    
 ?>

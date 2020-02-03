@@ -41,13 +41,14 @@
         // SWITCH DEPENDING ON URL ACTION
         switch($action){
             case 'registerComplete':
-                // echo file_get_contents($templatesDir."registerComplete.html");
+                include "./uiAssets/content_registrationComplete.php";
+                $html .= generateRegistrationComplete();
             break;
             case 'registerFailed':
 
             break;
             default:
-                include "./uiAssets/loginContent.php";
+                include "./uiAssets/content_login.php";
                 $html .= generateLoginPage();
             break;
         }
@@ -68,18 +69,22 @@
         }
 
         //ALL PAGES NEED NAVIGATION
-        include './uiAssets/userNav.php';
+        include './uiAssets/content_userNav.php';
         $html .= generateUserNav();
 
         //SWITCH DEPENDING ON URL ACTION
         switch($action){
             case 'logout':
-                include './required/logoutAction.php';
+                include './required/action_logout.php';
                 $html .= generateLogout($_SESSION);
             break;
             case 'adddevice':
-                include './qr-reader.php';
+                include './uiAssets/content_adddevice.php';
                 $html .= generateQRReader($_SESSION);
+            break;
+            case 'account':
+                include './uiAssets/content_account.php';
+                $html .= generateAccount();
             break;
             default:
                 include "appCore.php";

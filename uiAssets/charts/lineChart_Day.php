@@ -6,6 +6,7 @@ function generateLineChart_Day(){
     //TODO remove once data base it implmented
     //randome genarated grapth (temp)
     $dataTitle ="lineChart_Year";
+
     $first = strtotime('first day this month');
     $dataLabels_Day = array();
     $dataPoints_Day = array();

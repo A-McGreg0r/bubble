@@ -182,7 +182,7 @@ html;
 ?>
 <script>
 
-    let x = document.getElementById("chartPicker");
+    let e = document.getElementById("chartPicker");
     let chart = e.options[x.selectedIndex].value;
 
     if (chart===3){

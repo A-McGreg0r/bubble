@@ -51,7 +51,7 @@ function generateHomeTab(){
                                         <div class="row row-cols-2 mb-1">
                                             <div class="col border border-primary rounded m-2">
                                                 <h4 class="text-centre align-middle">Heating Usage</h4>
-                                                <canvas style="max-width:50%" id="heatingUsage" class="justify-content-lg-around"></canvas>
+                                                <canvas style="max-width:50% min-width:30%" id="heatingUsage" class="justify-content-lg-around"></canvas>
                                                 <script>
                                                     //doughnut
                                                     var ctxD = document.getElementById("heatingUsage").getContext("2d");

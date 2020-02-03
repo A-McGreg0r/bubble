@@ -145,14 +145,16 @@ function generateHomeTab(){
                                     <p class="lead align-content-center">
                                         <span class="badge info-color-dark p-2">Date range</span>
                                     </p>-->
-                                    <select class="browser-default custom-select">
+                                    <select id="chartPicker" class="browser-default custom-select">
                                         <option selected>Choose time period</option>
                                         <option value="1">Week</option>
                                         <option value="2">Month</option>
                                         <option value="3">Year</option>
                                     </select>
                                 </div>                        
-                                <canvas id="lineChart_Year"></canvas>
+                                
+                                <iframe id="ChartDispaly"></iframe>
+                               
                             </div>
                         </div>
                     </div>
@@ -177,5 +179,19 @@ html;
     
     return $html;
 }
-
 ?>
+<script>
+    document.getElementById("chartPicker").onselect;
+    if (document.getElementById("chartPicker").valueOf()===3){
+        document.getElementById("ChartDispaly").innerHTML="<canvas id=\"lineChart_Year\"></canvas>";
+    }else if  (document.getElementById("chartPicker").valueOf()===2){
+        document.getElementById("ChartDispaly").innerHTML="<canvas id=\"lineChart_Month\"></canvas>";
+    }else if  (document.getElementById("chartPicker").valueOf()===2){
+        document.getElementById("ChartDispaly").innerHTML="<canvas id=\"lineChart_day\"></canvas>";
+    }else if (document.getElementById("chartPicker").valueOf()===0){
+    }else {
+        alert("something has gone wrong")
+    }
+
+
+</script>

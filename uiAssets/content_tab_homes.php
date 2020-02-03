@@ -12,7 +12,6 @@ function generateHomeTab(){
         $stmt->bind_param("i", $user_id);
         $stmt->execute();
         $result = $stmt->get_result();
-        $html .= "$result->num_rows";
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
                 $hub_id = $row['hub_id'];
@@ -20,6 +19,8 @@ function generateHomeTab(){
                 $stmt1->bind_param("i", $hub_id);
                 $stmt1->execute();
                 $result1 = $stmt1->get_result();
+                $html .= "$result1->num_rows - $hub_id";
+
                 if ($result1->num_rows === 0) {
                     $row1 = $result1->fetch_assoc();
                     $hub_name = $row1['hub_name'];

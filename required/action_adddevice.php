@@ -1,7 +1,7 @@
 <?php
     echo var_dump($_POST);
 
-    $imageURI = $_POST[0];
+    $imageURI = key($_POST[0]);
 
     echo $imageURI;
 

@@ -16,13 +16,13 @@ function generateHomeTab(){
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
                 $hub_id = $row['hub_id'];
-                $stmt = $db->prepare("SELECT * FROM hub_info WHERE hub_id = ?");
-                $stmt->bind_param("i", $hub_id);
-                $stmt->execute();
-                $result = $stmt->get_result();
-                if ($result->num_rows === 0) {
-                    $row = $result->fetch_assoc();
-                    $hub_name = $row['hub_name'];
+                $stmt1 = $db->prepare("SELECT * FROM hub_info WHERE hub_id = ?");
+                $stmt1->bind_param("i", $hub_id);
+                $stmt1->execute();
+                $result1 = $stmt1->get_result();
+                if ($result1->num_rows === 0) {
+                    $row1 = $result1->fetch_assoc();
+                    $hub_name = $row1['hub_name'];
                     if(empty($hub_name)){
                         $hub_name = "My Home";
                     }
@@ -165,8 +165,12 @@ html;
                     $html .= generateLineChart_Month();
                     $html .= generateLineChart_Day();
                 }
+                $stmt1->close();
+
             }
         }
+
+        $stmt->close();
     }
 
     $html .= "</div>";

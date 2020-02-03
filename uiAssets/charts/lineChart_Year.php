@@ -6,26 +6,26 @@ function generateLineChart_Year(){
     //TODO remove once data base it implmented
     //randome genarated grapth (temp)
     $dataTitle ="lineChart_Year";
-    $first = strtotime('first day this month');
-    $dataLables = array();
-    $dataPoints = array();
-    $dataAvg = array();
+    $first_Year = strtotime('first day this month');
+    $dataLables_Year = array();
+    $dataPoints_Year = array();
+    $dataAvg_Year = array();
 
     for ($i = 11; $i >= 0; $i--) {
         //list of months
-        array_push($dataLables, date('M', strtotime("-$i month", $first)));
+        array_push($dataLables_Year, date('M', strtotime("-$i month", $first_Year)));
         //geanarat rand data for display
-        array_push($dataPoints, rand(0, 1000));
+        array_push($dataPoints_Year, rand(100, 1000));
         //a avg of the entire contence of the array
         //todo consider changeing it to look at all past years to provide a more accurit estamit
-        $dataPoints = array_filter($dataPoints);
-        array_push($dataAvg, array_sum($dataPoints)/count($dataPoints));
+        $dataPoints_Year = array_filter($dataPoints_Year);
+        array_push($dataAvg_Year, array_sum($dataPoints_Year)/count($dataPoints_Year));
 
     }
 
-    $jsonEncode1_year = json_encode($dataLables, JSON_NUMERIC_CHECK);
-    $jsonEncode2_year = json_encode($dataAvg, JSON_NUMERIC_CHECK);
-    $jsonEncode3_year = json_encode($dataPoints, JSON_NUMERIC_CHECK);
+    $jsonEncode1_Year = json_encode($dataLables_Year, JSON_NUMERIC_CHECK);
+    $jsonEncode2_Year = json_encode($dataAvg_Year, JSON_NUMERIC_CHECK);
+    $jsonEncode3_Year = json_encode($dataPoints_Year, JSON_NUMERIC_CHECK);
     $html = <<<h
 
     <script type="text/javascript">
@@ -38,10 +38,10 @@ function generateLineChart_Year(){
         let LineChartYear = new Chart(ctxL, {
             type: 'line',
             data: {
-                labels: $jsonEncode1_year,
+                labels: $jsonEncode1_Year,
                 datasets: [{
                     label: "Expected Usage",
-                    data: $jsonEncode2_year,
+                    data: $jsonEncode2_Year,
                     backgroundColor: [
                         'rgba(0,0,0,0)',
                     ],
@@ -52,7 +52,7 @@ function generateLineChart_Year(){
                 },
                     {
                         label: "Power Used",
-                        data: $jsonEncode3_year,
+                        data: $jsonEncode3_Year,
                         backgroundColor: gradientFill,
                         borderColor: gradientFill,
                         borderWidth: 2

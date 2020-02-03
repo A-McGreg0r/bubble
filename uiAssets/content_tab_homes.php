@@ -153,7 +153,7 @@ function generateHomeTab(){
                                     </select>
                                 </div>                        
                                 
-                                <iframe id="ChartDisplay "></iframe>
+                                <div id="ChartDisplay "></div>
                                
                             </div>
                         </div>

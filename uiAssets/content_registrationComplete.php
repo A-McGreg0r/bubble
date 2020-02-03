@@ -1,5 +1,5 @@
 <?php
-include_once dirname(__DIR__).'/../required/config.php';
+include_once dirname(__DIR__).'/required/config.php';
 load("../index.php");
 exit();
 

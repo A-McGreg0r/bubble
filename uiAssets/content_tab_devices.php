@@ -17,6 +17,15 @@ function generateDeviceTab(){
             while($row = $result->fetch_assoc()) {
                 $device_id = $row['device_id'];
                 $device_name = $row['device_name'];
+                $device_type = $row['device_type'];
+
+                $stmt3 = $db->prepare("SELECT * FROM device_types WHERE type_id = ?");
+                $stmt3->bind_param("i", $device_type);
+                $stmt3->execute();
+                $result3 = $stmt3->get_result();
+                $row3 = $result3->fetch_assoc();
+                $icon = $row3['type_icon'];
+
                 $html .= <<<html
                 <!-- Card -->
                 <div class="card mb-4 container">
@@ -30,7 +39,7 @@ function generateDeviceTab(){
                 
                         <!--Title-->      
                         <div class="d-flex flex-column">  
-                            $device_name
+                            $icon $device_name
                         </div>
                         
                         <div class="d-flex flex-column">
@@ -46,6 +55,8 @@ function generateDeviceTab(){
                     </div>
                 </div>
 html;
+                $stmt3->close();
+
             }
         }
         $stmt->close();

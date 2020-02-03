@@ -93,11 +93,13 @@ html;
                                     </td>
                                 </tr>   
 device;
+                            $stmt3->close();
                         }
                     }
+                    $stmt2->close();
                 }
             }
-
+            $stmt1->close();
             $html .= '    
                             </tbody>
                         </table>
@@ -198,6 +200,8 @@ device;
         </script>
         ';
         }
+        $stmt->close();
+
     }
 
     return $html;

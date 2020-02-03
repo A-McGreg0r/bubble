@@ -37,9 +37,11 @@ function generateQRReader(){
                     });
                 }
             </script>
-pageHTML;        
+pageHTML;      
+            break;
     }
 
     return $html;
 }
+
 ?>

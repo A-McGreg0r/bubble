@@ -80,7 +80,7 @@
             break;
             case 'adddevice':
                 include './uiAssets/content_adddevice.php';
-                $html .= generateQRReader($_SESSION);
+                $html .= generateQRReader();
             break;
             case 'addroom':
                 include './uiAssets/content_addroom.php';

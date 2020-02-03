@@ -50,7 +50,7 @@ function generateHomeTab(){
                                     <div class="container mt-2">
                                         <div class="row row-cols-2 mb-1">
                                             <div class="col border border-primary rounded m-2">
-                                                <h4 class="text-centre class="justify-content-center">Heating Usage</h4>
+                                                <h4 class="text-centre justify-content-center">Heating Usage</h4>
                                                 <canvas style="max-width:50% min-width:30%" id="heatingUsage" "></canvas>
                                                 <script>
                                                     //doughnut

@@ -39,7 +39,7 @@ function generateDeviceTab(){
                 
                         <!--Title-->      
                         <div class="d-flex flex-column">  
-                            $icon $device_name
+                            $icon &nbsp; $device_name
                         </div>
                         
                         <div class="d-flex flex-column">

@@ -14,13 +14,45 @@ function generateQRReader(){
         default:
         $html = <<<pageHTML
 
+        <div class="container">
+            <div class="col-lg-12">
+                <div class="row">
+                    <video autoplay="true" id="videoElement">
+                    </video>
+                </div>
+            </div>
         <label>
-            <!--TODo put in flx box  -->
             <input type=text size=16 placeholder="Tracking Code" class=qrcode-text>
         </label>
         <label class=qrcode-text-btn><input type=file accept="image/*" capture=environment tabindex=-1>
         </label>
-    
+        
+        <script type="text/javascript">
+
+            var video = document.querySelector("#videoElement");
+
+            if (navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function (stream) {
+                video.srcObject = stream;
+                })
+                .catch(function (err0r) {
+                console.log("Something went wrong!");
+                });
+            }
+        </script>
+
+    pageHTML;
+        
+    }
+
+    return $html;
+}
+
+
+
+/*
+
     
         <script type="text/javascript">
             //TODO output varabuls to php for posting to DB.
@@ -64,9 +96,7 @@ function generateQRReader(){
                 doSomethingWithFiles(e.clipboardData.files);
             });
         </script>
-    pageHTML;
-        
-    }
 
-    return $html;
-}
+        */
+
+?>

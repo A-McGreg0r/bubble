@@ -1,5 +1,6 @@
 <?php
-include_once dirname(__DIR__).'/required/config.php';
+include_once '/var/www/html/bubble/required/config.php';
+
 function generateHomeTab(){
     global $db;
     $html = '<div class="accordion md-accordion z-depth-1-half" id="accordionEx194" role="tablist" aria-multiselectable="true">';
@@ -50,7 +51,7 @@ function generateHomeTab(){
                                         <div class="row row-cols-2 mb-1">
                                             <div class="col border border-primary rounded m-2">
                                                 <h4 class="text-centre align-middle">Heating Usage</h4>
-                                                <canvas style="max-width:95%" id="heatingUsage" class="justify-content-lg-around"></canvas>
+                                                <canvas style="max-width:70%" id="heatingUsage" class="justify-content-lg-around"></canvas>
                                                 <script>
                                                     //doughnut
                                                     var ctxD = document.getElementById("heatingUsage").getContext("2d");
@@ -72,7 +73,7 @@ function generateHomeTab(){
                                             </div>
                                             <div class="col border border-primary rounded m-2">
                                                 <h4 class="text-centre align-middle">Heating Usage</h4>
-                                                <canvas style="width:50%" id="heatingUsage1"></canvas>
+                                                <canvas style="max-width:50% min-width:30%" id="heatingUsage1"></canvas>
                                                 <script>
                                                     //doughnut
                                                     var ctxD = document.getElementById("heatingUsage1").getContext("2d");
@@ -94,7 +95,7 @@ function generateHomeTab(){
                                             </div>
                                             <div class="col border border-primary rounded m-2">
                                                 <h4 class="text-centre align-middle">Heating Usage</h4>
-                                                <canvas style="width:50%" id="heatingUsage2"></canvas>
+                                                <canvas style="max-width:50% min-width:30%" id="heatingUsage2"></canvas>
                                                 <script>
                                                     //doughnut
                                                     var ctxD = document.getElementById("heatingUsage2").getContext("2d");
@@ -116,7 +117,7 @@ function generateHomeTab(){
                                             </div>
                                             <div class="col border border-primary rounded m-2">
                                                 <h4 class="text-centre align-middle">Heating Usage</h4>
-                                                <canvas style="width:50%" id="heatingUsage3"></canvas>
+                                                <canvas style="max-width:50% min-width:30%" id="heatingUsage3"></canvas>
                                                 <script>
                                                     //doughnut
                                                     var ctxD = document.getElementById("heatingUsage3").getContext("2d");

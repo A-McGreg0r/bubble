@@ -2,7 +2,7 @@
 include_once dirname(__DIR__).'/required/config.php';
 
 function generateQRReader(){
-
+    $html = '';
     $op = '';
     if(isset($_GET['op'])) $op = $_GET['op'];
 
@@ -12,90 +12,34 @@ function generateQRReader(){
             $_SESSION['hub_id'] = 1;
         break;
         default:
-        $html = <<<pageHTML
-
-        <div class="container">
-            <div class="col-lg-12">
-                <div class="row">
-                    <video autoplay="true" id="videoElement">
-                    </video>
+            $html .= <<<pageHTML
+            <div class="container">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <video autoplay="true" id="videoElement">
+                        </video>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <script type="text/javascript">
+            <script type="text/javascript">
 
-            var video = document.querySelector("#videoElement");
+                var video = document.querySelector("#videoElement");
 
-            if (navigator.mediaDevices.getUserMedia) {
-            navigator.mediaDevices.getUserMedia({ video: true })
-                .then(function (stream) {
-                video.srcObject = stream;
-                })
-                .catch(function (err0r) {
-                console.log("Something went wrong!");
-                });
-            }
-        </script>
+                if (navigator.mediaDevices.getUserMedia) {
+                    navigator.mediaDevices.getUserMedia(
+                        { video: true }
+                    ).then(function (stream) {
+                        video.srcObject = stream;
+                    })
+                    .catch(function (err0r) {
+                    console.log("Something went wrong!");
+                    });
+                }
+            </script>
 pageHTML;        
     }
 
     return $html;
 }
-
-
-
-/*
-
-            <label>
-            <input type=text size=16 placeholder="Tracking Code" class=qrcode-text>
-        </label>
-        <label class=qrcode-text-btn><input type=file accept="image/*" capture=environment tabindex=-1>
-        </label>
-        
-        <script type="text/javascript">
-            //TODO output varabuls to php for posting to DB.
-            function openQRCamera(node) {
-                const reader = new FileReader();
-                reader.onload = function () {
-                    node.value = "";
-                    qrcode.callback = function (res) {
-                        if (res instanceof Error) {
-                            alert("No QR code found. Please make sure the QR code is within the camera's frame and try again.");
-                        } else {
-                            node.parentNode.previousElementSibling.value = res;
-                        }
-                    };
-                    qrcode.decode(reader.result);
-                };
-                reader.readAsText(node.files[0]);
-            }
-        </script>
-    
-        <div id="target">You can drag an image file here</div>
-        <script>
-            const target = document.getElementById('target');
-    
-            target.addEventListener('drop', (e) => {
-                e.stopPropagation();
-                e.preventDefault();
-    
-                doSomethingWithFiles(e.dataTransfer.files);
-            });
-    
-            target.addEventListener('dragover', (e) => {
-                e.stopPropagation();
-                e.preventDefault();
-                e.dataTransfer.dropEffect = 'copy';
-            });
-    
-    
-            target.addEventListener('paste', (e) => {
-                e.preventDefault();
-                doSomethingWithFiles(e.clipboardData.files);
-            });
-        </script>
-
-        */
-
 ?>

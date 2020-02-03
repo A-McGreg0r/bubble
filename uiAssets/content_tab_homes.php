@@ -169,9 +169,9 @@ function generateHomeTab(){
           if ( this.value === '1'){
             $("#lineChart_Year").show();
           }else if( this.value === '2'){
-             $("#chartPicker").show();
+             $("#lineChart_Month").show();
           }else if( this.value === '3'){
-              $("#chartPicker").show();
+              $("#lineChart_Day").show();
           }else{
               $("#chartPicker").hide();
           }

@@ -152,9 +152,19 @@ function generateHomeTab(){
                                         <option value="3">Year</option>
                                     </select>
                                 </div>             
-                                <div style='display:none;' id='lineChart_Year'>chart year<br/>&nbsp;
+                                <div style='display:none;' id='Year'>chart year<br/>&nbsp;
+                                <h1>year</h1>
                                     <canvas id="lineChart_Year"></canvas>     
                                 </div> 
+                                <div style='display:none;' id='Month'>chart year<br/>&nbsp;
+                                <h1>month</h1>
+                                    <canvas id="lineChart_Month"></canvas>     
+                                </div> 
+                                <div style='display:none;' id='Day'>chart year<br/>&nbsp;
+                                <h1>day</h1>
+                                    <canvas id="lineChart_Day"></canvas>     
+                                </div> 
+
                                          
 
                                
@@ -167,11 +177,11 @@ function generateHomeTab(){
     $(document).ready(function(){
     $('#chartPicker').on('change', function() {
           if ( this.value === '1'){
-            $("#lineChart_Year").show();
+            $("#Year").show();
           }else if( this.value === '2'){
-             $("#lineChart_Month").show();
+             $("#Month").show();
           }else if( this.value === '3'){
-              $("#lineChart_Day").show();
+              $("#Day").show();
           }else{
               $("#chartPicker").hide();
           }

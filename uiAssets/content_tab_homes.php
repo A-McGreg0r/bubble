@@ -180,18 +180,3 @@ html;
     return $html;
 }
 ?>
-<script>
-    document.getElementById("chartPicker").onselect;
-    if (document.getElementById("chartPicker").valueOf()===3){
-        document.getElementById("ChartDispaly").innerHTML="<canvas id=\"lineChart_Year\"></canvas>";
-    }else if  (document.getElementById("chartPicker").valueOf()===2){
-        document.getElementById("ChartDispaly").innerHTML="<canvas id=\"lineChart_Month\"></canvas>";
-    }else if  (document.getElementById("chartPicker").valueOf()===2){
-        document.getElementById("ChartDispaly").innerHTML="<canvas id=\"lineChart_day\"></canvas>";
-    }else if (document.getElementById("chartPicker").valueOf()===0){
-    }else {
-        alert("something has gone wrong")
-    }
-
-
-</script>

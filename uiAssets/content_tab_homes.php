@@ -1,5 +1,5 @@
 <?php
-include_once dirname(__DIR__).'../required/config.php';
+include_once dirname(__DIR__).'/../required/config.php';
 function generateHomeTab(){
     global $db;
     $html = '<div class="accordion md-accordion z-depth-1-half" id="accordionEx194" role="tablist" aria-multiselectable="true">';

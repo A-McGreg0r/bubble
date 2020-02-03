@@ -1,7 +1,7 @@
 <?php
 
     $imageURI = $_POST[1];
-    foreach ($_POST as &$value) {
+    foreach ($_POST as $value) {
         echo $value;
     }
     echo $imageURI;

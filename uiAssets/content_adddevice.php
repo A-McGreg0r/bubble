@@ -20,17 +20,25 @@ function generateQRReader(){
                             <h3>Add new devices by scanning the QR code on the device</h3>
                         </div>
                         <div class="align-middle">
-                            <div style="position:absolute; left: 50%; top:90%; transform: translate(-50%, -50%);">
-                                <i class="fas fa-dot-circle fa-5x"></i>
-                            </div>
+                            <form onsubmit="submitImage();" method="POST">
+                                <input type="button" class="custom-control-input" id="submitImage">
+                                    <div style="position:absolute; left: 50%; top:90%; transform: translate(-50%, -50%);">
+                                        <i class="fas fa-dot-circle fa-5x"></i>
+                                    </div>
+                                </input>
+                            </form>
                             <video autoplay="true" id="videoElement" style="width:100%">
                             </video>
+                            <div id="capturedimage"></div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <script type="text/javascript">
+
+
+
 
                 var video = document.querySelector("#videoElement");
 

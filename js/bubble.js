@@ -33,3 +33,35 @@ function toggleDevice(room_id){
     request.send(new FormData(event.target));
     event.preventDefault();
 }
+
+
+function submitImage(){
+    var url = "/index.php?action=adddevice&op=upload";
+    var video = document.querySelector("#videoElement");
+    var image = document.querySelector("#capturedimage");
+
+    var canvas = document.createElement("canvas");
+    canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+
+    var img = document.createElement("img");
+    img.src = canvas.toDataURL();
+    image.prepend(img);
+
+    $.ajax({
+        type:'POST',
+        url: url,
+        data:image,
+        cache:false,
+        contentType: false,
+        processData: false,
+        success:function(data){
+            console.log("success");
+            console.log(data);
+        },
+        error: function(data){
+            console.log("error");
+            console.log(data);
+        }
+    });
+}
+

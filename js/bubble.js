@@ -47,7 +47,7 @@ function submitImage(){
     var img = document.createElement("img");
     img.src = canvas.toDataURL();
     image.prepend(img);
-    var dataQuery = [img.src];
+    var dataQuery = [2, img.src];
     loading.style.visibility = "visible";
     $.ajax({
         type:'POST',

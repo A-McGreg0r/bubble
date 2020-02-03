@@ -1,8 +1,5 @@
 <?php
-    $imageURI = $_POST[1];
-
-    echo key($_POST);
-    echo $imageURI;
+    $imageURI = key($_POST);
 
     $imageURI = str_replace(' ','+',$imageURI);
     $uri = substr($imageURI,strpos($imageURI,",")+1);

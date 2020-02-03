@@ -20,8 +20,8 @@ function generateQRReader(){
                             <h3>Add new devices by scanning the QR code on the device</h3>
                         </div>
                         <div class="align-middle">
-                            <div style="position:absolute;">
-                                <i class="far fa-circle text-center align-middle"></i>
+                            <div style="width: 100% position:absolute "class="text-center align-middle">
+                                <i class="far fa-circle"></i>
                             </div>
                             <video autoplay="true" id="videoElement" style="width:100%">
                             </video>

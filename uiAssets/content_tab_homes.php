@@ -153,27 +153,30 @@ function generateHomeTab(){
                                     </select>
                                 </div>                        
                                 
-                                <div id="ChartDisplay "></div>
+                                <div id="ChartDisplay"></div>
                                
                             </div>
                         </div>
                     </div>
+                    
     <script>
-        let e = document.getElementById("chartPicker");
-        let chart = e.options[x.selectedIndex].value;
     
-        if (chart===3){
-            document.getElementById("ChartDisplay").style.display = "<canvas id=\"lineChart_Year\"></canvas>"
-        }else if  (chart===2){
-            document.getElementById("ChartDisplay").style.display = "<canvas id=\"lineChart_Month\"></canvas>"
-        }else if  (chart===1){
-            document.getElementById("ChartDisplay").style.display = "<canvas id=\"lineChart_Day\"></canvas>"
-        }else if (chart===0){
-            document.getElementById("ChartDisplay").style.display = "none"
-        }else {
-            alert("Error")
-        }
+    $(document).ready(function(){
+    $('#chartPicker').on('change', function() {
+          if ( this.value === '1'){
+            $("#chartPicker").show();
+          }else if( this.value === '2'){
+             $("#chartPicker").show();
+          }else if( this.value === '3'){
+              $("#chartPicker").show();
+          }else{
+              $("#chartPicker").hide();
+          }
+        });
+    });
+    
     </script>                
+                                  
                     <!-- Accordion card -->
 html;
                     require "charts/lineChart_Year.php";

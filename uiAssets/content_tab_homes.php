@@ -146,14 +146,14 @@ function generateHomeTab(){
                                         <span class="badge info-color-dark p-2">Date range</span>
                                     </p>-->
                                     <select id="chartPicker" class="browser-default custom-select">
-                                        <option selected>Choose time period</option>
+                                        <option value="0" selected>Choose time period</option>
                                         <option value="1">Week</option>
                                         <option value="2">Month</option>
                                         <option value="3">Year</option>
                                     </select>
                                 </div>                        
                                 
-                                <iframe id="ChartDispaly src='myiframeContent.html"></iframe>
+                                <iframe id="ChartDisplay "></iframe>
                                
                             </div>
                         </div>
@@ -169,6 +169,7 @@ function generateHomeTab(){
         }else if  (chart===1){
             document.getElementById("ChartDisplay").style.display = "<canvas id=\"lineChart_Day\"></canvas>"
         }else if (chart===0){
+            document.getElementById("ChartDisplay").style.display = "none"
         }else {
             alert("Error")
         }

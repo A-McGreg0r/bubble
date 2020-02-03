@@ -197,15 +197,13 @@ function generateHomeTab(){
                                   
                     <!-- Accordion card -->
 html;
-                    $html .= generateLineChart_Year();
+
                     require "charts/lineChart_Year.php";
-                    $html .= generateLineChart_Month();
                     require "charts/lineChart_Month.php";
-                    $html .= generateLineChart_Day();
                     require "charts/lineChart_Day.php";
-
-
-
+                    $html .= generateLineChart_Year();
+                    $html .= generateLineChart_Month();
+                    $html .= generateLineChart_Day();
                 }
                 $stmt1->close();
 

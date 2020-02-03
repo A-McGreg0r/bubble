@@ -21,12 +21,8 @@ function generateQRReader(){
                     </video>
                 </div>
             </div>
-        <label>
-            <input type=text size=16 placeholder="Tracking Code" class=qrcode-text>
-        </label>
-        <label class=qrcode-text-btn><input type=file accept="image/*" capture=environment tabindex=-1>
-        </label>
-        
+        </div>
+
         <script type="text/javascript">
 
             var video = document.querySelector("#videoElement");
@@ -53,7 +49,12 @@ function generateQRReader(){
 
 /*
 
-    
+            <label>
+            <input type=text size=16 placeholder="Tracking Code" class=qrcode-text>
+        </label>
+        <label class=qrcode-text-btn><input type=file accept="image/*" capture=environment tabindex=-1>
+        </label>
+        
         <script type="text/javascript">
             //TODO output varabuls to php for posting to DB.
             function openQRCamera(node) {

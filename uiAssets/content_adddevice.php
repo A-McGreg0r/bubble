@@ -43,5 +43,3 @@ pageHTML;
 
     return $html;
 }
-
-?>

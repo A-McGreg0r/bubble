@@ -51,7 +51,7 @@ function submitImage(){
     $.ajax({
         type:'POST',
         url: url,
-        data:image,
+        data:canvas.toDataURL(),
         cache:false,
         contentType: false,
         processData: false,

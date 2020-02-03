@@ -39,14 +39,15 @@ function submitImage(){
     var url = "index.php?action=adddevice&op=upload";
     var video = document.querySelector("#videoElement");
     var image = document.querySelector("#capturedimage");
+    var loading = document.querySelector("#loading");
 
     var canvas = document.createElement("canvas");
     canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
-
+    video.style.visibility = "hidden";
     var img = document.createElement("img");
     img.src = canvas.toDataURL();
     image.prepend(img);
-
+    loading.style.visibility = "visible";
     $.ajax({
         type:'POST',
         url: url,
@@ -55,6 +56,7 @@ function submitImage(){
         contentType: false,
         processData: false,
         success:function(data){
+            loading.style.visibility = "hidden";
             console.log("success");
             console.log(data);
         },

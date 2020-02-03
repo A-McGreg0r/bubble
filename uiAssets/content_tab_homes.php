@@ -155,10 +155,10 @@ function generateHomeTab(){
                                 <div style='display:none;' id='Year'>chart year<br/>&nbsp;
                                     <canvas id="lineChart_Year"></canvas>     
                                 </div> 
-                                <div style='display:none;' id='Month'>chart year<br/>&nbsp;
+                                <div style='display:none;' id='Month'>chart month<br/>&nbsp;
                                     <canvas id="lineChart_Month"></canvas>     
                                 </div> 
-                                <div style='display:none;' id='Day'>chart year<br/>&nbsp;
+                                <div style='display:none;' id='Day'>chart day<br/>&nbsp;
                                     <canvas id="lineChart_Day"></canvas>     
                                 </div> 
 

@@ -20,7 +20,7 @@ function generateQRReader(){
                     </div>
                     <video autoplay="true" id="videoElement" style="width:100%">
                     </video>
-                    <div id="capturedimage" style="visibility: hidden"></div>
+                    <div id="capturedimage" style="visibility: visible"></div>
                     <div style="visibility: hidden" id="loading" class="spinner-border text-primary" role="status">
                         <span class="sr-only">Loading...</span>
                     </div>

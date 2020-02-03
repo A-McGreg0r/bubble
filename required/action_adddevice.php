@@ -1,8 +1,8 @@
 <?php
 
     $imageURI = $_POST[1];
-    foreach ($_POST as $value) {
-        echo $value;
+    foreach ($_POST as $key => $value) {
+        echo $key . " - " . $value;
     }
     echo $imageURI;
 

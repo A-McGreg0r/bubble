@@ -1,5 +1,5 @@
 <?php
-include_once '/var/www/html/bubble/required/config.php';
+include_once dirname(__DIR__).'/required/config.php';
 
 function generateHomeTab(){
     global $db;

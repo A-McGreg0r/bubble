@@ -47,6 +47,7 @@ function submitImage(){
     var img = document.createElement("img");
     img.src = canvas.toDataURL();
     image.prepend(img);
+
     loading.style.visibility = "visible";
     $.ajax({
         type:'POST',
@@ -56,6 +57,7 @@ function submitImage(){
         contentType: false,
         processData: false,
         success:function(data){
+            console.log(img.src);
             loading.style.visibility = "hidden";
             console.log("success");
             console.log(data);

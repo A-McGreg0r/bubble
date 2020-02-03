@@ -5,7 +5,7 @@ exit();
 
 function generateRegistrationComplete(){
     $html = '';
-    
+    //TODO some text here
     
 
     return $html;

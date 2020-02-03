@@ -9,10 +9,11 @@ function generateRoomTab(){
         $hub_id = $_SESSION['hub_id'];
         
         $stmt = $db->prepare("SELECT * FROM room_info WHERE hub_id = ?");
-        $stmt->bind_param("s", $hub_id);
+        $stmt->bind_param("i", $hub_id);
         $stmt->execute();
-        if ($stmt->num_rows > 0) {
-            $result = $stmt->get_result();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
                 $room_id = $row['room_id'];
                 $room_name = $row['room_name'];

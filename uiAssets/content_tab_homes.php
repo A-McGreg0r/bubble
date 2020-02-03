@@ -147,21 +147,18 @@ function generateHomeTab(){
                                     </p>-->
                                     <select id="chartPicker" class="browser-default custom-select">
                                         <option value="0" selected>Choose time period</option>
-                                        <option value="1">Week</option>
+                                        <option value="1">year</option>
                                         <option value="2">Month</option>
-                                        <option value="3">Year</option>
+                                        <option value="3">Day</option>
                                     </select>
                                             
                                 <div style='display:none;' id='Year'>chart year<br/>&nbsp;
-                                <h1>year</h1>
                                     <canvas id="lineChart_Year"></canvas>     
                                 </div> 
                                 <div style='display:none;' id='Month'>chart year<br/>&nbsp;
-                                <h1>month</h1>
                                     <canvas id="lineChart_Month"></canvas>     
                                 </div> 
                                 <div style='display:none;' id='Day'>chart year<br/>&nbsp;
-                                <h1>day</h1>
                                     <canvas id="lineChart_Day"></canvas>     
                                 </div> 
 

@@ -16,7 +16,7 @@ function generateLoginPage(){
     $html = <<<htmlPage
     <!--Modal cascading tabs-->
     <div class="col-12 col-md-auto">
-        <table style="height: 100vh; width:80%" class="align-middle text-centre">
+        <table style="height: 100vh; max-width:80%" class="justify-content-center text-centre">
             <tr>
                 <td class="align-middle">
                     <div class="text-center">
@@ -24,7 +24,7 @@ function generateLoginPage(){
                         <h2>The simple smart home.</h2>
                     </div>
                     <!-- Nav tabs -->
-                    <ul class="nav nav-tabs  tabs-2 elegant-color align-content-around" role="tablist">
+                    <ul class="nav nav-tabs  tabs-2 elegant-color align-content-center" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" data-toggle="tab" href="#panel1" role="tab">
                                 <i class="fas fa-user mr-1"></i>Login

@@ -7,13 +7,13 @@ function generateLineChart_Day(){
     //randome genarated grapth (temp)
     $dataTitle ="lineChart_Year";
     $first = strtotime('first day this month');
-    $dataLables_Day = array();
+    $dataLabels_Day = array();
     $dataPoints_Day = array();
     $dataAvg_Day = array();
 
     for ($i = 11; $i >= 0; $i--) {
         //list of months
-        array_push($dataLables_Day, date('M', strtotime("-$i month", $first)));
+        array_push($dataLabels_Day, date('M', strtotime("-$i month", $first)));
         //geanarat rand data for display
         array_push($dataPoints_Day, rand(0, 100));
         //a avg of the entire contence of the array
@@ -23,7 +23,7 @@ function generateLineChart_Day(){
 
     }
 
-    $jsonEncode1_Day = json_encode($dataLables_Day, JSON_NUMERIC_CHECK);
+    $jsonEncode1_Day = json_encode($dataLabels_Day, JSON_NUMERIC_CHECK);
     $jsonEncode2_Day = json_encode($dataAvg_Day, JSON_NUMERIC_CHECK);
     $jsonEncode3_Day = json_encode($dataPoints_Day, JSON_NUMERIC_CHECK);
     $html = <<<h

@@ -7,13 +7,13 @@ function generateLineChart_Year(){
     //randome genarated grapth (temp)
     $dataTitle ="lineChart_Year";
     $first_Year = strtotime('first day this month');
-    $dataLables_Year = array();
+    $dataLabels_Year = array();
     $dataPoints_Year = array();
     $dataAvg_Year = array();
 
     for ($i = 11; $i >= 0; $i--) {
         //list of months
-        array_push($dataLables_Year, date('M', strtotime("-$i month", $first_Year)));
+        array_push($dataLabels_Year, date('M', strtotime("-$i month", $first_Year)));
         //geanarat rand data for display
         array_push($dataPoints_Year, rand(100, 1000));
         //a avg of the entire contence of the array
@@ -23,7 +23,7 @@ function generateLineChart_Year(){
 
     }
 
-    $jsonEncode1_Year = json_encode($dataLables_Year, JSON_NUMERIC_CHECK);
+    $jsonEncode1_Year = json_encode($dataLabels_Year, JSON_NUMERIC_CHECK);
     $jsonEncode2_Year = json_encode($dataAvg_Year, JSON_NUMERIC_CHECK);
     $jsonEncode3_Year = json_encode($dataPoints_Year, JSON_NUMERIC_CHECK);
     $html = <<<h

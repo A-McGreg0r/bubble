@@ -152,7 +152,7 @@ function generateHomeTab(){
                                         <option value="3">Year</option>
                                     </select>
                                 </div>             
-                                <div style='display:none;' id='business'>Business Name<br/>&nbsp;
+                                <div style='display:none;' id='lineChart_Year'>chart year<br/>&nbsp;
                                     <canvas id="lineChart_Year"></canvas>     
                                 </div> 
                                          

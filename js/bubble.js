@@ -36,7 +36,7 @@ function toggleDevice(room_id){
 
 
 function submitImage(){
-    var url = "index.php?action=adddevice&op=upload";
+    var url = "required/action_adddevice.php";
     var video = document.querySelector("#videoElement");
     var image = document.querySelector("#capturedimage");
     var loading = document.querySelector("#loading");

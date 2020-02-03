@@ -1,10 +1,5 @@
 <?php
-<<<<<<< HEAD
-include_once '/public_html/bubble/required/config.php';
-
-=======
 include_once dirname(__DIR__).'/required/config.php';
->>>>>>> c59535040dbaf04e51dbc146394d96d03f56740c
 function generateHomeTab(){
     global $db;
     $html = '<div class="accordion md-accordion z-depth-1-half" id="accordionEx194" role="tablist" aria-multiselectable="true">';

@@ -47,7 +47,7 @@ function generateLineChart_Month(){
         const gradientFill = ctxL.createLinearGradient(0, 0, 0, 350);
         gradientFill.addColorStop(0, "rgba(242,38,19,0.5)");
         gradientFill.addColorStop(1, "rgba(0,230,64,0.5)");
-        let LineChartYear = new Chart(ctxL, {
+        let LineChartMonth = new Chart(ctxL, {
             type: 'line',
             data: {
                 labels: $jsonEncode1,
@@ -60,7 +60,7 @@ function generateLineChart_Month(){
                     borderColor: [
                         'rgba(0, 10, 130, .1)',
                     ],
-                    borderWidth: 2
+                    borderWidth: 2,
                 },
                     {
                         label: "Power Used",

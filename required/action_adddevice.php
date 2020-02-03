@@ -1,5 +1,5 @@
 <?php
-    echo $_POST;
+    echo var_dump($_POST);
 
     $imageURI = $_POST[0];
 

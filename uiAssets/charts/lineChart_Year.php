@@ -48,7 +48,7 @@ function generateLineChart_Year(){
                     borderColor: [
                         'rgba(0, 10, 130, .1)',
                     ],
-                    borderWidth: 2
+                    borderWidth: ['2'],
                 },
                     {
                         label: "Power Used",

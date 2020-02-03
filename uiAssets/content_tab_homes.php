@@ -146,33 +146,34 @@ function generateHomeTab(){
                                         <span class="badge info-color-dark p-2">Date range</span>
                                     </p>-->
                                     <select id="chartPicker" class="browser-default custom-select">
-                                        <option selected>Choose time period</option>
+                                        <option value="0" selected>Choose time period</option>
                                         <option value="1">Week</option>
                                         <option value="2">Month</option>
                                         <option value="3">Year</option>
                                     </select>
                                 </div>                        
                                 
-                                <iframe id="ChartDispaly src='myiframeContent.html"></iframe>
+                                <div id="ChartDisplay "></div>
                                
                             </div>
                         </div>
                     </div>
     <script>
-    let e = document.getElementById("chartPicker");
-    let chart = e.options[x.selectedIndex].value;
-
-    if (chart===3){
-        document.getElementById("ChartDisplay").innerHTML="<canvas id=\"lineChart_Year\"></canvas>";
-    }else if  (chart===2){
-        document.getElementById("ChartDisplay").innerHTML="<canvas id=\"lineChart_Month\"></canvas>";
-    }else if  (chart===1){
-        document.getElementById("ChartDisplay").innerHTML="<canvas id=\"lineChart_day\"></canvas>";
-    }else if (chart===0){
-    }else {
-        alert("Error")
-    }
-</script>                
+        let e = document.getElementById("chartPicker");
+        let chart = e.options[x.selectedIndex].value;
+    
+        if (chart===3){
+            document.getElementById("ChartDisplay").style.display = "<canvas id=\"lineChart_Year\"></canvas>"
+        }else if  (chart===2){
+            document.getElementById("ChartDisplay").style.display = "<canvas id=\"lineChart_Month\"></canvas>"
+        }else if  (chart===1){
+            document.getElementById("ChartDisplay").style.display = "<canvas id=\"lineChart_Day\"></canvas>"
+        }else if (chart===0){
+            document.getElementById("ChartDisplay").style.display = "none"
+        }else {
+            alert("Error")
+        }
+    </script>                
                     <!-- Accordion card -->
 html;
                     require "charts/lineChart_Year.php";

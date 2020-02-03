@@ -37,7 +37,7 @@ function generateQRReader(){
                     });
                 }
             </script>
-pageHTML;      
+pageHTML;
             break;
     }
 

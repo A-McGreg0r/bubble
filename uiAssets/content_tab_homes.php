@@ -1,6 +1,6 @@
 <?php
 include_once '../required/config.php';
-
+echo ini_get('include_path');
 function generateHomeTab(){
     global $db;
     $html = '<div class="accordion md-accordion z-depth-1-half" id="accordionEx194" role="tablist" aria-multiselectable="true">';

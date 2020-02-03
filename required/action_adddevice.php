@@ -1,6 +1,7 @@
 <?php
+    echo $_POST;
+
     $imageURI = $_POST[0];
-    echo $_POST[0];
 
     echo $imageURI;
 

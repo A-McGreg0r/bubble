@@ -7,25 +7,25 @@ function generateLineChart_Day(){
     //randome genarated grapth (temp)
     $dataTitle ="lineChart_Year";
     $first = strtotime('first day this month');
-    $dataLables = array();
-    $dataPoints = array();
-    $dataAvg = array();
+    $dataLables_Day = array();
+    $dataPoints_Day = array();
+    $dataAvg_Day = array();
 
     for ($i = 11; $i >= 0; $i--) {
         //list of months
-        array_push($dataLables, date('M', strtotime("-$i month", $first)));
+        array_push($dataLables_Day, date('M', strtotime("-$i month", $first)));
         //geanarat rand data for display
-        array_push($dataPoints, rand(0, 100));
+        array_push($dataPoints_Day, rand(0, 100));
         //a avg of the entire contence of the array
         //todo consider changeing it to look at all past years to provide a more accurit estamit
-        $dataPoints = array_filter($dataPoints);
-        array_push($dataAvg, array_sum($dataPoints)/count($dataPoints));
+        $dataPoints_Day = array_filter($dataPoints_Day);
+        array_push($dataAvg_Day, array_sum($dataPoints_Day)/count($dataPoints_Day));
 
     }
 
-    $jsonEncode1_Day = json_encode($dataLables, JSON_NUMERIC_CHECK);
-    $jsonEncode2_Day = json_encode($dataAvg, JSON_NUMERIC_CHECK);
-    $jsonEncode3_Day = json_encode($dataPoints, JSON_NUMERIC_CHECK);
+    $jsonEncode1_Day = json_encode($dataLables_Day, JSON_NUMERIC_CHECK);
+    $jsonEncode2_Day = json_encode($dataAvg_Day, JSON_NUMERIC_CHECK);
+    $jsonEncode3_Day = json_encode($dataPoints_Day, JSON_NUMERIC_CHECK);
     $html = <<<h
 
     <script type="text/javascript">

@@ -13,31 +13,30 @@ function generateAccount(){
 
 
             $html = <<<html
-   
             <div class="card justify-content-center ">
             <!--Title-->
-            <h4 class="card-title"><a><strong>My Account</strong></a></h4>
-            <!-- Card content -->
-            <div class="card-body ">
-                <div class="flex-row">
-                    Email: $email 
+            <h4 class="card-title mb-0 mt-3">
+                <div class="row">
+                    <strong>My Account</strong>
                 </div>
-    
+            </h4>
+            <!-- Card content -->
+            <div class="card-body">
                 <div class="flex-row justify-content-between">
+                    <div class="col-md-6">
+                        Email: $email 
+                    </div>
                     <div class="col-md-6">
                         First Name: $first_name
                     </div>
                     <div class="col-md-6">
                         First Name: $last_name
                     </div>
-                </div>
-                <div class="flex-row">
+                    <div class="col-md-6">
                     Address: $address_l1 $address_l2 $postcode
-
-                </div>   
-                <button onclick=deleteAccount()>
-                </button>
-    
+                    </div>
+                </div>
+                <button onclick=deleteAccount()></button>
             </div>
     
     
@@ -46,136 +45,62 @@ function generateAccount(){
                 <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Devices</h3>
                 <div class="card-body">
                     <div id="table" class="table-editable">
-            <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i
-                            class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span>
+                        <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span>
                         <table class="table table-bordered table-responsive-md table-striped text-center">
                             <thead>
-                            <tr>
-                                <th class="text-center">device name</th>
-                                <th class="text-center">type</th>
-                                <th class="text-center">location</th>
-                                <th class="text-center">consumption</th>
-                                <th class="text-center">Remove</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td class="pt-3-half" contenteditable="true">mylight</td>
-                                <td class="pt-3-half" contenteditable="true">lightbulb</td>
-                                <td class="pt-3-half" contenteditable="true">Deepends</td>
-                                <td class="pt-3-half" contenteditable="true">8w</td>
-                                <td class="pt-3-half">
-                    <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up"
-                                                                                aria-hidden="true"></i></a></span>
-                                    <span class="table-down"><a href="#!" class="indigo-text"><i
-                                                    class="fas fa-long-arrow-alt-down"
-                                                    aria-hidden="true"></i></a></span>
-                                </td>
-                                <td>
-                    <span class="table-remove"><button type="button"
-                                                        class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="pt-3-half" contenteditable="true">mylight</td>
-                                <td class="pt-3-half" contenteditable="true">lightbulb</td>
-                                <td class="pt-3-half" contenteditable="true">Deepends</td>
-                                <td class="pt-3-half" contenteditable="true">8w</td>
-                                <td class="pt-3-half">
-                    <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up"
-                                                                                aria-hidden="true"></i></a></span>
-                                    <span class="table-down"><a href="#!" class="indigo-text"><i
-                                                    class="fas fa-long-arrow-alt-down"
-                                                    aria-hidden="true"></i></a></span>
-                                </td>
-                                <td>
-                    <span class="table-remove"><button type="button"
-                                                        class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="pt-3-half" contenteditable="true">mylight</td>
-                                <td class="pt-3-half" contenteditable="true">lightbulb</td>
-                                <td class="pt-3-half" contenteditable="true">liveing room</td>
-                                <td class="pt-3-half" contenteditable="true">8w</td>
-                                <td class="pt-3-half">
-                    <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up"
-                                                                                aria-hidden="true"></i></a></span>
-                                    <span class="table-down"><a href="#!" class="indigo-text"><i
-                                                    class="fas fa-long-arrow-alt-down"
-                                                    aria-hidden="true"></i></a></span>
-                                </td>
-                                <td>
-                    <span class="table-remove"><button type="button"
-                                                        class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="pt-3-half" contenteditable="true">mylight</td>
-                                <td class="pt-3-half" contenteditable="true">lightbulb</td>
-                                <td class="pt-3-half" contenteditable="true">liveing room</td>
-                                <td class="pt-3-half" contenteditable="true">8w</td>
-                                <td class="pt-3-half">
-                    <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up"
-                                                                                aria-hidden="true"></i></a></span>
-                                    <span class="table-down"><a href="#!" class="indigo-text"><i
-                                                    class="fas fa-long-arrow-alt-down"
-                                                    aria-hidden="true"></i></a></span>
-                                </td>
-                                <td>
-                    <span class="table-remove"><button type="button"
-                                                        class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="pt-3-half" contenteditable="true">mylight</td>
-                                <td class="pt-3-half" contenteditable="true">lightbulb</td>
-                                <td class="pt-3-half" contenteditable="true">liveing room</td>
-                                <td class="pt-3-half" contenteditable="true">8w</td>
-                                <td class="pt-3-half">
-                    <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up"
-                                                                                aria-hidden="true"></i></a></span>
-                                    <span class="table-down"><a href="#!" class="indigo-text"><i
-                                                    class="fas fa-long-arrow-alt-down"
-                                                    aria-hidden="true"></i></a></span>
-                                </td>
-                                <td>
-                    <span class="table-remove"><button type="button"
-                                                        class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="pt-3-half" contenteditable="true">mylight</td>
-                                <td class="pt-3-half" contenteditable="true">lightbulb</td>
-                                <td class="pt-3-half" contenteditable="true">liveing room</td>
-                                <td class="pt-3-half" contenteditable="true">8w</td>
-                                <td class="pt-3-half">
-                    <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up"
-                                                                                aria-hidden="true"></i></a></span>
-                                    <span class="table-down"><a href="#!" class="indigo-text"><i
-                                                    class="fas fa-long-arrow-alt-down"
-                                                    aria-hidden="true"></i></a></span>
-                                </td>
-                                <td>
-                                        <span class="table-remove">
-                                            <button type="button"
-                                                    class="btn btn-danger btn-rounded btn-sm my-0">Remove
-                                            </button>
-                                        </span>
-                                </td>
-                            </tr>
-    
-    
+                                <tr>
+                                    <th class="text-center">Device</th>
+                                    <th class="text-center">Room</th>
+                                    <th class="text-center">Consumption</th>
+                                    <th class="text-center">Remove</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+html;
+            $user_id = $_SESSION['user_id'];
+            $stmt1 = $db->prepare("SELECT * FROM hub_users WHERE user_id = ?");
+            $stmt1->bind_param("i", $user_id);
+            $stmt1->execute();
+            $result1 = $stmt1->get_result();
+            //SELECT ALL HUBS FROM USERID
+            if ($result1->num_rows > 0) {
+                while($row = $result1->fetch_assoc()) {
+                    $hub_id = $row['hub_id'];
+                    $stmt2 = $db->prepare("SELECT * FROM device_info WHERE hub_id = ?");
+                    $stmt2->bind_param("i", $hub_id);
+                    $stmt2->execute();
+                    $result2 = $stmt2->get_result();
+                    //SELECT ALL DEVICES FROM HUB_ID
+                    if ($result2->num_rows > 0) {
+                        while($row2 = $result2->fetch_assoc()) {
+                            $device_name = $row2['device_name'];
+                            $device_type = $row2['device_type'];
+
+                            $html .= <<<device
+                                <tr>
+                                    <td class="pt-3-half" contenteditable="true">$device_type $device_name</td>
+                                    <td class="pt-3-half" contenteditable="true">8w</td>
+                                    <td class="pt-3-half">
+                                        <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i></a></span>
+                                        <span class="table-down"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-down" aria-hidden="true"></i></a></span>
+                                    </td>
+                                    <td>
+                                        <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
+                                    </td>
+                                </tr>   
+device;
+                        }
+                    }
+                }
+            }
+
+            $html .= '    
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-            <!-- Editable table -->
-    
-    
-        </div>
-html;
+        </div>';
         
         $html .= '
         <script>

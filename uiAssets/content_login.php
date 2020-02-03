@@ -12,11 +12,11 @@ function generateLoginPage(){
     if (isset($_POST['address_l2'])) $address_l2 = $_POST['address_l2'];
     $postcode = '';
     if (isset($_POST['postcode'])) $postcode = $_POST['postcode'];
-    
+
     $html = <<<htmlPage
     <!--Modal cascading tabs-->
     <div class="col-12 col-md-auto">
-        <table style="height: 100vh; width:100%" class="align-middle text-centre">
+        <table style="height: 100vh; width:80%" class="align-middle text-centre">
             <tr>
                 <td class="align-middle">
                     <div class="text-center">

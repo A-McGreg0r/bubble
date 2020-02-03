@@ -7,7 +7,7 @@ function generateTabs(){
     $html = '
 
     <!-- Nav tabs -->
-    <ul class="nav nav-tabs md-tabs nav-justified  elegant-color sticky-top" id="myTabAttr" role="tablist">
+    <ul class="nav nav-tabs md-tabs nav-justified text-white  elegant-color sticky-top" id="myTabAttr" role="tablist">
         <li class="nav-item">
             <a class="nav-link active" id="home-tab-attr" data-toggle="tab" href="#home-attr" role="tab"
                aria-controls="home-attr"

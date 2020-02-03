@@ -16,10 +16,14 @@ function generateQRReader(){
             <div class="container">
                 <div class="col-lg-12">
                     <div class="row">
-                        <h3 class="text-center">Add new devices by scanning the QR code on the device</h3>
-                        <video autoplay="true" id="videoElement" style="width:100%">
+                        <div class="text-center">
+                            <h3 class="text-center">Add new devices by scanning the QR code on the device</h3>
+                        </div>
+                        <div>
                             <i class="far fa-circle text-center"></i>
-                        </video>
+                            <video autoplay="true" id="videoElement" style="width:100%">
+                            </video>
+                        </div>
                     </div>
                 </div>
             </div>

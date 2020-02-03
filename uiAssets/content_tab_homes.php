@@ -152,8 +152,7 @@ function generateHomeTab(){
                                         <option value="3">Year</option>
                                     </select>
                                 </div>                        
-                                
-                                <div id="ChartDisplay"></div>
+
                                
                             </div>
                         </div>

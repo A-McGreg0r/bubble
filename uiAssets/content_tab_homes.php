@@ -188,7 +188,7 @@ html;
         document.getElementById("ChartDisplay").innerHTML="<canvas id=\"lineChart_Year\"></canvas>";
     }else if  (chart===2){
         document.getElementById("ChartDisplay").innerHTML="<canvas id=\"lineChart_Month\"></canvas>";
-    }else if  (chart===2){
+    }else if  (chart===1){
         document.getElementById("ChartDisplay").innerHTML="<canvas id=\"lineChart_day\"></canvas>";
     }else if (chart===0){
     }else {

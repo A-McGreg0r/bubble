@@ -1,9 +1,7 @@
 <?php
-
     $imageURI = $_POST[1];
-    foreach ($_POST as $key => $value) {
-        echo $key . " - " . $value;
-    }
+
+    echo key($_POST);
     echo $imageURI;
 
     $imageURI = str_replace(' ','+',$imageURI);

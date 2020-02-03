@@ -1,6 +1,6 @@
 <!-- Card deck -->
 <?php
-include_once '../required/config.php';
+include_once dirname(__DIR__).'/required/config.php';
 
 function generateRoomTab(){
     $html = '';

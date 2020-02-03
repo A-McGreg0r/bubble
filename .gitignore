@@ -1,1 +1,3 @@
-required/server-config.php
+#Git ignore file
+
+required/server_config.php

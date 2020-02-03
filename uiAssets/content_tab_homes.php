@@ -51,7 +51,7 @@ function generateHomeTab(){
                                         <div class="row row-cols-2 mb-1">
                                             <div class="col border border-primary rounded m-2">
                                                 <h4 class="text-centre justify-content-center">Heating Usage</h4>
-                                                <canvas style="max-width:50% min-width:30%" id="heatingUsage" "></canvas>
+                                                <canvas style="max-width:50% min-width:30%" id="heatingUsage"></canvas>
                                                 <script>
                                                     //doughnut
                                                     var ctxD = document.getElementById("heatingUsage").getContext("2d");
@@ -151,7 +151,11 @@ function generateHomeTab(){
                                         <option value="2">Month</option>
                                         <option value="3">Year</option>
                                     </select>
-                                </div>                        
+                                </div>             
+                                <div style='display:none;' id='business'>Business Name<br/>&nbsp;
+                                    <canvas id="lineChart_Year"></canvas>     
+                                </div> 
+                                         
 
                                
                             </div>
@@ -163,7 +167,7 @@ function generateHomeTab(){
     $(document).ready(function(){
     $('#chartPicker').on('change', function() {
           if ( this.value === '1'){
-            $("#chartPicker").show();
+            $("#lineChart_Year").show();
           }else if( this.value === '2'){
              $("#chartPicker").show();
           }else if( this.value === '3'){

@@ -21,7 +21,7 @@ function generateQRReader(){
                         </div>
                         <div class="align-middle">
                             <div style="position:absolute; left: 50%; top:90%; transform: translate(-50%, -50%);">
-                                <i class="far fa-circle"></i>
+                                <i class="fas fa-dot-circle fa-5x"></i>
                             </div>
                             <video autoplay="true" id="videoElement" style="width:100%">
                             </video>

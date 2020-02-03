@@ -180,3 +180,19 @@ html;
     return $html;
 }
 ?>
+<script>
+
+    var x = document.getElementById("chartPicker");
+    var chart = e.options[x.selectedIndex].value;
+
+    if (chart===3){
+        document.getElementById("ChartDispaly").innerHTML="<canvas id=\"lineChart_Year\"></canvas>";
+    }else if  (chart===2){
+        document.getElementById("ChartDispaly").innerHTML="<canvas id=\"lineChart_Month\"></canvas>";
+    }else if  (chart===2){
+        document.getElementById("ChartDispaly").innerHTML="<canvas id=\"lineChart_day\"></canvas>";
+    }else if (chart===0){
+    }else {
+        alert("Error")
+    }
+</script>

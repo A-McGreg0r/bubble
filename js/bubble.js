@@ -47,14 +47,13 @@ function submitImage(){
     var img = document.createElement("img");
     img.src = canvas.toDataURL();
     image.prepend(img);
-
+    var dataQuery = img.src;
     loading.style.visibility = "visible";
     $.ajax({
         type:'POST',
         url: url,
-        data:img.src,
+        data:dataQuery,
         cache:false,
-        contentType: false,
         processData: false,
         success:function(data){
             console.log(img.src);

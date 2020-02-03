@@ -23,9 +23,9 @@ function generateLineChart_Year(){
 
     }
 
-    $jsonEncode1 = json_encode($dataLables, JSON_NUMERIC_CHECK);
-    $jsonEncode2 = json_encode($dataAvg, JSON_NUMERIC_CHECK);
-    $jsonEncode3 = json_encode($dataPoints, JSON_NUMERIC_CHECK);
+    $jsonEncode1_year = json_encode($dataLables, JSON_NUMERIC_CHECK);
+    $jsonEncode2_year = json_encode($dataAvg, JSON_NUMERIC_CHECK);
+    $jsonEncode3_year = json_encode($dataPoints, JSON_NUMERIC_CHECK);
     $html = <<<h
 
     <script type="text/javascript">
@@ -38,10 +38,10 @@ function generateLineChart_Year(){
         let LineChartYear = new Chart(ctxL, {
             type: 'line',
             data: {
-                labels: $jsonEncode1,
+                labels: $jsonEncode1_year,
                 datasets: [{
                     label: "Expected Usage",
-                    data: $jsonEncode2,
+                    data: $jsonEncode2_year,
                     backgroundColor: [
                         'rgba(0,0,0,0)',
                     ],
@@ -52,7 +52,7 @@ function generateLineChart_Year(){
                 },
                     {
                         label: "Power Used",
-                        data: $jsonEncode3,
+                        data: $jsonEncode3_year,
                         backgroundColor: gradientFill,
                         borderColor: gradientFill,
                         borderWidth: 2

@@ -84,13 +84,13 @@ function generateLineChart_Month(){
     //randome genarated grapth (temp)
     $dataTitle ="lineChart_Months";
     $first = strtotime('first day this month');
-    $dataLables_Month = array();
+    $dataLabel_Months = array();
     $dataPoints_Month = array();
     $dataAvg_Month = array();
 
     for ($i = $numOfDays; $i >= 0; $i--) {
         //list of months
-        array_push($dataLable_Months, date('D', strtotime("-$i day", $first)));
+        array_push($dataLabel_Months, date('D', strtotime("-$i day", $first)));
         //geanarat rand data for display
         array_push($dataPoints_Month, rand(25, 100));
         //a avg of the entire contence of the array
@@ -100,7 +100,7 @@ function generateLineChart_Month(){
 
     }
 
-    $jsonEncode1_Month = json_encode($dataLable_Months, JSON_NUMERIC_CHECK);
+    $jsonEncode1_Month = json_encode($dataLabel_Months, JSON_NUMERIC_CHECK);
     $jsonEncode2_Month = json_encode($dataAvg_Month, JSON_NUMERIC_CHECK);
     $jsonEncode3_Month = json_encode($dataPoints_Month, JSON_NUMERIC_CHECK);
     $html = <<<pageHTML

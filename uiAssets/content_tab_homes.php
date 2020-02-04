@@ -92,6 +92,7 @@ function generateHomeTab(){
                                                     }
                                                     });
                                                 </script>
+                                                
                                             </div>
                                             <div class="col border border-primary rounded m-2">
                                                 <h4 class="text-centre align-middle">Heating Usage</h4>

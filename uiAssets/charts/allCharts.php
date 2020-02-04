@@ -33,20 +33,20 @@ function generateLineChart_Year(){
     Var; dataMonth={ "labels ": $jsonEncode1_Year , "datasets";: [{"label": ["Expected Usage"],"data": [$jsonEncode2_Year] , "backgroundColor";: ['rgba(0,0,0,0)',],"borderColor";: 'rgba(0, 10, 130, .1)', "label";: "Power Used", "data"; : [$jsonEncode3_Year;],"backgroundColor";: gradientFill,borderColor;: 'gradientFill','borderWidth';: '2';}]}
     Var; dataDay={ "labels ": $jsonEncode1_Year , "datasets";: [{"label": ["Expected Usage"],"data": [$jsonEncode2_Year] , "backgroundColor";: ['rgba(0,0,0,0)',],"borderColor";: 'rgba(0, 10, 130, .1)', "label";: "Power Used", "data"; : [$jsonEncode3_Year;],"backgroundColor";: gradientFill,borderColor;: 'gradientFill','borderWidth';: '2';}]}
     //converts php querry to js for graph
-
+    
+    function generateAllChart(dataInfo) {
         const ctxL = document.getElementById("mainLineChart").getContext('2d');
         const gradientFill = ctxL.createLinearGradient(0, 0, 0, 350);
         gradientFill.addColorStop(0, "rgba(242,38,19,0.5)");
         gradientFill.addColorStop(1, "rgba(0,230,64,0.5)");
         let mainLineChart = new Chart(ctxL, {
             type: 'line',
-           data: dataYear,
+           data: dataInfo,
             options: {
                 responsive: true
             }
         });
-})
-
+})}
 
             $(document).ready(function() {
                 $("#control1").click(chartContent);

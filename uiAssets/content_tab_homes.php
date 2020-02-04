@@ -154,15 +154,11 @@ function generateHomeTab()
                                         <option value="3">Day</option>
                                     </select>
                                             <!--todo get displaying all 3--> 
-                                    <div style='display:none;' id='Year'>Chart Year<br/>&nbsp;
-                                       <canvas id="mainLineChart"></canvas><!--no load--> 
+                                    <div id='Year'>Chart Year<br/>&nbsp;
+                                       <canvas id="kontakteChart"></canvas>
+                                        <button id="control1">UMSCHALTER</button>
                                     </div> 
-                                    <div style='display:none;' id='Month'>chart month<br/>&nbsp;
-                                       <!--no <canvas id="lineChart_Month"></canvas>  load-->   
-                                    </div> 
-                                    <div style='display:none;' id='Day'>chart day<br/>&nbsp;
-                                       <!-- <canvas id="lineChart_Year"></canvas>loads-->       
-                                    </div> 
+
                                     
                                </div> 
                             </div>
@@ -170,40 +166,11 @@ function generateHomeTab()
                     </div>
                 
     <script>
-    $(document).ready(function(){
-    $('#chartPicker').on('change', function() {
-          if ( this.value === '1'){
-            $("#Year").show();
-            $("#Day").hide();
-            $("#Month").hide();
-          }else if( this.value === '2'){
-             $("#Month").show();
-             $("#Day").hide();
-             $("#Year").hide();
-          }else if( this.value === '3'){
-              $("#Day").show();
-              $("#Month").hide();
-              $("#Year").hide();
-          }else{
-              $("#Day").hide();
-              $("#Month").hide();
-              $("#Year").hide();
-          }
-        });
-    });
-    
-    function chartContent() {
-    mainLineChart["config"]["data"] = data2; //<--- THIS WORKS!
-    mainLineChart.update();
-     }
-     
-     $(document).ready(function() {
-    $( "#chartPicker" ).on('change', function();
-    if ( this.value === '1'){
-          }else if( this.value === '2'){
-          }else if( this.value === '3'){
-          }else{
-          }
+            
+            // Set the listener for the click function
+            $(document).ready(function() {
+                $("#control1").click(chartContent);
+            });
 
     </script>                
                                   

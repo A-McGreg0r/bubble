@@ -41,40 +41,36 @@ function generateLineChart_Month(){
     $jsonEncode3 = json_encode($dataPoints, JSON_NUMERIC_CHECK);
     $html = <<<pageHTML
     <script type="text/javascript">
-        //converts php querry to js for graph
-    
-        const ctxL = document.getElementById("lineChart_Month").getContext('2d');
-        const gradientFill = ctxL.createLinearGradient(0, 0, 0, 350);
-        gradientFill.addColorStop(0, "rgba(242,38,19,0.5)");
-        gradientFill.addColorStop(1, "rgba(0,230,64,0.5)");
-        let LineChartYear = new Chart(ctxL, {
-            type: 'line',
-            data: {
-                labels: $jsonEncode1,
-                datasets: [{
-                    label: "Expected Usage",
-                    data: $jsonEncode2,
-                    backgroundColor: [
-                        'rgba(0,0,0,0)',
-                    ],
-                    borderColor: [
-                        'rgba(0, 10, 130, .1)',
-                    ],
-                    borderWidth: ['2'],
-                },
-                    {
-                        label: "Power Used",
-                        data: $jsonEncode3,
-                        backgroundColor: gradientFill,
-                        borderColor: gradientFill,
-                        borderWidth: 2
+            // Supplied Datasets to display
+            var data1 = { "labels": ["1", "2", "3"], "datasets": [{ "label": "Contacts", "data": [20, 15, 10], "backgroundColor": "rgba(255, 99, 132, 0.2)", "borderColor": "rgba(255,99,132,1)", "borderWidth": 1 }] };
+            var data2 = { "labels": ["1", "2", "3"], "datasets": [{ "label": "Contacts", "data": [10, 23, 41], "backgroundColor": "rgba(255, 99, 132, 0.2)", "borderColor": "rgba(255,99,132,1)", "borderWidth": 1 }] };
+            
+            // Draw the initial chart
+            var kChartCanvas = $("#kontakteChart")[0].getContext('2d');
+            var myChart = new Chart(kChartCanvas, {
+                type: 'bar',
+                data: data1,
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
                     }
-                ]
-            },
-            options: {
-                responsive: true
+                }
+            });
+            
+            // Called on Click
+            function chartContent() {
+                myChart["config"]["data"] = data2; //<--- THIS WORKS!
+                myChart.update();
             }
-        });
+            
+            // Set the listener for the click function
+            $(document).ready(function() {
+                $("#control1").click(chartContent);
+            });
     </script>
 pageHTML;
     return $html;

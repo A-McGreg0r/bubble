@@ -3,6 +3,8 @@
     echo var_dump($_POST);
     list($type, $imageURI) = explode(';', $imageURI);
     list(, $imageURI)      = explode(',', $imageURI);
+    $imageURI = str_replace(' ', '+', $imageURI);
+
     $uri = base64_decode($imageURI);
     session_start();
 

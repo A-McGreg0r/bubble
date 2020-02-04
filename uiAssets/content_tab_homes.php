@@ -155,8 +155,8 @@ function generateHomeTab()
                                     </select>
                                             <!--todo get displaying all 3--> 
                                     <div id='Year'>Chart Year<br/>&nbsp;
-                                       <canvas id="kontakteChart"></canvas>
-                                        <button id="control1">UMSCHALTER</button>
+                                       <canvas id="mainLineChart"></canvas>
+                                        <button id="control1">test</button>
                                     </div> 
 
                                     
@@ -168,9 +168,7 @@ function generateHomeTab()
     <script>
             
             // Set the listener for the click function
-            $(document).ready(function() {
-                $("#control1").click(chartContent);
-            });
+
 
     </script>                
                                   
@@ -180,6 +178,8 @@ html;
                     //require "charts/lineChart_Year.php";
                     //require "charts/lineChart_Month.php";
                     require "charts/allCharts.php";
+
+
                     //$html .= generateLineChart_Day();
                     //$html .= generateLineChart_Month();
                     //$html .= generateLineChart_Year();

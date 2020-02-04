@@ -153,22 +153,22 @@ function generateHomeTab()
                                         <option value="2">Month</option>
                                         <option value="3">Day</option>
                                     </select>
-                                            
+                                            <!--todo get displaying all 3--> 
                                     <div style='display:none;' id='Year'>Chart Year<br/>&nbsp;
-                                       <canvas id="lineChart_Day"></canvas>      
+                                       <canvas id="lineChart_Day"></canvas><!--no load--> 
                                     </div> 
                                     <div style='display:none;' id='Month'>chart month<br/>&nbsp;
-                                        <canvas id="lineChart_Month"></canvas>  
+                                        <canvas id="lineChart_Month"></canvas> <!--no load-->   
                                     </div> 
                                     <div style='display:none;' id='Day'>chart day<br/>&nbsp;
-                                        <canvas id="lineChart_Year"></canvas>       
+                                        <canvas id="lineChart_Year"></canvas><!--loads-->       
                                     </div> 
                                     
                                </div> 
                             </div>
                         </div>
                     </div>
-                    
+                
     <script>
     $(document).ready(function(){
     $('#chartPicker').on('change', function() {

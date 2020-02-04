@@ -196,6 +196,7 @@ function generateHomeTab()
     mainLineChart["config"]["data"] = data2; //<--- THIS WORKS!
     mainLineChart.update();
      }
+     
      $(document).ready(function() {
     $( "#chartPicker" ).on('change', function();
     if ( this.value === '1'){

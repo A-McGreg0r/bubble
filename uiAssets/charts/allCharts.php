@@ -62,8 +62,13 @@ function generateLineChart_Year(){
      $(document).ready(function() {
     $( "#chartPicker" ).on('change', function();
     if ( this.value === '1'){
+        mainLineChart["config"]["data"] = dataDay; //<--- THIS WORKS!
+    }
           }else if( this.value === '2'){
+         mainLineChart["config"]["data"] = dataMonth; //<--- THIS WORKS!
+          }
           }else if( this.value === '3'){
+        mainLineChart["config"]["data"] = dataYear; //<--- THIS WORKS!
           }else{
           }
 

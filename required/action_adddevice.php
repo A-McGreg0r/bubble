@@ -1,5 +1,5 @@
 <?php
-    use Zxing\QrReader;
+    use qrcode\Zxing\QrReader;
 
     $imageURI = $_POST['photo'];
     $imageURI = str_replace(' ', '+', $imageURI);

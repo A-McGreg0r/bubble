@@ -10,13 +10,13 @@ function generateLineChart_Day(){
     $dataPoints = array();
     $dataAvg = array();
 
-    for ($i = 23; $i >= 0; $i--) {
+    for ($i = 31; $i >= 0; $i--) {
         //list of months
         array_push($dataLables, date('H', strtotime("-$i Hour", $first)));
         //geanarat rand data for display
         array_push($dataPoints, rand(0, 100));
         //a avg of the entire contence of the array
-        //todo consider changeing it to look at all past years to provide a more accurate estamit
+        //todo consider changeing it to look at all past years to provide a more accurit estamit
         $dataPoints = array_filter($dataPoints);
         array_push($dataAvg, array_sum($dataPoints)/count($dataPoints));
 
@@ -41,20 +41,26 @@ function generateLineChart_Day(){
             datasets: [{
                 label: "Expected Usage",
                 data: $jsonEncode2,
-                backgroundColor: ['rgba(0,0,0,0)',],
-                borderColor: ['rgba(0, 10, 130, .1)',],
-                borderWidth: ['2'],
+                backgroundColor: [
+                    'rgba(0,0,0,0)',
+                ],
+                borderColor: [
+                    'rgba(0, 10, 130, .1)',
+                ],
+                borderWidth: ['2'];
             },
                 {
                     label: "Power Used",
                     data: $jsonEncode3,
                     backgroundColor: gradientFill,
                     borderColor: gradientFill,
-                    borderWidth: 2
+                    borderWidth: ['2']
                 }
             ]
         },
-        options: {responsive: true}
+        options: {
+            responsive: true
+        }
     });
     </script>
 

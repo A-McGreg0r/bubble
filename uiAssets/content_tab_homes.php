@@ -1,19 +1,20 @@
 <?php
-include_once dirname(__DIR__).'/required/config.php';
+include_once dirname(__DIR__) . '/required/config.php';
 
-function generateHomeTab(){
+function generateHomeTab()
+{
     global $db;
     $html = '<div class="accordion md-accordion z-depth-1-half" id="accordionEx194" role="tablist" aria-multiselectable="true">';
 
-    if(isset($_SESSION['user_id'])){
+    if (isset($_SESSION['user_id'])) {
         $user_id = $_SESSION['user_id'];
-        
+
         $stmt = $db->prepare("SELECT * FROM hub_users WHERE user_id = ?");
         $stmt->bind_param("i", $user_id);
         $stmt->execute();
         $result = $stmt->get_result();
         if ($result->num_rows > 0) {
-            while($row = $result->fetch_assoc()) {
+            while ($row = $result->fetch_assoc()) {
                 $hub_id = $row['hub_id'];
                 $stmt1 = $db->prepare("SELECT * FROM hub_info WHERE hub_id = ?");
                 $stmt1->bind_param("i", $hub_id);
@@ -23,10 +24,10 @@ function generateHomeTab(){
                 if ($result1->num_rows === 1) {
                     $row1 = $result1->fetch_assoc();
                     $hub_name = $row1['hub_name'];
-                    if(empty($hub_name)){
+                    if (empty($hub_name)) {
                         $hub_name = "My Home";
                     }
-                    
+
                     $html .= <<<html
                     <!-- Accordion card -->
                     <div class="card">
@@ -92,6 +93,7 @@ function generateHomeTab(){
                                                     }
                                                     });
                                                 </script>
+                                                
                                             </div>
                                             <div class="col border border-primary rounded m-2">
                                                 <h4 class="text-centre align-middle">Heating Usage</h4>
@@ -147,30 +149,27 @@ function generateHomeTab(){
                                     </p>-->
                                     <select id="chartPicker" class="browser-default custom-select">
                                         <option value="0" selected>Choose time period</option>
-                                        <option value="1">year</option>
+                                        <option value="1">Year</option>
                                         <option value="2">Month</option>
                                         <option value="3">Day</option>
                                     </select>
-                                            
-                                <div style='display:none;' id='Year'>chart year<br/>&nbsp;
-                                    <canvas id="lineChart_Year"></canvas>     
-                                </div> 
-                                <div style='display:none;' id='Month'>chart month<br/>&nbsp;
-                                    <canvas id="lineChart_Month"></canvas>     
-                                </div> 
-                                <div style='display:none;' id='Day'>chart day<br/>&nbsp;
-                                    <canvas id="lineChart_Day"></canvas>     
-                                </div> 
-
-                                         
-
+                                            <!--todo get displaying all 3--> 
+                                    <div style='display:none;' id='Year'>Chart Year<br/>&nbsp;
+                                       <canvas id="mainLineChart"></canvas><!--no load--> 
+                                    </div> 
+                                    <div style='display:none;' id='Month'>chart month<br/>&nbsp;
+                                       <!--no <canvas id="lineChart_Month"></canvas>  load-->   
+                                    </div> 
+                                    <div style='display:none;' id='Day'>chart day<br/>&nbsp;
+                                       <!-- <canvas id="lineChart_Year"></canvas>loads-->       
+                                    </div> 
+                                    
                                </div> 
                             </div>
                         </div>
                     </div>
-                    
+                
     <script>
-    
     $(document).ready(function(){
     $('#chartPicker').on('change', function() {
           if ( this.value === '1'){
@@ -193,16 +192,30 @@ function generateHomeTab(){
         });
     });
     
+    function chartContent() {
+    mainLineChart["config"]["data"] = data2; //<--- THIS WORKS!
+    mainLineChart.update();
+     }
+     $(document).ready(function() {
+    $( "#chartPicker" ).on('change', function();
+    if ( this.value === '1'){
+          }else if( this.value === '2'){
+          }else if( this.value === '3'){
+          }else{
+          }
+
     </script>                
                                   
                     <!-- Accordion card -->
 html;
-                    require "charts/lineChart_Year.php";
-                    require "charts/lineChart_Month.php";
-                    require "charts/lineChart_Day.php";
-                    $html .= generateLineChart_Year();
-                    $html .= generateLineChart_Month();
+                    //require "charts/lineChart_Day.php";
+                    //require "charts/lineChart_Year.php";
+                    //require "charts/lineChart_Month.php";
+                    require "charts/allCharts.php";
                     $html .= generateLineChart_Day();
+                    $html .= generateLineChart_Month();
+                    $html .= generateLineChart_Year();
+
                 }
                 $stmt1->close();
 
@@ -213,7 +226,9 @@ html;
     }
 
     $html .= "</div>";
-    
+
     return $html;
+
 }
+
 ?>

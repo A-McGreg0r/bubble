@@ -23,7 +23,7 @@ function generateLineChart_Month(){
     $dataLables = array();
     $dataPoints = array();
     $dataAvg = array();
-    
+
     for ($i = $numOfDays; $i >= 0; $i--) {
         //list of months
         array_push($dataLables, date('D', strtotime("-$i day", $first)));
@@ -33,7 +33,7 @@ function generateLineChart_Month(){
         //todo consider changeing it to look at all past years to provide a more accurit estamit
         $dataPoints = array_filter($dataPoints);
         array_push($dataAvg, array_sum($dataPoints)/count($dataPoints));
-    
+
     }
 
     $jsonEncode1 = json_encode($dataLables, JSON_NUMERIC_CHECK);
@@ -47,7 +47,7 @@ function generateLineChart_Month(){
         const gradientFill = ctxL.createLinearGradient(0, 0, 0, 350);
         gradientFill.addColorStop(0, "rgba(242,38,19,0.5)");
         gradientFill.addColorStop(1, "rgba(0,230,64,0.5)");
-        let LineChartMonth = new Chart(ctxL, {
+        let LineChartYear = new Chart(ctxL, {
             type: 'line',
             data: {
                 labels: $jsonEncode1,
@@ -60,7 +60,7 @@ function generateLineChart_Month(){
                     borderColor: [
                         'rgba(0, 10, 130, .1)',
                     ],
-                    borderWidth: 2,
+                    borderWidth: ['2'],
                 },
                     {
                         label: "Power Used",

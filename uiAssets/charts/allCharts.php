@@ -29,40 +29,44 @@ function generateLineChart_Year(){
     $html = <<<h
 
     <script type="text/javascript">
+    Var dataYear={data:{labels: $jsonEncode1_Year,
+                datasets: [{label: ["Expected Usage"],data: $jsonEncode2_Year,backgroundColor: ['rgba(0,0,0,0)',],borderColor: ['rgba(0, 10, 130, .1)',],borderWidth: ['2'],},{
+                label: "Power Used",data: $jsonEncode3_Year,backgroundColor: gradientFill,borderColor: gradientFill,borderWidth: 2}]}}
+    
+    Var dataMonth={  data: {labels: $jsonEncode1_Year,
+                datasets: [{"label": "Expected Usage",data: $jsonEncode2_Year,backgroundColor: ['rgba(0,0,0,0)',],borderColor: ['rgba(0, 10, 130, .1)',],borderWidth: ['2'],},{
+                label: "Power Used",data: $jsonEncode3_Year,backgroundColor: gradientFill,borderColor: gradientFill,borderWidth: 2}]}}
+    Var dataDay={data: {labels: $jsonEncode1_Year,
+            datasets: [{label: $jsonEncode1_Year,
+            data: $jsonEncode2_Year,backgroundColor: ['rgba(0,0,0,0)',], borderColor: ['rgba(0, 10, 130, .1)',],borderWidth: ['2'];},{
+            label: "Power Used",data: $jsonEncode3_Year,backgroundColor: gradientFill,borderColor: gradientFill,borderWidth: ['2']}]
         //converts php querry to js for graph
 
-        const ctxL = document.getElementById("lineChart_Year").getContext('2d');
+        const ctxL = document.getElementById("mainLineChart").getContext('2d');
         const gradientFill = ctxL.createLinearGradient(0, 0, 0, 350);
         gradientFill.addColorStop(0, "rgba(242,38,19,0.5)");
         gradientFill.addColorStop(1, "rgba(0,230,64,0.5)");
-        let LineChartYear = new Chart(ctxL, {
+        let mainLineChart = new Chart(ctxL, {
             type: 'line',
-            data: {
-                labels: $jsonEncode1_Year,
-                datasets: [{
-                    label: "Expected Usage",
-                    data: $jsonEncode2_Year,
-                    backgroundColor: [
-                        'rgba(0,0,0,0)',
-                    ],
-                    borderColor: [
-                        'rgba(0, 10, 130, .1)',
-                    ],
-                    borderWidth: ['2'],
-                },
-                    {
-                        label: "Power Used",
-                        data: $jsonEncode3_Year,
-                        backgroundColor: gradientFill,
-                        borderColor: gradientFill,
-                        borderWidth: 2
-                    }
-                ]
-            },
+           data: dataYear,
             options: {
                 responsive: true
             }
         });
+});
+
+    function chartContent() {
+    mainLineChart["config"]["data"] = data2; //<--- THIS WORKS!
+    mainLineChart.update();
+     }
+     $(document).ready(function() {
+    $( "#chartPicker" ).on('change', function();
+    if ( this.value === '1'){
+          }else if( this.value === '2'){
+          }else if( this.value === '3'){
+          }else{
+          }
+
     </script>
 h;
     return $html;

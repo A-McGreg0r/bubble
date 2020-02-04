@@ -196,6 +196,7 @@ function generateHomeTab()
     mainLineChart["config"]["data"] = data2; //<--- THIS WORKS!
     mainLineChart.update();
      }
+     
      $(document).ready(function() {
     $( "#chartPicker" ).on('change', function();
     if ( this.value === '1'){
@@ -211,10 +212,10 @@ html;
                     //require "charts/lineChart_Day.php";
                     //require "charts/lineChart_Year.php";
                     //require "charts/lineChart_Month.php";
-                    require "charts/allCharts.php";
-                    $html .= generateLineChart_Day();
-                    $html .= generateLineChart_Month();
-                    $html .= generateLineChart_Year();
+                    //require "charts/allCharts.php";
+                    //$html .= generateLineChart_Day();
+                    //$html .= generateLineChart_Month();
+                    //$html .= generateLineChart_Year();
 
                 }
                 $stmt1->close();

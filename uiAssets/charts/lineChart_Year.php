@@ -30,7 +30,7 @@ function generateLineChart_Year(){
 
     <script type="text/javascript">
         //converts php querry to js for graph
-
+        function generateLineChart_Year(dataInfo) {
         const ctxL = document.getElementById("lineChart_Year").getContext('2d');
         const gradientFill = ctxL.createLinearGradient(0, 0, 0, 350);
         gradientFill.addColorStop(0, "rgba(242,38,19,0.5)");
@@ -62,7 +62,7 @@ function generateLineChart_Year(){
             options: {
                 responsive: true
             }
-        });
+        })}
     </script>
 h;
     return $html;

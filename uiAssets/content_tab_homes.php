@@ -167,9 +167,6 @@ function generateHomeTab(){
                                     <canvas id="lineChart_Day"></canvas>    
                                       
                                 </div> 
-
-                                         
-
                                </div> 
                             </div>
                         </div>

@@ -11,6 +11,7 @@ function generateQRReader(){
             <div class="row justify-content-center">
                 <div class="text-center align-middle">
                     <h3>Add new devices by scanning the QR code on the device</h3>
+                    <div id="devicetext" style="width:100%"></div>
                 </div>
                 <div class="align-middle">
                     <div style="position:absolute; left: 50%; top:50%; transform: translate(-50%, -50%);">
@@ -23,7 +24,6 @@ function generateQRReader(){
                             <i class="fas fa-dot-circle fa-5x"></i>
                         </button>
                     </div>
-                    <div id="devicetext" style="width:100%"></div>
                     <video autoplay="true" id="videoElement" style="width:100%"></video>
                     <div id="capturedimage" style="width:100%; display:none; height:auto;"></div>
 

@@ -1,4 +1,6 @@
 <?php
+    use Zxing\QrReader;
+
     $imageURI = $_POST['photo'];
     echo var_dump($_POST);
     $imageURI = str_replace(' ', '+', $imageURI);
@@ -10,5 +12,11 @@
     session_start();
 
     file_put_contents(dirname(__DIR__).'/upload/'.$_SESSION['user_id'].".png",$decoded);
+
+
+    $image = dirname(__DIR__).'/upload/'.$_SESSION['user_id'].".png";
+
+    $qrcode = new QrReader($image);
+    $this->assertSame("Hello world!", $qrcode->text());
 
 ?>

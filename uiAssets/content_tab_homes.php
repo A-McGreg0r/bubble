@@ -26,7 +26,7 @@ function generateHomeTab(){
                     if(empty($hub_name)){
                         $hub_name = "My Home";
                     }
-                    
+
                     $html .= <<<html
                     <!-- Accordion card -->
                     <div class="card">
@@ -155,26 +155,17 @@ function generateHomeTab(){
                                 <div style='display:none;' id='Year'>Chart Year<br/>&nbsp;
                                 test y
                                     <canvas id="lineChart_Year"></canvas>     
-                                        <?php  
-                                             require "charts/lineChart_Year.php"; 
-                                             $html .= generateLineChart_Year();
-                                         ?>
+
                                 </div> 
                                 <div style='display:none;' id='Month'>chart month<br/>&nbsp;
                                 test m
                                     <canvas id="lineChart_Month"></canvas>  
-                                         <?php  
-                                             require "charts/lineChart_Month.php";
-                                             $html .= generateLineChart_Month();
-                                         ?>   
+
                                 </div> 
                                 <div style='display:none;' id='Day'>chart day<br/>&nbsp;
                                 test d
                                     <canvas id="lineChart_Day"></canvas>    
-                                         <?php  
-                                             require "charts/lineChart_Day.php";
-                                             $html .= generateLineChart_Day();
-                                         ?>                                        
+                                      
                                 </div> 
 
                                          
@@ -224,4 +215,11 @@ html;
     
     return $html;
 }
+
+    require "charts/lineChart_Day.php";
+    require "charts/lineChart_Year.php";
+    require "charts/lineChart_Month.php";
+    $html .= generateLineChart_Day();
+    $html .= generateLineChart_Month();
+    $html .= generateLineChart_Year();
 ?>

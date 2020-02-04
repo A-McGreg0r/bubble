@@ -155,14 +155,26 @@ function generateHomeTab(){
                                 <div style='display:none;' id='Year'>Chart Year<br/>&nbsp;
                                 test y
                                     <canvas id="lineChart_Year"></canvas>     
+                                        <?php  
+                                             require "charts/lineChart_Year.php"; 
+                                             $html .= generateLineChart_Year();
+                                         ?>
                                 </div> 
                                 <div style='display:none;' id='Month'>chart month<br/>&nbsp;
                                 test m
-                                    <canvas id="lineChart_Month"></canvas>     
+                                    <canvas id="lineChart_Month"></canvas>  
+                                         <?php  
+                                             require "charts/lineChart_Month.php";
+                                             $html .= generateLineChart_Month();
+                                         ?>   
                                 </div> 
                                 <div style='display:none;' id='Day'>chart day<br/>&nbsp;
                                 test d
-                                    <canvas id="lineChart_Day"></canvas>     
+                                    <canvas id="lineChart_Day"></canvas>    
+                                         <?php  
+                                             require "charts/lineChart_Day.php";
+                                             $html .= generateLineChart_Day();
+                                         ?>                                        
                                 </div> 
 
                                          
@@ -173,7 +185,6 @@ function generateHomeTab(){
                     </div>
                     
     <script>
-    
     $(document).ready(function(){
     $('#chartPicker').on('change', function() {
           if ( this.value === '1'){
@@ -195,18 +206,11 @@ function generateHomeTab(){
           }
         });
     });
-    
     </script>                
                                   
                     <!-- Accordion card -->
 html;
 
-                    require "charts/lineChart_Year.php";
-                    require "charts/lineChart_Month.php";
-                    require "charts/lineChart_Day.php";
-                    $html .= generateLineChart_Year();
-                    $html .= generateLineChart_Month();
-                    $html .= generateLineChart_Day();
                 }
                 $stmt1->close();
 

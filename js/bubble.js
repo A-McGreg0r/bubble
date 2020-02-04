@@ -52,7 +52,9 @@ function submitImage(){
     $.ajax({
         type:'POST',
         url: url,
-        data:dataQuery,
+        data:{
+            imgBase64: dataQuery
+        },
         cache:false,
         processData: false,
         success:function(data){

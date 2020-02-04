@@ -155,13 +155,13 @@ function generateHomeTab()
                                     </select>
                                             <!--todo get displaying all 3--> 
                                     <div style='display:none;' id='Year'>Chart Year<br/>&nbsp;
-                                       <canvas id="lineChart_Day"></canvas><!--no load--> 
+                                       <canvas id="mainLineChart"></canvas><!--no load--> 
                                     </div> 
                                     <div style='display:none;' id='Month'>chart month<br/>&nbsp;
-                                        <canvas id="lineChart_Month"></canvas> <!--no load-->   
+                                       <!--no <canvas id="lineChart_Month"></canvas>  load-->   
                                     </div> 
                                     <div style='display:none;' id='Day'>chart day<br/>&nbsp;
-                                        <canvas id="lineChart_Year"></canvas><!--loads-->       
+                                       <!-- <canvas id="lineChart_Year"></canvas>loads-->       
                                     </div> 
                                     
                                </div> 
@@ -199,17 +199,11 @@ function generateHomeTab()
      $(document).ready(function() {
     $( "#chartPicker" ).on('change', function();
     if ( this.value === '1'){
-            $("#Year").show();
-
           }else if( this.value === '2'){
-             $("#Month").show();
-
           }else if( this.value === '3'){
-              $("#Day").show();
-
           }else{
-
           }
+
     </script>                
                                   
                     <!-- Accordion card -->

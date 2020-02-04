@@ -53,9 +53,20 @@ function generateLineChart_Year(){
                 responsive: true
             }
         });
-        
-
 });
+
+    function chartContent() {
+    mainLineChart["config"]["data"] = data2; //<--- THIS WORKS!
+    mainLineChart.update();
+     }
+     $(document).ready(function() {
+    $( "#chartPicker" ).on('change', function();
+    if ( this.value === '1'){
+          }else if( this.value === '2'){
+          }else if( this.value === '3'){
+          }else{
+          }
+
     </script>
 h;
     return $html;

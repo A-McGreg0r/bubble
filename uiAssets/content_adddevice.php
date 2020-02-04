@@ -23,10 +23,9 @@ function generateQRReader(){
                             <i class="fas fa-dot-circle fa-5x"></i>
                         </button>
                     </div>
-                    <video autoplay="true" id="videoElement" style="width:100%">
-                    </video>
-                    <div id="capturedimage" style="visibility: hidden; width:100%"></div>
                     <div id="devicetext" style="width:100%"></div>
+                    <video autoplay="true" id="videoElement" style="width:100%"></video>
+                    <div id="capturedimage" style="visibility: hidden; display: none; width:500px; height:500px;"></div>
 
                 </div>
             </div>

@@ -191,6 +191,25 @@ function generateHomeTab()
           }
         });
     });
+    
+    function chartContent() {
+    mainLineChart["config"]["data"] = data2; //<--- THIS WORKS!
+    mainLineChart.update();
+     }
+     $(document).ready(function() {
+    $( "#chartPicker" ).on('change', function();
+    if ( this.value === '1'){
+            $("#Year").show();
+
+          }else if( this.value === '2'){
+             $("#Month").show();
+
+          }else if( this.value === '3'){
+              $("#Day").show();
+
+          }else{
+
+          }
     </script>                
                                   
                     <!-- Accordion card -->

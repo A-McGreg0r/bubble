@@ -174,7 +174,7 @@ function generateLineChart_Day(){
     <script type="text/javascript">
         //converts php querry to js for graph
 
-        const ctxL3 = document.getElementById("lineChart_Day").getContext('2d');
+        const ctxL3 = document.getElementById("mainLineChart").getContext('2d');
         const gradientFill = ctxL3.createLinearGradient(0, 0, 0, 350);
         gradientFill.addColorStop(0, "rgba(242,38,19,0.5)");
         gradientFill.addColorStop(1, "rgba(0,230,64,0.5)");

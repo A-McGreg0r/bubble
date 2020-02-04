@@ -3,7 +3,7 @@
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
     require dirname(__DIR__) . "/vendor/autoload.php";
-
+    use Zxing\QrReader;
     $imageURI = $_POST['photo'];
     $imageURI = str_replace(' ', '+', $imageURI);
 	$imageURI = str_replace('data:image/png;base64,', '', $imageURI);

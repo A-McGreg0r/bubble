@@ -25,7 +25,7 @@ function generateQRReader(){
                     </div>
                     <div id="devicetext" style="width:100%"></div>
                     <video autoplay="true" id="videoElement" style="width:100%"></video>
-                    <div id="capturedimage" style="width:500px; height:500px;"></div>
+                    <div id="capturedimage" style="width:100%; height:auto;"></div>
 
                 </div>
             </div>
@@ -33,10 +33,6 @@ function generateQRReader(){
     </div>
 
     <script type="text/javascript">
-
-
-
-
         var video = document.querySelector("#videoElement");
 
         if (navigator.mediaDevices.getUserMedia) {

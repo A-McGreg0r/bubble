@@ -60,7 +60,7 @@ function generateHomeTab(){
                                                     data: {
                                                     labels: ["Red"],
                                                     datasets: [{
-                                                    data: [300, 100],
+                                                    data: [200, 100],
                                                     backgroundColor: ["#F7464A", "#FFFFFF00"],
                                                     hoverBackgroundColor: ["#FF5A5E", "#FFFFFF00"]
                                                     }]
@@ -82,7 +82,7 @@ function generateHomeTab(){
                                                     data: {
                                                     labels: ["Red"],
                                                     datasets: [{
-                                                    data: [200, 125],
+                                                    data: [200, 100],
                                                     backgroundColor: ["#F7464A", "#FFFFFF00"],
                                                     hoverBackgroundColor: ["#FF5A5E", "#FFFFFF00"]
                                                     }]
@@ -104,7 +104,7 @@ function generateHomeTab(){
                                                     data: {
                                                     labels: ["Red"],
                                                     datasets: [{
-                                                    data: [250, 100],
+                                                    data: [200, 100],
                                                     backgroundColor: ["#F7464A", "#FFFFFF00"],
                                                     hoverBackgroundColor: ["#FF5A5E", "#FFFFFF00"]
                                                     }]
@@ -215,8 +215,9 @@ html;
     
     return $html;
 }
-
-require "charts/allCharts.php";
+    require "charts/lineChart_Day.php";
+    require "charts/lineChart_Year.php";
+    require "charts/lineChart_Month.php";
     $html .= generateLineChart_Day();
     $html .= generateLineChart_Month();
     $html .= generateLineChart_Year();

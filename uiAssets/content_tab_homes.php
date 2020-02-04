@@ -1,19 +1,20 @@
 <?php
-include_once dirname(__DIR__).'/required/config.php';
+include_once dirname(__DIR__) . '/required/config.php';
 
-function generateHomeTab(){
+function generateHomeTab()
+{
     global $db;
     $html = '<div class="accordion md-accordion z-depth-1-half" id="accordionEx194" role="tablist" aria-multiselectable="true">';
 
-    if(isset($_SESSION['user_id'])){
+    if (isset($_SESSION['user_id'])) {
         $user_id = $_SESSION['user_id'];
-        
+
         $stmt = $db->prepare("SELECT * FROM hub_users WHERE user_id = ?");
         $stmt->bind_param("i", $user_id);
         $stmt->execute();
         $result = $stmt->get_result();
         if ($result->num_rows > 0) {
-            while($row = $result->fetch_assoc()) {
+            while ($row = $result->fetch_assoc()) {
                 $hub_id = $row['hub_id'];
                 $stmt1 = $db->prepare("SELECT * FROM hub_info WHERE hub_id = ?");
                 $stmt1->bind_param("i", $hub_id);
@@ -23,7 +24,7 @@ function generateHomeTab(){
                 if ($result1->num_rows === 1) {
                     $row1 = $result1->fetch_assoc();
                     $hub_name = $row1['hub_name'];
-                    if(empty($hub_name)){
+                    if (empty($hub_name)) {
                         $hub_name = "My Home";
                     }
 
@@ -154,13 +155,13 @@ function generateHomeTab(){
                                     </select>
                                             
                                     <div style='display:none;' id='Year'>Chart Year<br/>&nbsp;
-                                        <canvas id="lineChart_Year"></canvas>     
+                                       <canvas id="lineChart_Day"></canvas>      
                                     </div> 
                                     <div style='display:none;' id='Month'>chart month<br/>&nbsp;
                                         <canvas id="lineChart_Month"></canvas>  
                                     </div> 
                                     <div style='display:none;' id='Day'>chart day<br/>&nbsp;
-                                        <canvas id="lineChart_Day"></canvas>        
+                                        <canvas id="lineChart_Year"></canvas>       
                                     </div> 
                                     
                                </div> 

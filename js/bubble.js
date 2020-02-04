@@ -40,25 +40,33 @@ function submitImage(){
     var video = document.querySelector("#videoElement");
     var image = document.querySelector("#capturedimage");
     var loading = document.querySelector("#loading");
+    var submitButton = document.querySelector("#submitImage");
+    var devicetext = document.querySelector("#devicetext");
 
     var canvas = document.createElement("canvas");
     canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
-    video.style.visibility = "hidden";
     var img = document.createElement("img");
     img.src = canvas.toDataURL();
     image.prepend(img);
     var dataQuery = canvas.toDataURL();
+    video.style.visibility = "hidden";
     loading.style.visibility = "visible";
+    submitButton.style.visibility = "hidden";
+
     $.ajax({
         type:'POST',
         url: url,
         data:{ photo: dataQuery},
         success:function(data){
             loading.style.visibility = "hidden";
-            console.log(data);
+            devicetext.innerHTML = data;
         },
         error: function(data){
-            console.log(data);
+            video.style.visibility = "visible";
+            loading.style.visibility = "hidden";
+            submitButton.style.visibility = "visible";
+            devicetext.innerHTML = "Unable to find a QR code, please try again!";
+
         }
     });
 }

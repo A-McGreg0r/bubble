@@ -14,16 +14,18 @@ function generateQRReader(){
                 </div>
                 <div class="align-middle">
                     <div style="position:absolute; left: 50%; top:90%; transform: translate(-50%, -50%);">
+                        <div style="visibility: hidden" id="loading" class="spinner-border text-primary" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
                         <button type="button" onclick="submitImage();" id="submitImage">
                             <i class="fas fa-dot-circle fa-5x"></i>
                         </button>
                     </div>
                     <video autoplay="true" id="videoElement" style="width:100%">
                     </video>
-                    <div id="capturedimage" style="visibility: hidden width:100%"></div>
-                    <div style="visibility: hidden" id="loading" class="spinner-border text-primary" role="status">
-                        <span class="sr-only">Loading...</span>
-                    </div>
+                    <div id="capturedimage" style="visibility: hidden; width:100%"></div>
+                    <div id="devicetext" style="visibility: hidden; width:100%"></div>
+
                 </div>
             </div>
         </div>

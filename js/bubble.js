@@ -59,7 +59,7 @@ function submitImage(){
         data:{ photo: dataQuery},
         success:function(data){
             loading.style.visibility = "hidden";
-            devicetext.innerHTML = data;
+            devicetext.innerHTML = "<p>"+data+"</p>";
         },
         error: function(data){
             video.style.visibility = "visible";

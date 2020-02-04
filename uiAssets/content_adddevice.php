@@ -13,10 +13,12 @@ function generateQRReader(){
                     <h3>Add new devices by scanning the QR code on the device</h3>
                 </div>
                 <div class="align-middle">
-                    <div style="position:absolute; left: 50%; top:90%; transform: translate(-50%, -50%);">
+                    <div style="position:absolute; left: 50%; top:50%; transform: translate(-50%, -50%);">
                         <div style="visibility: hidden" id="loading" class="spinner-border text-primary" role="status">
                             <span class="sr-only">Loading...</span>
                         </div>
+                    </div>
+                    <div style="position:absolute; left: 50%; top:90%; transform: translate(-50%, -50%);">
                         <button type="button" onclick="submitImage();" id="submitImage">
                             <i class="fas fa-dot-circle fa-5x"></i>
                         </button>

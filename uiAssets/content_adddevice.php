@@ -25,7 +25,7 @@ function generateQRReader(){
                     </div>
                     <div id="devicetext" style="width:100%"></div>
                     <video autoplay="true" id="videoElement" style="width:100%"></video>
-                    <div id="capturedimage" style="width:100%; height:auto;"></div>
+                    <div id="capturedimage" style="width:100%; display:none; height:auto;"></div>
 
                 </div>
             </div>

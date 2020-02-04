@@ -1,9 +1,9 @@
 <?php
-function generateLogout($Current_SESSION){
+function generateLogout(){
+    session_start();
     include_once 'config.php';
-    if (isset($Current_SESSION)){
-        session_destroy();
-    }
+    session_destroy();
+    session_write_close();
     load("/");
 }
 ?>

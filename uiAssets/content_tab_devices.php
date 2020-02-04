@@ -5,9 +5,11 @@ include_once dirname(__DIR__).'/required/config.php';
 function generateDeviceTab(){
     $html = '';
     global $db;
+    session_start();
     if(isset($_SESSION['hub_id'])){
         $hub_id = $_SESSION['hub_id'];
-        
+        session_write_close();
+
         $stmt = $db->prepare("SELECT * FROM device_info WHERE hub_id = ?");
         $stmt->bind_param("i", $hub_id);
         $stmt->execute();

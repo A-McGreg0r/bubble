@@ -86,6 +86,7 @@ function userHasHub(){
 
     global $db;
     $stmt = $db->prepare("SELECT hub_id FROM hub_users WHERE user_id=?");
+    session_start();
     $stmt->bind_param("s", $_SESSION['user_id']);
     if (!$stmt->execute()) {
         echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
@@ -101,6 +102,7 @@ function userHasHub(){
     $row = $result->fetch_assoc();
 
     $_SESSION['hub_id'] = $row['hub_id'];
+    session_write_close();
     $stmt->free_result();
     $stmt->close();
     return true;

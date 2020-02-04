@@ -2,8 +2,10 @@
 include_once dirname(__DIR__).'/required/config.php';
 function generateAccount(){
     global $db;
+    session_start();
     if(isset($_SESSION['user_id'])){
         $user_id = $_SESSION['user_id'];
+        session_write_close();
         $stmt = $db->prepare("SELECT * FROM user_info WHERE user_id = ?");
         $stmt->bind_param("i", $user_id);
         $stmt->execute();
@@ -55,7 +57,6 @@ function generateAccount(){
                                 </thead>
                                 <tbody>
 html;
-            $user_id = $_SESSION['user_id'];
             $stmt1 = $db->prepare("SELECT * FROM hub_users WHERE user_id = ?");
             $stmt1->bind_param("i", $user_id);
             $stmt1->execute();

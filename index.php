@@ -9,9 +9,10 @@
 
     //REQUIRES SESSIONS
     session_start();
-
     //SETUP VARIABLES
     $isLoggedIn = isset($_SESSION['user_id']);
+    //CLOSE SESSION
+    session_write_close();
 
     $pageHTML = file_get_contents($templatesDir.'mainTemplate.html');
 
@@ -76,7 +77,7 @@
         switch($action){
             case 'logout':
                 include './required/action_logout.php';
-                $html .= generateLogout($_SESSION);
+                $html .= generateLogout();
             break;
             case 'adddevice':
                 include './uiAssets/content_adddevice.php';

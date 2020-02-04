@@ -29,6 +29,11 @@ function generateLineChart_Year(){
     $html = <<<h
 
     <script type="text/javascript">
+    Var dataYear={ data: {
+                labels: $jsonEncode1_Year,
+                datasets: [{"label": ["Expected Usage"],data: $jsonEncode2_Year,backgroundColor: ['rgba(0,0,0,0)',],borderColor: ['rgba(0, 10, 130, .1)',],borderWidth: ['2'],},{
+                label: "Power Used",data: $jsonEncode3_Year,backgroundColor: gradientFill,borderColor: gradientFill,borderWidth: 2}
+                ]}};
         //converts php querry to js for graph
 
         const ctxL = document.getElementById("lineChart_Year").getContext('2d');
@@ -37,28 +42,7 @@ function generateLineChart_Year(){
         gradientFill.addColorStop(1, "rgba(0,230,64,0.5)");
         let LineChartYear = new Chart(ctxL, {
             type: 'line',
-            data: {
-                labels: $jsonEncode1_Year,
-                datasets: [{
-                    label: "Expected Usage",
-                    data: $jsonEncode2_Year,
-                    backgroundColor: [
-                        'rgba(0,0,0,0)',
-                    ],
-                    borderColor: [
-                        'rgba(0, 10, 130, .1)',
-                    ],
-                    borderWidth: ['2'],
-                },
-                    {
-                        label: "Power Used",
-                        data: $jsonEncode3_Year,
-                        backgroundColor: gradientFill,
-                        borderColor: gradientFill,
-                        borderWidth: 2
-                    }
-                ]
-            },
+           data: dataYear,
             options: {
                 responsive: true
             }

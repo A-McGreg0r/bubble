@@ -60,7 +60,7 @@ function generateHomeTab(){
                                                     data: {
                                                     labels: ["Red"],
                                                     datasets: [{
-                                                    data: [200, 100],
+                                                    data: [300, 100],
                                                     backgroundColor: ["#F7464A", "#FFFFFF00"],
                                                     hoverBackgroundColor: ["#FF5A5E", "#FFFFFF00"]
                                                     }]
@@ -82,7 +82,7 @@ function generateHomeTab(){
                                                     data: {
                                                     labels: ["Red"],
                                                     datasets: [{
-                                                    data: [200, 100],
+                                                    data: [200, 125],
                                                     backgroundColor: ["#F7464A", "#FFFFFF00"],
                                                     hoverBackgroundColor: ["#FF5A5E", "#FFFFFF00"]
                                                     }]
@@ -104,7 +104,7 @@ function generateHomeTab(){
                                                     data: {
                                                     labels: ["Red"],
                                                     datasets: [{
-                                                    data: [200, 100],
+                                                    data: [250, 100],
                                                     backgroundColor: ["#F7464A", "#FFFFFF00"],
                                                     hoverBackgroundColor: ["#FF5A5E", "#FFFFFF00"]
                                                     }]

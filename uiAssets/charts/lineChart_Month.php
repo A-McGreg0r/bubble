@@ -20,25 +20,25 @@ function generateLineChart_Month(){
     //randome genarated grapth (temp)
     $dataTitle ="lineChart_Months";
     $first = strtotime('first day this month');
-    $dataLables_Month = array();
-    $dataPoints_Month = array();
-    $dataAvg_Month = array();
+    $dataLables = array();
+    $dataPoints = array();
+    $dataAvg = array();
 
     for ($i = $numOfDays; $i >= 0; $i--) {
         //list of months
-        array_push($dataLabel_Months, date('D', strtotime("-$i day", $first)));
+        array_push($dataLables, date('D', strtotime("-$i day", $first)));
         //geanarat rand data for display
-        array_push($dataPoints_Month, rand(25, 100));
+        array_push($dataPoints, rand(25, 100));
         //a avg of the entire contence of the array
         //todo consider changeing it to look at all past years to provide a more accurit estamit
-        $dataPoints_Month = array_filter($dataPoints_Month);
-        array_push($dataAvg_Month, array_sum($dataPoints_Month)/count($dataPoints_Month));
+        $dataPoints = array_filter($dataPoints);
+        array_push($dataAvg, array_sum($dataPoints)/count($dataPoints));
 
     }
 
-    $jsonEncode1_Month = json_encode($dataLabel_Months, JSON_NUMERIC_CHECK);
-    $jsonEncode2_Month = json_encode($dataAvg_Month, JSON_NUMERIC_CHECK);
-    $jsonEncode3_Month = json_encode($dataPoints_Month, JSON_NUMERIC_CHECK);
+    $jsonEncode1 = json_encode($dataLables, JSON_NUMERIC_CHECK);
+    $jsonEncode2 = json_encode($dataAvg, JSON_NUMERIC_CHECK);
+    $jsonEncode3 = json_encode($dataPoints, JSON_NUMERIC_CHECK);
     $html = <<<pageHTML
     <script type="text/javascript">
         //converts php querry to js for graph
@@ -47,24 +47,24 @@ function generateLineChart_Month(){
         const gradientFill = ctxL.createLinearGradient(0, 0, 0, 350);
         gradientFill.addColorStop(0, "rgba(242,38,19,0.5)");
         gradientFill.addColorStop(1, "rgba(0,230,64,0.5)");
-        let LineChartMonth = new Chart(ctxL, {
+        let LineChartYear = new Chart(ctxL, {
             type: 'line',
             data: {
-                labels: $jsonEncode1_Month,
+                labels: $jsonEncode1,
                 datasets: [{
                     label: "Expected Usage",
-                    data: $jsonEncode2_Month,
+                    data: $jsonEncode2,
                     backgroundColor: [
                         'rgba(0,0,0,0)',
                     ],
                     borderColor: [
                         'rgba(0, 10, 130, .1)',
                     ],
-                    borderWidth: 2,
+                    borderWidth: ['2'],
                 },
                     {
                         label: "Power Used",
-                        data: $jsonEncode3_Month,
+                        data: $jsonEncode3,
                         backgroundColor: gradientFill,
                         borderColor: gradientFill,
                         borderWidth: 2

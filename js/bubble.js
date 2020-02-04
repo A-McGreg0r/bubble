@@ -42,7 +42,7 @@ function submitImage(){
     var loading = document.querySelector("#loading");
 
     var canvas = document.createElement("canvas");
-    canvas.getContext('2d').drawImage(video, 0, 0, 500, 600);
+    canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
     video.style.visibility = "hidden";
     var img = document.createElement("img");
     img.src = canvas.toDataURL();

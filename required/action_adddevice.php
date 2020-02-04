@@ -2,8 +2,8 @@
     $imageURI = key($_POST);
     echo var_dump($_POST);
     $imageURI = str_replace(' ', '+', $imageURI);
-    list($type, $imageURI) = explode(';', $imageURI);
-    list(, $imageURI)      = explode(',', $imageURI);
+    // list($type, $imageURI) = explode(';', $imageURI);
+    // list(, $imageURI)      = explode(',', $imageURI);
 
     $decoded = "";
     for ($i=0; $i < ceil(strlen($imageURI)/256); $i++)

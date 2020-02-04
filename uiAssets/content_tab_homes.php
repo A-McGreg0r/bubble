@@ -152,21 +152,16 @@ function generateHomeTab(){
                                         <option value="3">Day</option>
                                     </select>
                                             
-                                <div style='display:none;' id='Year'>Chart Year<br/>&nbsp;
-                                test y
-                                    <canvas id="lineChart_Year"></canvas>     
-
-                                </div> 
-                                <div style='display:none;' id='Month'>chart month<br/>&nbsp;
-                                test m
-                                    <canvas id="lineChart_Month"></canvas>  
-
-                                </div> 
-                                <div style='display:none;' id='Day'>chart day<br/>&nbsp;
-                                test d
-                                    <canvas id="lineChart_Day"></canvas>    
-                                      
-                                </div> 
+                                    <div style='display:none;' id='Year'>Chart Year<br/>&nbsp;
+                                        <canvas id="lineChart_Year"></canvas>     
+                                    </div> 
+                                    <div style='display:none;' id='Month'>chart month<br/>&nbsp;
+                                        <canvas id="lineChart_Month"></canvas>  
+                                    </div> 
+                                    <div style='display:none;' id='Day'>chart day<br/>&nbsp;
+                                        <canvas id="lineChart_Day"></canvas>        
+                                    </div> 
+                                    
                                </div> 
                             </div>
                         </div>

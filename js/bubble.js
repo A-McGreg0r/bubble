@@ -53,8 +53,6 @@ function submitImage(){
         type:'POST',
         url: url,
         data:dataQuery,
-        cache:false,
-        processData: false,
         success:function(data){
             loading.style.visibility = "hidden";
             console.log(data);

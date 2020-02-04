@@ -26,6 +26,7 @@ function generateLineChart_Year(){
     $jsonEncode1_Year = json_encode($dataLabels_Year, JSON_NUMERIC_CHECK);
     $jsonEncode2_Year = json_encode($dataAvg_Year, JSON_NUMERIC_CHECK);
     $jsonEncode3_Year = json_encode($dataPoints_Year, JSON_NUMERIC_CHECK);
+
     $html = <<<h
 
     <script type="text/javascript">
@@ -34,28 +35,30 @@ function generateLineChart_Year(){
     Var; dataDay={ "labels ": $jsonEncode1_Year , "datasets";: [{"label": ["Expected Usage"],"data": [$jsonEncode2_Year] , "backgroundColor";: ['rgba(0,0,0,0)',],"borderColor";: 'rgba(0, 10, 130, .1)', "label";: "Power Used", "data"; : [$jsonEncode3_Year;],"backgroundColor";: gradientFill,borderColor;: 'gradientFill','borderWidth';: '2';}]}
     //converts php querry to js for graph
     
-    function generateAllChart(dataInfo) {
-        const ctxL = document.getElementById("mainLineChart").getContext('2d');
+    function generateAll_Chart() {
+        const ctxL = document.getElementById("AllLineChart").getContext('2d');
         const gradientFill = ctxL.createLinearGradient(0, 0, 0, 350);
         gradientFill.addColorStop(0, "rgba(242,38,19,0.5)");
         gradientFill.addColorStop(1, "rgba(0,230,64,0.5)");
-        let mainLineChart = new Chart(ctxL, {
-            type: 'line',
-           data: dataInfo,
-            options: {
-                responsive: true
-            }
-        });
-})}
+        let AllLineChart = new Chart(ctxL, {
+                type: 'line',
+                data: dataYear,
+                options: {
+                    responsive: true
+                        }
+                });
 
-            $(document).ready(function() {
-                $("#control1").click(chartContent);
-            });
+                $(document).ready(function(button) {
+                    (button).click(chartContent);
+                });
                 function chartContent() {
-                    mainLineChart["config"]["data"] = dataYear; //<--- THIS WORKS!
-                    mainLineChart.update();
+                    AllLineChart["config"]["data"] = dataYear; //<--- THIS WORKS!
+                    AllLineChart.update();
                 }
-
+        
+        }
+        
+ 
     </script>
 h;
     return $html;

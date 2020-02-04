@@ -179,6 +179,7 @@ html;
                     //require "charts/lineChart_Month.php";
                     require "charts/allCharts.php";
 
+                    //$html .= generateAll_Chart();
 
                     //$html .= generateLineChart_Day();
                     //$html .= generateLineChart_Month();

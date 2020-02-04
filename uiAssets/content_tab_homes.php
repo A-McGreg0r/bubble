@@ -182,7 +182,7 @@ html;
 
                     //$html .= generateLineChart_Day();
                     //$html .= generateLineChart_Month();
-                    //$html .= generateLineChart_Year();
+                    $html .= generateLineChart_Year();
 
                 }
                 $stmt1->close();

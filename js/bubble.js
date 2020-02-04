@@ -52,11 +52,7 @@ function submitImage(){
     $.ajax({
         type:'POST',
         url: url,
-        data:{
-            imgBase64: dataQuery
-        },
-        cache:false,
-        processData: false,
+        data:dataQuery,
         success:function(data){
             loading.style.visibility = "hidden";
             console.log(data);

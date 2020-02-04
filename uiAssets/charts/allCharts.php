@@ -31,11 +31,11 @@ function generateLineChart_Year(){
     <script type="text/javascript">
         //converts php querry to js for graph
 
-        const ctxL = document.getElementById("lineChart_Year").getContext('2d');
-        const gradientFill = ctxL.createLinearGradient(0, 0, 0, 350);
+        const ctxL1 = document.getElementById("lineChart_Year").getContext('2d');
+        const gradientFill = ctxL1.createLinearGradient(0, 0, 0, 350);
         gradientFill.addColorStop(0, "rgba(242,38,19,0.5)");
         gradientFill.addColorStop(1, "rgba(0,230,64,0.5)");
-        let LineChartYear = new Chart(ctxL, {
+        let LineChartYear = new Chart(ctxL1, {
             type: 'line',
             data: {
                 labels: $jsonEncode1_Year,
@@ -107,11 +107,11 @@ function generateLineChart_Month(){
     <script type="text/javascript">
         //converts php querry to js for graph
     
-        const ctxL = document.getElementById("lineChart_Month").getContext('2d');
-        const gradientFill = ctxL.createLinearGradient(0, 0, 0, 350);
+        const ctxL2 = document.getElementById("lineChart_Month").getContext('2d');
+        const gradientFill = ctxL2.createLinearGradient(0, 0, 0, 350);
         gradientFill.addColorStop(0, "rgba(242,38,19,0.5)");
         gradientFill.addColorStop(1, "rgba(0,230,64,0.5)");
-        let LineChartMonth = new Chart(ctxL, {
+        let LineChartMonth = new Chart(ctxL2, {
             type: 'line',
             data: {
                 labels: $jsonEncode1_Month,
@@ -174,11 +174,11 @@ function generateLineChart_Day(){
     <script type="text/javascript">
         //converts php querry to js for graph
 
-        const ctxL = document.getElementById("lineChart_Day").getContext('2d');
-        const gradientFill = ctxL.createLinearGradient(0, 0, 0, 350);
+        const ctxL3 = document.getElementById("lineChart_Day").getContext('2d');
+        const gradientFill = ctxL3.createLinearGradient(0, 0, 0, 350);
         gradientFill.addColorStop(0, "rgba(242,38,19,0.5)");
         gradientFill.addColorStop(1, "rgba(0,230,64,0.5)");
-        let LineChartDay = new Chart(ctxL, {
+        let LineChartDay = new Chart(ctxL3, {
             type: 'line',
             data: {
                 labels: $jsonEncode1_Day,

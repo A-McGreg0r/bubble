@@ -54,9 +54,13 @@
                     $hub_id = $row['hub_id'];
                     $stmt1 = $db->prepare("INSERT INTO hub_users (user_id, hub_id) VALUES (?, ?)");
                     $stmt1->bind_param("ii", $user_id, $hub_id);
-                    $stmt1->execute();
-                    echo "Sucessfully registered your new hub!\nNavigate to <a href=\"index.php\">Home</a> to view your newly added Hub!";
-        
+                    if (!$stmt1->execute()) {
+                       echo "Sucessfully registered your new hub!\nNavigate to <a href=\"index.php\">Home</a> to view your newly added Hub!";
+                    }else{
+                        echo "Hmm, something went wrong, please refresh the page and try again";
+                    }
+                    $stmt1->close();
+
                 } else {
                     echo "This Hub doesnt appear registered with us yet. Ensure the device has a green flashing LED on the top. For more troubleshooting, see <a href=\"index.php?action=troubleshooting\"Our Troubleshooting Tips</a>";
                 }
@@ -64,7 +68,7 @@
 
             break;
             default: //OTHER DEVICE
-                
+
 
 
             break;

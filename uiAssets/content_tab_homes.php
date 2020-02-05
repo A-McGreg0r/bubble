@@ -94,8 +94,8 @@ function generateHomeTab()
                                                     labels: ["Spent [£]", "Remaining [£]"],
                                                     datasets: [{
                                                     data: [$cost_day, $cost_variance],
-                                                    backgroundColor: ["#F7464A", "#FFFFFF00"],
-                                                    hoverBackgroundColor: ["#FF5A5E", "#FFFFFF00"]
+                                                    backgroundColor: ["#F7464A", "#D3D3D3"],
+                                                    hoverBackgroundColor: ["#FF5A5E", "#D3D3D3"]
                                                     }]
                                                     },
                                                     options: {
@@ -116,8 +116,8 @@ function generateHomeTab()
                                                     labels: ["Spent [£]", "Remaining [£]"],
                                                     datasets: [{
                                                     data: [$cost_month, $cost_variance],
-                                                    backgroundColor: ["#F7464A", "#FFFFFF00"],
-                                                    hoverBackgroundColor: ["#FF5A5E", "#FFFFFF00"]
+                                                    backgroundColor: ["#F7464A", "#D3D3D3"],
+                                                    hoverBackgroundColor: ["#FF5A5E", "#D3D3D3"]
                                                     }]
                                                     },
                                                     options: {
@@ -139,8 +139,8 @@ function generateHomeTab()
                                                     labels: ["Budget [£]", "Variance [£]"],
                                                     datasets: [{
                                                     data: [$cost_total, $cost_variance],
-                                                    backgroundColor: ["#F7464A", "#FFFFFF00"],
-                                                    hoverBackgroundColor: ["#FF5A5E", "#FFFFFF00"]
+                                                    backgroundColor: ["#F7464A", "#D3D3D3"],
+                                                    hoverBackgroundColor: ["#FF5A5E", "#D3D3D3"]
                                                     }]
                                                     },
                                                     options: {

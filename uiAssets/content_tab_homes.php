@@ -206,10 +206,10 @@ function generateHomeTab()
                                         });
                                         
                                         function chartChange() {
-                                            if (document.getElementById("chartPicker").value == "1"){
+                                            if (document.getElementById("chartPicker").value === "1"){
                                             myChart["config"]["data"] = data1; //<--- THIS WORKS!
                                             myChart.update();
-                                            }else if (document.getElementById("chartPicker").value == "2"){
+                                            }else if (document.getElementById("chartPicker").value === "2"){
                                              myChart["config"]["data"] = data1; //<--- THIS WORKS!
                                             myChart.update();
                                             }        

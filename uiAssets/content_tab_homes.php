@@ -212,7 +212,6 @@ function generateHomeTab()
                                       for(var i in dps) {
                                         chart.options.data[0].push(e.selectedIndex);
                                       }
-                                      chart.render();
                                       myChart.update();
                                     });
                                     

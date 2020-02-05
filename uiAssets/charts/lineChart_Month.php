@@ -71,6 +71,9 @@ function generateLineChart_Month(){
             $(document).ready(function() {
                 $("#control1").click(chartContent);
             });
+            
+    
+            
     </script>
 pageHTML;
     return $html;

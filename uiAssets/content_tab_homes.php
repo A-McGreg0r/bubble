@@ -180,7 +180,7 @@ function generateHomeTab()
                                     <canvas id="masterLineChart"></canvas>
                                     <script type="text/javascript">
                                         // Supplied Datasets to display
-                                        let data1 = { "labels": ["1", "2", "3","4","5","6","7", "8", "9","10","11","12"],"label": "My First dataset", "datasets": [{ "label": "avg", "data": $dataAvgEncoded, "backgroundColor": "rgba(255, 99, 132, 0.2)", "borderColor": "rgba(255,99,132,1)", "borderWidth": 1 },{ "label": "Power usage", "data": $dataPointsEncoded, "backgroundColor": "rgba(255, 99, 132, 0.2)", "borderColor": "rgba(255,99,132,1)", "borderWidth": 1 }] };
+                                        let data1 = { "labels": ["1", "2", "3","4","5","6","7", "8", "9","10","11","12"],"label": "My First dataset", "datasets": [{ "label": "avg", "data": $dataAvgEncoded, "backgroundColor": "rgba(255, 99, 132, 0.2)", "borderColor": gradientFill(), "borderWidth": 1 },{ "label": "Power usage", "data": $dataPointsEncoded, "backgroundColor": "rgba(255, 99, 132, 0.2)", "borderColor": "rgba(255,99,132,1)", "borderWidth": 1 }] };
                                         let data2 = { "labels": ["1", "2", "3","4","5","6","7", "8", "9","10","11","12"],"label": "My First dataset", "datasets": [{ "label": "avg", "data": $dataAvgEncoded, "backgroundColor": "rgba(255, 99, 132, 0.2)", "borderColor": "rgba(255,99,132,1)", "borderWidth": 1 },{ "label": "Power usage", "data": $dataPointsEncoded, "backgroundColor": "rgba(255, 99, 132, 0.2)", "borderColor": "rgba(255,99,132,1)", "borderWidth": 1 }] };
                                         let data3 = { "labels": ["1", "2", "3","4","5","6","7", "8", "9","10","11","12"],"label": "My First dataset", "datasets": [{ "label": "avg", "data": $dataAvgEncoded, "backgroundColor": "rgba(255, 99, 132, 0.2)", "borderColor": "rgba(255,99,132,1)", "borderWidth": 1 },{ "label": "Power usage", "data": $dataPointsEncoded, "backgroundColor": "rgba(255, 99, 132, 0.2)", "borderColor": "rgba(255,99,132,1)", "borderWidth": 1 }] };
                                         // Draw the initial chart
@@ -209,6 +209,11 @@ function generateHomeTab()
                                         $(document).ready(function() {
                                             $("#control1").click(chartContent);
                                         });
+                                        
+                                        const gradientFill = kChartCanvas.createLinearGradient(0, 0, 0, 350);
+                                            gradientFill.addColorStop(0, "rgba(242,38,19,0.5)");
+                                            gradientFill.addColorStop(1, "rgba(0,230,64,0.5)");
+                                        
                                 </script>
 
                                     

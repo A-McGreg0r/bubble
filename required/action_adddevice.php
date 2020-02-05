@@ -36,6 +36,7 @@
 
     //GET TEXT FROM QR CODE IF IT EXISTS
     $qrText = $qrcode->text();
+    echo $qrText;
     if(!empty($qrText)){
         //GET DATA FROM QR CODE TEXT
         $deviceType = (int)substr($qrText, 0, 3);

@@ -61,11 +61,11 @@ function submitImage(){
         url: url,
         data:{ photo: dataQuery},
         success:function(data){
-            if(!data){
+            if(!data || data == "\n"){
                 video.style.visibility = "visible";
                 loading.style.visibility = "hidden";
                 submitButton.style.visibility = "visible";
-                devicetext.innerText = "<p>Unable to find a QR code, please try again!</p>";
+                devicetext.innerText = "Unable to find a QR code, please try again!";
             }else{
                 loading.style.visibility = "hidden";
                 devicetext.innerText = "<p>"+data+"</p>";

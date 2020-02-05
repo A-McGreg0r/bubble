@@ -214,8 +214,9 @@ function generateHomeTab()
                                         chart.options.data[0].dataPoints.push({x: new Date(xVal), y: dps[i].y});
                                       }
                                       chart.render();
+                                      myChart.update();
                                     });
-                                    /*
+                                    
                                     $(function () {
                                         $("#chartPicker").change(function (evt) {
                                             myChart["config"]["data"] = jsonData[$("#chartPicker").value()];
@@ -230,8 +231,6 @@ function generateHomeTab()
                                         $(document).ready(function() {
                                             $("#control1").click(chartContent);
                                         });
-                                        
-                                     */
  
                                 </script>
 

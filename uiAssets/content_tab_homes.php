@@ -166,10 +166,14 @@ function generateHomeTab()
                                     </div> 
                                     
                                             <!--todo get displaying all 3--> 
-                                    <div id='Year'>Chart Year<br/>&nbsp;
-                                       <canvas id="mainLineChart"></canvas>
-                                        <button id="control1">test</button>
-                                    </div> 
+                                    <canvas id="graph" width="800px" height="400px"></canvas>
+
+                                          <button id="btn1">
+                                          Option 1
+                                          </button>
+                                          <button id="btn2">
+                                          Option 2
+                                          </button>
 
                                     
                                </div> 
@@ -178,34 +182,67 @@ function generateHomeTab()
                     </div>
                 
     <script>
+            var data = {
+                labels: ['January', 'February', 'March'],
+                
+                datasets: [
+                    {
+                    fillColor: "rgba(220,220,220,0.2)",
+                    strokeColor: "rgba(220,220,220,1)",
+                    pointColor: "rgba(220,220,220,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(220,220,220,1)",
+                    data: [30,120,90]
+                    },
+                    {
+                    fillColor: "rgba(100,220,220,0.7)",
+                    strokeColor: "rgba(220,220,220,1)",
+                    pointColor: "rgba(220,220,220,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(220,220,220,1)",
+                    data: [10,70,110]
+                    }
+                ]
+                };
             
+            var data1 = {
+                labels: ['March', 'Apr', 'May'],
+                
+                datasets: [
+                    {
+                    fillColor: "rgba(220,220,220,0.2)",
+                    strokeColor: "rgba(220,220,220,1)",
+                    pointColor: "rgba(220,220,220,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(220,220,220,1)",
+                    data: [50,100,140]
+                    },
+                    {
+                    fillColor: "rgba(100,220,220,0.7)",
+                    strokeColor: "rgba(220,220,220,1)",
+                    pointColor: "rgba(220,220,220,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(220,220,220,1)",
+                    data: [40,70,200]
+                    }
+                ]
+                };
             
-            
-
-            
-            
-                $(document).ready(function(){
-                $('#chartPicker').on('change', function() {
-                      if ( this.value === '1'){
-                        $("#Year").show();
-                        $("#Day").hide();
-                        $("#Month").hide();
-                      }else if( this.value === '2'){
-                         $("#Month").show();
-                         $("#Day").hide();
-                         $("#Year").hide();
-                      }else if( this.value === '3'){
-                          $("#Day").show();
-                          $("#Month").hide();
-                          $("#Year").hide();
-                      }else{
-                          $("#Day").hide();
-                          $("#Month").hide();
-                          $("#Year").hide();
-                      }
-                    });
-                });
-
+            var context = document.querySelector('#graph').getContext('2d');
+            new Chart(context).Line(data);
+                
+            $("#btn1").on("click", function() {
+                 var context1 = document.querySelector('#graph').getContext('2d');
+                new Chart(context1).Line(data);
+              });
+            $("#btn2").on("click", function() {
+                var context2 = document.querySelector('#graph').getContext('2d');
+                new Chart(context2).Line(data1);
+              });
     </script>                
                                   
                     <!-- Accordion card -->

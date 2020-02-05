@@ -204,22 +204,7 @@ function generateHomeTab()
                                                 }
                                             }
                                         });
-                                     function chartChange() {
-                                                   if (document.getElementById("mySelect").options[0].value()){
-                                                         function chartContent() {
-                                                                myChart["config"]["data"] = data1; //<--- THIS WORKS!
-                                                                myChart.update();
-                                                            }   
-                                                   }else if (document.getElementById("mySelect").options[1].value()){
-                                                       
-                                                   }else if (document.getElementById("mySelect").options[2].value()){
-                                                       
-                                                   }else if (document.getElementById("mySelect").options[3].value()){
-                                                      
-                                                   }else {
-                                                       window.alert("invalid slection try again);        
-                                                    }
-                                                    }
+                                
                                     // Called on Click
                                         function chartContent() {
                                             myChart["config"]["data"] = data2; //<--- THIS WORKS!

@@ -210,7 +210,7 @@ function generateHomeTab()
                                             masterChart.data.datasets.data = [];
                                             let e = document.getElementById("masterChart");
                                             let selected = e.options[e.selectedIndex].value;
-                                            dps = jsonData[selected];
+                                            var dps = jsonData[selected];
                                             for(let i in dps) {
                                                 let xVal = dps[i].x;
                                                 chart.options.data[0].dataPoints.push({x: new Date(xVal), y: dps[i].y});

@@ -215,7 +215,7 @@ function generateHomeTab()
                                       }
                                       chart.render();
                                     });
-                                    
+                                    /*
                                     $(function () {
                                         $("#chartPicker").change(function (evt) {
                                             myChart["config"]["data"] = jsonData[$("#chartPicker").value()];
@@ -230,6 +230,8 @@ function generateHomeTab()
                                         $(document).ready(function() {
                                             $("#control1").click(chartContent);
                                         });
+                                        
+                                     */
  
                                 </script>
 

@@ -35,8 +35,10 @@ function generateHomeTab()
                         $y += rand(0, 100) - 5;
                         array_push($dataPoints, array("x" => $i, "y" => $y));
                         array_push($dataLables, array($i));
+                        array_push($AvgPoints, array($AvgPoints . array_sum($dataPoints) / $AvgPoints . count($dataPoints));
                     }
                     $dataPointsEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
+                    $dataAvgEncoded = json_encode($AvgPoints, JSON_NUMERIC_CHECK);
                     $dataLablesEncoded = json_encode($dataLables, JSON_NUMERIC_CHECK);
 
                     $dataPoints = 1;
@@ -173,7 +175,7 @@ function generateHomeTab()
                                     <canvas id="masterLineChart"></canvas>
                                     <script type="text/javascript">
                                         // Supplied Datasets to display
-                                        let data1 = { "labels": ["1", "2", "3","4","5","6","7", "8", "9","10","11","12"],"label": "My First dataset", "datasets": [{ "label": "Power usage", "data": $dataPointsEncoded, "backgroundColor": "rgba(255, 99, 132, 0.2)", "borderColor": "rgba(255,99,132,1)", "borderWidth": 1 },{ "label": "Power usage", "data": $dataPointsEncoded, "backgroundColor": "rgba(255, 99, 132, 0.2)", "borderColor": "rgba(255,99,132,1)", "borderWidth": 1 }] };
+                                        let data1 = { "labels": ["1", "2", "3","4","5","6","7", "8", "9","10","11","12"],"label": "My First dataset", "datasets": [{ "label": "avg", "data": $dataAvgEncoded, "backgroundColor": "rgba(255, 99, 132, 0.2)", "borderColor": "rgba(255,99,132,1)", "borderWidth": 1 },{ "label": "Power usage", "data": $dataPointsEncoded, "backgroundColor": "rgba(255, 99, 132, 0.2)", "borderColor": "rgba(255,99,132,1)", "borderWidth": 1 }] };
                                         let data2 = { "labels": ["1", "2", "3","4","5","6","7", "8", "9","10","11","12"],"label": "My First dataset", "datasets": [{ "label": "Power usage", "data": $dataPointsEncoded, "backgroundColor": "rgba(255, 99, 132, 0.2)", "borderColor": "rgba(255,99,132,1)", "borderWidth": 1 }] };
                                         // Draw the initial chart
                                         var kChartCanvas = $("#masterLineChart")[0].getContext('2d');

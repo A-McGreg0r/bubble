@@ -28,6 +28,14 @@ function generateHomeTab()
                         $hub_name = "My Home";
                     }
 
+                    $dataPoints = array();
+                    $y = 40;
+                    for ($i = 0; $i < 1000; $i++) {
+                        $y += rand(0, 10) - 5;
+                        array_push($dataPoints, array("x" => $i, "y" => $y));
+                    }
+                    $dataPointsEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
+
                     $dataPoints = 1;
                     $html .= <<<html
                     <!-- Accordion card -->
@@ -176,20 +184,23 @@ function generateHomeTab()
                     </div>
                 
     <script>    
-    
-
-    
-    var context = document.querySelector('#graph').getContext('2d');
-    new Chart(context).Line(data);
-        
-    $("#btn1").on("click", function() {
-         var context1 = document.querySelector('#graph').getContext('2d');
-        new Chart(context1).Line(data);
-      });
-    $("#btn2").on("click", function() {
-        var context2 = document.querySelector('#graph').getContext('2d');
-        new Chart(context2).Line(data1);
-      });
+              <script>
+              window.onload = function () {
+              var chart = new CanvasJS.Chart("chartContainer", {
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
+                animationEnabled: true,
+                zoomEnabled: true,
+                    title: {
+                    text: "Try Zooming and Panning"
+                    },
+                    data: [{
+                     type: "area",     
+                     dataPoints: $dataPointsEncoded
+                      }]
+                      });
+                 chart.render();
+                 }
+            </script>
         </script>                
                                   
                     <!-- Accordion card -->
@@ -197,8 +208,8 @@ html;
                     //require "charts/lineChart_Day.php";
                     //require "charts/lineChart_Year.php";
                     //require "charts/lineChart_Month.php";
-                    require "charts/allCharts.php";
-                    $html .= generateLineChart_All();
+                    //require "charts/allCharts.php";
+                    //$html .= generateLineChart_All();
 
                     //$html .= generateLineChart_Day();
                     //$html .= generateLineChart_Month();

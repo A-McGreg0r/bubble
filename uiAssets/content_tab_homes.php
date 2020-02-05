@@ -29,12 +29,15 @@ function generateHomeTab()
                     }
 
                     $dataPoints = array();
+                    $dataLables = array();
                     $y = 40;
                     for ($i = 0; $i < 1000; $i++) {
                         $y += rand(0, 10) - 5;
                         array_push($dataPoints, array("x" => $i, "y" => $y));
+                        array_push($dataLables, array($i);
                     }
                     $dataPointsEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
+                    $dataLablesEncoded = json_encode($dataLables, JSON_NUMERIC_CHECK);
 
                     $dataPoints = 1;
                     $html .= <<<html
@@ -170,7 +173,7 @@ function generateHomeTab()
                                     <canvas id="masterLineChart"></canvas>
                                     <script type="text/javascript">
                                         // Supplied Datasets to display
-                                        var data1 = { "labels": ["1", "2", "3","4","5"],"label": "My First dataset", "datasets": [{ "label": "Contacts", "data": $dataPointsEncoded, "backgroundColor": "rgba(255, 99, 132, 0.2)", "borderColor": "rgba(255,99,132,1)", "borderWidth": 1 }] };
+                                        var data1 = { "labels": $dataLablesEncoded ,"label": "My First dataset", "datasets": [{ "label": "Contacts", "data": $dataPointsEncoded, "backgroundColor": "rgba(255, 99, 132, 0.2)", "borderColor": "rgba(255,99,132,1)", "borderWidth": 1 }] };
                                         var data2 = { "labels": ["1", "2", "3"], "datasets": [{ "label": "Contacts", "data": [10, 23, 41], "backgroundColor": "rgba(255, 99, 132, 0.2)", "borderColor": "rgba(255,99,132,1)", "borderWidth": 1 }] };
                                         
                                         // Draw the initial chart
@@ -207,25 +210,7 @@ function generateHomeTab()
                         </div>
                     </div>
                 
-    <script>    
-    
-              window.onload = function () {
-              var chart = new Chart("chartContainer", {
-                theme: "light2", // "light1", "light2", "dark1", "dark2"
-                animationEnabled: true,
-                zoomEnabled: true,
-                    title: {
-                    text: "Try Zooming and Panning"
-                    },
-                    data: [{
-                     type: "area",     
-                     dataPoints: $dataPointsEncoded
-                      }]
-                      });
-                 chart.render();
-                 }
-
-        </script>                
+              
                                   
                     <!-- Accordion card -->
 html;

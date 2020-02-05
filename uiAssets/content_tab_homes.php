@@ -167,7 +167,7 @@ function generateHomeTab()
                                     <p class="lead align-content-center">
                                         <span class="badge info-color-dark p-2">Date range</span>
                                     </p>
-                                    <select id="chartPicker" class="browser-default custom-select">
+                                    <select id="chartPicker" onselect="chartChange()" class="browser-default custom-select">
                                         <option value="0" selected>Choose time period</option>
                                         <option value="1">Year</option>
                                         <option value="2">Month</option>
@@ -204,11 +204,20 @@ function generateHomeTab()
                                                 }
                                             }
                                         });
-                                        
-                                        
-                               
-                                        
-                                        // Called on Click
+                                     function chartChange() {
+                                                   if (document.getElementById("mySelect").options[0].value()){
+                                                       //echo defalt
+                                                   }else if (document.getElementById("mySelect").options[1].value()){
+                                                       myChart["config"]["data"] = data1; //<--- THIS WORKS!
+                                                       myChart.update();
+                                                   }else if (document.getElementById("mySelect").options[2].value()){
+                                                       myChart["config"]["data"] = data2; //<--- THIS WORKS!
+                                                       myChart.update();
+                                                   }else if (document.getElementById("mySelect").options[3].value()){
+                                                       echo="chart three"
+                                                   }else {
+                                                       window.alert("invalid slection try again);        
+                                    // Called on Click
                                         function chartContent() {
                                             myChart["config"]["data"] = data2; //<--- THIS WORKS!
                                             myChart.update();

@@ -207,17 +207,8 @@ function generateHomeTab()
                                         });
                                         
                                         
-                                        $( ".custom-select" ).change(function() {
-                                            chart.data.datasets.data = [];
-                                            var e = document.getElementById("chartPicker");
-                                            var selected = e.options[e.selectedIndex].value;
-                                            dps = jsonData[selected];
-                                            for(var i in dps) {
-                                                chart.data.datasets.data.push({x: dps[i].x, y: dps[i].y});
-                                            }
-                                            chart.update();
-                                        });
-                                        
+                                   
+                                        //todo remove once slect working
                                         // Called on Click
                                         function chartContent() {
                                             myChart["config"]["data"] = data2; //<--- THIS WORKS!

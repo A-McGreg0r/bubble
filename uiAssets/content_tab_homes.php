@@ -168,9 +168,9 @@ function generateHomeTab()
                                     </p>
                                     <select id="chartPicker" class="browser-default custom-select dropdown">
                                         <option value="0" selected="selected">Choose time period</option>
-                                        <option value="1">Year</option>
-                                        <option value="2">Month</option>
-                                        <option value="3">Day</option>
+                                        <option value="data1">Year</option>
+                                        <option value="data2">Month</option>
+                                        <option value="data3">Day</option>
                                     </select>
                                     <button id="control1">upDate</button>
                                     

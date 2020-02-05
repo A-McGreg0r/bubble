@@ -205,6 +205,15 @@ function generateHomeTab()
                                             }
                                         });
                                         
+                                        function leaveChange() {
+                                            if (document.getElementById("chartPicker").value == "1"){
+                                            myChart["config"]["data"] = data1; //<--- THIS WORKS!
+                                            myChart.update();
+                                            }else if (document.getElementById("chartPicker").value == "2"){
+                                             myChart["config"]["data"] = data1; //<--- THIS WORKS!
+                                            myChart.update();
+                                            }        
+                                        }
                                         
                                         $( ".custom-select" ).change(function() {
                                             masterChart.data.datasets.data = [];

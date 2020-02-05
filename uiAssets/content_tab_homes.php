@@ -38,6 +38,7 @@ function generateHomeTab()
                         $cost_day = $row2['cost_day'];
                         $cost_month = $row2['cost_month'];
                         $cost_total = $row2['cost_total'];
+                        $cost_variance = "11.50";
                     }
 
                     $dataPoints = array();
@@ -89,9 +90,9 @@ function generateHomeTab()
                                                     var myLineChart = new Chart(ctxD, {
                                                     type: "doughnut",
                                                     data: {
-                                                    labels: ["Spent", "Remaining"],
+                                                    labels: ["Spent [£]", "Remaining [£]"],
                                                     datasets: [{
-                                                    data: [$cost_day, $cost_total],
+                                                    data: [$cost_day, $cost_variance],
                                                     backgroundColor: ["#F7464A", "#FFFFFF00"],
                                                     hoverBackgroundColor: ["#FF5A5E", "#FFFFFF00"]
                                                     }]
@@ -111,9 +112,9 @@ function generateHomeTab()
                                                     var myLineChart = new Chart(ctxD, {
                                                     type: "doughnut",
                                                     data: {
-                                                    labels: ["Cost [£]"],
+                                                    labels: ["Spent [£]", "Remaining [£]"],
                                                     datasets: [{
-                                                    data: [$cost_month, $cost_total],
+                                                    data: [$cost_month, $cost_variance],
                                                     backgroundColor: ["#F7464A", "#FFFFFF00"],
                                                     hoverBackgroundColor: ["#FF5A5E", "#FFFFFF00"]
                                                     }]
@@ -134,9 +135,9 @@ function generateHomeTab()
                                                     var myLineChart = new Chart(ctxD, {
                                                     type: "doughnut",
                                                     data: {
-                                                    labels: ["Red"],
+                                                    labels: ["Budget [£]", "Variance [£]"],
                                                     datasets: [{
-                                                    data: [200, 100],
+                                                    data: [$cost_total, $cost_variance],
                                                     backgroundColor: ["#F7464A", "#FFFFFF00"],
                                                     hoverBackgroundColor: ["#FF5A5E", "#FFFFFF00"]
                                                     }]

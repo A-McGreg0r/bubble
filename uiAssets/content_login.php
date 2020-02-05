@@ -247,8 +247,11 @@ function generateLoginPage(){
                                                 <i class="fab fa-github white-text disabled"></i>
                                             </a>
                                         </div>
+                                        
+                                        <div  class="row">
+                                            <p>By clicking <em>Sign up</em> you agree to our <a href="" target="_blank">terms of service</a></p>
+                                        </div>
 
-                                    <p>By clicking <em>Sign up</em> you agree to our <a href="" target="_blank">terms of service</a></p>
                                     </div>
 
                                     <!-- Terms of service -->

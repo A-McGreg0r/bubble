@@ -29,7 +29,8 @@ function generateHomeTab()
                     }
 
                     $dataPoints = array();
-                    $dataLables = array();
+                    $dataPoints = array();
+                    $AvgPoints = array();
                     $y = 40;
                     $avg = 0;
                     for ($i = 0; $i < 100; $i++) {

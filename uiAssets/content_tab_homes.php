@@ -203,7 +203,7 @@ function generateHomeTab()
                                 
                                     // Called on Click
                                     
-                                    $(function () {
+                                    $( ('#chartPicker').value() {
                                         $("#chartPicker").change(function (evt) {
                                             let chartSelection = $("#chartPicker").val();
                                             myChart["config"]["data"] = jsonData[chartSelection];
@@ -216,7 +216,6 @@ function generateHomeTab()
                                             myChart["config"]["data"] = data2; //<--- THIS WORKS!
                                             myChart.update();
                                         }
-                                        
                                         // Set the listener for the click function
                                         $(document).ready(function() {
                                             $("#control1").click(chartContent);

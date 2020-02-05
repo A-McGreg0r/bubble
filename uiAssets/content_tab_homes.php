@@ -35,7 +35,7 @@ function generateHomeTab()
                         $y += rand(0, 100) - 5;
                         array_push($dataPoints, array("x" => $i, "y" => $y));
                         array_push($dataLables, array($i));
-                        array_push($AvgPoints, array($AvgPoints . array_sum($dataPoints) / $AvgPoints . count($dataPoints));
+                        array_push($AvgPoints, array($AvgPoints . array_sum($dataPoints) / $AvgPoints . count($dataPoints)));
                     }
                     $dataPointsEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
                     $dataAvgEncoded = json_encode($AvgPoints, JSON_NUMERIC_CHECK);

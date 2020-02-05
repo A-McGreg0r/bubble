@@ -173,8 +173,7 @@ function generateHomeTab()
                                     <canvas id="masterLineChart"></canvas>
                                     <script type="text/javascript">
                                         // Supplied Datasets to display
-                                        var data1 = { "labels": [$dataLablesEncoded],"label": "My First dataset", "datasets": [{ "label": "Contacts", "data": [$dataPointsEncoded], "backgroundColor": "rgba(255, 99, 132, 0.2)", "borderColor": "rgba(255,99,132,1)", "borderWidth": 1 }] };
-                                        
+                                        let data1 = { "labels": ["1", "2", "3","4","5"],"label": "My First dataset", "datasets": [{ "label": "Contacts", "data": $dataPointsEncoded, "backgroundColor": "rgba(255, 99, 132, 0.2)", "borderColor": "rgba(255,99,132,1)", "borderWidth": 1 }] };
                                         
                                         // Draw the initial chart
                                         var kChartCanvas = $("#masterLineChart")[0].getContext('2d');

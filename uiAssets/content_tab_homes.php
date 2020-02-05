@@ -206,12 +206,21 @@ function generateHomeTab()
                                         });
                                         
                                         function chartChange() {
-                                            if (document.getElementById("chartPicker").value === "1"){
-                                            myChart["config"]["data"] = data1; //<--- THIS WORKS!
-                                            myChart.update();
-                                            }else if (document.getElementById("chartPicker").value === "2"){
-                                             myChart["config"]["data"] = data1; //<--- THIS WORKS!
-                                            myChart.update();
+                                            if (document.getElementById("chartPicker").options[0].value()){
+                                                       //echo defalt
+                                            }else if (document.getElementById("mySelect").options[1].value()){
+                                                myChart["config"]["data"] = data1; //<--- THIS WORKS!
+                                                myChart.update();
+                                            }else if (document.getElementById("mySelect").options[2].value()){
+                                                myChart["config"]["data"] = data2; //<--- THIS WORKS!
+                                                myChart.update();
+                                            }else if (document.getElementById("mySelect").options[3].value()){
+                                                myChart["config"]["data"] = data2; //<--- THIS WORKS!
+                                                myChart.update();
+                                            }else {
+                                                       window.alert("invalid slection try again);
+                                            }
+   
                                             }        
                                         }
                                         

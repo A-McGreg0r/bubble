@@ -31,11 +31,13 @@ function generateHomeTab()
                     $dataPoints = array();
                     $dataLables = array();
                     $y = 40;
+                    $avg = 0;
                     for ($i = 0; $i < 100; $i++) {
                         $y += rand(0, 100) - 5;
                         array_push($dataPoints, array("x" => $i, "y" => $y));
                         array_push($dataLables, array($i));
-                        array_push($AvgPoints, array($AvgPoints . array_sum($dataPoints) / $AvgPoints . count($dataPoints)));
+                        $avg = array_sum($dataPoints) / count($dataPoints);
+                        array_push($AvgPoints, array($avg));
                     }
                     $dataPointsEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
                     $dataAvgEncoded = json_encode($AvgPoints, JSON_NUMERIC_CHECK);

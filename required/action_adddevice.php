@@ -55,7 +55,7 @@
                     $stmt1 = $db->prepare("INSERT INTO hub_users (user_id, hub_id) VALUES (?, ?)");
                     $stmt1->bind_param("ii", $user_id, $hub_id);
                     if (!$stmt1->execute()) {
-                       echo "Sucessfully registered your new hub!\nNavigate to <a href=\"index.php\">Home</a> to view your newly added Hub!";
+                        echo "Sucessfully registered your new hub!\nNavigate to <a href=\"index.php\">Home</a> to view your newly added Hub!";
                     }else{
                         echo "Hmm, something went wrong, please refresh the page and try again";
                     }

@@ -62,17 +62,17 @@ function submitImage(){
                 video.style.visibility = "visible";
                 loading.style.visibility = "hidden";
                 submitButton.style.visibility = "visible";
-                devicetext.innerHTML = "Unable to find a QR code, please try again!";
+                devicetext.innerText = "<p>Unable to find a QR code, please try again!</p>";
             }else{
                 loading.style.visibility = "hidden";
-                devicetext.innerHTML = "<p>"+data+"</p>";
+                devicetext.innerText = "<p>"+data+"</p>";
             }
         },
         error: function(data){
             video.style.visibility = "visible";
             loading.style.visibility = "hidden";
             submitButton.style.visibility = "visible";
-            devicetext.innerHTML = "Unable to find a QR code, please try again!";
+            devicetext.innerText = "Unable to find a QR code, please try again!";
 
         }
     });

@@ -2,64 +2,40 @@
 <!-- TODO remove header as elaments html tag and doc type as required after completion -->
 <?php
 
-function generateLineChart_All(){
+function generateLineChart_All()
+{
     //TODO remove once data base it implmented
-    //randome genarated grapth (temp)
-    $dataTitle ="lineChart_Year";
-    //$first_Year = strtotime('first day this month');
-    $dataLabels_Year = array();
-    $dataPoints_Year = array();
-    $dataAvg_Year = array();
-
-    for ($i = 11; $i >= 0; $i--) {
-        //list of months
-        //array_push($dataLabels_Year, date('M', strtotime("-$i month", $first_Year)));
-        //geanarat rand data for display
-        array_push($dataPoints_Year, rand(100, 1000));
-        //a avg of the entire contence of the array
-        //todo consider changeing it to look at all past years to provide a more accurit estamit
-        $dataPoints_Year = array_filter($dataPoints_Year);
-        array_push($dataAvg_Year, array_sum($dataPoints_Year)/count($dataPoints_Year));
-
+    $dataPoints = array();
+    $y = 40;
+    for ($i = 0; $i < 1000; $i++) {
+        $y += rand(0, 10) - 5;
+        array_push($dataPoints, array("x" => $i, "y" => $y));
     }
+    $dataPointsEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
 
-    $jsonEncode1_Year = json_encode($dataLabels_Year, JSON_NUMERIC_CHECK);
-    $jsonEncode2_Year = json_encode($dataAvg_Year, JSON_NUMERIC_CHECK);
-    $jsonEncode3_Year = json_encode($dataPoints_Year, JSON_NUMERIC_CHECK);
 
     $html = <<<h
 
-    <script type="text/javascript">
-    Var; dataYear={ "labels ": $jsonEncode1_Year , "datasets";: [{"label": ["Expected Usage"],"data": [$jsonEncode2_Year] , "backgroundColor";: ['rgba(0,0,0,0)',],"borderColor";: 'rgba(0, 10, 130, .1)', "label";: "Power Used", "data"; : [$jsonEncode3_Year;],"backgroundColor";: gradientFill,borderColor;: 'gradientFill','borderWidth';: '2';}]}
-    Var; dataMonth={ "labels ": $jsonEncode1_Year , "datasets";: [{"label": ["Expected Usage"],"data": [$jsonEncode2_Year] , "backgroundColor";: ['rgba(0,0,0,0)',],"borderColor";: 'rgba(0, 10, 130, .1)', "label";: "Power Used", "data"; : [$jsonEncode3_Year;],"backgroundColor";: gradientFill,borderColor;: 'gradientFill','borderWidth';: '2';}]}
-    Var; dataDay={ "labels ": $jsonEncode1_Year , "datasets";: [{"label": ["Expected Usage"],"data": [$jsonEncode2_Year] , "backgroundColor";: ['rgba(0,0,0,0)',],"borderColor";: 'rgba(0, 10, 130, .1)', "label";: "Power Used", "data"; : [$jsonEncode3_Year;],"backgroundColor";: gradientFill,borderColor;: 'gradientFill','borderWidth';: '2';}]}
-    //converts php querry to js for graph
-    
-    function generateAll_Chart() {
-        const ctxL = document.getElementById("AllLineChart").getContext('2d');
-        const gradientFill = ctxL.createLinearGradient(0, 0, 0, 350);
-        gradientFill.addColorStop(0, "rgba(242,38,19,0.5)");
-        gradientFill.addColorStop(1, "rgba(0,230,64,0.5)");
-        let AllLineChart = new Chart(ctxL, {
-                type: 'line',
-                data: dataYear,
-                options: {
-                    responsive: true
-                        }
-                });
-
-                $(document).ready(function() {
-                    ().click(chartContent);
-                });
-                function chartContent() {
-                    AllLineChart["config"]["data"] = dataYear; //<--- THIS WORKS!
-                    AllLineChart.update();
-                }
-        
-        }
-        
+     <script>
+      window.onload = function () {
+      var chart = new CanvasJS.Chart("chartContainer", {
+        theme: "light2", // "light1", "light2", "dark1", "dark2"
+        animationEnabled: true,
+        zoomEnabled: true,
+            title: {
+            text: "Try Zooming and Panning"
+            },
+            data: [{
+             type: "area",     
+             dataPoints: $dataPointsEncoded
+              }]
+              });
+         chart.render();
+         }
     </script>
+
 h;
     return $html;
 }
+
 ?>

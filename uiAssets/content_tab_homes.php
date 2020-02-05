@@ -139,36 +139,7 @@ function generateHomeTab()
                                                     }
                                                     });
                                                 </script>
-                                                <?php
- 
-                                                    $dataPoints = array();
-                                                    $y = 40;
-                                                    for($i = 0; $i < 1000; $i++){
-                                                        $y += rand(0, 10) - 5; 
-                                                        array_push($dataPoints, array("x" => $i, "y" => $y));
-                                                    }
-                                                     
-                                                    ?>
-                                                
-                                                <script>
-                                                    window.onload = function () {
-                                                     
-                                                    var chart = new CanvasJS.Chart("chartContainer", {
-                                                        theme: "light2", // "light1", "light2", "dark1", "dark2"
-                                                        animationEnabled: true,
-                                                        zoomEnabled: true,
-                                                        title: {
-                                                            text: "Try Zooming and Panning"
-                                                        },
-                                                        data: [{
-                                                            type: "area",     
-                                                            dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
-                                                        }]
-                                                    });
-                                                    chart.render();
-                                                     
-                                                    }
-                                                    </script>
+
                                             </div>
                                         </div>
                                     </div>
@@ -187,7 +158,7 @@ function generateHomeTab()
                                     
                                     <!--todo get displaying all 3--> 
                                     <div style='display:none;' id='Year'>Chart Year<br/>&nbsp;
-                                      <!-<canvas id="mainLineChart"></canvas>-no load--> 
+                                       
                                     </div> 
                                     <div style='display:none;' id='Month'>chart month<br/>&nbsp;
                                        <!--no <canvas id="lineChart_Month"></canvas>  load-->   
@@ -196,15 +167,7 @@ function generateHomeTab()
                                        <!-- <canvas id="lineChart_Year"></canvas>loads-->       
                                     </div> 
                                     
-                                            <!--todo get displaying all 3--> 
-                                            <canvas id="graph" width="800px" height="400px"></canvas>
-                                        
-                                          <button id="btn1">
-                                          Option 1
-                                          </button>
-                                          <button id="btn2">
-                                          Option 2
-                                          </button>
+                                    <canvas id="chartContainer"></canvas>
 
                                     
                                </div> 
@@ -214,56 +177,7 @@ function generateHomeTab()
                 
     <script>    
     
-    
-    var data = {
-        labels: ['January', 'February', 'March'],
-        
-        datasets: [
-            {
-            fillColor: "rgba(220,220,220,0.2)",
-            strokeColor: "rgba(220,220,220,1)",
-            pointColor: "rgba(220,220,220,1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(220,220,220,1)",
-            data: [30,120,90]
-            },
-            {
-            fillColor: "rgba(100,220,220,0.7)",
-            strokeColor: "rgba(220,220,220,1)",
-            pointColor: "rgba(220,220,220,1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(220,220,220,1)",
-            data: [10,70,110]
-            }
-        ]
-        };
-    
-    var data1 = {
-        labels: ['March', 'Apr', 'May'],
-        
-        datasets: [
-            {
-            fillColor: "rgba(220,220,220,0.2)",
-            strokeColor: "rgba(220,220,220,1)",
-            pointColor: "rgba(220,220,220,1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(220,220,220,1)",
-            data: [50,100,140]
-            },
-            {
-            fillColor: "rgba(100,220,220,0.7)",
-            strokeColor: "rgba(220,220,220,1)",
-            pointColor: "rgba(220,220,220,1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(220,220,220,1)",
-            data: [40,70,200]
-            }
-        ]
-        };
+
     
     var context = document.querySelector('#graph').getContext('2d');
     new Chart(context).Line(data);

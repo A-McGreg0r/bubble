@@ -5,8 +5,7 @@ function generateUserNav(){
         <!--navbar-->
         <nav class="navbar  navbar-expand-lg navbar-dark elegant-color-dark">
             <!-- Collapse button -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
-                    aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -20,20 +19,16 @@ function generateUserNav(){
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?action=account">Account</a>
                     </li>
-
-
                 </ul>
-                <ul class="navbar-nav ml-auto nav-flex-icons ">
-                
+                <ul class="navbar-nav ml-auto nav-flex-icons">
+                    <li class="nav-item">
+                        Bubble Icon
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto nav-flex-icons">
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?action=logout">Logout</a>
                     </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php?action=adddevice">Add Device</a>
-                    </li>
-
-
                 </ul>
             </div>
         </nav>

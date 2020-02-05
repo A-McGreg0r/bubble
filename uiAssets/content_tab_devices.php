@@ -4,6 +4,31 @@ include_once dirname(__DIR__).'/required/config.php';
 
 function generateDeviceTab(){
     $html = '';
+    
+    $html .= <<<html
+        <a href="index.php?action=adddevice">
+            <div class="card mb-4 container">
+                <!--Card image-->
+                <div class="view overlay">
+                    <div class="mask rgba-white-slight"></div>
+                </div>
+        
+                <!--Card content-->
+                <div class="card-body d-flex justify-content-between">
+        
+                <!--Title-->      
+                    <div class="d-flex flex-column">  
+                        Add new device
+                    </div>
+                    
+                    <div class="d-flex flex-column">
+                        <i class="far fa-plus-square"></i>
+                    </div>
+                </div>
+            </div>
+        </a>
+html;
+
     global $db;
     session_start();
     if(isset($_SESSION['hub_id'])){

@@ -6,14 +6,14 @@ function generateLineChart_Year(){
     //TODO remove once data base it implmented
     //randome genarated grapth (temp)
     $dataTitle ="lineChart_Year";
-    $first_Year = strtotime('first day this month');
+    //$first_Year = strtotime('first day this month');
     $dataLabels_Year = array();
     $dataPoints_Year = array();
     $dataAvg_Year = array();
 
     for ($i = 11; $i >= 0; $i--) {
         //list of months
-        array_push($dataLabels_Year, date('M', strtotime("-$i month", $first_Year)));
+        //array_push($dataLabels_Year, date('M', strtotime("-$i month", $first_Year)));
         //geanarat rand data for display
         array_push($dataPoints_Year, rand(100, 1000));
         //a avg of the entire contence of the array

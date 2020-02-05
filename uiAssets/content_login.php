@@ -230,8 +230,9 @@ function generateLoginPage(){
                                     </div>
 
 
-                                    <!-- Social register -->
-                                    <p>or sign up with:</p>
+                                    <!-- Social login -->
+                                    <div class="d-flex justify-content-center">
+                                      <p>or sign in with:</p>
                                     <a type="button" class="btn-floating btn-fb btn-sm">
                                         <i class="fab fa-facebook-f white-text disabled"></i>
                                     </a>
@@ -244,7 +245,7 @@ function generateLoginPage(){
                                     <a type="button" class="btn-floating btn-git btn-sm">
                                         <i class="fab fa-github white-text disabled"></i>
                                     </a>
-                                    <hr>
+                                    </div>
 
                                     <!-- Terms of service -->
                                     <p>By clicking <em>Sign up</em> you agree to our <a href="" target="_blank">terms of service</a></p>

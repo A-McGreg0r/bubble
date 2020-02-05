@@ -207,9 +207,12 @@ function generateHomeTab()
                                     $(function () {
                                         $("#chartPicker").change(function (evt) {
                                             let chartSelection = $("#chartPicker").val();
-                                            $('#masterLineChart').hide().filter(charts + chartSelection).show();
+                                            $('#masterLineChart').dataset =jsonData[chartSelection];
+                                            $('#masterLineChart').update();
                                         });
                                     });
+                                    
+                                    
                                         function chartContent() {
                                             myChart["config"]["data"] = data2; //<--- THIS WORKS!
                                             myChart.update();

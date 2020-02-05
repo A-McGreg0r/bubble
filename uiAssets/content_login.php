@@ -232,7 +232,7 @@ function generateLoginPage(){
 
                                     <!-- Social login -->
                                     <div class="d-flex justify-content-center">
-                                        <div  class="row>
+                                        <div  class="row">
                                            <p>or sign in with:</p>
                                             <a type="button" class="btn-floating btn-fb btn-sm">
                                                 <i class="fab fa-facebook-f white-text disabled"></i>

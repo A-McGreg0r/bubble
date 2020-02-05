@@ -178,8 +178,7 @@ function generateHomeTab()
 
                                     
                                     <canvas id="masterLineChart"></canvas>
-                                    
-                                    <canvas id="masterLineChart"></canvas>
+
                                     
                                     <button id="control1">UMSCHALTER</button>
                                     <script type="text/javascript">

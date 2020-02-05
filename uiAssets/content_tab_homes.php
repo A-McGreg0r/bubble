@@ -81,7 +81,7 @@ function generateHomeTab()
                                     <div class="container mt-2">
                                         <div class="row row-cols-2 mb-1">
                                             <div class="col border border-primary rounded m-2">
-                                                <h4 class="text-centre justify-content-center">Spent Today</h4>
+                                                <h4 class="text-centre justify-content-center">Spent Today [£]</h4>
                                                 <canvas style="max-width:50% min-width:30%" id="heatingUsage"></canvas>
                                                 <script>
                                                     //doughnut
@@ -89,7 +89,7 @@ function generateHomeTab()
                                                     var myLineChart = new Chart(ctxD, {
                                                     type: "doughnut",
                                                     data: {
-                                                    labels: ["Cost [£]"],
+                                                    labels: ["Spent", "Remaining"],
                                                     datasets: [{
                                                     data: [$cost_day, $cost_total],
                                                     backgroundColor: ["#F7464A", "#FFFFFF00"],
@@ -111,7 +111,7 @@ function generateHomeTab()
                                                     var myLineChart = new Chart(ctxD, {
                                                     type: "doughnut",
                                                     data: {
-                                                    labels: ["Red"],
+                                                    labels: ["Cost [£]"],
                                                     datasets: [{
                                                     data: [$cost_month, $cost_total],
                                                     backgroundColor: ["#F7464A", "#FFFFFF00"],

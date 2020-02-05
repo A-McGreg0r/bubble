@@ -6,7 +6,7 @@ function generateUserNav(){
         <nav class="navbar  navbar-expand-lg navbar-dark elegant-color-dark">
             <!-- Collapse button -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-                <img src="img/3BubblesBlue.png"></img>
+                <img style="height:100%" src="img/3BubblesBlue.png"></img>
             </button>
             <span class="nav-item">
                 Bubble Icon

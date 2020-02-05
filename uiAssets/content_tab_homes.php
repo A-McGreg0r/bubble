@@ -208,11 +208,12 @@ function generateHomeTab()
                                         
                                         $( ".custom-select" ).change(function() {
                                             masterChart.data.datasets.data = [];
-                                            var e = document.getElementById("chartPicker");
-                                            var selected = e.options[e.selectedIndex].value;
+                                            let e = document.getElementById("chartPicker");
+                                            let selected = e.options[e.selectedIndex].value;
                                             dps = jsonData[selected];
-                                            for(var i in dps) {
-                                                chart.data.datasets.data.push({x: jsonData[i].x, y: jsonData[i].y});
+                                            for(let i in dps) {
+                                                let xVal = dps[i].x;
+                                                chart.options.data[0].dataPoints.push({x: new Date(xVal), y: dps[i].y});
                                             }
                                             chart.update();
                                         });

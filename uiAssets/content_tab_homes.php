@@ -34,7 +34,7 @@ function generateHomeTab()
                     for ($i = 0; $i < 1000; $i++) {
                         $y += rand(0, 10) - 5;
                         array_push($dataPoints, array("x" => $i, "y" => $y));
-                        array_push($dataLables, array($i);
+                        array_push($dataLables, array($i));
                     }
                     $dataPointsEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
                     $dataLablesEncoded = json_encode($dataLables, JSON_NUMERIC_CHECK);

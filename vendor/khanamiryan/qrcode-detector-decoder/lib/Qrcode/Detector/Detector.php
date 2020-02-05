@@ -81,7 +81,7 @@ class Detector
             throw NotFoundException::getNotFoundInstance();
         }
         $dimension               = (int)self::computeDimension($topLeft, $topRight, $bottomLeft, $moduleSize);
-        $provisionalVersion      = \Zxing\Qrcode\Decoder\Version::getProvisionalVersionForDimension($dimension);
+        $provisionalVersion      = Version::getProvisionalVersionForDimension($dimension);
         $modulesBetweenFPCenters = $provisionalVersion->getDimensionForVersion() - 7;
 
         $alignmentPattern = null;

@@ -77,7 +77,7 @@
                 hslaString: hslaString,
                 hwbString: hwbString,
                 keyword: keyword
-            }
+            };
 
             function getRgba(string) {
                 if (!string) {
@@ -817,7 +817,7 @@
                 lch2lab: lch2lab,
                 lch2xyz: lch2xyz,
                 lch2rgb: lch2rgb
-            }
+            };
 
 
             function rgb2hsl(rgb) {
@@ -1491,7 +1491,7 @@
 
             var convert = function () {
                 return new Converter();
-            }
+            };
 
             for (var func in conversions) {
                 // export Raw versions
@@ -1581,7 +1581,7 @@
             module.exports = convert;
         }, {"4": 4}],
         6: [function (require, module, exports) {
-            'use strict'
+            'use strict';
 
             module.exports = {
                 "aliceblue": [240, 248, 255],

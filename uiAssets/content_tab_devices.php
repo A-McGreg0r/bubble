@@ -49,7 +49,7 @@ function generateDeviceTab(){
                         <div class="d-flex flex-column">
                             <!-- Default switch -->
                             <div class="custom-control custom-switch">
-                                <form onsubmit="toggleDevice($device_id);" method="POST">
+                                <form onsubmit="toggleDevice($device_id;)" method="POST">
                                     <input type="checkbox" class="custom-control-input" id="deviceSwitch">
                                     <label class="custom-control-label" for="deviceSwitch">off/on</label>
                                 </form>

@@ -17,6 +17,7 @@
 
 namespace Zxing;
 
+use InvalidArgumentException;
 use Zxing\Common\BitMatrix;
 
 /**
@@ -33,7 +34,7 @@ final class BinaryBitmap
     public function __construct(Binarizer $binarizer)
     {
         if ($binarizer === null) {
-            throw new \InvalidArgumentException("Binarizer must be non-null.");
+            throw new InvalidArgumentException("Binarizer must be non-null.");
         }
         $this->binarizer = $binarizer;
     }

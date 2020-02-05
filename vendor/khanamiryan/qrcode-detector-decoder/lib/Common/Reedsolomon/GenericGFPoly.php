@@ -17,6 +17,8 @@
 
 namespace Zxing\Common\Reedsolomon;
 
+use InvalidArgumentException;
+
 /**
  * <p>Represents a polynomial whose coefficients are elements of a GF.
  * Instances of this class are immutable.</p>
@@ -45,7 +47,7 @@ final class GenericGFPoly
     public function __construct($field, $coefficients)
     {
         if (count($coefficients) == 0) {
-            throw new \InvalidArgumentException();
+            throw new InvalidArgumentException();
         }
         $this->field        = $field;
         $coefficientsLength = count($coefficients);
@@ -116,7 +118,7 @@ final class GenericGFPoly
             return $this->multiply_($other);
         }
         if ($this->field !== $other->field) {
-            throw new \InvalidArgumentException("GenericGFPolys do not have same GenericGF field");
+            throw new InvalidArgumentException("GenericGFPolys do not have same GenericGF field");
         }
         if ($this->isZero() || $other->isZero()) {
             return $this->field->getZero();
@@ -165,7 +167,7 @@ final class GenericGFPoly
     public function multiplyByMonomial($degree, $coefficient)
     {
         if ($degree < 0) {
-            throw new \InvalidArgumentException();
+            throw new InvalidArgumentException();
         }
         if ($coefficient == 0) {
             return $this->field->getZero();
@@ -182,10 +184,10 @@ final class GenericGFPoly
     public function divide($other)
     {
         if ($this->field !== $other->field) {
-            throw new \InvalidArgumentException("GenericGFPolys do not have same GenericGF field");
+            throw new InvalidArgumentException("GenericGFPolys do not have same GenericGF field");
         }
         if ($other->isZero()) {
-            throw new \InvalidArgumentException("Divide by 0");
+            throw new InvalidArgumentException("Divide by 0");
         }
 
         $quotient  = $this->field->getZero();
@@ -217,7 +219,7 @@ final class GenericGFPoly
     public function addOrSubtract($other)
     {
         if ($this->field !== $other->field) {
-            throw new \InvalidArgumentException("GenericGFPolys do not have same GenericGF field");
+            throw new InvalidArgumentException("GenericGFPolys do not have same GenericGF field");
         }
         if ($this->isZero()) {
             return $other;

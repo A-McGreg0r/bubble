@@ -17,6 +17,8 @@
 
 namespace Zxing\Qrcode\Decoder;
 
+use InvalidArgumentException;
+
 /**
  * <p>See ISO 18004:2006, 6.4.1, Tables 2 and 3. This enum encapsulates the various modes in which
  * data can be encoded to bits in the QR code standard.</p>
@@ -93,7 +95,7 @@ class Mode
                 // 0xD is defined in GBT 18284-2000, may not be supported in foreign country
                 return self::$HANZI;
             default:
-                throw new \InvalidArgumentException();
+                throw new InvalidArgumentException();
         }
     }
 

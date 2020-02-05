@@ -63,7 +63,7 @@ html;
                         <div class="d-flex flex-column">
                             <!-- Default switch -->
                             <div class="custom-control custom-switch">
-                                <form onsubmit="toggleRoom($room_id);" method="POST">
+                                <form onsubmit="toggleRoom($room_id;)" method="POST">
                                     <input type="checkbox" class="custom-control-input" id="roomSwitch">
                                     <label class="custom-control-label" for="roomSwitch">off/on</label>
                                 </form>

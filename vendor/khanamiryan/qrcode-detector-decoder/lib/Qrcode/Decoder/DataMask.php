@@ -17,6 +17,7 @@
 
 namespace Zxing\Qrcode\Decoder;
 
+use InvalidArgumentException;
 use Zxing\Common\BitMatrix;
 
 /**
@@ -66,7 +67,7 @@ abstract class DataMask
     public static function forReference($reference)
     {
         if ($reference < 0 || $reference > 7) {
-            throw new \InvalidArgumentException();
+            throw new InvalidArgumentException();
         }
 
         return self::$DATA_MASKS[$reference];

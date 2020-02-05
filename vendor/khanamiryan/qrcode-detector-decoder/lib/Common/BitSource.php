@@ -17,6 +17,8 @@
 
 namespace Zxing\Common;
 
+use InvalidArgumentException;
+
 /**
  * <p>This provides an easy abstraction to read bits at a time from a sequence of bytes, where the
  * number of bits read is not often a multiple of 8.</p>
@@ -68,7 +70,7 @@ final class BitSource
     public function readBits($numBits)
     {
         if ($numBits < 1 || $numBits > 32 || $numBits > $this->available()) {
-            throw new \InvalidArgumentException(strval($numBits));
+            throw new InvalidArgumentException(strval($numBits));
         }
 
         $result = 0;

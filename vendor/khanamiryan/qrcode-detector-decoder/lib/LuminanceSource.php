@@ -17,6 +17,8 @@
 
 namespace Zxing;
 
+use Exception;
+
 /**
  * The purpose of this class hierarchy is to abstract different bitmap implementations across
  * platforms into a standard interface for requesting greyscale luminance values. The interface
@@ -85,7 +87,7 @@ abstract class LuminanceSource
      */
     public function crop($left, $top, $width, $height)
     {
-        throw new \Exception("This luminance source does not support cropping.");
+        throw new Exception("This luminance source does not support cropping.");
     }
 
     /**
@@ -113,7 +115,7 @@ abstract class LuminanceSource
      */
     public function rotateCounterClockwise()
     {
-        throw new \Exception("This luminance source does not support rotation by 90 degrees.");
+        throw new Exception("This luminance source does not support rotation by 90 degrees.");
     }
 
     /**
@@ -124,7 +126,7 @@ abstract class LuminanceSource
      */
     public function rotateCounterClockwise45()
     {
-        throw new \Exception("This luminance source does not support rotation by 45 degrees.");
+        throw new Exception("This luminance source does not support rotation by 45 degrees.");
     }
 
     public final function toString()

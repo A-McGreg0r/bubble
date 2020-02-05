@@ -17,6 +17,8 @@
 
 namespace Zxing;
 
+use InvalidArgumentException;
+
 /**
  * This object extends LuminanceSource around an array of YUV data returned from the camera driver,
  * with the option to crop to a rectangle within the full data. This can be used to exclude
@@ -49,7 +51,7 @@ final class PlanarYUVLuminanceSource extends LuminanceSource
         parent::__construct($width, $height);
 
         if ($left + $width > $dataWidth || $top + $height > $dataHeight) {
-            throw new \InvalidArgumentException("Crop rectangle does not fit within image data.");
+            throw new InvalidArgumentException("Crop rectangle does not fit within image data.");
         }
 
         $this->yuvData    = $yuvData;
@@ -66,7 +68,7 @@ final class PlanarYUVLuminanceSource extends LuminanceSource
     public function getRow($y, $row = null)
     {
         if ($y < 0 || $y >= getHeight()) {
-            throw new \InvalidArgumentException("Requested row is outside the image: " + y);
+            throw new InvalidArgumentException("Requested row is outside the image: " + y);
         }
         $width = $this->getWidth();
         if ($row == null || count($row) < $width) {

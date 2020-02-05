@@ -283,7 +283,7 @@ function _createClass(Constructor, protoProps, staticProps) {
             return WYSIWYG;
         }();
 
-    ;
+
 
     $.fn.mdbWYSIWYG = function (options) {
         var wysiwyg = new WYSIWYG($(this), options);

@@ -2,6 +2,9 @@
 
 namespace Zxing;
 
+use Imagick;
+use InvalidArgumentException;
+
 /**
  * This class is used to help decode images from files which arrive as GD Resource
  * It does not support rotation.
@@ -16,7 +19,7 @@ final class IMagickLuminanceSource extends LuminanceSource
     private $image;
 
     public function __construct(
-        \Imagick $image,
+        Imagick $image,
         $dataWidth,
         $dataHeight,
         $left = null,
@@ -31,7 +34,7 @@ final class IMagickLuminanceSource extends LuminanceSource
         }
         parent::__construct($width, $height);
         if ($left + $width > $dataWidth || $top + $height > $dataHeight) {
-            throw new \InvalidArgumentException("Crop rectangle does not fit within image data.");
+            throw new InvalidArgumentException("Crop rectangle does not fit within image data.");
         }
         $this->luminances = $image;
         $this->dataWidth  = $dataWidth;
@@ -40,7 +43,7 @@ final class IMagickLuminanceSource extends LuminanceSource
         $this->top        = $top;
     }
 
-    public function _IMagickLuminanceSource(\Imagick $image, $width, $height)
+    public function _IMagickLuminanceSource(Imagick $image, $width, $height)
     {
         parent::__construct($width, $height);
 
@@ -55,9 +58,9 @@ final class IMagickLuminanceSource extends LuminanceSource
 // up front, which is the same as the Y channel of the YUVLuminanceSource in the real app.
         $this->luminances = [];
 
-        $image->setImageColorspace(\Imagick::COLORSPACE_GRAY);
+        $image->setImageColorspace(Imagick::COLORSPACE_GRAY);
         // $image->newPseudoImage(0, 0, "magick:rose");
-        $pixels = $image->exportImagePixels(1, 1, $width, $height, "RGB", \Imagick::PIXEL_CHAR);
+        $pixels = $image->exportImagePixels(1, 1, $width, $height, "RGB", Imagick::PIXEL_CHAR);
 
         $array = [];
         $rgb   = [];
@@ -82,7 +85,7 @@ final class IMagickLuminanceSource extends LuminanceSource
     public function getRow($y, $row = null)
     {
         if ($y < 0 || $y >= $this->getHeight()) {
-            throw new \InvalidArgumentException('Requested row is outside the image: ' . $y);
+            throw new InvalidArgumentException('Requested row is outside the image: ' . $y);
         }
         $width = $this->getWidth();
         if ($row == null || count($row) < $width) {

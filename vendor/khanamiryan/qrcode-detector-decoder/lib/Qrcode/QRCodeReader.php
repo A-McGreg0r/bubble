@@ -47,8 +47,8 @@ class QRCodeReader implements Reader
      * @param null         $hints
      *
      * @return Result
-     * @throws \Zxing\FormatException
-     * @throws \Zxing\NotFoundException
+     * @throws FormatException
+     * @throws NotFoundException
      */
     public function decode(BinaryBitmap $image, $hints = null)
     {

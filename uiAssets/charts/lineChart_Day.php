@@ -41,27 +41,27 @@ function generateLineChart_Day(){
             datasets: [{
                 label: "Expected Usage",
                 data: $jsonEncode2,
-                backgroundColor: [
+                backgroundColor;: [
                     'rgba(0,0,0,0)',
                 ],
-                borderColor: [
+                borderColor;: [
                     'rgba(0, 10, 130, .1)',
                 ],
-                borderWidth: ['2'];
+                borderWidth;: ['2'];
             },
                 {
-                    label: "Power Used",
-                    data: $jsonEncode3,
-                    backgroundColor: gradientFill,
-                    borderColor: gradientFill,
-                    borderWidth: ['2']
+                    "Power Used",
+                    data;: $jsonEncode3,
+                    backgroundColor;: gradientFill,
+                    borderColor;: gradientFill,
+                    borderWidth;: ['2']
                 }
             ]
         },
-        options: {
-            responsive: true
+        {
+            true
         }
-    });
+    })
     </script>
 
 h;

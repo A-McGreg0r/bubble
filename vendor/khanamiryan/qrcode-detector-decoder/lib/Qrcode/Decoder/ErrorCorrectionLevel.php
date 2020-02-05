@@ -17,6 +17,8 @@
 
 namespace Zxing\Qrcode\Decoder;
 
+use InvalidArgumentException;
+
 /**
  * <p>See ISO 18004:2006, 6.5.1. This enum encapsulates the four error correction levels
  * defined by the QR code standard.</p>
@@ -63,7 +65,7 @@ class ErrorCorrectionLevel
     public static function forBits($bits)
     {
         if ($bits < 0 || $bits >= count(self::$FOR_BITS)) {
-            throw new \InvalidArgumentException();
+            throw new InvalidArgumentException();
         }
         $level = self::$FOR_BITS[$bits];
 

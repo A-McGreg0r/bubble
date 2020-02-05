@@ -58,7 +58,7 @@ function submitImage(){
         url: url,
         data:{ photo: dataQuery},
         success:function(data){
-            if(data == null || data == ""){
+            if(!data){
                 video.style.visibility = "visible";
                 loading.style.visibility = "hidden";
                 submitButton.style.visibility = "visible";

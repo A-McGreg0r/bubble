@@ -167,7 +167,7 @@ function generateHomeTab()
                                     <p class="lead align-content-center">
                                         <span class="badge info-color-dark p-2">Date range</span>
                                     </p>
-                                    <select id="chartPicker" class="browser-default custom-select">
+                                    <select id="chartPicker" onchange="chartChange()" class="browser-default custom-select">
                                         <option value="0" selected>Choose time period</option>
                                         <option value="1">Year</option>
                                         <option value="2">Month</option>
@@ -205,7 +205,7 @@ function generateHomeTab()
                                             }
                                         });
                                         
-                                        function leaveChange() {
+                                        function chartChange() {
                                             if (document.getElementById("chartPicker").value == "1"){
                                             myChart["config"]["data"] = data1; //<--- THIS WORKS!
                                             myChart.update();

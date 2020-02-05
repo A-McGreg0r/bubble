@@ -156,7 +156,7 @@ function generateHomeTab()
                                     
                                     <!--todo get displaying all 3--> 
                                     <div style='display:none;' id='Year'>Chart Year<br/>&nbsp;
-                                       <canvas id="mainLineChart"></canvas><!--no load--> 
+                                       //K<canvas id="mainLineChart"></canvas><!--no load--> 
                                     </div> 
                                     <div style='display:none;' id='Month'>chart month<br/>&nbsp;
                                        <!--no <canvas id="lineChart_Month"></canvas>  load-->   

@@ -165,17 +165,41 @@ function generateHomeTab()
                                     </select>-->
                                     
                                     <!--todo get displaying all 3--> 
-                                    <div style='display:none;' id='Year'>Chart Year<br/>&nbsp;
-                                       
-                                    </div> 
-                                    <div style='display:none;' id='Month'>chart month<br/>&nbsp;
-                                       <!--no <canvas id="lineChart_Month"></canvas>  load-->   
-                                    </div> 
-                                    <div style='display:none;' id='Day'>chart day<br/>&nbsp;
-                                       <!-- <canvas id="lineChart_Year"></canvas>loads-->       
-                                    </div> 
+
                                     
-                                    <canvas id="chartContainer"></canvas>
+                                    <canvas id="kontakteChart"></canvas>
+                                    <script type="text/javascript">
+                                        // Supplied Datasets to display
+                                        var data1 = { "labels": ["1", "2", "3"], "datasets": [{ "label": "Contacts", "data": [20, 15, 10], "backgroundColor": "rgba(255, 99, 132, 0.2)", "borderColor": "rgba(255,99,132,1)", "borderWidth": 1 }] };
+                                        var data2 = { "labels": ["1", "2", "3"], "datasets": [{ "label": "Contacts", "data": [10, 23, 41], "backgroundColor": "rgba(255, 99, 132, 0.2)", "borderColor": "rgba(255,99,132,1)", "borderWidth": 1 }] };
+                                        
+                                        // Draw the initial chart
+                                        var kChartCanvas = $("#kontakteChart")[0].getContext('2d');
+                                        var myChart = new Chart(kChartCanvas, {
+                                            type: 'bar',
+                                            data: data1,
+                                            options: {
+                                                scales: {
+                                                    yAxes: [{
+                                                        ticks: {
+                                                            beginAtZero: true
+                                                        }
+                                                    }]
+                                                }
+                                            }
+                                        });
+                                        
+                                        // Called on Click
+                                        function chartContent() {
+                                            myChart["config"]["data"] = data2; //<--- THIS WORKS!
+                                            myChart.update();
+                                        }
+                                        
+                                        // Set the listener for the click function
+                                        $(document).ready(function() {
+                                            $("#control1").click(chartContent);
+                                        });
+                                </script>
 
                                     
                                </div> 

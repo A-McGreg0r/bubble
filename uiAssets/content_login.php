@@ -90,7 +90,8 @@ function generateLoginPage(){
 
                                     
                                     <!-- Social login -->
-                                    <p>or sign in with:</p>
+                                    <div class="d-flex justify-content-center">
+                                      <p>or sign in with:</p>
                                     <a type="button" class="btn-floating btn-fb btn-sm">
                                         <i class="fab fa-facebook-f white-text disabled"></i>
                                     </a>
@@ -103,6 +104,8 @@ function generateLoginPage(){
                                     <a type="button" class="btn-floating btn-git btn-sm">
                                         <i class="fab fa-github white-text disabled"></i>
                                     </a>
+                                    </div>
+                                  
                                    
 
 

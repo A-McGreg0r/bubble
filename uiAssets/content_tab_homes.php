@@ -215,7 +215,8 @@ function generateHomeTab()
                                                        myChart["config"]["data"] = data2; //<--- THIS WORKS!
                                                        myChart.update();
                                                    }else if (document.getElementById("mySelect").options[3].value()){
-                                                       echo="chart three"
+                                                       myChart["config"]["data"] = data3; //<--- THIS WORKS!
+                                                       myChart.update();
                                                    }else {
                                                        window.alert("invalid slection try again);        
                                                     }

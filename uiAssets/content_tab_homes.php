@@ -28,6 +28,24 @@ function generateHomeTab()
                         $hub_name = "My Home";
                     }
 
+                    $dataPoints = array();
+                    $dataPoints = array();
+                    $AvgPoints = array();
+                    $dataLabels = array();
+                    $y = 40;
+                    $avg = 0;
+                    for ($i = 0; $i < 100; $i++) {
+                        $y += rand(0, 100) - 5;
+                        array_push($dataPoints, array("x" => $i, "y" => $y));
+                        array_push($dataLabels, array($i));
+                        $avg = array_sum($dataPoints) / count($dataPoints);
+                        array_push($AvgPoints, array($avg));
+                    }
+                    $dataPointsEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
+                    $dataAvgEncoded = json_encode($AvgPoints, JSON_NUMERIC_CHECK);;
+
+
+                    $dataPoints = 1;
                     $html .= <<<html
                     <!-- Accordion card -->
                     <div class="card">
@@ -138,38 +156,81 @@ function generateHomeTab()
                                                     }
                                                     });
                                                 </script>
+
                                             </div>
                                         </div>
                                     </div>
         
                                     <!--Grid column-->
-                                    <!--Date select
+                                    <!--Date select-->
                                     <p class="lead align-content-center">
                                         <span class="badge info-color-dark p-2">Date range</span>
-                                    </p>-->
-                                    <select id="chartPicker" class="browser-default custom-select">
-                                        <option value="0" selected>Choose time period</option>
-                                        <option value="1">Year</option>
-                                        <option value="2">Month</option>
-                                        <option value="3">Day</option>
+                                    </p>
+                                    <select id="chartPicker" class="browser-default custom-select dropdown">
+                                        <option value="0" selected="selected">Choose time period</option>
+                                        <option value="data1">Year</option>
+                                        <option value="data2">Month</option>
+                                        <option value="data3">Day</option>
                                     </select>
+                                    <button id="control1">upDate</button>
                                     
                                     <!--todo get displaying all 3--> 
-                                    <div style='display:none;' id='Year'>Chart Year<br/>&nbsp;
-                                       <canvas id="mainLineChart"></canvas><!--no load--> 
-                                    </div> 
-                                    <div style='display:none;' id='Month'>chart month<br/>&nbsp;
-                                       <!--no <canvas id="lineChart_Month"></canvas>  load-->   
-                                    </div> 
-                                    <div style='display:none;' id='Day'>chart day<br/>&nbsp;
-                                       <!-- <canvas id="lineChart_Year"></canvas>loads-->       
-                                    </div> 
+                                    <canvas id="masterLineChart"></canvas>
+
+                                    <script type="text/javascript">
+                                        // Supplied Datasets to display
+                                        let data1 = { "labels": ["1", "2", "3","4","5","6","7"],"label": "My First dataset", "datasets": [{ "label": "avg", "data": $dataPointsEncoded, "backgroundColor": "rgba(101, 209, 159, 0.6)", "borderColor": "rgba(101, 209, 159,1)", "borderWidth": 1 },{ "label": "Power usage", "data": $dataAvgEncoded, "backgroundColor": "rgba(93, 176, 201, 0.6)", "borderColor": "rgba(0, 10, 130, .4)", "borderWidth": 1 }] };
+                                        let data2 = { "labels": ["1", "2", "3","4","5","6","7", "8", "9","10","11","12"],"label": "My First dataset", "datasets": [{ "label": "avg", "data": $dataPointsEncoded, "backgroundColor": "rgba(101, 0, 0, 0.6)", "borderColor": "rgba(101, 209, 159,1)", "borderWidth": 1 },{ "label": "Power usage", "data": $dataAvgEncoded, "backgroundColor": "rgba(255, 255, 255, 0.6)", "borderColor": "rgba(0, 10, 130, .4)", "borderWidth": 1 }] };
+                                        let data3 = { "labels": ["1", "2", "3","4","5","6","7", "8", "9","10","11","12"],"label": "My First dataset", "datasets": [{ "label": "avg", "data": $dataPointsEncoded, "backgroundColor": "rgba(101, 209, 159, 0.6)", "borderColor": "rgba(101, 209, 159,1)", "borderWidth": 1 },{ "label": "Power usage", "data": $dataAvgEncoded, "backgroundColor": "rgba(93, 176, 201, 0.6)", "borderColor": "rgba(0, 10, 130, .4)", "borderWidth": 1 }] };
+                                        
+                                        
+                                        let jsonData = {data1,data2,data3};
+                                        // Draw the initial chart
+                                        let masterChart = $("#masterLineChart")[0].getContext('2d');
+                                        let myChart = new Chart(masterLineChart, {
+                                            type: 'line',
+                                            data: data1,
+                                            options: {
+                                                scales: {
+                                                    yAxes: [{
+                                                        ticks: {
+                                                            beginAtZero: true
+                                                        }
+                                                    }]
+                                                }
+                                            }
+                                        });
+                                
+                                    // Called on Click
                                     
-                                            <!--todo get displaying all 3--> 
-                                    <div id='Year'>Chart Year<br/>&nbsp;
-                                       <canvas id="mainLineChart"></canvas>
-                                        <button id="control1">test</button>
-                                    </div> 
+                                    
+                                    $( ".dropdown" ).change(function() {
+                                        chart.options.data = [];
+                                      var e = document.getElementById("chartPicker");
+                                      var selected = e.options[e.selectedIndex].value;
+                                      dps = jsonData[selected];
+                                      for(var i in dps) {
+                                        chart.options.data[0].push(e.selectedIndex);
+                                      }
+                                      myChart.update();
+                                    });
+                                    
+                                    $(function () {
+                                        $("#chartPicker").change(function (evt) {
+                                            myChart["config"]["data"] = jsonData[$("#chartPicker").value()];
+                                            $('#masterLineChart').update();
+                                        });
+                                    });
+                                    function chartContent() {
+                                            myChart["config"]["data"] = data2; //<--- THIS WORKS!
+                                            myChart.update();
+                                        }
+                                        // Set the listener for the click function
+                                        $(document).ready(function() {
+                                            $("#control1").click(chartContent);
+                                        });
+ 
+                                </script>
 
                                     
                                </div> 
@@ -177,50 +238,10 @@ function generateHomeTab()
                         </div>
                     </div>
                 
-    <script>
-            
-            
-            
-
-            
-            
-                $(document).ready(function(){
-                $('#chartPicker').on('change', function() {
-                      if ( this.value === '1'){
-                        $("#Year").show();
-                        $("#Day").hide();
-                        $("#Month").hide();
-                      }else if( this.value === '2'){
-                         $("#Month").show();
-                         $("#Day").hide();
-                         $("#Year").hide();
-                      }else if( this.value === '3'){
-                          $("#Day").show();
-                          $("#Month").hide();
-                          $("#Year").hide();
-                      }else{
-                          $("#Day").hide();
-                          $("#Month").hide();
-                          $("#Year").hide();
-                      }
-                    });
-                });
-
-    </script>                
+              
                                   
                     <!-- Accordion card -->
 html;
-                    require "charts/lineChart_Day.php";
-                    require "charts/lineChart_Year.php";
-                    require "charts/lineChart_Month.php";
-                    require "charts/allCharts.php";
-
-                    //$html .= generateAll_Chart();
-
-                    $html .= generateLineChart_Day();
-                    $html .= generateLineChart_Month();
-                    $html .= generateLineChart_Year();
-
                 }
                 $stmt1->close();
 

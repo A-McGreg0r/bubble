@@ -60,17 +60,6 @@ function generateLineChart_Month(){
                     }
                 }
             });
-            
-            // Called on Click
-            function chartContent() {
-                myChart["config"]["data"] = data2; //<--- THIS WORKS!
-                myChart.update();
-            }
-            
-            // Set the listener for the click function
-            $(document).ready(function() {
-                $("#control1").click(chartContent);
-            });
     </script>
 pageHTML;
     return $html;

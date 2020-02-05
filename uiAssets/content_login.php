@@ -15,8 +15,8 @@ function generateLoginPage(){
 
     $html = <<<htmlPage
     <!--Modal cascading tabs-->
-    <div class="col-12 col-md-auto">
-        <table style="height: 100vh; max-width:80%" class="justify-content-center text-centre">
+    <div class="container justify-content-center text-centre text-light max-width:80%">
+        <table style="height: 100vh; >
             <tr>
                 <td class="align-middle">
                     <div class="text-center">
@@ -24,7 +24,7 @@ function generateLoginPage(){
                         <h2>The simple smart home.</h2>
                     </div>
                     <!-- Nav tabs -->
-                    <ul class="nav nav-tabs  tabs-2 elegant-color align-content-center" role="tablist">
+                    <ul class="nav nav-tabs  tabs-2" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" data-toggle="tab" href="#panel1" role="tab">
                                 <i class="fas fa-user mr-1"></i>Login
@@ -90,7 +90,8 @@ function generateLoginPage(){
 
                                     
                                     <!-- Social login -->
-                                    <p>or sign in with:</p>
+                                    <div class="d-flex justify-content-center">
+                                      <p>or sign in with:</p>
                                     <a type="button" class="btn-floating btn-fb btn-sm">
                                         <i class="fab fa-facebook-f white-text disabled"></i>
                                     </a>
@@ -103,10 +104,10 @@ function generateLoginPage(){
                                     <a type="button" class="btn-floating btn-git btn-sm">
                                         <i class="fab fa-github white-text disabled"></i>
                                     </a>
-                                    <!--t-->
-                                    <a type="button" href="appCore.php" class="btn-floating btn-git btn-sm text-light">
-                                        <i class="far fa-arrow-alt-circle-right"></i>
-                                    </a>
+                                    </div>
+                                  
+                                   
+
 
 
                                 </form>
@@ -229,24 +230,32 @@ function generateLoginPage(){
                                     </div>
 
 
-                                    <!-- Social register -->
-                                    <p>or sign up with:</p>
-                                    <a type="button" class="btn-floating btn-fb btn-sm">
-                                        <i class="fab fa-facebook-f white-text disabled"></i>
-                                    </a>
-                                    <a type="button" class="btn-floating btn-tw btn-sm">
-                                        <i class="fab fa-twitter white-text disabled"></i>
-                                    </a>
-                                    <a type="button" class="btn-floating btn-li btn-sm">
-                                        <i class="fab fa-linkedin-in white-text disabled"></i>
-                                    </a>
-                                    <a type="button" class="btn-floating btn-git btn-sm">
-                                        <i class="fab fa-github white-text disabled"></i>
-                                    </a>
-                                    <hr>
+                                    <!-- Social login -->
+                                    <div class="d-flex justify-content-center">
+                                        <div  class="row">
+                                           <p>or sign in with:</p>
+                                            <a type="button" class="btn-floating btn-fb btn-sm">
+                                                <i class="fab fa-facebook-f white-text disabled"></i>
+                                            </a>
+                                            <a type="button" class="btn-floating btn-tw btn-sm">
+                                                <i class="fab fa-twitter white-text disabled"></i>
+                                            </a>
+                                            <a type="button" class="btn-floating btn-li btn-sm">
+                                                <i class="fab fa-linkedin-in white-text disabled"></i>
+                                            </a>
+                                            <a type="button" class="btn-floating btn-git btn-sm">
+                                                <i class="fab fa-github white-text disabled"></i>
+                                            </a>
+                                        </div>
+                                        
+                                        <div  class="row">
+                                            <p>By clicking <em>Sign up</em> you agree to our <a href="" target="_blank">terms of service</a></p>
+                                        </div>
+
+                                    </div>
 
                                     <!-- Terms of service -->
-                                    <p>By clicking <em>Sign up</em> you agree to our <a href="" target="_blank">terms of service</a></p>
+                                    
 
                                 </form>
                                 <!-- Form -->

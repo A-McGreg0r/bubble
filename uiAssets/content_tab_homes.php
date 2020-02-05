@@ -32,7 +32,7 @@ function generateHomeTab()
                     $dataLables = array();
                     $y = 40;
                     for ($i = 0; $i < 100; $i++) {
-                        $y += rand(0, 10) - 5;
+                        $y += rand(0, 100) - 5;
                         array_push($dataPoints, array("x" => $i, "y" => $y));
                         array_push($dataLables, array($i));
                     }

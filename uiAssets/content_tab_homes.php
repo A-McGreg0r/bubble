@@ -205,7 +205,7 @@ function generateHomeTab()
                                     
                                     
                                     $( ".dropdown" ).change(function() {
-                                        chart.options.data[0].dataPoints = [];
+                                        chart.options.data = [];
                                       var e = document.getElementById("chartPicker");
                                       var selected = e.options[e.selectedIndex].value;
                                       dps = jsonData[selected];

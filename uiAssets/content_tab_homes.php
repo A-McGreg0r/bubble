@@ -206,35 +206,22 @@ function generateHomeTab()
                                         });
                                         
                                         function chartChange() {
-                                            if (document.getElementById("chartPicker").options[0].value()){
-                                                       //echo defalt
-                                            }else if (document.getElementById("mySelect").options[1].value()){
-                                                myChart["config"]["data"] = data1; //<--- THIS WORKS!
-                                                myChart.update();
-                                            }else if (document.getElementById("mySelect").options[2].value()){
-                                                myChart["config"]["data"] = data2; //<--- THIS WORKS!
-                                                myChart.update();
-                                            }else if (document.getElementById("mySelect").options[3].value()){
-                                                myChart["config"]["data"] = data2; //<--- THIS WORKS!
-                                                myChart.update();
-                                            }else {
-                                                       window.alert("invalid slection try again);
-                                            }
-   
+                                                if (document.getElementById("chartPicker").options[0].value()){
+                                                           //echo defalt
+                                                }else if (document.getElementById("mySelect").options[1].value()){
+                                                    myChart["config"]["data"] = data1; //<--- THIS WORKS!
+                                                    myChart.update();
+                                                }else if (document.getElementById("mySelect").options[2].value()){
+                                                    myChart["config"]["data"] = data2; //<--- THIS WORKS!
+                                                    myChart.update();
+                                                }else if (document.getElementById("mySelect").options[3].value()){
+                                                    myChart["config"]["data"] = data2; //<--- THIS WORKS!
+                                                    myChart.update();
+                                                }else {
+                                                           window.alert("invalid slection try again);
+                                                }
                                             }        
-                                        }
                                         
-                                        $( ".custom-select" ).change(function() {
-                                            masterChart.data.datasets.data = [];
-                                            let e = document.getElementById("masterChart");
-                                            let selected = e.options[e.selectedIndex].value;
-                                            var dps = jsonData[selected];
-                                            for(let i in dps) {
-                                                let xVal = dps[i].x;
-                                                chart.options.data[0].dataPoints.push({x: new Date(xVal), y: dps[i].y});
-                                            }
-                                            chart.update();
-                                        });
                                         
                                         // Called on Click
                                         function chartContent() {

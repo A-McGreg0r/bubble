@@ -38,7 +38,8 @@ function generateHomeTab()
                         $cost_day = $row2['cost_day'];
                         $cost_month = $row2['cost_month'];
                         $cost_total = $row2['cost_total'];
-                        $cost_variance = "11.50";
+                        $cost_variance = $cost_total - $cost_month;
+                        
                     }
 
                     $dataPoints = array();

@@ -188,7 +188,7 @@ function generateHomeTab()
                                         var jsonData = {data1,data2,data3};
                                         // Draw the initial chart
                                         let masterChart = $("#masterLineChart")[0].getContext('2d');
-                                        let myChart = new Chart(masterChart, {
+                                        let myChart = new Chart(masterLineChart, {
                                             type: 'line',
                                             data: data1,
                                             options: {
@@ -203,6 +203,13 @@ function generateHomeTab()
                                         });
                                 
                                     // Called on Click
+                                    
+                                    $(function () {
+                                        $("#chartPicker").change(function (evt) {
+                                            let chartSelection = $("#chartPicker").val();
+                                            $('#masterLineChart').hide().filter(charts + chartSelection).show();
+                                        });
+                                    });
                                         function chartContent() {
                                             myChart["config"]["data"] = data2; //<--- THIS WORKS!
                                             myChart.update();

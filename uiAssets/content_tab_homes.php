@@ -166,8 +166,8 @@ function generateHomeTab()
                                     <p class="lead align-content-center">
                                         <span class="badge info-color-dark p-2">Date range</span>
                                     </p>
-                                    <select id="chartPicker" onselect="chartChange()" class="browser-default custom-select">
-                                        <option value="0" selected>Choose time period</option>
+                                    <select id="chartPicker" class="browser-default custom-select dropdown">
+                                        <option value="0" selected="selected">Choose time period</option>
                                         <option value="1">Year</option>
                                         <option value="2">Month</option>
                                         <option value="3">Day</option>
@@ -203,15 +203,26 @@ function generateHomeTab()
                                 
                                     // Called on Click
                                     
+                                    
+                                    $( ".dropdown" ).change(function() {
+                                        chart.options.data[0].dataPoints = [];
+                                      var e = document.getElementById("dd");
+                                        var selected = e.options[e.selectedIndex].value;
+                                      dps = jsonData[selected];
+                                      for(var i in dps) {
+                                        var xVal = dps[i].x;
+                                        chart.options.data[0].dataPoints.push({x: new Date(xVal), y: dps[i].y});
+                                      }
+                                      chart.render();
+                                    });
+                                    
                                     $(function () {
                                         $("#chartPicker").change(function (evt) {
                                             myChart["config"]["data"] = jsonData[$("#chartPicker").value()];
                                             $('#masterLineChart').update();
                                         });
                                     });
-                                    
-                                    
-                                        function chartContent() {
+                                    function chartContent() {
                                             myChart["config"]["data"] = data2; //<--- THIS WORKS!
                                             myChart.update();
                                         }

@@ -5,12 +5,12 @@ function generateUserNav(){
         <!--navbar-->
         <nav class="navbar  navbar-expand-lg navbar-dark elegant-color-dark">
             <!-- Collapse button -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-                <img style="height:100%" src="img/3BubblesBlue.png"></img>
-            </button>
             <span class="nav-item">
                 Bubble Icon
             </span>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                <img style="height:2em;" src="img/3BubblesBlue.png"></img>
+            </button>
             <!-- Collapsible content -->
             <div class="collapse navbar-collapse " id="navbarToggler">
                 <!-- Links -->

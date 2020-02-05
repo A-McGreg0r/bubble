@@ -213,7 +213,7 @@ function generateHomeTab()
                                             var selected = e.options[e.selectedIndex].value;
                                             dps = jsonData[selected];
                                             for(var i in dps) {
-                                                chart.data.datasets.data.push({x: dps[i].x, y: dps[i].y});
+                                                chart.data.datasets.data.push({x: jsonData[i].x, y: jsonData[i].y});
                                             }
                                             chart.update();
                                         });

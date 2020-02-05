@@ -68,7 +68,7 @@ function submitImage(){
                 devicetext.innerText = "Unable to find a QR code, please try again!";
             }else{
                 loading.style.visibility = "hidden";
-                devicetext.innerText = "<p>"+data+"</p>";
+                devicetext.innerText = "<p>"+data+"</p>" + typeof data;
             }
         },
         error: function(data){

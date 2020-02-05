@@ -28,6 +28,18 @@ function generateHomeTab()
                         $hub_name = "My Home";
                     }
 
+                    $stmt2 = $db->prepare("SELECT * FROM test_data WHERE hub_id = ?");
+                    $stmt2->bind_param("i", $hub_id);
+                    $stmt2->execute();
+                    $result2 = $stmt2->get_result();
+
+                    if ($result2->num_rows === 1) {
+                        $row2 = $result2->fetch_assoc();
+                        $cost_day = $row2['cost_day'];
+                        $cost_month = $row2['cost_month'];
+                        $cost_total = $row2['cost_total'];
+                    }
+
                     $dataPoints = array();
                     $dataPoints = array();
                     $AvgPoints = array();
@@ -79,7 +91,7 @@ function generateHomeTab()
                                                     data: {
                                                     labels: ["Red"],
                                                     datasets: [{
-                                                    data: [200, 100],
+                                                    data: [$cost_day, $cost_total],
                                                     backgroundColor: ["#F7464A", "#FFFFFF00"],
                                                     hoverBackgroundColor: ["#FF5A5E", "#FFFFFF00"]
                                                     }]
@@ -101,7 +113,7 @@ function generateHomeTab()
                                                     data: {
                                                     labels: ["Red"],
                                                     datasets: [{
-                                                    data: [200, 100],
+                                                    data: [$cost_month, $cost_total],
                                                     backgroundColor: ["#F7464A", "#FFFFFF00"],
                                                     hoverBackgroundColor: ["#FF5A5E", "#FFFFFF00"]
                                                     }]

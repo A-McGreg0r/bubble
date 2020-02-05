@@ -163,7 +163,7 @@ function generateHomeTab()
                                     </div>
         
                                     <!--Grid column-->
-                                    <!--Date select
+                                    <!--Date select-->
                                     <p class="lead align-content-center">
                                         <span class="badge info-color-dark p-2">Date range</span>
                                     </p>
@@ -172,7 +172,7 @@ function generateHomeTab()
                                         <option value="1">Year</option>
                                         <option value="2">Month</option>
                                         <option value="3">Day</option>
-                                    </select>-->
+                                    </select>
                                     
                                     <!--todo get displaying all 3--> 
 
@@ -237,16 +237,6 @@ function generateHomeTab()
                                   
                     <!-- Accordion card -->
 html;
-                    //require "charts/lineChart_Day.php";
-                    //require "charts/lineChart_Year.php";
-                    //require "charts/lineChart_Month.php";
-                    //require "charts/allCharts.php";
-                    //$html .= generateLineChart_All();
-
-                    //$html .= generateLineChart_Day();
-                    //$html .= generateLineChart_Month();
-                    //$html .= generateLineChart_Year();
-
                 }
                 $stmt1->close();
 

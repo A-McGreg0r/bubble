@@ -24,7 +24,7 @@ function generateLoginPage(){
                         <h2>The simple smart home.</h2>
                     </div>
                     <!-- Nav tabs -->
-                    <ul class="nav nav-tabs  tabs-2 elegant-color" role="tablist">
+                    <ul class="nav nav-tabs  tabs-2" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" data-toggle="tab" href="#panel1" role="tab">
                                 <i class="fas fa-user mr-1"></i>Login

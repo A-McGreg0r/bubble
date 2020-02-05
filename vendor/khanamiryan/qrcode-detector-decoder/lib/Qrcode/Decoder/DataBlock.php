@@ -17,6 +17,8 @@
 
 namespace Zxing\Qrcode\Decoder;
 
+use InvalidArgumentException;
+
 /**
  * <p>Encapsulates a block of data within a QR Code. QR Codes may split their data into
  * multiple blocks, each of which is a unit of data and error-correction codewords. Each
@@ -53,7 +55,7 @@ final class DataBlock
     {
 
         if (count($rawCodewords) != $version->getTotalCodewords()) {
-            throw new \InvalidArgumentException();
+            throw new InvalidArgumentException();
         }
 
         // Figure out the number and size of data blocks used by this version and

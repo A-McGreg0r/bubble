@@ -17,6 +17,7 @@
 
 namespace Zxing\Common;
 
+use Exception;
 use Zxing\NotFoundException;
 
 /**
@@ -76,7 +77,7 @@ final class DefaultGridSampler extends GridSampler
                         $bits->set($x / 2, $y);
                     }
                 }
-            } catch (\Exception $aioobe) {//ArrayIndexOutOfBoundsException
+            } catch (Exception $aioobe) {//ArrayIndexOutOfBoundsException
 // This feels wrong, but, sometimes if the finder patterns are misidentified, the resulting
 // transform gets "twisted" such that it maps a straight line of points to a set of points
 // whose endpoints are in bounds, but others are not. There is probably some mathematical

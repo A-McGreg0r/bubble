@@ -17,6 +17,9 @@
 
 namespace Zxing\Common\Reedsolomon;
 
+use Exception;
+use InvalidArgumentException;
+
 /**
  * <p>This class contains utility methods for performing mathematical operations over
  * the Galois Fields. Operations use a given primitive polynomial in calculations.</p>
@@ -122,7 +125,7 @@ final class GenericGF
     public function buildMonomial($degree, $coefficient)
     {
         if ($degree < 0) {
-            throw new \InvalidArgumentException();
+            throw new InvalidArgumentException();
         }
         if ($coefficient == 0) {
             return $this->zero;
@@ -147,7 +150,7 @@ final class GenericGF
     public function log($a)
     {
         if ($a == 0) {
-            throw new \InvalidArgumentException();
+            throw new InvalidArgumentException();
         }
 
         return $this->logTable[$a];
@@ -159,7 +162,7 @@ final class GenericGF
     public function inverse($a)
     {
         if ($a == 0) {
-            throw new \Exception();
+            throw new Exception();
         }
 
         return $this->expTable[$this->size - $this->logTable[$a] - 1];

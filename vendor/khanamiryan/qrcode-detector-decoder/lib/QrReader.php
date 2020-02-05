@@ -2,6 +2,8 @@
 
 namespace Zxing;
 
+use Imagick;
+use InvalidArgumentException;
 use Zxing\Common\HybridBinarizer;
 use Zxing\Qrcode\QRCodeReader;
 
@@ -22,13 +24,13 @@ final class QrReader
             self::SOURCE_TYPE_BLOB,
             self::SOURCE_TYPE_RESOURCE,
         ], true)) {
-            throw new \InvalidArgumentException('Invalid image source.');
+            throw new InvalidArgumentException('Invalid image source.');
         }
         $im = null;
         switch ($sourceType) {
             case QrReader::SOURCE_TYPE_FILE:
                 if ($useImagickIfAvailable && extension_loaded('imagick')) {
-                    $im = new \Imagick();
+                    $im = new Imagick();
                     $im->readImage($imgSource);
                 } else {
                     $image = file_get_contents($imgSource);
@@ -38,7 +40,7 @@ final class QrReader
 
             case QrReader::SOURCE_TYPE_BLOB:
                 if ($useImagickIfAvailable && extension_loaded('imagick')) {
-                    $im = new \Imagick();
+                    $im = new Imagick();
                     $im->readImageBlob($imgSource);
                 } else {
                     $im = imagecreatefromstring($imgSource);
@@ -55,15 +57,15 @@ final class QrReader
                 break;
         }
         if ($useImagickIfAvailable && extension_loaded('imagick')) {
-            if (!$im instanceof \Imagick) {
-                throw new \InvalidArgumentException('Invalid image source.');
+            if (!$im instanceof Imagick) {
+                throw new InvalidArgumentException('Invalid image source.');
             }
             $width  = $im->getImageWidth();
             $height = $im->getImageHeight();
             $source = new IMagickLuminanceSource($im, $width, $height);
         } else {
             if (!is_resource($im)) {
-                throw new \InvalidArgumentException('Invalid image source.');
+                throw new InvalidArgumentException('Invalid image source.');
             }
             $width  = imagesx($im);
             $height = imagesy($im);

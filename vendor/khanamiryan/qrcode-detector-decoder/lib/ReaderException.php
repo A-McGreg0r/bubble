@@ -17,6 +17,8 @@
 
 namespace Zxing;
 
+use Exception;
+
 /**
  * The general exception class throw when something goes wrong during decoding of a barcode.
  * This includes, but is not limited to, failing checksums / error correction algorithms, being
@@ -24,7 +26,7 @@ namespace Zxing;
  *
  * @author Sean Owen
  */
-abstract class ReaderException extends \Exception
+abstract class ReaderException extends Exception
 {
 
 // disable stack traces when not running inside test units

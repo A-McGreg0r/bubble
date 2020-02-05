@@ -2,6 +2,9 @@
 
 namespace Zxing\Common;
 
+use InvalidArgumentException;
+use UnexpectedValueException;
+
 /**
  * Encapsulates a Character Set ECI, according to "Extended Channel
  * Interpretations" 5.3.1.1 of ISO 18004.
@@ -94,7 +97,7 @@ final class CharacterSetECI
     public static function getCharacterSetECIByValue($value)
     {
         if ($value < 0 || $value >= 900) {
-            throw new \InvalidArgumentException('Value must be between 0 and 900');
+            throw new InvalidArgumentException('Value must be between 0 and 900');
         }
         if (false !== ($key = array_search($value, self::$additionalValues))) {
             $value = $key;
@@ -104,7 +107,7 @@ final class CharacterSetECI
             self::setName($value);
 
             return new self($value);
-        } catch (\UnexpectedValueException $e) {
+        } catch (UnexpectedValueException $e) {
             return null;
         }
     }

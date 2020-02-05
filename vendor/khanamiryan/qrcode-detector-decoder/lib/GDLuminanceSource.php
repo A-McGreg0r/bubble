@@ -3,6 +3,8 @@
 
 namespace Zxing;
 
+use InvalidArgumentException;
+
 /**
  * This class is used to help decode images from files which arrive as GD Resource
  * It does not support rotation.
@@ -35,7 +37,7 @@ final class GDLuminanceSource extends LuminanceSource
         }
         parent::__construct($width, $height);
         if ($left + $width > $dataWidth || $top + $height > $dataHeight) {
-            throw new \InvalidArgumentException("Crop rectangle does not fit within image data.");
+            throw new InvalidArgumentException("Crop rectangle does not fit within image data.");
         }
         $this->luminances = $gdImage;
         $this->dataWidth  = $dataWidth;
@@ -110,7 +112,7 @@ final class GDLuminanceSource extends LuminanceSource
     public function getRow($y, $row = null)
     {
         if ($y < 0 || $y >= $this->getHeight()) {
-            throw new \InvalidArgumentException('Requested row is outside the image: ' . $y);
+            throw new InvalidArgumentException('Requested row is outside the image: ' . $y);
         }
         $width = $this->getWidth();
         if ($row == null || count($row) < $width) {

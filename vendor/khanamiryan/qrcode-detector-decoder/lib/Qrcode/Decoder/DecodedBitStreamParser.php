@@ -17,6 +17,7 @@
 
 namespace Zxing\Qrcode\Decoder;
 
+use InvalidArgumentException;
 use Zxing\DecodeHintType;
 use Zxing\FormatException;
 use Zxing\Common\BitSource;
@@ -117,7 +118,7 @@ final class DecodedBitStreamParser
                     }
                 }
             } while ($mode != Mode::$TERMINATOR);
-        } catch (\InvalidArgumentException $iae) {
+        } catch (InvalidArgumentException $iae) {
             // from readBits() calls
             throw FormatException::getFormatInstance();
         }

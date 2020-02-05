@@ -17,6 +17,7 @@
 
 namespace Zxing\Qrcode\Decoder;
 
+use InvalidArgumentException;
 use Zxing\FormatException;
 use Zxing\Common\BitMatrix;
 
@@ -118,7 +119,7 @@ class Version
     public  static function getVersionForNumber($versionNumber)
     {
         if ($versionNumber < 1 || $versionNumber > 40) {
-            throw new \InvalidArgumentException();
+            throw new InvalidArgumentException();
         }
         if(!self::$VERSIONS){
 

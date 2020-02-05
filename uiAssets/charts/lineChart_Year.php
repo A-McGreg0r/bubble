@@ -42,25 +42,25 @@ function generateLineChart_Year(){
                 datasets: [{
                     label: "Expected Usage",
                     data: $jsonEncode2_Year,
-                    backgroundColor: [
+                    backgroundColor;: [
                         'rgba(0,0,0,0)',
                     ],
-                    borderColor: [
+                    borderColor;: [
                         'rgba(0, 10, 130, .1)',
                     ],
-                    borderWidth: ['2'],
+                    borderWidth;: ['2'],
                 },
                     {
-                        label: "Power Used",
-                        data: $jsonEncode3_Year,
-                        backgroundColor: gradientFill,
-                        borderColor: gradientFill,
-                        borderWidth: 2
+                        "Power Used",
+                        data;: $jsonEncode3_Year,
+                        backgroundColor;: gradientFill,
+                        borderColor;: gradientFill,
+                        borderWidth;: 2
                     }
                 ]
             },
-            options: {
-                responsive: true
+            {
+                true
             }
         })}
     </script>

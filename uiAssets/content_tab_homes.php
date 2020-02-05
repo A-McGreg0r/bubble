@@ -146,17 +146,17 @@ function generateHomeTab()
                                     <!--Date select
                                     <p class="lead align-content-center">
                                         <span class="badge info-color-dark p-2">Date range</span>
-                                    </p>-->
+                                    </p>
                                     <select id="chartPicker" class="browser-default custom-select">
                                         <option value="0" selected>Choose time period</option>
                                         <option value="1">Year</option>
                                         <option value="2">Month</option>
                                         <option value="3">Day</option>
-                                    </select>
+                                    </select>-->
                                     
                                     <!--todo get displaying all 3--> 
                                     <div style='display:none;' id='Year'>Chart Year<br/>&nbsp;
-                                       //K<canvas id="mainLineChart"></canvas><!--no load--> 
+                                      <!-<canvas id="mainLineChart"></canvas>-no load--> 
                                     </div> 
                                     <div style='display:none;' id='Month'>chart month<br/>&nbsp;
                                        <!--no <canvas id="lineChart_Month"></canvas>  load-->   

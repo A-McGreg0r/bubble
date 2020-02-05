@@ -38,7 +38,6 @@ function toggleDevice(room_id){
 function submitImage(){
     var url = "required/action_adddevice.php";
     var video = document.querySelector("#videoElement");
-    var image = document.querySelector("#capturedimage");
     var loading = document.querySelector("#loading");
     var submitButton = document.querySelector("#submitImage");
     var devicetext = document.querySelector("#devicetext");
@@ -47,11 +46,7 @@ function submitImage(){
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
     canvas.getContext('2d').drawImage(video, 0, 0);
-    var img = document.createElement("img");
     var dataQuery = canvas.toDataURL();
-
-    img.src = dataQuery;
-    image.prepend(img);
     video.style.visibility = "hidden";
     loading.style.visibility = "visible";
     submitButton.style.visibility = "hidden";
@@ -61,14 +56,14 @@ function submitImage(){
         url: url,
         data:{ photo: dataQuery},
         success:function(data){
-            if(!data){
+            if(!data || data == "\n"){
                 video.style.visibility = "visible";
                 loading.style.visibility = "hidden";
                 submitButton.style.visibility = "visible";
-                devicetext.innerText = "<p>Unable to find a QR code, please try again!</p>";
+                devicetext.innerText = "Unable to find a QR code, please try again!";
             }else{
                 loading.style.visibility = "hidden";
-                devicetext.innerText = "<p>"+data+"</p>";
+                devicetext.innerText = "<p>"+data+"</p>" + typeof data;
             }
         },
         error: function(data){

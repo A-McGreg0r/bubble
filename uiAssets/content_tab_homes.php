@@ -167,7 +167,7 @@ function generateHomeTab()
                                     <p class="lead align-content-center">
                                         <span class="badge info-color-dark p-2">Date range</span>
                                     </p>
-                                    <select id="chartPicker" onchange="chartChange()" class="browser-default custom-select">
+                                    <select id="chartPicker" class="browser-default custom-select">
                                         <option value="0" selected>Choose time period</option>
                                         <option value="1">Year</option>
                                         <option value="2">Month</option>
@@ -205,26 +205,6 @@ function generateHomeTab()
                                             }
                                         });
                                         
-                                        function chartChange() {
-                                                   if (document.getElementById("mySelect").options[0].value()){
-                                                       //echo defalt
-                                                   }else if (document.getElementById("mySelect").options[1].value()){
-                                                       echo="chart one"
-                                                   }else if (document.getElementById("mySelect").options[2].value()){
-                                                       echo="chart two"
-                                                   }else if (document.getElementById("mySelect").options[3].value()){
-                                                       echo="chart three"
-                                                   }else {
-                                                       window.alert("invalid slection try again);
-       }
-                                            if (document.getElementById("chartPicker").value === "1"){
-                                            myChart["config"]["data"] = data1; //<--- THIS WORKS!
-                                            myChart.update();
-                                            }else if (document.getElementById("chartPicker").value === "2"){
-                                             myChart["config"]["data"] = data1; //<--- THIS WORKS!
-                                            myChart.update();
-                                            }        
-                                        }
                                         
                                         $( ".custom-select" ).change(function() {
                                             masterChart.data.datasets.data = [];

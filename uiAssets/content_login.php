@@ -72,7 +72,7 @@ function generateLoginPage(){
                                         <input type="password" id="materialLoginFormPassword" class="form-control" name="password"/>
                                     </div>
 
-                                    <div class="d-flex">
+                                    <div class="d-flex justify-content-around">
                                         <div>
                                             <!-- Remember me -->
                                             <div class="form-check">

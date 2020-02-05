@@ -2,7 +2,7 @@
 <!-- TODO remove header as elaments html tag and doc type as required after completion -->
 <?php
 
-function generateLineChart_Year(){
+function generateLineChart_All(){
     //TODO remove once data base it implmented
     //randome genarated grapth (temp)
     $dataTitle ="lineChart_Year";

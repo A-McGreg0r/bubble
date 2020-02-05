@@ -206,10 +206,8 @@ function generateHomeTab()
                     }
                 ]
                 };
-            
             var data1 = {
                 labels: ['March', 'Apr', 'May'],
-                
                 datasets: [
                     {
                     fillColor: "rgba(220,220,220,0.2)",
@@ -252,7 +250,7 @@ html;
                     require "charts/lineChart_Month.php";
                     require "charts/allCharts.php";
 
-                    //$html .= generateAll_Chart();
+                    $html .= generateLineChart_All();
 
                     $html .= generateLineChart_Day();
                     $html .= generateLineChart_Month();

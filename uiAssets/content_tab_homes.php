@@ -206,19 +206,19 @@ function generateHomeTab()
                                         });
                                      function chartChange() {
                                                    if (document.getElementById("mySelect").options[0].value()){
-                                                       myChart["config"]["data"] = data1; //<--- THIS WORKS!
-                                                       myChart.update();
+                                                         function chartContent() {
+                                                                myChart["config"]["data"] = data1; //<--- THIS WORKS!
+                                                                myChart.update();
+                                                            }   
                                                    }else if (document.getElementById("mySelect").options[1].value()){
-                                                       myChart["config"]["data"] = data1; //<--- THIS WORKS!
-                                                       myChart.update();
+                                                       
                                                    }else if (document.getElementById("mySelect").options[2].value()){
-                                                       myChart["config"]["data"] = data2; //<--- THIS WORKS!
-                                                       myChart.update();
+                                                       
                                                    }else if (document.getElementById("mySelect").options[3].value()){
-                                                       myChart["config"]["data"] = data3; //<--- THIS WORKS!
-                                                       myChart.update();
+                                                      
                                                    }else {
                                                        window.alert("invalid slection try again);        
+                                                    }
                                                     }
                                     // Called on Click
                                         function chartContent() {

@@ -181,7 +181,7 @@ function generateHomeTab()
                         </div>
                     </div>
                 
-    <script>
+    <script>    
             var data = {
                 labels: ['January', 'February', 'March'],
                 

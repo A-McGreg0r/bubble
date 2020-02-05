@@ -48,8 +48,8 @@ function generateLineChart_Year(){
                         }
                 });
 
-                $(document).ready(function(button) {
-                    (button).click(chartContent);
+                $(document).ready(function() {
+                    ().click(chartContent);
                 });
                 function chartContent() {
                     AllLineChart["config"]["data"] = dataYear; //<--- THIS WORKS!

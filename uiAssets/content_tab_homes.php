@@ -153,6 +153,18 @@ function generateHomeTab()
                                         <option value="2">Month</option>
                                         <option value="3">Day</option>
                                     </select>
+                                    
+                                    <!--todo get displaying all 3--> 
+                                    <div style='display:none;' id='Year'>Chart Year<br/>&nbsp;
+                                       <canvas id="mainLineChart"></canvas><!--no load--> 
+                                    </div> 
+                                    <div style='display:none;' id='Month'>chart month<br/>&nbsp;
+                                       <!--no <canvas id="lineChart_Month"></canvas>  load-->   
+                                    </div> 
+                                    <div style='display:none;' id='Day'>chart day<br/>&nbsp;
+                                       <!-- <canvas id="lineChart_Year"></canvas>loads-->       
+                                    </div> 
+                                    
                                             <!--todo get displaying all 3--> 
                                     <div id='Year'>Chart Year<br/>&nbsp;
                                        <canvas id="mainLineChart"></canvas>
@@ -167,22 +179,46 @@ function generateHomeTab()
                 
     <script>
             
-            // Set the listener for the click function
+            
+            
 
+            
+            
+                $(document).ready(function(){
+                $('#chartPicker').on('change', function() {
+                      if ( this.value === '1'){
+                        $("#Year").show();
+                        $("#Day").hide();
+                        $("#Month").hide();
+                      }else if( this.value === '2'){
+                         $("#Month").show();
+                         $("#Day").hide();
+                         $("#Year").hide();
+                      }else if( this.value === '3'){
+                          $("#Day").show();
+                          $("#Month").hide();
+                          $("#Year").hide();
+                      }else{
+                          $("#Day").hide();
+                          $("#Month").hide();
+                          $("#Year").hide();
+                      }
+                    });
+                });
 
     </script>                
                                   
                     <!-- Accordion card -->
 html;
-                    //require "charts/lineChart_Day.php";
-                    //require "charts/lineChart_Year.php";
-                    //require "charts/lineChart_Month.php";
+                    require "charts/lineChart_Day.php";
+                    require "charts/lineChart_Year.php";
+                    require "charts/lineChart_Month.php";
                     require "charts/allCharts.php";
 
                     //$html .= generateAll_Chart();
 
-                    //$html .= generateLineChart_Day();
-                    //$html .= generateLineChart_Month();
+                    $html .= generateLineChart_Day();
+                    $html .= generateLineChart_Month();
                     $html .= generateLineChart_Year();
 
                 }

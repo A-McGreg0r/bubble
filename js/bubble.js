@@ -44,7 +44,7 @@ function submitImage(){
     var devicetext = document.querySelector("#devicetext");
 
     var canvas = document.createElement("canvas");
-    canvas.getContext('2d').drawImage(video, 0, 0, image.clientWidth, image.clientHeight);
+    canvas.getContext('2d').drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
     var img = document.createElement("img");
     img.src = canvas.toDataURL();
     image.prepend(img);

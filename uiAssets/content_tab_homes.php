@@ -248,9 +248,9 @@ html;
                     require "charts/lineChart_Day.php";
                     require "charts/lineChart_Year.php";
                     require "charts/lineChart_Month.php";
-                    require "charts/allCharts.php";
+                    //require "charts/allCharts.php";
 
-                    $html .= generateLineChart_All();
+                    //$html .= generateLineChart_All();
 
                     $html .= generateLineChart_Day();
                     $html .= generateLineChart_Month();

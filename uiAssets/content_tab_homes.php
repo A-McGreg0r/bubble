@@ -89,7 +89,7 @@ function generateHomeTab()
                                                     var myLineChart = new Chart(ctxD, {
                                                     type: "doughnut",
                                                     data: {
-                                                    labels: ["Red"],
+                                                    labels: ["Cost [£]"],
                                                     datasets: [{
                                                     data: [$cost_day, $cost_total],
                                                     backgroundColor: ["#F7464A", "#FFFFFF00"],
@@ -156,7 +156,7 @@ function generateHomeTab()
                                                     var myLineChart = new Chart(ctxD, {
                                                     type: "doughnut",
                                                     data: {
-                                                    labels: ["Red"],
+                                                    labels: ["Cost [£]"],
                                                     datasets: [{
                                                     data: [200, 100],
                                                     backgroundColor: ["#F7464A", "#FFFFFF00"],

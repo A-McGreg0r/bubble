@@ -184,7 +184,7 @@ function generateHomeTab()
                                         let data3 = { "labels": ["1", "2", "3","4","5","6","7", "8", "9","10","11","12"],"label": "My First dataset", "datasets": [{ "label": "avg", "data": $dataPointsEncoded, "backgroundColor": "rgba(101, 209, 159, 0.6)", "borderColor": "rgba(101, 209, 159,1)", "borderWidth": 1 },{ "label": "Power usage", "data": $dataAvgEncoded, "backgroundColor": "rgba(93, 176, 201, 0.6)", "borderColor": "rgba(0, 10, 130, .4)", "borderWidth": 1 }] };
                                         
                                         
-                                        var jsonData = {data1,data2,data3};
+                                        let jsonData = {data1,data2,data3};
                                         // Draw the initial chart
                                         let masterChart = $("#masterLineChart")[0].getContext('2d');
                                         let myChart = new Chart(masterLineChart, {
@@ -206,8 +206,8 @@ function generateHomeTab()
                                     
                                     $( ".dropdown" ).change(function() {
                                         chart.options.data[0].dataPoints = [];
-                                      var e = document.getElementById("dd");
-                                        var selected = e.options[e.selectedIndex].value;
+                                      var e = document.getElementById("chartPicker");
+                                      var selected = e.options[e.selectedIndex].value;
                                       dps = jsonData[selected];
                                       for(var i in dps) {
                                         var xVal = dps[i].x;

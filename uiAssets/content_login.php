@@ -245,10 +245,12 @@ function generateLoginPage(){
                                     <a type="button" class="btn-floating btn-git btn-sm">
                                         <i class="fab fa-github white-text disabled"></i>
                                     </a>
+                                    
+                                    <p>By clicking <em>Sign up</em> you agree to our <a href="" target="_blank">terms of service</a></p>
                                     </div>
 
                                     <!-- Terms of service -->
-                                    <p>By clicking <em>Sign up</em> you agree to our <a href="" target="_blank">terms of service</a></p>
+                                    
 
                                 </form>
                                 <!-- Form -->

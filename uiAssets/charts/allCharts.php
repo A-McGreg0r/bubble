@@ -58,7 +58,6 @@ function generateLineChart_Year(){
         
         }
         
- 
     </script>
 h;
     return $html;

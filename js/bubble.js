@@ -38,7 +38,6 @@ function toggleDevice(room_id){
 function submitImage(){
     var url = "required/action_adddevice.php";
     var video = document.querySelector("#videoElement");
-    var image = document.querySelector("#capturedimage");
     var loading = document.querySelector("#loading");
     var submitButton = document.querySelector("#submitImage");
     var devicetext = document.querySelector("#devicetext");
@@ -47,11 +46,7 @@ function submitImage(){
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
     canvas.getContext('2d').drawImage(video, 0, 0);
-    var img = document.createElement("img");
     var dataQuery = canvas.toDataURL();
-
-    img.src = dataQuery;
-    image.prepend(img);
     video.style.visibility = "hidden";
     loading.style.visibility = "visible";
     submitButton.style.visibility = "hidden";

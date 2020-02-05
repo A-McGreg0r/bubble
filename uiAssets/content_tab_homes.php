@@ -182,6 +182,19 @@ function generateHomeTab()
                     </div>
                 
     <script>    
+    
+    
+                var context = document.querySelector('#graph').getContext('2d');
+            new Chart(context).Line(data);
+                
+            $("#btn1").on("click", function() {
+                 var context1 = document.querySelector('#graph').getContext('2d');
+                new Chart(context1).Line(data);
+              });
+            $("#btn2").on("click", function() {
+                var context2 = document.querySelector('#graph').getContext('2d');
+                new Chart(context2).Line(data1);
+              });
             var data = {
                 labels: ['January', 'February', 'March'],
                 
@@ -206,6 +219,7 @@ function generateHomeTab()
                     }
                 ]
                 };
+            
             var data1 = {
                 labels: ['March', 'Apr', 'May'],
                 datasets: [

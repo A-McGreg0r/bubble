@@ -50,6 +50,7 @@ function submitImage(){
     video.style.visibility = "hidden";
     loading.style.visibility = "visible";
     submitButton.style.visibility = "hidden";
+    devicetext.innerText = "";
 
     $.ajax({
         type:'POST',
@@ -63,7 +64,7 @@ function submitImage(){
                 devicetext.innerText = "Unable to find a QR code, please try again!";
             }else{
                 loading.style.visibility = "hidden";
-                devicetext.innerText = "<p>"+data+"</p>" + typeof data;
+                devicetext.innerText = data;
             }
         },
         error: function(data){

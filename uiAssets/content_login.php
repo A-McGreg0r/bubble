@@ -103,10 +103,8 @@ function generateLoginPage(){
                                     <a type="button" class="btn-floating btn-git btn-sm">
                                         <i class="fab fa-github white-text disabled"></i>
                                     </a>
-                                    <!--t-->
-                                    <a type="button" href="appCore.php" class="btn-floating btn-git btn-sm text-light">
-                                        <i class="far fa-arrow-alt-circle-right"></i>
-                                    </a>
+                                   
+
 
 
                                 </form>

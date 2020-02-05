@@ -203,9 +203,9 @@ function generateHomeTab()
                                 
                                     // Called on Click
                                     
-                                    $( ('#chartPicker').value() {
+                                    $(function () {
                                         $("#chartPicker").change(function (evt) {
-                                            let chartSelection = $("#chartPicker").val();
+                                            let chartSelection = $("#chartPicker").value();
                                             myChart["config"]["data"] = jsonData[chartSelection];
                                             $('#masterLineChart').update();
                                         });

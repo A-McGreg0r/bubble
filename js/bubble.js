@@ -44,11 +44,14 @@ function submitImage(){
     var devicetext = document.querySelector("#devicetext");
 
     var canvas = document.createElement("canvas");
-    canvas.getContext('2d').drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    canvas.getContext('2d').drawImage(video, 0, 0);
     var img = document.createElement("img");
-    img.src = canvas.toDataURL();
-    image.prepend(img);
     var dataQuery = canvas.toDataURL();
+
+    img.src = dataQuery;
+    image.prepend(img);
     video.style.visibility = "hidden";
     loading.style.visibility = "visible";
     submitButton.style.visibility = "hidden";

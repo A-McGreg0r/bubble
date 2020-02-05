@@ -200,9 +200,9 @@ html;
                     require "charts/allCharts.php";
                     $html .= generateLineChart_All();
 
-                    $html .= generateLineChart_Day();
-                    $html .= generateLineChart_Month();
-                    $html .= generateLineChart_Year();
+                    //$html .= generateLineChart_Day();
+                    //$html .= generateLineChart_Month();
+                    //$html .= generateLineChart_Year();
 
                 }
                 $stmt1->close();

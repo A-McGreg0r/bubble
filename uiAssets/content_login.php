@@ -80,9 +80,6 @@ function generateLoginPage(){
                                                 <label class="form-check-label" for="materialLoginFormRemember">Remember me</label>
                                             </div>
                                         </div>
-                                        <div>
-                                            <a href="">Forgot password?</a>
-                                        </div>
                                     </div>
 
                                     <!-- Sign in button -->

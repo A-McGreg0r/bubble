@@ -191,7 +191,7 @@ function generateHomeTab()
                                         
                                         var jsonData = {data1,data2,data3};
                                         // Draw the initial chart
-                                        let kChartCanvas = $("#masterLineChart")[0].getContext('2d');
+                                        let masterChart = $("#masterLineChart")[0].getContext('2d');
                                         let myChart = new Chart(kChartCanvas, {
                                             type: 'line',
                                             data: data1,
@@ -208,7 +208,7 @@ function generateHomeTab()
                                         
                                         
                                         $( ".custom-select" ).change(function() {
-                                            chart.data.datasets.data = [];
+                                            masterChart.data.datasets.data = [];
                                             var e = document.getElementById("chartPicker");
                                             var selected = e.options[e.selectedIndex].value;
                                             dps = jsonData[selected];

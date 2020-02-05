@@ -147,29 +147,6 @@ function generateHomeTab()
                                                     });
                                                 </script>
                                             </div>
-                                            <div class="col border border-primary rounded m-2">
-                                                <h4 class="text-centre align-middle">Heating Usage</h4>
-                                                <canvas style="max-width:50% min-width:30%" id="heatingUsage3"></canvas>
-                                                <script>
-                                                    //doughnut
-                                                    var ctxD = document.getElementById("heatingUsage3").getContext("2d");
-                                                    var myLineChart = new Chart(ctxD, {
-                                                    type: "doughnut",
-                                                    data: {
-                                                    labels: ["Cost [£]"],
-                                                    datasets: [{
-                                                    data: [200, 100],
-                                                    backgroundColor: ["#F7464A", "#FFFFFF00"],
-                                                    hoverBackgroundColor: ["#FF5A5E", "#FFFFFF00"]
-                                                    }]
-                                                    },
-                                                    options: {
-                                                    responsive: true
-                                                    }
-                                                    });
-                                                </script>
-
-                                            </div>
                                         </div>
                                     </div>
         

@@ -167,16 +167,16 @@ function generateHomeTab()
                                     <!--todo get displaying all 3--> 
 
                                     
-                                    <canvas id="kontakteChart"></canvas>
+                                    <canvas id="masterLineChart"></canvas>
                                     <script type="text/javascript">
                                         // Supplied Datasets to display
                                         var data1 = { "labels": ["1", "2", "3"], "datasets": [{ "label": "Contacts", "data": [20, 15, 10], "backgroundColor": "rgba(255, 99, 132, 0.2)", "borderColor": "rgba(255,99,132,1)", "borderWidth": 1 }] };
                                         var data2 = { "labels": ["1", "2", "3"], "datasets": [{ "label": "Contacts", "data": [10, 23, 41], "backgroundColor": "rgba(255, 99, 132, 0.2)", "borderColor": "rgba(255,99,132,1)", "borderWidth": 1 }] };
                                         
                                         // Draw the initial chart
-                                        var kChartCanvas = $("#kontakteChart")[0].getContext('2d');
+                                        var kChartCanvas = $("#masterLineChart")[0].getContext('2d');
                                         var myChart = new Chart(kChartCanvas, {
-                                            type: 'bar',
+                                            type: 'line',
                                             data: data1,
                                             options: {
                                                 scales: {

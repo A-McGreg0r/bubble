@@ -205,8 +205,7 @@ function generateHomeTab()
                                     
                                     $(function () {
                                         $("#chartPicker").change(function (evt) {
-                                            let chartSelection = $("#chartPicker").value();
-                                            myChart["config"]["data"] = jsonData[chartSelection];
+                                            myChart["config"]["data"] = jsonData[$("#chartPicker").value()];
                                             $('#masterLineChart').update();
                                         });
                                     });

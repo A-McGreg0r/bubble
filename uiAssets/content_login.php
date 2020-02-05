@@ -232,20 +232,22 @@ function generateLoginPage(){
 
                                     <!-- Social login -->
                                     <div class="d-flex justify-content-center">
-                                      <p>or sign in with:</p>
-                                    <a type="button" class="btn-floating btn-fb btn-sm">
-                                        <i class="fab fa-facebook-f white-text disabled"></i>
-                                    </a>
-                                    <a type="button" class="btn-floating btn-tw btn-sm">
-                                        <i class="fab fa-twitter white-text disabled"></i>
-                                    </a>
-                                    <a type="button" class="btn-floating btn-li btn-sm">
-                                        <i class="fab fa-linkedin-in white-text disabled"></i>
-                                    </a>
-                                    <a type="button" class="btn-floating btn-git btn-sm">
-                                        <i class="fab fa-github white-text disabled"></i>
-                                    </a>
-                                    
+                                        <div  class="row>
+                                           <p>or sign in with:</p>
+                                            <a type="button" class="btn-floating btn-fb btn-sm">
+                                                <i class="fab fa-facebook-f white-text disabled"></i>
+                                            </a>
+                                            <a type="button" class="btn-floating btn-tw btn-sm">
+                                                <i class="fab fa-twitter white-text disabled"></i>
+                                            </a>
+                                            <a type="button" class="btn-floating btn-li btn-sm">
+                                                <i class="fab fa-linkedin-in white-text disabled"></i>
+                                            </a>
+                                            <a type="button" class="btn-floating btn-git btn-sm">
+                                                <i class="fab fa-github white-text disabled"></i>
+                                            </a>
+                                        </div>
+
                                     <p>By clicking <em>Sign up</em> you agree to our <a href="" target="_blank">terms of service</a></p>
                                     </div>
 

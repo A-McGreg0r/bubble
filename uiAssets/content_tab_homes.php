@@ -210,8 +210,7 @@ function generateHomeTab()
                                       var selected = e.options[e.selectedIndex].value;
                                       dps = jsonData[selected];
                                       for(var i in dps) {
-                                        var xVal = dps[i].x;
-                                        chart.options.data[0].dataPoints.push({x: new Date(xVal), y: dps[i].y});
+                                        chart.options.data[0].push(e.selectedIndex);
                                       }
                                       chart.render();
                                       myChart.update();

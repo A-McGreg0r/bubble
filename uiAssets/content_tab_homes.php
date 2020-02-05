@@ -210,15 +210,15 @@ function generateHomeTab()
                                   
                     <!-- Accordion card -->
 html;
-                    //require "charts/lineChart_Day.php";
-                    //require "charts/lineChart_Year.php";
-                    //require "charts/lineChart_Month.php";
+                    require "charts/lineChart_Day.php";
+                    require "charts/lineChart_Year.php";
+                    require "charts/lineChart_Month.php";
                     require "charts/allCharts.php";
 
                     //$html .= generateAll_Chart();
 
-                    //$html .= generateLineChart_Day();
-                    //$html .= generateLineChart_Month();
+                    $html .= generateLineChart_Day();
+                    $html .= generateLineChart_Month();
                     $html .= generateLineChart_Year();
 
                 }

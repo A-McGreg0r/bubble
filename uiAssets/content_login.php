@@ -231,7 +231,7 @@ function generateLoginPage(){
                                     <div class="d-flex justify-content-center">
                                         <div  class="row">
                                            <p>or sign in with:</p>
-                                            <a type="button" class="btn-floating btn-fb btn-sm">
+              Ú                              <a type="button" class="btn-floating btn-fb btn-sm">
                                                 <i class="fab fa-facebook-f white-text disabled"></i>
                                             </a>
                                             <a type="button" class="btn-floating btn-tw btn-sm">
@@ -245,13 +245,13 @@ function generateLoginPage(){
                                             </a>
                                         </div>
                                         
-                                        <div  class="row">
+                                        <div class="row">
                                             <p>By clicking <em>Sign up</em> you agree to our <a href="" target="_blank">terms of service</a></p>
                                         </div>
 
                                     </div>
 
-                                    <!-- Terms of service -->
+                      ú              <!-- Terms of service -->
                                     
 
                                 </form>

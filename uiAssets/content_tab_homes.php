@@ -158,7 +158,7 @@ function generateHomeTab()
                                     <p class="lead align-content-center">
                                         <span class="badge info-color-dark p-2">Date range</span>
                                     </p>
-                                    <select id="chartPicker" class="browser-default custom-select dropdown" onselect="myFunction()">
+                                    <select id="chartPicker" class="browser-default custom-select dropdown" onselect="chartSelect()">
                                         <option value="0" selected="selected">Choose time period</option>
                                         <option value="data1">Year</option>
                                         <option value="data2">Month</option>
@@ -194,24 +194,11 @@ function generateHomeTab()
                                         });
                                 
                                     // Called on Click
-                                    
-                                    
-                                    $( ".dropdown" ).change(function() {
-                                        chart.options.data = [];
-                                      var e = document.getElementById("chartPicker");
-                                      var selected = e.options[e.selectedIndex].value;
-                                      dps = jsonData[selected];
-                                      for(var i in dps) {
-                                        chart.options.data[0].push(e.selectedIndex);
-                                      }
-                                      myChart.update();
-                                    });
-                                    
-                                    function myFunction() {
+                                    function chartSelect() {
                                       let x = document.getElementById("chartPicker").selectedIndex;
                                       let y = document.getElementById("chartPicker").options;
                                       alert("Index: " + y[x].index + " is " + y[x].text);
-}
+                                        }
 
                                     
                                     function chartContent() {

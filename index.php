@@ -86,14 +86,14 @@
             case 'addroom':
                 include './uiAssets/content_addroom.php';
                 $html .= generateAddRoom();
-            break;
+                break;
             case 'account':
                 include './uiAssets/content_account.php';
                 $html .= generateAccount();
-            break;
+                break;
             default:
                 include "appCore.php";
-                $html .= generateAppCore();
+                $html .= generateAppCore();//bug?
         }
         return $html;
     }

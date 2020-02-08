@@ -5,6 +5,7 @@ function generateAccount(){
     session_start();
     if(isset($_SESSION['user_id'])){
         $user_id = $_SESSION['user_id'];
+
         session_write_close();
         $stmt = $db->prepare("SELECT * FROM user_info WHERE user_id = ?");
         $stmt->bind_param("i", $user_id);
@@ -14,30 +15,48 @@ function generateAccount(){
             extract($result->fetch_assoc());
 
 
+            //account details.
             $html = <<<html
+        <div class="container-fluid">
             <div class="card justify-content-center ">
             <!--Title-->
             <h4 class="card-title mb-0 mt-3">
                 <strong>My Account</strong>
             </h4>
             <!-- Card content -->
-            <div class="card-body">
-                <div class="flex-row justify-content-between">
-                    <div class="col-md-6">
-                        Email: $email 
+                <div class="card-body">
+                    <div class="flex-col justify-content-center">
+                        <div class="row-md-12">
+                            <p class="h6">Email: $eamil</p> 
+                        </div>
+                        
+                        <div class="row-md-12">
+                            <div class="col-md-6">
+                                <p class="h6">First Name: $first_name  </p>    
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <p class="h6"> First Name: $last_name  </p> 
+                            </div>
+                        </div>  
+                          
+                    
+                        <div class="row-md-12">
+                            <div class="col-md-6">
+                                <p class="h6">Address:  $address_l1 $address_l2   </p>    
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <p class="h6"> Postcode: $postcode  </p> 
+                            </div>
+                        </div>  
+
+                                 
+             
                     </div>
-                    <div class="col-md-6">
-                        First Name: $first_name
-                    </div>
-                    <div class="col-md-6">
-                        First Name: $last_name
-                    </div>
-                    <div class="col-md-6">
-                    Address: $address_l1 $address_l2 $postcode
-                    </div>
+                    <button onclick=deleteAccount()></button>
                 </div>
-                <button onclick=deleteAccount()></button>
-            </div>
+            </div>    
     
     
             <!-- Editable table -->
@@ -199,8 +218,10 @@ device;
                 $EXPORT.text(JSON.stringify(data));
             });
         </script>
+        </div>
         ';
         }
+
         $stmt->close();
 
     }

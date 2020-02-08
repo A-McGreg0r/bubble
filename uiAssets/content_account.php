@@ -14,6 +14,13 @@ function generateAccount(){
         if ($result->num_rows === 1) {
             extract($result->fetch_assoc());
 
+            $email = num_rows["email"];
+            $first_name = num_rows["first_name"];
+            $last_name = num_rows["surname"];
+            $address_l1 = num_rows["address_l1"];
+            $address_l2 = num_rows["address_l2"];
+            $postcode = num_rows["postcode"];
+
 
             //account details.
             $html = <<<html
@@ -27,7 +34,7 @@ function generateAccount(){
                 <div class="card-body">
                     <div class="flex-col justify-content-center">
                         <div class="row-md-12">
-                            <p class="h6">Email: $eamil</p> 
+                            <p class="h6">Email: $email</p> 
                         </div>
                         
                         <div class="row-md-12">
@@ -54,7 +61,7 @@ function generateAccount(){
                                  
              
                     </div>
-                    <button onclick=deleteAccount()></button>
+                    <button class="btn btn-danger btn-rounded" onclick=deleteAccount()></button>
                 </div>
             </div>    
     

@@ -39,10 +39,24 @@ function generateHomeTab()
                         $cost_month = $row2['cost_month'];
                         $cost_total = $row2['cost_total'];
                         $cost_variance = $cost_total - $cost_month;
-                        
+
                     }
                     //todo add querrys for pulling power usage
-
+                    $dataPoints = array();
+                    $dataPoints = array();
+                    $AvgPoints = array();
+                    $dataLabels = array();
+                    $y = 40;
+                    $avg = 0;
+                    for ($i = 0; $i < 100; $i++) {
+                        $y += rand(0, 100) - 5;
+                        array_push($dataPoints, array("x" => $i, "y" => $y));
+                        array_push($dataLabels, array($i));
+                        $avg = array_sum($dataPoints) / count($dataPoints);
+                        array_push($AvgPoints, array($avg));
+                    }
+                    $dataPointsEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
+                    $dataAvgEncoded = json_encode($AvgPoints, JSON_NUMERIC_CHECK);;
 
 
                     $dataPoints = 1;

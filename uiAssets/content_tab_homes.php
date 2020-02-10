@@ -218,8 +218,8 @@ function generateHomeTab()
 
                                     
                                     function chartContent() {
-                                            myChart["config"]["data"] = data2; //<--- THIS WORKS!
-                                            myChart.update();
+                                            masterLineChart["config"]["data"] = data2; //<--- THIS WORKS!
+                                            masterLineChart.update();
                                         }
                                         // Set the listener for the click function
                                         $(document).ready(function() {

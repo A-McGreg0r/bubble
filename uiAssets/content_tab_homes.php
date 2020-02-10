@@ -51,6 +51,9 @@ function generateHomeTab()
                     //    $units_used = $row3['Watts_Used'];
                     //    $expected_usage =get last 4  // need new querry?
                     //}
+                    //$dataRangeEncoded1 = json_encode($hours_measured, JSON_NUMERIC_CHECK);
+                    //$unitsUsedEncoded1 = json_encode($units_used, JSON_NUMERIC_CHECK);
+                    //$dataAvgEncoded1 = json_encode($AvgPoints, JSON_NUMERIC_CHECK);;
 
 
                     //todo add querrys for pulling power usage

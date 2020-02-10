@@ -48,8 +48,8 @@ function generateHomeTab()
                     $dataLabels = array();
                     $y = 40;
                     $avg = 0;
-                    for ($i = 0; $i < 100; $i++) {
-                        $y += rand(0, 100) - 5;
+                    for ($i = 0; $i < 31; $i++) {
+                        $y += rand(0, 150);
                         array_push($dataPoints, array("x" => $i, "y" => $y));
                         array_push($dataLabels, array($i));
                         $avg = array_sum($dataPoints) / count($dataPoints);

@@ -53,7 +53,7 @@ function generateHomeTab()
                     //}
                     //$dataRangeEncoded1 = json_encode($hours_measured, JSON_NUMERIC_CHECK);// last 24 hours
                     //$unitsUsedEncoded1 = json_encode($units_used, JSON_NUMERIC_CHECK);//corasponding data for the last 24 hours
-                    //$dataAvgEncoded1 = json_encode($AvgPoints, JSON_NUMERIC_CHECK);;
+                    //$dataAvgEncoded1 = json_encode($AvgPoints, JSON_NUMERIC_CHECK);//unused in current ver
 
 
                     //todo add querrys for pulling power usage

@@ -40,7 +40,7 @@ function generateHomeTab()
                         $cost_total = $row2['cost_total'];
                         $cost_variance = $cost_total - $cost_month;
                     }
-
+                    //todo test querry and implment the weekly, monthly and annual versions
                     //$stmt3 = $db->prepare("SELECT * FROM hourly_data WHERE hub_id & hourly_data.date >= NOW() - INTERVAL 1 DAY ORDER BY hour ASC = ?");
                     //$stmt3->bind_param("i", $hourly_data);
                     //$stmt3->execute();

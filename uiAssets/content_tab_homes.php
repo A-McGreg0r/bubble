@@ -41,7 +41,7 @@ function generateHomeTab()
                         $cost_variance = $cost_total - $cost_month;
                     }
                     //todo test querry and implment the weekly, monthly and annual versions
-                    //$stmt3 = $db->prepare("SELECT * FROM hourly_data WHERE hub_id & hourly_data.date >= NOW() - INTERVAL 1 DAY ORDER BY hour ASC = ?");
+                    //$stmt3 = $db->prepare("SELECT * FROM hourly_data WHERE (hub_id AND hourly_data.date >= NOW() - INTERVAL 1 DAY) ORDER BY hour ASC = ?");
                     //$stmt3->bind_param("i", $hourly_data);
                     //$stmt3->execute();
                     //$result3 = $stmt3->get_result();
@@ -51,8 +51,8 @@ function generateHomeTab()
                     //    $units_used = $row3['Watts_Used'];
                     //    $expected_usage =get last 4  // need new querry?
                     //}
-                    //$dataRangeEncoded1 = json_encode($hours_measured, JSON_NUMERIC_CHECK);
-                    //$unitsUsedEncoded1 = json_encode($units_used, JSON_NUMERIC_CHECK);
+                    //$dataRangeEncoded1 = json_encode($hours_measured, JSON_NUMERIC_CHECK);// last 24 hours
+                    //$unitsUsedEncoded1 = json_encode($units_used, JSON_NUMERIC_CHECK);//corasponding data for the last 24 hours
                     //$dataAvgEncoded1 = json_encode($AvgPoints, JSON_NUMERIC_CHECK);;
 
 

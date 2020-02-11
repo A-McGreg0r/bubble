@@ -118,6 +118,14 @@ html;
                                     <td class="pt-3-half" contenteditable="true">$icon $device_name</td>
                                     <td class="pt-3-half" contenteditable="true">8w</td>
                                     <td class="pt-3-half" contenteditable="true">Light Bulb</td>
+                                    
+                                    <td class="pt-3-half" contenteditable="true">
+                                         <select id="deviceLocation" class="browser-default custom-select dropdown">
+                                            <option value="data1">Living Room</option>
+                                            <option value="data2">Bed Room</option>
+                                            <option value="data3">Bath Room</option>
+                                        </select>
+                                    </td>
                                     <td class="pt-3-half">
                                         <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i></a></span>
                                         <span class="table-down"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-down" aria-hidden="true"></i></a></span>

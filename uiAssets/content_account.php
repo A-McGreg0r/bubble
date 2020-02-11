@@ -32,7 +32,8 @@ function generateAccount(){
             </h4>
             <!-- Card content -->
                 <div class="card-body">
-                    <div class="flex-col r">
+                    <div class="flex-col">
+                    
                         <div class="row-md-12">
                             <p class="h6">Email: $email</p> 
                         </div>

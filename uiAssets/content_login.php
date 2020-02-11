@@ -228,10 +228,10 @@ function generateLoginPage(){
 
 
                                     <!-- Social login -->
-                                    <div class="d-flex justify-content-center">
-                                        <div  class="row">
-                                            <div class="row">
-                                               <p>or sign in with:</p>
+                                    <div class="container">
+                                      <div class="row">
+                                        <div class="col">
+                                         <p>or sign in with:</p>
                   Ú                              <a type="button" class="btn-floating btn-fb btn-sm">
                                                     <i class="fab fa-facebook-f white-text disabled"></i>
                                                 </a>
@@ -245,10 +245,23 @@ function generateLoginPage(){
                                                     <i class="fab fa-github white-text disabled"></i>
                                                 </a>
                                             </div>
+                                        </div>
+                                    
+                                      </div>
+                                      <div class="row">
+                                        <div class="col">
+                                             <p>By clicking <em> Sign up </em> you agree to our<a href="" target="_blank"> terms of service</a> </p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <div  class="container">
+                                            <div class="row-">
+                                               
                                             
-                                            <div class="row">
-                                                <p>By clicking <em>Sign up</em> you agree to our <a href="" target="_blank">terms of service</a></p>
-                                            </div>
+                                           
+                                                <p>By clicking <em> Sign up </em> you agree to our<a href="" target="_blank"> terms of service</a> </p>
+                                    
                                         </div>
                                         
                                        

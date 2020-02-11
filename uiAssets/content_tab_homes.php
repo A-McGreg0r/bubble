@@ -176,7 +176,7 @@ function generateHomeTab()
                                         <option value="data2">Month</option>
                                         <option value="data3">Day</option>
                                     </select>
-                                    <button id="control1">upDate</button>
+                                    <button id="control1">upDate -Placholder </button>
                                     
                                     <!--todo get displaying all 3--> 
                                     <canvas id="masterLineChart"></canvas>

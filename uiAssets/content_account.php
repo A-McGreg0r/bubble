@@ -19,20 +19,20 @@ function generateAccount(){
             $last_name = num_rows["surname"];
             $address_l1 = num_rows["address_l1"];
             $address_l2 = num_rows["address_l2"];
+            $address_l2 = num_rows["address_l2"];
             $postcode = num_rows["postcode"];
 
 
             //account details.
             $html = <<<html
         <div class="container-fluid justify-content-center text-dark">
-            <div class="card  ">
+            <div class="card">
             <!--Title-->
             <h4 class="card-title mb-0 mt-3">
                 <strong>My Account</strong>
             </h4>
             <!-- Card content -->
                 <div class="card-body">
-                    <div class="flex-col">
                     
                         <div class="row-md-12">
                             <p class="h6">Email: $email</p> 
@@ -60,16 +60,16 @@ function generateAccount(){
                         </div>  
 
                                  
-             
-                    </div>
                     <button class="btn btn-danger btn-rounded" onclick=deleteAccount()></button>
+                    
                 </div>
+                
             </div>    
     
     
             <!-- Editable table -->
             <div class="card">
-                <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Devices</h3>
+                <h3 class="card-header text-center font-weight-bold text-uppercase py-4 text-dark">Devices</h3>
                 <div class="card-body">
                     <div id="table" class="table-editable">
                         <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span>

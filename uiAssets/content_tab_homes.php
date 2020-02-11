@@ -65,7 +65,7 @@ function generateHomeTab()
                     $avg = 0;
                     for ($i = 0; $i < 31; $i++) {
                         $y += rand(0, 150);
-                        array_push($dataPoints, array("x" => $i, "y" => $y));
+                        array_push($dataPoints, array($y));
                         array_push($dataLabels, array($i));
                         $avg = array_sum($dataPoints) / count($dataPoints);
                         array_push($AvgPoints, array($avg));
@@ -73,8 +73,6 @@ function generateHomeTab()
                     $dataPointsEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
                     $dataAvgEncoded = json_encode($AvgPoints, JSON_NUMERIC_CHECK);;
 
-
-                    $dataPoints = 1;
                     $html .= <<<html
                     <!-- Accordion card -->
                     <div class="card">

@@ -83,6 +83,7 @@ function generateAccount(){
                                     <th class="text-center">Device</th>
                                     <th class="text-center">Room</th>
                                     <th class="text-center">Consumption</th>
+                                    <th class="text-center">Device Type</th>
                                     <th class="text-center">Remove</th>
                                 </tr>
                                 </thead>
@@ -116,6 +117,7 @@ html;
                                 <tr>
                                     <td class="pt-3-half" contenteditable="true">$icon $device_name</td>
                                     <td class="pt-3-half" contenteditable="true">8w</td>
+                                    <td class="pt-3-half" contenteditable="true">Light Bulb</td>
                                     <td class="pt-3-half">
                                         <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i></a></span>
                                         <span class="table-down"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-down" aria-hidden="true"></i></a></span>

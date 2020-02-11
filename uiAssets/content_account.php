@@ -118,7 +118,6 @@ html;
                                     <td class="pt-3-half" contenteditable="true">$icon $device_name</td>
                                     <td class="pt-3-half" contenteditable="true">8w</td>
                                     <td class="pt-3-half" contenteditable="true">Light Bulb</td>
-                                    
                                     <td class="pt-3-half" contenteditable="true">
                                          <select id="deviceLocation" class="browser-default custom-select dropdown">
                                             <option value="data1">Living Room</option>

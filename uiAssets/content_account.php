@@ -26,18 +26,21 @@ function generateAccount(){
             //account details.
             $html = <<<html
         <div class="container-fluid justify-content-center text-dark">
+        <!-- Card --> 
             <div class="card">
-            <!--Title-->
+            
+            <!-- Card Title-->
             <h4 class="card-title mb-0 mt-3">
                 <strong>My Account</strong>
             </h4>
+            
             <!-- Card content -->
                 <div class="card-body">
-                    
+                        <!--Email-->
                         <div class="row-md-12">
                             <p class="h6">Email: $email</p> 
                         </div>
-                        
+                        <!--Name Details-->
                         <div class="row-md-12">
                             <div class="col-md-6">
                                 <p class="h6">First Name: $first_name  </p>    
@@ -48,7 +51,7 @@ function generateAccount(){
                             </div>
                         </div>  
                           
-                    
+                        <!--Address details-->
                         <div class="row-md-12">
                             <div class="col-md-6">
                                 <p class="h6">Address:  $address_l1 $address_l2   </p>    
@@ -59,12 +62,13 @@ function generateAccount(){
                             </div>
                         </div>  
 
-                                 
+                    <!--Button to delete account  will change to have conformation-->          
                     <button class="btn btn-danger btn-rounded" onclick=deleteAccount()></button>
                     
                 </div>
                 
-            </div>    
+            </div>
+            <!-- Card -->    
     
     
             <!-- Editable table -->

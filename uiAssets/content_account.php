@@ -95,7 +95,7 @@ html;
                         while($row2 = $result2->fetch_assoc()) {
                             $device_name = $row2['device_name'];
                             $device_type = $row2['device_type'];
-                            $device_room = $row2['device_room'];
+                            $device_room = $row2['room_id'];
 
                             $stmt3 = $db->prepare("SELECT * FROM device_types WHERE type_id = ?");
                             $stmt3->bind_param("i", $device_type);

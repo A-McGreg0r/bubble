@@ -1,9 +1,9 @@
 <?php
-include_once dirname(__DIR__).'/required/config.php';
+include_once dirname(__DIR__) . '/required/config.php';
 
 function generateAddRoom(){
     $html = '';
-
+    $roomName = "";
     $html .= <<<pageHTML
     <div class="container">
         <div class="col-lg-12">

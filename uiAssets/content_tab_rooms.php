@@ -48,8 +48,8 @@ html;
                 $stmt1 = $db->prepare("SELECT * FROM room_types WHERE type_id = ?");
                 $stmt1->bind_param("i", $icon);
                 $stmt1->execute();
-                $result = $stmt1->get_result();
-                $row1 = $result->fetch_assoc();
+                $result1 = $stmt1->get_result();
+                $row1 = $result1->fetch_assoc();
                 $iconText = $row1['type_icon'];
                 $html .= <<<html
                 <!-- Card -->

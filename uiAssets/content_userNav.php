@@ -5,9 +5,11 @@ function generateUserNav(){
         <!--navbar-->
         <nav class="navbar  navbar-expand-lg navbar-dark elegant-color-dark">
             <!-- Collapse button -->
-            <span class="nav-item">
-                <img style="height:3em;" src="img/favicon.png"></img>
-            </span>
+            <a href="index.php">
+                <span class="nav-item">
+                    <img style="height:3em;" src="img/favicon.png"></img>
+                </span>
+            </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
                 <img style="height:2em;" src="img/3BubblesBlue.png"></img>
             </button>

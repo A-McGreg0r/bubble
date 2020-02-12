@@ -16,9 +16,7 @@
     session_write_close();
     $stmt = $db->prepare("INSERT INTO room_info (hub_id, room_name, room_icon) VALUES (?, ?, ?)");
     $stmt->bind_param("isi", $hub_id, $roomName, $roomIcon);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    if ($result->num_rows > 0) {
+    if ($stmt->execute()) {
         load("../index.php");
     }
     load("../index.php?action=addroom");

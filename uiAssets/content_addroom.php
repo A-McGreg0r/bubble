@@ -54,7 +54,7 @@ pageHTML;
         </div>
     </div>
 pageHTML;
-
+    return $html;
 }
 
 ?>

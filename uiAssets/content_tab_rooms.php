@@ -44,6 +44,13 @@ html;
             while($row = $result->fetch_assoc()) {
                 $room_id = $row['room_id'];
                 $room_name = $row['room_name'];
+                $icon = $row['room_icon'];
+                $stmt1 = $db->prepare("SELECT * FROM room_types WHERE type_id = ?");
+                $stmt1->bind_param("i", $icon);
+                $stmt1->execute();
+                $result1 = $stmt1->get_result();
+                $row1 = $result1->fetch_assoc();
+                $iconText = $row1['type_icon'];
                 $html .= <<<html
                 <!-- Card -->
                 <div class="card mb-4 container">
@@ -57,15 +64,17 @@ html;
               
                     <!--Title-->      
                         <div class="d-flex flex-column">  
-                            $room_name
+                            <div class="row">
+                                $iconText &nbsp; $room_name
+                            </div>
                         </div>
                         
                         <div class="d-flex flex-column">
                             <!-- Default switch -->
                             <div class="custom-control custom-switch">
                                 <form onsubmit="toggleRoom($room_id;)" method="POST">
-                                    <input type="checkbox" class="custom-control-input" id="roomSwitch">
-                                    <label class="custom-control-label" for="roomSwitch">off/on</label>
+                                    <input type="checkbox" class="custom-control-input" id="$room_name">
+                                    <label class="custom-control-label" for="$room_name">off/on</label>
                                 </form>
                             </div>  
                         </div>

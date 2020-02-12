@@ -16,7 +16,7 @@ function generateLoginPage(){
     $html = <<<htmlPage
     <!--Modal cascading tabs-->
     <div class="container justify-content-center text-centre text-light max-width:80%">
-        <table style="height: 100vh; >
+        <table style="height: 100vh; width:100%;" >
             <tr>
                 <td class="align-middle">
                     <div class="text-center">
@@ -84,28 +84,6 @@ function generateLoginPage(){
 
                                     <!-- Sign in button -->
                                     <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit" value="submit">Log in</button>
-
-                                    
-                                    <!-- Social login -->
-                                    <div class="d-flex justify-content-center">
-                                      <p>or sign in with:</p>
-                                    <a type="button" class="btn-floating btn-fb btn-sm">
-                                        <i class="fab fa-facebook-f white-text disabled"></i>
-                                    </a>
-                                    <a type="button" class="btn-floating btn-tw btn-sm">
-                                        <i class="fab fa-twitter white-text disabled"></i>
-                                    </a>
-                                    <a type="button" class="btn-floating btn-li btn-sm">
-                                        <i class="fab fa-linkedin-in white-text disabled"></i>
-                                    </a>
-                                    <a type="button" class="btn-floating btn-git btn-sm">
-                                        <i class="fab fa-github white-text disabled"></i>
-                                    </a>
-                                    </div>
-                                  
-                                   
-
-
 
                                 </form>
                             </div>
@@ -228,38 +206,20 @@ function generateLoginPage(){
 
 
                                     <!-- Social login -->
-                                    <div class="d-flex justify-content-center">
-                                       
-                                            <div class="row">
-                                               <p>or sign in with:</p>
-                                                 <a type="button" class="btn-floating btn-fb btn-sm">
-                                                    <i class="fab fa-facebook-f white-text disabled"></i>
-                                                </a>
-                                                <a type="button" class="btn-floating btn-tw btn-sm">
-                                                    <i class="fab fa-twitter white-text disabled"></i>
-                                                </a>
-                                                <a type="button" class="btn-floating btn-li btn-sm">
-                                                    <i class="fab fa-linkedin-in white-text disabled"></i>
-                                                </a>
-                                                <a type="button" class="btn-floating btn-git btn-sm">
-                                                    <i class="fab fa-github white-text disabled"></i>
-                                                </a>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col">
+                                                <p>By clicking <em> Sign up </em> you agree to our<a href="" target="_blank"> terms of service</a> </p> <!-- Terms of service -->
                                             </div>
-                                            
-                                            <div class="row">
-                                                <p>By clicking <em>Sign up</em> you agree to our <a href="" target="_blank">terms of service</a></p>
-                                            </div>
-
+                                        </div>
                                     </div>
-                                    <!-- Terms of service -->
-                                    
 
                                 </form>
                                 <!-- Form -->
                             </div>
                         </div>
                         <!--Panel 3 Forgot Password Tab panel -->
-                        <div class="tab-pane fade in show" id="panel3" role="tabpanel">
+                        <div class="tab-pane fade" id="panel3" role="tabpanel">
 
                             <!--Body-->
                             <div class="modal-body mb-1">

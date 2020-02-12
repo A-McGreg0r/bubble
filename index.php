@@ -64,7 +64,7 @@
         if(isset($_GET['action'])) $action = $_GET['action'];
         $html = '';        
         
-        if($action != 'adddevice' && !userHasHub()){
+        if($action != "logout" && $action != 'adddevice' && !userHasHub()){
             load('./index.php?action=adddevice');
             exit();
         }

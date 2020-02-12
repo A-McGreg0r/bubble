@@ -7,7 +7,7 @@ function generateRegistrationComplete(){
             <div class="row text-center">
                 <div class="text-center">
                     <p class="text-center">Thank you for registering for bubble!</p>
-                    <p class="text-center">Please return to the <a href="index.php?action=login">Login Page</a> to login</p>
+                    <p class="text-center">Please return to the <a href="index.php">Login Page</a> to login</p>
                 </div>
             </div>
         </div>   

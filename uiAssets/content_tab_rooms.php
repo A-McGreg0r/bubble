@@ -44,6 +44,8 @@ html;
             while($row = $result->fetch_assoc()) {
                 $room_id = $row['room_id'];
                 $room_name = $row['room_name'];
+                $icon = $row['room_icon'];
+
                 $html .= <<<html
                 <!-- Card -->
                 <div class="card mb-4 container">
@@ -57,15 +59,15 @@ html;
               
                     <!--Title-->      
                         <div class="d-flex flex-column">  
-                            $room_name
+                            $icon &nbsp; $room_name
                         </div>
                         
                         <div class="d-flex flex-column">
                             <!-- Default switch -->
                             <div class="custom-control custom-switch">
                                 <form onsubmit="toggleRoom($room_id;)" method="POST">
-                                    <input type="checkbox" class="custom-control-input" id="roomSwitch">
-                                    <label class="custom-control-label" for="roomSwitch">off/on</label>
+                                    <input type="checkbox" class="custom-control-input" id="$room_name">
+                                    <label class="custom-control-label" for="$room_name">off/on</label>
                                 </form>
                             </div>  
                         </div>

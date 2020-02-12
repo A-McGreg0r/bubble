@@ -93,7 +93,7 @@
                 break;
             default:
                 include "appCore.php";
-                $html .= generateAppCore();//bug?
+                $html .= generateAppCore();
         }
         return $html;
     }

@@ -14,16 +14,6 @@ function generateAccount(){
         if ($result->num_rows === 1) {
             extract($result->fetch_assoc());
 
-            $email = num_rows["email"];
-            $first_name = num_rows["first_name"];
-            $last_name = num_rows["surname"];
-            $address_l1 = num_rows["address_l1"];
-            $address_l2 = num_rows["address_l2"];
-            $address_l2 = num_rows["address_l2"];
-            $postcode = num_rows["postcode"];
-
-
-            //account details.
             $html = <<<html
         <div class="container-fluid justify-content-center text-dark">
         <!-- Card --> 

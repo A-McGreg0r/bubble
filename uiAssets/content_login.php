@@ -260,7 +260,7 @@ function generateLoginPage(){
                             </div>
                         </div>
                         <!--Panel 3 Forgot Password Tab panel -->
-                        <div class="tab-pane fade in show" id="panel3" role="tabpanel">
+                        <div class="tab-pane fade" id="panel3" role="tabpanel">
 
                             <!--Body-->
                             <div class="modal-body mb-1">

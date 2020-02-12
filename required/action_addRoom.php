@@ -1,6 +1,8 @@
 <?php
     //////////////////////////////////////////////////////////// ADD ROOM ACTION///////////////////////////////////////////////////
-
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
     include_once dirname(__DIR__).'/required/config.php';
 
     $roomName = $_POST['roomName'];

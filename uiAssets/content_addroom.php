@@ -35,7 +35,7 @@ pageHTML;
                                 $stmt->execute();
                                 $result = $stmt->get_result();
                                 $inc = 0;
-                                while($row = $result->fetch_assoc()){
+                                while($row = $result->fetch_assoc()) {
                                     $inc++;
                                     $val = $row['type_icon'];
                                     $html .= "<option value=\"$inc\">$val</option>";

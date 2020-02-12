@@ -6,7 +6,7 @@
     include_once dirname(__DIR__).'/required/config.php';
 
     $roomName = $_POST['roomName'];
-    $roomIcon = $_POST['icon'] - 1;
+    $roomIcon = $_POST['icon'];
 
     //BEGIN SESSION
     session_start();

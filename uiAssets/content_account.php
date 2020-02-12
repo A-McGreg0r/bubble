@@ -93,6 +93,7 @@ html;
                     //SELECT ALL DEVICES FROM HUB_ID
                     if ($result2->num_rows > 0) {
                         while($row2 = $result2->fetch_assoc()) {
+                            $device_id = $row2['device_id'];
                             $device_name = $row2['device_name'];
                             $device_type = $row2['device_type'];
                             $device_room = $row2['room_id'];
@@ -115,21 +116,20 @@ html;
                                 <tr>
                                     <td class="pt-3-half">$icon $device_name</td>
                                     <td class="pt-3-half">8w</td>
-                                    <td class="pt-3-half">Light Bulb</td>
                                     <td class="pt-3-half">
-                                    <select id="deviceLocation" class="browser-default custom-select dropdown">
-                                        <option value="0" disabled selected>$roomName</option>
+                                    <select class="deviceLocation browser-default custom-select dropdown">
+                                        <option value="0" disabled selected>Current: $roomName</option>
 
 device;
                                         $stmt5 = $db->prepare("SELECT * FROM room_info WHERE hub_id = ?");
                                         $stmt5->bind_param("i", $hub_id);
                                         $stmt5->execute();
                                         $result5 = $stmt5->get_result();
-                                        $inc = 0;
                                         while($row5 = $result5->fetch_assoc()) {
-                                            $inc++;
                                             $val = $row5['room_name'];
-                                            $html .= "<option value=\"$inc\">$val</option>";
+                                            $inc = $row5['room_id'];
+
+                                            $html .= "<option value=\"$inc.$device_id\">Move to: $val</option>";
                                         }
                                         $html .= <<<pageHTML
 
@@ -176,6 +176,23 @@ pageHTML;
                 }
     
                 $row.prev().before($row.get(0));
+            });
+
+            $tableID.on("click", ".deviceLocation", function () {
+                var url = "required/action_movedevice.php";
+                var dataQuery = $(this).value;
+                $.ajax({
+                    type:\'POST\',
+                    url: url,
+                    data:{ data: dataQuery},
+                    success:function(data){
+
+                    },
+                    error: function(data){
+
+                    }
+                });
+
             });
     
             $tableID.on("click", ".table-down", function () {

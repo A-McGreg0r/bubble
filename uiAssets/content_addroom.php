@@ -38,7 +38,7 @@ pageHTML;
                                 while($row = $result->fetch_assoc()) {
                                     $inc++;
                                     $val = $row['type_icon'];
-                                    $html .= "<option value=\"$inc\" title=\"$val\">$val</option>";
+                                    $html .= "<option value=\"$inc\">$val</option>";
                                 }
                                 $html .= <<<pageHTML
 

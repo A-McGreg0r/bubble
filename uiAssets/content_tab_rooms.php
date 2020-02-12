@@ -45,7 +45,12 @@ html;
                 $room_id = $row['room_id'];
                 $room_name = $row['room_name'];
                 $icon = $row['room_icon'];
-
+                $stmt1 = $db->prepare("SELECT * FROM room_types WHERE type_id = ?");
+                $stmt1->bind_param("i", $icon);
+                $stmt1->execute();
+                $result = $stmt1->get_result();
+                $row1 = $result->fetch_assoc();
+                $iconText = $row1['type_icon'];
                 $html .= <<<html
                 <!-- Card -->
                 <div class="card mb-4 container">
@@ -59,7 +64,7 @@ html;
               
                     <!--Title-->      
                         <div class="d-flex flex-column">  
-                            $icon &nbsp; $room_name
+                            $iconText &nbsp; $room_name
                         </div>
                         
                         <div class="d-flex flex-column">

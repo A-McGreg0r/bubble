@@ -26,31 +26,31 @@ function generateAccount(){
             
             <!-- Card content -->
                 <div class="card-body">
-                        <!--Email-->
-                        <div class="row-md-12">
-                            <p class="h6">Email: $email</p> 
+                    <!--Email-->
+                    <div class="row-md-12">
+                        <p class="h6">Email: $email</p> 
+                    </div>
+                    <!--Name Details-->
+                    <div class="row-md-12">
+                        <div class="col-md-6">
+                            <p class="h6">First Name: $first_name  </p>    
                         </div>
-                        <!--Name Details-->
-                        <div class="row-md-12">
-                            <div class="col-md-6">
-                                <p class="h6">First Name: $first_name  </p>    
-                            </div>
-                            
-                            <div class="col-md-6">
-                                <p class="h6"> First Name: $last_name  </p> 
-                            </div>
-                        </div>  
-                          
-                        <!--Address details-->
-                        <div class="row-md-12">
-                            <div class="col-md-6">
-                                <p class="h6">Address:  $address_l1 $address_l2   </p>    
-                            </div>
-                            
-                            <div class="col-md-6">
-                                <p class="h6"> Postcode: $postcode  </p> 
-                            </div>
-                        </div>  
+                        
+                        <div class="col-md-6">
+                            <p class="h6"> First Name: $last_name  </p> 
+                        </div>
+                    </div>  
+                        
+                    <!--Address details-->
+                    <div class="row-md-12">
+                        <div class="col-md-6">
+                            <p class="h6">Address:  $address_l1 $address_l2   </p>    
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <p class="h6"> Postcode: $postcode  </p> 
+                        </div>
+                    </div>  
 
                     <!--Button to delete account  will change to have conformation-->          
                     <button class="btn btn-danger btn-rounded" onclick="deleteAccount()">Delete my account</button>
@@ -66,14 +66,13 @@ function generateAccount(){
                 <h3 class="card-header text-center font-weight-bold text-uppercase py-4 text-dark">Devices</h3>
                 <div class="card-body">
                     <div id="table" class="table-editable">
-                        <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span>
+                        <span class="table-add float-right mb-3 mr-2"><a href="index.php?action=adddevice" class=""><i class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span>
                         <table class="table table-bordered table-responsive-md table-striped text-center">
                             <thead>
                                 <tr>
                                     <th class="text-center">Device</th>
-                                    <th class="text-center">Room</th>
                                     <th class="text-center">Consumption</th>
-                                    <th class="text-center">Device Type</th>
+                                    <th class="text-center">Room</th>
                                     <th class="text-center">Remove</th>
                                 </tr>
                                 </thead>
@@ -96,6 +95,8 @@ html;
                         while($row2 = $result2->fetch_assoc()) {
                             $device_name = $row2['device_name'];
                             $device_type = $row2['device_type'];
+                            $device_room = $row2['device_room'];
+
                             $stmt3 = $db->prepare("SELECT * FROM device_types WHERE type_id = ?");
                             $stmt3->bind_param("i", $device_type);
                             $stmt3->execute();
@@ -103,28 +104,45 @@ html;
                             $row3 = $result3->fetch_assoc();
                             $icon = $row3['type_icon'];
 
+                            $stmt4 = $db->prepare("SELECT * FROM room_info WHERE room_id = ?");
+                            $stmt4->bind_param("i", $device_room);
+                            $stmt4->execute();
+                            $result4 = $stmt4->get_result();
+                            $row4 = $result4->fetch_assoc();
+                            $roomName = $row4['room_name'];
+
                             $html .= <<<device
                                 <tr>
-                                    <td class="pt-3-half" contenteditable="true">$icon $device_name</td>
-                                    <td class="pt-3-half" contenteditable="true">8w</td>
-                                    <td class="pt-3-half" contenteditable="true">Light Bulb</td>
-                                    <td class="pt-3-half" contenteditable="true">
-                                         <select id="deviceLocation" class="browser-default custom-select dropdown">
-                                            <option value="data1">Living Room</option>
-                                            <option value="data2">Bed Room</option>
-                                            <option value="data3">Bath Room</option>
-                                        </select>
-                                    </td>
+                                    <td class="pt-3-half">$icon $device_name</td>
+                                    <td class="pt-3-half">8w</td>
+                                    <td class="pt-3-half">Light Bulb</td>
                                     <td class="pt-3-half">
-                                        <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i></a></span>
-                                        <span class="table-down"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-down" aria-hidden="true"></i></a></span>
+                                    <select id="deviceLocation" class="browser-default custom-select dropdown">
+                                        <option value="0" disabled selected>$roomName</option>
+
+device;
+                                        $stmt5 = $db->prepare("SELECT * FROM room_info WHERE hub_id = ?");
+                                        $stmt5->bind_param("i", $hub_id);
+                                        $stmt5->execute();
+                                        $result5 = $stmt5->get_result();
+                                        $inc = 0;
+                                        while($row5 = $result5->fetch_assoc()) {
+                                            $inc++;
+                                            $val = $row5['room_name'];
+                                            $html .= "<option value=\"$inc\">$val</option>";
+                                        }
+                                        $html .= <<<pageHTML
+
+                                        </select>
                                     </td>
                                     <td>
                                         <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
                                     </td>
                                 </tr>   
-device;
+pageHTML;
                             $stmt3->close();
+                            $stmt4->close();
+
                         }
                     }
                     $stmt2->close();
@@ -145,36 +163,7 @@ device;
             const $BTN = $("#export-btn");
             const $EXPORT = $("#export");
     
-            const newTr = `
-        <tr class="hide">
-        <td class="pt-3-half" contenteditable="true">Example</td>
-        <td class="pt-3-half" contenteditable="true">Example</td>
-        <td class="pt-3-half" contenteditable="true">Example</td>
-        <td class="pt-3-half" contenteditable="true">Example</td>
-        <td class="pt-3-half" contenteditable="true">Example</td>
-        <td class="pt-3-half">
-            <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i></a></span>
-            <span class="table-down"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-down" aria-hidden="true"></i></a></span>
-        </td>
-        <td>
-            <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0 waves-effect waves-light">Remove</button></span>
-        </td>
-        </tr>`;
-    
-            $(".table-add").on("click", "i", () => {
-    
-                const $clone = $tableID.find("tbody tr").last().clone(true).removeClass("hide table-line");
-    
-                if ($tableID.find("tbody tr").length === 0) {
-    
-                    $("tbody").append(newTr);
-                }
-    
-                $tableID.find("table").append($clone);
-            });
-    
             $tableID.on("click", ".table-remove", function () {
-    
                 $(this).parents("tr").detach();
             });
     

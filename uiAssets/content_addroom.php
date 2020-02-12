@@ -27,7 +27,7 @@ function generateAddRoom(){
 
                     <!-- Password -->
                     <div class="md-form">
-                        <select name="icon" class="mdb-select md-form">
+                        <select name="icon" class="browser-default custom-select dropdown">
                             <option value="" disabled selected>Choose your option</option>
 pageHTML;
                             $stmt = $db->prepare("SELECT * FROM room_types");

@@ -228,7 +228,7 @@ function generateLoginPage(){
 
 
                                     <!-- Social login -->
-                                    <div class="container">
+                                    <div class="container justify-content-center">
                                       <div class="row">
                                             <div class="col">
                                                  <p>or sign in with:</p>

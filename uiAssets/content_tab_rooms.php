@@ -64,7 +64,9 @@ html;
               
                     <!--Title-->      
                         <div class="d-flex flex-column">  
-                            $iconText &nbsp; $room_name
+                            <div class="row">
+                                $iconText &nbsp; $room_name
+                            </div>
                         </div>
                         
                         <div class="d-flex flex-column">

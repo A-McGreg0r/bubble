@@ -8,7 +8,7 @@ function generateAddRoom(){
     $html .= <<<pageHTML
     <div class="container">
         <div class="col-lg-12">
-            <div class="row justify-content-center">
+            <div class="justify-content-center">
                 <div class="row text-center align-middle">
                     <h3>Add a new room to your house</h3>
                     <div id="devicetext" style="width:100%"></div>

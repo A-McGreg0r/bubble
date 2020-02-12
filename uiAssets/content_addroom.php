@@ -9,15 +9,15 @@ function generateAddRoom(){
     <div class="container">
         <div class="col-lg-12">
             <div class="row justify-content-center">
-                <div class="text-center align-middle">
+                <div class="row text-center align-middle">
                     <h3>Add a new room to your house</h3>
                     <div id="devicetext" style="width:100%"></div>
                 </div>
-                <div class="align-middle">
+                <div class="row align-middle">
                     <form class="text-center elegant-color-dark" action="required/action_addRoom.php" method="POST">
                         <!-- Room Name -->
                         <div class="md-form">
-                            <label for="materialLoginFormName">E-mail</label>
+                            <label for="materialLoginFormName">Room Name</label>
                             <input type="text"
                                 id="materialLoginFormName"
                                 class="form-control form-control-sm"

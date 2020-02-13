@@ -37,7 +37,7 @@ function generateAccount(){
                         </div>
                         
                         <div class="col-md-6">
-                            <p class="h6"> First Name: $last_name  </p> 
+                            <p class="h6"> Surename: $last_name  </p> 
                         </div>
                     </div>  
                         

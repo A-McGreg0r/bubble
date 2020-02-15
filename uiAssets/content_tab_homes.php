@@ -195,7 +195,7 @@ function generateHomeTab()
                                         
                                         let jsonData = {data1,data2,data3};
                                         // Draw the initial chart
-                                        let ctxL = $("#masterLineChart")[0].getContext('2d');
+                                        let ctxL = $("#masterLineChart").getContext('2d');
                                         let masterLineChart = new Chart(ctxL, {
                                             type: 'line',
                                             data: jsonData[1],
@@ -211,23 +211,24 @@ function generateHomeTab()
                                         });
                                 
                                     // Called on Click
-                                    function chartSelect() {
-                                      let x = masterLineChart.getElementById("chartPicker").selectedIndex;
-                                      let y = masterLineChart.getElementById("chartPicker").options;
-                                      
-                                      //if x ==1 change chart?...
-                                      alert("Index: " + y[x].index + " is " + y[x].text);
-                                        }
-
-                                    
-                                    function chartContent() {
-                                            masterLineChart["config"]["data"] = data2; //<--- THIS WORKS!
-                                            masterLineChart.update();
-                                        }
-                                        // Set the listener for the click function
-                                        $(document).ready(function() {
-                                            $("#control1").click(chartContent);
+                                   $(document).ready(function(){
+                                        $("select.dropdown").change(function(){
+                                            let selectedChart = $(this).children("option:selected").val();
+                                            if (selectedChart ==0)
+                                            {
+                                            alert("You have selected the first chart - " + selectedChart);
+                                            }
+                                            if (selectedChart ==1)
+                                            {
+                                            alert("You have selected the second chart - " + selectedChart);
+                                            }
+                                            if (selectedChart ==2)
+                                            {
+                                            alert("You have selected the third chart - " + selectedChart);
+                                            }
+                                            
                                         });
+                                    });
  
                                 </script>
 

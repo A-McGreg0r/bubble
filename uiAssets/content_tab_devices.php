@@ -53,6 +53,13 @@ html;
                 $row3 = $result3->fetch_assoc();
                 $icon = $row3['type_icon'];
 
+                //todo intagrate in to device page?
+                if ($device_type == "heating" || $device_type == "airCon") {
+                    //<form class="range-field"><input type="range" min="0" max="100" /></form>
+                } else {
+                    //<label class="custom-control-label" for="$device_name">off/on</label>
+                }
+
                 $html .= <<<html
                 <!-- Card -->
                 <div class="card mb-4 container">
@@ -76,6 +83,7 @@ html;
                             <div class="custom-control custom-switch">
                                 <form onsubmit="toggleDevice($device_id;)" method="POST">
                                     <input type="checkbox" class="custom-control-input" id="$device_name">
+                                 
                                     <label class="custom-control-label" for="$device_name">off/on</label>
                                 </form>
                             </div>  

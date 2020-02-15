@@ -192,6 +192,7 @@ function generateHomeTab()
                                         let data3 = { "labels": ["1", "2", "3","4","5","6","7", "8", "9","10","11","12"],"label": "Expected Usage: ", "datasets": [{ "label": "avg", "data": $dataAvgEncoded, "backgroundColor": "rgba(101, 209, 159, 0.6)", "borderColor": "rgba(101, 209, 159,1)", "borderWidth": 1 },{ "label": "Power usage", "data": $dataPointsEncoded, "backgroundColor": "rgba(93, 176, 201, 0.6)", "borderColor": "rgba(0, 10, 130, .4)", "borderWidth": 1 }] };
                                         
                                         
+                                        
                                         let jsonData = {data1,data2,data3};
                                         // Draw the initial chart
                                         let ctxL = $("#masterLineChart")[0].getContext('2d');

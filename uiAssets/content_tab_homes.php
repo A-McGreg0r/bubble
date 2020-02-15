@@ -71,6 +71,7 @@ function generateHomeTab()
                         array_push($AvgPoints, array($avg));
 
                     }
+                    $dataLabelsEncoded = json_encode($dataLabels);
                     $dataPointsEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
                     $dataAvgEncoded = json_encode($AvgPoints, JSON_NUMERIC_CHECK);;
 
@@ -186,50 +187,65 @@ function generateHomeTab()
                                     <script type="text/javascript">
                                         // Supplied Datasets to display
                                         //hourly 1 upto 24
-                                        let data1 = { "labels": [$dataLabels],"label": "Expected Usage: ", "datasets": [{ "label": "avg", "data": $dataAvgEncoded, "backgroundColor": "rgba(101, 209, 159, 0.6)", "borderColor": "rgba(101, 209, 159,1)", "borderWidth": 1 },{ "label": "Power usage", "data": $dataPointsEncoded, "backgroundColor": "rgba(93, 176, 201, 0.6)", "borderColor": "rgba(0, 10, 130, .4)", "borderWidth": 1 }] };
-                                        //days upto 31 days
-                                        let data2 = { "labels": ["1", "2", "3","4","5","6","7", "8", "9","10","11","12","13","14","15","15"],"label": "Expected Usage:", "datasets": [{ "label": "avg", "data": $dataAvgEncoded, "backgroundColor": "rgba(101, 0, 0, 0.6)", "borderColor": "rgba(101, 209, 159,1)", "borderWidth": 1 },{ "label": "Power usage", "data": $dataPointsEncoded, "backgroundColor": "rgba(255, 255, 255, 0.6)", "borderColor": "rgba(0, 10, 130, .4)", "borderWidth": 1 }] };
-                                        //months upto 12
-                                        let data3 = { "labels": ["1", "2", "3","4","5","6","7", "8", "9","10","11","12"],"label": "Expected Usage: ", "datasets": [{ "label": "avg", "data": $dataAvgEncoded, "backgroundColor": "rgba(101, 209, 159, 0.6)", "borderColor": "rgba(101, 209, 159,1)", "borderWidth": 1 },{ "label": "Power usage", "data": $dataPointsEncoded, "backgroundColor": "rgba(93, 176, 201, 0.6)", "borderColor": "rgba(0, 10, 130, .4)", "borderWidth": 1 }] };
+                                        let labels = $dataLabelsEncoded;
+                                        let data = $dataPointsEncoded;
+                                        let avg = $dataAvgEncoded;
                                         
-                                        
-                                        
-                                        let jsonData = {data1,data2,data3};
-                                        // Draw the initial chart
-                                        let ctxL = $("#masterLineChart").getContext('2d');
-                                        let masterLineChart = new Chart(ctxL, {
-                                            type: 'line',
-                                            data: jsonData[1],
-                                            options: {
-                                                scales: {
-                                                    yAxes: [{
-                                                        ticks: {
-                                                            beginAtZero: true
-                                                        }
-                                                    }]
-                                                }
-                                            }
+                                       
+                                                                                
+                                                                                
+                                       //line
+                                        var ctxL = document.getElementById("lineChart").getContext('2d');
+                                        var myLineChart = new Chart(ctxL, {
+                                        type: 'line',
+                                        data: {
+                                        labels: [labels],
+                                        datasets: [{
+                                        label: "Power usage",
+                                        data: [data],
+                                        backgroundColor: [
+                                        'rgba(105, 0, 132, .2)',
+                                        ],
+                                        borderColor: [
+                                        'rgba(200, 99, 132, .7)',
+                                        ],
+                                        borderWidth: 2
+                                        },
+                                        {
+                                        label: "Average ",
+                                        data: [avg],
+                                        backgroundColor: [
+                                        'rgba(0, 137, 132, .2)',
+                                        ],
+                                        borderColor: [
+                                        'rgba(0, 10, 130, .7)',
+                                        ],
+                                        borderWidth: 2
+                                        }
+                                        ]
+                                        },
+                                        options: {
+                                        responsive: true
+                                        }
                                         });
                                 
                                     // Called on Click
                                    $(document).ready(function(){
                                         $("select.dropdown").change(function(){
                                             let selectedChart = $(this).children("option:selected").val();
-                                            if (selectedChart ==0)
+                                            if (selectedChart ===0)
                                             {
                                             alert("You have selected the first chart - " + selectedChart);
                                             }
-                                            if (selectedChart ==1)
+                                            if (selectedChart ===1)
                                             {
                                             alert("You have selected the second chart - " + selectedChart);
                                             }
-                                            if (selectedChart ==2)
+                                            if (selectedChart ===2)
                                             {
                                             alert("You have selected the third chart - " + selectedChart);
                                             }
-                                            
-                                        });
-                                    });
+                        
  
                                 </script>
 

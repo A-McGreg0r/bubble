@@ -235,6 +235,8 @@ function generateHomeTab()
                                             let selectedChart = $(this).children("option:selected").val();
                                             if (selectedChart ===0)
                                             {
+                                                updateChart();
+                                            }
                                             alert("You have selected the first chart - " + selectedChart);
                                             }
                                             if (selectedChart ===1)
@@ -246,10 +248,12 @@ function generateHomeTab()
                                             alert("You have selected the third chart - " + selectedChart);
                                             }
                         
-                                    function updateScale(chart, newData) {
+                                    function updateChart(chart, newLabels, newData , newAVG) {
                                         chart.clear();//clears the chart
                                            for (let x in newData ){
+                                               chart.data.datasets[0].data[1].label =  newLabels[x];                                    
                                                chart.data.datasets[0].data[1] = newData[x];//should update the chart with a new value
+                                               chart.data.datasets[0].data[2] = newAVG[x];//should update the chart with a new value
                                            }
                                         chart.update();//renders the new chart            
                                     }

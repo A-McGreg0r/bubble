@@ -248,11 +248,10 @@ function generateHomeTab()
                         
                                     function updateScale(chart, newData) {
                                         chart.clear();//clears the chart
-                                       
-                                       for (let x in newData ){
-                                           chart.data.datasets[0].data[1] = newData[x];
-                                       }
-                                        chart.update();            
+                                           for (let x in newData ){
+                                               chart.data.datasets[0].data[1] = newData[x];//should update the chart with a new value
+                                           }
+                                        chart.update();//renders the new chart            
                                     }
                                       
                              

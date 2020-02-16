@@ -232,21 +232,19 @@ function generateHomeTab()
                                     // Called on Click
                                    $(document).ready(function(){
                                         $("select.dropdown").change(function(){
-                                            let selectedChart = $(this).children("option:selected").val();
-                                            if (selectedChart ===0)
-                                            {
-                                                updateChart();
-                                            }
-                                            alert("You have selected the first chart - " + selectedChart);
-                                            }
-                                            if (selectedChart ===1)
-                                            {
-                                            alert("You have selected the second chart - " + selectedChart);
-                                            }
-                                            if (selectedChart ===2)
-                                            {
-                                            alert("You have selected the third chart - " + selectedChart);
-                                            }
+                                                let selectedChart = $(this).children("option:selected").val();
+                                                if (selectedChart ===0){
+                                                    updateChart();
+                                                }
+                                                alert("You have selected the first chart - " + selectedChart);
+                                                }
+                                                if (selectedChart ===1){
+                                                alert("You have selected the second chart - " + selectedChart);
+                                                }
+                                                if (selectedChart ===2){
+                                                alert("You have selected the third chart - " + selectedChart);
+                                                }
+                                            };
                         
                                     function updateChart(chart, newLabels, newData , newAVG) {
                                         chart.clear();//clears the chart

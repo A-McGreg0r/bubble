@@ -187,22 +187,22 @@ function generateHomeTab()
                                     <script type="text/javascript">
                                         // Supplied Datasets to display
                                         //hourly 1 upto 24
-                                        let labels = $dataLabelsEncoded;
-                                        let data = $dataPointsEncoded;
-                                        let avg = $dataAvgEncoded;
+                                        let dataLabels = $dataLabelsEncoded;
+                                        let dataPoints = $dataPointsEncoded;
+                                        let dataAvg = $dataAvgEncoded;
                                         
                                        
                                                                                 
                                                                                 
                                        //line
                                         var ctxL = document.getElementById("lineChart").getContext('2d');
-                                        var myLineChart = new Chart(ctxL, {
+                                        var masterLineChart = new Chart(ctxL, {
                                         type: 'line',
                                         data: {
-                                        labels: [labels],
+                                        labels: [dataLabels],
                                         datasets: [{
                                         label: "Power usage",
-                                        data: [data],
+                                        data: [dataPoints],
                                         backgroundColor: [
                                         'rgba(105, 0, 132, .2)',
                                         ],
@@ -213,7 +213,7 @@ function generateHomeTab()
                                         },
                                         {
                                         label: "Average ",
-                                        data: [avg],
+                                        data: dataAvg,
                                         backgroundColor: [
                                         'rgba(0, 137, 132, .2)',
                                         ],
@@ -246,7 +246,16 @@ function generateHomeTab()
                                             alert("You have selected the third chart - " + selectedChart);
                                             }
                         
- 
+                                    function updateScale(chart, newData) {
+                                        chart.clear();//clears the chart
+                                       
+                                       for (let x in newData ){
+                                           chart.data.datasets[0].data[1] = newData[x];
+                                       }
+                                        chart.update();            
+                                    }
+                                      
+                             
                                 </script>
 
                                     

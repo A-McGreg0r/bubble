@@ -58,7 +58,7 @@ html;
                     $slider = "<form class=\"range-field\"><input type=\"range\" min=\"0c\" max=\"100c\" /></form>";
                     //todo add option for different temp measurements farnehight, celcus
                 } else {
-                    $swich = "<label class=\"custom-control-label\" for=\"$device_name\">off/on</label>"
+                    $swich = "<label class=\"custom-control-label\" for=\"$device_name\">off/on</label>";
                 }
 
                 $html .= <<<html

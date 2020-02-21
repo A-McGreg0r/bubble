@@ -51,7 +51,7 @@ html;
                 $stmt3->execute();
                 $result3 = $stmt3->get_result();
                 $row3 = $result3->fetch_assoc();
-                $icon = $row3['type_icon'];
+                $icon = $row3['type_icon'];//todo make icon more visabul
 
                 //todo intagrate in to device page?
                 if ($device_type == "heating" || $device_type == "airCon") {

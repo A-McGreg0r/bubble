@@ -53,7 +53,7 @@ function generateAccount(){
                     </div>  
 
                     <!--Button to delete account  will change to have conformation-->          
-                    <button class="btn btn-danger btn-rounded" onclick="deleteAccount()">Delete my account</button>
+                    <button class="btn btn-danger btn-sm btn-rounded" onclick="deleteAccount()">Delete my account</button>
                     
                 </div>
                 

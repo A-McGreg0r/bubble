@@ -57,12 +57,12 @@ html;
                 function deviceCat($device_type, $device_name)
                 {
                     if ($device_type == "heating" || $device_type == "airCon") {
-                        $type = "<form class=\"range-field\" for=\"$device_name\"><input type=\"range\" min=\"0c\" max=\"100c\" /></form>";
+                        $optionType = "<form class=\"range-field\" for=\"$device_name\"><input type=\"range\" min=\"0c\" max=\"100c\" /></form>";
                         //todo add option for different temp measurements farnehight, celcus
                     } else {
-                        $type = "<label class=\"custom-control-label\" for=\"$device_name\">off/on</label>";
+                        $optionType = "<label class=\"custom-control-label\" for=\"$device_name\">off/on</label>";
                     }
-                    return $type;
+                    return $optionType;
                 }
 
 

@@ -56,13 +56,14 @@ html;
                 //todo intagrate in to device page?
                 if ($device_type == "heating" || $device_type == "airCon") {
                     //<form class="range-field"><input type="range" min="0" max="100" /></form>
+                    //todo add option for diffrent temp mesuments farnehight, celcus
                 } else {
                     //<label class="custom-control-label" for="$device_name">off/on</label>
                 }
 
                 $html .= <<<html
                 <!-- Card -->
-                <div class="card mb-4 container">
+                <div class="card mb-4 container text-dark">
                     <!--Card image-->
                     <div class="view overlay">
                         <div class="mask rgba-white-slight"></div>

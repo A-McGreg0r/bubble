@@ -55,10 +55,10 @@ html;
 
                 //todo intagrate in to device page?
                 if ($device_type == "heating" || $device_type == "airCon") {
-                    //<form class="range-field"><input type="range" min="0" max="100" /></form>
-                    //todo add option for diffrent temp mesuments farnehight, celcus
+                    $slider = "<form class=\"range-field\"><input type=\"range\" min=\"0c\" max=\"100c\" /></form>";
+                    //todo add option for different temp measurements farnehight, celcus
                 } else {
-                    //<label class="custom-control-label" for="$device_name">off/on</label>
+                    $swich = "<label class=\"custom-control-label\" for=\"$device_name\">off/on</label>"
                 }
 
                 $html .= <<<html

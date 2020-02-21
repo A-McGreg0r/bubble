@@ -16,7 +16,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($check) {
         # Access session.
         session_start();
-        //todo get sessions set up
         $_SESSION['user_id'] = $data['user_id'];
         $_SESSION['first_name'] = $data['first_name'];
         $_SESSION['last_name'] = $data['last_name'];

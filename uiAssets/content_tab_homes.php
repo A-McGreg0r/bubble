@@ -248,10 +248,14 @@ function generateHomeTab()
                         
                                     function updateChart(chart, newLabels, newData , newAVG) {
                                         chart.clear();//clears the chart
+                                        let selectedChart = $(this).children("option:selected").val();
                                            for (let x in newData ){
-                                               chart.data.datasets[0].data[1].label =  newLabels[x];                                    
+                                                if (selectedChart ===0){
+                                                 chart.data.datasets[0].data[1].label =  newLabels[x];                                    
                                                chart.data.datasets[0].data[1] = newData[x];//should update the chart with a new value
                                                chart.data.datasets[0].data[2] = newAVG[x];//should update the chart with a new value
+                                                }
+                                               
                                            }
                                         chart.update();//renders the new chart            
                                     }

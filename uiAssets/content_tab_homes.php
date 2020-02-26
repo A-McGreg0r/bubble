@@ -199,10 +199,10 @@ function generateHomeTab()
                                         var masterLineChart = new Chart(ctxL, {
                                         type: 'line',
                                         data: {
-                                        labels: [dataLabels],
+                                        labels: [$dataLabelsEncoded],
                                         datasets: [{
                                         label: "Power usage",
-                                        data: [dataPoints],
+                                        data: [$dataPointsEncoded],
                                         backgroundColor: [
                                         'rgba(105, 0, 132, .2)',
                                         ],
@@ -213,7 +213,7 @@ function generateHomeTab()
                                         },
                                         {
                                         label: "Average ",
-                                        data: dataAvg,
+                                        data: [$dataAvgEncoded],
                                         backgroundColor: [
                                         'rgba(0, 137, 132, .2)',
                                         ],

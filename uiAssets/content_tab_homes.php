@@ -253,7 +253,6 @@ function generateHomeTab()
                                             }
                                             
                                             if (selectedChart ==2){
-                                            
                                             masterLineChart["config"]["data"] = data3; //<--- THIS WORKS!
                                             masterLineChart.update();
                                             }

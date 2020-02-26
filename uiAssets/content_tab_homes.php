@@ -245,29 +245,15 @@ function generateHomeTab()
                                                 alert("You have selected the third chart - " + selectedChart);
                                                 }
                                             };
-                                   
-                                        function chartContent() {
-                                            masterLineChart["config"]["data"] = data2; //<--- THIS WORKS!
-                                            masterLineChart.update();
-                                        }
-                                        // Set the listener for the click function
-                                        $(document).ready(function() {
-                                            $("#control1").click(chartContent);
-                                        });
                         
                                     function updateChart(chart, newLabels, newData , newAVG) {
                                         chart.clear();//clears the chart
                                         let selectedChart = $(this).children("option:selected").val();
                                            for (let x in newData ){
                                                 if (selectedChart ===0){
-                                                chart.data.datasets[0].data[1].label =  newLabels[x];                                    
-                                                chart.data.datasets[0].data[1] = newData[x];//should update the chart with a new value
-                                                chart.data.datasets[0].data[2] = newAVG[x];//should update the chart with a new value
-                                                }
-                                                if (selectedChart ===1){
-                                                chart.data.datasets[0].data[1].label =  newLabels[x];                                    
-                                                chart.data.datasets[0].data[1] = newData[x];//should update the chart with a new value
-                                                chart.data.datasets[0].data[2] = newAVG[x];//should update the chart with a new value
+                                                 chart.data.datasets[0].data[1].label =  newLabels[x];                                    
+                                               chart.data.datasets[0].data[1] = newData[x];//should update the chart with a new value
+                                               chart.data.datasets[0].data[2] = newAVG[x];//should update the chart with a new value
                                                 }
                                                
                                            }

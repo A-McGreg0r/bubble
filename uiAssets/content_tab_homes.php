@@ -199,7 +199,7 @@ function generateHomeTab()
                                     </div>
                                     <!--Carousel Container-->
                                     
-                                    <div calss="border border-primary rounded m-2">
+                                    <div calss="container border border-primary">
                                           <!--change chart drop down-->
                                             <select id="chartPicker" class="browser-default custom-select dropdown" onchange="chartSelect()">
                                                 <option selected="selected">Choose time period</option>

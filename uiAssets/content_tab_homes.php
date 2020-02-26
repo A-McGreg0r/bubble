@@ -200,10 +200,6 @@ function generateHomeTab()
         
         
                                     <!--Grid column-->
-                                    <!--Date select-->
-                                    <p class="lead align-content-center">
-                                        <span class="badge info-color-dark p-2">Date range</span>
-                                    </p>
                                     <select id="chartPicker" class="browser-default custom-select dropdown" onchange="chartSelect()">
                                         <option selected="selected">Choose time period</option>
                                         <option value="0">Year</option>

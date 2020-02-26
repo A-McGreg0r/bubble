@@ -230,10 +230,7 @@ function generateHomeTab()
                                             masterLineChart["config"]["data"] = data2; //<--- THIS WORKS!
                                             masterLineChart.update();
                                         }
-                                        // Set the listener for the click function
-                                        $(document).ready(function() {
-                                            $("#control1").click(chartContent);
-                                        });
+                                        
  
                                 </script>
 

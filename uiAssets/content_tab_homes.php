@@ -172,10 +172,10 @@ function generateHomeTab()
                                         <span class="badge info-color-dark p-2">Date range</span>
                                     </p>
                                     <select id="chartPicker" class="browser-default custom-select dropdown" onselect="chartSelect()">
-                                        <option value="0" selected="selected">Choose time period</option>
-                                        <option value="data1">Year</option>
-                                        <option value="data2">Month</option>
-                                        <option value="data3">Day</option>
+                                        <option selected="selected">Choose time period</option>
+                                        <option value="0">Year</option>
+                                        <option value="1">Month</option>
+                                        <option value="2">Day</option>
                                     </select>
                                     <button id="control1">upDate -Placholder </button>
                                     

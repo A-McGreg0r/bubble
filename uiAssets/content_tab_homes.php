@@ -198,10 +198,9 @@ function generateHomeTab()
                                          </script>
                                     </div>
                                     <!--Carousel Container-->
-        
-        
-                                    <!--Grid column-->
-                                    <!--change chart drop down-->
+                                    
+                                    <div calss="border border-primary rounded m-2">
+                                      <!--change chart drop down-->
                                     <select id="chartPicker" class="browser-default custom-select dropdown" onchange="chartSelect()">
                                         <option selected="selected">Choose time period</option>
                                         <option value="0">Year</option>
@@ -209,15 +208,8 @@ function generateHomeTab()
                                         <option value="2">Day</option>
                                     </select>
                                     
-                                    <!--todo get displaying all 3--> 
                                     
-                                    <div>
-                                    
-                                    
-                                    
-                                    
-                                    </div>
-                                    <canvas id="masterLineChart"></canvas>
+                                     <canvas id="masterLineChart"></canvas>
 
                                     <script type="text/javascript">
                                         // Supplied Datasets to display
@@ -269,6 +261,8 @@ function generateHomeTab()
                                     });
 
                                 </script>
+
+                                    </div>
 
                                     
                                </div> 

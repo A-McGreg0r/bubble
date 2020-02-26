@@ -70,6 +70,7 @@ function generateHomeTab()
                         $avg = array_sum($dataPoints) / count($dataPoints);
                         array_push($AvgPoints, array($avg));
                     }
+                    $DataLabelsEncoded = json_encode($dataLabels);
                     $dataPointsEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
                     $dataAvgEncoded = json_encode($AvgPoints, JSON_NUMERIC_CHECK);;
 
@@ -200,13 +201,13 @@ function generateHomeTab()
         
         
                                     <!--Grid column-->
+                                    <!--change chart drop down-->
                                     <select id="chartPicker" class="browser-default custom-select dropdown" onchange="chartSelect()">
                                         <option selected="selected">Choose time period</option>
                                         <option value="0">Year</option>
                                         <option value="1">Month</option>
                                         <option value="2">Day</option>
                                     </select>
-                                    <button id="control1">upDate -Placholder </button>
                                     
                                     <!--todo get displaying all 3--> 
                                     <canvas id="masterLineChart"></canvas>
@@ -214,7 +215,7 @@ function generateHomeTab()
                                     <script type="text/javascript">
                                         // Supplied Datasets to display
                                         //hourly 1 upto 24
-                                        let data1 = { "labels": ["1", "2", "3","4","5","6","7"],"label": "Expected Usage: ", "datasets": [{ "label": "avg", "data": $dataAvgEncoded, "backgroundColor": "rgba(101, 209, 159, 0.6)", "borderColor": "rgba(101, 209, 159,1)", "borderWidth": 1 },{ "label": "Power usage", "data": $dataPointsEncoded, "backgroundColor": "rgba(93, 176, 201, 0.6)", "borderColor": "rgba(0, 10, 130, .4)", "borderWidth": 1 }] };
+                                        let data1 = { "labels": $DataLabelsEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "avg", "data": $dataAvgEncoded, "backgroundColor": "rgba(101, 209, 159, 0.6)", "borderColor": "rgba(101, 209, 159,1)", "borderWidth": 1 },{ "label": "Power usage", "data": $dataPointsEncoded, "backgroundColor": "rgba(93, 176, 201, 0.6)", "borderColor": "rgba(0, 10, 130, .4)", "borderWidth": 1 }] };
                                         //days upto 31 days
                                         let data2 = { "labels": ["1", "2", "3","4","5","6","7", "8", "9","10","11","12","13","14","15","15"],"label": "Expected Usage:", "datasets": [{ "label": "avg", "data": $dataAvgEncoded, "backgroundColor": "rgba(101, 0, 0, 0.6)", "borderColor": "rgba(101, 209, 159,1)", "borderWidth": 1 },{ "label": "Power usage", "data": $dataPointsEncoded, "backgroundColor": "rgba(255, 255, 255, 0.6)", "borderColor": "rgba(0, 10, 130, .4)", "borderWidth": 1 }] };
                                         //months upto 12

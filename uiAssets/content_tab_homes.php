@@ -211,11 +211,8 @@ function generateHomeTab()
                                 
                                     // Called on Click
                                     function chartSelect() {
-                                      let x = masterLineChart.getElementById("chartPicker").selectedIndex;
-                                      let y = masterLineChart.getElementById("chartPicker").options;
+                                        let val = document.getElementById("select_id").value
                                       
-                                      //if x ==1 change chart?...
-                                      alert("Index: " + y[x].index + " is " + y[x].text);
                                         }
 
                                     

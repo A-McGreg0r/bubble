@@ -190,22 +190,11 @@ function generateHomeTab()
                                         </div>
                                         <!--Donut carousel-->
                                         <script>
-                                        
-                                         //enabling touch controles
-                                            $('.carousel').carousel({
-                                            touch: true // default
-                                            });
-                                            
-                                            $(document).ready(function() {
-                                              $("#chart-carousel").swiperight(function() {
-                                                $(this).carousel('prev');
-                                              });
-                                              $("#chart-carousel").swipeleft(function() {
-                                                $(this).carousel('next');
-                                              });
-                                            });
-                                        
-                                        </script>
+                                             //enabling touch controls
+                                                $('.carousel').carousel({
+                                                touch: true // default
+                                                });
+                                         </script>
                                     </div>
                                     <!--Carousel Container-->
         

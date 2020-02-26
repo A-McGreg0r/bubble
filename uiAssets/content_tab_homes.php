@@ -173,7 +173,7 @@ function generateHomeTab()
                                     <p class="lead align-content-center">
                                         <span class="badge info-color-dark p-2">Date range</span>
                                     </p>
-                                    <select id="chartPicker" class="browser-default custom-select dropdown" onselect="chartSelect()">
+                                    <select id="chartPicker" class="browser-default custom-select dropdown" onselect="#">
                                         <option value="0" selected="selected">Choose time period</option>
                                         <option value="data1">Year</option>
                                         <option value="data2">Month</option>
@@ -227,11 +227,7 @@ function generateHomeTab()
                                         options: {
                                         responsive: true
                                         }
-                                        });
-                                
-
-                                      
-                             
+                                        });                         
                                 </script>
                                     
                                </div> 

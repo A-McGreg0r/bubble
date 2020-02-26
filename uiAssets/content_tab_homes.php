@@ -66,12 +66,10 @@ function generateHomeTab()
                     for ($i = 0; $i < 31; $i++) {
                         $y += rand(0, 250);
                         array_push($dataPoints, array($y));
-                        array_push($dataLabels, array("$i"));
+                        array_push($dataLabels, array($i));
                         $avg = array_sum($dataPoints) / count($dataPoints);
                         array_push($AvgPoints, array($avg));
-
                     }
-                    $dataLabelsEncoded = json_encode($dataLabels);
                     $dataPointsEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
                     $dataAvgEncoded = json_encode($AvgPoints, JSON_NUMERIC_CHECK);;
 
@@ -173,7 +171,7 @@ function generateHomeTab()
                                     <p class="lead align-content-center">
                                         <span class="badge info-color-dark p-2">Date range</span>
                                     </p>
-                                    <select id="chartPicker" class="browser-default custom-select dropdown" onselect="#">
+                                    <select id="chartPicker" class="browser-default custom-select dropdown" onselect="chartSelect()">
                                         <option value="0" selected="selected">Choose time period</option>
                                         <option value="data1">Year</option>
                                         <option value="data2">Month</option>
@@ -187,48 +185,51 @@ function generateHomeTab()
                                     <script type="text/javascript">
                                         // Supplied Datasets to display
                                         //hourly 1 upto 24
-                                        let dataLabels = $dataLabelsEncoded;
-                                        let dataPoints = $dataPointsEncoded;
-                                        let dataAvg = $dataAvgEncoded;
+                                        let data1 = { "labels": ["1", "2", "3","4","5","6","7"],"label": "Expected Usage: ", "datasets": [{ "label": "avg", "data": $dataAvgEncoded, "backgroundColor": "rgba(101, 209, 159, 0.6)", "borderColor": "rgba(101, 209, 159,1)", "borderWidth": 1 },{ "label": "Power usage", "data": $dataPointsEncoded, "backgroundColor": "rgba(93, 176, 201, 0.6)", "borderColor": "rgba(0, 10, 130, .4)", "borderWidth": 1 }] };
+                                        //days upto 31 days
+                                        let data2 = { "labels": ["1", "2", "3","4","5","6","7", "8", "9","10","11","12","13","14","15","15"],"label": "Expected Usage:", "datasets": [{ "label": "avg", "data": $dataAvgEncoded, "backgroundColor": "rgba(101, 0, 0, 0.6)", "borderColor": "rgba(101, 209, 159,1)", "borderWidth": 1 },{ "label": "Power usage", "data": $dataPointsEncoded, "backgroundColor": "rgba(255, 255, 255, 0.6)", "borderColor": "rgba(0, 10, 130, .4)", "borderWidth": 1 }] };
+                                        //months upto 12
+                                        let data3 = { "labels": ["1", "2", "3","4","5","6","7", "8", "9","10","11","12"],"label": "Expected Usage: ", "datasets": [{ "label": "avg", "data": $dataAvgEncoded, "backgroundColor": "rgba(101, 209, 159, 0.6)", "borderColor": "rgba(101, 209, 159,1)", "borderWidth": 1 },{ "label": "Power usage", "data": $dataPointsEncoded, "backgroundColor": "rgba(93, 176, 201, 0.6)", "borderColor": "rgba(0, 10, 130, .4)", "borderWidth": 1 }] };
                                         
-                                       
-                                                                                
-                                                                                
-                                       //line
-                                        var ctxL = document.getElementById("lineChart").getContext('2d');
-                                        var masterLineChart = new Chart(ctxL, {
-                                        type: 'line',
-                                        data: {
-                                        labels: [$dataLabelsEncoded],
-                                        datasets: [{
-                                        label: "Power usage",
-                                        data: [$dataPointsEncoded],
-                                        backgroundColor: [
-                                        'rgba(105, 0, 132, .2)',
-                                        ],
-                                        borderColor: [
-                                        'rgba(200, 99, 132, .7)',
-                                        ],
-                                        borderWidth: 2
-                                        },
-                                        {
-                                        label: "Average ",
-                                        data: [$dataAvgEncoded],
-                                        backgroundColor: [
-                                        'rgba(0, 137, 132, .2)',
-                                        ],
-                                        borderColor: [
-                                        'rgba(0, 10, 130, .7)',
-                                        ],
-                                        borderWidth: 2
+                                        
+                                        let jsonData = {data1,data2,data3};
+                                        // Draw the initial chart
+                                        let ctxL = $("#masterLineChart")[0].getContext('2d');
+                                        let masterLineChart = new Chart(ctxL, {
+                                            type: 'line',
+                                            data: data1,
+                                            options: {
+                                                scales: {
+                                                    yAxes: [{
+                                                        ticks: {
+                                                            beginAtZero: true
+                                                        }
+                                                    }]
+                                                }
+                                            }
+                                        });
+                                
+                                    // Called on Click
+                                    function chartSelect() {
+                                      let x = masterLineChart.getElementById("chartPicker").selectedIndex;
+                                      let y = masterLineChart.getElementById("chartPicker").options;
+                                      
+                                      //if x ==1 change chart?...
+                                      alert("Index: " + y[x].index + " is " + y[x].text);
                                         }
-                                        ]
-                                        },
-                                        options: {
-                                        responsive: true
+
+                                    
+                                    function chartContent() {
+                                            masterLineChart["config"]["data"] = data2; //<--- THIS WORKS!
+                                            masterLineChart.update();
                                         }
-                                        });                         
+                                        // Set the listener for the click function
+                                        $(document).ready(function() {
+                                            $("#control1").click(chartContent);
+                                        });
+ 
                                 </script>
+
                                     
                                </div> 
                             </div>

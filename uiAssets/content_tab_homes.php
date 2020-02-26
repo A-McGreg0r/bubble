@@ -93,89 +93,105 @@ function generateHomeTab()
                         <div id="collapse$hub_id" class="collapse show" role="tabpanel" aria-labelledby="heading$hub_id" data-parent="#accordionEx194">
                             <div class="card-body pt-0">
                             <!--todo change 3 donuts to carousels-->
-                                <div class="flex-sm-row justify-content-center">     
+                                <div class="flex-sm-row justify-content-center">    
+                                
+                                
+                                <!--Carousel Container--> 
                                     <div class="container mt-2">
-                                        <div class="row row-cols-2 mb-1">
-                                        
+                                        <!--Donut carousel-->
+                                        <div class="carousel-inner">
                                         
                                             <!--Donut 1-->
-                                            <div class="col border border-primary rounded m-2">
-                                                <h4 class="text-centre justify-content-center">Daily</h4>
-                                                <canvas style="max-width:50% min-width:30%" id="heatingUsage"></canvas>
-                                                <script>
-                                                    //doughnut
-                                                    var ctxD = document.getElementById("heatingUsage").getContext("2d");
-                                                    var myLineChart = new Chart(ctxD, {
-                                                    type: "doughnut",
-                                                    data: {
-                                                    labels: ["Spent [£]", "Remaining [£]"],
-                                                    datasets: [{
-                                                    data: [$cost_day, $cost_variance],
-                                                    backgroundColor: ["#F7464A", "#D3D3D3"],
-                                                    hoverBackgroundColor: ["#FF5A5E", "#D3D3D3"]
-                                                    }]
-                                                    },
-                                                    options: {
-                                                    responsive: true
-                                                    }
-                                                    });
-                                                </script>
-                                            </div>
-                                            <!--Donut 1-->
+                                                  <div class="carousel-item active">                           
+                                                        <div class="col border border-primary rounded m-2">
+                                                            <h4 class="text-centre justify-content-center">Daily</h4>
+                                                            
+                                                            <canvas style="max-width:50% min-width:30%" id="heatingUsage"></canvas>
+                                                            
+                                                            <script>
+                                                                //doughnut
+                                                                var ctxD = document.getElementById("heatingUsage").getContext("2d");
+                                                                var myLineChart = new Chart(ctxD, {
+                                                                type: "doughnut",
+                                                                data: {
+                                                                labels: ["Spent [£]", "Remaining [£]"],
+                                                                datasets: [{
+                                                                data: [$cost_day, $cost_variance],
+                                                                backgroundColor: ["#F7464A", "#D3D3D3"],
+                                                                hoverBackgroundColor: ["#FF5A5E", "#D3D3D3"]
+                                                                }]
+                                                                },
+                                                                options: {
+                                                                responsive: true
+                                                                }
+                                                                });
+                                                            </script>
+                                                        </div>
+                                                  </div>      
+                                            <!--Donut 1-->                                                    
+                                             
+                                            <!--Donut 2-->             
+                                                  <div class="carousel-item">
+                                                        <div class="col border border-primary rounded m-2">
+                                                        
+                                                        <h4 class="text-centre align-middle">Monthly</h4>
+                                                    
+                                                        <canvas style="max-width:50% min-width:30%" id="heatingUsage1"></canvas>
+                                                        
+                                                        <script>
+                                                            //doughnut
+                                                            var ctxD = document.getElementById("heatingUsage1").getContext("2d");
+                                                            var myLineChart = new Chart(ctxD, {
+                                                            type: "doughnut",
+                                                            data: {
+                                                            labels: ["Spent [£]", "Remaining [£]"],
+                                                            datasets: [{
+                                                            data: [$cost_month, $cost_variance],
+                                                            backgroundColor: ["#F7464A", "#D3D3D3"],
+                                                            hoverBackgroundColor: ["#FF5A5E", "#D3D3D3"]
+                                                            }]
+                                                            },
+                                                            options: {
+                                                            responsive: true
+                                                            }
+                                                            });
+                                                        </script>
+                                                    </div>
+                                                    
+                                                  </div>
+                                            <!--Donut 2-->    
                                             
-                                            
-                                            <!--Donut 2-->
-                                            <div class="col border border-primary rounded m-2">
-                                                <h4 class="text-centre align-middle">Monthly</h4>
-                                                <canvas style="max-width:50% min-width:30%" id="heatingUsage1"></canvas>
-                                                <script>
-                                                    //doughnut
-                                                    var ctxD = document.getElementById("heatingUsage1").getContext("2d");
-                                                    var myLineChart = new Chart(ctxD, {
-                                                    type: "doughnut",
-                                                    data: {
-                                                    labels: ["Spent [£]", "Remaining [£]"],
-                                                    datasets: [{
-                                                    data: [$cost_month, $cost_variance],
-                                                    backgroundColor: ["#F7464A", "#D3D3D3"],
-                                                    hoverBackgroundColor: ["#FF5A5E", "#D3D3D3"]
-                                                    }]
-                                                    },
-                                                    options: {
-                                                    responsive: true
-                                                    }
-                                                    });
-                                                </script>
-                                                
-                                            </div>
-                                            <!--Donut 2-->
-                                            
-                                            <!--Donut 3-->
-                                            <div class="col border border-primary rounded m-2">
-                                                <h4 class="text-centre align-middle">Variance</h4>
-                                                <canvas style="max-width:50% min-width:30%" id="heatingUsage2"></canvas>
-                                                <script>
-                                                    //doughnut
-                                                    var ctxD = document.getElementById("heatingUsage2").getContext("2d");
-                                                    var myLineChart = new Chart(ctxD, {
-                                                    type: "doughnut",
-                                                    data: {
-                                                    labels: ["Budget [£]", "Variance [£]"],
-                                                    datasets: [{
-                                                    data: [$cost_total, $cost_variance],
-                                                    backgroundColor: ["#F7464A", "#D3D3D3"],
-                                                    hoverBackgroundColor: ["#FF5A5E", "#D3D3D3"]
-                                                    }]
-                                                    },
-                                                    options: {
-                                                    responsive: true
-                                                    }
-                                                    });
-                                                </script>
-                                            </div>
-                                            <!--Donut 3-->
+                                            <!--Donut 3-->             
+                                                  <div class="carousel-item">
+                                                        <div class="col border border-primary rounded m-2">
+                                                            <h4 class="text-centre align-middle">Variance</h4>
+                                                            <canvas style="max-width:50% min-width:30%" id="heatingUsage2"></canvas>
+                                                            <script>
+                                                                //doughnut
+                                                                var ctxD = document.getElementById("heatingUsage2").getContext("2d");
+                                                                var myLineChart = new Chart(ctxD, {
+                                                                type: "doughnut",
+                                                                data: {
+                                                                labels: ["Budget [£]", "Variance [£]"],
+                                                                datasets: [{
+                                                                data: [$cost_total, $cost_variance],
+                                                                backgroundColor: ["#F7464A", "#D3D3D3"],
+                                                                hoverBackgroundColor: ["#FF5A5E", "#D3D3D3"]
+                                                                }]
+                                                                },
+                                                                options: {
+                                                                responsive: true
+                                                                }
+                                                                });
+                                                            </script>
+                                                        </div>
+                                                  </div>
+                                            <!--Donut 3-->                
                                         </div>
+                                        <!--Donut carousel-->
                                     </div>
+                                    <!--Carousel Container-->
+        
         
                                     <!--Grid column-->
                                     <!--Date select-->

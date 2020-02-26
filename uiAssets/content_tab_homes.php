@@ -210,6 +210,13 @@ function generateHomeTab()
                                     </select>
                                     
                                     <!--todo get displaying all 3--> 
+                                    
+                                    <div>
+                                    
+                                    
+                                    
+                                    
+                                    </div>
                                     <canvas id="masterLineChart"></canvas>
 
                                     <script type="text/javascript">
@@ -261,17 +268,6 @@ function generateHomeTab()
                                         });
                                     });
 
-
-                                    
-                                    function chartContent() {
-                                            masterLineChart["config"]["data"] = data2; //<--- THIS WORKS!
-                                            masterLineChart.update();
-                                        }
-                                        // Set the listener for the click function
-                                        $(document).ready(function() {
-                                            $("#control1").click(chartContent);
-                                        });
- 
                                 </script>
 
                                     

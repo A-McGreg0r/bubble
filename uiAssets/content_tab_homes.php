@@ -211,7 +211,7 @@ function generateHomeTab()
                                 
                                     // Called on Click
                                     function chartSelect() {
-                                        let val = document.getElementById("select_id").value
+                                        let val = document.getElementById("select_id").value;
                                         
                                         if (val ==0){alert("test 0")}
                                         if (val ==1){alert("test 1")}

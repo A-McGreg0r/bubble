@@ -248,7 +248,6 @@ function generateHomeTab()
                                       
                              
                                 </script>
-
                                     
                                </div> 
                             </div>

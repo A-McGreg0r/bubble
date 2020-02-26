@@ -239,6 +239,23 @@ function generateHomeTab()
                                         });
                                 
                                     // Called on Click
+                                    $(document).ready(function(){
+                                        $("select.dropdown").change(function(){
+                                            var selectedChart = $(this).children("option:selected").val();
+                                            if (selectedChart ==0)
+                                            {
+                                            alert("You have selected the first chart - " + selectedChart);
+                                            }
+                                            if (selectedChart ==1)
+                                            {
+                                            alert("You have selected the second chart - " + selectedChart);
+                                            }
+                                            if (selectedChart ==2)
+                                            {
+                                            alert("You have selected the third chart - " + selectedChart);
+                                            }
+                                        });
+                                    });
                                     function chartSelect(elem) {
                                         let val = document.getElementById("chartPicker").value;
                                         

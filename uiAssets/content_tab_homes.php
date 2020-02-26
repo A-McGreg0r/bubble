@@ -171,7 +171,7 @@ function generateHomeTab()
                                     <p class="lead align-content-center">
                                         <span class="badge info-color-dark p-2">Date range</span>
                                     </p>
-                                    <select id="chartPicker" class="browser-default custom-select dropdown" onselect="chartSelect()">
+                                    <select id="chartPicker" class="browser-default custom-select dropdown" onselect="chartSelect(this)">
                                         <option selected="selected">Choose time period</option>
                                         <option value="0">Year</option>
                                         <option value="1">Month</option>
@@ -210,14 +210,20 @@ function generateHomeTab()
                                         });
                                 
                                     // Called on Click
-                                    function chartSelect() {
-                                        let val = document.getElementById("select_id").value;
-                                        
-                                        if (val ==0){alert("test 0")}
-                                        if (val ==1){alert("test 1")}
-                                        if (val ==2){alert("test 2")}
-                                      
-                                        }
+                                         $(document).ready(function(){
+                                        $("select.dropdown").change(function(){
+                                                let selectedChart = $(this).children("option:selected").val();
+                                                if (selectedChart ===0){
+                                                alert("You have selected the first chart - " + selectedChart);
+                                                }
+                                                if (selectedChart ===1){
+                                                alert("You have selected the second chart - " + selectedChart);
+                                                }
+                                                if (selectedChart ===2){
+                                                alert("You have selected the third chart - " + selectedChart);
+                                                }
+                                            };
+                        
 
                                     
                                     function chartContent() {

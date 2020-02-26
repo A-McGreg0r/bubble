@@ -104,7 +104,7 @@ function generateHomeTab()
                                             <!--Donut 1-->
                                                   <div class="carousel-item active">                           
                                                         <div class="col border border-primary rounded m-2">
-                                                            <h4 class="text-centre justify-content-center">Daily</h4>
+                                                            <h4 class="text-centre justify-content-center text-dark">Daily</h4>
                                                             
                                                             <canvas style="max-width:50% min-width:30%" id="heatingUsage"></canvas>
                                                             
@@ -134,7 +134,7 @@ function generateHomeTab()
                                                   <div class="carousel-item">
                                                         <div class="col border border-primary rounded m-2">
                                                         
-                                                        <h4 class="text-centre align-middle">Monthly</h4>
+                                                        <h4 class="text-centre align-middle text-dark">Monthly</h4>
                                                     
                                                         <canvas style="max-width:50% min-width:30%" id="heatingUsage1"></canvas>
                                                         
@@ -164,7 +164,7 @@ function generateHomeTab()
                                             <!--Donut 3-->             
                                                   <div class="carousel-item">
                                                         <div class="col border border-primary rounded m-2">
-                                                            <h4 class="text-centre align-middle">Variance</h4>
+                                                            <h4 class="text-centre align-middle text-dark">Variance</h4>
                                                             <canvas style="max-width:50% min-width:30%" id="heatingUsage2"></canvas>
                                                             <script>
                                                                 //doughnut

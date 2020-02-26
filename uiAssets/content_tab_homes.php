@@ -244,10 +244,14 @@ function generateHomeTab()
                                             var selectedChart = $(this).children("option:selected").val();
                                             if (selectedChart ==0)
                                             {
+                                            masterLineChart["config"]["data"] = data1; //<--- THIS WORKS!
+                                            masterLineChart.update();
                                             alert("You have selected the first chart - " + selectedChart);
                                             }
                                             if (selectedChart ==1)
                                             {
+                                            masterLineChart["config"]["data"] = data2; //<--- THIS WORKS!
+                                            masterLineChart.update();
                                             alert("You have selected the second chart - " + selectedChart);
                                             }
                                             if (selectedChart ==2)

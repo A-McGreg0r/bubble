@@ -210,27 +210,27 @@ function generateHomeTab()
                                         });
                                 
                                     // Called on Click
-                                         $(document).ready(function(){
-                                        $("select.dropdown").change(function(){
-                                                let selectedChart = $(this).children("option:selected").val();
-                                                if (selectedChart ===0){
-                                                alert("You have selected the first chart - " + selectedChart);
-                                                }
-                                                if (selectedChart ===1){
-                                                alert("You have selected the second chart - " + selectedChart);
-                                                }
-                                                if (selectedChart ===2){
-                                                alert("You have selected the third chart - " + selectedChart);
-                                                }
-                                            };
-                        
+                                    function chartSelect(elem) {
+                                        let val = document.getElementById("chartPicker").value;
+                                        
+                                        if (val ==0){
+                                            alert("test 0")}
+                                        if (val ==1){
+                                            alert("test 1")}
+                                        if (val ==2){
+                                            alert("test 2")}
+                                      
+                                        }
 
                                     
                                     function chartContent() {
                                             masterLineChart["config"]["data"] = data2; //<--- THIS WORKS!
                                             masterLineChart.update();
                                         }
-                                        
+                                        // Set the listener for the click function
+                                        $(document).ready(function() {
+                                            $("#control1").click(chartContent);
+                                        });
  
                                 </script>
 

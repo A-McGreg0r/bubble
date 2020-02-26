@@ -96,6 +96,9 @@ function generateHomeTab()
                                 <div class="flex-sm-row justify-content-center">     
                                     <div class="container mt-2">
                                         <div class="row row-cols-2 mb-1">
+                                        
+                                        
+                                            <!--Donut 1-->
                                             <div class="col border border-primary rounded m-2">
                                                 <h4 class="text-centre justify-content-center">Daily</h4>
                                                 <canvas style="max-width:50% min-width:30%" id="heatingUsage"></canvas>
@@ -118,6 +121,10 @@ function generateHomeTab()
                                                     });
                                                 </script>
                                             </div>
+                                            <!--Donut 1-->
+                                            
+                                            
+                                            <!--Donut 2-->
                                             <div class="col border border-primary rounded m-2">
                                                 <h4 class="text-centre align-middle">Monthly</h4>
                                                 <canvas style="max-width:50% min-width:30%" id="heatingUsage1"></canvas>
@@ -141,6 +148,9 @@ function generateHomeTab()
                                                 </script>
                                                 
                                             </div>
+                                            <!--Donut 2-->
+                                            
+                                            <!--Donut 3-->
                                             <div class="col border border-primary rounded m-2">
                                                 <h4 class="text-centre align-middle">Variance</h4>
                                                 <canvas style="max-width:50% min-width:30%" id="heatingUsage2"></canvas>
@@ -163,6 +173,7 @@ function generateHomeTab()
                                                     });
                                                 </script>
                                             </div>
+                                            <!--Donut 3-->
                                         </div>
                                     </div>
         

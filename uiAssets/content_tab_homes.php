@@ -97,7 +97,7 @@ function generateHomeTab()
                                 
                                 
                                 <!--Carousel Container--> 
-                                    <div class="container mt-2">
+                                    <div id="chart-carousel" class="carousel slide" data-ride="carousel">
                                         <!--Donut carousel-->
                                         <div class="carousel-inner">
                                         
@@ -189,6 +189,23 @@ function generateHomeTab()
                                             <!--Donut 3-->                
                                         </div>
                                         <!--Donut carousel-->
+                                        <script>
+                                        
+                                         //enabling touch controles
+                                            $('.carousel').carousel({
+                                            touch: true // default
+                                            });
+                                            
+                                            $(document).ready(function() {
+                                              $("#chart-carousel").swiperight(function() {
+                                                $(this).carousel('prev');
+                                              });
+                                              $("#chart-carousel").swipeleft(function() {
+                                                $(this).carousel('next');
+                                              });
+                                            });
+                                        
+                                        </script>
                                     </div>
                                     <!--Carousel Container-->
         

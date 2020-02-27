@@ -98,7 +98,7 @@ function generateHomeTab()
                                 
                                 
                                 <!--Carousel Container--> 
-                                    <div id="chart-carousel" class="carousel slide" data-ride="carousel">
+                                    <div id="chart-carousel" class="carousel slide" data-ride="carousel" style="max-width: 95%">
                                         <!--Donut carousel-->
                                         <div class="carousel-inner">
                                         

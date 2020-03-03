@@ -23,7 +23,7 @@ for ($hours = 0; $hours <= 24; $hours++) {
         if ($hours > 12) {
             $val = +(rand(1, 2) * $hours);
         }
-        $generated = +$val;
+        $generated = $val;
 
     } else {
         $generated = 0;

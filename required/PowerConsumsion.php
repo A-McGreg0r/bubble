@@ -15,7 +15,18 @@ for ($hours = 0; $hours <= 24; $hours++) {
     //mins
 
     if ($hours > $sunRise && $hours < $sunSet) {
-        $generated = +rand(0, 10);
+
+        if ($hours < 12) {
+            $val = +(rand(1, 2) * $hours);
+        }
+        if ($hours == 12) {
+            $val = +(rand(1, 3) * $hours);
+        }
+        if ($hours > 12) {
+            $val = +(rand(1, 2) * $hours);
+        }
+        $generated = +$val;
+
     } else {
         $generated = 0;
     }

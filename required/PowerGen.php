@@ -14,13 +14,13 @@ $sunSet = date_sunset(time(), SUNFUNCS_RET_STRING, 55.9, -3.1, 47, 0);//time sun
 for ($hours = 0; $hours <= 24; $hours++) {
     if ($hours > $sunRise && $hours < $sunSet) {
 
-        if ($hours < 12) {
+        if ($hours < 10) {
             $val = +(rand(1, 2) * $hours);
         }
-        if ($hours == 12) {
+        if ($hours >= 11 && $hours <= 13) {
             $val = +(rand(1, 3) * $hours);
         }
-        if ($hours > 12) {
+        if ($hours > 14) {
             $val = +(rand(1, 2) * $hours);
         }
         $generated = $val;

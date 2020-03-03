@@ -12,8 +12,6 @@ $sunSet = date_sunset(time(), SUNFUNCS_RET_STRING, 38.4, -9, 90, 1);//time sun s
 
 //hours
 for ($hours = 0; $hours <= 24; $hours++) {
-    //mins
-
     if ($hours > $sunRise && $hours < $sunSet) {
 
         if ($hours < 12) {

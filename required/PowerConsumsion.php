@@ -6,38 +6,21 @@ $generated = 0;
 
 $days = cal_days_in_month(CAL_GREGORIAN, date(t));//days in curent month
 
-$sunRise = date_sunrise(date(date("Y/m/d")));//time sun rises
-$sunSet = date_sunset(date(date("Y/m/d")));//time sun sets
+$sunRise = date_sunrise(time(), SUNFUNCS_RET_STRING, 38.4, -9, 90, 1);//time sun rises
+$sunSet = date_sunset(time(), SUNFUNCS_RET_STRING, 38.4, -9, 90, 1);//time sun sets
+
 
 //hours
-for ($i = 0; $days <= $i; $i++) {
-    for ($hours = 0; $hours <= 24; $hours++) {
-        //mins
-        for ($y = 0; $y <= 60; $y++) {
-            if ($hours < 3) {
-                $generated = -rand(0, 2);
-            }
+for ($hours = 0; $hours <= 24; $hours++) {
+    //mins
 
-            if ($hours > 3 && $hours < 6) {
-                $generated = +rand(0, 2);
-            }
-            if ($hours > 6 && $hours < 12) {
-                $generated = +rand(2, 5);
-            }
-            if ($hours > 12 && $hours < 16) {
-                $generated = -rand(2, 3);
-            }
-            if ($hours > 16 && $hours < 20) {
-                $generated = +rand(2, 5);
-            }
-            if ($hours > 20 && $hours <= 24) {
-                $generated = +rand(2, 5);
-            }
-            array_push($powerGeneratedDays, array($generated));//an array of all generated power
-        }
+    if ($hours > $sunRise && $hours < $sunSet) {
+        $generated = +rand(0, 10);
+    } else {
+        $generated = 0;
     }
-    array_push($powerGeneratedMonth, array(array_sum($powerGeneratedDays)));//an array of all generated power
-    unset($powerGeneratedDays);
+    array_push($powerGeneratedDays, array($generated));//an array of all generated power
+
 }
 
 ?>

@@ -89,8 +89,8 @@ html;
                             <div class="custom-control custom-switch">
                                 <form onsubmit="toggleDevice($device_id;)" method="POST">
                                     <input type="checkbox" class="custom-control-input" id="$device_name">
-                                 
-                                    <label class="custom-control-label" for="$device_name">off/on</label>
+                                    <!--todo add php to swap between slider and no/off button-->
+                                    <label class="custom-control-label" for="$device_name">on/off</label>
                                 </form>
                             </div>  
                         </div>

@@ -6,8 +6,8 @@ $generated = 0;
 
 $days = cal_days_in_month(CAL_GREGORIAN, date(t));//days in curent month
 
-$sunRise = date_sunrise(time(), SUNFUNCS_RET_STRING, 38.4, -9, 90, 1);//time sun rises
-$sunSet = date_sunset(time(), SUNFUNCS_RET_STRING, 38.4, -9, 90, 1);//time sun sets
+$sunRise = date_sunrise(time(), SUNFUNCS_RET_STRING, 55.9, -3.1, 47, 0);//time sun rises
+$sunSet = date_sunset(time(), SUNFUNCS_RET_STRING, 55.9, -3.1, 47, 0);//time sun sets
 
 
 //hours

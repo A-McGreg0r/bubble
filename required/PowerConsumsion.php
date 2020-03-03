@@ -1,30 +1,37 @@
 <?php
-
-$powerConsumed = array();
-
+$powerGeneratedMonth = array();
+$powerGeneratedDays = array();
+$generated = 0;
+$days = cal_days_in_month(CAL_GREGORIAN, date(t));
 //hours
-for ($x = 0; $x <= 24; $x++) {
-    //mins
-    for ($y = 0; $y <= 60; $y++) {
-        //do power consumsion .
-        if ($x < 3) {
-            $powerConsumed = -rand(0, 2);
-        }
-        if ($x > 3 && $x < 6) {
-            $powerConsumed = +rand(0, 2);
-        }
-        if ($x > 6 && $x < 12) {
-            $powerConsumed = +rand(2, 5);
-        }
-        if ($x > 12 && $x < 16) {
-            $powerConsumed = -rand(2, 3);
-        }
-        if ($x > 16 && $x < 20) {
-            $powerConsumed = +rand(2, 5);
-        }
-        if ($x > 20 && $x <= 24) {
-            $powerConsumed = +rand(2, 5);
-        }
+for ($i = 0; $days <= $i; $i++) {
+    for ($hours = 0; $hours <= 24; $hours++) {
+        //mins
+        for ($y = 0; $y <= 60; $y++) {
+            if ($hours < 3) {
+                $generated = -rand(0, 2);
+            }
 
+            if ($hours > 3 && $hours < 6) {
+                $generated = +rand(0, 2);
+            }
+            if ($hours > 6 && $hours < 12) {
+                $generated = +rand(2, 5);
+            }
+            if ($hours > 12 && $hours < 16) {
+                $generated = -rand(2, 3);
+            }
+            if ($hours > 16 && $hours < 20) {
+                $generated = +rand(2, 5);
+            }
+            if ($hours > 20 && $hours <= 24) {
+                $generated = +rand(2, 5);
+            }
+            array_push($powerGeneratedDays, array($generated));//an array of all generated power
+        }
     }
+    array_push($powerGeneratedMonth, array(array_sum($powerGeneratedDays)));//an array of all generated power
+    unset($powerGeneratedDays);
 }
+
+?>

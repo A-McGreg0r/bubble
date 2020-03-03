@@ -2,7 +2,13 @@
 $powerGeneratedMonth = array();
 $powerGeneratedDays = array();
 $generated = 0;
-$days = cal_days_in_month(CAL_GREGORIAN, date(t));
+
+
+$days = cal_days_in_month(CAL_GREGORIAN, date(t));//days in curent month
+
+$sunRise = date_sunrise(date(date("Y/m/d")));//time sun rises
+$sunSet = date_sunset(date(date("Y/m/d")));//time sun sets
+
 //hours
 for ($i = 0; $days <= $i; $i++) {
     for ($hours = 0; $hours <= 24; $hours++) {

@@ -90,7 +90,7 @@ html;
                                 <form onsubmit="toggleDevice($device_id;)" method="POST">
                                     <input type="checkbox" class="custom-control-input" id="$device_name">
                                     <!--todo add php to swap between slider and no/off button-->
-                                    <label class="custom-control-label" for="$device_name">on/off</label>
+                                    <label class="custom-control-label" for="$device_name">off/=on</label>
                                 </form>
                             </div>  
                         </div>

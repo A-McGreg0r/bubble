@@ -45,13 +45,22 @@ html;
                 $device_id = $row['device_id'];
                 $device_name = $row['device_name'];
                 $device_type = $row['device_type'];
+                $device_room_id = $row['room_id'];
 
                 $stmt3 = $db->prepare("SELECT * FROM device_types WHERE type_id = ?");
                 $stmt3->bind_param("i", $device_type);
                 $stmt3->execute();
                 $result3 = $stmt3->get_result();
                 $row3 = $result3->fetch_assoc();
-                $icon = $row3['type_icon'];//todo make icon more visabul
+                $icon = $row3['type_icon'];
+
+                $stmt4 = $db->prepare("SELECT * FROM room_info WHERE room_id = ?");
+                $stmt4->bind_param("i", $device_room_id);
+                $stmt4->execute();
+                .
+                $result4 = $stmt4->get_result();
+                $row4 = $result4->fetch_assoc();
+                $room_type = $row4['room_name'];
 
                 //todo intagrate in to device page?
                 function deviceCat($device_type, $device_name)
@@ -81,6 +90,11 @@ html;
                         <div class="d-flex flex-column">  
                             <div class="row">
                                 $icon &nbsp; $device_name
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column">  
+                            <div class="row">
+                                 &nbsp; $room<!--todo add device location -->
                             </div>
                         </div>
                         

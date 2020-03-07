@@ -35,13 +35,13 @@ html;
         $hub_id = $_SESSION['hub_id'];
         session_write_close();
 
-        $stmt = $db->prepare("SELECT * FROM device_info WHERE hub_id = ?");
+        $stmt = $db->prepare("SELECT * FROM device_info WHERE hub_id = ?");//todo oderby room id
         $stmt->bind_param("i", $hub_id);
         $stmt->execute();
         $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
-            while($row = $result->fetch_assoc()) {
+            while ($row = $result->fetch_assoc()) {
                 $device_id = $row['device_id'];
                 $device_name = $row['device_name'];
                 $device_type = $row['device_type'];
@@ -89,7 +89,8 @@ html;
                         <!--Title-->      
                         <div class="d-flex flex-column">  
                             <div class="row">
-                                $icon &nbsp; $device_name
+                                $icon &nbsp; $device_name 
+                                
                             </div>
                         </div>
                         <div class="d-flex flex-column">  

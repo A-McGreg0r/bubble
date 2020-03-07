@@ -94,7 +94,7 @@ html;
                         </div>
                         <div class="d-flex flex-column">  
                             <div class="row">
-                                 &nbsp; $room<!--todo add device location -->
+                                 &nbsp; $room_type<!--todo add device location -->
                             </div>
                         </div>
                         

@@ -72,7 +72,7 @@ html;
                         <div class="d-flex flex-column">
                             <!-- Default switch -->
                             <div class="custom-control custom-switch">
-                                <form onsubmit="toggleRoom($room_id;)" method="POST">
+                                <form id="$room_id" submit="toggleRoom($room_id;)" method="POST" onclick="buttonGroup(this)">
                                     <input type="checkbox" class="custom-control-input" id="$room_name">
                                     <label class="custom-control-label" for="$room_name">off/on</label>
                                 </form>
@@ -80,6 +80,14 @@ html;
                         </div>
                     </div>
                 </div>
+                <script>
+                function buttonGroup(roomID) {
+                    let button = document.querySelector(roomID);
+                        button.addEventListener("click", function(e) {
+                          alert("button: "+ roomID+ "clicked");
+                        });
+                }
+                </script>
 html;
             }
         }

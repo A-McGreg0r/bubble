@@ -84,7 +84,7 @@ html;
             
             
                     let switchStatus = false;
-                    $("#$room_name;").on('change', function() {
+                    $("#checkbox;").on('change', function() {
                         if ($(this).is(':checked')) {
                             switchStatus = $(this).is(':checked');
                             alert(switchStatus);// To verify

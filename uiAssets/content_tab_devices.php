@@ -57,7 +57,7 @@ html;
                 $stmt4 = $db->prepare("SELECT * FROM room_info WHERE room_id = ?");
                 $stmt4->bind_param("i", $device_room_id);
                 $stmt4->execute();
-                .
+
                 $result4 = $stmt4->get_result();
                 $row4 = $result4->fetch_assoc();
                 $room_type = $row4['room_name'];

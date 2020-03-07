@@ -72,8 +72,8 @@ html;
                         <div class="d-flex flex-column">
                             <!-- Default switch -->
                             <div class="custom-control custom-switch">
-                                <form  submit="toggleRoom($room_id;)" method="POST" onclick="buttonGroup()">
-                                    <input type="checkbox" class="custom-control-input" id="$room_name">
+                                <form onsubmit="toggleRoom($room_id;)" method="POST" onclick="buttonGroup()">
+                                    <input  type="checkbox" class="custom-control-input" id="$room_name">
                                     <label class="custom-control-label" for="$room_name">off/on</label>
                                 </form>
                             </div>  
@@ -81,12 +81,20 @@ html;
                     </div>
                 </div>
                 <script>
-                function buttonGroup() {
-                    let button = document.getSelection($room_id);
-                        button.addEventListener("click", function(e) {
-                          alert("button: "+ roomID + "clicked");
-                        });
-                }
+            
+            
+                    let switchStatus = false;
+                    $("#$room_name;").on('change', function() {
+                        if ($(this).is(':checked')) {
+                            switchStatus = $(this).is(':checked');
+                            alert(switchStatus);// To verify
+                        }
+                        else {
+                           switchStatus = $(this).is(':checked');
+                           alert(switchStatus);// To verify
+                        }
+
+                        
                 </script>
 html;
             }

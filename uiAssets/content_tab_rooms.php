@@ -80,15 +80,15 @@ html;
                         </div>
                     </div>
                 </div>
+                
                     <script>
-                    if (document.getElementById($room_name)){
-                        let x = document.$room_name.checked();
-                        if (x==true){
-                         alert("working");   
-                        }
-                        else 
-                            alert("working 2")
-                    }
+                    $('input[type="checkbox"]').click( function(){
+                        let chkId = '';
+                        $('.chkNumber:checked').each(function() {
+                          chkId += $(this).val() + ",";
+                        });
+                    alert($(this).val());  
+                      });
                     </script>
 html;
             }

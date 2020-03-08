@@ -72,7 +72,7 @@ html;
                         <div class="d-flex flex-column">
                             <!-- Default switch -->
                             <div class="custom-control custom-switch">
-                                <form onsubmit="toggleRoom($room_id;)" method="POST" onclick="buttonGroup()">
+                                <form onsubmit="toggleRoom($room_id;)" method="POST"">
                                     <input  type="checkbox" class="custom-control-input" id="$room_name">
                                     <label class="custom-control-label" for="$room_name">off/on</label>
                                 </form>
@@ -81,8 +81,13 @@ html;
                     </div>
                 </div>
                     <script>
-                    if ($room_name.checked(true)){
-                        alert("working");
+                    if (document.getElementById($room_name)){
+                        let x = document.$room_name.checked();
+                        if (x==true){
+                         alert("working");   
+                        }
+                        else 
+                            alert("working 2")
                     }
                     </script>
 html;

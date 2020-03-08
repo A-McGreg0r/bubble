@@ -249,18 +249,18 @@ function generateHomeTab()
                                         //Supplied Datasets to display
                                         //hourly 1 upto 24
                                         //TODO change expected usage to power genarated once implmented
-                                        let data1 = { "labels": $DataLabelsYearEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "avg", "data": $dataAvgYearEncoded, "backgroundColor": "rgba(204,0,0,0.4)", "borderColor": "rgba(204,0,0,1)", "borderWidth": 3 },{ "label": "Power usage", "data": $dataPointsYearEncoded, "backgroundColor": "rgba(0,204,0,0.6)", "borderColor": "rgba(0,204,0,1)", "borderWidth": 3 }] };
+                                        let data1 = { "labels": $DataLabelsYearEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "avg", "data": $dataAvgYearEncoded, "backgroundColor": "rgba(204,0,0,0.4)", "borderColor": "rgba(204,0,0,1)", "borderWidth": 3 },{ "label": "Power usage", "data": $dataPointsYearEncoded, "backgroundColor": "rgba(0,204,0,0.6)", "borderColor": "rgba(0,204,0,1)", "borderWidth": 1 }] };
                                         //days upto 31 days
-                                        let data2 = { "labels": $DataLabelsMonthEncoded,"label": "Expected Usage:", "datasets": [{ "label": "avg", "data": $dataAvgMonthEncoded, "backgroundColor": "rgba(204,0,0,0.4)", "borderColor": "rgba(204,0,0,1)", "borderWidth": 3 },{ "label": "Power usage", "data": $dataPointsMonthEncoded, "backgroundColor": "rgba(0,204,0,0.6)", "borderColor": "rgba(0,204,0,1)", "borderWidth": 3 }] };
+                                        let data2 = { "labels": $DataLabelsMonthEncoded,"label": "Expected Usage:", "datasets": [{ "label": "avg", "data": $dataAvgMonthEncoded, "backgroundColor": "rgba(204,0,0,0.4)", "borderColor": "rgba(204,0,0,1)", "borderWidth": 3 },{ "label": "Power usage", "data": $dataPointsMonthEncoded, "backgroundColor": "rgba(0,204,0,0.6)", "borderColor": "rgba(0,204,0,1)", "borderWidth": 1 }] };
                                         //months upto 12
-                                        let data3 = { "labels": $DataLabelsDayEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "avg", "data": $dataAvgDayEncoded, "backgroundColor": "rgba(204,0,0,0.4)", "borderColor": "rgba(204,0,0,1)", "borderWidth": 3 },{ "label": "Power usage", "data": $dataPointsDayEncoded, "backgroundColor": "rgba(0,204,0,0.6)", "borderColor": "rgba(0,204,0,1)", "borderWidth": 3 }] };
+                                        let data3 = { "labels": $DataLabelsDayEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "avg", "data": $dataAvgDayEncoded, "backgroundColor": "rgba(204,0,0,0.4)", "borderColor": "rgba(204,0,0,1)", "borderWidth": 3 },{ "label": "Power usage", "data": $dataPointsDayEncoded, "backgroundColor": "rgba(0,204,0,0.6)", "borderColor": "rgba(0,204,0,1)", "borderWidth": 1 }] };
                                         
 
                                         // Draw the initial chart
                                         let ctxL = $("#masterLineChart")[0].getContext('2d');
                                             let masterLineChart = new Chart(ctxL, {
                                                 type: 'line',
-                                                data: data1,
+                                                data: null,
                                                 options: {
                                                     scales: {
                                                         yAxes: [{

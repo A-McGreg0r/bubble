@@ -91,7 +91,7 @@ html;
                         });
                     alert($(this).val()+ y);  
                       }                       
-                    }
+
 
                     </script>
 html;

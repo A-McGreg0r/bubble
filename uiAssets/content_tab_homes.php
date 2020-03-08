@@ -70,9 +70,10 @@ function generateHomeTab()
                         $avg = array_sum($dataPoints) / count($dataPoints);
                         array_push($AvgPoints, array($avg));
                     }
-                    $DataLabelsDayEncoded = json_encode($dataLabels);
-                    $dataPointsDayEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
-                    $dataAvgDayEncoded = json_encode($AvgPoints, JSON_NUMERIC_CHECK);
+                    $DataLabelsYearEncoded = json_encode($dataLabels);
+                    $dataPointsYearEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
+                    $dataAvgYearEncoded = json_encode($AvgPoints, JSON_NUMERIC_CHECK);
+
 
                     $dataPoints = array();
                     $dataPoints = array();
@@ -102,9 +103,9 @@ function generateHomeTab()
                         $avg = array_sum($dataPoints) / count($dataPoints);
                         array_push($AvgPoints, array($avg));
                     }
-                    $DataLabelsYearEncoded = json_encode($dataLabels);
-                    $dataPointsYearEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
-                    $dataAvgYearEncoded = json_encode($AvgPoints, JSON_NUMERIC_CHECK);
+                    $DataLabelsDayEncoded = json_encode($dataLabels);
+                    $dataPointsDayEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
+                    $dataAvgDayEncoded = json_encode($AvgPoints, JSON_NUMERIC_CHECK);
 
 
                     $html .= <<<html

@@ -73,7 +73,7 @@ html;
                             <!-- Default switch -->
                             <div class="custom-control custom-switch">
                                 <form onsubmit="toggleRoom($room_id;)" method="POST"">
-                                    <input  type="checkbox" class="custom-control-input" id="$room_name">
+                                    <input  type="checkbox" class="custom-control-input" id="$room_name" onchange="buttonAlert()">
                                     <label class="custom-control-label" for="$room_name">off/on</label>
                                 </form>
                             </div>  
@@ -82,13 +82,16 @@ html;
                 </div>
                 
                     <script>
+                    function buttonAlert(){
                     $('input[type="checkbox"]').click( function(){
                         let chkId = '';
                         $('.chkNumber:checked').each(function() {
                           chkId += $(this).val() + ",";
                         });
                     alert($(this).val());  
-                      });
+                      });                        
+                    }
+
                     </script>
 html;
             }

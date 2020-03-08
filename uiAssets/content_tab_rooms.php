@@ -84,7 +84,7 @@ html;
                     <script>
                     //works but cycels through all buttons and that is un desired
                     function buttonAlert(){
-                    let y = $('input[type="checkbox"]').addEventListener("change", this);
+                    let y = $('input[type="checkbox"]').checkbox().valueOf();
                         let chkId = '';
                         $('.chkNumber:checked').each(function() {
                           chkId += $(this).val() + ",";

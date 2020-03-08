@@ -201,7 +201,7 @@ function generateHomeTab()
                                     
                                     <div calss="container border border-primary">
                                           <!--change chart drop down-->
-                                            <select id="chartPicker" class="browser-default custom-select dropdown" onchange="chartSelect()">
+                                            <select id="chartPicker" class="browser-default custom-select dropdown">
                                                 <option selected="selected">Choose time period</option>
                                                 <option value="0">Year</option>
                                                 <option value="1">Month</option>

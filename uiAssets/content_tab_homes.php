@@ -74,6 +74,11 @@ function generateHomeTab()
                     $dataPointsDayEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
                     $dataAvgDayEncoded = json_encode($AvgPoints, JSON_NUMERIC_CHECK);
 
+                    $dataPoints = array();
+                    $dataPoints = array();
+                    $AvgPoints = array();
+                    $dataLabels = array();
+
                     for ($i = 0; $i < 31; $i++) {
                         $y += rand(0, 250);
                         array_push($dataPoints, array($y));
@@ -84,6 +89,11 @@ function generateHomeTab()
                     $DataLabelsMonthEncoded = json_encode($dataLabels);
                     $dataPointsMonthEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
                     $dataAvgMonthEncoded = json_encode($AvgPoints, JSON_NUMERIC_CHECK);
+
+                    $dataPoints = array();
+                    $dataPoints = array();
+                    $AvgPoints = array();
+                    $dataLabels = array();
 
                     for ($i = 0; $i < 24; $i++) {
                         $y += rand(0, 100);

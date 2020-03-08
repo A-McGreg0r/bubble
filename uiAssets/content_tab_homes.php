@@ -214,11 +214,12 @@ function generateHomeTab()
                                         //todo cahe where datas comeing from                                         
                                         //Supplied Datasets to display
                                         //hourly 1 upto 24
-                                        let data1 = { "labels": $DataLabelsEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "avg", "data": $dataAvgEncoded, "backgroundColor": "rgba(101, 209, 159, 0.6)", "borderColor": "rgba(101, 209, 159,1)", "borderWidth": 1 },{ "label": "Power usage", "data": $dataPointsEncoded, "backgroundColor": "rgba(93, 176, 201, 0.6)", "borderColor": "rgba(0, 10, 130, .4)", "borderWidth": 1 }] };
+                                        //TODO change expected usage to power genarated once implmented
+                                        let data1 = { "labels": $DataLabelsEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "avg", "data": $dataAvgEncoded, "backgroundColor": "rgba(204,0,0,0.4)", "borderColor": "rgba(204,0,0,1)", "borderWidth": 1 },{ "label": "Power usage", "data": $dataPointsEncoded, "backgroundColor": "rgba(0,204,0,0.6)", "borderColor": "rgba(0,204,0,1)", "borderWidth": 1 }] };
                                         //days upto 31 days
-                                        let data2 = { "labels": $DataLabelsEncoded,"label": "Expected Usage:", "datasets": [{ "label": "avg", "data": $dataAvgEncoded, "backgroundColor": "rgba(101, 0, 0, 0.6)", "borderColor": "rgba(101, 209, 159,1)", "borderWidth": 1 },{ "label": "Power usage", "data": $dataPointsEncoded, "backgroundColor": "rgba(255, 255, 255, 0.6)", "borderColor": "rgba(0, 10, 130, .4)", "borderWidth": 1 }] };
+                                        let data2 = { "labels": $DataLabelsEncoded,"label": "Expected Usage:", "datasets": [{ "label": "avg", "data": $dataAvgEncoded, "backgroundColor": "rgba(204,0,0,0.4)", "borderColor": "rgba(204,0,0,1)", "borderWidth": 1 },{ "label": "Power usage", "data": $dataPointsEncoded, "backgroundColor": "rgba(0,204,0,0.6)", "borderColor": "rgba(0,204,0,1)", "borderWidth": 1 }] };
                                         //months upto 12
-                                        let data3 = { "labels": $DataLabelsEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "avg", "data": $dataAvgEncoded, "backgroundColor": "rgba(101, 209, 159, 0.6)", "borderColor": "rgba(101, 209, 159,1)", "borderWidth": 1 },{ "label": "Power usage", "data": $dataPointsEncoded, "backgroundColor": "rgba(93, 176, 201, 0.6)", "borderColor": "rgba(0, 10, 130, .4)", "borderWidth": 1 }] };
+                                        let data3 = { "labels": $DataLabelsEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "avg", "data": $dataAvgEncoded, "backgroundColor": "rgba(204,0,0,0.4)", "borderColor": "rgba(204,0,0,1)", "borderWidth": 1 },{ "label": "Power usage", "data": $dataPointsEncoded, "backgroundColor": "rgba(0,204,0,0.6)", "borderColor": "rgba(0,204,0,1)", "borderWidth": 1 }] };
                                         
 
                                         // Draw the initial chart

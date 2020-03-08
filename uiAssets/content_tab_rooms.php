@@ -82,13 +82,16 @@ html;
                 </div>
                 
                     <script>
+                    //works but cycels through all buttons and that is un desired
                     function buttonAlert(){
+                    let id = $('input[type="checkbox"]').getId();
                     $('input[type="checkbox"]').click( function(){
                         let chkId = '';
                         $('.chkNumber:checked').each(function() {
                           chkId += $(this).val() + ",";
                         });
-                    alert($(this).val());  
+                    alert($(this).val()+ id);  
+                    
                       });                        
                     }
 

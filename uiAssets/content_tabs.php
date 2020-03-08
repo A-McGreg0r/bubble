@@ -41,12 +41,11 @@ function generateTabs(){
     
     
         <script>//TODO get swipe navatation working between tabs currently not working
-            $(\'.tab\').carousel({
-                touch: true // default
-              });
-               
-            
-        
+            $(document).on("pagecreate","#home-tab-attr",function(){
+              $("p").on("swipeleft",function(){
+                alert("You swiped left!");
+              });                       
+            });
         </script>';
     return $html;
 }

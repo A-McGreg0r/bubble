@@ -80,22 +80,11 @@ html;
                         </div>
                     </div>
                 </div>
-                <script>
-            
-            
-                    let switchStatus = false;
-                    $("#checkbox;").on('change', function() {
-                        if ($(this).is(':checked')) {
-                            switchStatus = $(this).is(':checked');
-                            alert(switchStatus);// To verify
-                        }
-                        else {
-                           switchStatus = $(this).is(':checked');
-                           alert(switchStatus);// To verify
-                        }
-
-                        
-                </script>
+                    <script>
+                    if ($room_name.checked(true)){
+                        alert("working");
+                    }
+                    </script>
 html;
             }
         }

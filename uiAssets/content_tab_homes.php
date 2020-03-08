@@ -40,20 +40,6 @@ function generateHomeTab()
                         $cost_total = $row2['cost_total'];
                         $cost_variance = $cost_total - $cost_month;
                     }
-                    //todo test querry and implment the weekly, monthly and annual versions
-                    //$stmt3 = $db->prepare("SELECT * FROM hourly_data WHERE (hub_id AND hourly_data.date >= NOW() - INTERVAL 1 DAY) ORDER BY hour ASC = ?");
-                    //$stmt3->bind_param("i", $hourly_data);
-                    //$stmt3->execute();
-                    //$result3 = $stmt3->get_result();
-                    //if ($result3->num_rows <= 24) {
-                    //    $row3 = $result2->fetch_assoc();
-                    //    $hours_measured = $row3['hour'];
-                    //    $units_used = $row3['Watts_Used'];
-                    //    $expected_usage =get last 4  // need new querry?
-                    //}
-                    //$dataRangeEncoded1 = json_encode($hours_measured, JSON_NUMERIC_CHECK);// last 24 hours
-                    //$unitsUsedEncoded1 = json_encode($units_used, JSON_NUMERIC_CHECK);//corasponding data for the last 24 hours
-                    //$dataAvgEncoded1 = json_encode($AvgPoints, JSON_NUMERIC_CHECK);//unused in current ver
 
 
                     //todo add querrys for pulling power usage
@@ -126,15 +112,15 @@ function generateHomeTab()
         
                         <!-- Card body -->
                         <div id="collapse$hub_id" class="collapse show" role="tabpanel" aria-labelledby="heading$hub_id" data-parent="#accordionEx194">
-                            <div class="card-body pt-0" style="max-width:95%">
+                            <div class="card-body pt-0 justify-content-center " style="max-width:95%">
                             <!--todo change 3 donuts to carousels-->
-                                <div class="flex-sm-row justify-content-center">    
+                                <div class="flex-sm-row ">    
                                 
                                 
                                 <!--Carousel Container--> 
                                     <div id="chart-carousel" class="carousel slide" data-ride="carousel">
                                         <!--Donut carousel-->
-                                        <div class="carousel-inner justify-content-center">
+                                        <div class="carousel-inner">
                                         
                                             <!--Donut 1-->
                                                   <div class="carousel-item active">                           

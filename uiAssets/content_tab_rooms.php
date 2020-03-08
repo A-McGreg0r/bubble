@@ -85,7 +85,7 @@ html;
                     function buttonAlert(){
                     $('input[type="checkbox"]').click( function(){
                         let chkId = '';
-                        $('.chkNumber:checked').each(function() {
+                        $('.chkNumber:checked')(function() {
                           chkId += $(this).val() + ",";
                         });
                     alert($(this).val());  

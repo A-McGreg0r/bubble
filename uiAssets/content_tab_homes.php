@@ -63,7 +63,7 @@ function generateHomeTab()
                     $dataLabels = array();
                     $y = 40;
 
-                    for ($i = 0; $i < 12; $i++) {
+                    for ($i = 1; $i <= 12; $i++) {
                         $y = rand(0, 500);
                         array_push($dataPoints, array($y));
                         array_push($dataLabels, array($i));
@@ -80,7 +80,7 @@ function generateHomeTab()
                     $AvgPoints = array();
                     $dataLabels = array();
 
-                    for ($i = 0; $i < 31; $i++) {
+                    for ($i = 1; $i =< 31; $i++) {
                         $y += rand(0, 250);
                         array_push($dataPoints, array($y));
                         array_push($dataLabels, array($i));
@@ -96,7 +96,7 @@ function generateHomeTab()
                     $AvgPoints = array();
                     $dataLabels = array();
 
-                    for ($i = 0; $i < 24; $i++) {
+                    for ($i = 1; $i <= 24; $i++) {
                         $y += rand(0, 100);
                         array_push($dataPoints, array($y));
                         array_push($dataLabels, array($i));

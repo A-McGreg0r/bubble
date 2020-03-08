@@ -90,8 +90,7 @@ html;
                           chkId += $(this).val() + ",";
                         });
                     alert($(this).val()+ y);  
-                    
-                      });                        
+                      }                       
                     }
 
                     </script>

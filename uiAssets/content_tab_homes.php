@@ -246,7 +246,7 @@ function generateHomeTab()
                                         let ctxL = $("#masterLineChart")[0].getContext('2d');
                                             let masterLineChart = new Chart(ctxL, {
                                                 type: 'line',
-                                                data: null,
+                                                data: data3,
                                                 options: {
                                                     scales: {
                                                         yAxes: [{

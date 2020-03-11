@@ -39,7 +39,7 @@ function generateRoomTab(){
                 </div>
             </a>
 html;
-
+        //rooms
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
                 $room_id = $row['room_id'];
@@ -72,7 +72,7 @@ html;
                         <div class="d-flex flex-column">
                             <!-- Default switch -->
                             <div class="custom-control custom-switch">
-                                <form onsubmit="toggleRoom($room_id;)" method="POST"">
+                                <form name="$room_id"onsubmit="toggleRoom($room_id;)" method="POST"">
                                     <input  type="checkbox" class="custom-control-input" id="$room_name" onchange="buttonUpDate()">
                                     <label class="custom-control-label" for="$room_name">off/on</label>
                                 </form>
@@ -84,18 +84,20 @@ html;
                     <script>
                     //works but cycels through all buttons and that is un desired
                     function buttonUpDate(){
-                    
                     $('input[type="checkbox"]').click( function(){
-                        let chkId = '';
-                        $('.chkNumber:checked').each(function() {
-                          chkId += $(this).val() + ",";
-                          alert($(this).val());  
+                        let roomName = this.parent.name;
+                        let deviceID =1;
+                            
+                            if($('input[type="checkbox"]').val("1")){
+                                alert(roomName +"devices on");  
+                                //script hear
+                            }else if ($('input[type="checkbox"]').val("0")){
+                                 alert(roomName +"devices off");  
+                            }
+  
                         });
-                    alert($(this).val());  
+                      }                       
                     
-                      });                        
-                    }
-
                     </script>
 html;
             }

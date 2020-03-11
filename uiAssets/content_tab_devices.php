@@ -46,6 +46,7 @@ html;
                 $device_name = $row['device_name'];
                 $device_type = $row['device_type'];
                 $device_room_id = $row['room_id'];
+                $deviceLocation = json_encode($device_room_id);
 
                 $stmt3 = $db->prepare("SELECT * FROM device_types WHERE type_id = ?");
                 $stmt3->bind_param("i", $device_type);
@@ -125,10 +126,5 @@ html;
 }
    
 ?>
-<script>
-    $('input[type="checkbox"]').click(function () {
-        let chkId = '';
-    });
-    }
-</script>
+
 

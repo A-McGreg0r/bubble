@@ -82,7 +82,7 @@ html;
                 </div>
                  <script>
                     //works but cycels through all buttons and that is un desired
-                    function buttonUpDate(){
+                    function buttonUpDateTest(){
                     $('input[type="checkbox"]').click( function(){
                         let roomName = this.parent.name;
                         let deviceID =1;
@@ -108,13 +108,6 @@ html;
                         let chkId = '';
                         $('.chkNumber:checked').each(function() {
                           chkId += $(this).val() + ",";
-                          
-                           if($('input[type="checkbox"]').val("on")){
-                                alert(roomName +"devices on");  
-                                //script hear
-                            }else if ($('input[type="checkbox"]').val("off")){
-                                 alert(roomName +"devices off");  
-                            }
                            
                           alert($(this).val()+ "test 1");  
                         });

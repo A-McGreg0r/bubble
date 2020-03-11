@@ -86,15 +86,12 @@ html;
                     function buttonUpDate(){
                     
                     $('input[type="checkbox"]').click( function(){
-                        let roomName = this.parent.name;
                         let chkId = '';
                         $('.chkNumber:checked').each(function() {
                           chkId += $(this).val() + ",";
-                           
                           alert($(this).val()+ "test 1");  
                         });
                     alert($(this).val()+"test 2");  
-                    
                       });                        
                     }
                     </script>

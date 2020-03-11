@@ -88,7 +88,8 @@ html;
                     $('input[type="checkbox"]').click( function(){
                         let chkId = '';
                         if ($(this).val()==="on"){
-                             alert($(this).val()+"test 1");  
+                             alert($(this).val()+"test 1");  #
+                             //trager script hear
                         }
                         $('.chkNumber:checked').each(function() {
                           chkId += $(this).val() + ",";

@@ -73,7 +73,7 @@ html;
                             <!-- Default switch -->
                             <div class="custom-control custom-switch">
                                 <form onsubmit="toggleRoom($room_id;)" method="POST"">
-                                    <input  type="checkbox" class="custom-control-input" id="$room_name" onchange="buttonAlert()">
+                                    <input  type="checkbox" class="custom-control-input" id="$room_name" onchange="buttonUpDate()">
                                     <label class="custom-control-label" for="$room_name">off/on</label>
                                 </form>
                             </div>  
@@ -83,12 +83,13 @@ html;
                 
                     <script>
                     //works but cycels through all buttons and that is un desired
-                    function buttonAlert(){
+                    function buttonUpDate(){
                     
                     $('input[type="checkbox"]').click( function(){
                         let chkId = '';
                         $('.chkNumber:checked').each(function() {
                           chkId += $(this).val() + ",";
+                          alert($(this).val());  
                         });
                     alert($(this).val());  
                     

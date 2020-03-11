@@ -12,8 +12,8 @@ https://mdbootstrap.com/general/license/
 
 Contact:
 Mcgregor381@hotmail.co.uk
-Bww1@hw.ac.uk
-rmd@hw.ac.uk
+bww1@hw.ac.uk
+rmd5@hw.ac.uk
 ml96@hw.ac.uk
 mk135@hw.ac.uk
 jr48@hw.ac.uk

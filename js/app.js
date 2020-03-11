@@ -12,7 +12,7 @@ function notify() {
     else if (Notification.permission === "granted") {
     // If it's okay let's create a notification
         push();
-        alert("Granted already");
+        //alert("Granted already");
     }
   
     else if (Notification.permission !== "denied") {
@@ -20,7 +20,7 @@ function notify() {
             // If the user accepts, let's create a notification
             if (permission === "granted") {
                 push();
-                alert("Granted");
+                //alert("Granted");
             }
         });
     }

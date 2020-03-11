@@ -90,13 +90,14 @@ html;
                         if ($(this).val()==="on"){
                              alert($(this).val()+"test on");
                              //onscript
-                        }
-                        if ($(this).val()==="off"){
+                        }else if ($(this).val()==="off"){
                              alert($(this).val()+"test off");
                              //off script
+                        }else{
+                            alert("error");  
                         }
               
-                    alert($(this).val()+"test 2");  
+                    
                       });                        
                     }
                     </script>

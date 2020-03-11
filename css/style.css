@@ -1,3 +1,61 @@
 html, body {
     height: 100%;
+    background-color: #ffffff;
+}
+
+h2 {
+    font-weight: 500;
+}
+
+a {
+    color: rgb(109, 171, 166);
+    font-weight: 900;
+}
+
+a:hover, .nav-link.active {
+    color: rgb(56, 56, 56);
+}
+
+.text-center {
+    color: rgb(56, 56, 56)!important;
+    font-weight: 900;
+}
+
+.btn-outline-info {
+    transition: 0.25s ease;
+    color: rgb(109, 171, 166)!important;
+    border: 2px solid rgb(109, 171, 166)!important;
+    font-weight: 900;
+}
+
+.btn-outline-info:hover {
+    color: rgb(109, 171, 166)!important;
+    background-color: rgba(200, 211, 209, 0.7)!important;
+    border: 2px solid rgb(109, 171, 166)!important;
+    transition: 0.25s ease;
+    transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+}
+
+ul {
+    background-color: #ffffff;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgb(56, 56, 56);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgb(109, 171, 166);
+}
+
+.red-text {
+    color: rgb(109, 171, 166)!important;
 }

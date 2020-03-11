@@ -53,7 +53,7 @@ function generateLoginPage(){
                             <div class="modal-body mb-1">
 
                                 <!-- Form -->
-                                <form class="text-center elegant-color-dark " action="required/action_login.php" method="POST">
+                                <form class="text-center" action="required/action_login.php" method="POST">
 
                                     <!-- Email -->
                                     <div class="md-form">
@@ -225,7 +225,7 @@ function generateLoginPage(){
                             <div class="modal-body mb-1">
 
                                 <!-- Form -->
-                                <form class="text-center elegant-color-dark " action="required/action_forgotPassword.php" method="POST">
+                                <form class="text-center" action="required/action_forgotPassword.php" method="POST">
 
                                     <!-- Email -->
                                     <div class="md-form">

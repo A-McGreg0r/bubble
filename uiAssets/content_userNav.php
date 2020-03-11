@@ -3,7 +3,7 @@
 function generateUserNav(){
     $html = <<<htmlPage
         <!--navbar-->
-        <nav class="navbar  navbar-expand-lg navbar-dark elegant-color-dark">
+        <nav class="navbar  navbar-expand-lg navbar-dark">
             <!-- Collapse button -->
             <a href="index.php">
                 <span class="nav-item">

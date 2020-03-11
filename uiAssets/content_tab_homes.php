@@ -96,7 +96,7 @@ function generateHomeTab()
 
                     $html .= <<<html
                     <!-- Accordion card -->
-                    <div class="card">
+                    <div class="card col-lg">
                     <!-- Card header -->
                         <div class="card-header" role="tab" id="heading$hub_id">
                             <a data-toggle="collapse" data-parent="#accordionEx194" href="#collapse$hub_id" aria-expanded="true" aria-controls="collapse4">
@@ -266,16 +266,14 @@ function generateHomeTab()
                                             if (selectedChart ==0){
                                             masterLineChart["config"]["data"] = data1; //<--- THIS WORKS!
                                             masterLineChart.update();
-                                            }
-                                            
-                                            if (selectedChart ==1){
+                                            }else if (selectedChart ==1){
                                             masterLineChart["config"]["data"] = data2; //<--- THIS WORKS!
                                             masterLineChart.update();
-                                            }
-                                            
-                                            if (selectedChart ==2){
+                                            } else if (selectedChart ==2){
                                             masterLineChart["config"]["data"] = data3; //<--- THIS WORKS!
                                             masterLineChart.update();
+                                            }else{
+                                                alert('Something has gone wrong?')
                                             }
                                         });
                                     });

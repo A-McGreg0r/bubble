@@ -80,18 +80,17 @@ html;
                         </div>
                     </div>
                 </div>
-                
-                    <script>
+                 <script>
                     //works but cycels through all buttons and that is un desired
                     function buttonUpDate(){
                     $('input[type="checkbox"]').click( function(){
                         let roomName = this.parent.name;
                         let deviceID =1;
                             
-                            if($('input[type="checkbox"]').val("1")){
+                            if($('input[type="checkbox"]').val("on")){
                                 alert(roomName +"devices on");  
                                 //script hear
-                            }else if ($('input[type="checkbox"]').val("0")){
+                            }else if ($('input[type="checkbox"]').val("off")){
                                  alert(roomName +"devices off");  
                             }
   
@@ -99,6 +98,24 @@ html;
                       }                       
                     
                     </script>
+                    
+                    
+                    <script>
+                    function buttonUpDate(){
+                    
+                    $('input[type="checkbox"]').click( function(){
+                        let chkId = '';
+                        $('.chkNumber:checked').each(function() {
+                          chkId += $(this).val() + ",";
+                          alert($(this).val());  
+                        });
+                    alert($(this).val());  
+                    
+                      });                        
+                    }
+
+                    </script>
+                   
 html;
             }
         }

@@ -80,26 +80,8 @@ html;
                         </div>
                     </div>
                 </div>
-                 <script>
+             
                     //works but cycels through all buttons and that is un desired
-                    function buttonUpDateTest(){
-                    $('input[type="checkbox"]').click( function(){
-                        let roomName = this.parent.name;
-                        let deviceID =1;
-                            
-                            if($('input[type="checkbox"]').val("on")){
-                                alert(roomName +"devices on");  
-                                //script hear
-                            }else if ($('input[type="checkbox"]').val("off")){
-                                 alert(roomName +"devices off");  
-                            }
-  
-                        });
-                      }                       
-                    
-                    </script>
-                    
-                    
                     <script>
                     function buttonUpDate(){
                     
@@ -115,7 +97,6 @@ html;
                     
                       });                        
                     }
-
                     </script>
                    
 html;

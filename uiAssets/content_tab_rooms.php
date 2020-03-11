@@ -88,13 +88,14 @@ html;
                     $('input[type="checkbox"]').click( function(){
                         let chkId = '';
                         if ($(this).val()==="on"){
-                             alert($(this).val()+"test 1");  #
-                             //trager script hear
+                             alert($(this).val()+"test on");
+                             //onscript
                         }
-                        $('.chkNumber:checked').each(function() {
-                          chkId += $(this).val() + ",";
-                          alert($(this).val()+ " test 1");  
-                        });
+                        if ($(this).val()==="off"){
+                             alert($(this).val()+"test off");
+                             //off script
+                        }
+              
                     alert($(this).val()+"test 2");  
                       });                        
                     }

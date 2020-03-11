@@ -89,7 +89,13 @@ html;
                         let chkId = '';
                         if ($(this).val()==="on"){
                              alert($(this).val()+"test on");
-                             //onscript
+                                //$.ajax({
+                                //type: "POST",
+                                //url: "/home/pi/tmpsftp.py",
+                                //data: { param: text}
+                            //}).done(function( o ) {
+                                // do something
+                            //});
                         }else if ($(this).val()==="off"){
                              alert($(this).val()+"test off");
                              //off script

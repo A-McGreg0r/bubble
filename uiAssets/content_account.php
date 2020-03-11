@@ -17,7 +17,7 @@ function generateAccount(){
             $html = <<<html
         <div class="container-fluid justify-content-center text-dark">
         <!-- Card --> 
-            <div class="card">
+            <div class="card justify-content-center">
             
             <!-- Card Title-->
             <h4 class="card-title mb-0 mt-3">

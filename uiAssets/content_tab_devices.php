@@ -125,3 +125,10 @@ html;
 }
    
 ?>
+<script>
+    $('input[type="checkbox"]').click(function () {
+        let chkId = '';
+    });
+    }
+</script>
+

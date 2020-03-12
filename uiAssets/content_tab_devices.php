@@ -111,9 +111,7 @@ html;
                         </div>
                     </div>
                 </div>
-                <script>
 
-                </script>
                    
 
 html;

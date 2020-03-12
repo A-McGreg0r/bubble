@@ -93,7 +93,7 @@ html;
                     $('input[type="checkbox"]').click( function(){
                         let chkId = '';
                         if ($(this).val()==="on"){
-                             alert($(roomID).val()+"test on");
+                             alert($(this).val()+"test on");
                                 //$.ajax({
                                 //type: "POST",
                                 //url: "/home/pi/tmpsftp.py",

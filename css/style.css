@@ -65,8 +65,8 @@ ul {
     width: 3em;
 }
 
-.nav-link {
-    color: rgb(109, 171, 166);
+.nav-link .waves-effect .waves-light {
+    color: rgb(109, 171, 166)!important;
 }
 
 .form-row {

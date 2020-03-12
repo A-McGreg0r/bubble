@@ -65,8 +65,8 @@ ul {
     width: 3em;
 }
 
-.nav-link .waves-effect .waves-light {
-    color: rgb(109, 171, 166)!important;
+.nav-link {
+    color: rgb(109, 171, 166);
 }
 
 .form-row {
@@ -96,4 +96,13 @@ ul {
 
 .drop-off {
     margin-bottom: 5rem!important;
+}
+
+.navbar, .card, .z-depth-1-half {
+    box-shadow: none!important;
+}
+
+.card {
+    border: 1px solid rgba(0,0,0,0.125);
+    border-top: none;
 }

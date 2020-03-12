@@ -17,7 +17,8 @@ function toggleRoom(room_id){
 }
 
 
-function toggleDevice(room_id) {
+function toggleDevice(device_id) {
+     alert("Hello! I am an alert box!!");
     let url = "/required/action_device.php?type=device&id=" + room_id;
     let request = new XMLHttpRequest();
     request.open('POST', url, true);

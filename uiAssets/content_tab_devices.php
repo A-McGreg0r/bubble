@@ -104,7 +104,7 @@ html;
                             <!-- Default switch -->
                             <div class="custom-control custom-switch">
                                 <form id="$deviceLocation" onsubmit="toggleDevice($device_id;)" method="POST">
-                                    <input type="checkbox" class="custom-control-input" id="$device_name">
+                                    <input type="checkbox" class="custom-control-input" id="$device_name" onchange="deviceUpDate(this.id)">
                                     <!--todo add php to swap between slider and no/off button-->
                                     <label class="custom-control-label" for="$device_name">off/on</label>
                                 </form>
@@ -112,6 +112,18 @@ html;
                         </div>
                     </div>
                 </div>
+                <script>
+                function deviceUpDate(id){
+                    
+                    let deviceValue = id.value;
+                    
+                    if (deviceValue === "on"){
+                        alert(id +"test on  ")
+                    }
+                }
+
+                    </script>
+                   
 
 html;
                 $stmt3->close();

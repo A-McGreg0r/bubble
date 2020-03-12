@@ -81,7 +81,7 @@ html;
                     </div>
                 </div>
              
-                    
+                    <!--
                     <script>
                     //works but cycels through all buttons and that is un desired
                     function buttonUpDate(){
@@ -106,7 +106,7 @@ html;
                       });    
                  
                     </script>
-                   
+                   -->
 html;
             }
         }

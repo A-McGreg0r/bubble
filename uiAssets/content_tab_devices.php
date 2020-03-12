@@ -103,7 +103,7 @@ html;
                             <!-- Default switch -->
                             <div class="custom-control custom-switch">
                                 <form id="$deviceLocation" onsubmit="toggleDevice($device_id;)" method="POST">
-                                    <input type="checkbox" class="custom-control-input" id="$device_id")">
+                                    <input type="checkbox" class="custom-control-input" id="$device_id">
                                     <!--todo add php to swap between slider and no/off button-->
                                     <label class="custom-control-label" for="$device_name">off/on</label>
                                 </form>

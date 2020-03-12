@@ -105,3 +105,22 @@ ul {
 .accordion {
     border-bottom: 1px solid rgba(0,0,0,0.125);
 }
+
+.text-light {
+    color: rgb(56, 56, 56)!important;
+}
+
+.mb-4, .my-4 {
+    padding-bottom: 0.75rem!important;
+    padding-top: 0.75rem!important;
+    margin-bottom: 0!important;
+    border: none!important;
+}
+
+.mb-4:nth-child(even){
+    background-color: rgba(0,0,0,.05);
+}
+
+.card-header {
+    background-color: rgba(0,0,0,.05);
+}

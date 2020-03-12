@@ -47,11 +47,6 @@ ul {
     width: 15px;
 }
 
-/* Track */
-::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px rgb(56, 56, 56);
-}
-
 /* Handle */
 ::-webkit-scrollbar-thumb {
     background: rgb(109, 171, 166);
@@ -105,4 +100,8 @@ ul {
 .card {
     border: 1px solid rgba(0,0,0,0.125);
     border-top: none;
+}
+
+.accordion {
+    border-bottom: 1px solid rgba(0,0,0,0.125);
 }

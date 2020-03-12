@@ -72,8 +72,8 @@ html;
                         <div class="d-flex flex-column">
                             <!-- Default switch -->
                             <div class="custom-control custom-switch">
-                                <form name="$room_id"onsubmit="toggleRoom($room_id;)" method="POST"">
-                                    <input  type="checkbox" class="custom-control-input" id="$room_name" onchange="buttonUpDate()">
+                                <form name="$room_id" onsubmit="toggleRoom($room_id;)" method="POST"">
+                                    <input  type="checkbox" class="custom-control-input" id="$room_id" onchange="buttonUpDate(this.id)">
                                     <label class="custom-control-label" for="$room_name">off/on</label>
                                 </form>
                             </div>  
@@ -83,7 +83,13 @@ html;
              
                     //works but cycels through all buttons and that is un desired
                     <script>
-                    function buttonUpDate(){
+                    function buttonUpDate(roomID){
+                        let ID = roomID;
+                        document.getElementById(ID);
+                        $(ID).click( function(){
+                           alert(ID); 
+                        });
+                        
                     
                     $('input[type="checkbox"]').click( function(){
                         let chkId = '';

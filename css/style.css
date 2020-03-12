@@ -1,6 +1,7 @@
 html, body {
     height: 100%;
     background-color: #ffffff;
+    overflow-y: overlay;
 }
 
 h2 {
@@ -79,4 +80,12 @@ ul {
 .align-middle {
     vertical-align: top!important;
     padding-top: 50px;
+}
+
+.card-body {
+    padding: 1rem!important;
+}
+
+.pt-0 {
+    padding-top: 1rem!important;
 }

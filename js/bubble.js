@@ -1,14 +1,14 @@
 
 function toggleRoom(room_id){
-    var url = "/required/action_device.php?type=room&id="+room_id;
-    var request = new XMLHttpRequest();
+    let url = "/required/action_device.php?type=room&id=" + room_id;
+    let request = new XMLHttpRequest();
     request.open('POST', url, true);
-    request.onload = function() { 
-        
+    request.onload = function () {
+
         console.log(request.responseText);
     };
 
-    request.onerror = function() {
+    request.onerror = function () {
 
     };
 
@@ -17,16 +17,16 @@ function toggleRoom(room_id){
 }
 
 
-function toggleDevice(room_id){
-    var url = "/required/action_device.php?type=device&id="+room_id;
-    var request = new XMLHttpRequest();
+function toggleDevice(room_id) {
+    let url = "/required/action_device.php?type=device&id=" + room_id;
+    let request = new XMLHttpRequest();
     request.open('POST', url, true);
-    request.onload = function() { 
-        
+    request.onload = function () {
+
         console.log(request.responseText);
     };
 
-    request.onerror = function() {
+    request.onerror = function () {
 
     };
 

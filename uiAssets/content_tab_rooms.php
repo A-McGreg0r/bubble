@@ -73,7 +73,7 @@ html;
                             <!-- Default switch -->
                             <div class="custom-control custom-switch">
                                 <form name="$room_id" onsubmit="toggleRoom($room_id;)" method="POST"">
-                                    <input  type="checkbox" class="custom-control-input" id="$room_id" onchange="buttonUpDate(this.id)">
+                                    <input  type="checkbox" class="custom-control-input" id="$room_id" onclick="buttonUpDate()">
                                     <label class="custom-control-label" for="$room_name">off/on</label>
                                 </form>
                             </div>  

@@ -76,7 +76,16 @@ html;
                                     <input  type="checkbox" class="custom-control-input" id="$room_id">
                                     <label class="custom-control-label" for="$room_name">off/on</label>
                                 </form>
-                            </div>  
+                            </div> 
+                            <!-- Material checked -->
+<div class="switch">
+  <label>
+    Off
+    <input type="checkbox" checked>
+    <span class="lever"></span>
+    On
+  </label>
+</div> 
                         </div>
                     </div>
                 </div>

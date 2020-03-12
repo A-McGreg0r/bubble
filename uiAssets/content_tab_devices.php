@@ -124,34 +124,6 @@ html;
                 }
 
                     </script>
-                    
-                    
-                                        <!--
-                    <script>
-                    //works but cycels through all buttons and that is un desired
-                    function buttonUpDate(){
-                    $('input[type="checkbox"]').click( function(){
-                        let chkId = '';
-                        if ($(this).val()==="on"){
-                             alert($(this).val()+"test on");
-                                //$.ajax({
-                                //type: "POST",
-                                //url: "/home/pi/tmpsftp.py",
-                                //data: { param: text}
-                            //}).done(function( o ) {
-                                // do something
-                            //});
-                        }else if ($(this).val()==="off"){
-                             alert($(this).val()+"test off");
-                             //off script
-                        }else{
-                            alert("error");  
-                        }
-
-                      });    
-                 
-                    </script>
-                   -->
                    
 
 html;

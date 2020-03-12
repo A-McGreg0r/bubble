@@ -4,7 +4,7 @@ include_once dirname(__DIR__).'/required/config.php';
 
 function generateDeviceTab(){
     $html = '';
-    
+
     $html .= <<<html
         <a href="index.php?action=adddevice">
             <div class="card mb-4 container">
@@ -67,7 +67,7 @@ html;
                 function deviceCat($device_type, $device_name)
                 {
                     if ($device_type == "heating" || $device_type == "airCon") {
-                        $optionType = "<form class=\"range-field\" for=\"$device_name\"><input type=\"range\" min=\"0c\" max=\"100c\" /></form>";
+                        $optionType = "<form class=\"range-field\" for=\"$device_name\"><input type=\"range\" min=\"0c\" max=\"40c\" /></form>";
                         //todo add option for different temp measurements farnehight, celcus
                     } else {
                         $optionType = "<label class=\"custom-control-label\" for=\"$device_name\">off/on</label>";
@@ -89,32 +89,31 @@ html;
                 
                         <!--Title-->      
                         <div class="d-flex flex-column">  
-                            <div class="row">
-                                $icon &nbsp; $device_name 
-                                
-                            </div>
-                        </div>
-                        <div class="d-flex flex-column">  
-                            <div class="row">
+                            <div class="flex-sm-row">
+                                $icon &nbsp; $device_name
+                                 </div>
+                            <div class="flex-sm-row">
                                 room: &nbsp; $room_type
-                            </div>
+                            </div>                                
+                            
                         </div>
+
                         
                         <div class="d-flex flex-column">
                             <!-- Default switch -->
                             <div class="custom-control custom-switch">
-                                <form onsubmit="toggleDevice($device_id;)" method="POST">
+                               <form onsubmit="toggleDevice($device_id;)" method="POST">
                                     <input type="checkbox" class="custom-control-input" id="$device_name">
-                                    <!--todo add php to swap between slider and no/off button-->
                                     <label class="custom-control-label" for="$device_name">off/on</label>
-                                </form>
+                               </form>
                             </div>  
                         </div>
                     </div>
                 </div>
 
+                   
+
 html;
-                $stmt4->close();
                 $stmt3->close();
 
             }
@@ -125,7 +124,5 @@ html;
     }
     return $html;
 }
-   
+
 ?>
-
-

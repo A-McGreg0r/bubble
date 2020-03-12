@@ -80,6 +80,26 @@ html;
                         </div>
                     </div>
                 </div>
+             
+                    <!--
+                    <script>
+                    //works but cycels through all buttons and that is un desired
+                    function buttonUpDate(){
+                    $('input[type="checkbox"]').click( function(){
+                        let chkId = '';
+                        if ($(this).val()==="on"){
+                             alert("python /home/pi/tmpsftp.py $room_id ");
+                        }else if ($(this).val()==="off"){
+                             alert("python /home/pi/tmpsftp.py $room_id 0");
+                             //off script
+                        }else{
+                            alert("error");  
+                        }
+
+                      });    
+                 
+                    </script>
+                   -->
 html;
             }
         }

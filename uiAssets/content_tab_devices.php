@@ -111,7 +111,18 @@ html;
                         </div>
                     </div>
                 </div>
-
+                <script>
+                 
+                  $('#$device_id').change(function() {
+                  let check = $(this);               
+                  window.console.log(check);
+                
+                      if (check.prop('checked').val() === "on") {
+                          alert('testing');
+                      }
+                      
+                )}
+                </script>
                    
 
 html;

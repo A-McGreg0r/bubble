@@ -61,10 +61,22 @@ ul {
 }
 
 .front-img {
-    width: 100px;
-    padding-top: 20px;
+    width: 3em;
 }
 
 .nav-link {
     color: rgb(109, 171, 166);
+}
+
+.form-row {
+    margin-bottom: 0;
+}
+
+.mb-5 {
+    margin-bottom: 0!important;
+}
+
+.align-middle {
+    vertical-align: top!important;
+    padding-top: 50px;
 }

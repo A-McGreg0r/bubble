@@ -20,8 +20,9 @@ function generateLoginPage(){
             <tr>
                 <td class="align-middle">
                     <div class="text-center">
-                        <h2>Welcome to Bubble.</h2>
-                        <h2>The simple smart home.</h2>
+                        <img class="front-img" src="img/favicon.png">
+                        <h2>Bubble.</h2>
+                        <h4>The simple smart home.</h4>
                     </div>
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs  tabs-2" role="tablist">

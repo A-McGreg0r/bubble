@@ -59,3 +59,12 @@ ul {
 .red-text {
     color: rgb(109, 171, 166)!important;
 }
+
+.front-img {
+    width: 100px;
+    padding-top: 20px;
+}
+
+.nav-link {
+    color: rgb(109, 171, 166);
+}

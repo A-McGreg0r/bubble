@@ -15,7 +15,7 @@ function generateAccount(){
             extract($result->fetch_assoc());
 
             $html = <<<html
-        <div class="container-fluid justify-content-center text-dark">
+        <div class="container-fluid justify-content-center">
         <!-- Card --> 
             <div class="card justify-content-center">
             
@@ -63,7 +63,7 @@ function generateAccount(){
     
             <!-- Editable table -->
             <div class="card">
-                <h3 class="card-header text-center font-weight-bold text-uppercase py-4 text-dark">Devices</h3>
+                <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Devices</h3>
                 <div class="card-body">
                     <div id="table" class="table-editable">
                         <span class="table-add float-right mb-3 mr-2"><a href="index.php?action=adddevice" class=""><i class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span>

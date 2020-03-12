@@ -89,22 +89,21 @@ html;
                 
                         <!--Title-->      
                         <div class="d-flex flex-column">  
-                            <div class="row">
-                                $icon &nbsp; $device_name 
-                                
-                            </div>
-                        </div>
-                        <div class="d-flex flex-column">  
-                            <div class="row">
+                            <div class="flex-sm-row">
+                                $icon &nbsp; $device_name
+                                 </div>
+                            <div class="flex-sm-row">
                                 room: &nbsp; $room_type
-                            </div>
+                            </div>                                
+                            
                         </div>
+
                         
                         <div class="d-flex flex-column">
                             <!-- Default switch -->
                             <div class="custom-control custom-switch">
-                                <form id="$deviceLocation" onsubmit="toggleDevice($device_id;)" method="POST">
-                                    <input type="checkbox" class="custom-control-input" id="$device_name">
+                                <form id=$deviceLocation onsubmit="toggleDevice($device_id;)" method="POST">
+                                    <input id="$device_id" type="checkbox" class="custom-control-input">
                                     <!--todo add php to swap between slider and no/off button-->
                                     <label class="custom-control-label" for="$device_name">off/on</label>
                                 </form>
@@ -112,6 +111,8 @@ html;
                         </div>
                     </div>
                 </div>
+
+                   
 
 html;
                 $stmt3->close();

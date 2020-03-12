@@ -73,43 +73,40 @@ html;
                             <!-- Default switch -->
                             <div class="custom-control custom-switch">
                                 <form name="$room_id" onsubmit="toggleRoom($room_id;)" method="POST"">
-                                    <input  type="checkbox" class="custom-control-input" id="$room_id" onclick="buttonUpDate()">
+                                    <input  type="checkbox" class="custom-control-input" id="$room_id">
                                     <label class="custom-control-label" for="$room_name">off/on</label>
                                 </form>
-                            </div>  
+                            </div> 
+                            <!-- Material checked -->
+
                         </div>
                     </div>
                 </div>
              
-                    
                     <script>
-                    //works but cycels through all buttons and that is un desired
-                    function buttonUpDate(roomID){
-
-
-
+                    function buttonUpDate(){
+                    
                     $('input[type="checkbox"]').click( function(){
+                        let roomName = this.parent.name;
                         let chkId = '';
-                        if ($(this).val()==="on"){
-                             alert($(this).val()+"test on");
-                                //$.ajax({
-                                //type: "POST",
-                                //url: "/home/pi/tmpsftp.py",
-                                //data: { param: text}
-                            //}).done(function( o ) {
-                                // do something
-                            //});
-                        }else if ($(this).val()==="off"){
-                             alert($(this).val()+"test off");
-                             //off script
-                        }else{
-                            alert("error");  
-                        }
+                        $('.chkNumber:checked').each(function() {
+                          chkId += $(this).val() + ",";
+                          
+                           if($('input[type="checkbox"]').val("on")){
+                                alert(roomName +"devices on");  
+                                //script hear
+                            }else if ($('input[type="checkbox"]').val("off")){
+                                 alert(roomName +"devices off");  
+                            }
+                           
+                          alert($(this).val()+ "test 1");  
+                        });
+                    alert($(this).val()+"test 2");  
+                    
+                      });                        
+                    }
 
-                      });    
-                 
                     </script>
-                   
 html;
             }
         }

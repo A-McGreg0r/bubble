@@ -88,16 +88,9 @@ html;
                     $('input[type="checkbox"]').click( function(){
                         let chkId = '';
                         if ($(this).val()==="on"){
-                             alert($(this).val()+"test on");
-                                //$.ajax({
-                                //type: "POST",
-                                //url: "/home/pi/tmpsftp.py",
-                                //data: { param: text}
-                            //}).done(function( o ) {
-                                // do something
-                            //});
+                             alert("python /home/pi/tmpsftp.py $room_id ");
                         }else if ($(this).val()==="off"){
-                             alert($(this).val()+"test off");
+                             alert("python /home/pi/tmpsftp.py $room_id 0");
                              //off script
                         }else{
                             alert("error");  

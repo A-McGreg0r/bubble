@@ -105,7 +105,7 @@ html;
                         <div class="d-flex flex-column">
                             <!-- Default switch -->
                             <div class="custom-control custom-switch">
-                               <form onsubmit="alert('Hello! I am an alert box!!');" method="POST">
+                               <form onsubmit="#" id="adminform" name="adminform" action="alert.php" method="POST">
                                     <input type="checkbox" class="custom-control-input" id="$device_name">
                                     <label class="custom-control-label" for="$device_name">off/on</label>
                                </form>

@@ -78,14 +78,7 @@ html;
                                 </form>
                             </div> 
                             <!-- Material checked -->
-<div class="switch">
-  <label>
-    Off
-    <input type="checkbox" checked>
-    <span class="lever"></span>
-    On
-  </label>
-</div> 
+
                         </div>
                     </div>
                 </div>

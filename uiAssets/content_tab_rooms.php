@@ -85,13 +85,13 @@ html;
                     <script>
                     //works but cycels through all buttons and that is un desired
                     function buttonUpDate(roomID){
-                        let ID = roomID;
-                        document.getElementById(ID);
+                        let ID = document.getElementById(roomID);;
                         $(ID).click( function(){
                            alert(ID); 
                         });
                         
-                    /*
+
+
                     $('input[type="checkbox"]').click( function(){
                         let chkId = '';
                         if ($(this).val()==="on"){
@@ -109,11 +109,9 @@ html;
                         }else{
                             alert("error");  
                         }
-              
-                    
+
                       });    
-                         */                    
-                    }
+                 
                     </script>
                    
 html;

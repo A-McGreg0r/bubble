@@ -102,7 +102,7 @@ html;
                         <div class="d-flex flex-column">
                             <!-- Default switch -->
                             <div class="custom-control custom-switch">
-                                <form id="$deviceLocation" onsubmit="toggleDevice($device_id;)" method="POST">
+                                <form id=$deviceLocation onsubmit="toggleDevice($device_id;)" method="POST">
                                     <input id="$device_id" type="checkbox" class="custom-control-input">
                                     <!--todo add php to swap between slider and no/off button-->
                                     <label class="custom-control-label" for="$device_name">off/on</label>

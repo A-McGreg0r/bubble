@@ -14,7 +14,7 @@ function generateRoomTab(){
         $stmt->bind_param("i", $hub_id);
         $stmt->execute();
         $result = $stmt->get_result();
-        
+
 
         $html .= <<<html
             <a href="index.php?action=addroom">
@@ -72,13 +72,11 @@ html;
                         <div class="d-flex flex-column">
                             <!-- Default switch -->
                             <div class="custom-control custom-switch">
-                                <form name="$room_id" onsubmit="toggleRoom($room_id;)" method="POST"">
-                                    <input  type="checkbox" class="custom-control-input" id="$room_id">
+                                <form onsubmit="toggleRoom($room_id;)" method="POST">
+                                    <input type="checkbox" class="custom-control-input" id="$room_name">
                                     <label class="custom-control-label" for="$room_name">off/on</label>
                                 </form>
-                            </div> 
-                            <!-- Material checked -->
-
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -117,5 +115,5 @@ html;
     return $html;
 
 }
-   
+
 ?>

@@ -2,6 +2,12 @@
 <?php
 include_once dirname(__DIR__).'/required/config.php';
 
+<script type="text/javascript">
+function devicejs() {
+  <?php echo "alert('message');"; ?>
+}
+</script>
+
 function generateDeviceTab(){
     $html = '';
 
@@ -110,7 +116,13 @@ html;
                                  $('#$device_name').change(function() {
                                     let check = $(this);
                                  if (check.prop('checked') === true){
-                                     alert('test')
+				     devicejs();
+				     //var hw  = <?php echo "Hello World"; ?>
+                                     alert('HELP');
+				     //<?php echo 'Hello World' ?>
+				     //var device_switch = <?php device(1,2);?>
+				     //alert(device_switch);
+					
                                  }
                                  
                                  });

@@ -13,7 +13,7 @@ function generateAddRoom(){
                 <div id="devicetext" style="width:100%"></div>
             </div>
             <div class="row align-middle">
-                <form class="text-center elegant-color-dark" action="required/action_addRoom.php" method="POST">
+                <form class="text-center" action="required/action_addRoom.php" method="POST">
                     <!-- Room Name -->
                     <div class="md-form">
                         <label for="materialLoginFormName">Room Name</label>

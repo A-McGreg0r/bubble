@@ -92,8 +92,8 @@ html;
 
                     $('input[type="checkbox"]').click( function(){
                         let chkId = '';
-                        if ($(this).val()==="on"){
-                             alert($(this).val()+"test on");
+                        if ($(roomID).val()==="on"){
+                             alert($(roomID).val()+"test on");
                                 //$.ajax({
                                 //type: "POST",
                                 //url: "/home/pi/tmpsftp.py",
@@ -101,8 +101,8 @@ html;
                             //}).done(function( o ) {
                                 // do something
                             //});
-                        }else if ($(this).val()==="off"){
-                             alert($(this).val()+"test off");
+                        }else if ($(roomID).val()==="off"){
+                             alert($(roomID).val()+"test off");
                              //off script
                         }else{
                             alert("error");  

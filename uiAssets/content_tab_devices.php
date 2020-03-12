@@ -106,6 +106,17 @@ html;
                                     <input type="checkbox" class="custom-control-input" id="$device_name">
                                     <label class="custom-control-label" for="$device_name">off/on</label>
                                </form>
+                               <script>
+                                 $('#$device_name').change(function() {
+                                    let check = $(this);
+                                 if (check.prop('checked') === true){
+                                     alert('test')
+                                 }
+                                 
+                                 });
+
+                               
+                               </script>
                             </div>  
                         </div>
                     </div>

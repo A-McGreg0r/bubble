@@ -54,7 +54,7 @@ function generateLoginPage(){
                             <div class="modal-body mb-1">
 
                                 <!-- Form -->
-                                <form class="text-center" action="required/action_login.php" method="POST">
+                                <form class="text-center" style="color: rgb(39,104,88);" action="required/action_login.php" method="POST">
 
                                     <!-- Email -->
                                     <div class="md-form">
@@ -100,13 +100,13 @@ function generateLoginPage(){
                             <div class="card-body px-lg-5 pt-0">
 
                                 <!-- Form -->
-                                <form class="text-center" style="color: #757575;" action="required/action_register.php" method="POST">
+                                <form class="text-center" style="color: rgb(39,104,88);" action="required/action_register.php" method="POST">
                                     <!-- Email -->
                                     <div class="md-form">
                                         <label for="materialLoginFormEmail">E-mail</label>
                                         <input type="email"
                                             id="materialLoginFormEmail"
-                                            class="form-control form-control-sm validate"
+                                            class="form-control form-control-sm validate hold-back"
                                             name="email"
                                             required size="20"
                                             value="$email"/>
@@ -127,7 +127,7 @@ function generateLoginPage(){
                                         </div>
                                         <div class="col-sm form-sm mb-5">
                                             <!-- Last name -->
-                                            <div class="md-form">
+                                            <div class="md-form drop-off">
                                                 <label for="materialRegisterFormLastName">Last name</label>
                                                 <input type="text"
                                                     id="materialRegisterFormLastName"
@@ -167,7 +167,7 @@ function generateLoginPage(){
                                         <label for="materialRegisterFormPostcode">Postcode</label>
                                         <input type="text"
                                             id="materialRegisterFormPostcode"
-                                            class="form-control form-control-sm validate"
+                                            class="form-control form-control-sm validate drop-off"
                                             name="postcode"
                                             required size="20"
                                             aria-describedby=""
@@ -226,7 +226,7 @@ function generateLoginPage(){
                             <div class="modal-body mb-1">
 
                                 <!-- Form -->
-                                <form class="text-center" action="required/action_forgotPassword.php" method="POST">
+                                <form class="text-center" style="color: rgb(39,104,88);" action="required/action_forgotPassword.php" method="POST">
 
                                     <!-- Email -->
                                     <div class="md-form">

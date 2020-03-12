@@ -89,3 +89,11 @@ ul {
 .pt-0 {
     padding-top: 1rem!important;
 }
+
+.md-form .hold-back {
+    margin-bottom: 0rem!important;
+}
+
+.drop-off {
+    margin-bottom: 5rem!important;
+}

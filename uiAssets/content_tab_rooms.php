@@ -73,7 +73,7 @@ html;
                             <!-- Default switch -->
                             <div class="custom-control custom-switch">
                                 <form name="$room_id" onsubmit="toggleRoom($room_id;)" method="POST"">
-                                    <input  type="checkbox" class="custom-control-input" id="$room_id" onclick="buttonUpDate(this.id)">
+                                    <input  type="checkbox" class="custom-control-input" id="$room_id" onclick="buttonUpDate()">
                                     <label class="custom-control-label" for="$room_name">off/on</label>
                                 </form>
                             </div>  
@@ -84,15 +84,15 @@ html;
                     
                     <script>
                     //works but cycels through all buttons and that is un desired
-                    function buttonUpDate(roomID){
-
-                        let ID = document.getElementById(roomID);
-                         alert(ID); 
+                    function buttonUpDate(){
+                    
+                    //    let ID = document.getElementById(roomID);
+                    //     alert(ID); 
 
 
                     $('input[type="checkbox"]').click( function(){
                         let chkId = '';
-                        if ($(roomID).val()==="on"){
+                        if ($(this).val()==="on"){
                              alert($(roomID).val()+"test on");
                                 //$.ajax({
                                 //type: "POST",
@@ -101,8 +101,8 @@ html;
                             //}).done(function( o ) {
                                 // do something
                             //});
-                        }else if ($(roomID).val()==="off"){
-                             alert($(roomID).val()+"test off");
+                        }else if ($(this).val()==="off"){
+                             alert($(this).val()+"test off");
                              //off script
                         }else{
                             alert("error");  

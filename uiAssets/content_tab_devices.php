@@ -89,22 +89,21 @@ html;
                 
                         <!--Title-->      
                         <div class="d-flex flex-column">  
-                            <div class="row">
-                                $icon &nbsp; $device_name 
-                                
-                            </div>
-                        </div>
-                        <div class="d-flex flex-column">  
-                            <div class="row">
+                            <div class="flex-sm-row">
+                                $icon &nbsp; $device_name
+                                 </div>
+                            <div class="flex-sm-row">
                                 room: &nbsp; $room_type
-                            </div>
+                            </div>                                
+                            
                         </div>
+
                         
                         <div class="d-flex flex-column">
                             <!-- Default switch -->
                             <div class="custom-control custom-switch">
                                 <form id="$deviceLocation" onsubmit="toggleDevice($device_id;)" method="POST">
-                                    <input type="checkbox" class="custom-control-input" id="$device_name" onchange="deviceUpDate(this.id)">
+                                    <input type="checkbox" class="custom-control-input" id="$device_id")">
                                     <!--todo add php to swap between slider and no/off button-->
                                     <label class="custom-control-label" for="$device_name">off/on</label>
                                 </form>
@@ -113,16 +112,46 @@ html;
                     </div>
                 </div>
                 <script>
-                function deviceUpDate(id){
-                    
-                    let deviceValue = id.value;
-                    
-                    if (deviceValue === "on"){
-                        alert(id +"test on  ")
-                    }
+                 
+                  $('#$device_id').change(function() {
+                  let check = $(this);               
+                  window.console.log(check);
+                
+                      if (check.prop('checked') === true) {
+                          alert('testing');
+                      }
+                      
                 }
 
                     </script>
+                    
+                    
+                                        <!--
+                    <script>
+                    //works but cycels through all buttons and that is un desired
+                    function buttonUpDate(){
+                    $('input[type="checkbox"]').click( function(){
+                        let chkId = '';
+                        if ($(this).val()==="on"){
+                             alert($(this).val()+"test on");
+                                //$.ajax({
+                                //type: "POST",
+                                //url: "/home/pi/tmpsftp.py",
+                                //data: { param: text}
+                            //}).done(function( o ) {
+                                // do something
+                            //});
+                        }else if ($(this).val()==="off"){
+                             alert($(this).val()+"test off");
+                             //off script
+                        }else{
+                            alert("error");  
+                        }
+
+                      });    
+                 
+                    </script>
+                   -->
                    
 
 html;

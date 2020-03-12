@@ -4,7 +4,7 @@ include_once dirname(__DIR__).'/required/config.php';
 
 function generateDeviceTab(){
     $html = '';
-    
+
     $html .= <<<html
         <a href="index.php?action=adddevice">
             <div class="card mb-4 container">
@@ -102,11 +102,10 @@ html;
                         <div class="d-flex flex-column">
                             <!-- Default switch -->
                             <div class="custom-control custom-switch">
-                                <form id=$deviceLocation onsubmit="toggleDevice($device_id;)" method="POST">
-                                    <input id="$device_id" type="checkbox" class="custom-control-input">
-                                    <!--todo add php to swap between slider and no/off button-->
+                               <form onsubmit="toggleDevice($device_id;)" method="POST">
+                                    <input type="checkbox" class="custom-control-input" id="$device_name">
                                     <label class="custom-control-label" for="$device_name">off/on</label>
-                                </form>
+                               </form>
                             </div>  
                         </div>
                     </div>
@@ -125,7 +124,5 @@ html;
     }
     return $html;
 }
-   
+
 ?>
-
-

@@ -121,9 +121,8 @@ html;
                           alert('testing');
                       }
                       
-                }
-
-                    </script>
+                )}
+                </script>
                    
 
 html;

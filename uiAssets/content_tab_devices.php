@@ -114,6 +114,7 @@ html;
                 </div>
 
 html;
+                $stmt4->close();
                 $stmt3->close();
 
             }

@@ -105,7 +105,7 @@ html;
                         <div class="d-flex flex-column">
                             <!-- Default switch -->
                             <div class="custom-control custom-switch">
-                               <form onsubmit="#" id="adminform" name="adminform" action="/uiAssets/alert.php" method="POST">
+                               <form action="#" method="POST">
                                     <input type="checkbox" class="custom-control-input" id="$device_name">
                                     <label class="custom-control-label" for="$device_name">off/on</label>
                                </form>
@@ -114,22 +114,19 @@ html;
                                     let check = $(this);
                                  if (check.prop('checked') === true){
 
-                                     alert('HELP');
+                                     alert('ON $device_id');
                                  }
+				 else {
+				     alert('OFF $device_id');
+				 }
                                  });
-
-                               
                                </script>
-                            </div>  
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                   
-
 html;
                 $stmt3->close();
-
             }
         }
         $stmt->close();
@@ -138,5 +135,4 @@ html;
     }
     return $html;
 }
-
 ?>

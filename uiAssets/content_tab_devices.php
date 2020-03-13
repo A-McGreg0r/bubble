@@ -2,8 +2,11 @@
 <?php
 include_once dirname(__DIR__).'/required/config.php';
 
+
+
 function generateDeviceTab(){
     $html = '';
+
 
     $html .= <<<html
         <a href="index.php?action=adddevice">
@@ -102,20 +105,28 @@ html;
                         <div class="d-flex flex-column">
                             <!-- Default switch -->
                             <div class="custom-control custom-switch">
-                               <form onsubmit="toggleDevice($device_id;)" method="POST">
+                               <form action="#" method="POST">
                                     <input type="checkbox" class="custom-control-input" id="$device_name">
                                     <label class="custom-control-label" for="$device_name">off/on</label>
                                </form>
-                            </div>  
+                               <script>
+                                 $('#$device_name').change(function() {
+                                    let check = $(this);
+                                 if (check.prop('checked') === true){
+
+                                     alert('ON $device_id');
+                                 }
+				 else {
+				     alert('OFF $device_id');
+				 }
+                                 });
+                               </script>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                   
-
 html;
                 $stmt3->close();
-
             }
         }
         $stmt->close();
@@ -124,5 +135,4 @@ html;
     }
     return $html;
 }
-
 ?>

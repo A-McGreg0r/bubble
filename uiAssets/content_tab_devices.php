@@ -109,9 +109,15 @@ html;
                                     <input type="checkbox" class="custom-control-input" id="$device_name">
                                     <label class="custom-control-label" for="$device_name">off/on</label>
                                </form>
+                               <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
                                <script>
                                 $('#$device_name').change(function() {
                                     let check = $(this);
+                                    $(document).ready(function(){
+                                        $("button").click(function(){
+                                            $("#div1").load("alert.php");
+                                        });
+                                    });
                                     if (check.prop('checked') === true){
                                         alert('ON $device_id');
                                     }

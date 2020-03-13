@@ -14,7 +14,7 @@ function generateRoomTab(){
         $stmt->bind_param("i", $hub_id);
         $stmt->execute();
         $result = $stmt->get_result();
-
+        
 
         $html .= <<<html
             <a href="index.php?action=addroom">
@@ -39,7 +39,7 @@ function generateRoomTab(){
                 </div>
             </a>
 html;
-        //rooms
+
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
                 $room_id = $row['room_id'];
@@ -53,7 +53,7 @@ html;
                 $iconText = $row1['type_icon'];
                 $html .= <<<html
                 <!-- Card -->
-                <div class="card mb-4 container text-dark grey-out">
+                <div class="card mb-4 container grey-out">
                     <!--Card image-->
                     <div class="view overlay">
                         <div class="mask rgba-white-slight"></div>
@@ -76,35 +76,10 @@ html;
                                     <input type="checkbox" class="custom-control-input" id="$room_name">
                                     <label class="custom-control-label" for="$room_name">off/on</label>
                                 </form>
-                            </div>
+                            </div>  
                         </div>
                     </div>
                 </div>
-             
-                    <script>
-                    function buttonUpDate(){
-                    
-                    $('input[type="checkbox"]').click( function(){
-                        let roomName = this.parent.name;
-                        let chkId = '';
-                        $('.chkNumber:checked').each(function() {
-                          chkId += $(this).val() + ",";
-                          
-                           if($('input[type="checkbox"]').val("on")){
-                                alert(roomName +"devices on");  
-                                //script hear
-                            }else if ($('input[type="checkbox"]').val("off")){
-                                 alert(roomName +"devices off");  
-                            }
-                           
-                          alert($(this).val()+ "test 1");  
-                        });
-                    alert($(this).val()+"test 2");  
-                    
-                      });                        
-                    }
-
-                    </script>
 html;
             }
         }
@@ -115,5 +90,5 @@ html;
     return $html;
 
 }
-
+   
 ?>

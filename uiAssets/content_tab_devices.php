@@ -113,16 +113,15 @@ html;
                                <script>
                                 $('#$device_name').change(function() {
                                     let check = $(this);
-                                    $(this).post("alert.php");     
                                     
                                     if (check.prop('checked') === true){
                                         alert('ON $device_id');
-                                        $(this).post("alert.php");  
+                                        $(this).load("alert.php");  
                                         
                                     }
 				                    else {
 				                        alert('OFF $device_id');
-                                        $(this).post("alert.php");  
+                                        $(this).load("alert.php");  
 				                    }  
                                  });
                                </script>

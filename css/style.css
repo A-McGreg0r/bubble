@@ -117,6 +117,10 @@ ul {
     border: none!important;
 }
 
+.my-4 {
+    border: 2px solid rgb(109, 171, 166)!important;
+}
+
 .grey-out:nth-of-type(odd), .card-header{
     background-color: rgba(0,0,0,.05)!important;
 }

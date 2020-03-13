@@ -1,3 +1,3 @@
 <?php
-exec('php -f alert.php');
+exec('php -f /uiAssets/alert.php');
 ?>

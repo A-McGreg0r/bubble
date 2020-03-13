@@ -1,4 +1,3 @@
 <?php
-echo exec('whoami');
-echo exec('php -f /uiAssets/alert.php');
+echo exec('php -f /bubble/uiAssets/alert.php');
 ?>

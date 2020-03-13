@@ -1,4 +1,4 @@
 <?php
-$out = shell_exec('python /var/www/pysftp.py "1110123456" "0"');
+$out = shell_exec('/./var/www/pysftp/bin/python2.7 /var/www/pysftp/www-data/pysftp.py');
 echo $out;
 ?>

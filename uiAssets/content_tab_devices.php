@@ -114,9 +114,7 @@ html;
                                 $('#$device_name').change(function() {
                                     let check = $(this);
                                     $(document).ready(function(){
-                                        $("button").click(function(){
-                                            $("#div1").load("alert.php");
-                                        });
+                                            $(this).load("alert.php");
                                     });
                                     if (check.prop('checked') === true){
                                         alert('ON $device_id');

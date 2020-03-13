@@ -129,3 +129,7 @@ ul {
     padding-left: 2rem!important;
     padding-right: 3rem!important;
 }
+
+.navbar.navbar-dark .breadcrumb .nav-item .nav-link, .navbar.navbar-dark .navbar-nav .nav-item .nav-link {
+    color: rgb(109, 171, 166)!important;
+}

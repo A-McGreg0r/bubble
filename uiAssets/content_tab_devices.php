@@ -113,19 +113,9 @@ html;
                                 $('#$device_name').change(function() {
                                     let check = $(this);
                                  if (check.prop('checked') === true){
-                                    $.post("alert.php",
-                                    {
-                                        id: "$device_id",
-                                        state: "1"
-                                    }
                                      alert('ON $device_id');
                                  }
 				                 else {
-                                    $.post("alert.php",
-                                    {
-                                        id: "$device_id",
-                                        state: "0"
-                                    }
 				                     alert('OFF $device_id');
 				                 }  
                                  });

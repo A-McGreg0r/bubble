@@ -116,9 +116,9 @@ html;
 
                                      alert('ON $device_id');
                                  }
-				 else {
-				     alert('OFF $device_id');
-				 }
+				                 else {
+				                     alert('OFF $device_id');
+				                 }  
                                  });
                                </script>
                             </div>

@@ -124,3 +124,8 @@ ul {
 .col-lg {
     padding: none!important;
 }
+
+.card-header {
+    padding-left: 2rem!important;
+    padding-right: 3rem!important;
+}

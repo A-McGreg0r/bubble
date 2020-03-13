@@ -117,7 +117,7 @@ ul {
     border: none!important;
 }
 
-.mb-4:nth-child(even), .card-header{
+.grey-out:nth-of-type(odd), .card-header{
     background-color: rgba(0,0,0,.05)!important;
 }
 

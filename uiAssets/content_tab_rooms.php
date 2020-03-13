@@ -53,7 +53,7 @@ html;
                 $iconText = $row1['type_icon'];
                 $html .= <<<html
                 <!-- Card -->
-                <div class="card mb-4 container text-dark">
+                <div class="card mb-4 container text-dark grey-out">
                     <!--Card image-->
                     <div class="view overlay">
                         <div class="mask rgba-white-slight"></div>

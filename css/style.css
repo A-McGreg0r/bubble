@@ -117,10 +117,40 @@ ul {
     border: none!important;
 }
 
-.mb-4:nth-child(even){
-    background-color: rgba(0,0,0,.05);
+.my-4 {
+    border: 2px solid rgb(109, 171, 166)!important;
+}
+
+.grey-out:nth-of-type(odd), .card-header{
+    background-color: rgba(0,0,0,.05)!important;
+}
+
+.col-lg {
+    padding: 0!important;
 }
 
 .card-header {
-    background-color: rgba(0,0,0,.05);
+    padding-left: 2rem!important;
+    padding-right: 3rem!important;
+}
+
+.navbar.navbar-dark .breadcrumb .nav-item .nav-link, .navbar.navbar-dark .navbar-nav .nav-item .nav-link {
+    color: rgb(109, 171, 166)!important;
+}
+
+.border {
+    border: none!important;
+}
+
+.centre-text {
+    text-align: center;
+    background-color: rgba(255,255,255,0);
+}
+
+.col-auto {
+    margin-top: -10px!important;
+}
+
+.mr-auto {
+    margin-top: 0!important;
 }

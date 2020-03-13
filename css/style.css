@@ -135,7 +135,7 @@ ul {
 }
 
 .border {
-    border: none;
+    border: none!important;
 }
 
 .centre-text {

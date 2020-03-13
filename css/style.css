@@ -142,3 +142,11 @@ ul {
     text-align: center;
     background-color: rgba(255,255,255,0);
 }
+
+.col-auto {
+    margin-top: -10px!important;
+}
+
+.mr-auto {
+    margin-top: 0!important;
+}

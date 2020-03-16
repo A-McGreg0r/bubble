@@ -77,18 +77,18 @@ html;
                                     <label class="custom-control-label" for="$room_name">off/on</label>
                                 </form>
                             </div>
+                            
                             <script>
-                            
                             $('input[name ="room'+$room_id+'"]').change(function() {
-                              let check = $(this);
-                              if (check.prop('checked' , true)){ 
-                              $('input[name ="Group'+ $room_id +'"]').prop('checked' , true);
-                              }else if ('checked' , false)){
-                              $('input[name ="Group'+ $room_id +'"]').prop('checked' , false);
-                              }
-                            });
-                            
+                                  let check = $(this);
+                                  if (check.prop('checked' , true)){ 
+                                    $('input[name ="Group'+ $room_id +'"]').prop('checked' , true);
+                                  }else if ('checked' , false){
+                                    $('input[name ="Group'+ $room_id +'"]').prop('checked' , false);
+                                  }
+                   
                             </script>
+                            
                         </div>
                     </div>
                 </div>

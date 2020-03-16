@@ -92,31 +92,7 @@ html;
                         </div>
                     </div>
                 </div>
-             
-                    <script>
-                    function buttonUpDate(){
-                    
-                    $('input[type="checkbox"]').click( function(){
-                        let roomName = this.parent.name;
-                        let chkId = '';
-                        $('.chkNumber:checked').each(function() {
-                          chkId += $(this).val() + ",";
-                          
-                           if($('input[type="checkbox"]').val("on")){
-                                alert(roomName +"devices on");  
-                                //script hear
-                            }else if ($('input[type="checkbox"]').val("off")){
-                                 alert(roomName +"devices off");  
-                            }
-                           
-                          alert($(this).val()+ "test 1");  
-                        });
-                    alert($(this).val()+"test 2");  
-                    
-                      });                        
-                    }
 
-                    </script>
 html;
             }
         }

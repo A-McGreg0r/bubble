@@ -18,21 +18,19 @@ function toggleRoom(room_id){
 
 
 function toggleDevice(device_id) {
-    alert("Hello! I am an alert box!!");
-    let url = "/required/action_device.php?type=device&id=" + device_id;
-    let request = new XMLHttpRequest();
-    request.open('POST', url, true);
-    request.onload = function () {
-
-        console.log(request.responseText);
-    };
-
-    request.onerror = function () {
-
-    };
-
-    request.send(new FormData(event.target));
-    event.preventDefault();
+    let url = "required/action_device.php?type=device&id=" + device_id;
+    
+    $.ajax({
+        type:'POST',
+        url: url,
+        data:{ type: "device", id: device_id},
+        success:function(data){
+            alert(data);
+        },
+        error: function(data){
+            alert("error!");
+        }
+    });
 }
 
 

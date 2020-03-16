@@ -72,28 +72,51 @@ html;
                         <div class="d-flex flex-column">
                             <!-- Default switch -->
                             <div class="custom-control custom-switch">
-                                <form onsubmit="toggleRoom($room_id;)" method="POST">
-                                    <input type="checkbox" class="custom-control-input" id="$room_name" name="room+$room_id">
+                                <form action="#" method="POST">
+                                    <input type="checkbox" class="custom-control-input" id="$room_name" name="room+$room_id" onclick="toggleRoom($room_id)">
                                     <label class="custom-control-label" for="$room_name">off/on</label>
                                 </form>
                             </div>
-                            
                             <script>
-                            $('input[name ="room'+$room_id+'"]').change(function() {
-                                  let check = $(this);
-                                  if (check.prop('checked' , true)){ 
-                                    $('input[name ="Group'+ $room_id +'"]').prop('checked' , true);
-                                  }else if ('checked' , false){
-                                    $('input[name ="Group'+ $room_id +'"]').prop('checked' , false);
-                                  }
-                                  });
-                   
-                            </script>
                             
+                            $('input[name ="room'+$room_id+'"]').change(function() {
+                              let check = $(this);
+                              if (check.prop('checked' , true)){ 
+                              $('input[name ="Group'+ $room_id +'"]').prop('checked' , true);
+                              }else if ('checked' , false)){
+                              $('input[name ="Group'+ $room_id +'"]').prop('checked' , false);
+                              }
+                            });
+                            
+                            </script>
                         </div>
                     </div>
                 </div>
+             
+                    <script>
+                    function buttonUpDate(){
+                    
+                    $('input[type="checkbox"]').click( function(){
+                        let roomName = this.parent.name;
+                        let chkId = '';
+                        $('.chkNumber:checked').each(function() {
+                          chkId += $(this).val() + ",";
+                          
+                           if($('input[type="checkbox"]').val("on")){
+                                alert(roomName +"devices on");  
+                                //script hear
+                            }else if ($('input[type="checkbox"]').val("off")){
+                                 alert(roomName +"devices off");  
+                            }
+                           
+                          alert($(this).val()+ "test 1");  
+                        });
+                    alert($(this).val()+"test 2");  
+                    
+                      });                        
+                    }
 
+                    </script>
 html;
             }
         }

@@ -58,7 +58,7 @@ html;
                 $icon = $row3['type_icon'];
 
                 $stmt4 = $db->prepare("SELECT * FROM room_info WHERE room_id = ?");
-                $stmt4->bind_param("i", $room_id);
+                $stmt4->bind_param("i", $device_room_id);
                 $stmt4->execute();
 
                 $result4 = $stmt4->get_result();
@@ -95,7 +95,7 @@ html;
                                 $icon &nbsp; $device_name
                                  </div>
                             <div class="flex-sm-row">
-                                Room: &nbsp; $room_type
+                                room: &nbsp; $room_type
                             </div>                                
                             
                         </div>
@@ -105,24 +105,9 @@ html;
                             <!-- Default switch -->
                             <div class="custom-control custom-switch">
                                <form action="#" method="POST">
-                                    <input type="checkbox" class="custom-control-input" id="$device_name" name="Group+$room_id">
+                                    <input type="checkbox" class="custom-control-input" id="$device_name" name="Group+$room_id" onclick="toggleDevice($device_id)">
                                     <label class="custom-control-label" for="$device_name">off/on</label>
                                </form>
-                               <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-                               <script>
-                                $('#$device_name').change(function() {
-                                    let check = $(this);
-                                    $(this).load("alert.php");                               
-                                    if (check.prop('checked') === true){
-                                        alert('ON $device_id');
-                                        $(this).load("alert.php");  
-                                    }
-				                    else {
-				                        alert('OFF $device_id');
-                                        $(this).load("alert.php");  
-				                    }  
-                                 });
-                               </script>
                             </div>
                         </div>
                     </div>
@@ -138,3 +123,4 @@ html;
     return $html;
 }
 ?>
+

@@ -58,7 +58,7 @@ html;
                 $icon = $row3['type_icon'];
 
                 $stmt4 = $db->prepare("SELECT * FROM room_info WHERE room_id = ?");
-                $stmt4->bind_param("i", $device_room_id);
+                $stmt4->bind_param("i", $room_id);
                 $stmt4->execute();
 
                 $result4 = $stmt4->get_result();
@@ -95,7 +95,7 @@ html;
                                 $icon &nbsp; $device_name
                                  </div>
                             <div class="flex-sm-row">
-                                room: &nbsp; $room_type
+                                Room: &nbsp; $room_type
                             </div>                                
                             
                         </div>

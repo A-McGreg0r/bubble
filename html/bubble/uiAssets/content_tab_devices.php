@@ -105,24 +105,9 @@ html;
                             <!-- Default switch -->
                             <div class="custom-control custom-switch">
                                <form action="#" method="POST">
-                                    <input type="checkbox" class="custom-control-input" id="$device_name" name="Group+$room_id">
+                                    <input type="checkbox" class="custom-control-input" id="$device_name" name="Group+$room_id" onclick="toggleDevice()">
                                     <label class="custom-control-label" for="$device_name">off/on</label>
                                </form>
-                               <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-                               <script>
-                                $('#$device_name').change(function() {
-                                    let check = $(this);
-                                    $(this).load("alert.php");                               
-                                    if (check.prop('checked') === true){
-                                        alert('ON $device_id');
-                                        $(this).load("alert.php");  
-                                    }
-				                    else {
-				                        alert('OFF $device_id');
-                                        $(this).load("alert.php");  
-				                    }  
-                                 });
-                               </script>
                             </div>
                         </div>
                     </div>

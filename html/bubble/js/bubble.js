@@ -4,7 +4,7 @@ function toggleRoom(room_id){
     let request = new XMLHttpRequest();
     request.open('POST', url, true);
     request.onload = function () {
-
+        
         console.log(request.responseText);
     };
 

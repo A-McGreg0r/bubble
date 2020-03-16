@@ -1,19 +1,18 @@
 
 function toggleRoom(room_id){
-    let url = "/required/action_device.php?type=room&id=" + room_id;
-    let request = new XMLHttpRequest();
-    request.open('POST', url, true);
-    request.onload = function () {
-        
-        console.log(request.responseText);
-    };
-
-    request.onerror = function () {
-
-    };
-
-    request.send(new FormData(event.target));
-    event.preventDefault();
+    let url = "required/action_device.php";
+    
+    $.ajax({
+        type:'POST',
+        url: url,
+        data:{ type: "room", id: room_id},
+        success:function(data){
+            alert(data);
+        },
+        error: function(data){
+            alert("error!");
+        }
+    });
 }
 
 

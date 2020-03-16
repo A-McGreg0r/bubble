@@ -17,15 +17,33 @@ function generateAccount(){
             $html = <<<html
         <div class="container-fluid justify-content-center">
         <!-- Card --> 
-            <div class="card justify-content-center">
-            
-            <!-- Card Title-->
-            <h4 class="card-title mb-0 mt-3">
-                <strong>My Account</strong>
-            </h4>
-            
-            <!-- Card content -->
-                <div class="card-body">
+            <div class="card mb-4 container">
+                <!--Card image-->
+                <div class="view overlay">
+                    <div class="mask rgba-white-slight"></div>
+                </div>
+        
+                <!--Card content-->
+                <div class="card-body d-flex justify-content-between">
+        
+                <!--Title-->      
+                    <div class="d-flex flex-column">  
+                        My Account
+                    </div>
+                    
+                    <div class="d-flex flex-column">
+                        <i class="far fa-plus-square"></i>
+                    </div>
+                </div>
+            </div>            
+            <div class="card mb-4 container text-dark grey-out">
+                <!--Card image-->
+                <div class="view overlay">
+                    <div class="mask rgba-white-slight"></div>
+                </div>
+              
+                <!--Card content-->
+                <div class="card-body d-flex justify-content-between">
                     <!--Email-->
                     <div class="row-md-12">
                         <p class="h6">Email: $email</p> 

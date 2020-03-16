@@ -48,7 +48,7 @@ html;
                 $device_id = $row['device_id'];
                 $device_name = $row['device_name'];
                 $device_type = $row['device_type'];
-                $deviceLocation = json_encode($row['room_id']);
+                $room_id = json_encode($row['room_id']);
 
                 $stmt3 = $db->prepare("SELECT * FROM device_types WHERE type_id = ?");
                 $stmt3->bind_param("i", $device_type);
@@ -105,7 +105,7 @@ html;
                             <!-- Default switch -->
                             <div class="custom-control custom-switch">
                                <form action="#" method="POST">
-                                    <input type="checkbox" class="custom-control-input" id="$device_name" name="Group+$deviceLocation">
+                                    <input type="checkbox" class="custom-control-input" id="$device_name" name="Group+$room_id">
                                     <label class="custom-control-label" for="$device_name">off/on</label>
                                </form>
                                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

@@ -73,18 +73,18 @@ html;
                             <!-- Default switch -->
                             <div class="custom-control custom-switch">
                                 <form onsubmit="toggleRoom($room_id;)" method="POST">
-                                    <input type="checkbox" name="" class="custom-control-input" id="$room_name">
+                                    <input type="checkbox" name="" class="custom-control-input" id="$room_name" name="room+$room_id>
                                     <label class="custom-control-label" for="$room_name">off/on</label>
                                 </form>
                             </div>
                             <script>
                             
-                            $('input[name ="check'+$room_id+'"]').change(function() {
+                            $('input[name ="room'+$room_id+'"]').change(function() {
                               let check = $(this);
                               if (check.prop('checked' , true)){ 
-                              $('input[name ="Group'+$room_id+'"]').prop('checked' , true);
+                              $('input[name ="Group'+ $room_id +'"]').prop('checked' , true);
                               }else if ('checked' , false)){
-                              $('input[name ="Group'+$room_id+'"]').prop('checked' , false);
+                              $('input[name ="Group'+ $room_id +'"]').prop('checked' , false);
                               }
                             });
                             

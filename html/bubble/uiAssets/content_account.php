@@ -17,39 +17,32 @@ function generateAccount(){
             $html = <<<html
         <div class="container-fluid justify-content-center">
         <!-- Card --> 
-            <div class="card justify-content-center">
-            
-            <!-- Card Title-->
-            <h4 class="card-title mb-0 mt-3">
-                <strong>My Account</strong>
-            </h4>
-            
-            <!-- Card content -->
-                <div class="card-body">
+            <div class="card mb-4 container">
+                <!--Card content-->
+                <div class="card-body d-flex justify-content-between">
+        
+                    <div class="d-flex flex-column">  
+                        <h4>My Account</h4>
+                    </div>
+                </div>
+            </div>            
+            <div class="card mb-4 container text-dark grey-out">
+                <!--Card content-->
+                <div class="d-flex flex-nowrap justify-content-between">
                     <!--Email-->
-                    <div class="row-md-12">
-                        <p class="h6">Email: $email</p> 
+                    <div class="p-2">
+                        <p class="">Email: $email</p> 
                     </div>
                     <!--Name Details-->
-                    <div class="row-md-12">
-                        <div class="col-md-6">
-                            <p class="h6">First Name: $first_name  </p>    
-                        </div>
-                        
-                        <div class="col-md-6">
-                            <p class="h6"> Surename: $last_name  </p> 
-                        </div>
+                    <div class="p-2">
+                        <p class="">First Name: $first_name</p>    
+                        <p class="">Last Name: $last_name</p> 
                     </div>  
                         
                     <!--Address details-->
-                    <div class="row-md-12">
-                        <div class="col-md-6">
-                            <p class="h6">Address:  $address_l1 $address_l2   </p>    
-                        </div>
-                        
-                        <div class="col-md-6">
-                            <p class="h6"> Postcode: $postcode  </p> 
-                        </div>
+                    <div class="p-2">
+                        <p class="">Address: $address_l1 $address_l2</p>    
+                        <p class="">Postcode: $postcode</p> 
                     </div>  
 
                     <!--Button to delete account  will change to have conformation-->          

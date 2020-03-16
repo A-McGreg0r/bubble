@@ -18,7 +18,7 @@ function toggleRoom(room_id){
 
 
 function toggleDevice(device_id) {
-    let url = "required/action_device.php?type=device&id=" + device_id;
+    let url = "required/action_device.php";
     
     $.ajax({
         type:'POST',

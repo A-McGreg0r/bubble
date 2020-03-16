@@ -105,7 +105,7 @@ html;
                             <!-- Default switch -->
                             <div class="custom-control custom-switch">
                                <form action="#" method="POST">
-                                    <input type="checkbox" class="custom-control-input" id="$device_name" name="Group+$room_id" onclick="toggleDevice()">
+                                    <input type="checkbox" class="custom-control-input" id="$device_name" name="Group+$room_id" onclick="toggleDevice($device_id)">
                                     <label class="custom-control-label" for="$device_name">off/on</label>
                                </form>
                             </div>

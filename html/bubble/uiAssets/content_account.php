@@ -27,27 +27,22 @@ function generateAccount(){
                 </div>
             </div>            
             <div class="card mb-4 container text-dark grey-out">
-                <!--Card image-->
-                <div class="view overlay">
-                    <div class="mask rgba-white-slight"></div>
-                </div>
-              
                 <!--Card content-->
-                <div class="card-body d-flex justify-content-between">
+                <div class="d-flex flex-nowrap justify-content-between">
                     <!--Email-->
-                    <div class="row-md-12">
+                    <div class="p-2">
                         <p class="h6">Email: $email</p> 
                     </div>
                     <!--Name Details-->
-                    <div class="row-md-12">
-                        <p class="h6">First Name: $first_name  </p>    
-                        <p class="h6"> Last Name: $last_name  </p> 
+                    <div class="p-2">
+                        <p class="h6">First Name: $first_name</p>    
+                        <p class="h6">Last Name: $last_name</p> 
                     </div>  
                         
                     <!--Address details-->
-                    <div class="row-md-12">
-                        <p class="h6">Address:  $address_l1 $address_l2   </p>    
-                        <p class="h6"> Postcode: $postcode  </p> 
+                    <div class="p-2">
+                        <p class="h6">Address: $address_l1 $address_l2</p>    
+                        <p class="h6">Postcode: $postcode</p> 
                     </div>  
 
                     <!--Button to delete account  will change to have conformation-->          

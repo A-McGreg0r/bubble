@@ -82,9 +82,9 @@ html;
                             $('input[name ="check'+$room_id+'"]').change(function() {
                               let check = $(this);
                               if (check.prop('checked' , true)){ 
-                              $('input[name ="Group'+$room_id+'"]').prop('checked' , true);
+                              $('input[name ="Group'+ $room_id +'"]').prop('checked' , true);
                               }else if ('checked' , false)){
-                              $('input[name ="Group'+$room_id+'"]').prop('checked' , false);
+                              $('input[name ="Group'+ $room_id +'"]').prop('checked' , false);
                               }
                             });
                             

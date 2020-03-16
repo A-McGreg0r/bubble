@@ -31,18 +31,18 @@ function generateAccount(){
                 <div class="d-flex flex-nowrap justify-content-between">
                     <!--Email-->
                     <div class="p-2">
-                        <p class="h6">Email: $email</p> 
+                        <p class="">Email: $email</p> 
                     </div>
                     <!--Name Details-->
                     <div class="p-2">
-                        <p class="h6">First Name: $first_name</p>    
-                        <p class="h6">Last Name: $last_name</p> 
+                        <p class="">First Name: $first_name</p>    
+                        <p class="">Last Name: $last_name</p> 
                     </div>  
                         
                     <!--Address details-->
                     <div class="p-2">
-                        <p class="h6">Address: $address_l1 $address_l2</p>    
-                        <p class="h6">Postcode: $postcode</p> 
+                        <p class="">Address: $address_l1 $address_l2</p>    
+                        <p class="">Postcode: $postcode</p> 
                     </div>  
 
                     <!--Button to delete account  will change to have conformation-->          

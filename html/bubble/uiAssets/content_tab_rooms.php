@@ -79,17 +79,14 @@ html;
                             </div>
                             <script>
                             
-                            $('input[name ="check"]').change(function() {
+                            $('input[name ="check'+$room_id+'"]').change(function() {
                               let check = $(this);
-                              if (check.prop('checked') == true){ 
-                              $('input[name ="Group1"]') .prop('checked' , 'true');
-                              }else if (check.prop('checked') == false){
-                                alert(check+" was set to false");
-                              $('input[name ="Group1"]') .prop('checked' , 'false');
+                              if (check.prop('checked' , true)){ 
+                              $('input[name ="Group'+$room_id+'"]').prop('checked' , true);
+                              }else if ('checked' , false)){
+                              $('input[name ="Group'+$room_id+'"]').prop('checked' , false);
                               }
                             });
-                            let roomName = '<?php echo $room_name; ?>';
-                            console.log(roomName);
                             
                             </script>
                         </div>

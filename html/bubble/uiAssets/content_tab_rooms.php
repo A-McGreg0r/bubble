@@ -78,13 +78,13 @@ html;
                                 </form>
                             </div>
                             <script>
-                            
-                            $('input[name ="room'+$room_id+'"]').change(function() {
+                            let room_ident=(json.stringify($room_id).trim())
+                            $('input[name ="room'+room_ident+'"]').change(function() {
                               let check = $(this);
                               if (check.prop('checked' , true)){ 
-                              $('input[name ="Group'+ $room_id +'"]').prop('checked' , true);
+                              $('input[name ="Group'+ room_ident +'"]').prop('checked' , true);
                               }else if ('checked' , false)){
-                              $('input[name ="Group'+ $room_id +'"]').prop('checked' , false);
+                              $('input[name ="Group'+ room_ident +'"]').prop('checked' , false);
                               }
                             });
                             
@@ -92,31 +92,7 @@ html;
                         </div>
                     </div>
                 </div>
-             
-                    <script>
-                    function buttonUpDate(){
-                    
-                    $('input[type="checkbox"]').click( function(){
-                        let roomName = this.parent.name;
-                        let chkId = '';
-                        $('.chkNumber:checked').each(function() {
-                          chkId += $(this).val() + ",";
-                          
-                           if($('input[type="checkbox"]').val("on")){
-                                alert(roomName +"devices on");  
-                                //script hear
-                            }else if ($('input[type="checkbox"]').val("off")){
-                                 alert(roomName +"devices off");  
-                            }
-                           
-                          alert($(this).val()+ "test 1");  
-                        });
-                    alert($(this).val()+"test 2");  
-                    
-                      });                        
-                    }
 
-                    </script>
 html;
             }
         }

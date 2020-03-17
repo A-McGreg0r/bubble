@@ -78,7 +78,7 @@ html;
                                 </form>
                             </div>
                             <script>
-                            let room_ident=(json.stringify($room_id).trim())
+                            let room_ident=(json.stringify($room_id).trim();)
                             $('input[name ="room'+room_ident+'"]').change(function() {
                               let check = $(this);
                               if (check.prop('checked' , true)){ 

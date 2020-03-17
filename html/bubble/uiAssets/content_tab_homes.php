@@ -47,7 +47,6 @@ function generateHomeTab()
                     $dataPoints = array();
                     $AvgPoints = array();
                     $dataLabels = array();
-                    $y = 40;
 
                     for ($i = 1; $i <= 12; $i++) {
                         $y = rand(0, 500);

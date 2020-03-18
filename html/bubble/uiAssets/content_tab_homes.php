@@ -128,7 +128,7 @@ function generateHomeTab()
                             <!--todo change 3 donuts to carousels-->
                                 <div class="flex-sm-row ">    
 
-                                <h4 class="section-title">Statistics</h4>
+                                <h4 class="section-title">Overview</h4>
                                 <table class="stats-table">
                                     <tr class="stats-row">
                                         <td class="stats-left"><strong>&ensp;Spent Today:</strong></td>

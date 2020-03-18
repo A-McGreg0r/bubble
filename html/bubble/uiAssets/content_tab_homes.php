@@ -53,9 +53,11 @@ function generateHomeTab()
                         $y = rand(0, 500);
                         array_push($dataPoints, array($y));
                         array_push($dataLabels, array($i));
-                        $avg = array_sum($dataPoints) / count($dataPoints);
-                        array_push($AvgPoints, array($avg));
                         $sumDataYear += $y;
+                    }
+                    for ($i = 1; $i <= 12; $i++){
+                        $count = $sumDataYear / 12;
+                        array_push($AvgPoints, array($count));
                     }
                     $DataLabelsYearEncoded = json_encode($dataLabels);
                     $dataPointsYearEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
@@ -72,9 +74,11 @@ function generateHomeTab()
                         $y = rand(0, 250);
                         array_push($dataPoints, array($y));
                         array_push($dataLabels, array($i));
-                        $avg = array_sum($dataPoints) / count($dataPoints);
-                        array_push($AvgPoints, array($avg));
                         $sumDataMonth += $y;
+                    }
+                    for ($i = 1; $i <= 31; $i++) {
+                        $count = $sumDataMonth / 31;
+                        array_push($AvgPoints, array($count));
                     }
                     $DataSumMonthEncoded = json_encode(array_sum($dataPoints), JSON_NUMERIC_CHECK);
                     $DataLabelsMonthEncoded = json_encode($dataLabels);
@@ -91,9 +95,11 @@ function generateHomeTab()
                         $y = rand(0, 100);
                         array_push($dataPoints, array($y));
                         array_push($dataLabels, array($i));
-                        $avg = array_sum($dataPoints) / count($dataPoints);
-                        array_push($AvgPoints, array($avg));
-                        $sumDataDay =+ $y;
+                        $sumDataDay += $y;
+                    }
+                    for ($i = 1; $i <= 24; $i++) {
+                        $count = $sumDataDay / 24;
+                        array_push($AvgPoints, array($count));
                     }
                     $DataLabelsDayEncoded = json_encode($dataLabels);
                     $dataPointsDayEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
@@ -274,11 +280,11 @@ function generateHomeTab()
                                         //Supplied Datasets to display
                                         //hourly 1 upto 24
                                         //TODO change expected usage to power genarated once implmented
-                                        let data1 = { "labels": $DataLabelsYearEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "Average", "data": $dataAvgYearEncoded, "backgroundColor": "rgba(109, 171, 166, 0.7)", "borderColor": "rgba(109, 171, 166, 1)", "borderWidth": 3 },{ "label": "Power Usage", "data": $dataPointsYearEncoded, "backgroundColor": "rgba(0, 0, 0, 0.1)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
+                                        let data1 = { "labels": $DataLabelsYearEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "Average", "data": $dataAvgYearEncoded, "backgroundColor": "rgba(109, 171, 166, 0)", "borderColor": "rgba(109, 171, 166, 1)", "borderWidth": 3 },{ "label": "Power Usage", "data": $dataPointsYearEncoded, "backgroundColor": "rgba(0, 0, 0, 0.1)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
                                         //days upto 31 days
-                                        let data2 = { "labels": $DataLabelsMonthEncoded,"label": "Expected Usage:", "datasets": [{ "label": "Average", "data": $dataAvgMonthEncoded, "backgroundColor": "rgba(109, 171, 166, 0.7)", "borderColor": "rgba(109, 171, 166, 1)", "borderWidth": 3 },{ "label": "Power Usage", "data": $dataPointsMonthEncoded, "backgroundColor": "rgba(0, 0, 0, 0.1)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
+                                        let data2 = { "labels": $DataLabelsMonthEncoded,"label": "Expected Usage:", "datasets": [{ "label": "Average", "data": $dataAvgMonthEncoded, "backgroundColor": "rgba(109, 171, 166, 0)", "borderColor": "rgba(109, 171, 166, 1)", "borderWidth": 3 },{ "label": "Power Usage", "data": $dataPointsMonthEncoded, "backgroundColor": "rgba(0, 0, 0, 0.1)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
                                         //months upto 12
-                                        let data3 = { "labels": $DataLabelsDayEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "Average", "data": $dataAvgDayEncoded, "backgroundColor": "rgba(109, 171, 166, 0.7)", "borderColor": "rgba(109, 171, 166, 1)", "borderWidth": 3 },{ "label": "Power Usage", "data": $dataPointsDayEncoded, "backgroundColor": "rgba(0, 0, 0, 0.1)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
+                                        let data3 = { "labels": $DataLabelsDayEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "Average", "data": $dataAvgDayEncoded, "backgroundColor": "rgba(109, 171, 166, 0)", "borderColor": "rgba(109, 171, 166, 1)", "borderWidth": 3 },{ "label": "Power Usage", "data": $dataPointsDayEncoded, "backgroundColor": "rgba(0, 0, 0, 0.1)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
                                         
 
                                         // Draw the initial chart

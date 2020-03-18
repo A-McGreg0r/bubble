@@ -47,7 +47,6 @@ function generateHomeTab()
                     $dataPoints = array();
                     $AvgPoints = array();
                     $dataLabels = array();
-                    $y = 40;
 
                     for ($i = 1; $i <= 12; $i++) {
                         $y = rand(0, 500);
@@ -112,19 +111,20 @@ function generateHomeTab()
         
                         <!-- Card body -->
                         <div id="collapse$hub_id" class="collapse show" role="tabpanel" aria-labelledby="heading$hub_id" data-parent="#accordionEx194">
-                            <div class="card-body pt-0 justify-content-center " style="max-width:95%">
+                            <div class="card-body pt-0 justify-content-center " style="max-width:100%">
                             <!--todo change 3 donuts to carousels-->
                                 <div class="flex-sm-row ">    
                                 
                                 
                                 <!--Carousel Container--> 
+                                <h4 class="section-title">Expenditure</h4>
                                     <div id="chart-carousel" class="carousel slide" data-ride="carousel">
                                         <!--Donut carousel-->
                                         <div class="carousel-inner">
                                         
                                             <!--Donut 1-->
                                                   <div class="carousel-item active">                           
-                                                        <div class="col border border-primary rounded m-2" style="max-width:95%">
+                                                        <div class="col border border-primary rounded m-2" style="max-width:100%">
                                                             <h4 class="text-centre text-dark centre-text">Daily</h4>
                                                             
                                                             <canvas style="max-width:50% min-width:30%" id="heatingUsage"></canvas>
@@ -184,7 +184,7 @@ function generateHomeTab()
                                             
                                             <!--Donut 3-->             
                                                   <div class="carousel-item">
-                                                        <div class="col border border-primary rounded m-2" style="max-width:95%">
+                                                        <div class="col border border-primary rounded m-2" style="max-width:100%">
                                                             <h4 class="text-centre text-dark centre-text">Variance</h4>
                                                             <canvas style="max-width:50% min-width:30%" id="heatingUsage2"></canvas>
                                                             <script>
@@ -218,8 +218,11 @@ function generateHomeTab()
                                          </script>
                                     </div>
                                     <!--Carousel Container-->
+
+                                    <hr class="section-break">
+                                    <h4 class="section-title overview">Power Usage</h4>
                                     
-                                    <div calss="container border border-primary">
+                                    <div class="container border border-primary">
                                           <!--change chart drop down-->
                                             <select id="chartPicker" class="browser-default custom-select dropdown">
                                                 <option selected="selected">Choose time period</option>
@@ -235,11 +238,11 @@ function generateHomeTab()
                                         //Supplied Datasets to display
                                         //hourly 1 upto 24
                                         //TODO change expected usage to power genarated once implmented
-                                        let data1 = { "labels": $DataLabelsYearEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "avg", "data": $dataAvgYearEncoded, "backgroundColor": "rgba(109, 171, 166, 0.7)", "borderColor": "rgba(109, 171, 166, 1)", "borderWidth": 3 },{ "label": "Power usage", "data": $dataPointsYearEncoded, "backgroundColor": "rgba(56, 56, 56, 0.7)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
+                                        let data1 = { "labels": $DataLabelsYearEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "Average", "data": $dataAvgYearEncoded, "backgroundColor": "rgba(109, 171, 166, 0.7)", "borderColor": "rgba(109, 171, 166, 1)", "borderWidth": 3 },{ "label": "Power Usage", "data": $dataPointsYearEncoded, "backgroundColor": "rgba(56, 56, 56, 0.7)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
                                         //days upto 31 days
-                                        let data2 = { "labels": $DataLabelsMonthEncoded,"label": "Expected Usage:", "datasets": [{ "label": "avg", "data": $dataAvgMonthEncoded, "backgroundColor": "rgba(109, 171, 166, 0.7)", "borderColor": "rgba(109, 171, 166, 1)", "borderWidth": 3 },{ "label": "Power usage", "data": $dataPointsMonthEncoded, "backgroundColor": "rgba(56, 56, 56, 0.7)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
+                                        let data2 = { "labels": $DataLabelsMonthEncoded,"label": "Expected Usage:", "datasets": [{ "label": "Average", "data": $dataAvgMonthEncoded, "backgroundColor": "rgba(109, 171, 166, 0.7)", "borderColor": "rgba(109, 171, 166, 1)", "borderWidth": 3 },{ "label": "Power Usage", "data": $dataPointsMonthEncoded, "backgroundColor": "rgba(56, 56, 56, 0.7)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
                                         //months upto 12
-                                        let data3 = { "labels": $DataLabelsDayEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "avg", "data": $dataAvgDayEncoded, "backgroundColor": "rgba(109, 171, 166, 0.7)", "borderColor": "rgba(109, 171, 166, 1)", "borderWidth": 3 },{ "label": "Power usage", "data": $dataPointsDayEncoded, "backgroundColor": "rgba(56, 56, 56, 0.7)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
+                                        let data3 = { "labels": $DataLabelsDayEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "Average", "data": $dataAvgDayEncoded, "backgroundColor": "rgba(109, 171, 166, 0.7)", "borderColor": "rgba(109, 171, 166, 1)", "borderWidth": 3 },{ "label": "Power Usage", "data": $dataPointsDayEncoded, "backgroundColor": "rgba(56, 56, 56, 0.7)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
                                         
 
                                         // Draw the initial chart

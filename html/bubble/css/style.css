@@ -2,6 +2,7 @@ html, body {
     height: 100%;
     background-color: #ffffff;
     overflow-y: overlay;
+    overflow-x: hidden;
 }
 
 h2 {
@@ -153,4 +154,101 @@ ul {
 
 .mr-auto {
     margin-top: 0!important;
+}
+
+p {
+    margin-bottom: 0!important;
+}
+
+.account-heading {
+    padding-left: 0.5rem!important;
+    font-weight: 900!important;
+}
+
+h4 {
+    font-weight: 800;
+}
+
+.small-gap {
+    padding-bottom: 0!important;
+}
+
+.border-upper {
+    border-top: 1px solid rgba(0,0,0,0.125);
+}
+
+.container-fluid {
+    margin-bottom: 15px;
+}
+
+.account-table {
+    margin-left: 0.5rem!important;
+    font-size: 1rem!important;
+    width: 95%;
+    overflow-x: scroll;
+}
+
+strong {
+    font-weight: bold!important;
+}
+
+table {
+    overflow: auto;
+}
+
+table td {
+    font-size: 1rem!important;
+    height: 3rem!important;
+    white-space: nowrap;
+}
+
+.account-row {
+    border-radius: 0.25rem!important;
+}
+
+.account-table {
+    width: calc(100% - 15px);
+    display: block;
+}
+
+.account-row:nth-of-type(even), .account-first {
+    background-color: rgba(0,0,0,.05)!important;
+}
+
+.right-column {
+    text-align: right;
+}
+
+.btn.btn-sm {
+    font-size: 0.9rem!important;
+}
+
+.carousel {
+    padding-bottom: 2rem!important;
+}
+
+hr {
+    width: 120%;
+    margin-left: -1rem!important;
+}
+
+.overview {
+    margin-bottom: 1rem!important;
+}
+
+.section-title {
+    display: block!important;
+    margin-left: 20%!important;
+    margin-right: 20%!important;
+    padding: 1rem!important;
+    border: 1px solid rgb(109, 171, 166)!important;
+    background-color: rgba(56, 56, 56, 0.7)!important;
+    color: white;
+    border-radius: 0.25rem!important;
+    text-align: center;
+    margin-bottom: 2rem!important;
+}
+
+.m-2 {
+    margin: 0!important;
 }

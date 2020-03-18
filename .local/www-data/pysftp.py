@@ -4,10 +4,8 @@ os.system('cd /var/www/.local/www-data/')
 def write_file(tmp):
   file = open(tmp, 'w')
   file.write('{\n')
-#  file.write('\t"device": "'+sys.argv[1]+'",\n')
-  file.write('\t"device": "7357",\n')
-#  file.write('\t"state": "'+sys.argv[2]+'"\n')
-  file.write('\t"state": "0"\n')
+  file.write('\t"device": "'+sys.argv[1]+'",\n')
+  file.write('\t"state": "'+sys.argv[2]+'"\n')
   file.write('}\n')
   file.close()
 

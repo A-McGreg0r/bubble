@@ -47,6 +47,7 @@ function generateHomeTab()
                     $dataPoints = array();
                     $AvgPoints = array();
                     $dataLabels = array();
+                    $sumDataYear = 0;
 
                     for ($i = 1; $i <= 12; $i++) {
                         $y = rand(0, 500);
@@ -54,6 +55,7 @@ function generateHomeTab()
                         array_push($dataLabels, array($i));
                         $avg = array_sum($dataPoints) / count($dataPoints);
                         array_push($AvgPoints, array($avg));
+                        $sumDataYear += $y;
                     }
                     $DataLabelsYearEncoded = json_encode($dataLabels);
                     $dataPointsYearEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
@@ -64,6 +66,7 @@ function generateHomeTab()
                     $dataPoints = array();
                     $AvgPoints = array();
                     $dataLabels = array();
+                    $sumDataMonth = 0;
 
                     for ($i = 1; $i <= 31; $i++) {
                         $y = rand(0, 250);
@@ -71,7 +74,9 @@ function generateHomeTab()
                         array_push($dataLabels, array($i));
                         $avg = array_sum($dataPoints) / count($dataPoints);
                         array_push($AvgPoints, array($avg));
+                        $sumDataMonth += $y;
                     }
+                    $DataSumMonthEncoded = json_encode(array_sum($dataPoints), JSON_NUMERIC_CHECK);
                     $DataLabelsMonthEncoded = json_encode($dataLabels);
                     $dataPointsMonthEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
                     $dataAvgMonthEncoded = json_encode($AvgPoints, JSON_NUMERIC_CHECK);
@@ -80,6 +85,7 @@ function generateHomeTab()
                     $dataPoints = array();
                     $AvgPoints = array();
                     $dataLabels = array();
+                    $sumDataDay = 0;
 
                     for ($i = 1; $i <= 24; $i++) {
                         $y = rand(0, 100);
@@ -87,6 +93,7 @@ function generateHomeTab()
                         array_push($dataLabels, array($i));
                         $avg = array_sum($dataPoints) / count($dataPoints);
                         array_push($AvgPoints, array($avg));
+                        $sumDataDay =+ $y;
                     }
                     $DataLabelsDayEncoded = json_encode($dataLabels);
                     $dataPointsDayEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
@@ -114,6 +121,35 @@ function generateHomeTab()
                             <div class="card-body pt-0 justify-content-center " style="max-width:100%">
                             <!--todo change 3 donuts to carousels-->
                                 <div class="flex-sm-row ">    
+
+                                <h4 class="section-title">Statistics</h4>
+                                <table class="stats-table">
+                                    <tr class="stats-row">
+                                        <td class="stats-left"><strong>&ensp;Spent Today:</strong></td>
+                                        <td class="stats-right">£$cost_day&ensp;</td>
+                                    </tr>
+                                    <tr class="stats-row">
+                                        <td class="stats-left"><strong>&ensp;Power Used Today:</strong></td>
+                                        <td class="stats-right">$sumDataDay W&ensp;</td>
+                                    </tr>
+                                    <tr class="stats-row">
+                                        <td class="stats-left"><strong>&ensp;Spent This Month:</strong></td>
+                                        <td class="stats-right">£$cost_month&ensp;</td>
+                                    </tr>
+                                    <tr class="stats-row">
+                                        <td class="stats-left"><strong>&ensp;Power Used This Month:&ensp;&ensp;</strong></td>
+                                        <td class="stats-right">$sumDataMonth W&ensp;</td>
+                                    </tr>
+                                    <tr class="stats-row">
+                                        <td class="stats-left"><strong>&ensp;Spent This Year:</strong></td>
+                                        <td class="stats-right">£$cost_total&ensp;</td>
+                                    </tr>
+                                    <tr class="stats-row">
+                                        <td class="stats-left"><strong>&ensp;Power Used This Year:</strong></td>
+                                        <td class="stats-right">$sumDataYear W&ensp;</td>
+                                    </tr>
+                                </table>
+                                <hr>
                                 
                                 
                                 <!--Carousel Container--> 
@@ -138,8 +174,8 @@ function generateHomeTab()
                                                                 labels: ["Spent [£]", "Remaining [£]"],
                                                                 datasets: [{
                                                                 data: [$cost_day, $cost_variance],
-                                                                backgroundColor: ["rgba(109, 171, 166, 1)", "#D3D3D3"],
-                                                                hoverBackgroundColor: ["rgba(99, 161, 156, 1)", "#D3D3D3"]
+                                                                backgroundColor: ["rgba(109, 171, 166, 1)", "rgba(0, 0, 0, 0.1)"],
+                                                                hoverBackgroundColor: ["rgba(99, 161, 156, 1)", "rgba(0, 0, 0, 0.15)"]
                                                                 }]
                                                                 },
                                                                 options: {
@@ -168,8 +204,8 @@ function generateHomeTab()
                                                             labels: ["Spent [£]", "Remaining [£]"],
                                                             datasets: [{
                                                             data: [$cost_month, $cost_variance],
-                                                            backgroundColor: ["rgba(109, 171, 166, 1)", "#D3D3D3"],
-                                                            hoverBackgroundColor: ["rgba(99, 161, 156, 1)", "#D3D3D3"]
+                                                            backgroundColor: ["rgba(109, 171, 166, 1)", "rgba(0, 0, 0, 0.1)"],
+                                                            hoverBackgroundColor: ["rgba(99, 161, 156, 1)", "rgba(0, 0, 0, 0.15)"]
                                                             }]
                                                             },
                                                             options: {
@@ -196,8 +232,8 @@ function generateHomeTab()
                                                                 labels: ["Budget [£]", "Variance [£]"],
                                                                 datasets: [{
                                                                 data: [$cost_total, $cost_variance],
-                                                                backgroundColor: ["rgba(109, 171, 166, 1)", "#D3D3D3"],
-                                                                hoverBackgroundColor: ["rgba(99, 161, 156, 1)", "#D3D3D3"]
+                                                                backgroundColor: ["rgba(109, 171, 166, 1)", "rgba(0, 0, 0, 0.1)"],
+                                                                hoverBackgroundColor: ["rgba(99, 161, 156, 1)", "rgba(0, 0, 0, 0.15)"]
                                                                 }]
                                                                 },
                                                                 options: {
@@ -238,11 +274,11 @@ function generateHomeTab()
                                         //Supplied Datasets to display
                                         //hourly 1 upto 24
                                         //TODO change expected usage to power genarated once implmented
-                                        let data1 = { "labels": $DataLabelsYearEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "Average", "data": $dataAvgYearEncoded, "backgroundColor": "rgba(109, 171, 166, 0.7)", "borderColor": "rgba(109, 171, 166, 1)", "borderWidth": 3 },{ "label": "Power Usage", "data": $dataPointsYearEncoded, "backgroundColor": "rgba(56, 56, 56, 0.7)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
+                                        let data1 = { "labels": $DataLabelsYearEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "Average", "data": $dataAvgYearEncoded, "backgroundColor": "rgba(109, 171, 166, 0.7)", "borderColor": "rgba(109, 171, 166, 1)", "borderWidth": 3 },{ "label": "Power Usage", "data": $dataPointsYearEncoded, "backgroundColor": "rgba(0, 0, 0, 0.1)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
                                         //days upto 31 days
-                                        let data2 = { "labels": $DataLabelsMonthEncoded,"label": "Expected Usage:", "datasets": [{ "label": "Average", "data": $dataAvgMonthEncoded, "backgroundColor": "rgba(109, 171, 166, 0.7)", "borderColor": "rgba(109, 171, 166, 1)", "borderWidth": 3 },{ "label": "Power Usage", "data": $dataPointsMonthEncoded, "backgroundColor": "rgba(56, 56, 56, 0.7)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
+                                        let data2 = { "labels": $DataLabelsMonthEncoded,"label": "Expected Usage:", "datasets": [{ "label": "Average", "data": $dataAvgMonthEncoded, "backgroundColor": "rgba(109, 171, 166, 0.7)", "borderColor": "rgba(109, 171, 166, 1)", "borderWidth": 3 },{ "label": "Power Usage", "data": $dataPointsMonthEncoded, "backgroundColor": "rgba(0, 0, 0, 0.1)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
                                         //months upto 12
-                                        let data3 = { "labels": $DataLabelsDayEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "Average", "data": $dataAvgDayEncoded, "backgroundColor": "rgba(109, 171, 166, 0.7)", "borderColor": "rgba(109, 171, 166, 1)", "borderWidth": 3 },{ "label": "Power Usage", "data": $dataPointsDayEncoded, "backgroundColor": "rgba(56, 56, 56, 0.7)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
+                                        let data3 = { "labels": $DataLabelsDayEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "Average", "data": $dataAvgDayEncoded, "backgroundColor": "rgba(109, 171, 166, 0.7)", "borderColor": "rgba(109, 171, 166, 1)", "borderWidth": 3 },{ "label": "Power Usage", "data": $dataPointsDayEncoded, "backgroundColor": "rgba(0, 0, 0, 0.1)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
                                         
 
                                         // Draw the initial chart

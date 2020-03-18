@@ -32,23 +32,23 @@ function generateAccount(){
                     
                 <table class="account-table" align="centre">
                     <tr class="account-row account-first">
-                        <td><strong>&ensp;First Name:</strong></td>
+                        <td class="account-left"><strong>&ensp;First Name:</strong></td>
                         <td class="right-column">$first_name&ensp;</td>
                     <tr>
                     <tr class="account-row">
-                        <td><strong>&ensp;Last Name:</strong></td>
+                        <td class="account-left"><strong>&ensp;Last Name:</strong></td>
                         <td class="right-column">$last_name&ensp;</td>
                     </tr>
                     <tr class="account-row">
-                        <td><strong>&ensp;Email Address:&ensp;&ensp;&ensp;</strong></td>
+                        <td class="account-left"><strong>&ensp;Email Address:&ensp;&ensp;&ensp;</strong></td>
                         <td class="right-column">$email&ensp;</td>
                     </tr>
                     <tr class="account-row">
-                        <td><strong>&ensp;Address:</strong></td>
+                        <td class="account-left"><strong>&ensp;Address:</strong></td>
                         <td class="right-column">$address_l1, $address_l2&ensp;</td>
                     </tr>
                     <tr class="account-row">
-                        <td><strong>&ensp;Postcode:</strong></td>
+                        <td class="account-left"><strong>&ensp;Postcode:</strong></td>
                         <td class="right-column">$postcode&ensp;</td>
                     </tr>
                 </table>

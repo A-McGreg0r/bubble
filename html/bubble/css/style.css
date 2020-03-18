@@ -217,6 +217,8 @@ table td {
 
 .right-column {
     text-align: right;
+    border-top-right-radius: 0.25rem!important;
+    border-bottom-right-radius: 0.25rem!important;
 }
 
 .btn.btn-sm {
@@ -241,7 +243,6 @@ hr {
     margin-left: 20%!important;
     margin-right: 20%!important;
     padding: 1rem!important;
-    //border: 1px solid rgb(109, 171, 166)!important;
     background-color: rgba(56, 56, 56, 0.7)!important;
     color: white;
     border-radius: 0.25rem!important;
@@ -269,4 +270,9 @@ hr {
     border-top-right-radius: 0.25rem!important;
     border-bottom-right-radius: 0.25rem!important;
     text-align: right!important;
+}
+
+.account-left {
+    border-top-left-radius: 0.25rem!important;
+    border-bottom-left-radius: 0.25rem!important;
 }

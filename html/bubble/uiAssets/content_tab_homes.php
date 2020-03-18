@@ -50,7 +50,7 @@ function generateHomeTab()
                     $sumDataYear = 0;
 
                     for ($i = 1; $i <= 12; $i++) {
-                        $y = rand(0, 500);
+                        $y = rand(90, 156);
                         array_push($dataPoints, array($y));
                         array_push($dataLabels, array($i));
                         $sumDataYear += $y;
@@ -59,6 +59,7 @@ function generateHomeTab()
                         $count = $sumDataYear / 12;
                         array_push($AvgPoints, array($count));
                     }
+                    $cost_year = $sumDataYear * 0.15;
                     $DataLabelsYearEncoded = json_encode($dataLabels);
                     $dataPointsYearEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
                     $dataAvgYearEncoded = json_encode($AvgPoints, JSON_NUMERIC_CHECK);
@@ -71,7 +72,7 @@ function generateHomeTab()
                     $sumDataMonth = 0;
 
                     for ($i = 1; $i <= 31; $i++) {
-                        $y = rand(0, 250);
+                        $y = rand(8, 13);
                         array_push($dataPoints, array($y));
                         array_push($dataLabels, array($i));
                         $sumDataMonth += $y;
@@ -80,6 +81,7 @@ function generateHomeTab()
                         $count = $sumDataMonth / 31;
                         array_push($AvgPoints, array($count));
                     }
+                    $cost_month = $sumDataMonth * 0.15;
                     $DataSumMonthEncoded = json_encode(array_sum($dataPoints), JSON_NUMERIC_CHECK);
                     $DataLabelsMonthEncoded = json_encode($dataLabels);
                     $dataPointsMonthEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
@@ -92,7 +94,7 @@ function generateHomeTab()
                     $sumDataDay = 0;
 
                     for ($i = 1; $i <= 24; $i++) {
-                        $y = rand(0, 100);
+                        $y = rand(0, 1);
                         array_push($dataPoints, array($y));
                         array_push($dataLabels, array($i));
                         $sumDataDay += $y;
@@ -101,6 +103,7 @@ function generateHomeTab()
                         $count = $sumDataDay / 24;
                         array_push($AvgPoints, array($count));
                     }
+                    $cost_day = $sumDataDay * 0.15;
                     $DataLabelsDayEncoded = json_encode($dataLabels);
                     $dataPointsDayEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
                     $dataAvgDayEncoded = json_encode($AvgPoints, JSON_NUMERIC_CHECK);
@@ -132,27 +135,27 @@ function generateHomeTab()
                                 <table class="stats-table">
                                     <tr class="stats-row">
                                         <td class="stats-left"><strong>&ensp;Spent Today:</strong></td>
-                                        <td class="stats-right">£$cost_day&ensp;</td>
+                                        <td class="stats-right">~£$cost_day&ensp;</td>
                                     </tr>
                                     <tr class="stats-row">
                                         <td class="stats-left"><strong>&ensp;Power Used Today:</strong></td>
-                                        <td class="stats-right">$sumDataDay W&ensp;</td>
+                                        <td class="stats-right">$sumDataDay kWh&ensp;</td>
                                     </tr>
                                     <tr class="stats-row">
                                         <td class="stats-left"><strong>&ensp;Spent This Month:</strong></td>
-                                        <td class="stats-right">£$cost_month&ensp;</td>
+                                        <td class="stats-right">~£$cost_month&ensp;</td>
                                     </tr>
                                     <tr class="stats-row">
                                         <td class="stats-left"><strong>&ensp;Power Used This Month:&ensp;&ensp;</strong></td>
-                                        <td class="stats-right">$sumDataMonth W&ensp;</td>
+                                        <td class="stats-right">$sumDataMonth kWh&ensp;</td>
                                     </tr>
                                     <tr class="stats-row">
                                         <td class="stats-left"><strong>&ensp;Spent This Year:</strong></td>
-                                        <td class="stats-right">£$cost_total&ensp;</td>
+                                        <td class="stats-right">~£$cost_year&ensp;</td>
                                     </tr>
                                     <tr class="stats-row">
                                         <td class="stats-left"><strong>&ensp;Power Used This Year:</strong></td>
-                                        <td class="stats-right">$sumDataYear W&ensp;</td>
+                                        <td class="stats-right">$sumDataYear kWh&ensp;</td>
                                     </tr>
                                 </table>
                                 <hr>

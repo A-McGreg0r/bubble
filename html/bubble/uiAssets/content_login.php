@@ -39,7 +39,7 @@ function generateLoginPage(){
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link" data-toggle="tab" href="#panel3" role="tab">
-                                <i class="fas fa-user-plus mr-1"></i>Forgot Password
+                                <i class="fas fa-user-plus mr-1"></i>Reset
                             </a>
                         </li>
                     </ul>

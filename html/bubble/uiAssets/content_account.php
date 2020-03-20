@@ -52,10 +52,10 @@ function generateAccount(){
                         <td class="right-column">$postcode&ensp;</td>
                     </tr>
                 </table>
-                    <button type="button" class="btn btn-danger btn-sm btn-rounded" data-toggle="modal" data-target="#basicExampleModal">Delete Account</button>
+                    <button type="button" class="btn btn-danger btn-sm btn-rounded" data-toggle="modal" data-target="#basicModal">Delete Account</button>
                 </div>        
                         <!-- Modal -->
-                        <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                        <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                           aria-hidden="true">
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">

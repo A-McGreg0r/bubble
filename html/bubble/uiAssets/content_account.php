@@ -17,46 +17,61 @@ function generateAccount(){
             $html = <<<html
         <div class="container-fluid justify-content-center">
         <!-- Card --> 
-            <div class="card mb-4 container">
+            <div class="card mb-4 small-gap">
                 <!--Card content-->
-                <div class="card-body d-flex justify-content-between">
+                <div class="d-flex justify-content-between account-heading">
         
                     <div class="d-flex flex-column">  
                         <h4>My Account</h4>
                     </div>
                 </div>
             </div>            
-            <div class="card mb-4 container text-dark grey-out">
+            <div class="card mb-4 text-dark grey-out">
                 <!--Card content-->
-                <div class="d-flex flex-nowrap justify-content-between">
-                    <!--Email-->
-                    <div class="p-2">
-                        <p class="">Email: $email</p> 
-                    </div>
-                    <!--Name Details-->
-                    <div class="p-2">
-                        <p class="">First Name: $first_name</p>    
-                        <p class="">Last Name: $last_name</p> 
-                    </div>  
-                        
-                    <!--Address details-->
-                    <div class="p-2">
-                        <p class="">Address: $address_l1 $address_l2</p>    
-                        <p class="">Postcode: $postcode</p> 
-                    </div>  
-
-                    <!--Button to delete account  will change to have conformation-->          
-                    <button class="btn btn-danger btn-sm btn-rounded" onclick="deleteAccount()">Delete my account</button>
+                <div class="flex-nowrap justify-content-between">
                     
-                </div>
-                
-            </div>
+                <table class="account-table" align="centre">
+                    <tr class="account-row account-first">
+                        <td class="account-left"><strong>&ensp;First Name:</strong></td>
+                        <td class="right-column">$first_name&ensp;</td>
+                    <tr>
+                    <tr class="account-row">
+                        <td class="account-left"><strong>&ensp;Last Name:</strong></td>
+                        <td class="right-column">$last_name&ensp;</td>
+                    </tr>
+                    <tr class="account-row">
+                        <td class="account-left"><strong>&ensp;Email Address:&ensp;&ensp;&ensp;</strong></td>
+                        <td class="right-column">$email&ensp;</td>
+                    </tr>
+                    <tr class="account-row">
+                        <td class="account-left"><strong>&ensp;Address:</strong></td>
+                        <td class="right-column">$address_l1, $address_l2&ensp;</td>
+                    </tr>
+                    <tr class="account-row">
+                        <td class="account-left"><strong>&ensp;Postcode:</strong></td>
+                        <td class="right-column">$postcode&ensp;</td>
+                    </tr>
+                </table>
+                    <button type="button" class="btn btn-danger btn-sm btn-rounded" data-toggle="modal" data-target="#basicModal">Delete Account</button>
+                </div>        
+                        <!-- Modal -->
+                        <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                          aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-body">
+                                <button class="btn btn-danger btn-sm btn-rounded" onclick="deleteAccount()">Delete</button>
+                                <button type="button" class="btn btn-primary">Cancel</button>
+                              </div>
+                          </div>
+                        </div>
+                    </div>
             <!-- Card -->    
     
     
             <!-- Editable table -->
             <div class="card">
-                <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Devices</h3>
+                <h3 class="card-header text-center font-weight-bold text-uppercase py-4 border-upper">Devices</h3>
                 <div class="card-body">
                     <div id="table" class="table-editable">
                         <span class="table-add float-right mb-3 mr-2"><a href="index.php?action=adddevice" class=""><i class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span>

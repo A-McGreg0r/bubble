@@ -27,18 +27,18 @@ function generateLoginPage(){
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs  tabs-2" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#panel1" role="tab">
+                            <a class="nav-link login-links active" data-toggle="tab" href="#panel1" role="tab">
                                 <i class="fas fa-user mr-1"></i>Login
                             </a>
                         </li>
 
                         <li class="nav-item ">
-                            <a class="nav-link" data-toggle="tab" href="#panel2" role="tab">
+                            <a class="nav-link login-links" data-toggle="tab" href="#panel2" role="tab">
                                 <i class="fas fa-user-plus mr-1"></i>Sign up
                             </a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" data-toggle="tab" href="#panel3" role="tab">
+                            <a class="nav-link login-links" data-toggle="tab" href="#panel3" role="tab">
                                 <i class="fas fa-user-plus mr-1"></i>Reset
                             </a>
                         </li>

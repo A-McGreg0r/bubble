@@ -243,9 +243,8 @@ hr {
     margin-left: 20%!important;
     margin-right: 20%!important;
     padding: 1rem!important;
-    background-color: rgba(56, 56, 56, 0.7)!important;
-    color: white;
-    border-radius: 0.25rem!important;
+    color: rgba(56, 56, 56, 1)!important;
+    border-bottom: 1px solid rgba(56, 56, 56, 1);
     text-align: center;
     margin-bottom: 2rem!important;
 }
@@ -275,4 +274,8 @@ hr {
 .account-left {
     border-top-left-radius: 0.25rem!important;
     border-bottom-left-radius: 0.25rem!important;
+}
+
+.login-links {
+    font-size: 0.9rem!important;
 }

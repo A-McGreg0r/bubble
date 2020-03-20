@@ -52,12 +52,20 @@ function generateAccount(){
                         <td class="right-column">$postcode&ensp;</td>
                     </tr>
                 </table>
-
-                    <!--Button to delete account  will change to have conformation-->          
-                    <button class="btn btn-danger btn-sm btn-rounded" onclick="deleteAccount()">Delete my account</button>
-                </div>
-                
-            </div>
+                    <button type="button" class="btn btn-danger btn-sm btn-rounded" data-toggle="modal" data-target="#basicExampleModal">Delete Account</button>
+                </div>        
+                        <!-- Modal -->
+                        <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                          aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-body">
+                                <button class="btn btn-danger btn-sm btn-rounded" onclick="deleteAccount()">Delete</button>
+                                <button type="button" class="btn btn-primary">Cancel</button>
+                              </div>
+                          </div>
+                        </div>
+                    </div>
             <!-- Card -->    
     
     

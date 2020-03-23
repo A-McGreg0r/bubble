@@ -22,7 +22,7 @@ function generateAccount(){
                 <div class="d-flex justify-content-between account-heading">
         
                     <div class="d-flex flex-column">  
-                        <h4>My Account</h4>
+                        <h4 class="bold-title">My Account</h4>
                     </div>
                 </div>
             </div>            

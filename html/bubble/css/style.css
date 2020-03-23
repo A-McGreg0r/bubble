@@ -165,10 +165,6 @@ p {
     font-weight: 900!important;
 }
 
-h4 {
-    font-weight: 800;
-}
-
 .small-gap {
     padding-bottom: 0!important;
 }
@@ -292,6 +288,7 @@ hr {
 }
 
 .room-title {
+    font-weight: 800!important;
     color: rgb(56, 56, 56)!important;
     border-bottom: 1px solid rgba(56, 56, 56, 1);
     padding: 10px!important;
@@ -301,4 +298,8 @@ hr {
 
 .reduce-space {
     padding-top: 20px!important;
+}
+
+.bold-title {
+    font-weight: 800!important;
 }

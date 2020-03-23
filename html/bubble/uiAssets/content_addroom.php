@@ -28,7 +28,7 @@ function generateAddRoom(){
                     <!-- Password -->
                     <div class="md-form">
                         <select name="icon" class="browser-default custom-select dropdown">
-                            <option value="" disabled selected>Choose your option</option>
+                            <option value="" disabled selected>Choose your icon</option>
 pageHTML;
                             $stmt = $db->prepare("SELECT * FROM room_types");
                             $stmt->execute();
@@ -36,7 +36,7 @@ pageHTML;
                             $inc = 0;
                             while($row = $result->fetch_assoc()) {
                                 $inc++;
-                                $val = $row['type_icon'];
+                                $val = $row['type_description'];
                                 $html .= "<option value=\"$inc\">$val</option>";
                             }
                             $html .= <<<pageHTML

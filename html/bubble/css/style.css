@@ -279,3 +279,15 @@ hr {
 .login-links {
     font-size: 0.9rem!important;
 }
+
+.card-header:first-child {
+    border-radius: 0%!important;
+}
+
+.custom-select {
+    color: rgb(56, 56, 56)!important;
+}
+
+.alter-display {
+    display: block!important;
+}

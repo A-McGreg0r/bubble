@@ -8,11 +8,11 @@ function generateAddRoom(){
     $html .= <<<pageHTML
     <div class="container">
         <div class="col-lg-12">
-            <div class="row text-center align-middle">
-                <h3>Add a new room to your house</h3>
+            <div class="row alter-display text-center align-middle">
+                <h4>Add a new room to your house</h4>
                 <div id="devicetext" style="width:100%"></div>
             </div>
-            <div class="row align-middle">
+            <div class="row alter-display align-middle">
                 <form class="text-center" action="required/action_addRoom.php" method="POST">
                     <!-- Room Name -->
                     <div class="md-form">

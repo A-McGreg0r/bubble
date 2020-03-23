@@ -93,9 +93,9 @@ html;
                         <div class="d-flex flex-column">  
                             <div class="flex-sm-row">
                                 $icon &nbsp; $device_name
-                                 </div>
+                            </div>
                             <div class="flex-sm-row">
-                                room: &nbsp; $room_type
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Room: &nbsp; $room_type
                             </div>                                
                             
                         </div>

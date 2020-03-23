@@ -12,7 +12,7 @@ function generateAddRoom(){
                 <h4 class="room-title">Add a new room to your house</h4>
                 <div id="devicetext" style="width:100%"></div>
             </div>
-            <div class="row alter-display align-middle">
+            <div class="row alter-display align-middle reduce-space">
                 <form class="text-center" action="required/action_addRoom.php" method="POST">
                     <!-- Room Name -->
                     <div class="md-form">

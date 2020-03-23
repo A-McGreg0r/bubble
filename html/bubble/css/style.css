@@ -291,3 +291,11 @@ hr {
 .alter-display {
     display: block!important;
 }
+
+.room-title {
+    color: rgb(56, 56, 56)!important;
+    border-bottom: 1px solid rgba(56, 56, 56, 1);
+    padding: 10px!important;
+    margin-right: 10%!important;
+    margin-left: 10%!important;
+}

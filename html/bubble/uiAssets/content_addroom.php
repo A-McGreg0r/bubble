@@ -9,7 +9,7 @@ function generateAddRoom(){
     <div class="container">
         <div class="col-lg-12">
             <div class="row alter-display text-center align-middle">
-                <h4>Add a new room to your house</h4>
+                <h4 class="room-title">Add a new room to your house</h4>
                 <div id="devicetext" style="width:100%"></div>
             </div>
             <div class="row alter-display align-middle">

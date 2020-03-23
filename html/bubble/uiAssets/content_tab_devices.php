@@ -95,7 +95,7 @@ html;
                                 $icon &nbsp; $device_name
                             </div>
                             <div class="flex-sm-row">
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Room: &nbsp; $room_type
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Room: $room_type
                             </div>                                
                             
                         </div>

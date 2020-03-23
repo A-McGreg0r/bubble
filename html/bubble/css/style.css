@@ -199,7 +199,6 @@ table {
 table td {
     font-size: 1rem!important;
     height: 3rem!important;
-    white-space: nowrap;
 }
 
 .account-row {

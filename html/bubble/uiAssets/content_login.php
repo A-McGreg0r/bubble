@@ -12,6 +12,8 @@ function generateLoginPage(){
     if (isset($_POST['address_l2'])) $address_l2 = $_POST['address_l2'];
     $postcode = '';
     if (isset($_POST['postcode'])) $postcode = $_POST['postcode'];
+    $energy_cost = 0;
+    if (isset($_POST['energy_cost'])) $energy_cost = $_POST['energy_cost'];
 
     $html = <<<htmlPage
     <!--Modal cascading tabs-->
@@ -179,7 +181,7 @@ function generateLoginPage(){
                                         <label data-error="wrong" data-success="right"
                                             for="materialRegisterFormPassword1">Password</label>
                                         <input aria-describedby="materialRegisterFormPasswordHelpBlock"
-                                            class="form-control form-control-sm validate"
+                                            class="form-control form-control-sm validate drop-up"
                                             id="materialRegisterFormPassword1"
                                             name="pass1"
                                             required
@@ -193,10 +195,42 @@ function generateLoginPage(){
                                         <label data-error="wrong" data-success="right" for="materialRegisterFormPassword2">Confirm password</label>
                                         <input type="password"
                                             id="materialRegisterFormPassword2"
-                                            class="form-control form-control-sm validate"
+                                            class="form-control form-control-sm validate drop-off"
                                             aria-describedby="materialRegisterFormPasswordHelpBlock"
                                             name="pass2"
                                             required size="20"/>
+                                    </div>
+
+                                    <!-- Energy Cost -->
+                                    <div class="md-form">
+                                        <select name="energy_cost" class="form-control form-control-sm dropdown validate drop-up">
+                                            <option value="" disabled selected>Select energy price per kWh</option>
+                                            <option value="0.10">£0.10</option>
+                                            <option value="0.11">£0.11</option>
+                                            <option value="0.12">£0.12</option>
+                                            <option value="0.13">£0.13</option>
+                                            <option value="0.14">£0.14</option>
+                                            <option value="0.15">£0.15</option>
+                                            <option value="0.16">£0.16</option>
+                                            <option value="0.17">£0.17</option>
+                                            <option value="0.18">£0.18</option>
+                                            <option value="0.19">£0.19</option>
+                                            <option value="0.20">£0.20</option>
+                                            <option value="0.21">£0.21</option>
+                                            <option value="0.22">£0.22</option>
+                                            <option value="0.23">£0.23</option>
+                                            <option value="0.24">£0.24</option>
+                                            <option value="0.25">£0.25</option>
+                                            <option value="0.26">£0.26</option>
+                                            <option value="0.27">£0.27</option>
+                                            <option value="0.28">£0.28</option>
+                                            <option value="0.29">£0.29</option>
+                                            <option value="0.30">£0.30</option>
+                                        </select>
+
+                                        <small class="form-text text-muted mb-4">
+                                            If you are unsure about your energy cost, please select £0.15 for the average UK price
+                                        </small>
                                     </div>
 
 

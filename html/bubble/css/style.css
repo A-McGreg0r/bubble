@@ -304,3 +304,11 @@ hr {
 .bold-title {
     font-weight: 800!important;
 }
+
+.drop-up {
+    margin-bottom: 0rem!important;
+}
+
+select {
+    font-family: Roboto,sans-serif;
+}

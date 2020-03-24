@@ -51,6 +51,10 @@ function generateAccount(){
                         <td class="account-left"><strong>&ensp;Postcode:</strong></td>
                         <td class="right-column">$postcode&ensp;</td>
                     </tr>
+                    <tr class="account-row">
+                        <td class="account-left"><strong>&ensp;Energy Price:</strong></td>
+                        <td class="right-column">£$energy_cost&ensp;</td>
+                    </tr>
                 </table>
                     <button type="button" class="btn btn-danger btn-sm btn-rounded" data-toggle="modal" data-target="#basicModal">Delete Account</button>
                 </div>        

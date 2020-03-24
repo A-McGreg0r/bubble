@@ -9,6 +9,15 @@ function generateHomeTab()
     if (isset($_SESSION['user_id'])) {
         $user_id = $_SESSION['user_id'];
 
+        session_write_close();
+        $stmt3 = $db->prepare("SELECT * FROM user_info WHERE user_id = ?");
+        $stmt3->bind_param("i", $user_id);
+        $stmt3->execute();
+        $result3 = $stmt3->get_result();
+        if ($result3->num_rows === 1) {
+            extract($result3->fetch_assoc());
+        }
+
         $stmt = $db->prepare("SELECT * FROM hub_users WHERE user_id = ?");
         $stmt->bind_param("i", $user_id);
         $stmt->execute();
@@ -59,7 +68,7 @@ function generateHomeTab()
                         $count = $sumDataYear / 12;
                         array_push($AvgPoints, array($count));
                     }
-                    $cost_year = $sumDataYear * 0.15;
+                    $cost_year = $sumDataYear * $energy_cost;
                     $DataLabelsYearEncoded = json_encode($dataLabels);
                     $dataPointsYearEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
                     $dataAvgYearEncoded = json_encode($AvgPoints, JSON_NUMERIC_CHECK);
@@ -81,7 +90,7 @@ function generateHomeTab()
                         $count = $sumDataMonth / 31;
                         array_push($AvgPoints, array($count));
                     }
-                    $cost_month = $sumDataMonth * 0.15;
+                    $cost_month = $sumDataMonth * $energy_cost;
                     $DataSumMonthEncoded = json_encode(array_sum($dataPoints), JSON_NUMERIC_CHECK);
                     $DataLabelsMonthEncoded = json_encode($dataLabels);
                     $dataPointsMonthEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
@@ -103,7 +112,7 @@ function generateHomeTab()
                         $count = $sumDataDay / 24;
                         array_push($AvgPoints, array($count));
                     }
-                    $cost_day = $sumDataDay * 0.15;
+                    $cost_day = $sumDataDay * $energy_cost;
                     $DataLabelsDayEncoded = json_encode($dataLabels);
                     $dataPointsDayEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
                     $dataAvgDayEncoded = json_encode($AvgPoints, JSON_NUMERIC_CHECK);

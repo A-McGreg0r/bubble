@@ -205,6 +205,15 @@ function generateLoginPage(){
                                     <div class="md-form">
                                         <select name="energy_cost" class="form-control form-control-sm dropdown validate drop-up">
                                             <option value="" disabled selected>Select energy price per kWh</option>
+                                            <option value="0.01">£0.01</option>
+                                            <option value="0.02">£0.02</option>
+                                            <option value="0.03">£0.03</option>
+                                            <option value="0.04">£0.04</option>
+                                            <option value="0.05">£0.05</option>
+                                            <option value="0.06">£0.06</option>
+                                            <option value="0.07">£0.07</option>
+                                            <option value="0.08">£0.08</option>
+                                            <option value="0.09">£0.09</option>
                                             <option value="0.10">£0.10</option>
                                             <option value="0.11">£0.11</option>
                                             <option value="0.12">£0.12</option>

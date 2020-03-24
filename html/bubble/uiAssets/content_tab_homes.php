@@ -69,6 +69,7 @@ function generateHomeTab()
                         array_push($AvgPoints, array($count));
                     }
                     $cost_year = $sumDataYear * $energy_cost;
+                    $cost_year_round = number_format($cost_year,2);
                     $DataLabelsYearEncoded = json_encode($dataLabels);
                     $dataPointsYearEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
                     $dataAvgYearEncoded = json_encode($AvgPoints, JSON_NUMERIC_CHECK);
@@ -91,6 +92,7 @@ function generateHomeTab()
                         array_push($AvgPoints, array($count));
                     }
                     $cost_month = $sumDataMonth * $energy_cost;
+                    $cost_month_round = number_format($cost_month,2);
                     $DataSumMonthEncoded = json_encode(array_sum($dataPoints), JSON_NUMERIC_CHECK);
                     $DataLabelsMonthEncoded = json_encode($dataLabels);
                     $dataPointsMonthEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
@@ -113,6 +115,7 @@ function generateHomeTab()
                         array_push($AvgPoints, array($count));
                     }
                     $cost_day = $sumDataDay * $energy_cost;
+                    $cost_day_round = number_format($cost_day,2);
                     $DataLabelsDayEncoded = json_encode($dataLabels);
                     $dataPointsDayEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
                     $dataAvgDayEncoded = json_encode($AvgPoints, JSON_NUMERIC_CHECK);
@@ -149,7 +152,7 @@ function generateHomeTab()
                                     </tr>
                                     <tr class="stats-row">
                                         <td class="stats-left"><strong>&ensp;Cost:</strong></td>
-                                        <td class="stats-right">£$cost_day&ensp;</td>
+                                        <td class="stats-right">£$cost_day_round&ensp;</td>
                                     </tr>
                                     <tr class="stats-row">
                                         <td class="stats-left"><strong>&ensp;Power Used This Month:&ensp;&ensp;</strong></td>
@@ -157,7 +160,7 @@ function generateHomeTab()
                                     </tr>
                                     <tr class="stats-row">
                                         <td class="stats-left"><strong>&ensp;Cost:</strong></td>
-                                        <td class="stats-right">£$cost_month&ensp;</td>
+                                        <td class="stats-right">£$cost_month_round&ensp;</td>
                                     </tr>
                                     <tr class="stats-row">
                                         <td class="stats-left"><strong>&ensp;Power Used This Year:</strong></td>
@@ -165,7 +168,7 @@ function generateHomeTab()
                                     </tr>
                                     <tr class="stats-row">
                                         <td class="stats-left"><strong>&ensp;Cost:</strong></td>
-                                        <td class="stats-right">£$cost_year&ensp;</td>
+                                        <td class="stats-right">£$cost_year_round&ensp;</td>
                                     </tr>
                                 </table>
                                 <hr>

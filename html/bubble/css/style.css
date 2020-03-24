@@ -205,6 +205,10 @@ table td {
     width: calc(100% - 15px);
 }
 
+.account-table {
+    display: block!important;
+}
+
 .account-row:nth-of-type(even), .account-first, .stats-row:nth-of-type(even), .stats-row:nth-of-type(0) {
     background-color: rgba(0, 0, 0, 0.05)!important;
 }

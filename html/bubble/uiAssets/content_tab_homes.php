@@ -129,7 +129,7 @@ function generateHomeTab()
                             <a data-toggle="collapse" data-parent="#accordionEx194" href="#collapse$hub_id" aria-expanded="true" aria-controls="collapse4">
                                 <h3 class="mb-0 mt-3 red-text">
                                     <div class="row">
-                                        <div class="col-auto mr-auto">$hub_name</div>
+                                        <div class="col-auto mr-auto"><strong>$hub_name</strong></div>
                                         <div class="col-auto"><i class="fas fa-angle-down rotate-icon fa-2x"></i></div>
         
                                     </div>

@@ -152,7 +152,7 @@ function generateHomeTab()
                                     </tr>
                                     <tr class="stats-row">
                                         <td class="stats-left"><strong>&ensp;Cost:</strong></td>
-                                        <td class="stats-right">£$cost_day_round&ensp;</td>
+                                        <td class="stats-right"><strong>£$cost_day_round&ensp;</strong></td>
                                     </tr>
                                     <tr class="stats-row">
                                         <td class="stats-left"><strong>&ensp;Power Used This Month:&ensp;&ensp;</strong></td>
@@ -160,7 +160,7 @@ function generateHomeTab()
                                     </tr>
                                     <tr class="stats-row">
                                         <td class="stats-left"><strong>&ensp;Cost:</strong></td>
-                                        <td class="stats-right">£$cost_month_round&ensp;</td>
+                                        <td class="stats-right"><strong>£$cost_month_round&ensp;</strong></td>
                                     </tr>
                                     <tr class="stats-row">
                                         <td class="stats-left"><strong>&ensp;Power Used This Year:</strong></td>
@@ -168,7 +168,7 @@ function generateHomeTab()
                                     </tr>
                                     <tr class="stats-row">
                                         <td class="stats-left"><strong>&ensp;Cost:</strong></td>
-                                        <td class="stats-right">£$cost_year_round&ensp;</td>
+                                        <td class="stats-right"><strong>£$cost_year_round&ensp;</strong></td>
                                     </tr>
                                 </table>
                                 <hr>

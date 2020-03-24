@@ -142,29 +142,30 @@ function generateHomeTab()
 
                                 <h4 class="section-title">Overview</h4>
                                 <table class="stats-table">
-                                    <tr class="stats-row">
-                                        <td class="stats-left"><strong>&ensp;Spent Today:</strong></td>
-                                        <td class="stats-right">~£$cost_day&ensp;</td>
-                                    </tr>
+                                    
                                     <tr class="stats-row">
                                         <td class="stats-left"><strong>&ensp;Power Used Today:</strong></td>
                                         <td class="stats-right">$sumDataDay kWh&ensp;</td>
                                     </tr>
                                     <tr class="stats-row">
-                                        <td class="stats-left"><strong>&ensp;Spent This Month:</strong></td>
-                                        <td class="stats-right">~£$cost_month&ensp;</td>
+                                        <td class="stats-left"><strong>&ensp;Cost:</strong></td>
+                                        <td class="stats-right">£$cost_day&ensp;</td>
                                     </tr>
                                     <tr class="stats-row">
                                         <td class="stats-left"><strong>&ensp;Power Used This Month:&ensp;&ensp;</strong></td>
                                         <td class="stats-right">$sumDataMonth kWh&ensp;</td>
                                     </tr>
                                     <tr class="stats-row">
-                                        <td class="stats-left"><strong>&ensp;Spent This Year:</strong></td>
-                                        <td class="stats-right">~£$cost_year&ensp;</td>
+                                        <td class="stats-left"><strong>&ensp;Cost:</strong></td>
+                                        <td class="stats-right">£$cost_month&ensp;</td>
                                     </tr>
                                     <tr class="stats-row">
                                         <td class="stats-left"><strong>&ensp;Power Used This Year:</strong></td>
                                         <td class="stats-right">$sumDataYear kWh&ensp;</td>
+                                    </tr>
+                                    <tr class="stats-row">
+                                        <td class="stats-left"><strong>&ensp;Cost:</strong></td>
+                                        <td class="stats-right">£$cost_year&ensp;</td>
                                     </tr>
                                 </table>
                                 <hr>

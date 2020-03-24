@@ -203,7 +203,6 @@ table td {
 
 .account-table, .stats-table {
     width: calc(100% - 15px);
-    display: block;
 }
 
 .account-row:nth-of-type(even), .account-first, .stats-row:nth-of-type(even), .stats-row:nth-of-type(0) {
@@ -255,13 +254,11 @@ hr {
 }
 
 .stats-left {
-    width: 100%!important;
     border-top-left-radius: 0.25rem!important;
     border-bottom-left-radius: 0.25rem!important;
 }
 
 .stats-right {
-    width: 100%!important;
     border-top-right-radius: 0.25rem!important;
     border-bottom-right-radius: 0.25rem!important;
     text-align: right!important;

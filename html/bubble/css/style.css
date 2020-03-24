@@ -313,3 +313,12 @@ hr {
 select {
     font-family: Roboto,sans-serif;
 }
+
+.confirmation {
+    padding-top: 100px;
+    display: block;
+}
+
+.confirmation-logo {
+    width: 5em;
+}

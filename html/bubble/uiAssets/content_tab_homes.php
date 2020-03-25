@@ -120,6 +120,8 @@ function generateHomeTab()
                     $dataPointsDayEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
                     $dataAvgDayEncoded = json_encode($AvgPoints, JSON_NUMERIC_CHECK);
 
+                    $energy_cost_round = number_format($energy_cost,2);
+
 
                     $html .= <<<html
                     <!-- Accordion card -->
@@ -171,7 +173,7 @@ function generateHomeTab()
                                         <td class="stats-right"><strong>£$cost_year_round&ensp;</strong></td>
                                     </tr>
                                 </table>
-                                <small class="form-text text-muted mb-4" style="text-align:center">Costing at £$energy_cost per kWh</small>
+                                <small class="form-text text-muted mb-4" style="text-align:center">Costing at £$energy_cost_round per kWh</small>
                                 <hr>
                                 
                                 

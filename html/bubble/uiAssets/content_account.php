@@ -22,7 +22,7 @@ function generateAccount(){
                 <div class="d-flex justify-content-between account-heading">
         
                     <div class="d-flex flex-column">  
-                        <h4>My Account</h4>
+                        <h4 class="bold-title">My Account</h4>
                     </div>
                 </div>
             </div>            
@@ -32,32 +32,48 @@ function generateAccount(){
                     
                 <table class="account-table" align="centre">
                     <tr class="account-row account-first">
-                        <td><strong>&ensp;First Name:</strong></td>
+                        <td class="account-left"><strong>&ensp;First Name:</strong></td>
                         <td class="right-column">$first_name&ensp;</td>
                     <tr>
                     <tr class="account-row">
-                        <td><strong>&ensp;Last Name:</strong></td>
+                        <td class="account-left"><strong>&ensp;Last Name:</strong></td>
                         <td class="right-column">$last_name&ensp;</td>
                     </tr>
                     <tr class="account-row">
-                        <td><strong>&ensp;Email Address:&ensp;&ensp;&ensp;</strong></td>
+                        <td class="account-left"><strong>&ensp;Email Address:&ensp;&ensp;&ensp;</strong></td>
                         <td class="right-column">$email&ensp;</td>
                     </tr>
                     <tr class="account-row">
-                        <td><strong>&ensp;Address:</strong></td>
+                        <td class="account-left"><strong>&ensp;Address:</strong></td>
                         <td class="right-column">$address_l1, $address_l2&ensp;</td>
                     </tr>
                     <tr class="account-row">
-                        <td><strong>&ensp;Postcode:</strong></td>
+                        <td class="account-left"><strong>&ensp;Postcode:</strong></td>
                         <td class="right-column">$postcode&ensp;</td>
                     </tr>
+                    <tr class="account-row">
+                        <td class="account-left"><strong>&ensp;Energy Price:</strong></td>
+                        <td class="right-column">£$energy_cost&ensp;</td>
+                    </tr>
+                    <tr class="account-row">
+                        <td class="account-left"><strong>&ensp;Monthly Budget:</strong></td>
+                        <td class="right-column">£$budget&ensp;</td>
+                    </tr>
                 </table>
-
-                    <!--Button to delete account  will change to have conformation-->          
-                    <button class="btn btn-danger btn-sm btn-rounded" onclick="deleteAccount()">Delete my account</button>
-                </div>
-                
-            </div>
+                    <button type="button" class="btn btn-danger btn-sm btn-rounded" data-toggle="modal" data-target="#basicModal">Delete Account</button>
+                </div>        
+                        <!-- Modal -->
+                        <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                          aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-body">
+                                <button class="btn btn-danger btn-sm btn-rounded" onclick="deleteAccount()">Delete</button>
+                                <button type="button" class="btn btn-primary">Cancel</button>
+                              </div>
+                          </div>
+                        </div>
+                    </div>
             <!-- Card -->    
     
     

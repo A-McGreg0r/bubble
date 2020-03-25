@@ -322,3 +322,15 @@ select {
 .confirmation-logo {
     width: 5em;
 }
+
+.budget-input {
+    display: flex!important;
+}
+
+.budget-input input {
+    margin-left: 5px!important;
+}
+
+.budget-input label {
+    margin-left: 15px!important;
+}

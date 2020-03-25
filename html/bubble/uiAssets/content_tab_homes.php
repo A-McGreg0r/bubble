@@ -121,7 +121,16 @@ function generateHomeTab()
                     $dataAvgDayEncoded = json_encode($AvgPoints, JSON_NUMERIC_CHECK);
 
                     $energy_cost_round = number_format($energy_cost,2);
+                    $budget_round = number_format($budget,2);
+                    $budget_remaining = $budget - $cost_month;
+                    $budget_remaining_round = number_format($budget_remaining,2);
 
+                    $budget_day = $budget / 28;
+                    $budget_year = $budget * 12;
+                    $budget_day_remaining = $budget_day - $cost_day;
+                    $budget_year_remaining = $budget_year - $cost_year;
+                    $budget_day_remaining_round = number_format($budget_day_remaining,2);
+                    $budget_year_remaining_round = number_format($budget_year_remaining,2);
 
                     $html .= <<<html
                     <!-- Accordion card -->
@@ -161,8 +170,8 @@ function generateHomeTab()
                                         <td class="stats-right">$sumDataMonth kWh&ensp;</td>
                                     </tr>
                                     <tr class="stats-row">
-                                        <td class="stats-left"><strong>&ensp;Cost:</strong></td>
-                                        <td class="stats-right"><strong>£$cost_month_round&ensp;</strong></td>
+                                        <td class="stats-left"><strong>&ensp;Cost:</br>&ensp;Remaining Budget:</strong></td>
+                                        <td class="stats-right"><strong>£$cost_month_round&ensp;</br>£$budget_remaining_round&ensp;</strong></td>
                                     </tr>
                                     <tr class="stats-row">
                                         <td class="stats-left"><strong>&ensp;Power Used This Year:</strong></td>
@@ -198,7 +207,7 @@ function generateHomeTab()
                                                                 data: {
                                                                 labels: ["Spent [£]", "Remaining [£]"],
                                                                 datasets: [{
-                                                                data: [$cost_day, $cost_variance],
+                                                                data: [$cost_day, $budget_day_remaining_round],
                                                                 backgroundColor: ["rgba(109, 171, 166, 1)", "rgba(0, 0, 0, 0.1)"],
                                                                 hoverBackgroundColor: ["rgba(99, 161, 156, 1)", "rgba(0, 0, 0, 0.15)"]
                                                                 }]
@@ -228,7 +237,7 @@ function generateHomeTab()
                                                             data: {
                                                             labels: ["Spent [£]", "Remaining [£]"],
                                                             datasets: [{
-                                                            data: [$cost_month, $cost_variance],
+                                                            data: [$cost_month, $budget_remaining_round],
                                                             backgroundColor: ["rgba(109, 171, 166, 1)", "rgba(0, 0, 0, 0.1)"],
                                                             hoverBackgroundColor: ["rgba(99, 161, 156, 1)", "rgba(0, 0, 0, 0.15)"]
                                                             }]
@@ -246,7 +255,7 @@ function generateHomeTab()
                                             <!--Donut 3-->             
                                                   <div class="carousel-item">
                                                         <div class="col border border-primary rounded m-2" style="max-width:100%">
-                                                            <h4 class="text-centre text-dark centre-text">Variance</h4>
+                                                            <h4 class="text-centre text-dark centre-text">Yearly</h4>
                                                             <canvas style="max-width:50% min-width:30%" id="heatingUsage2"></canvas>
                                                             <script>
                                                                 //doughnut
@@ -254,9 +263,9 @@ function generateHomeTab()
                                                                 var myLineChart = new Chart(ctxD, {
                                                                 type: "doughnut",
                                                                 data: {
-                                                                labels: ["Budget [£]", "Variance [£]"],
+                                                                labels: ["Spent [£]", "Budget [£]"],
                                                                 datasets: [{
-                                                                data: [$cost_total, $cost_variance],
+                                                                data: [$cost_year, $budget_year_remaining_round],
                                                                 backgroundColor: ["rgba(109, 171, 166, 1)", "rgba(0, 0, 0, 0.1)"],
                                                                 hoverBackgroundColor: ["rgba(99, 161, 156, 1)", "rgba(0, 0, 0, 0.15)"]
                                                                 }]
@@ -277,6 +286,8 @@ function generateHomeTab()
                                                 touch: true // default
                                                 });
                                          </script>
+
+                                         <small class="form-text text-muted mb-4" style="text-align:center">Budget of £$budget_round per Month</small>
                                     </div>
                                     <!--Carousel Container-->
 

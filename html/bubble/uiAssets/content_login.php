@@ -14,6 +14,8 @@ function generateLoginPage(){
     if (isset($_POST['postcode'])) $postcode = $_POST['postcode'];
     $energy_cost = 0;
     if (isset($_POST['energy_cost'])) $energy_cost = $_POST['energy_cost'];
+    $budget = '';
+    if (isset($_POST['budget'])) $budget = $_POST['budget'];
 
     $html = <<<htmlPage
     <!--Modal cascading tabs-->
@@ -239,6 +241,22 @@ function generateLoginPage(){
 
                                         <small class="form-text text-muted mb-4">
                                             If you are unsure about your energy cost, please select £0.15 for the average UK price
+                                        </small>
+                                    </div>
+
+                                    <div class="md-form">
+                                    <span class="budget-input"> <p style="margin-top:8px">£</p>
+                                        <label data-error="wrong" data-success="right" for="budget">Please enter your monthly budget</label>
+                                        <input type="number"
+                                            id="budget"
+                                            class="form-control form-control-sm validate drop-up"
+                                            aria-describedby=""
+                                            name="budget"
+                                            required size="20"
+                                            value="$budget"/>
+                                        </span>
+                                        <small class="form-text text-muted mb-4">
+                                            If you are unsure about your budget, please select £58 for the average UK budget
                                         </small>
                                     </div>
 

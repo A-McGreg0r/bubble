@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     # Initialize an error array.
     $errors = array();
     $A2 = NULL;
-    $stmt = $db->prepare("INSERT INTO user_info (email, pass, first_name, last_name, address_l1, address_l2, postcode, energy_cost) VALUES ( ?, ?, ?, ?, ?, ?, ?, ? )");
+    $stmt = $db->prepare("INSERT INTO user_info (email, pass, first_name, last_name, address_l1, address_l2, postcode, energy_cost, budget) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ? )");
     $valuesArr = array();
 
     # Check for a E-mail.
@@ -72,6 +72,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $valuesArr["energy_cost"] = $_POST['energy_cost'];
     }
 
+    if (empty($_POST['budget'])) {
+        $errors[] = 'Enter your budget.';
+    } else {
+        $valuesArr["budget"] = $_POST['budget'];
+    }
+
 
     # Check if email address already registered.
     if (empty($errors)) {
@@ -87,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     # On success register user inserting into 'users' database table.
     if (empty($errors)) {
         // not posting to database
-        $stmt->bind_param("sssssssd", $valuesArr["email"], $valuesArr["password"], $valuesArr["first_name"], $valuesArr["last_name"], $valuesArr["address_l1"], $valuesArr["address_l2"], $valuesArr["postcode"], $valuesArr["energy_cost"]);
+        $stmt->bind_param("sssssssdi", $valuesArr["email"], $valuesArr["password"], $valuesArr["first_name"], $valuesArr["last_name"], $valuesArr["address_l1"], $valuesArr["address_l2"], $valuesArr["postcode"], $valuesArr["energy_cost"], $valuesArr["budget"]);
         if (!$stmt->execute()) {
             echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
         } 

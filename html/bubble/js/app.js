@@ -1,4 +1,4 @@
-if('serviceWorker' in navigator) {
+if('serviceWorker' in navigator && 'PushManager' in window) {
     navigator.serviceWorker.register('/sw.js')
         .then((reg) => console.log('Service Worker Registered', reg))
         .catch((err) => console.log('Service Worker Unavailable', err));

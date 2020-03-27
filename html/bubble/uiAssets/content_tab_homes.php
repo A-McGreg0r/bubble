@@ -59,7 +59,7 @@ function generateHomeTab()
                     $sumDataYear = 0;
 
                     for ($i = 1; $i <= 12; $i++) {
-                        $y = rand(90, 156);
+                        $y = rand(56, 156);
                         array_push($dataPoints, array($y));
                         array_push($dataLabels, array($i));
                         $sumDataYear += $y;
@@ -82,7 +82,7 @@ function generateHomeTab()
                     $sumDataMonth = 0;
 
                     for ($i = 1; $i <= 31; $i++) {
-                        $y = rand(8, 13);
+                        $y = rand(4, 13);
                         array_push($dataPoints, array($y));
                         array_push($dataLabels, array($i));
                         $sumDataMonth += $y;

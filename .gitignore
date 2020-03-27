@@ -1,6 +1,4 @@
 .bash_history
 .tmp
 # ignore severConfig
-**/server-config.php
-/.idea/misc.xml
-/.idea/modules.xml
+required/server-config.php

@@ -15,6 +15,7 @@ $count=1;
 while($count <=7){
 
     if ($daysInWeek[$count]==true) {
+        //get hours awake first
         if($workinghours[1] > $timeOfDay && $workinghours[2] < $timeOfDay ){
             lowConsumption($timeOfDay);
             $count++;
@@ -25,9 +26,13 @@ while($count <=7){
     }
 
     if ($daysInWeek[$count]==false){
+        //if awake
+            //call highConsumption high else call lowConsumption
+
         $count++;
     }
 }
+
 function highConsumption($time){
     $consumedPower=0;
     //do math

@@ -1,4 +1,5 @@
 <?php
+
 function generateLoginPage(){
     $email = '';
     if (isset($_POST['email'])) $email = $_POST['email'];
@@ -88,7 +89,7 @@ function generateLoginPage(){
                                     </div>
 
                                     <!-- Sign in button -->
-                                    <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit" value="submit">Log in</button>
+                                    <button id="login_button" class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit" value="submit">Log in</button>
 
                                 </form>
                             </div>

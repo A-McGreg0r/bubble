@@ -99,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } 
 
         if($stmt->affected_rows === 1){
-            load("../index.php?action=registerComplete");
+            load("../index.php?action=registerComplete&email=$_POST['email']&name=$_POST['first_name']");
         }else{
             load("../index.php?action=registerFailed");
         }

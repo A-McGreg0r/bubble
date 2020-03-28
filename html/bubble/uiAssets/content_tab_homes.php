@@ -132,6 +132,10 @@ function generateHomeTab()
                     $budget_day_remaining_round = number_format($budget_day_remaining,2);
                     $budget_year_remaining_round = number_format($budget_year_remaining,2);
 
+                    $command = escapeshellcmd('/required/email/myemail.py');
+                    $output = shell_exec($command);
+                    echo $output;
+
                     $html .= <<<html
                     <!-- Accordion card -->
                     <div class="card col-lg">

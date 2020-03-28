@@ -37,12 +37,16 @@
         //GET URL ACTION
         $action = '';
         if(isset($_GET['action'])) $action = $_GET['action'];
+        $email = '';
+        if(isset($_GET['email'])) $email = $_GET['email'];
+        $name = '';
+        if(isset($_GET['name'])) $name = $_GET['name'];
         $html = '';
 
         // SWITCH DEPENDING ON URL ACTION
         switch($action){
             case 'registerComplete':
-                include "./uiAssets/content_registrationComplete.php";
+                include "./uiAssets/content_registrationComplete.php&email=$email&name=$name";
                 $html .= generateRegistrationComplete();
             break;
             case 'registerFailed':

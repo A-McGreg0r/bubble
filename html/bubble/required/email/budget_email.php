@@ -18,7 +18,7 @@ function generateAccount(){
             $from = "bubblehome.care@gmail.com";
             $to = $email;
             $subject = "Nearing Budget";
-            $message = "Dear "+$firstname+" You are nearing your current budget of" + $budget;
+            $message = "Dear "+$first_name+" You are nearing your current budget of" + $budget;
             $headers = "From: " + $from;
             mail($to, $subject, $message, $headers);
             echo"email sent to " + $email;

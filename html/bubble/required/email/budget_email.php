@@ -2,10 +2,12 @@
 include_once dirname(__DIR__).'/../required/config.php';
 function generateAccount(){
     global $db;
+    $count=0;
     $stmt = $db->prepare("SELECT * FROM user_info");
     $stmt->execute();
+    $stmt->num_rows;
     $result = $stmt->get_result();
-    if ($result->num_rows >= 1) {
+    while ($result->num_rows >= $count) {
         extract($result->fetch_assoc());
 
         while($row = $result->fetch_array($result, $result->fetch_assoc())){
@@ -23,6 +25,7 @@ function generateAccount(){
             mail($to, $subject, $message, $headers);
             echo"email sent to " + $email;
         }
+        $count++;
     }
 }
 ?>

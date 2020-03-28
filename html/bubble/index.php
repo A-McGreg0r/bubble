@@ -46,7 +46,7 @@
         // SWITCH DEPENDING ON URL ACTION
         switch($action){
             case 'registerComplete':
-                include "./uiAssets/content_registrationComplete.php&email=$email&name=$name";
+                include "./uiAssets/content_registrationComplete.php";
                 $html .= generateRegistrationComplete();
             break;
             case 'registerFailed':

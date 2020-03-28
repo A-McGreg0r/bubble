@@ -2,6 +2,7 @@
 //Connect to the db
 require 'config.php';
 require 'PepperedPasswords.php';
+session_start();
 
 //Check server has request in POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -10,6 +11,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $A2 = NULL;
     $stmt = $db->prepare("INSERT INTO user_info (email, pass, first_name, last_name, address_l1, address_l2, postcode, energy_cost, budget) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ? )");
     $valuesArr = array();
+    $_SESSION['email'] = trim($_POST['email']);
+    $_SESSION['name'] = trim($_POST['first_name']);
 
     # Check for a E-mail.
     if (empty($_POST['email'])) {
@@ -99,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } 
 
         if($stmt->affected_rows === 1){
-            load("../index.php?action=registerComplete&email=$_POST['email']&name=$_POST['first_name']");
+            load("../index.php?action=registerComplete");
         }else{
             load("../index.php?action=registerFailed");
         }

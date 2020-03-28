@@ -12,10 +12,9 @@ function generateRegistrationComplete(){
             <div class="text-center">
                 <div class="text-center confirmation">
                     <img class="confirmation-logo" src="img/favicon.png">
-                    <p class="text-center">Thank you for registering for bubble!<br/>Please return to the <a href="index.php">Login Page</a> to login</p>
-                    <p onclick="registrationEmail($email, $name)">Click here for verification email</p>
+                    <p class="text-center">Thank you for registering for bubble!<br/>Please return to the <a onclick="registrationEmail('$email', '$name')" href="index.php">Login Page</a> to login</p>
                 </div>
-            </div>
+            </di'v>
         </div>   
 html;
     return $html;

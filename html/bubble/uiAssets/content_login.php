@@ -17,6 +17,8 @@ function generateLoginPage(){
     if (isset($_POST['energy_cost'])) $energy_cost = $_POST['energy_cost'];
     $budget = '';
     if (isset($_POST['budget'])) $budget = $_POST['budget'];
+    $allow_emails = '';
+    if (isset($_POST['allow_emails'])) $allow_emails = $_POST['allow_emails'];
 
     $html = <<<htmlPage
     <!--Modal cascading tabs-->
@@ -261,6 +263,9 @@ function generateLoginPage(){
                                         </small>
                                     </div>
 
+                                    <div class="md-form">
+                                        <small class="form-text text-muted mb-4"><input type="checkbox" checked="checked" name="allow_emails" value="Yes"/>&nbsp;I would like to receive email updates tailored to me</small>
+                                    </div>
 
                                     <!-- Sign up button -->
                                     <div>

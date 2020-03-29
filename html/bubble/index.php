@@ -37,6 +37,10 @@
         //GET URL ACTION
         $action = '';
         if(isset($_GET['action'])) $action = $_GET['action'];
+        $email = '';
+        if(isset($_GET['email'])) $email = $_GET['email'];
+        $name = '';
+        if(isset($_GET['name'])) $name = $_GET['name'];
         $html = '';
 
         // SWITCH DEPENDING ON URL ACTION

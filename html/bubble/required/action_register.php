@@ -2,14 +2,17 @@
 //Connect to the db
 require 'config.php';
 require 'PepperedPasswords.php';
+session_start();
 
 //Check server has request in POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     # Initialize an error array.
     $errors = array();
     $A2 = NULL;
-    $stmt = $db->prepare("INSERT INTO user_info (email, pass, first_name, last_name, address_l1, address_l2, postcode, energy_cost, budget) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ? )");
+    $stmt = $db->prepare("INSERT INTO user_info (email, pass, first_name, last_name, address_l1, address_l2, postcode, energy_cost, budget, allow_emails) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )");
     $valuesArr = array();
+    $_SESSION['email'] = trim($_POST['email']);
+    $_SESSION['name'] = trim($_POST['first_name']);
 
     # Check for a E-mail.
     if (empty($_POST['email'])) {
@@ -78,6 +81,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $valuesArr["budget"] = $_POST['budget'];
     }
 
+    if ($_POST['allow_emails'] == "Yes") {
+        $valuesArr["allow_emails"] = "Yes";
+    } else {
+        $valuesArr["allow_emails"] = "No";
+    }
+
 
     # Check if email address already registered.
     if (empty($errors)) {
@@ -93,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     # On success register user inserting into 'users' database table.
     if (empty($errors)) {
         // not posting to database
-        $stmt->bind_param("sssssssdi", $valuesArr["email"], $valuesArr["password"], $valuesArr["first_name"], $valuesArr["last_name"], $valuesArr["address_l1"], $valuesArr["address_l2"], $valuesArr["postcode"], $valuesArr["energy_cost"], $valuesArr["budget"]);
+        $stmt->bind_param("sssssssdis", $valuesArr["email"], $valuesArr["password"], $valuesArr["first_name"], $valuesArr["last_name"], $valuesArr["address_l1"], $valuesArr["address_l2"], $valuesArr["postcode"], $valuesArr["energy_cost"], $valuesArr["budget"], $valuesArr["allow_emails"]);
         if (!$stmt->execute()) {
             echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
         } 

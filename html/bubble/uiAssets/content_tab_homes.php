@@ -59,7 +59,7 @@ function generateHomeTab()
                     $sumDataYear = 0;
 
                     for ($i = 1; $i <= 12; $i++) {
-                        $y = rand(90, 156);
+                        $y = rand(56, 156);
                         array_push($dataPoints, array($y));
                         array_push($dataLabels, array($i));
                         $sumDataYear += $y;
@@ -82,7 +82,7 @@ function generateHomeTab()
                     $sumDataMonth = 0;
 
                     for ($i = 1; $i <= 31; $i++) {
-                        $y = rand(8, 13);
+                        $y = rand(4, 13);
                         array_push($dataPoints, array($y));
                         array_push($dataLabels, array($i));
                         $sumDataMonth += $y;
@@ -131,6 +131,10 @@ function generateHomeTab()
                     $budget_year_remaining = $budget_year - $cost_year;
                     $budget_day_remaining_round = number_format($budget_day_remaining,2);
                     $budget_year_remaining_round = number_format($budget_year_remaining,2);
+
+                    $command = escapeshellcmd('/required/email/myemail.py');
+                    $output = shell_exec($command);
+                    echo $output;
 
                     $html .= <<<html
                     <!-- Accordion card -->
@@ -383,3 +387,4 @@ html;
 }
 
 ?>
+

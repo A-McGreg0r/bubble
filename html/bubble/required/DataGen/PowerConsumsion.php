@@ -1,6 +1,6 @@
 <?php
-//http://sandbox.onlinephpfunctions.com/code/daf82f88cf7be7bf39c4eaa2b98111ccff8e3977 online tester
 echo "Starting \n";
+//http://sandbox.onlinephpfunctions.com/code/d078a008a274c3d0a8ca40ff897dc7457c929e72
 generatesConsumptionData(5,800,1700,100,250);
 
 function generatesConsumptionData($workingDays,$workStart, $workEnd, $travelTime,$maxConsumption) {
@@ -22,19 +22,19 @@ function generatesConsumptionData($workingDays,$workStart, $workEnd, $travelTime
             $dayCount++;
 
             while ($TimeOfDay <= $hoursInDay){
-                if($TimeOfDay==$workStart){echo"\n StartingWork\n";}
+                if($TimeOfDay==$workStart){echo"\nStartingWork\n";}
 
                 if($TimeOfDay > $workStart-$travelTime && $TimeOfDay < $workEnd+$travelTime){
                     $consumed =$consumed+lowConsumption($maxConsumption);
-                    echo "\t Working-Hour: $TimeOfDay \t PowerCounsumed: $consumed \n";
+                    echo "\tWorking-Hour: $TimeOfDay\tPowerCounsumed: $consumed\n";
 
                     //bug
                 }else if ($TimeOfDay < $sleepingHoursStart && $TimeOfDay > $sleepingHoursEnd){
                     $consumed =$consumed+highConsumption($maxConsumption);
-                    echo "\t HOME-Hour: $TimeOfDay \t PowerCounsumed: $consumed \n";
+                    echo "\tHOME-Hour: $TimeOfDay\t\tPowerCounsumed: $consumed\n";
                 }else{
                     $consumed =$consumed+lowConsumption($maxConsumption);
-                    echo "\t Slepping-Hour: $TimeOfDay \t PowerCounsumed: $consumed \n";
+                    echo "\tSlepping-Hour: $TimeOfDay\tPowerCounsumed: $consumed\n";
                 }
 
                 $TimeOfDay=+$TimeOfDay+100;
@@ -44,15 +44,15 @@ function generatesConsumptionData($workingDays,$workStart, $workEnd, $travelTime
         while($dayCount <= $daysInWeek){
             echo "WeekendDay :$dayCount\n";
             $TimeOfDay=100;//start point of hours loop
-            while ($TimeOfDay <= $hoursInDay){
+            while ($TimeOfDay < $hoursInDay){
 
                 $TimeOfDay=+$TimeOfDay+100;
                 if ($TimeOfDay < $sleepingHoursStart && $TimeOfDay > $sleepingHoursEnd){
                     $consumed =$consumed+highConsumption($maxConsumption);
-                    echo "\t HOME-Hour: $TimeOfDay \t PowerCounsumed: $consumed \n";
+                    echo "\tHOME-Hour: $TimeOfDay\t\tPowerCounsumed: $consumed\n";
                 }else{
                     $consumed =$consumed+lowConsumption($maxConsumption);
-                    echo "\t Slepping-Hour: $TimeOfDay \t PowerCounsumed: $consumed \n";
+                    echo "\tSlepping-Hour: $TimeOfDay\tPowerCounsumed: $consumed\n";
                 }
             }
             $dayCount++;
@@ -63,8 +63,8 @@ function generatesConsumptionData($workingDays,$workStart, $workEnd, $travelTime
 
 
 function highConsumption($highConsumption){
-    return rand($highConsumption,$highConsumption/2);
+    return rand($highConsumption,($highConsumption/3)*2);
 }
 function lowConsumption($lowConsumption){
-    return rand(0,$lowConsumption/4);
+    return rand(0,$lowConsumption/2);
 }

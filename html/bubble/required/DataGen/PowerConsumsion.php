@@ -1,63 +1,63 @@
 <?php
-
-
-
-
-
-
-
-
-generatesConsumptionData(5,800,1700,0100,250);
-
+echo "Starting \n";
+generatesConsumptionData(5,800,1700,100,250);
 
 function generatesConsumptionData($workingDays,$workStart, $workEnd, $travelTime,$maxConsumption) {
+    echo "Func Called \n";
     $daysInWeek=7;//number of days in the week
     $dayCount=1;//start point for days in week
-    $StartOfDay=1;//start point of hours loop
+
     $hoursInDay=2400;//number of hours in a day
     $sleepingHoursStart=2200;
     $sleepingHoursEnd=0600;
-    $rollingTotal=array();
+    $weeklyData=array($daylayData=array());
+    $consumed=0;
 
-    //keeps track of current day
     while($dayCount <=$daysInWeek){
-
-        //calclate working day consumsion
+        $TimeOfDay=100;//start point of hours loop
         while($dayCount<=$workingDays){
-            //tracks time of day
-            while ($StartOfDay <= $hoursInDay){
+            echo "Working-Day :$dayCount \n";
+            $TimeOfDay=100;//start point of hours loop
+            $dayCount++;
 
-                if(($workStart-$travelTime) > $StartOfDay && ($workEnd+$travelTime) < $StartOfDay ){
-                    $consumed =+ lowConsumption($maxConsumption);
-                    $rollingTotal.array_push($consumed);
-                }else if ($StartOfDay < $sleepingHoursStart && $StartOfDay > $sleepingHoursEnd){
-                    $consumed =+ lowConsumption($maxConsumption);
-                    $rollingTotal.array_push($consumed);
+            while ($TimeOfDay <= $hoursInDay){
+                if($TimeOfDay==$workStart){echo"\n StartingWork\n";}
+
+                if($TimeOfDay > $workStart-$travelTime  && $TimeOfDay < $workEnd+$travelTime){
+                    $consumed =$consumed+lowConsumption($maxConsumption);
+                    echo "\t Working-Hour: $TimeOfDay \t PowerCounsumed: $consumed \n";
+
+
+                }elseif ($sleepingHoursStart < $TimeOfDay  && $sleepingHoursEnd > $TimeOfDay){
+                    $consumed =$consumed+lowConsumption($maxConsumption);
+                    echo "\t Slepping-Hour: $TimeOfDay \t PowerCounsumed: $consumed \n";
                 }else{
-                    $consumed =+ highConsumption($maxConsumption);
-                    $rollingTotal.array_push($rollingTotal,$consumed);
+                    $consumed =$consumed+highConsumption($maxConsumption);
+                    echo "\t HOME-Hour: $TimeOfDay \t PowerCounsumed: $consumed \n";
+
                 }
-                $dayCount++;
+
+                $TimeOfDay=+$TimeOfDay+100;
             }
+            $consumed=0;
         }
-        //calculate non-workingday consumsion
-        while($dayCount<=$daysInWeek){
-            //tracks time of day
-            while ($StartOfDay <= $hoursInDay){
-
+        while($dayCount <= $daysInWeek){
+            echo "WeekendDay :$dayCount\n";
+            $TimeOfDay=100;//start point of hours loop
+            while ($TimeOfDay <= $hoursInDay){
+                echo "\t HOME-Hour: $TimeOfDay \n";
+                $TimeOfDay=+$TimeOfDay+100;
             }
-
             $dayCount++;
         }
-
     }
-    return $rollingTotal;
+
 }
 
 
-function highConsumption($maxConsumption){
-    return rand(0,$maxConsumption/2);
+function highConsumption($highConsumption){
+    return rand($highConsumption,$highConsumption/2);
 }
-function lowConsumption($maxConsumption){
-    return rand($maxConsumption/2,$maxConsumption);
+function lowConsumption($lowConsumption){
+    return rand(0,$lowConsumption/2);
 }

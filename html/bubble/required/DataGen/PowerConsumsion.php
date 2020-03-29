@@ -1,41 +1,49 @@
 <?php
-$currentDate= 0;
-
-$timeOfDay=0;
 
 
 
 
 
-generatesConsumptionData(8,17,1);
 
 
-function generatesConsumptionData($workStart, $workEnd, $travleTime) {
 
-    $count=1;
+generatesConsumptionData(5,8,17,1);
 
 
-    $workinghours=array( $workStart , $workEnd);
-    $daysInWeek = array(true,true,true,true,true,false,false);//true == at work false not at work
+function generatesConsumptionData($workingDays,$workStart, $workEnd, $travleTime) {
 
-    while($count <=7){
+    $dayCount=1;//start point for main loop
+    $daysInWeek=7;//endpoint for main loop
+    $timeOfDay=1;
+    $hoursInDay=24;//number of hurs in a day
 
-        if ($daysInWeek[$count]==true) {
-            //get hours awake first
+    //keeps track of current day
+    while($dayCount <=$daysInWeek){
 
-            if($workinghours[1] > $timeOfDay && $workinghours[2] < $timeOfDay ){
-                lowConsumption($timeOfDay);
-                $count++;
-            }else{
-                highConsumption($timeOfDay);
+        //calclate working day consumsion
+        while($dayCount<=$workingDays){
+            //tracks time of day
+            while ($timeOfDay <= $hoursInDay){
+
+                if(($workStart-$travleTime) > $timeOfDay && ($workEnd+$travleTime) < $timeOfDay ){
+                    lowConsumption($timeOfDay);
+                    $dayCount++;
+                }else{
+                    highConsumption($timeOfDay);
+                }
+                $dayCount++;
             }
         }
-        if ($daysInWeek[$count]==false){
-            //if awake
-            //call highConsumption high else call lowConsumption
+        //calculate non-workingday consumsion
+        while($dayCount<=$daysInWeek){
+            //tracks time of day
+            while ($timeOfDay <= $hoursInDay){
 
-            $count++;
+            }
+
+            $dayCount++;
         }
+
     }
 }
 

@@ -13,9 +13,11 @@ generatesConsumptionData(5,8,17,1,250);
 function generatesConsumptionData($workingDays,$workStart, $workEnd, $travelTime,$maxConsumption) {
     $daysInWeek=7;//number of days in the week
     $dayCount=1;//start point for days in week
-    $timeOfDay=1;//start point of hours loop
-    $hoursInDay=24;//number of hours in a day
-
+    $StartOfDay=1;//start point of hours loop
+    $hoursInDay=2400;//number of hours in a day
+    $sleepingHoursStart=2200;
+    $sleepingHoursEnd=0600;
+    $rollingToatl=array();
 
     //keeps track of current day
     while($dayCount <=$daysInWeek){
@@ -23,13 +25,18 @@ function generatesConsumptionData($workingDays,$workStart, $workEnd, $travelTime
         //calclate working day consumsion
         while($dayCount<=$workingDays){
             //tracks time of day
-            while ($timeOfDay <= $hoursInDay){
+            while ($StartOfDay <= $hoursInDay){
 
-                if(($workStart-$travelTime) > $timeOfDay && ($workEnd+$travelTime) < $timeOfDay ){
-                    lowConsumption($maxConsumption);
+                if(($workStart-$travelTime) > $StartOfDay && ($workEnd+$travelTime) < $StartOfDay ){
+                    $consumed =+ lowConsumption($maxConsumption);
+                    $rollingToatl.array_push($consumed);
                     $dayCount++;
+                }else if ($StartOfDay < $sleepingHoursStart && $StartOfDay > $sleepingHoursEnd){
+                    $consumed =+ lowConsumption($maxConsumption);
+                    $rollingToatl.array_push($consumed);
                 }else{
-                    highConsumption($maxConsumption);
+                    $consumed =+ highConsumption($maxConsumption);
+                    $rollingToatl.array_push($rollingToatl,$consumed);
                 }
                 $dayCount++;
             }
@@ -37,7 +44,7 @@ function generatesConsumptionData($workingDays,$workStart, $workEnd, $travelTime
         //calculate non-workingday consumsion
         while($dayCount<=$daysInWeek){
             //tracks time of day
-            while ($timeOfDay <= $hoursInDay){
+            while ($StartOfDay <= $hoursInDay){
 
             }
 
@@ -45,6 +52,7 @@ function generatesConsumptionData($workingDays,$workStart, $workEnd, $travelTime
         }
 
     }
+    return $rollingToatl;
 }
 
 

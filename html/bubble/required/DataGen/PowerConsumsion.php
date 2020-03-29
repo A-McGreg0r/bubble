@@ -7,7 +7,7 @@
 
 
 
-generatesConsumptionData(5,8,17,1,250);
+generatesConsumptionData(5,800,1700,0100,250);
 
 
 function generatesConsumptionData($workingDays,$workStart, $workEnd, $travelTime,$maxConsumption) {
@@ -17,7 +17,7 @@ function generatesConsumptionData($workingDays,$workStart, $workEnd, $travelTime
     $hoursInDay=2400;//number of hours in a day
     $sleepingHoursStart=2200;
     $sleepingHoursEnd=0600;
-    $rollingToatl=array();
+    $rollingTotal=array();
 
     //keeps track of current day
     while($dayCount <=$daysInWeek){
@@ -29,14 +29,14 @@ function generatesConsumptionData($workingDays,$workStart, $workEnd, $travelTime
 
                 if(($workStart-$travelTime) > $StartOfDay && ($workEnd+$travelTime) < $StartOfDay ){
                     $consumed =+ lowConsumption($maxConsumption);
-                    $rollingToatl.array_push($consumed);
+                    $rollingTotal.array_push($consumed);
                     $dayCount++;
                 }else if ($StartOfDay < $sleepingHoursStart && $StartOfDay > $sleepingHoursEnd){
                     $consumed =+ lowConsumption($maxConsumption);
-                    $rollingToatl.array_push($consumed);
+                    $rollingTotal.array_push($consumed);
                 }else{
                     $consumed =+ highConsumption($maxConsumption);
-                    $rollingToatl.array_push($rollingToatl,$consumed);
+                    $rollingTotal.array_push($rollingTotal,$consumed);
                 }
                 $dayCount++;
             }
@@ -52,7 +52,7 @@ function generatesConsumptionData($workingDays,$workStart, $workEnd, $travelTime
         }
 
     }
-    return $rollingToatl;
+    return $rollingTotal;
 }
 
 

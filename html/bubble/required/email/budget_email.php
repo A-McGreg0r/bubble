@@ -15,7 +15,6 @@ if ($result->num_rows >= 1) {
 
         $allow_emails = $row['allow_emails'];
         if($allow_emails == "Yes"){
-
             $first_name = $row['first_name'];
             $email = $row['email'];
             $budget = $row['budget'];
@@ -49,6 +48,7 @@ if ($result->num_rows >= 1) {
                 echo "Email sent to $email\n";
             }
         }
+        $count++;
     }
 }
 

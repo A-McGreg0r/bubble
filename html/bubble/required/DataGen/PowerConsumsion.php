@@ -30,7 +30,6 @@ function generatesConsumptionData($workingDays,$workStart, $workEnd, $travelTime
                 if(($workStart-$travelTime) > $StartOfDay && ($workEnd+$travelTime) < $StartOfDay ){
                     $consumed =+ lowConsumption($maxConsumption);
                     $rollingTotal.array_push($consumed);
-                    $dayCount++;
                 }else if ($StartOfDay < $sleepingHoursStart && $StartOfDay > $sleepingHoursEnd){
                     $consumed =+ lowConsumption($maxConsumption);
                     $rollingTotal.array_push($consumed);

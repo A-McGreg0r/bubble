@@ -39,12 +39,12 @@ html;
         session_write_close();
 
         $stmt = $db->prepare("SELECT * FROM device_info WHERE hub_id = ?");//todo oderby room id
-        $stmt->bind_param("i", $hub_id);
-        $stmt->execute();
-        $result = $stmt->get_result();
+                $stmt->bind_param("i", $hub_id);
+                $stmt->execute();
+                $result = $stmt->get_result();
 
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
                 $device_id = $row['device_id'];
                 $device_name = $row['device_name'];
                 $device_type = $row['device_type'];

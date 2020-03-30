@@ -8,7 +8,6 @@ $stmt = $db->prepare("SELECT * FROM user_info");
 $stmt->execute();
 $result = $stmt->get_result();
 if ($result->num_rows >= 1) {
-    extract($result->fetch_assoc());
 
     $all = $result->fetch_all(MYSQLI_ASSOC);
     foreach($all as $row){

@@ -40,29 +40,17 @@ if ($result->num_rows >= 1) {
 
         $hub_id = $row['hub_id'];
 
-        $stmt2 = $db->prepare("SELECT * FROM daily_data");
+        $stmt2 = $db->prepare("SELECT * FROM hourly_data");
         $stmt2->execute();
         $result2 = $stmt2->get_result();
-        if ($result2->num_rows === 0){
-            $stmt3 = $db->prepare("INSERT INTO daily_data (hub_id) VALUES (?)");
-            $stmt3->bind_param("i", $hub_id);
+        if ($result2->num_rows === 0) {
+            $stmt3 = $db->prepare("INSERT INTO hourly_data (hub_id, entry_day, entry_hour, energy_usage) VALUES (?, ?, ?, ?)");
+            $stmt3->bind_param("iiii", $hub_id, $day, $hour, $energy_used);
             $stmt3->execute();
-        }
-        
-        if ($hour == "00") {
-            $stmt4 = $db->prepare("UPDATE daily_data SET hour_24 = ? WHERE hub_id = ?");
-            $stmt4->bind_param("ii", $energy_used, $hub_id);
-            $stmt4->execute();
-        } else {
-            $stmt5 = $db->prepare("UPDATE daily_data SET hour_$hour = ? WHERE hub_id = ?");
-            $stmt5->bind_param("ii", $energy_used, $hub_id);
-            $stmt5->execute();
         }
 
         $stmt2->close();
         $stmt3->close();
-        $stmt4->close();
-        $stmt5->close();
     }
 }
 $stmt->close();

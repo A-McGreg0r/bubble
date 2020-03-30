@@ -25,18 +25,50 @@ if ($hour == "9" || $hour == "10" || $hour == "11" || $hour == "12" || $hour == 
     $status = "idle";
 }
 
-if ($status == "busy") {
-    $energy_used = rand(125,250);
-} else if ($status == "idle"){
-    $energy_used = rand(0,250/4);
-}
-
 $stmt = $db->prepare("SELECT * FROM hub_info");
 $stmt->execute();
 $result = $stmt->get_result();
 if ($result->num_rows >= 1) {
     $all = $result->fetch_all(MYSQLI_ASSOC);
     foreach($all as $row){
+
+        if ($status == "busy") {
+            $energy_used = 0;
+        
+            $stmt5 = $db->prepare("SELECT * FROM device_info WHERE hub_id = ?");
+            $stmt5->prepare("i", $row['hub_id']);
+            $stmt5->execute();
+            $result5 = $stmt5->get_result();
+            if ($result5->num_rows >= 1) {
+                $all5 = $result5->fetch_all(MYSQLI_ASSOC);
+                foreach($all5 as $row5){
+
+                    $stmt4 = $db->prepare("SELECT * FROM device_types WHERE type_id = ?");
+                    $stmt4->bind_param("i", $row5['device_type']);
+                    $stmt4->execute();
+                    $result4 = $stmt4->get_result();
+                    if ($result4->num_rows >= 1) {
+                        $all4 = $result4->fetch_all(MYSQLI_ASSOC);
+                        foreach($all4 as $row4){
+                            $energy_used = $energy_used + $row4['energy_usage'];
+                        }
+                    }
+                }
+            }
+            
+            $numerator = rand(2,10);
+            $denominator = rand(3,10);
+            while ($numerator > $denominator) {
+                $numerator = rand(2,10);
+                $denominator = rand(3,10);
+            }
+            energy_usage = energy_usage / $denominator * $numerator;
+
+            $energy_used = $energy_used + rand(0,250/4);
+
+        } else if ($status == "idle"){
+            $energy_used = rand(0,250/4);
+        }
 
         $hub_id = $row['hub_id'];
 

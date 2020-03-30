@@ -55,8 +55,6 @@ if ($result->num_rows >= 1) {
         }
 
         if ($status == "busy") {
-            
-            
             $numerator = rand(2,10);
             $denominator = rand(3,10);
             while ($numerator > $denominator) {
@@ -70,7 +68,6 @@ if ($result->num_rows >= 1) {
 
         } else if ($status == "idle"){
             $energy_used = rand(0,$max_consumption/3);
-            echo "$energy_used\n";
         }
 
         $hub_id = $row['hub_id'];

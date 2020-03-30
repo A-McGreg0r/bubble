@@ -3,6 +3,7 @@ echo "Starting \n";
 global $db;
 
 $maxConsumption = 0;
+$energy_usage = 0;
 
 $stmt = $db->prepare("SELECT * FROM hub_info");
 $stmt->execute();
@@ -29,6 +30,7 @@ if ($result->num_rows >= 1) {
                     $all4 = $result4->fetch_all(MYSQLI_ASSOC);
                     foreach($all4 as $row4){
                         $maxConsumption = $energy_used + $row4['energy_usage'];
+                        $energy_usage = $row4['energy_usage'];
                     }
                 }
             }

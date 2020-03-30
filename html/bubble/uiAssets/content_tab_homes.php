@@ -50,6 +50,9 @@ function generateHomeTab()
                         $cost_variance = $cost_total - $cost_month;
                     }
 
+                    $stmt4 = $db->prepare("SELECT * FROM hourly_data WHERE hub_id = ?");
+                    $stmt4->bind_param("i", $hub_id);
+                    $stmt4.execute();
 
                     //todo add querrys for pulling power usage
                     $dataPoints = array();

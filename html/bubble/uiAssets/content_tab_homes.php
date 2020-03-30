@@ -53,13 +53,15 @@ function generateHomeTab()
                     $day = date("d");
                     $energy_last_day = 0;
 
-                    $stmt4 = $db->prepare("SELECT * FROM daily_data WHERE hub_id = ? AND entry_day = ?");
+                    $stmt4 = $db->prepare("SELECT * FROM hourly_data WHERE hub_id = ? AND entry_day = ?");
                     $stmt4->bind_param("ii", $hub_id, $day);
                     $stmt4->execute();
                     $result4 = $stmt4->get_result();
-                    if ($result4->num_rows === 1) {
-                        $row4 = $result4->fetch_assoc();
-                        $energy_last_day = $row4['energy_usage'];
+                    if ($result4->num_rows >= 1) {
+                        $all4 = $result4->fetch_all(MYSQLI_ASSOC);
+                        foreach($all4 as $row4){
+                            $energy_last_day = $energy_last_day + $row4['energy_usage'];
+                        }
                     }
 
                     $energy_last_day = $energy_last_day / 1000;
@@ -67,13 +69,15 @@ function generateHomeTab()
                     $month = date("m");
                     $energy_last_month = 0;
 
-                    $stmt5 = $db->prepare("SELECT * FROM monthly_data WHERE hub_id = ? AND entry_month = ?");
+                    $stmt5 = $db->prepare("SELECT * FROM daily_data WHERE hub_id = ? AND entry_month = ?");
                     $stmt5->bind_param("ii", $hub_id, $month);
                     $stmt5->execute();
                     $result5 = $stmt5->get_result();
-                    if ($result5->num_rows === 1) {
-                        $row5 = $result5->fetch_assoc();
-                        $energy_last_month = $row5['energy_usage'];
+                    if ($result5->num_rows >= 1) {
+                        $all5 = $result5->fetch_all(MYSQLI_ASSOC);
+                        foreach($all5 as $row5){
+                            $energy_last_month = $energy_last_month + $row5['energy_usage'];
+                        }
                     }
 
                     $energy_last_month = $energy_last_month / 1000;
@@ -104,16 +108,19 @@ function generateHomeTab()
                     $stmt7->execute();
                     $result7 = $stmt7->get_result();
                     if ($result7->num_rows >= 1) {
+                        $n = 0;
                         $all7 = $result7->fetch_all(MYSQLI_ASSOC);
                         foreach($all7 as $row7){
-
+                            $n = $n + 1;
                             $energy_usage7 = $row7['energy_usage'];
                             $month7 = $row7['entry_month'];
                             $count = $count + $energy_usage7;
                             array_push($dataPoints, array($energy_usage7));
                             array_push($dataLabels, array($month7));
                         }
-                        array_push($AvgPoints,array($count));
+                        for($i = 0; $i < sizeof($dataPoints); $i++){
+                            array_push($AvgPoints,$count/$n);
+                        }
                     }
                     $cost_year = $energy_last_year * $energy_cost;
                     $cost_year_round = number_format($cost_year,2);
@@ -132,16 +139,19 @@ function generateHomeTab()
                     $stmt8->execute();
                     $result8 = $stmt8->get_result();
                     if ($result8->num_rows >= 1) {
+                        $n = 0;
                         $all8 = $result8->fetch_all(MYSQLI_ASSOC);
                         foreach($all8 as $row8){
-
+                            $n = $n + 1;
                             $energy_usage8 = $row8['energy_usage'];
-                            $month8 = $row8['entry_day'];
+                            $day8 = $row8['entry_day'];
                             $count = $count + $energy_usage8;
                             array_push($dataPoints, array($energy_usage8));
-                            array_push($dataLabels, array($month8));
+                            array_push($dataLabels, array($day8));
                         }
-                        array_push($AvgPoints,array($count));
+                        for($i = 0; $i < sizeof($dataPoints); $i++){
+                            array_push($AvgPoints,$count/$n);
+                        }
                     }
                     $cost_month = $energy_last_month * $energy_cost;
                     $cost_month_round = number_format($cost_month,2);
@@ -160,16 +170,19 @@ function generateHomeTab()
                     $stmt9->execute();
                     $result9 = $stmt9->get_result();
                     if ($result9->num_rows >= 1) {
+                        $n = 0;
                         $all9 = $result9->fetch_all(MYSQLI_ASSOC);
                         foreach($all9 as $row9){
-
+                            $n = $n + 1;
                             $energy_usage9 = $row9['energy_usage'];
-                            $month9 = $row9['entry_day'];
+                            $hour9 = $row9['entry_hour'];
                             $count = $count + $energy_usage9;
                             array_push($dataPoints, array($energy_usage9));
-                            array_push($dataLabels, array($month9));
+                            array_push($dataLabels, array($hour9));
                         }
-                        array_push($AvgPoints,array($count));
+                        for($i = 0; $i < sizeof($dataPoints); $i++){
+                            array_push($AvgPoints,$count/$n);
+                        }
                     }
                     $cost_day = $energy_last_day * $energy_cost;
                     $cost_day_round = number_format($cost_day,2);
@@ -187,7 +200,7 @@ function generateHomeTab()
                     $budget_day_remaining = $budget_day - $cost_day;
                     $budget_year_remaining = $budget_year - $cost_year;
                     $budget_day_remaining_round = number_format($budget_day_remaining,2);
-                    $budget_year_remaining_round = number_format($budget_year_remaining,2);
+                    $budget_year_remaining_round = money_format('%.2n', $budget_year_remaining);
 
                     $command = escapeshellcmd('/required/email/myemail.py');
                     $output = shell_exec($command);
@@ -326,7 +339,7 @@ function generateHomeTab()
                                                                 data: {
                                                                 labels: ["Spent [£]", "Budget [£]"],
                                                                 datasets: [{
-                                                                data: [$cost_year_round, $budget_year_remaining],
+                                                                data: [$cost_year_round, $budget_year_remaining_round],
                                                                 backgroundColor: ["rgba(109, 171, 166, 1)", "rgba(0, 0, 0, 0.1)"],
                                                                 hoverBackgroundColor: ["rgba(99, 161, 156, 1)", "rgba(0, 0, 0, 0.15)"]
                                                                 }]

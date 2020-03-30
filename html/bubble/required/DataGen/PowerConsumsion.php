@@ -1,6 +1,41 @@
 <?php
 echo "Starting \n";
-generatesConsumptionData(5,800,1700,100,250);
+global $db;
+
+$maxConsumption = 0;
+
+$stmt = $db->prepare("SELECT * FROM hub_info");
+$stmt->execute();
+$result = $stmt->get_result();
+if ($result->num_rows >= 1) {
+    $all = $result->fetch_all(MYSQLI_ASSOC);
+    foreach($all as $row){
+        $energy_used = 0;
+        $maxConsumption = 0;
+
+        $stmt5 = $db->prepare("SELECT * FROM device_info WHERE hub_id = ?");
+        $stmt5->bind_param("i", $row['hub_id']);
+        $stmt5->execute();
+        $result5 = $stmt5->get_result();
+        if ($result5->num_rows >= 1) {
+            $all5 = $result5->fetch_all(MYSQLI_ASSOC);
+            foreach($all5 as $row5){
+
+                $stmt4 = $db->prepare("SELECT * FROM device_types WHERE type_id = ?");
+                $stmt4->bind_param("i", $row5['device_type']);
+                $stmt4->execute();
+                $result4 = $stmt4->get_result();
+                if ($result4->num_rows >= 1) {
+                    $all4 = $result4->fetch_all(MYSQLI_ASSOC);
+                    foreach($all4 as $row4){
+                        $maxConsumption = $energy_used + $row4['energy_usage'];
+                    }
+                }
+            }
+        }
+    }
+}
+generatesConsumptionData(5,800,1700,100,$maxConsumption);
 
 function generatesConsumptionData($workingDays,$workStart, $workEnd, $travelTime,$maxConsumption) {
     echo "Func Called \n";
@@ -67,9 +102,20 @@ function generatesConsumptionData($workingDays,$workStart, $workEnd, $travelTime
 }
 
 
-function highConsumption($highConsumption){
-    return rand($highConsumption,($highConsumption/3)*2);
+function highConsumption($maxConsumption){
+    $numerator = rand(2,10);
+    $denominator = rand(3,10);
+    while ($numerator > $denominator) {
+        $numerator = rand(2,10);
+        $denominator = rand(3,10);
+    }
+
+    $idle_energy = rand(0,$maxConsumption/3);
+    $energy_usage = $energy_usage / $denominator * $numerator;
+    $energy_used = $energy_used + $idle_energy;
+    return energy_used;
 }
-function lowConsumption($lowConsumption){
-    return rand(0,$lowConsumption/3);
+function lowConsumption($maxConsumption){
+    $energy_used = rand(0,$maxConsumption/3);
+    return $energy_used;
 }

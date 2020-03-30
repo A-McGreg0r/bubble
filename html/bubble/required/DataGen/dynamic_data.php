@@ -8,7 +8,7 @@ $day = date("d");
 
 $day_of_week = date("D");
 
-$hour = date("H");
+$hour = date("H") + 1;
 
 $status = "";
 
@@ -65,12 +65,11 @@ if ($result->num_rows >= 1) {
             }
 
             $idle_energy = rand(0,$max_consumption/3);
-            $energy_usage = energy_usage / $denominator * $numerator;
+            $energy_usage = $energy_usage / $denominator * $numerator;
             $energy_used = $energy_used + $idle_energy;
 
         } else if ($status == "idle"){
             $energy_used = rand(0,$max_consumption/3);
-            echo "$energy_used\n";
         }
 
         $hub_id = $row['hub_id'];

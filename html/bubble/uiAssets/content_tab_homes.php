@@ -50,9 +50,48 @@ function generateHomeTab()
                         $cost_variance = $cost_total - $cost_month;
                     }
 
-                    $stmt4 = $db->prepare("SELECT * FROM hourly_data WHERE hub_id = ?");
-                    $stmt4->bind_param("i", $hub_id);
-                    $stmt4.execute();
+                    $day = date("d");
+                    $energy_last_day = 0;
+
+                    $stmt4 = $db->prepare("SELECT * FROM daily_data WHERE hub_id = ? AND entry_day = ?");
+                    $stmt4->bind_param("ii", $hub_id, $day);
+                    $stmt4->execute();
+                    $result4 = $stmt4->get_result();
+                    if ($result4->num_rows === 1) {
+                        $row4 = $result4->fetch_assoc();
+                        $energy_last_day = $row4['energy_usage'];
+                    }
+
+                    $energy_last_day = $energy_last_day / 1000;
+
+                    $month = date("m");
+                    $energy_last_month = 0;
+
+                    $stmt5 = $db->prepare("SELECT * FROM monthly_data WHERE hub_id = ? AND entry_month = ?");
+                    $stmt5->bind_param("ii", $hub_id, $month);
+                    $stmt5->execute();
+                    $result5 = $stmt5->get_result();
+                    if ($result5->num_rows === 1) {
+                        $row5 = $result5->fetch_assoc();
+                        $energy_last_month = $row5['energy_usage'];
+                    }
+
+                    $energy_last_month = $energy_last_month / 1000;
+
+                    $energy_last_year = 0;
+
+                    $stmt6 = $db->prepare("SELECT * FROM monthly_data WHERE hub_id = ?");
+                    $stmt6->bind_param("i", $hub_id);
+                    $stmt6->execute();
+                    $result6 = $stmt6->get_result();
+                    if ($result6->num_rows >= 1) {
+                        $all6 = $result6->fetch_all(MYSQLI_ASSOC);
+                        foreach($all6 as $row6){
+                            $energy_last_year = $energy_last_year + $row6['energy_usage'];
+                        }
+                    }
+
+                    $energy_last_year = $energy_last_year / 1000;
 
                     //todo add querrys for pulling power usage
                     $dataPoints = array();
@@ -71,7 +110,7 @@ function generateHomeTab()
                         $count = $sumDataYear / 12;
                         array_push($AvgPoints, array($count));
                     }
-                    $cost_year = $sumDataYear * $energy_cost;
+                    $cost_year = $energy_last_year * $energy_cost;
                     $cost_year_round = number_format($cost_year,2);
                     $DataLabelsYearEncoded = json_encode($dataLabels);
                     $dataPointsYearEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
@@ -94,7 +133,7 @@ function generateHomeTab()
                         $count = $sumDataMonth / 31;
                         array_push($AvgPoints, array($count));
                     }
-                    $cost_month = $sumDataMonth * $energy_cost;
+                    $cost_month = $energy_last_month * $energy_cost;
                     $cost_month_round = number_format($cost_month,2);
                     $DataSumMonthEncoded = json_encode(array_sum($dataPoints), JSON_NUMERIC_CHECK);
                     $DataLabelsMonthEncoded = json_encode($dataLabels);
@@ -117,7 +156,7 @@ function generateHomeTab()
                         $count = $sumDataDay / 24;
                         array_push($AvgPoints, array($count));
                     }
-                    $cost_day = $sumDataDay * $energy_cost;
+                    $cost_day = $energy_last_day * $energy_cost;
                     $cost_day_round = number_format($cost_day,2);
                     $DataLabelsDayEncoded = json_encode($dataLabels);
                     $dataPointsDayEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
@@ -166,7 +205,7 @@ function generateHomeTab()
                                     
                                     <tr class="stats-row">
                                         <td class="stats-left"><strong>&ensp;Power Used Today:</strong></td>
-                                        <td class="stats-right">$sumDataDay kWh&ensp;</td>
+                                        <td class="stats-right">$energy_last_day kWh&ensp;</td>
                                     </tr>
                                     <tr class="stats-row">
                                         <td class="stats-left"><strong>&ensp;Cost:</strong></td>
@@ -174,7 +213,7 @@ function generateHomeTab()
                                     </tr>
                                     <tr class="stats-row">
                                         <td class="stats-left"><strong>&ensp;Power Used This Month:&ensp;&ensp;</strong></td>
-                                        <td class="stats-right">$sumDataMonth kWh&ensp;</td>
+                                        <td class="stats-right">$energy_last_month kWh&ensp;</td>
                                     </tr>
                                     <tr class="stats-row">
                                         <td class="stats-left"><strong>&ensp;Cost:</br>&ensp;Remaining Budget:</strong></td>
@@ -182,7 +221,7 @@ function generateHomeTab()
                                     </tr>
                                     <tr class="stats-row">
                                         <td class="stats-left"><strong>&ensp;Power Used This Year:</strong></td>
-                                        <td class="stats-right">$sumDataYear kWh&ensp;</td>
+                                        <td class="stats-right">$energy_last_year kWh&ensp;</td>
                                     </tr>
                                     <tr class="stats-row">
                                         <td class="stats-left"><strong>&ensp;Cost:</strong></td>
@@ -214,7 +253,7 @@ function generateHomeTab()
                                                                 data: {
                                                                 labels: ["Spent [£]", "Remaining [£]"],
                                                                 datasets: [{
-                                                                data: [$cost_day, $budget_day_remaining_round],
+                                                                data: [$cost_day_round, $budget_day_remaining_round],
                                                                 backgroundColor: ["rgba(109, 171, 166, 1)", "rgba(0, 0, 0, 0.1)"],
                                                                 hoverBackgroundColor: ["rgba(99, 161, 156, 1)", "rgba(0, 0, 0, 0.15)"]
                                                                 }]
@@ -244,7 +283,7 @@ function generateHomeTab()
                                                             data: {
                                                             labels: ["Spent [£]", "Remaining [£]"],
                                                             datasets: [{
-                                                            data: [$cost_month, $budget_remaining_round],
+                                                            data: [$cost_month_round, $budget_remaining_round],
                                                             backgroundColor: ["rgba(109, 171, 166, 1)", "rgba(0, 0, 0, 0.1)"],
                                                             hoverBackgroundColor: ["rgba(99, 161, 156, 1)", "rgba(0, 0, 0, 0.15)"]
                                                             }]
@@ -272,7 +311,7 @@ function generateHomeTab()
                                                                 data: {
                                                                 labels: ["Spent [£]", "Budget [£]"],
                                                                 datasets: [{
-                                                                data: [$cost_year, $budget_year_remaining_round],
+                                                                data: [$cost_year_round, $budget_year_remaining_round],
                                                                 backgroundColor: ["rgba(109, 171, 166, 1)", "rgba(0, 0, 0, 0.1)"],
                                                                 hoverBackgroundColor: ["rgba(99, 161, 156, 1)", "rgba(0, 0, 0, 0.15)"]
                                                                 }]

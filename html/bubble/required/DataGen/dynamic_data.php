@@ -59,11 +59,10 @@ if ($result->num_rows >= 1) {
             $stmt5->execute();
         }
 
-        echo $hub_id;
-        echo "\n";
-
         $stmt2->close();
         $stmt3->close();
+        $stmt4->close();
+        $stmt5->close();
     }
 }
 $stmt->close();

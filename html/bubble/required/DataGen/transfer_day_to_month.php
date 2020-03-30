@@ -39,6 +39,7 @@ if ($result->num_rows >= 1) {
         $stmt2->close();
         $stmt3->close();
         $stmt4->close();
+        $stmt5->close();
     }
 }
 $stmt->close();

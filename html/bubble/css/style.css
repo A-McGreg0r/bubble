@@ -142,10 +142,10 @@ ul {
 
 .grey-out:nth-of-type(odd), .card-header{
     background-color: rgb(56,56,56)!important;
-    color: rgb(226, 183, 28)!important;
+    color: rgb(227, 184, 28)!important;
 }
 
-.grey-out:nth-of-type(even) {
+.alternating-border:nth-of-type(even) {
     border-left: 1px solid rgb(56,56,56)!important;
     border-right: 1px solid rgb(56,56,56)!important;
 }
@@ -246,6 +246,7 @@ table td {
 
 .btn.btn-sm {
     font-size: 0.9rem!important;
+    margin-bottom: 20px!important;
 }
 
 hr {
@@ -292,6 +293,7 @@ hr {
 .account-left {
     border-top-left-radius: 0.25rem!important;
     border-bottom-left-radius: 0.25rem!important;
+    min-width: 140px;
 }
 
 .login-links {

@@ -40,7 +40,7 @@ function generateAccount(){
                         <td class="right-column">$last_name&ensp;</td>
                     </tr>
                     <tr class="account-row">
-                        <td class="account-left"><strong>&ensp;Email Address:&ensp;&ensp;&ensp;</strong></td>
+                        <td class="account-left"><strong>&ensp;Email Address:</strong></td>
                         <td class="right-column">$email&ensp;</td>
                     </tr>
                     <tr class="account-row">

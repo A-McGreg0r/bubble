@@ -245,7 +245,7 @@ function generateHomeTab()
                                     </tr>
                                     <tr class="stats-row">
                                         <td class="stats-left"><strong>&ensp;Cost:</br>&ensp;Remaining Budget:</strong></td>
-                                        <td class="stats-right"><strong>£$cost_month_round&ensp;</br>£$budget_remaining_round&ensp;</strong></td>
+                                        <td class="stats-right double-stat"><strong>£$cost_month_round&ensp;</br>£$budget_remaining_round&ensp;</strong></td>
                                     </tr>
                                     <tr class="stats-row">
                                         <td class="stats-left"><strong>&ensp;Power Used This Year:</strong></td>

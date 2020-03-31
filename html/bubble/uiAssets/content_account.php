@@ -120,6 +120,7 @@ html;
                             $result3 = $stmt3->get_result();
                             $row3 = $result3->fetch_assoc();
                             $icon = $row3['type_icon'];
+                            $energy_consumption = $row3['energy_usage'];
 
                             $stmt4 = $db->prepare("SELECT * FROM room_info WHERE room_id = ?");
                             $stmt4->bind_param("i", $device_room);
@@ -130,8 +131,8 @@ html;
 
                             $html .= <<<device
                                 <tr>
-                                    <td class="pt-3-half">$icon $device_name</td>
-                                    <td class="pt-3-half">8w</td>
+                                    <td class="pt-3-half">$icon<br>$device_name</td>
+                                    <td class="pt-3-half">$energy_consumption Wh</td>
                                     <td class="pt-3-half">
                                     <select class="deviceLocation browser-default custom-select dropdown">
                                         <option value="0" disabled selected>Current: $roomName</option>

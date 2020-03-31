@@ -361,3 +361,8 @@ select {
 .text-dark {
     color: rgb(56, 56, 56)!important;
 }
+
+.double-stat {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

@@ -119,7 +119,7 @@ function generateHomeTab()
                             array_push($dataLabels, array($month7));
                         }
                         for($i = 0; $i < sizeof($dataPoints); $i++){
-                            array_push($AvgPoints,$count/$n);
+                            array_push($AvgPoints,money_format('%.3n',$count/$n));
                         }
                     }
                     $cost_year = $energy_last_year * $energy_cost;
@@ -150,7 +150,7 @@ function generateHomeTab()
                             array_push($dataLabels, array($day8));
                         }
                         for($i = 0; $i < sizeof($dataPoints); $i++){
-                            array_push($AvgPoints,$count/$n);
+                            array_push($AvgPoints,money_format('%.3n',$count/$n));
                         }
                     }
                     $cost_month = $energy_last_month * $energy_cost;
@@ -181,7 +181,7 @@ function generateHomeTab()
                             array_push($dataLabels, array($hour9));
                         }
                         for($i = 0; $i < sizeof($dataPoints); $i++){
-                            array_push($AvgPoints,$count/$n);
+                            array_push($AvgPoints,money_format('%.3n',$count/$n));
                         }
                     }
                     $cost_day = $energy_last_day * $energy_cost;

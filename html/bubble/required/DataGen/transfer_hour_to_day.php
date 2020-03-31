@@ -26,22 +26,6 @@ if ($result->num_rows >= 1) {
             $month_end = 31;
         }
 
-        $stmt2 = $db->prepare("SELECT * FROM daily_data");
-        $stmt2->execute();
-        $result2 = $stmt2->get_result();
-        $num_rows = $result2->num_rows;
-        if ($num_rows >= 1) {
-            $all2 = $result2->fetch_all(MYSQLI_ASSOC);
-            foreach($all2 as $row2){
-                if ($num_rows >= $month_end){
-                    $num_rows = $num_rows - 1;
-                    $stmt6 = $db->prepare("DELETE FROM daily_data WHERE entry_id = ?");
-                    $stmt6->bind_param("i", $row2['entry_id']);
-                    $stmt6->execute();
-                }
-            }
-        }
-
         $daily_energy = 0;
 
         $stmt4 = $db->prepare("SELECT * FROM hourly_data WHERE hub_id = ?");
@@ -58,6 +42,22 @@ if ($result->num_rows >= 1) {
             $stmt5 = $db->prepare("INSERT INTO daily_data (hub_id, entry_month, entry_day, energy_usage) VALUES (?, ?, ?, ?)");
             $stmt5->bind_param("iiii", $hub_id, $month, $day, $daily_energy);
             $stmt5->execute();
+        }
+
+        $stmt2 = $db->prepare("SELECT * FROM daily_data");
+        $stmt2->execute();
+        $result2 = $stmt2->get_result();
+        $num_rows = $result2->num_rows;
+        if ($num_rows >= 1) {
+            $all2 = $result2->fetch_all(MYSQLI_ASSOC);
+            foreach($all2 as $row2){
+                if ($num_rows >= $month_end){
+                    $num_rows = $num_rows - 1;
+                    $stmt6 = $db->prepare("DELETE FROM daily_data WHERE entry_id = ?");
+                    $stmt6->bind_param("i", $row2['entry_id']);
+                    $stmt6->execute();
+                }
+            }
         }
 
         $stmt2->close();

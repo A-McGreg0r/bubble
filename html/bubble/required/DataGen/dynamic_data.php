@@ -11,6 +11,7 @@ $day_of_week = date("D");
 $hour = date("H") + 1;
 
 $status = "";
+$season = "";
 
 if ($hour == 9 || $hour == 10 || $hour == 11 || $hour == 12 || $hour == 13 || $hour == 14 || $hour == 15 || $hour == 16 || $hour == 17) {
     if ($day_of_week == "Sat" || $day_of_week == "Sun"){
@@ -24,6 +25,7 @@ if ($hour == 9 || $hour == 10 || $hour == 11 || $hour == 12 || $hour == 13 || $h
     $status = "idle";
 }
 
+
 $stmt = $db->prepare("SELECT * FROM hub_info");
 $stmt->execute();
 $result = $stmt->get_result();
@@ -32,6 +34,32 @@ if ($result->num_rows >= 1) {
     foreach($all as $row){
         $energy_used = 0;
         $max_consumption = 0;
+        $variable_consumption = 0;
+        $temp = 0;
+
+        $stmt7 = $db->prepare("SELECT * FROM hub_users WHERE hub_id = ?");
+        $stmt7->bind_param("i", $row['hub_id']);
+        $stmt7->execute();
+        $result7 = $stmt7->get_result();
+        if ($result7->num_rows >= 1) {
+            extract($result7->fetch_assoc());
+            $stmt8 = $db->prepare("SELECT * FROM user_info WHERE user_id = ?");
+            $stmt8->bind_param("i", $user_id);
+            $stmt8->execute();
+            $result8 = $stmt8->get_result();
+            if ($result8->num_rows === 1) {
+                extract($result8->fetch_assoc());
+                $ip = $ip_address;
+                $latlong = explode(",", file_get_contents('https://ipapi.co/' . $ip . '/latlong/'));
+                $weather = file_get_contents('http://api.openweathermap.org/data/2.5/weather?lat=' . $latlong[0] . '&lon=' . $latlong[1] . '&appid=f35e0bdca477a802831ce6202240dc8d');
+                $current_weather = json_decode($weather,true);
+                $temp = $current_weather['main']['temp'];
+            }
+        }
+
+        $temp = $temp - 273;
+        $heater = 'No';
+        $air_con = 'No';
 
         $stmt5 = $db->prepare("SELECT * FROM device_info WHERE hub_id = ?");
         $stmt5->bind_param("i", $row['hub_id']);
@@ -48,19 +76,37 @@ if ($result->num_rows >= 1) {
                     $all4 = $result4->fetch_all(MYSQLI_ASSOC);
                     foreach($all4 as $row4){
                         $max_consumption = $max_consumption + $row4['energy_usage'];
+                        if($type_id == 2){
+                            if (temp <= 17){
+                                $variable_consumption = $variable_consumption + $row4['energy_usage'];
+                            }
+                        } else if ($type_id == 3){
+                            if (temp >= 26){
+                                $variable_consumption = $variable_consumption + $row4['energy_usage'];
+                            }
+                        } else {
+                            if($status == 'idle'){
+                                $chance = rand(0,100);
+                                if($chance >= 80){
+                                    $variable_consumption = $variable_consumption + $row4['energy_usage'];
+                                }
+                            } else {
+                                $chance = rand(0,100);
+                                if($chance >= 20){
+                                    $variable_consumption = $variable_consumption + $row4['energy_usage'];
+                                }
+                            }
+                        }
                     }
                 }
             }
         }
 
         if ($status == "busy") {
-            $multiplier = rand(2,10)/10;
-            $idle_energy = rand(0,$max_consumption/3);
-            $energy_used = $max_consumption *$multiplier;
-            $energy_used = $energy_used + $idle_energy;
+            $energy_used = $variable_consumption;
             $energy_used = $energy_used + 50; //to account for the hub being on
         } else if ($status == "idle"){
-            $energy_used = rand(0,$max_consumption/5);
+            $energy_used = rand(0,$max_consumption/15);
             $energy_used = $energy_used + 50; //to account for the hub being on
         }
 

@@ -37,16 +37,19 @@ if ($result->num_rows >= 1) {
         }
     }
 }
-generatesConsumptionData();
+generatesConsumptionData($maxConsumption);
 
-function generatesConsumptionData($maxConsumption){
-    $day=1;
-    $month=1;
-    $year=2019;
-    $maxMonths=12;
+function generatesConsumptionData($maxConsumption)
+{
+    $day = 1;
+    $month = 1;
+    $year = 2019;
+    $maxMonths = 12;
     $daysInWeek = 7;//number of days in the week
     $dayCount = 1;//start point for days in week
-    if($maxConsumption==0){$maxConsumption=250;}//back up gor dataGeanaration
+    if ($maxConsumption == 0) {
+        $maxConsumption = 250;
+    }//back up gor dataGeanaration
 
 
     $hoursInDay = 2400;//number of hours in a day
@@ -55,41 +58,44 @@ function generatesConsumptionData($maxConsumption){
 
     $workStart = 700;
     $workEnd = 1700;
-    $travelTime=100;
-    $dayData=array();
-    $monthData=array();
+    $travelTime = 100;
+    $dayData = array();
+    $monthData = array();
 
-    while($year<=2020)
-    {   echo"\n$year :\t";
-        while($month<=$maxMonths){
-            $Name = date("M", mktime(0,0,0,$month,$day,$year));
-            echo"\n$month :$Name\n";
-            $d=cal_days_in_month(CAL_GREGORIAN,$month,$year);
+    while ($year <= 2020) {
+        echo "\n$year :\t";
+        while ($month <= $maxMonths) {
+            $Name = date("M", mktime(0, 0, 0, $month, $day, $year));
+            echo "\n$month :$Name\n";
+            $d = cal_days_in_month(CAL_GREGORIAN, $month, $year);
             //dayloop
-            while($day <= $d){
-                $Name = date("D", mktime(0,0,0,$month,$day,$year));
+            while ($day <= $d) {
+                $Name = date("D", mktime(0, 0, 0, $month, $day, $year));
                 echo "\n$day :$Name\t";
 
-                if($Name=="Mon"||$Name=="Tue"||$Name=="Wed"||$Name=="Thu"||$Name=="Fri"){
+                if ($Name == "Mon" || $Name == "Tue" || $Name == "Wed" || $Name == "Thu" || $Name == "Fri") {
                     echo "Weekday";
-                    array_push($dayData,array_sum(GenWeekDay($maxConsumption, $dayCount, $workStart, $workEnd, $travelTime, $sleepingHoursStart, $sleepingHoursEnd)));
-                }else if($Name =="Sat"||$Name=="Sun"){
+                    array_push($dayData, array_sum(GenWeekDay($maxConsumption, $dayCount, $workStart, $workEnd, $travelTime, $sleepingHoursStart, $sleepingHoursEnd)));
+                } else if ($Name == "Sat" || $Name == "Sun") {
                     echo "weekend";
-                    array_push($dayData,array_sum(GenWeekEndDay($maxConsumption, $dayCount, $sleepingHoursStart, $sleepingHoursEnd, $hoursInDay)));
-                }else{echo"somthing has gone wrong";}
+                    array_push($dayData, array_sum(GenWeekEndDay($maxConsumption, $dayCount, $sleepingHoursStart, $sleepingHoursEnd, $hoursInDay)));
+                } else {
+                    echo "somthing has gone wrong";
+                }
                 $day++;
             }
-            array_push($monthData,array_sum($dayData));
-            $day=1;
+            array_push($monthData, array_sum($dayData));
+            unset($dayData);
+            $dayData = array();
+            $day = 1;
             $month++;
         }
         print_r($monthData);
-        $maxMonths=3;
-        $month=1;
+        $maxMonths = 3;
+        $month = 1;
         $year++;
     }
 }
-
 
 
 //genscripts
@@ -102,7 +108,7 @@ function GenWeekDay($maxConsumption, $dayCount, $workStart, $workEnd, $travelTim
     $consumed = 0;
     $workingHours = $workEnd - $workStart;
     $hoursInDay = 2400;
-    $TimeOfDay=100;
+    $TimeOfDay = 100;
 
     while ($TimeOfDay <= $hoursInDay) {
 
@@ -129,7 +135,8 @@ function GenWeekDay($maxConsumption, $dayCount, $workStart, $workEnd, $travelTim
     return $data;
 }
 
-function GenWeekEndDay($maxConsumption, $dayCount, $sleepingHoursStart, $sleepingHoursEnd, $hoursInDay){
+function GenWeekEndDay($maxConsumption, $dayCount, $sleepingHoursStart, $sleepingHoursEnd, $hoursInDay)
+{
     $consumed = 0;
     $data = array();
     echo "WeekendDay :$dayCount\n";

@@ -84,7 +84,7 @@ function generatesConsumptionData($maxConsumption){
                 $dayArrayPointer=$day-1;
                 $ArrayVal = $dayData[$dayArrayPointer];
                 $MonthTotal = $MonthTotal + $ArrayVal;
-                echo "$year\t$month\t$day\t$ArrayVal\n";//push to array
+                echo "$month\t$day\t$ArrayVal\n";//push to array day data
 
                 $day++;
             }
@@ -109,7 +109,7 @@ function generatesConsumptionData($maxConsumption){
 //genscripts
 
 
-function GenWeekDay($maxConsumption, $dayCount, $workStart, $workEnd, $travelTime, $sleepingHoursStart, $sleepingHoursEnd,$day)
+function GenWeekDay($maxConsumption, $workStart, $workEnd, $travelTime, $sleepingHoursStart, $sleepingHoursEnd,$day)
 {
     $data = array();
     $consumed = 0;
@@ -128,11 +128,11 @@ function GenWeekDay($maxConsumption, $dayCount, $workStart, $workEnd, $travelTim
         } else if ($TimeOfDay < $sleepingHoursStart && $TimeOfDay > $sleepingHoursEnd) {
 
             $consumed = $consumed + highConsumption($maxConsumption);
-            echo "$day\t$TimeOfDay\t$consumed\n";//push to array day data
+            echo "$day\t$TimeOfDay\t$consumed\n";//push to array hour data
             array_push($data, $consumed);
         } else {
             $consumed = lowConsumption($maxConsumption);
-            echo "$day\t$TimeOfDay\t$consumed\n";//push to array day data
+            echo "$day\t$TimeOfDay\t$consumed\n";//push to array hour data
             array_push($data, $consumed);
         }
 
@@ -142,7 +142,7 @@ function GenWeekDay($maxConsumption, $dayCount, $workStart, $workEnd, $travelTim
     return $data;
 }
 
-function GenWeekEndDay($maxConsumption, $dayCount, $sleepingHoursStart, $sleepingHoursEnd, $hoursInDay,$day){
+function GenWeekEndDay($maxConsumption, $sleepingHoursStart, $sleepingHoursEnd, $hoursInDay,$day){
     $consumed = 0;
     $data = array();
     $TimeOfDay = 1;//start point of hours loop

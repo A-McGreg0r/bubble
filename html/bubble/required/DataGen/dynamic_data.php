@@ -77,11 +77,15 @@ if ($result->num_rows >= 1) {
                         if($ip != ''){
                             if($row4['type_id'] == 2){
                                 if ($temp <= 17){
-                                    $variable_consumption = $variable_consumption + $row4['energy_usage'];
+                                    $variable_consumption = $variable_consumption + ($row4['energy_usage'*(rand(30,70)/100)];
+                                } else if ($temp <= 13){
+                                    $variable_consumption = $variable_consumption + ($row4['energy_usage'*(rand(70,100)/100)];
                                 }
                             } else if ($row4['type_id'] == 3){
                                 if ($temp >= 26){
-                                    $variable_consumption = $variable_consumption + $row4['energy_usage'];
+                                    $variable_consumption = $variable_consumption + ($row4['energy_usage'*(rand(30,70)/100)];
+                                } else if ($temp >= 30){
+                                    $variable_consumption = $variable_consumption + ($row4['energy_usage'*(rand(70,100)/100)];
                                 }
                             } else {
                                 if($status == 'idle'){

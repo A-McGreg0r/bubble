@@ -57,6 +57,8 @@ function generatesConsumptionData(){
     $workStart = 700;
     $workEnd = 1700;
     $travelTime=100;
+    $dayData=array();
+    $monthData=array();
 
     while($year<=2020)
     {   echo"\n$year :\t";
@@ -64,19 +66,21 @@ function generatesConsumptionData(){
             $Name = date("M", mktime(0,0,0,$month,$day,$year));
             echo"\n$month :$Name\n";
             $d=cal_days_in_month(CAL_GREGORIAN,$month,$year);
+            //dayloop
             while($day <= $d){
                 $Name = date("D", mktime(0,0,0,$month,$day,$year));
                 echo "\n$day :$Name\t";
 
                 if($Name=="Mon"||$Name=="Tue"||$Name=="Wed"||$Name=="Thu"||$Name=="Fri"){
                     echo "Weekday";
-                    GenWeekDay($maxConsumption, $dayCount, $workStart, $workEnd, $travelTime, $sleepingHoursStart, $sleepingHoursEnd);
+                    array_push($dayData,array_sum(GenWeekDay($maxConsumption, $dayCount, $workStart, $workEnd, $travelTime, $sleepingHoursStart, $sleepingHoursEnd)));
                 }else if($Name =="Sat"||$Name=="Sun"){
                     echo "weekend";
-                    GenWeekEndDay($maxConsumption, $dayCount, $sleepingHoursStart, $sleepingHoursEnd, $hoursInDay);
+                    array_push($dayData,array_sum(GenWeekEndDay($maxConsumption, $dayCount, $sleepingHoursStart, $sleepingHoursEnd, $hoursInDay)));
                 }else{echo"somthing has gone wrong";}
                 $day++;
             }
+            array_push($monthData,array_sum($dayData));
             $day=1;
             $month++;
         }
@@ -85,7 +89,6 @@ function generatesConsumptionData(){
         $year++;
     }
 }
-
 
 
 

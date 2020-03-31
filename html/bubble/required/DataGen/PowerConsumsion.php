@@ -64,7 +64,6 @@ function generatesConsumptionData($workingDays, $workStart, $workEnd, $travelTim
     }
     //print_r($weeklyData);
 }
-
 function GenWeekDay($maxConsumption, $dayCount, $workStart, $workEnd, $travelTime, $sleepingHoursStart, $sleepingHoursEnd, $TimeOfDay)
 {
     echo "\nWorking-Day :$dayCount \n";
@@ -100,7 +99,6 @@ function GenWeekDay($maxConsumption, $dayCount, $workStart, $workEnd, $travelTim
     }
     return $data;
 }
-
 function GenWeekendDay($maxConsumption, $dayCount, $sleepingHoursStart, $sleepingHoursEnd, $hoursInDay)
 {
     echo "func test\n";

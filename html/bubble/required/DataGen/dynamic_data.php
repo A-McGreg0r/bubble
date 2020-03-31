@@ -54,18 +54,13 @@ if ($result->num_rows >= 1) {
         }
 
         if ($status == "busy") {
-            $numerator = rand(2,10);
-            $denominator = rand(3,10);
-            while ($numerator > $denominator) {
-                $numerator = rand(2,10);
-                $denominator = rand(3,10);
-            }
+            $multiplier = rand(2,10)/10;
             $idle_energy = rand(0,$max_consumption/3);
-            $energy_used = $max_consumption / $denominator * $numerator;
+            $energy_used = $max_consumption *$multiplier;
             $energy_used = $energy_used + $idle_energy;
             $energy_used = $energy_used + 50; //to account for the hub being on
         } else if ($status == "idle"){
-            $energy_used = rand(0,$max_consumption/3);
+            $energy_used = rand(0,$max_consumption/5);
             $energy_used = $energy_used + 50; //to account for the hub being on
         }
 

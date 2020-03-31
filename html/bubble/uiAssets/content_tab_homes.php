@@ -282,8 +282,8 @@ function generateHomeTab()
                                                                 labels: ["Spent [£]", "Remaining [£]"],
                                                                 datasets: [{
                                                                 data: [$cost_day_round, $budget_day_remaining_round],
-                                                                backgroundColor: ["rgba(109, 171, 166, 1)", "rgba(0, 0, 0, 0.1)"],
-                                                                hoverBackgroundColor: ["rgba(99, 161, 156, 1)", "rgba(0, 0, 0, 0.15)"]
+                                                                backgroundColor: ["rgb(226, 183, 28)", "rgb(56,56,56)"],
+                                                                hoverBackgroundColor: ["rgb(246, 203, 48)", "rgb(76,76,76)"]
                                                                 }]
                                                                 },
                                                                 options: {
@@ -312,8 +312,8 @@ function generateHomeTab()
                                                             labels: ["Spent [£]", "Remaining [£]"],
                                                             datasets: [{
                                                             data: [$cost_month_round, $budget_remaining_round],
-                                                            backgroundColor: ["rgba(109, 171, 166, 1)", "rgba(0, 0, 0, 0.1)"],
-                                                            hoverBackgroundColor: ["rgba(99, 161, 156, 1)", "rgba(0, 0, 0, 0.15)"]
+                                                            backgroundColor: ["rgb(226, 183, 28)", "rgb(56,56,56)"],
+                                                            hoverBackgroundColor: ["rgb(246, 203, 48)", "rgb(76,76,76)"]
                                                             }]
                                                             },
                                                             options: {
@@ -340,8 +340,8 @@ function generateHomeTab()
                                                                 labels: ["Spent [£]", "Budget [£]"],
                                                                 datasets: [{
                                                                 data: [$cost_year_round, $budget_year_remaining_round],
-                                                                backgroundColor: ["rgba(109, 171, 166, 1)", "rgba(0, 0, 0, 0.1)"],
-                                                                hoverBackgroundColor: ["rgba(99, 161, 156, 1)", "rgba(0, 0, 0, 0.15)"]
+                                                                backgroundColor: ["rgb(226, 183, 28)", "rgb(56,56,56)"],
+                                                                hoverBackgroundColor: ["rgb(246, 203, 48)", "rgb(76,76,76)"]
                                                                 }]
                                                                 },
                                                                 options: {
@@ -385,11 +385,11 @@ function generateHomeTab()
                                         //Supplied Datasets to display
                                         //hourly 1 upto 24
                                         //TODO change expected usage to power genarated once implmented
-                                        let data1 = { "labels": $DataLabelsYearEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "Average", "data": $dataAvgYearEncoded, "backgroundColor": "rgba(109, 171, 166, 0)", "borderColor": "rgba(109, 171, 166, 1)", "borderWidth": 2 },{ "label": "Power Usage", "data": $dataPointsYearEncoded, "backgroundColor": "rgba(0, 0, 0, 0.1)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
+                                        let data1 = { "labels": $DataLabelsYearEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "Average", "data": $dataAvgYearEncoded, "backgroundColor": "rgba(109, 171, 166, 0)", "borderColor": "rgb(226, 183, 28)", "borderWidth": 2 },{ "label": "Power Usage", "data": $dataPointsYearEncoded, "backgroundColor": "rgb(56,56,56)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
                                         //days upto 31 days
-                                        let data2 = { "labels": $DataLabelsMonthEncoded,"label": "Expected Usage:", "datasets": [{ "label": "Average", "data": $dataAvgMonthEncoded, "backgroundColor": "rgba(109, 171, 166, 0)", "borderColor": "rgba(109, 171, 166, 1)", "borderWidth": 2 },{ "label": "Power Usage", "data": $dataPointsMonthEncoded, "backgroundColor": "rgba(0, 0, 0, 0.1)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
+                                        let data2 = { "labels": $DataLabelsMonthEncoded,"label": "Expected Usage:", "datasets": [{ "label": "Average", "data": $dataAvgMonthEncoded, "backgroundColor": "rgba(109, 171, 166, 0)", "borderColor": "rgb(226, 183, 28)", "borderWidth": 2 },{ "label": "Power Usage", "data": $dataPointsMonthEncoded, "backgroundColor": "rgb(56,56,56)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
                                         //months upto 12
-                                        let data3 = { "labels": $DataLabelsDayEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "Average", "data": $dataAvgDayEncoded, "backgroundColor": "rgba(109, 171, 166, 0)", "borderColor": "rgba(109, 171, 166, 1)", "borderWidth": 2 },{ "label": "Power Usage", "data": $dataPointsDayEncoded, "backgroundColor": "rgba(0, 0, 0, 0.1)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
+                                        let data3 = { "labels": $DataLabelsDayEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "Average", "data": $dataAvgDayEncoded, "backgroundColor": "rgba(109, 171, 166, 0)", "borderColor": "rgb(226, 183, 28)", "borderWidth": 2 },{ "label": "Power Usage", "data": $dataPointsDayEncoded, "backgroundColor": "rgb(56,56,56)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
                                         
 
                                         // Draw the initial chart

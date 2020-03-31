@@ -10,12 +10,12 @@ h2 {
 }
 
 a {
-    color: rgb(109, 171, 166);
+    color: rgb(226, 183, 28);
     font-weight: 900;
 }
 
 a:hover, .nav-link.active {
-    color: rgb(56, 56, 56);
+    color: rgb(226, 183, 28)!important;
 }
 
 .text-center {
@@ -25,15 +25,15 @@ a:hover, .nav-link.active {
 
 .btn-outline-info {
     transition: 0.25s ease;
-    color: rgb(109, 171, 166)!important;
-    border: 2px solid rgb(109, 171, 166)!important;
+    color: rgb(56, 56, 56)!important;
+    border: 2px solid rgb(56, 56, 56)!important;
     font-weight: 900;
 }
 
 .btn-outline-info:hover {
-    color: rgb(109, 171, 166)!important;
-    background-color: rgba(200, 211, 209, 0.7)!important;
-    border: 2px solid rgb(109, 171, 166)!important;
+    color: rgb(56, 56, 56)!important;
+    background-color: rgb(226, 183, 28)!important;
+    border: 2px solid rgb(56, 56, 56)!important;
     transition: 0.25s ease;
     transform: scale(1.05);
     -webkit-transform: scale(1.05);
@@ -50,11 +50,11 @@ ul {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: rgb(109, 171, 166);
+    background: rgb(226, 183, 28);
 }
 
 .red-text {
-    color: rgb(109, 171, 166)!important;
+    color: rgb(226, 183, 28)!important;
 }
 
 .front-img {
@@ -62,7 +62,7 @@ ul {
 }
 
 .nav-link {
-    color: rgb(109, 171, 166);
+    color: rgb(56,56,56);
 }
 
 .form-row {
@@ -103,12 +103,30 @@ ul {
     border-top: none;
 }
 
+.card:nth-of-type(even) {
+    border-radius: 0!important;
+}
+
+.card:nth-of-type(odd) {
+    border-radius: 0!important;
+}
+
+.card:nth-last-child(1) {
+    border-bottom-right-radius: 0.25rem!important;
+    border-bottom-left-radius: 0.25rem!important;
+}
+
+.card:nth-child(2) {
+    border-top-right-radius: 0.25rem!important;
+    border-top-left-radius: 0.25rem!important;
+}
+
 .accordion {
     border-bottom: 1px solid rgba(0,0,0,0.125);
 }
 
 .text-light {
-    color: rgb(56, 56, 56)!important;
+    color: rgb(56,56,56)!important;
 }
 
 .mb-4, .my-4 {
@@ -119,11 +137,17 @@ ul {
 }
 
 .my-4 {
-    border: 2px solid rgb(109, 171, 166)!important;
+    border: 2px solid rgb(56, 56, 56)!important;
 }
 
 .grey-out:nth-of-type(odd), .card-header{
-    background-color: rgba(0, 0, 0, 0.05)!important;
+    background-color: rgb(56,56,56)!important;
+    color: rgb(226, 183, 28)!important;
+}
+
+.grey-out:nth-of-type(even) {
+    border-left: 1px solid rgb(56,56,56)!important;
+    border-right: 1px solid rgb(56,56,56)!important;
 }
 
 .col-lg {
@@ -136,7 +160,7 @@ ul {
 }
 
 .navbar.navbar-dark .breadcrumb .nav-item .nav-link, .navbar.navbar-dark .navbar-nav .nav-item .nav-link {
-    color: rgb(109, 171, 166)!important;
+    color: rgb(56,56,56)!important;
 }
 
 .border {
@@ -210,7 +234,8 @@ table td {
 }
 
 .account-row:nth-of-type(even), .account-first, .stats-row:nth-of-type(even), .stats-row:nth-of-type(0) {
-    background-color: rgba(0, 0, 0, 0.05)!important;
+    color: rgb(226, 183, 28)!important;
+    background-color: rgb(56,56,56)!important;
 }
 
 .right-column {
@@ -329,4 +354,8 @@ select {
 
 .budget-input label {
     margin-left: 15px!important;
+}
+
+.text-dark {
+    color: rgb(56, 56, 56)!important;
 }

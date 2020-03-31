@@ -29,11 +29,11 @@ function generateRoomTab(){
               
                     <!--Title-->      
                         <div class="d-flex flex-column">  
-                            Add new room
+                            <strong>Add new room</strong>
                         </div>
                         
                         <div class="d-flex flex-column">
-                            <i class="far fa-plus-square"></i>
+                            <strong><i class="far fa-plus-square"></i></strong>
                         </div>
                     </div>
                 </div>
@@ -65,7 +65,7 @@ html;
                     <!--Title-->      
                         <div class="d-flex flex-column">  
                             <div class="row">
-                                $iconText &nbsp; $room_name
+                                $iconText &nbsp; <strong>$room_name</strong>
                             </div>
                         </div>
                         
@@ -74,7 +74,7 @@ html;
                             <div class="custom-control custom-switch">
                                 <form action="#" method="POST">
                                     <input type="checkbox" class="custom-control-input" id="$room_name" name="room+$room_id" onclick="toggleRoom($room_id)">
-                                    <label class="custom-control-label" for="$room_name">off/on</label>
+                                    <label class="custom-control-label" for="$room_name"><strong>off/on</strong></label>
                                 </form>
                             </div>
                             <script>

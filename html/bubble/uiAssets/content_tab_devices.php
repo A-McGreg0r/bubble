@@ -21,11 +21,11 @@ function generateDeviceTab(){
         
                 <!--Title-->      
                     <div class="d-flex flex-column">  
-                        Add new device
+                        <strong>Add new device</strong>
                     </div>
                     
                     <div class="d-flex flex-column">
-                        <i class="far fa-plus-square"></i>
+                        <strong><i class="far fa-plus-square"></i></strong>
                     </div>
                 </div>
             </div>
@@ -66,7 +66,6 @@ html;
                 $room_type = $row4['room_name'];
 
                 //todo intagrate in to device page?
-                
 
 
                 $html .= <<<html
@@ -83,7 +82,7 @@ html;
                         <!--Title-->      
                         <div class="d-flex flex-column">  
                             <div class="flex-sm-row">
-                                $icon &nbsp; $device_name
+                                $icon &nbsp; <strong>$device_name</strong>
                             </div>
                             <div class="flex-sm-row">
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Room: $room_type
@@ -96,14 +95,15 @@ html;
                             <!-- Default switch -->
                             <div class="custom-control custom-switch">
                                <form action="#" method="POST">
-                                    <input type="checkbox" class="custom-control-input" id="$device_name" name="Group+$room_id" onclick="toggleDevice($device_id)">
-                                    <label class="custom-control-label" for="$device_name">off/on</label>
+                                    <input type="checkbox" class="custom-control-input" id="$device_name" name="Group+$room_id" onclick="alter_database($room_id)">
+                                    <label class="custom-control-label" for="$device_name"><strong>off/on</strong></label>
                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
 html;
+                
                 $stmt3->close();
             }
         }
@@ -120,7 +120,7 @@ function deviceCat($device_type, $device_name)
         $optionType = "<form class=\"range-field\" for=\"$device_name\"><input type=\"range\" min=\"0c\" max=\"40c\" /></form>";
         //todo add option for different temp measurements farnehight, celcus
     } else {
-        $optionType = "<label class=\"custom-control-label\" for=\"$device_name\">off/on</label>";
+        $optionType = "<label class=\"custom-control-label\" for=\"$device_name\"><strong>off/on</strong></label>";
     }
     return $optionType;
 }

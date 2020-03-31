@@ -40,7 +40,6 @@ if ($result->num_rows >= 1) {
         if ($result5->num_rows >= 1) {
             $all5 = $result5->fetch_all(MYSQLI_ASSOC);
             foreach($all5 as $row5){
-
                 $stmt4 = $db->prepare("SELECT * FROM device_types WHERE type_id = ?");
                 $stmt4->bind_param("i", $row5['device_type']);
                 $stmt4->execute();
@@ -48,27 +47,26 @@ if ($result->num_rows >= 1) {
                 if ($result4->num_rows >= 1) {
                     $all4 = $result4->fetch_all(MYSQLI_ASSOC);
                     foreach($all4 as $row4){
-                        $max_consumption = $energy_used + $row4['energy_usage'];
+                        $max_consumption = $max_consumption + $row4['energy_usage'];
                     }
                 }
             }
         }
 
         if ($status == "busy") {
-
             $numerator = rand(2,10);
             $denominator = rand(3,10);
             while ($numerator > $denominator) {
                 $numerator = rand(2,10);
                 $denominator = rand(3,10);
             }
-
             $idle_energy = rand(0,$max_consumption/3);
             $energy_used = $max_consumption / $denominator * $numerator;
             $energy_used = $energy_used + $idle_energy;
-
+            $energy_used = $energy_used + 50; //to account for the hub being on
         } else if ($status == "idle"){
             $energy_used = rand(0,$max_consumption/3);
+            $energy_used = $energy_used + 50; //to account for the hub being on
         }
 
         $hub_id = $row['hub_id'];

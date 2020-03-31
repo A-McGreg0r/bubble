@@ -66,16 +66,7 @@ html;
                 $room_type = $row4['room_name'];
 
                 //todo intagrate in to device page?
-                function deviceCat($device_type, $device_name)
-                {
-                    if ($device_type == "heating" || $device_type == "airCon") {
-                        $optionType = "<form class=\"range-field\" for=\"$device_name\"><input type=\"range\" min=\"0c\" max=\"40c\" /></form>";
-                        //todo add option for different temp measurements farnehight, celcus
-                    } else {
-                        $optionType = "<label class=\"custom-control-label\" for=\"$device_name\">off/on</label>";
-                    }
-                    return $optionType;
-                }
+                
 
 
                 $html .= <<<html
@@ -121,6 +112,17 @@ html;
         exit("Error, user is not logged in!");
     }
     return $html;
+}
+
+function deviceCat($device_type, $device_name)
+{
+    if ($device_type == "heating" || $device_type == "airCon") {
+        $optionType = "<form class=\"range-field\" for=\"$device_name\"><input type=\"range\" min=\"0c\" max=\"40c\" /></form>";
+        //todo add option for different temp measurements farnehight, celcus
+    } else {
+        $optionType = "<label class=\"custom-control-label\" for=\"$device_name\">off/on</label>";
+    }
+    return $optionType;
 }
 ?>
 

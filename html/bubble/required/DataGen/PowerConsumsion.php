@@ -39,16 +39,15 @@ if ($result->num_rows >= 1) {
 }
 generatesConsumptionData();
 
-
-function generatesConsumptionData(){
+function generatesConsumptionData($maxConsumption){
     $day=1;
     $month=1;
     $year=2019;
     $maxMonths=12;
     $daysInWeek = 7;//number of days in the week
     $dayCount = 1;//start point for days in week
+    if($maxConsumption==0){$maxConsumption=250;}//back up gor dataGeanaration
 
-    $maxConsumption=250;
 
     $hoursInDay = 2400;//number of hours in a day
     $sleepingHoursStart = 2200;
@@ -84,6 +83,7 @@ function generatesConsumptionData(){
             $day=1;
             $month++;
         }
+        print_r($monthData);
         $maxMonths=3;
         $month=1;
         $year++;

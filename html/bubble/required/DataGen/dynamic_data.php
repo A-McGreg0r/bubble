@@ -13,13 +13,13 @@ $hour = date("H") + 1;
 $status = "";
 $season = "";
 
-if ($hour == 9 || $hour == 10 || $hour == 11 || $hour == 12 || $hour == 13 || $hour == 14 || $hour == 15 || $hour == 16 || $hour == 17) {
+if ($hour == 9 || $hour == 10 || $hour == 11 || $hour == 12 || $hour == 13 || $hour == 14 || $hour == 15 || $hour == 16 ) {
     if ($day_of_week == "Sat" || $day_of_week == "Sun"){
         $status = "busy";
     } else {
         $status = "idle";
     }
-} else if ($hour == 7 || $hour == 8 || $hour == 18 || $hour == 19 || $hour == 20 || $hour == 21 || $hour == 22) {
+} else if ($hour == 7 || $hour == 8 || $hour == 17 || $hour == 18 || $hour == 19 || $hour == 20 || $hour == 21 || $hour == 22) {
     $status = "busy";
 } else {
     $status = "idle";
@@ -58,8 +58,6 @@ if ($result->num_rows >= 1) {
         }
 
         $temp = $temp - 273;
-        $heater = 'No';
-        $air_con = 'No';
 
         $stmt5 = $db->prepare("SELECT * FROM device_info WHERE hub_id = ?");
         $stmt5->bind_param("i", $row['hub_id']);
@@ -76,24 +74,26 @@ if ($result->num_rows >= 1) {
                     $all4 = $result4->fetch_all(MYSQLI_ASSOC);
                     foreach($all4 as $row4){
                         $max_consumption = $max_consumption + $row4['energy_usage'];
-                        if($type_id == 2){
-                            if (temp <= 17){
-                                $variable_consumption = $variable_consumption + $row4['energy_usage'];
-                            }
-                        } else if ($type_id == 3){
-                            if (temp >= 26){
-                                $variable_consumption = $variable_consumption + $row4['energy_usage'];
-                            }
-                        } else {
-                            if($status == 'idle'){
-                                $chance = rand(0,100);
-                                if($chance >= 80){
+                        if($ip != ''){
+                            if($row4['type_id'] == 2){
+                                if ($temp <= 17){
+                                    $variable_consumption = $variable_consumption + $row4['energy_usage'];
+                                }
+                            } else if ($row4['type_id'] == 3){
+                                if ($temp >= 26){
                                     $variable_consumption = $variable_consumption + $row4['energy_usage'];
                                 }
                             } else {
-                                $chance = rand(0,100);
-                                if($chance >= 20){
-                                    $variable_consumption = $variable_consumption + $row4['energy_usage'];
+                                if($status == 'idle'){
+                                    $chance = rand(0,100);
+                                    if($chance >= 80){
+                                        $variable_consumption = $variable_consumption + $row4['energy_usage'];
+                                    }
+                                } else {
+                                    $chance = rand(0,100);
+                                    if($chance >= 20){
+                                        $variable_consumption = $variable_consumption + $row4['energy_usage'];
+                                    }
                                 }
                             }
                         }
@@ -101,12 +101,19 @@ if ($result->num_rows >= 1) {
                 }
             }
         }
-
         if ($status == "busy") {
-            $energy_used = $variable_consumption;
-            $energy_used = $energy_used + 50; //to account for the hub being on
+            if ($ip != ''){
+                $energy_used = $variable_consumption + rand(0,$max_consumption/10);
+                $energy_used = $energy_used + 50; //to account for the hub being on
+            } else {
+                $multiplier = rand(20,80)/100;
+                $idle_energy = rand(0,$max_consumption/10);
+                $energy_used = $max_consumption * $multiplier;
+                $energy_used = $energy_used + $idle_energy;
+                $energy_used = $energy_used + 50; //to account for the hub being on
+            }
         } else if ($status == "idle"){
-            $energy_used = rand(0,$max_consumption/15);
+            $energy_used = rand(0,$max_consumption/10);
             $energy_used = $energy_used + 50; //to account for the hub being on
         }
 

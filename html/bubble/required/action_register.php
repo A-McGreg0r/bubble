@@ -2,14 +2,33 @@
 //Connect to the db
 require 'config.php';
 require 'PepperedPasswords.php';
+session_start();
+
+$ipaddress = '';
+if (getenv('HTTP_CLIENT_IP'))
+    $ipaddress = getenv('HTTP_CLIENT_IP');
+else if(getenv('HTTP_X_FORWARDED_FOR'))
+    $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+else if(getenv('HTTP_X_FORWARDED'))
+    $ipaddress = getenv('HTTP_X_FORWARDED');
+else if(getenv('HTTP_FORWARDED_FOR'))
+    $ipaddress = getenv('HTTP_FORWARDED_FOR');
+else if(getenv('HTTP_FORWARDED'))
+    $ipaddress = getenv('HTTP_FORWARDED');
+else if(getenv('REMOTE_ADDR'))
+    $ipaddress = getenv('REMOTE_ADDR');
+else
+    $ipaddress = 'UNKNOWN';
 
 //Check server has request in POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     # Initialize an error array.
     $errors = array();
     $A2 = NULL;
-    $stmt = $db->prepare("INSERT INTO user_info (email, pass, first_name, last_name, address_l1, address_l2, postcode) VALUES ( ?, ?, ?, ?, ?, ?, ? )");
+    $stmt = $db->prepare("INSERT INTO user_info (email, pass, first_name, last_name, address_l1, address_l2, postcode, energy_cost, budget, allow_emails, ip_address) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )");
     $valuesArr = array();
+    $_SESSION['email'] = trim($_POST['email']);
+    $_SESSION['name'] = trim($_POST['first_name']);
 
     # Check for a E-mail.
     if (empty($_POST['email'])) {
@@ -66,6 +85,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $errors[] = 'Enter your password.';
     }
 
+    if (empty($_POST['energy_cost'])) {
+        $errors[] = 'Enter your energy price.';
+    } else {
+        $valuesArr["energy_cost"] = $_POST['energy_cost'];
+    }
+
+    if (empty($_POST['budget'])) {
+        $errors[] = 'Enter your budget.';
+    } else {
+        $valuesArr["budget"] = $_POST['budget'];
+    }
+
+    if ($_POST['allow_emails'] == "Yes") {
+        $valuesArr["allow_emails"] = "Yes";
+    } else {
+        $valuesArr["allow_emails"] = "No";
+    }
+
 
     # Check if email address already registered.
     if (empty($errors)) {
@@ -81,7 +118,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     # On success register user inserting into 'users' database table.
     if (empty($errors)) {
         // not posting to database
-        $stmt->bind_param("sssssss", $valuesArr["email"], $valuesArr["password"], $valuesArr["first_name"], $valuesArr["last_name"], $valuesArr["address_l1"], $valuesArr["address_l2"], $valuesArr["postcode"]);
+        $stmt->bind_param("sssssssdiss", $valuesArr["email"], $valuesArr["password"], $valuesArr["first_name"], $valuesArr["last_name"], $valuesArr["address_l1"], $valuesArr["address_l2"], $valuesArr["postcode"], $valuesArr["energy_cost"], $valuesArr["budget"], $valuesArr["allow_emails"], $ipaddress);
         if (!$stmt->execute()) {
             echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
         } 

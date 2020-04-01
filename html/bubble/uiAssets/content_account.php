@@ -22,11 +22,11 @@ function generateAccount(){
                 <div class="d-flex justify-content-between account-heading">
         
                     <div class="d-flex flex-column">  
-                        <h4>My Account</h4>
+                        <h4 class="bold-title">My Account</h4>
                     </div>
                 </div>
             </div>            
-            <div class="card mb-4 text-dark grey-out">
+            <div class="card mb-4 text-dark grey-out-account">
                 <!--Card content-->
                 <div class="flex-nowrap justify-content-between">
                     
@@ -40,7 +40,7 @@ function generateAccount(){
                         <td class="right-column">$last_name&ensp;</td>
                     </tr>
                     <tr class="account-row">
-                        <td class="account-left"><strong>&ensp;Email Address:&ensp;&ensp;&ensp;</strong></td>
+                        <td class="account-left"><strong>&ensp;Email Address:</strong></td>
                         <td class="right-column">$email&ensp;</td>
                     </tr>
                     <tr class="account-row">
@@ -50,6 +50,14 @@ function generateAccount(){
                     <tr class="account-row">
                         <td class="account-left"><strong>&ensp;Postcode:</strong></td>
                         <td class="right-column">$postcode&ensp;</td>
+                    </tr>
+                    <tr class="account-row">
+                        <td class="account-left"><strong>&ensp;Energy Price:</strong></td>
+                        <td class="right-column">£$energy_cost&ensp;</td>
+                    </tr>
+                    <tr class="account-row">
+                        <td class="account-left"><strong>&ensp;Monthly Budget:</strong></td>
+                        <td class="right-column">£$budget&ensp;</td>
                     </tr>
                 </table>
                     <button type="button" class="btn btn-danger btn-sm btn-rounded" data-toggle="modal" data-target="#basicModal">Delete Account</button>
@@ -112,6 +120,7 @@ html;
                             $result3 = $stmt3->get_result();
                             $row3 = $result3->fetch_assoc();
                             $icon = $row3['type_icon'];
+                            $energy_consumption = $row3['energy_usage'];
 
                             $stmt4 = $db->prepare("SELECT * FROM room_info WHERE room_id = ?");
                             $stmt4->bind_param("i", $device_room);
@@ -122,8 +131,8 @@ html;
 
                             $html .= <<<device
                                 <tr>
-                                    <td class="pt-3-half">$icon $device_name</td>
-                                    <td class="pt-3-half">8w</td>
+                                    <td class="pt-3-half">$icon<br>$device_name</td>
+                                    <td class="pt-3-half">$energy_consumption Wh</td>
                                     <td class="pt-3-half">
                                     <select class="deviceLocation browser-default custom-select dropdown">
                                         <option value="0" disabled selected>Current: $roomName</option>

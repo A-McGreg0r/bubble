@@ -16,6 +16,22 @@
         });
     }
 
+
+function registrationEmail(recipient, name) {
+    Email.send({
+    Host: "smtp.gmail.com",
+    Username : "bubblehome.care@gmail.com",
+    Password : "TeamBubble6!",
+    To : recipient.toString(),
+    From : "bubblehome.care@gmail.com",
+    Subject : "Welcome to Bubble!",
+    Body : "<html><p><strong>Dear "+name.toString()+"</strong></p><p>Welcome to Bubble, the simple smart home!</p><p>Kind Regards,<br/>The Bubble Team</html>",
+    }).then(
+        message => alert("mail sent successfully")
+    );
+}
+
+
 /*
  function notify() {
       if (!("Notification" in window)) {

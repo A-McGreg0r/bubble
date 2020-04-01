@@ -12,12 +12,18 @@
     session_start();
     $hub_id = $_SESSION['hub_id'];
 
-    //END SESSION
-    session_write_close();
-    $stmt = $db->prepare("INSERT INTO room_info (hub_id, room_name, room_icon) VALUES (?, ?, ?)");
-    $stmt->bind_param("isi", $hub_id, $roomName, $roomIcon);
-    if ($stmt->execute()) {
-        load("../index.php");
+    $stmt2 = $db->prepare("SELECT * FROM room_info WHERE room_name = ?");
+    $stmt2->bind_param("s", $roomName);
+    $stmt2->execute();
+    $result2 = $stmt2->get_result();
+    if($result2 === 0){
+        //END SESSION
+        session_write_close();
+        $stmt = $db->prepare("INSERT INTO room_info (hub_id, room_name, room_icon) VALUES (?, ?, ?)");
+        $stmt->bind_param("isi", $hub_id, $roomName, $roomIcon);
+        if ($stmt->execute()) {
+            load("../index.php");
+        }
     }
     load("../index.php?action=addroom");
 

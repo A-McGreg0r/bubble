@@ -8,11 +8,11 @@ function generateAddRoom(){
     $html .= <<<pageHTML
     <div class="container">
         <div class="col-lg-12">
-            <div class="row text-center align-middle">
-                <h3>Add a new room to your house</h3>
+            <div class="row alter-display text-center align-middle">
+                <h4 class="room-title">Add a new room to your house</h4>
                 <div id="devicetext" style="width:100%"></div>
             </div>
-            <div class="row align-middle">
+            <div class="row alter-display align-middle reduce-space">
                 <form class="text-center" action="required/action_addRoom.php" method="POST">
                     <!-- Room Name -->
                     <div class="md-form">
@@ -23,12 +23,13 @@ function generateAddRoom(){
                             name="roomName"
                             required size="3"
                             value="$roomName"/>
+                            <small class="form-text text-muted mb-4" style="text-align:center">Room must have a unique name</small>
                     </div>
 
                     <!-- Password -->
                     <div class="md-form">
                         <select name="icon" class="browser-default custom-select dropdown">
-                            <option value="" disabled selected>Choose your option</option>
+                            <option value="" disabled selected>Choose your icon</option>
 pageHTML;
                             $stmt = $db->prepare("SELECT * FROM room_types");
                             $stmt->execute();
@@ -36,7 +37,7 @@ pageHTML;
                             $inc = 0;
                             while($row = $result->fetch_assoc()) {
                                 $inc++;
-                                $val = $row['type_icon'];
+                                $val = $row['type_description'];
                                 $html .= "<option value=\"$inc\">$val</option>";
                             }
                             $html .= <<<pageHTML

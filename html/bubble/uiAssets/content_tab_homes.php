@@ -9,6 +9,15 @@ function generateHomeTab()
     if (isset($_SESSION['user_id'])) {
         $user_id = $_SESSION['user_id'];
 
+        session_write_close();
+        $stmt3 = $db->prepare("SELECT * FROM user_info WHERE user_id = ?");
+        $stmt3->bind_param("i", $user_id);
+        $stmt3->execute();
+        $result3 = $stmt3->get_result();
+        if ($result3->num_rows === 1) {
+            extract($result3->fetch_assoc());
+        }
+
         $stmt = $db->prepare("SELECT * FROM hub_users WHERE user_id = ?");
         $stmt->bind_param("i", $user_id);
         $stmt->execute();
@@ -41,25 +50,80 @@ function generateHomeTab()
                         $cost_variance = $cost_total - $cost_month;
                     }
 
+                    $day = date("d");
+                    $energy_last_day = 0;
+
+                    $stmt4 = $db->prepare("SELECT * FROM hourly_data WHERE hub_id = ? AND entry_day = ?");
+                    $stmt4->bind_param("ii", $hub_id, $day);
+                    $stmt4->execute();
+                    $result4 = $stmt4->get_result();
+                    if ($result4->num_rows >= 1) {
+                        $all4 = $result4->fetch_all(MYSQLI_ASSOC);
+                        foreach($all4 as $row4){
+                            $energy_last_day = $energy_last_day + $row4['energy_usage'];
+                        }
+                    }
+
+                    $energy_last_day = $energy_last_day / 1000;
+
+                    $month = date("m");
+                    $energy_last_month = 0;
+
+                    $stmt5 = $db->prepare("SELECT * FROM daily_data WHERE hub_id = ? AND entry_month = ?");
+                    $stmt5->bind_param("ii", $hub_id, $month);
+                    $stmt5->execute();
+                    $result5 = $stmt5->get_result();
+                    if ($result5->num_rows >= 1) {
+                        $all5 = $result5->fetch_all(MYSQLI_ASSOC);
+                        foreach($all5 as $row5){
+                            $energy_last_month = $energy_last_month + $row5['energy_usage'];
+                        }
+                    }
+
+                    $energy_last_month = $energy_last_month / 1000;
+
+                    $energy_last_year = 0;
+
+                    $stmt6 = $db->prepare("SELECT * FROM monthly_data WHERE hub_id = ?");
+                    $stmt6->bind_param("i", $hub_id);
+                    $stmt6->execute();
+                    $result6 = $stmt6->get_result();
+                    if ($result6->num_rows >= 1) {
+                        $all6 = $result6->fetch_all(MYSQLI_ASSOC);
+                        foreach($all6 as $row6){
+                            $energy_last_year = $energy_last_year + $row6['energy_usage'];
+                        }
+                    }
+
+                    $energy_last_year = $energy_last_year / 1000;
 
                     //todo add querrys for pulling power usage
                     $dataPoints = array();
                     $dataPoints = array();
                     $AvgPoints = array();
                     $dataLabels = array();
-                    $sumDataYear = 0;
+                    $count = 0;
 
-                    for ($i = 1; $i <= 12; $i++) {
-                        $y = rand(90, 156);
-                        array_push($dataPoints, array($y));
-                        array_push($dataLabels, array($i));
-                        $sumDataYear += $y;
+                    $stmt7 = $db->prepare("SELECT * FROM monthly_data");
+                    $stmt7->execute();
+                    $result7 = $stmt7->get_result();
+                    if ($result7->num_rows >= 1) {
+                        $n = 0;
+                        $all7 = $result7->fetch_all(MYSQLI_ASSOC);
+                        foreach($all7 as $row7){
+                            $n = $n + 1;
+                            $energy_usage7 = $row7['energy_usage']/1000;
+                            $month7 = $row7['entry_month'];
+                            $count = $count + $energy_usage7;
+                            array_push($dataPoints, array($energy_usage7));
+                            array_push($dataLabels, array($month7));
+                        }
+                        for($i = 0; $i < sizeof($dataPoints); $i++){
+                            array_push($AvgPoints,money_format('%.3n',$count/$n));
+                        }
                     }
-                    for ($i = 1; $i <= 12; $i++){
-                        $count = $sumDataYear / 12;
-                        array_push($AvgPoints, array($count));
-                    }
-                    $cost_year = $sumDataYear * 0.15;
+                    $cost_year = $energy_last_year * $energy_cost;
+                    $cost_year_round = number_format($cost_year,2);
                     $DataLabelsYearEncoded = json_encode($dataLabels);
                     $dataPointsYearEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
                     $dataAvgYearEncoded = json_encode($AvgPoints, JSON_NUMERIC_CHECK);
@@ -69,19 +133,28 @@ function generateHomeTab()
                     $dataPoints = array();
                     $AvgPoints = array();
                     $dataLabels = array();
-                    $sumDataMonth = 0;
+                    $count = 0;
 
-                    for ($i = 1; $i <= 31; $i++) {
-                        $y = rand(8, 13);
-                        array_push($dataPoints, array($y));
-                        array_push($dataLabels, array($i));
-                        $sumDataMonth += $y;
+                    $stmt8 = $db->prepare("SELECT * FROM daily_data");
+                    $stmt8->execute();
+                    $result8 = $stmt8->get_result();
+                    if ($result8->num_rows >= 1) {
+                        $n = 0;
+                        $all8 = $result8->fetch_all(MYSQLI_ASSOC);
+                        foreach($all8 as $row8){
+                            $n = $n + 1;
+                            $energy_usage8 = $row8['energy_usage']/1000;
+                            $day8 = $row8['entry_day'];
+                            $count = $count + $energy_usage8;
+                            array_push($dataPoints, array($energy_usage8));
+                            array_push($dataLabels, array($day8));
+                        }
+                        for($i = 0; $i < sizeof($dataPoints); $i++){
+                            array_push($AvgPoints,money_format('%.3n',$count/$n));
+                        }
                     }
-                    for ($i = 1; $i <= 31; $i++) {
-                        $count = $sumDataMonth / 31;
-                        array_push($AvgPoints, array($count));
-                    }
-                    $cost_month = $sumDataMonth * 0.15;
+                    $cost_month = $energy_last_month * $energy_cost;
+                    $cost_month_round = number_format($cost_month,2);
                     $DataSumMonthEncoded = json_encode(array_sum($dataPoints), JSON_NUMERIC_CHECK);
                     $DataLabelsMonthEncoded = json_encode($dataLabels);
                     $dataPointsMonthEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
@@ -91,35 +164,57 @@ function generateHomeTab()
                     $dataPoints = array();
                     $AvgPoints = array();
                     $dataLabels = array();
-                    $sumDataDay = 0;
+                    $count = 0;
 
-                    for ($i = 1; $i <= 24; $i++) {
-                        $y = rand(0, 1);
-                        array_push($dataPoints, array($y));
-                        array_push($dataLabels, array($i));
-                        $sumDataDay += $y;
+                    $stmt9 = $db->prepare("SELECT * FROM hourly_data");
+                    $stmt9->execute();
+                    $result9 = $stmt9->get_result();
+                    if ($result9->num_rows >= 1) {
+                        $n = 0;
+                        $all9 = $result9->fetch_all(MYSQLI_ASSOC);
+                        foreach($all9 as $row9){
+                            $n = $n + 1;
+                            $energy_usage9 = $row9['energy_usage']/1000;
+                            $hour9 = $row9['entry_hour'];
+                            $count = $count + $energy_usage9;
+                            array_push($dataPoints, array($energy_usage9));
+                            array_push($dataLabels, array($hour9));
+                        }
+                        for($i = 0; $i < sizeof($dataPoints); $i++){
+                            array_push($AvgPoints,money_format('%.3n',$count/$n));
+                        }
                     }
-                    for ($i = 1; $i <= 24; $i++) {
-                        $count = $sumDataDay / 24;
-                        array_push($AvgPoints, array($count));
-                    }
-                    $cost_day = $sumDataDay * 0.15;
+                    $cost_day = $energy_last_day * $energy_cost;
+                    $cost_day_round = number_format($cost_day,2);
                     $DataLabelsDayEncoded = json_encode($dataLabels);
                     $dataPointsDayEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
                     $dataAvgDayEncoded = json_encode($AvgPoints, JSON_NUMERIC_CHECK);
 
+                    $energy_cost_round = number_format($energy_cost,2);
+                    $budget_round = number_format($budget,2);
+                    $budget_remaining = $budget - $cost_month;
+                    $budget_remaining_round = number_format($budget_remaining,2);
+
+                    $budget_day = $budget / 28;
+                    $budget_year = $budget * 12;
+                    $budget_day_remaining = $budget_day - $cost_day;
+                    $budget_year_remaining = $budget_year - $cost_year;
+                    $budget_day_remaining_round = number_format($budget_day_remaining,2);
+                    $budget_year_remaining_round = money_format('%.2n', $budget_year_remaining);
+
+                    $command = escapeshellcmd('/required/email/myemail.py');
+                    $output = shell_exec($command);
+                    echo $output;
 
                     $html .= <<<html
                     <!-- Accordion card -->
                     <div class="card col-lg">
                     <!-- Card header -->
                         <div class="card-header" role="tab" id="heading$hub_id">
-                            <a data-toggle="collapse" data-parent="#accordionEx194" href="#collapse$hub_id" aria-expanded="true" aria-controls="collapse4">
+                            <a data-toggle="collapse" data-parent="#accordionEx194" aria-expanded="true" aria-controls="collapse4">
                                 <h3 class="mb-0 mt-3 red-text">
                                     <div class="row">
-                                        <div class="col-auto mr-auto">$hub_name</div>
-                                        <div class="col-auto"><i class="fas fa-angle-down rotate-icon fa-2x"></i></div>
-        
+                                        <div class="col-auto mr-auto"><strong>$hub_name</strong></div>
                                     </div>
                                 </h3>
                             </a>
@@ -133,31 +228,33 @@ function generateHomeTab()
 
                                 <h4 class="section-title">Overview</h4>
                                 <table class="stats-table">
-                                    <tr class="stats-row">
-                                        <td class="stats-left"><strong>&ensp;Spent Today:</strong></td>
-                                        <td class="stats-right">~£$cost_day&ensp;</td>
-                                    </tr>
+                                    
                                     <tr class="stats-row">
                                         <td class="stats-left"><strong>&ensp;Power Used Today:</strong></td>
-                                        <td class="stats-right">$sumDataDay kWh&ensp;</td>
+                                        <td class="stats-right">$energy_last_day kWh&ensp;</td>
                                     </tr>
                                     <tr class="stats-row">
-                                        <td class="stats-left"><strong>&ensp;Spent This Month:</strong></td>
-                                        <td class="stats-right">~£$cost_month&ensp;</td>
+                                        <td class="stats-left"><strong>&ensp;Cost:</strong></td>
+                                        <td class="stats-right"><strong>£$cost_day_round&ensp;</strong></td>
                                     </tr>
                                     <tr class="stats-row">
                                         <td class="stats-left"><strong>&ensp;Power Used This Month:&ensp;&ensp;</strong></td>
-                                        <td class="stats-right">$sumDataMonth kWh&ensp;</td>
+                                        <td class="stats-right">$energy_last_month kWh&ensp;</td>
                                     </tr>
                                     <tr class="stats-row">
-                                        <td class="stats-left"><strong>&ensp;Spent This Year:</strong></td>
-                                        <td class="stats-right">~£$cost_year&ensp;</td>
+                                        <td class="stats-left"><strong>&ensp;Cost:</br>&ensp;Remaining Budget:</strong></td>
+                                        <td class="stats-right double-stat"><strong>£$cost_month_round&ensp;</br>£$budget_remaining_round&ensp;</strong></td>
                                     </tr>
                                     <tr class="stats-row">
                                         <td class="stats-left"><strong>&ensp;Power Used This Year:</strong></td>
-                                        <td class="stats-right">$sumDataYear kWh&ensp;</td>
+                                        <td class="stats-right">$energy_last_year kWh&ensp;</td>
+                                    </tr>
+                                    <tr class="stats-row">
+                                        <td class="stats-left"><strong>&ensp;Cost:</strong></td>
+                                        <td class="stats-right"><strong>£$cost_year_round&ensp;</strong></td>
                                     </tr>
                                 </table>
+                                <small class="form-text text-muted mb-4" style="text-align:center">Costing at £$energy_cost_round per kWh</small>
                                 <hr>
                                 
                                 
@@ -182,9 +279,9 @@ function generateHomeTab()
                                                                 data: {
                                                                 labels: ["Spent [£]", "Remaining [£]"],
                                                                 datasets: [{
-                                                                data: [$cost_day, $cost_variance],
-                                                                backgroundColor: ["rgba(109, 171, 166, 1)", "rgba(0, 0, 0, 0.1)"],
-                                                                hoverBackgroundColor: ["rgba(99, 161, 156, 1)", "rgba(0, 0, 0, 0.15)"]
+                                                                data: [$cost_day_round, $budget_day_remaining_round],
+                                                                backgroundColor: ["rgb(226, 183, 28)", "rgb(56,56,56)"],
+                                                                hoverBackgroundColor: ["rgb(246, 203, 48)", "rgb(76,76,76)"]
                                                                 }]
                                                                 },
                                                                 options: {
@@ -212,9 +309,9 @@ function generateHomeTab()
                                                             data: {
                                                             labels: ["Spent [£]", "Remaining [£]"],
                                                             datasets: [{
-                                                            data: [$cost_month, $cost_variance],
-                                                            backgroundColor: ["rgba(109, 171, 166, 1)", "rgba(0, 0, 0, 0.1)"],
-                                                            hoverBackgroundColor: ["rgba(99, 161, 156, 1)", "rgba(0, 0, 0, 0.15)"]
+                                                            data: [$cost_month_round, $budget_remaining_round],
+                                                            backgroundColor: ["rgb(226, 183, 28)", "rgb(56,56,56)"],
+                                                            hoverBackgroundColor: ["rgb(246, 203, 48)", "rgb(76,76,76)"]
                                                             }]
                                                             },
                                                             options: {
@@ -230,7 +327,7 @@ function generateHomeTab()
                                             <!--Donut 3-->             
                                                   <div class="carousel-item">
                                                         <div class="col border border-primary rounded m-2" style="max-width:100%">
-                                                            <h4 class="text-centre text-dark centre-text">Variance</h4>
+                                                            <h4 class="text-centre text-dark centre-text">Yearly</h4>
                                                             <canvas style="max-width:50% min-width:30%" id="heatingUsage2"></canvas>
                                                             <script>
                                                                 //doughnut
@@ -238,11 +335,11 @@ function generateHomeTab()
                                                                 var myLineChart = new Chart(ctxD, {
                                                                 type: "doughnut",
                                                                 data: {
-                                                                labels: ["Budget [£]", "Variance [£]"],
+                                                                labels: ["Spent [£]", "Budget [£]"],
                                                                 datasets: [{
-                                                                data: [$cost_total, $cost_variance],
-                                                                backgroundColor: ["rgba(109, 171, 166, 1)", "rgba(0, 0, 0, 0.1)"],
-                                                                hoverBackgroundColor: ["rgba(99, 161, 156, 1)", "rgba(0, 0, 0, 0.15)"]
+                                                                data: [$cost_year_round, $budget_year_remaining_round],
+                                                                backgroundColor: ["rgb(226, 183, 28)", "rgb(56,56,56)"],
+                                                                hoverBackgroundColor: ["rgb(246, 203, 48)", "rgb(76,76,76)"]
                                                                 }]
                                                                 },
                                                                 options: {
@@ -261,6 +358,8 @@ function generateHomeTab()
                                                 touch: true // default
                                                 });
                                          </script>
+
+                                         <small class="form-text text-muted mb-4" style="text-align:center">Budget of £$budget_round per Month</small>
                                     </div>
                                     <!--Carousel Container-->
 
@@ -277,17 +376,18 @@ function generateHomeTab()
                                             </select>
                                     <!--chart canvas-->        
                                     <canvas id="masterLineChart"></canvas>
+                                    <small class="form-text text-muted mb-4" style="text-align:center">Graph will automatically populate over time</small>
     
                                     <script type="text/javascript">
                                         //todo cahe where datas comeing from                                         
                                         //Supplied Datasets to display
                                         //hourly 1 upto 24
                                         //TODO change expected usage to power genarated once implmented
-                                        let data1 = { "labels": $DataLabelsYearEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "Average", "data": $dataAvgYearEncoded, "backgroundColor": "rgba(109, 171, 166, 0)", "borderColor": "rgba(109, 171, 166, 1)", "borderWidth": 3 },{ "label": "Power Usage", "data": $dataPointsYearEncoded, "backgroundColor": "rgba(0, 0, 0, 0.1)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
+                                        let data1 = { "labels": $DataLabelsYearEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "Average", "data": $dataAvgYearEncoded, "backgroundColor": "rgba(109, 171, 166, 0)", "borderColor": "rgb(226, 183, 28)", "borderWidth": 2 },{ "label": "Power Usage [kWh]", "data": $dataPointsYearEncoded, "backgroundColor": "rgb(56,56,56)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
                                         //days upto 31 days
-                                        let data2 = { "labels": $DataLabelsMonthEncoded,"label": "Expected Usage:", "datasets": [{ "label": "Average", "data": $dataAvgMonthEncoded, "backgroundColor": "rgba(109, 171, 166, 0)", "borderColor": "rgba(109, 171, 166, 1)", "borderWidth": 3 },{ "label": "Power Usage", "data": $dataPointsMonthEncoded, "backgroundColor": "rgba(0, 0, 0, 0.1)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
+                                        let data2 = { "labels": $DataLabelsMonthEncoded,"label": "Expected Usage:", "datasets": [{ "label": "Average", "data": $dataAvgMonthEncoded, "backgroundColor": "rgba(109, 171, 166, 0)", "borderColor": "rgb(226, 183, 28)", "borderWidth": 2 },{ "label": "Power Usage [kWh]", "data": $dataPointsMonthEncoded, "backgroundColor": "rgb(56,56,56)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
                                         //months upto 12
-                                        let data3 = { "labels": $DataLabelsDayEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "Average", "data": $dataAvgDayEncoded, "backgroundColor": "rgba(109, 171, 166, 0)", "borderColor": "rgba(109, 171, 166, 1)", "borderWidth": 3 },{ "label": "Power Usage", "data": $dataPointsDayEncoded, "backgroundColor": "rgba(0, 0, 0, 0.1)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
+                                        let data3 = { "labels": $DataLabelsDayEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "Average", "data": $dataAvgDayEncoded, "backgroundColor": "rgba(109, 171, 166, 0)", "borderColor": "rgb(226, 183, 28)", "borderWidth": 2 },{ "label": "Power Usage [kWh]", "data": $dataPointsDayEncoded, "backgroundColor": "rgb(56,56,56)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
                                         
 
                                         // Draw the initial chart
@@ -327,7 +427,7 @@ function generateHomeTab()
                                     });
 
                                 </script>
-
+                                
                                     </div>
 
                                     
@@ -356,3 +456,4 @@ html;
 }
 
 ?>
+

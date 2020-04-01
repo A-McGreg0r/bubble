@@ -8,9 +8,9 @@
       "sizes": "192x192"
     }
   ],
-  "start_url": "https://bubble.rorydobson.com/",
+  "start_url": "https://bubbledev.rorydobson.com/",
   "background_color": "#ffffff",
   "display": "standalone",
-  "scope": "https://bubble.rorydobson.com/",
+  "scope": "https://bubbledev.rorydobson.com/",
   "theme_color": "#ffffff"
 }

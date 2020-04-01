@@ -21,13 +21,13 @@ function toggleRoom(hub_id, room_id, status){
 }
 
 
-function toggleDevice(hub_id, device_id, status) {
+function toggleDevice(hub_id, device_id) {
     let url = "required/action_device.php";
     
     $.ajax({
         type:'POST',
         url: url,
-        data:{ type: "device", hubID: hub_id, id: device_id, stat: status},
+        data:{ type: "device", hubID: hub_id, id: device_id},
         success:function(data){
             var jsonData = JSON.parse(data);
             switch(jsonData.status){

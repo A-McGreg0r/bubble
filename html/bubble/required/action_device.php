@@ -15,18 +15,19 @@ $device_id = 0;
 if(isset($_POST['id'])) $device_id = $_POST['id'];
 
 switch($type){
-    case "device":
-        $set_device = 0;
-        
-        if ($status == 0){
-            $set_device = 1;
-        }
-        
-        $stmt = $db->prepare("UPDATE device_info SET device_status = ? WHERE device_id = ?");
-        $stmt->bind_param("ii", $set_device, $device_id);
+    case "device":       
+        $stmt = $db->prepare("UPDATE device_info SET device_status = (device_status ^ 1) WHERE device_id = ?");
+        $stmt->bind_param("i", $device_id);
         $stmt->execute();
         $stmt->close();
-        echo("{"status":$set_device}");
+        $stmt = $db->prepare("SELECT device_status FROM device_info WHERE device_id = ?");
+        $stmt->bind_param("i", $device_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result>fetch_assoc();
+        $new_status = $row['device_status'];
+
+        echo("{"status":$new_status}");
     break;
     case "room":
         $set_device = 0;

@@ -102,7 +102,7 @@ html;
                     
                             <!--Title-->      
                             <div class="d-flex flex-column">  
-                                <div id="device_1_$device_id" class="flex-sm-row" style="color:$colour3">
+                                <div id="device_3_$device_id" class="flex-sm-row" style="color:$colour3">
                                     <strong class="room_icon">$icon</strong> &nbsp; <strong>$device_name</strong>
                                 </div>                     
                             </div>
@@ -110,7 +110,7 @@ html;
                             
                             <div class="d-flex flex-column">
                                 <!-- Default switch -->
-                                <p class="onOffLabel"><strong id="device_2_$device_id" style="color:$colour2">off</strong><strong id="device_3_$device_id" style="color:$colour">on</strong></p>
+                                <p class="onOffLabel"><strong id="device_2_$device_id" style="color:$colour2">off</strong><strong id="device_1_$device_id" style="color:$colour">on</strong></p>
                             </div>
                         </div>
                     </div>

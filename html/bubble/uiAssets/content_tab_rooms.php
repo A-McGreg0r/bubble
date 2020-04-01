@@ -95,31 +95,13 @@ html;
                     <!--Title-->      
                         <div class="d-flex flex-column">  
                             <div class="row" style="color:$colour3">
-                                $iconText &nbsp; <strong>$room_name</strong>
+                                <strong class="room_icon">$iconText</strong> &nbsp; <strong>$room_name</strong>
                             </div>
                         </div>
                         
-                        <div class="d-flex flex-column">
+                        <div class="d-flex flex-column" style="font-size:1.5rem">
                             <!-- Default switch -->
-                            <div class="custom-control custom-switch">
-                                <form action="#" method="POST">
-                                    <input type="checkbox" class="custom-control-input"name="room+$room_id">
-                                    <label class="custom-control-label" for="$room_name"><strong style="color:$colour2">off</strong><strong style="color:$colour">on</strong></label>
-                                </form>
-                            </div>
-                            <script>
-
-                            let room_ident=(json.stringify($room_id).trim();)
-                            $('input[name ="room'+room_ident+'"]').change(function() {
-                                let check = $(this);
-                                if (check.prop('checked' , true)){ 
-                                $('input[name ="Group'+ room_ident +'"]').prop('checked' , true);
-                                }else if ('checked' , false)){
-                                $('input[name ="Group'+ room_ident +'"]').prop('checked' , false);
-                              }
-                            });
-
-                            </script>
+                            <p class="onOffLabel"><strong style="color:$colour2">off</strong><strong style="color:$colour">on</strong></p>
                         </div>
                     </div>
 

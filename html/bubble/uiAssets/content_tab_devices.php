@@ -122,19 +122,14 @@ html;
                             <!--Title-->      
                             <div class="d-flex flex-column">  
                                 <div class="flex-sm-row" style="color:$colour3">
-                                    $icon &nbsp; <strong>$device_name</strong>
+                                    <strong class="room_icon">$icon</strong> &nbsp; <strong>$device_name</strong>
                                 </div>                     
                             </div>
 
                             
                             <div class="d-flex flex-column">
                                 <!-- Default switch -->
-                                <div class="custom-control custom-switch">
-                                <form action="#" method="POST">
-                                        <input type="checkbox" class="custom-control-input" id="$device_name" name="Group+$room_id">
-                                        <label class="custom-control-label" for="$device_name"><strong style="color:$colour2">off</strong><strong style="color:$colour">on</strong></label>
-                                </form>
-                                </div>
+                                <p class="onOffLabel"><strong style="color:$colour2">off</strong><strong style="color:$colour">on</strong></p>
                             </div>
                         </div>
 

@@ -91,7 +91,7 @@ html;
                     //GENERATE CARD FOR DEVICE
                     $html .= <<<html
                     <!-- Card -->
-                    <div id="device_$device_id"class="card mb-4 container text-dark grey-out" style="background-color:$background" onclick="toggleDevice($hub_id, $device_id)">
+                    <div id="device_$device_id" class="card mb-4 container text-dark grey-out" style="background-color:$background" onclick="toggleDevice($hub_id, $device_id)">
                         <!--Card image-->
                         <div class="view overlay">
                             <div class="mask rgba-white-slight"></div>
@@ -102,7 +102,7 @@ html;
                     
                             <!--Title-->      
                             <div class="d-flex flex-column">  
-                                <div class="flex-sm-row" style="color:$colour3">
+                                <div id="device_1_$device_id" class="flex-sm-row" style="color:$colour3">
                                     <strong class="room_icon">$icon</strong> &nbsp; <strong>$device_name</strong>
                                 </div>                     
                             </div>
@@ -110,7 +110,7 @@ html;
                             
                             <div class="d-flex flex-column">
                                 <!-- Default switch -->
-                                <p class="onOffLabel"><strong style="color:$colour2">off</strong><strong style="color:$colour">on</strong></p>
+                                <p class="onOffLabel"><strong id="device_2_$device_id" style="color:$colour2">off</strong><strong id="device_3_$device_id" style="color:$colour">on</strong></p>
                             </div>
                         </div>
                     </div>

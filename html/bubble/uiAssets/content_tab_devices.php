@@ -110,7 +110,7 @@ html;
 
                     $html .= <<<html
                     <!-- Card -->
-                    <div class="card mb-4 container text-dark grey-out" style="background-color:$background" onclick="call_php$device_id()">
+                    <div class="card mb-4 container text-dark grey-out" style="background-color:$background" onclick="toggleDevice($hub_id, $device_id, $status, '$device_name')">
                         <!--Card image-->
                         <div class="view overlay">
                             <div class="mask rgba-white-slight"></div>

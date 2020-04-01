@@ -16,7 +16,8 @@ if(isset($_POST['id'])) $device_id = $_POST['id'];
 
 switch($type){
     case "device":       
-        $stmt = $db->prepare("UPDATE device_info SET device_status = (device_status ^ 1) WHERE device_id = ?");
+        $stmt = $db->prepare("UPDATE device_info SET device_status = IF(device_status=1, 0, 1) WHERE device_id = ?");
+
         $stmt->bind_param("i", $device_id);
         $stmt->execute();
         $stmt->close();

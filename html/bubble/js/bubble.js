@@ -33,16 +33,16 @@ function toggleDevice(hub_id, device_id) {
             switch(jsonData.status){
                 case 0:
                     $('#device_'+device_id).animate({backgroundColor: '!important'}, 'slow');
-                    $('#device_1_'+device_id).animate({backgroundColor: 'transparent!important'}, 'slow');
-                    $('#device_2_'+device_id).animate({backgroundColor: ''}, 'slow');
-                    $('#device_3_'+device_id).animate({backgroundColor: ''}, 'slow');
+                    $('#device_1_'+device_id).animate({color: 'transparent!important'}, 'slow');
+                    $('#device_2_'+device_id).animate({color: ''}, 'slow');
+                    $('#device_3_'+device_id).animate({color: ''}, 'slow');
 
                 break;
                 case 1:
                     $('#device_'+device_id).animate({backgroundColor: 'rgb(226, 183, 28)!important'}, 'slow');
-                    $('#device_1_'+device_id).animate({backgroundColor: 'rgb(56,56,56)!important'}, 'slow');
-                    $('#device_2_'+device_id).animate({backgroundColor: 'transparent!important'}, 'slow');
-                    $('#device_3_'+device_id).animate({backgroundColor: 'rgb(56,56,56)!important'}, 'slow');
+                    $('#device_1_'+device_id).animate({color: 'rgb(56,56,56)!important'}, 'slow');
+                    $('#device_2_'+device_id).animate({color: 'transparent!important'}, 'slow');
+                    $('#device_3_'+device_id).animate({color: 'rgb(56,56,56)!important'}, 'slow');
                 break;
             }
         },

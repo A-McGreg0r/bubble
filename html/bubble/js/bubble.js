@@ -30,14 +30,13 @@ function toggleDevice(hub_id, device_id) {
         data:{ type: "device", hubID: hub_id, id: device_id},
         success:function(data){
             var jsonData = JSON.parse(data);
-            alert(jsonData.status);
             switch(jsonData.status){
                 case 0:
                     $('#device_'+device_id).animate({backgroundColor: ''}, 'slow');
 
                 break;
                 case 1:
-                    $('#device_'+device_id).animate({backgroundColor: 'rgb(226, 183, 28)!important'}, 'slow');
+                    $('#device_'+device_id).animate({backgroundColor: '#e2b71c'}, 'slow');
 
                 break;
             }

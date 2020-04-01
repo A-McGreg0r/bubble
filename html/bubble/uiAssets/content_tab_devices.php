@@ -5,10 +5,9 @@ include_once dirname(__DIR__).'/required/config.php';
 
 
 function generateDeviceTab(){
-    $html = '';
+    global $db;
 
-
-    $html .= <<<html
+    $html = <<<html
         <a href="index.php?action=adddevice">
             <div class="card mb-4 container">
                 <!--Card image-->
@@ -32,48 +31,37 @@ function generateDeviceTab(){
         </a>
 html;
 
-    global $db;
     session_start();
     if(isset($_SESSION['hub_id'])){
         $hub_id = $_SESSION['hub_id'];
         session_write_close();
 
-        $stmt6 = $db->prepare("SELECT * FROM room_info");
-        $stmt6->execute();
-        $result6 = $stmt6->get_result();
-        $y = $result6->num_rows;
+        //GET ALL ROOMS FOR A SPECIFIC HUB
+        $stmtRoom = $db->prepare("SELECT * FROM room_info WHERE hub_id = ?");
+        $stmtRoom->bind_param("i", $hub_id);
+        $stmtRoom->execute();
+        $resultRoom = $stmtRoom->get_result();
+        //GET TOTAL NUMBER OF ROOMS
+        $totalRooms = $resultRoom->num_rows;
 
-        for($i = 0; $i < $y; $i++){
-
-            $stmt5 = $db->prepare("SELECT * FROM room_info WHERE room_id = ?");
-            $stmt5->bind_param("i", $i);
-            $stmt5->execute();
-            $result5 = $stmt5->get_result();
-            if($result5->num_rows >= 1){
-                $row5 = $result5->fetch_assoc();
-                $room_name = $row5['room_name'];
-
-                $stmt7 = $db->prepare("SELECT * FROM device_info WHERE room_id = ?");
-                $stmt7->bind_param("i", $i);
-                $stmt7->execute();
-                $result7 = $stmt7->get_result();
-                if($result7->num_rows >= 1){
-
-                    $html .= <<<html
-                    <div class="device_room_heading">
-                        <strong class="section-title">$room_name</strong>
-                    </div>
+        //LOOP FOR EACH ROOM FOR THE HUB
+        while ($rowRoom = $resultRoom->fetch_assoc()) {
+            $room_name = $rowRoom['room_name'];
+            $room_id = $rowRoom['room_id'];
+            $html .= <<<html
+            <div class="device_room_heading">
+                <strong class="section-title">$room_name</strong>
+            </div>
 html;
-                }
-            }
+            //GET ALL DEVICES IN THAT ROOM
+            $stmtDevice = $db->prepare("SELECT * FROM device_info WHERE hub_id = ? AND room_id = ?");
+            $stmtDevice->bind_param("ii", $hub_id, $room_id);
+            $stmtDevice->execute();
+            $resultDevice = $stmtDevice->get_result();
 
-            $stmt = $db->prepare("SELECT * FROM device_info WHERE hub_id = ? AND room_id = ?");//todo oderby room id
-                    $stmt->bind_param("ii", $hub_id, $i);
-                    $stmt->execute();
-                    $result = $stmt->get_result();
-
-                    if ($result->num_rows > 0) {
-                        while ($row = $result->fetch_assoc()) {
+            //LOOP THROUGH ALL DEVICES IN THAT ROOM
+            if ($resultDevice->num_rows > 0) {
+                while ($row = $resultDevice->fetch_assoc()) {
                     $device_id = $row['device_id'];
                     $device_name = $row['device_name'];
                     $device_type = $row['device_type'];
@@ -91,20 +79,14 @@ html;
                         $background = 'rgb(226, 183, 28)!important';
                     }
 
+                    //GET ICON FROM ICON TABLE
                     $stmt3 = $db->prepare("SELECT * FROM device_types WHERE type_id = ?");
                     $stmt3->bind_param("i", $device_type);
                     $stmt3->execute();
                     $result3 = $stmt3->get_result();
                     $row3 = $result3->fetch_assoc();
                     $icon = $row3['type_icon'];
-
-                    $stmt4 = $db->prepare("SELECT * FROM room_info WHERE room_id = ?");
-                    $stmt4->bind_param("i", $room_id);
-                    $stmt4->execute();
-
-                    $result4 = $stmt4->get_result();
-                    $row4 = $result4->fetch_assoc();
-                    $room_type = $row4['room_name'];
+                    $stmt3->close();
 
                     //todo intagrate in to device page?
 
@@ -132,20 +114,9 @@ html;
                                 <p class="onOffLabel"><strong style="color:$colour2">off</strong><strong style="color:$colour">on</strong></p>
                             </div>
                         </div>
-
-                        <script>
-
-                    function call_php$device_id(){
-
-                        window.location = "index.php?action=onoff_device&hub_id=$hub_id&device_id=$device_id&status=$status&device_name=$device_name";
-                    
-                    }
-
-                    </script>
                     </div>
 html;
                     
-                    $stmt3->close();
                 }
             }
             $stmt->close();
@@ -156,8 +127,7 @@ html;
     return $html;
 }
 
-function deviceCat($device_type, $device_name)
-{
+function deviceCat($device_type, $device_name) {
     if ($device_type == "heating" || $device_type == "airCon") {
         $optionType = "<form class=\"range-field\" for=\"$device_name\"><input type=\"range\" min=\"0c\" max=\"40c\" /></form>";
         //todo add option for different temp measurements farnehight, celcus

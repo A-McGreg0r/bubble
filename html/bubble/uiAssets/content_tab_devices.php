@@ -21,7 +21,7 @@ function generateDeviceTab(){
         
                 <!--Title-->      
                     <div class="d-flex flex-column">  
-                        Add new device
+                        <strong>Add new device</strong>
                     </div>
                     
                     <div class="d-flex flex-column">
@@ -61,7 +61,7 @@ html;
 
                     $html .= <<<html
                     <div class="device_room_heading">
-                        <strong> $room_name</strong>
+                        <strong class="section-title">$room_name</strong>
                     </div>
 html;
                 }
@@ -78,6 +78,18 @@ html;
                     $device_name = $row['device_name'];
                     $device_type = $row['device_type'];
                     $room_id = json_encode($row['room_id']);
+                    $status = $row['device_status'];
+
+                    $colour = 'transparent!important';
+                    $colour2 = '';
+                    $colour3 = '';
+                    $background = '';
+                    if($status == 1){
+                        $colour = 'rgb(56,56,56)!important';
+                        $colour2 = 'transparent!important';
+                        $colour3 = 'rgb(56,56,56)!important';
+                        $background = 'rgb(226, 183, 28)!important';
+                    }
 
                     $stmt3 = $db->prepare("SELECT * FROM device_types WHERE type_id = ?");
                     $stmt3->bind_param("i", $device_type);
@@ -98,7 +110,7 @@ html;
 
                     $html .= <<<html
                     <!-- Card -->
-                    <div class="card mb-4 container text-dark grey-out">
+                    <div class="card mb-4 container text-dark grey-out" style="background-color:$background" onclick="call_php$device_id()">
                         <!--Card image-->
                         <div class="view overlay">
                             <div class="mask rgba-white-slight"></div>
@@ -109,7 +121,7 @@ html;
                     
                             <!--Title-->      
                             <div class="d-flex flex-column">  
-                                <div class="flex-sm-row">
+                                <div class="flex-sm-row" style="color:$colour3">
                                     $icon &nbsp; <strong>$device_name</strong>
                                 </div>                     
                             </div>
@@ -119,12 +131,22 @@ html;
                                 <!-- Default switch -->
                                 <div class="custom-control custom-switch">
                                 <form action="#" method="POST">
-                                        <input type="checkbox" class="custom-control-input" id="$device_name" name="Group+$room_id" onclick="alter_database($room_id)">
-                                        <label class="custom-control-label" for="$device_name"><strong>off/on</strong></label>
+                                        <input type="checkbox" class="custom-control-input" id="$device_name" name="Group+$room_id">
+                                        <label class="custom-control-label" for="$device_name"><strong style="color:$colour2">off</strong><strong style="color:$colour">on</strong></label>
                                 </form>
                                 </div>
                             </div>
                         </div>
+
+                        <script>
+
+                    function call_php$device_id(){
+
+                        window.location = "index.php?action=onoff_device&hub_id=$hub_id&device_id=$device_id&status=$status&device_name=$device_name";
+                    
+                    }
+
+                    </script>
                     </div>
 html;
                     

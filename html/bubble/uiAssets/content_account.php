@@ -26,7 +26,7 @@ function generateAccount(){
                     </div>
                 </div>
             </div>            
-            <div class="card mb-4 text-dark grey-out">
+            <div class="card mb-4 text-dark grey-out-account">
                 <!--Card content-->
                 <div class="flex-nowrap justify-content-between">
                     

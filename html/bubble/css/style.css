@@ -55,6 +55,7 @@ ul {
 
 .red-text {
     color: rgb(226, 183, 28)!important;
+    cursor: default!important;
 }
 
 .front-img {
@@ -135,13 +136,13 @@ ul {
     color: rgb(227, 184, 28)!important;
 }
 
-.grey-out:nth-of-type(odd), .card-header{
+.grey-out, .grey-out-rooms {
     border: 1px solid rgb(56,56,56)!important;
 }
 
-.grey-out-rooms:nth-of-type(odd), .card-header{
-    background-color: rgb(56,56,56)!important;
-    color: rgb(227, 184, 28)!important;
+.grey-out-rooms:nth-of-type(odd), .grey-out-account:nth-of-type(odd), .card-header{
+    background-color: rgb(56,56,56);
+    color: rgb(227, 184, 28);
 }
 
 .alternating-border:nth-of-type(even) {
@@ -155,6 +156,7 @@ ul {
 .card-header {
     padding-left: 2rem!important;
     padding-right: 3rem!important;
+    cursor: default!important;
 }
 
 .navbar.navbar-dark .breadcrumb .nav-item .nav-link, .navbar.navbar-dark .navbar-nav .nav-item .nav-link {
@@ -175,7 +177,8 @@ ul {
 }
 
 .mr-auto {
-    margin-top: 0!important;
+    margin-top: 0px!important;
+    margin-bottom: 10px!important;
 }
 
 p {
@@ -357,7 +360,7 @@ select {
 }
 
 .text-dark {
-    color: rgb(56, 56, 56)!important;
+    color: rgb(56, 56, 56);
 }
 
 .double-stat {
@@ -376,7 +379,7 @@ select {
 
 .device_room_heading {
     font-size: 1.5rem!important;
-    margin-top: 30px!important;
+    margin-top: 40px!important;
     margin-bottom: 10px!important;
     text-align: center!important;
 }

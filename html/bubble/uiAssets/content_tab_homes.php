@@ -211,12 +211,10 @@ function generateHomeTab()
                     <div class="card col-lg">
                     <!-- Card header -->
                         <div class="card-header" role="tab" id="heading$hub_id">
-                            <a data-toggle="collapse" data-parent="#accordionEx194" href="#collapse$hub_id" aria-expanded="true" aria-controls="collapse4">
+                            <a data-toggle="collapse" data-parent="#accordionEx194" aria-expanded="true" aria-controls="collapse4">
                                 <h3 class="mb-0 mt-3 red-text">
                                     <div class="row">
                                         <div class="col-auto mr-auto"><strong>$hub_name</strong></div>
-                                        <div class="col-auto"><i class="fas fa-angle-down rotate-icon fa-2x"></i></div>
-        
                                     </div>
                                 </h3>
                             </a>
@@ -385,11 +383,11 @@ function generateHomeTab()
                                         //Supplied Datasets to display
                                         //hourly 1 upto 24
                                         //TODO change expected usage to power genarated once implmented
-                                        let data1 = { "labels": $DataLabelsYearEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "Average", "data": $dataAvgYearEncoded, "backgroundColor": "rgba(109, 171, 166, 0)", "borderColor": "rgb(226, 183, 28)", "borderWidth": 2 },{ "label": "Power Usage", "data": $dataPointsYearEncoded, "backgroundColor": "rgb(56,56,56)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
+                                        let data1 = { "labels": $DataLabelsYearEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "Average", "data": $dataAvgYearEncoded, "backgroundColor": "rgba(109, 171, 166, 0)", "borderColor": "rgb(226, 183, 28)", "borderWidth": 2 },{ "label": "Power Usage [kWh]", "data": $dataPointsYearEncoded, "backgroundColor": "rgb(56,56,56)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
                                         //days upto 31 days
-                                        let data2 = { "labels": $DataLabelsMonthEncoded,"label": "Expected Usage:", "datasets": [{ "label": "Average", "data": $dataAvgMonthEncoded, "backgroundColor": "rgba(109, 171, 166, 0)", "borderColor": "rgb(226, 183, 28)", "borderWidth": 2 },{ "label": "Power Usage", "data": $dataPointsMonthEncoded, "backgroundColor": "rgb(56,56,56)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
+                                        let data2 = { "labels": $DataLabelsMonthEncoded,"label": "Expected Usage:", "datasets": [{ "label": "Average", "data": $dataAvgMonthEncoded, "backgroundColor": "rgba(109, 171, 166, 0)", "borderColor": "rgb(226, 183, 28)", "borderWidth": 2 },{ "label": "Power Usage [kWh]", "data": $dataPointsMonthEncoded, "backgroundColor": "rgb(56,56,56)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
                                         //months upto 12
-                                        let data3 = { "labels": $DataLabelsDayEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "Average", "data": $dataAvgDayEncoded, "backgroundColor": "rgba(109, 171, 166, 0)", "borderColor": "rgb(226, 183, 28)", "borderWidth": 2 },{ "label": "Power Usage", "data": $dataPointsDayEncoded, "backgroundColor": "rgb(56,56,56)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
+                                        let data3 = { "labels": $DataLabelsDayEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "Average", "data": $dataAvgDayEncoded, "backgroundColor": "rgba(109, 171, 166, 0)", "borderColor": "rgb(226, 183, 28)", "borderWidth": 2 },{ "label": "Power Usage [kWh]", "data": $dataPointsDayEncoded, "backgroundColor": "rgb(56,56,56)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
                                         
 
                                         // Draw the initial chart

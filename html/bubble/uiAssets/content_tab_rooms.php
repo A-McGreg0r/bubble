@@ -2,9 +2,13 @@
 <?php
 include_once dirname(__DIR__).'/required/config.php';
 
+ob_start();
+include 'required/on_off_room_function.php';
+ob_get_clean();
+
 function generateRoomTab(){
-    $html = '';
     global $db;
+    $html = '';
     session_start();
     if(isset($_SESSION['hub_id'])){
         $hub_id = $_SESSION['hub_id'];
@@ -51,9 +55,35 @@ html;
                 $result1 = $stmt1->get_result();
                 $row1 = $result1->fetch_assoc();
                 $iconText = $row1['type_icon'];
+
+                $colour = 'transparent';
+                $colour2 = '';
+                $colour3 = '';
+                $background = '';
+
+                $stmt2 = $db->prepare("SELECT * FROM device_info WHERE hub_id = ? AND room_id = ?");
+                $stmt2->bind_param("ii", $hub_id, $room_id);
+                $stmt2->execute();
+                $result2 = $stmt2->get_result();
+                $num_rows2 = $result2->num_rows;
+                if ($num_rows2 >= 1) {
+                    $all2 = $result2->fetch_all(MYSQLI_ASSOC);
+                    foreach($all2 as $row2){
+                        $status = $row2['device_status'];
+                        $room_id = $row2['room_id'];
+
+                        if($status == 1){
+                            $colour = 'rgb(56,56,56)';
+                            $colour2 = 'transparent';
+                            $colour3 = 'rgb(56,56,56)';
+                            $background = 'rgb(226, 183, 28)';
+                        }
+                    }
+                }
+                
                 $html .= <<<html
                 <!-- Card -->
-                <div class="card mb-4 container text-dark grey-out-rooms alternating-border">
+                <div class="card mb-4 container text-dark grey-out-rooms alternating-border" style="background-color:$background" id="$room_id" onclick="call_php_room$room_id()">
                     <!--Card image-->
                     <div class="view overlay">
                         <div class="mask rgba-white-slight"></div>
@@ -64,7 +94,7 @@ html;
               
                     <!--Title-->      
                         <div class="d-flex flex-column">  
-                            <div class="row">
+                            <div class="row" style="color:$colour3">
                                 $iconText &nbsp; <strong>$room_name</strong>
                             </div>
                         </div>
@@ -73,24 +103,51 @@ html;
                             <!-- Default switch -->
                             <div class="custom-control custom-switch">
                                 <form action="#" method="POST">
-                                    <input type="checkbox" class="custom-control-input" id="$room_name" name="room+$room_id">
-                                    <label class="custom-control-label" for="$room_name"><strong>off/on</strong></label>
+                                    <input type="checkbox" class="custom-control-input"name="room+$room_id">
+                                    <label class="custom-control-label" for="$room_name"><strong style="color:$colour2">off</strong><strong style="color:$colour">on</strong></label>
                                 </form>
                             </div>
                             <script>
+
                             let room_ident=(json.stringify($room_id).trim();)
                             $('input[name ="room'+room_ident+'"]').change(function() {
-                              let check = $(this);
-                              if (check.prop('checked' , true)){ 
-                              $('input[name ="Group'+ room_ident +'"]').prop('checked' , true);
-                              }else if ('checked' , false)){
-                              $('input[name ="Group'+ room_ident +'"]').prop('checked' , false);
+                                let check = $(this);
+                                if (check.prop('checked' , true)){ 
+                                $('input[name ="Group'+ room_ident +'"]').prop('checked' , true);
+                                }else if ('checked' , false)){
+                                $('input[name ="Group'+ room_ident +'"]').prop('checked' , false);
                               }
                             });
-                            
+
                             </script>
                         </div>
                     </div>
+
+                    <script>
+
+                    function call_php_room$room_id(){
+
+                        if($status == 0){
+                            document.getElementById("$room_id").style.backgroundColor = "rgb(227, 184, 28)";
+                            document.getElementById("$room_id").style.color = "rgb(56, 56, 56)";
+                        } else if ($status == 1){
+                            if($room_id % 2 == 1){
+                                document.getElementById("$room_id").style.backgroundColor = "rgb(56, 56, 56)";
+                                document.getElementById("$room_id").style.color = "rgb(227, 184, 28)";
+                            } else {
+                                document.getElementById("$room_id").style.backgroundColor = "transparent";
+                            }
+                        }
+
+                        window.location = "index.php?action=onoff_room&hub_id=$hub_id&room_id=$room_id&status=$status&room_name=$room_name";
+                    
+                    }
+
+                    function call_php() {
+                        alert("No devices associated with room");
+                    }
+
+                    </script>
                 </div>
 
 html;

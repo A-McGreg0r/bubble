@@ -1,6 +1,6 @@
 
-function toggleRoom(hub_id, room_id, status, room_name){
-    let url = "required/on_off_room_function.php";
+function toggleRoom(hub_id, room_id, status){
+    let url = "required/action_device.php";
 
     var on_or_off = "on";
     if(status == 1) {
@@ -10,9 +10,9 @@ function toggleRoom(hub_id, room_id, status, room_name){
     $.ajax({
         type:'POST',
         url: url,
-        data:{ type: "room", hubID: hub_id, id: room_id, stat: status, room_name: room_name},
+        data:{ type: "room", hubID: hub_id, id: room_id, stat: status},
         success:function(){
-            alert(room_name + " turned " + on_or_off)
+            alert(room_id + "turned " + on_or_off)
         },
         error: function(data){
             alert("error!");
@@ -21,8 +21,8 @@ function toggleRoom(hub_id, room_id, status, room_name){
 }
 
 
-function toggleDevice(hub_id, device_id, status, name) {
-    let url = "required/on_off_device_function.php";
+function toggleDevice(hub_id, device_id, status) {
+    let url = "required/action_device.php";
     var on_or_off = "on";
     if(status == 1) {
         on_or_off = "off";
@@ -33,7 +33,7 @@ function toggleDevice(hub_id, device_id, status, name) {
         url: url,
         data:{ type: "device", hubID: hub_id, id: device_id, stat: status},
         success:function(){
-            alert(name + " turned " + on_or_off);
+            alert(device_id + " turned " + on_or_off);
         },
         error: function(data){
             alert("error!");

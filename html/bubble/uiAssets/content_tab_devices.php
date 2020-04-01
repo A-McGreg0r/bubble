@@ -2,10 +2,9 @@
 <?php
 include_once dirname(__DIR__).'/required/config.php';
 
-
-
 function generateDeviceTab(){
     global $db;
+    //ADD NEW DEVICE CARD, GENERATE ALWAYS AT TOP!
 
     $html = <<<html
         <a href="index.php?action=adddevice">
@@ -30,6 +29,7 @@ function generateDeviceTab(){
             </div>
         </a>
 html;
+    //GRAB HUB ID FROM SESSION
 
     session_start();
     if(isset($_SESSION['hub_id'])){
@@ -91,7 +91,7 @@ html;
                     //GENERATE CARD FOR DEVICE
                     $html .= <<<html
                     <!-- Card -->
-                    <div class="card mb-4 container text-dark grey-out" style="background-color:$background" onclick="toggleDevice($hub_id, $device_id, $status, '$device_name')">
+                    <div class="card mb-4 container text-dark grey-out" style="background-color:$background" onclick="toggleDevice($hub_id, $device_id, $status)">
                         <!--Card image-->
                         <div class="view overlay">
                             <div class="mask rgba-white-slight"></div>

@@ -53,7 +53,7 @@ html;
                 $iconText = $row1['type_icon'];
                 $html .= <<<html
                 <!-- Card -->
-                <div class="card mb-4 container text-dark grey-out alternating-border">
+                <div class="card mb-4 container text-dark grey-out-rooms alternating-border">
                     <!--Card image-->
                     <div class="view overlay">
                         <div class="mask rgba-white-slight"></div>
@@ -73,7 +73,7 @@ html;
                             <!-- Default switch -->
                             <div class="custom-control custom-switch">
                                 <form action="#" method="POST">
-                                    <input type="checkbox" class="custom-control-input" id="$room_name" name="room+$room_id" onclick="toggleRoom($room_id)">
+                                    <input type="checkbox" class="custom-control-input" id="$room_name" name="room+$room_id">
                                     <label class="custom-control-label" for="$room_name"><strong>off/on</strong></label>
                                 </form>
                             </div>

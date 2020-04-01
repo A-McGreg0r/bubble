@@ -111,16 +111,6 @@ ul {
     border-radius: 0!important;
 }
 
-.card:nth-last-child(1) {
-    border-bottom-right-radius: 0.25rem!important;
-    border-bottom-left-radius: 0.25rem!important;
-}
-
-.card:nth-child(2) {
-    border-top-right-radius: 0.25rem!important;
-    border-top-left-radius: 0.25rem!important;
-}
-
 .accordion {
     border-bottom: 1px solid rgba(0,0,0,0.125);
 }
@@ -140,14 +130,22 @@ ul {
     border: 2px solid rgb(56, 56, 56)!important;
 }
 
+.grey-out:nth-of-type(even), .card-header{
+    background-color: rgb(56,56,56)!important;
+    color: rgb(227, 184, 28)!important;
+}
+
 .grey-out:nth-of-type(odd), .card-header{
+    border: 1px solid rgb(56,56,56)!important;
+}
+
+.grey-out-rooms:nth-of-type(odd), .card-header{
     background-color: rgb(56,56,56)!important;
     color: rgb(227, 184, 28)!important;
 }
 
 .alternating-border:nth-of-type(even) {
-    border-left: 1px solid rgb(56,56,56)!important;
-    border-right: 1px solid rgb(56,56,56)!important;
+    border: 1px solid rgb(56,56,56)!important;
 }
 
 .col-lg {
@@ -365,4 +363,24 @@ select {
 .double-stat {
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+.custom-control-label::before {
+    background-color: transparent!important;
+}
+
+.custom-control-input:checked~.custom-control-label::before {
+    background-color: #1b29c1!important;
+    border: 1px solid #1b29c1!important;;
+}
+
+.device_room_heading {
+    font-size: 1.5rem!important;
+    margin-top: 30px!important;
+    margin-bottom: 10px!important;
+    text-align: center!important;
+}
+
+.device_room_heading:nth-of-type(1) {
+    margin-top: 0px!important;
 }

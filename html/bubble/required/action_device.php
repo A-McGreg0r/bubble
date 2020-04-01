@@ -23,11 +23,12 @@ switch($type){
         $stmt->bind_param("i", $device_id);
         $stmt->execute();
         $stmt->close();
-        $stmt = $db->prepare("SELECT device_status FROM device_info WHERE device_id = ?");
-        $stmt->bind_param("i", $device_id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $row = $result>fetch_assoc();
+
+        $stmt2 = $db->prepare("SELECT device_status FROM device_info WHERE device_id = ?");
+        $stmt2->bind_param("i", $device_id);
+        $stmt2->execute();
+        $result = $stmt2->get_result();
+        $row = $result->fetch_assoc();
         $new_status = $row['device_status'];
 
         echo("{"status":$new_status}");

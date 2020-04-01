@@ -91,7 +91,7 @@ html;
                     //GENERATE CARD FOR DEVICE
                     $html .= <<<html
                     <!-- Card -->
-                    <div class="card mb-4 container text-dark grey-out" style="background-color:$background" onclick="toggleDevice($hub_id, $device_id, $status)">
+                    <div id="room_$room_id"class="card mb-4 container text-dark grey-out" style="background-color:$background" onclick="toggleDevice($hub_id, $device_id, $status)">
                         <!--Card image-->
                         <div class="view overlay">
                             <div class="mask rgba-white-slight"></div>

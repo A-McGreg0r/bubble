@@ -23,17 +23,14 @@ function toggleRoom(hub_id, room_id, status){
 
 function toggleDevice(hub_id, device_id, status) {
     let url = "required/action_device.php";
-    var on_or_off = "on";
-    if(status == 1) {
-        on_or_off = "off";
-    }
     
     $.ajax({
         type:'POST',
         url: url,
         data:{ type: "device", hubID: hub_id, id: device_id, stat: status},
-        success:function(){
-            alert(device_id + " turned " + on_or_off);
+        success:function(data){
+            alert(data);
+            // $('room_'+room_id).animate({backgroundColor: '#FF0000'}, 'slow');
         },
         error: function(data){
             alert("error!");

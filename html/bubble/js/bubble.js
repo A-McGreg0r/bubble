@@ -29,8 +29,17 @@ function toggleDevice(hub_id, device_id, status) {
         url: url,
         data:{ type: "device", hubID: hub_id, id: device_id, stat: status},
         success:function(data){
-            alert(data);
-            // $('room_'+room_id).animate({backgroundColor: '#FF0000'}, 'slow');
+            var jsonData = JSON.parse(data);
+            switch(jsonData.status){
+                case 0:
+                    $('room_'+device_id).animate({backgroundColor: ''}, 'slow');
+
+                break;
+                case 1:
+                    $('room_'+device_id).animate({backgroundColor: 'rgb(226, 183, 28)!important'}, 'slow');
+
+                break;
+            }
         },
         error: function(data){
             alert("error!");

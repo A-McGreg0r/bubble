@@ -26,7 +26,7 @@ switch($type){
         $stmt->bind_param("ii", $set_device, $device_id);
         $stmt->execute();
         $stmt->close();
-        echo("{status:$set_device}");
+        echo("{"status":$set_device}");
     break;
     case "room":
         $set_device = 0;

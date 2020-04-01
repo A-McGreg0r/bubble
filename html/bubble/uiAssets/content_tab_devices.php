@@ -119,8 +119,9 @@ html;
                     
                 }
             }
-            $stmt->close();
+            $stmtDevice->close();
         }
+        $stmtRoom->close();
     } else{
         exit("Error, user is not logged in!");
     }

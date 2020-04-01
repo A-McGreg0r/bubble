@@ -36,7 +36,7 @@ function toggleDevice(hub_id, device_id) {
 
                 break;
                 case 1:
-                    $('#device_'+device_id).animate({backgroundColor: '#e2b71c'}, 'slow');
+                    $('#device_'+device_id).animate({backgroundColor: 'rgb(226, 183, 28)!important'}, 'slow');
 
                 break;
             }

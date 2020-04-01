@@ -4,6 +4,7 @@ include_once 'config.php';
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+
 //GRAB TYPE FROM POST
 $type = "device";
 if(isset($_POST['type'])) $status = $_POST['type'];
@@ -31,7 +32,7 @@ switch($type){
         $row = $result->fetch_assoc();
         $new_status = $row['device_status'];
 
-        echo("{"status":$new_status}");
+        echo("{\"status\":$new_status}");
     break;
     case "room":
         $set_device = 0;

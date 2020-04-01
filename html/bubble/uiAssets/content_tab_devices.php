@@ -88,8 +88,7 @@ html;
                     $icon = $row3['type_icon'];
                     $stmt3->close();
 
-                    //todo intagrate in to device page?
-
+                    //GENERATE CARD FOR DEVICE
                     $html .= <<<html
                     <!-- Card -->
                     <div class="card mb-4 container text-dark grey-out" style="background-color:$background" onclick="toggleDevice($hub_id, $device_id, $status, '$device_name')">

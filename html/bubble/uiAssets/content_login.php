@@ -6,10 +6,6 @@ function generateLoginPage(){
     $email = '';
     if (isset($_POST['email'])) $email = $_POST['email'];
     $first_name = '';
-function generateLoginPage(){
-    $email = '';
-    if (isset($_POST['email'])) $email = $_POST['email'];
-    $first_name = '';
     if (isset($_POST['first_name'])) $first_name = $_POST['first_name'];
     $last_name = '';
     if (isset($_POST['last_name'])) $last_name = $_POST['last_name'];

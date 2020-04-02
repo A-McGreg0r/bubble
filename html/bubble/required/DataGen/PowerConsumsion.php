@@ -37,93 +37,144 @@ if ($result->num_rows >= 1) {
         }
     }
 }
-generatesConsumptionData(5, 800, 1700, 100, $maxConsumption);
-
-function generatesConsumptionData($workingDays, $workStart, $workEnd, $travelTime, $maxConsumption)
-{
-    echo "Func Called \n";
+generatesConsumptionData($maxConsumption);
+function generatesConsumptionData($maxConsumption){
+    $day=1;
+    $month=1;
+    $year=2019;
+    $maxMonths=12;
     $daysInWeek = 7;//number of days in the week
     $dayCount = 1;//start point for days in week
 
-    $hoursInDay = 2400;//number of hours in a day
-    $sleepingHoursStart = 2200;
-    $sleepingHoursEnd = 600;
-    $weeklyData = array();
-    $consumed = 0;
+    if ($maxConsumption == 0) {
+        $maxConsumption = 250;
+    }//back up gor dataGeanaration
 
-    while ($dayCount <= $daysInWeek) {
-        $TimeOfDay = 100;//start point of hours loop
-        while ($dayCount <= $workingDays) {
-            GenWeekDay($maxConsumption, $dayCount, $workStart, $workEnd, $travelTime, $sleepingHoursStart, $sleepingHoursEnd, $TimeOfDay);
-            $dayCount++;
+    $hoursInDay = 24;//number of hours in a day
+    $sleepingHoursStart = 22;
+    $sleepingHoursEnd = 6;
+
+    $workStart = 7;
+    $workEnd = 17;
+    $travelTime=1;
+    $dayData=array();
+    $monthData=array();
+
+    while($year<=2020)
+    {   //echo"\n$year :\t";
+        while($month<=$maxMonths){
+            $Name = date("M", mktime(0,0,0,$month,$day,$year));
+            //echo"\n$month :$Name\n";
+            $d=cal_days_in_month(CAL_GREGORIAN,$month,$year);
+            //dayloop
+            $MonthTotal=0;
+            while($day <= $d){
+                $Name = date("D", mktime(0,0,0,$month,$day,$year));
+                //echo "\n$month\t$day :$Name\t\n";
+
+                if($Name=="Mon"||$Name=="Tue"||$Name=="Wed"||$Name=="Thu"||$Name=="Fri"){
+                    $passer =array_sum(GenWeekDay($maxConsumption, $workStart, $workEnd, $travelTime, $sleepingHoursStart, $sleepingHoursEnd,$day));
+                    array_push($dayData,$passer);
+                }else if($Name =="Sat"||$Name=="Sun"){
+                    $passer = array_sum(GenWeekEndDay($maxConsumption, $sleepingHoursStart, $sleepingHoursEnd, $hoursInDay,$day));
+                    array_push($dayData,$passer);
+                }else{echo"somthing has gone wrong";}
+
+                array_push($monthData,array_sum($dayData));
+                $dayArrayPointer=$day-1;
+                $ArrayVal = $dayData[$dayArrayPointer];
+                $MonthTotal = $MonthTotal + $ArrayVal;
+
+                $stmt2 = $db->prepare("SELECT * FROM daily_data");
+                $stmt2 = $db->prepare("INSERT INTO daily_data (hub_id, entry_day, entry_hour, energy_usage) VALUES (?, ?, ?, ?)");
+                $stmt2->bind_param("iiii", 1, $month, $day, $ArrayVal);
+                $stmt2->execute();
+                $stmt2->close();
+
+                ///echo "$month\t$day\t$ArrayVal\n";//push to array day data
+                $day++;
+            }
+
+            $stmt3 = $db->prepare("INSERT INTO monthly_data (hub_id, entry_day, entry_hour, energy_usage) VALUES (?, ?, ?, ?)");
+            $stmt3->bind_param("iiii", 1, $year, $month, $MonthTotal);
+            $stmt3->execute();
+            $stmt3->close();
+
+            //echo "$year\t$month\t $MonthTotal\n\n";
+
+            unset($dayData);
+            $dayData=array();
+            $day=1;
+            $month++;
+
         }
-        while ($dayCount <= $daysInWeek) {
-            GenWeekendDay($maxConsumption, $dayCount, $sleepingHoursStart, $sleepingHoursEnd, $hoursInDay);
-            $dayCount++;
-        }
+
+        $maxMonths=3;
+        $month=1;
+        $year++;
+
     }
-    //print_r($weeklyData);
+
 }
 
-function GenWeekDay($maxConsumption, $dayCount, $workStart, $workEnd, $travelTime, $sleepingHoursStart, $sleepingHoursEnd, $TimeOfDay)
+
+
+
+//genscripts
+
+
+function GenWeekDay($maxConsumption, $workStart, $workEnd, $travelTime, $sleepingHoursStart, $sleepingHoursEnd,$day)
 {
-    echo "\nWorking-Day :$dayCount \n";
     $data = array();
     $consumed = 0;
     $workingHours = $workEnd - $workStart;
-    $hoursInDay = 2400;
-    echo "Working hours: $workingHours \n";
+    $hoursInDay = 24;
+    $TimeOfDay=1;
+
     while ($TimeOfDay <= $hoursInDay) {
-        if ($TimeOfDay == $workStart) {
-            echo "\nStartingWork\n";
-        }
 
         if ($TimeOfDay > $workStart - $travelTime && $TimeOfDay < $workEnd + $travelTime) {
             $consumed = lowConsumption($maxConsumption);
-            echo "\tWorking-Hour: $TimeOfDay\tPowerCounsumed: $consumed\n";
+            echo "$day\t$TimeOfDay\t$consumed\n";
             array_push($data, $consumed);
 
 
         } else if ($TimeOfDay < $sleepingHoursStart && $TimeOfDay > $sleepingHoursEnd) {
 
             $consumed = $consumed + highConsumption($maxConsumption);
-            echo "\tHOME-Hour: $TimeOfDay\t\tPowerCounsumed: $consumed\n";
+            echo "$day\t$TimeOfDay\t$consumed\n";//push to array hour data
             array_push($data, $consumed);
         } else {
             $consumed = lowConsumption($maxConsumption);
-            echo "\tSlepping-Hour: $TimeOfDay\tPowerCounsumed: $consumed\n";
+            echo "$day\t$TimeOfDay\t$consumed\n";//push to array hour data
             array_push($data, $consumed);
         }
 
-        $TimeOfDay = +$TimeOfDay + 100;
+        $TimeOfDay = +$TimeOfDay + 1;
 
     }
     return $data;
 }
 
-function GenWeekendDay($maxConsumption, $dayCount, $sleepingHoursStart, $sleepingHoursEnd, $hoursInDay)
-{
-    echo "func test\n";
+function GenWeekEndDay($maxConsumption, $sleepingHoursStart, $sleepingHoursEnd, $hoursInDay,$day){
     $consumed = 0;
     $data = array();
-    echo "WeekendDay :$dayCount\n";
-    $TimeOfDay = 100;//start point of hours loop
+    $TimeOfDay = 1;//start point of hours loop
     while ($TimeOfDay < $hoursInDay) {
-        $TimeOfDay = +$TimeOfDay + 100;
+        $TimeOfDay = +$TimeOfDay + 1;
         if ($TimeOfDay < $sleepingHoursStart && $TimeOfDay > $sleepingHoursEnd) {
             $consumed = highConsumption($maxConsumption);
-            echo "\tHOME-Hour: $TimeOfDay\t\tPowerCounsumed: $consumed\n";
+            echo "$day\t$TimeOfDay\t$consumed\n";//push to array hour data
             array_push($data, $consumed);
         } else {
             $consumed = lowConsumption($maxConsumption);
-            echo "\tSlepping-Hour: $TimeOfDay\tPowerCounsumed: $consumed\n";
+            echo "$day\t$TimeOfDay\t$consumed\n";//push to array hour data
             array_push($data, $consumed);
         }
     }
     return $data;
     //post to DB
 }
-
 
 function highConsumption($maxConsumption)
 {

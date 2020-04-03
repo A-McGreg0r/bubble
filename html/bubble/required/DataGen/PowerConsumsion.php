@@ -2,9 +2,6 @@
 echo "Starting \n";
 global $db;
 
-$maxConsumption = 0;
-$energy_usage = 0;
-
 $stmt = $db->prepare("SELECT * FROM hub_info");
 $stmt->execute();
 $result = $stmt->get_result();
@@ -36,14 +33,15 @@ if ($result->num_rows >= 1) {
             }
         }
     }
-}
+
 generatesConsumptionData($maxConsumption);
+echo "func Called";
 function generatesConsumptionData($maxConsumption){
+    echo "Starting DataGen";
     $day=1;
     $month=1;
     $year=2019;
     $maxMonths=12;
-    $daysInWeek = 7;//number of days in the week
     $dayCount = 1;//start point for days in week
 
     if ($maxConsumption == 0) {
@@ -73,10 +71,10 @@ function generatesConsumptionData($maxConsumption){
                 //echo "\n$month\t$day :$Name\t\n";
 
                 if($Name=="Mon"||$Name=="Tue"||$Name=="Wed"||$Name=="Thu"||$Name=="Fri"){
-                    $passer =array_sum(GenWeekDay($maxConsumption, $workStart, $workEnd, $travelTime, $sleepingHoursStart, $sleepingHoursEnd,$day));
+                    $passer =array_sum(GenWeekDay($maxConsumption, $dayCount, $workStart, $workEnd, $travelTime, $sleepingHoursStart, $sleepingHoursEnd,$day));
                     array_push($dayData,$passer);
                 }else if($Name =="Sat"||$Name=="Sun"){
-                    $passer = array_sum(GenWeekEndDay($maxConsumption, $sleepingHoursStart, $sleepingHoursEnd, $hoursInDay,$day));
+                    $passer = array_sum(GenWeekEndDay($maxConsumption, $dayCount, $sleepingHoursStart, $sleepingHoursEnd, $hoursInDay,$day));
                     array_push($dayData,$passer);
                 }else{echo"somthing has gone wrong";}
 
@@ -85,22 +83,18 @@ function generatesConsumptionData($maxConsumption){
                 $ArrayVal = $dayData[$dayArrayPointer];
                 $MonthTotal = $MonthTotal + $ArrayVal;
 
-                $stmt2 = $db->prepare("SELECT * FROM daily_data");
                 $stmt2 = $db->prepare("INSERT INTO daily_data (hub_id, entry_day, entry_hour, energy_usage) VALUES (?, ?, ?, ?)");
                 $stmt2->bind_param("iiii", 1, $month, $day, $ArrayVal);
                 $stmt2->execute();
                 $stmt2->close();
-
                 ///echo "$month\t$day\t$ArrayVal\n";//push to array day data
                 $day++;
             }
-
             $stmt3 = $db->prepare("INSERT INTO monthly_data (hub_id, entry_day, entry_hour, energy_usage) VALUES (?, ?, ?, ?)");
             $stmt3->bind_param("iiii", 1, $year, $month, $MonthTotal);
             $stmt3->execute();
             $stmt3->close();
-
-            //echo "$year\t$month\t $MonthTotal\n\n";
+            echo "$year\t$month\t $MonthTotal\n\n";
 
             unset($dayData);
             $dayData=array();
@@ -114,7 +108,7 @@ function generatesConsumptionData($maxConsumption){
         $year++;
 
     }
-
+    echo "Ending DataGen";
 }
 
 
@@ -198,4 +192,6 @@ function lowConsumption($maxConsumption)
 {
     $energy_used = rand(0, $maxConsumption / 3);
     return $energy_used;
+}
+
 }

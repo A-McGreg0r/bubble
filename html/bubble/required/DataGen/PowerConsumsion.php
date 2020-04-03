@@ -33,8 +33,9 @@ if ($result->num_rows >= 1) {
             }
         }
     }
+    generatesConsumptionData($maxConsumption);
+}
 
-generatesConsumptionData($maxConsumption);
 echo "func Called";
 function generatesConsumptionData($maxConsumption){
     echo "Starting DataGen";
@@ -192,6 +193,4 @@ function lowConsumption($maxConsumption)
 {
     $energy_used = rand(0, $maxConsumption / 3);
     return $energy_used;
-}
-
 }

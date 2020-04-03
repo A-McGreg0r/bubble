@@ -39,7 +39,7 @@ function _main($Y, $anual_power_gen) {
         }
         $mid_trunc=round(($sum/2),0);
         for ($i = 1; $i <= $mid_trunc; $i++) {$sum_total = $sum_total + $i;}
-        return ($percentage / $sum_total);
+        return (($percentage/2) / $sum_total);
     }
 
     function daily_calc($case, $S, $I, $P, $Y) {
@@ -64,6 +64,7 @@ function _main($Y, $anual_power_gen) {
                     if ($diff < $max_days) {
                         //INSERT INTO table VALUES ($d ,$percentage*$P)
                         $watts=$percentage*$P;
+                        hourly_calc($case, $percentage, $P, $diff);
                         echo $watts;echo "<br>";
                     }
                     else {
@@ -72,6 +73,7 @@ function _main($Y, $anual_power_gen) {
                         $max_days=cal_days_in_month(CAL_GREGORIAN, $m, $Y);
                         //echo date("m");echo " <br>";
                         $watts=$percentage*$P;
+                        hourly_calc($case, $percentage, $P, 1);
                         echo $watts;echo "<br>";
                     }
                     //INSERT INTO table VALUES ($d ,$percentage*$P)
@@ -91,6 +93,7 @@ function _main($Y, $anual_power_gen) {
                     if ($diff < $max_days) {
                         //INSERT INTO table VALUES ( ($d-$previous_max_days) ,$percentage*$P)
                         $watts = round($percentage*$P, 2);
+                        hourly_calc($case, $percentage, $P, $diff);
                         echo $watts;echo "<br>";
                     }
                     else {
@@ -99,6 +102,7 @@ function _main($Y, $anual_power_gen) {
                         $max_days=cal_days_in_month(CAL_GREGORIAN, $m, $Y);
                         //echo date("m");echo " <br>";
                         $watts = round($percentage*$P, 2);
+                        hourly_calc($case, $percentage, $P, 1);
                         echo $watts;echo "<br>";
                     }
                     //INSERT INTO table VALUES ($d ,$percentage*$P)
@@ -122,6 +126,7 @@ function _main($Y, $anual_power_gen) {
                     if ($diff < $max_days) {
                         //INSERT INTO table VALUES ( ($d-$previous_max_days) ,$percentage*$P)
                         $watts = round($percentage*$P, 2);
+                        hourly_calc($case, $percentage, $P, $diff);
                         echo $watts;echo "<br>";
                     }
                     else {
@@ -130,6 +135,7 @@ function _main($Y, $anual_power_gen) {
                         $max_days=cal_days_in_month(CAL_GREGORIAN, $m, $Y);
                         //echo date("m");echo " <br>";
                         $watts = round($percentage*$P, 2);
+                        hourly_calc($case, $percentage, $P, 1);
                         echo $watts;echo "<br>";
                     }
                 }
@@ -152,6 +158,7 @@ function _main($Y, $anual_power_gen) {
                         //INSERT INTO table VALUES ( ($d-$previous_max_days) ,$percentage*$P)
                         $watts = round(($pointer*$inc/100)*$P, 2);
                         echo $watts;echo "<br>";
+                        hourly_calc($case, $percentage, $P, $diff);
                     }
                     else {
                         $previous_max_days = $d;
@@ -159,6 +166,7 @@ function _main($Y, $anual_power_gen) {
                         $max_days=cal_days_in_month(CAL_GREGORIAN, $m, $Y);
                         //echo date("m");echo " <br>";
                         $watts = round(($pointer*$inc/100)*$P, 2);
+                        hourly_calc($case, $percentage, $P, 1);
                         echo $watts;echo "<br>";
                     }
                     //INSERT INTO table VALUES ($d ,$percentage*$P)
@@ -170,6 +178,7 @@ function _main($Y, $anual_power_gen) {
     }
 
     function hourly_calc($case, $percentage, $P, $d) {
+        $sum=0;
         switch ($case) {
             case 0:
                 //Winter
@@ -201,6 +210,15 @@ function _main($Y, $anual_power_gen) {
                 break;
             default:
                 echo "Invalid Season.";
+        }
+        //from rise to set, allocate percentage
+        $daylight_hours = ($set-$rise);
+        $midday = $rise + ($daylight_hours/2);
+        for ($i=1; $i <= ($daylight_hours/2); $i++) {$sum = $sum + $i;}
+        $hourly_inc = ($percentage/2)/$sum;
+        for ($h=$rise; $h <= $midday; $h++) {
+            //INSERT INTO TABLE
+            $watts = $hourly_inc * (($h-$rise)+1) * $percentage * $P;
         }
     }
     

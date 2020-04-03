@@ -34,9 +34,10 @@ if ($result->num_rows >= 1) {
         }
     }
     generatesConsumptionData($maxConsumption);
+    echo "func Called";
 }
 
-echo "func Called";
+
 function generatesConsumptionData($maxConsumption){
     echo "Starting DataGen";
     $day=1;

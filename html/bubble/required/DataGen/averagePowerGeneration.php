@@ -12,7 +12,7 @@ function _main($Y, $anual_power_gen) {
         return array($sum_winter, $sum_spring, $sum_summer, $sum_fall);
     }
 
-    function season_inc($case, $S) {
+    function daily_inc($case, $S) {
         switch ($case) {
             case 0:
                 //Winter
@@ -42,7 +42,7 @@ function _main($Y, $anual_power_gen) {
         return ($percentage / $sum_total);
     }
 
-    function season_calc($case, $S, $I, $P, $Y) {
+    function daily_calc($case, $S, $I, $P, $Y) {
         $inc = $I[$case];
         $sum = $S[$case];
         $mid=round(($sum/2),0);
@@ -51,19 +51,20 @@ function _main($Y, $anual_power_gen) {
             case 0:
                 $max_days=cal_days_in_month(CAL_GREGORIAN, 12, $Y);
                 $m=0;
+                echo "winter<br>";
                 for ($d=1; $d <= $sum; $d++) {
+                    echo "day[";echo $d;echo "]::";
                     $pointer=$mid;
                     if ($d <= $mid) {
                         $percentage = $pointer*$inc/100;
                         $pointer--;
                     }
                     else {$percentage = ($d-$mid)*$inc/100;}
-                    //echo $percentage;echo "%    ";
-                    //INSERT INTO table VALUES ($d ,$percentage*$P)
                     $diff = $d-$previous_max_days;
                     if ($diff < $max_days) {
                         //INSERT INTO table VALUES ($d ,$percentage*$P)
-                        $pow=$percentage*$P;
+                        $watts=$percentage*$P;
+                        echo $watts;echo "<br>";
                     }
                     else {
                         $previous_max_days = $d;
@@ -71,6 +72,7 @@ function _main($Y, $anual_power_gen) {
                         $max_days=cal_days_in_month(CAL_GREGORIAN, $m, $Y);
                         //echo date("m");echo " <br>";
                         $watts=$percentage*$P;
+                        echo $watts;echo "<br>";
                     }
                     //INSERT INTO table VALUES ($d ,$percentage*$P)
                 }
@@ -78,7 +80,9 @@ function _main($Y, $anual_power_gen) {
             case 1:
                 $m=3;
                 $max_days=cal_days_in_month(CAL_GREGORIAN, $m, $Y);
+                echo "<br>spring<br>";
                 for ($d=1; $d <= $sum; $d++) {
+                    echo "day[";echo $d;echo "]::   ";
                     //echo $d*$inc/100;echo "%    ";
 
                     //echo $percentage;echo "%    "
@@ -87,6 +91,7 @@ function _main($Y, $anual_power_gen) {
                     if ($diff < $max_days) {
                         //INSERT INTO table VALUES ( ($d-$previous_max_days) ,$percentage*$P)
                         $watts = round($percentage*$P, 2);
+                        echo $watts;echo "<br>";
                     }
                     else {
                         $previous_max_days = $d;
@@ -94,6 +99,7 @@ function _main($Y, $anual_power_gen) {
                         $max_days=cal_days_in_month(CAL_GREGORIAN, $m, $Y);
                         //echo date("m");echo " <br>";
                         $watts = round($percentage*$P, 2);
+                        echo $watts;echo "<br>";
                     }
                     //INSERT INTO table VALUES ($d ,$percentage*$P)
                 }
@@ -102,7 +108,9 @@ function _main($Y, $anual_power_gen) {
                 $m=6;
                 $max_days=cal_days_in_month(CAL_GREGORIAN, $m, $Y);
                 $pointer=$mid;
+                echo "<br>summer<br>";
                 for ($d=1; $d <= $sum; $d++) {
+                    echo "day[";echo $d;echo "]::";
                     if ($d > $mid) {
                         $percentage = $pointer*$inc/100;
                         $pointer--;
@@ -114,22 +122,25 @@ function _main($Y, $anual_power_gen) {
                     if ($diff < $max_days) {
                         //INSERT INTO table VALUES ( ($d-$previous_max_days) ,$percentage*$P)
                         $watts = round($percentage*$P, 2);
+                        echo $watts;echo "<br>";
                     }
                     else {
                         $previous_max_days = $d;
-                        $m++;
+                        $m++; 
                         $max_days=cal_days_in_month(CAL_GREGORIAN, $m, $Y);
                         //echo date("m");echo " <br>";
                         $watts = round($percentage*$P, 2);
+                        echo $watts;echo "<br>";
                     }
-                    //INSERT INTO table VALUES ($d ,$percentage*$P)
                 }
                 break;
             case 3:
                 $m=9;
                 $max_days=cal_days_in_month(CAL_GREGORIAN, $m, $Y);
                 $pointer=$sum;
+                echo "<br>fall<br>";
                 for ($d=1; $d <= $sum; $d++) {
+                    echo "day[";echo $d;echo "]::";
                     //echo $pointer*$inc/100;echo "%    ";
                     
                     $pointer--;
@@ -140,6 +151,7 @@ function _main($Y, $anual_power_gen) {
                     if ($diff < $max_days) {
                         //INSERT INTO table VALUES ( ($d-$previous_max_days) ,$percentage*$P)
                         $watts = round(($pointer*$inc/100)*$P, 2);
+                        echo $watts;echo "<br>";
                     }
                     else {
                         $previous_max_days = $d;
@@ -147,6 +159,7 @@ function _main($Y, $anual_power_gen) {
                         $max_days=cal_days_in_month(CAL_GREGORIAN, $m, $Y);
                         //echo date("m");echo " <br>";
                         $watts = round(($pointer*$inc/100)*$P, 2);
+                        echo $watts;echo "<br>";
                     }
                     //INSERT INTO table VALUES ($d ,$percentage*$P)
                 }
@@ -155,14 +168,49 @@ function _main($Y, $anual_power_gen) {
                 echo "Invalid Season.";
             } 
     }
+
+    function hourly_calc($case, $percentage, $P, $d) {
+        switch ($case) {
+            case 0:
+                //Winter
+                //Daylight hours::10
+                //8-6
+                $rise=8;
+                $set=18;
+                break;
+            case 1:
+                //Spring
+                //Daylight hours::12
+                //7-8
+                $rise=7;
+                $set=20;
+                break;
+            case 2:
+                //Summer
+                //Daylight hours::14
+                //6-9 nice
+                $rise=6;
+                $set=21;
+                break;
+            case 3:
+                //Fall
+                //Daylight hours::12
+                //7-8
+                $rise=7;
+                $set=20;
+                break;
+            default:
+                echo "Invalid Season.";
+        }
+    }
     
     $Y=$Y;//INT::Year
     $P=$anual_power_gen;
     $S=inti_seasons($Y);//Array::Sum of number of days per season
     $inc = array();//Array::Seasonal incruments
     for ($i=0;$i<4;$i++){
-        array_push($inc, season_inc($i, $S));
-        season_calc($i, $S, $inc, $P, $Y);
+        array_push($inc, daily_inc($i, $S));
+        daily_calc($i, $S, $inc, $P, $Y);
     }
     
 }

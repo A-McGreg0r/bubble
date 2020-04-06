@@ -2,29 +2,30 @@
 echo "Starting \n";
 global $db;
 
+echo "Quarrying hub info";
 $stmt = $db->prepare("SELECT * FROM hub_info");
 $stmt->execute();
 $result = $stmt->get_result();
-echo "Querrying";
+echo "collected hub info";
+if ($result->num_rows > 0) {
 
-if ($result->num_rows >= 1) {
-    echo "getting hub info";
     $all = $result->fetch_all(MYSQLI_ASSOC);
     foreach ($all as $row) {
         $energy_used = 0;
         $maxConsumption = 0;
 
         $stmt5 = $db->prepare("SELECT * FROM device_info WHERE hub_id = ?");
-        echo "getting device info";
+        echo "Quarrying device info";
         $stmt5->bind_param("i", $row['hub_id']);
         $stmt5->execute();
         $result5 = $stmt5->get_result();
+        echo "collected device info";
         if ($result5->num_rows >= 1) {
             $all5 = $result5->fetch_all(MYSQLI_ASSOC);
-            foreach ($all5 as $row5) {
 
+            foreach ($all5 as $row5) {
                 $stmt4 = $db->prepare("SELECT * FROM device_types WHERE type_id = ?");
-                echo "geting device types";
+                echo "geting device consumsion ";
                 $stmt4->bind_param("i", $row5['device_type']);
                 $stmt4->execute();
                 $result4 = $stmt4->get_result();
@@ -38,8 +39,9 @@ if ($result->num_rows >= 1) {
             }
         }
     }
+    echo "Querryingcomplete";
 }
-echo "Querryingcomplete";
+
 generatesConsumptionData($maxConsumption);
 echo "func Called";
 

@@ -1,14 +1,8 @@
 <?php
-echo "Starting \n";
+
 global $db;
-
+echo "Starting ";
 echo "Quarrying hub info";
-$stmt = $db->prepare("SELECT * FROM hub_info");
-$stmt->execute();
-$result = $stmt->get_result();
-echo "collected hub info";
-if ($result->num_rows > 0) {
-
     $all = $result->fetch_all(MYSQLI_ASSOC);
     foreach ($all as $row) {
         $energy_used = 0;
@@ -16,7 +10,7 @@ if ($result->num_rows > 0) {
 
         $stmt5 = $db->prepare("SELECT * FROM device_info WHERE hub_id = ?");
         echo "Quarrying device info";
-        $stmt5->bind_param("i", $row['hub_id']);
+        $stmt5->bind_param("i", $row['1']);
         $stmt5->execute();
         $result5 = $stmt5->get_result();
         echo "collected device info";
@@ -39,8 +33,8 @@ if ($result->num_rows > 0) {
             }
         }
     }
-    echo "Querryingcomplete";
-}
+    echo "Quarrying";
+
 
 generatesConsumptionData($maxConsumption);
 echo "func Called";
@@ -92,15 +86,19 @@ function generatesConsumptionData($maxConsumption){
                 $ArrayVal = $dayData[$dayArrayPointer];
                 $MonthTotal = $MonthTotal + $ArrayVal;
 
+                global $db;
+                $hubid =1;
                 $stmt2 = $db->prepare("INSERT INTO daily_data (hub_id, entry_day, entry_hour, energy_usage) VALUES (?, ?, ?, ?)");
-                $stmt2->bind_param("iiii", 1, $month, $day, $ArrayVal);
+                $stmt2->bind_param("iiii", $hubid, $month, $day, $ArrayVal);
                 $stmt2->execute();
                 $stmt2->close();
                 ///echo "$month\t$day\t$ArrayVal\n";//push to array day data
                 $day++;
             }
+            global $db;
+            $hubid =1;
             $stmt3 = $db->prepare("INSERT INTO monthly_data (hub_id, entry_day, entry_hour, energy_usage) VALUES (?, ?, ?, ?)");
-            $stmt3->bind_param("iiii", 1, $year, $month, $MonthTotal);
+            $stmt3->bind_param("iiii", $hubid, $year, $month, $MonthTotal);
             $stmt3->execute();
             $stmt3->close();
             echo "$year\t$month\t $MonthTotal\n\n";

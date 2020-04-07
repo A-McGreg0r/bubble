@@ -56,10 +56,15 @@ if ($result->num_rows >= 1) {
             $result6 = $stmt6->get_result();
             $num_row6 = $result6->num_rows;
             if ($num_row6 >= $auto_delete) {
-                $num_row6 = $num_row6 - 1;
-                $stmt6 = $db->prepare("DELETE FROM daily_data WHERE entry_id = ?");
-                $stmt6->bind_param("i", $row6['entry_id']);
-                $stmt6->execute();
+                $all6 = $result6->fetch_all(MYSQLI_ASSOC);
+                foreach($all6 as $row6){
+                    $num_row6 = $num_row6 - 1;
+                    if ($num_row6 >= $auto_delete) {
+                        $stmt7 = $db->prepare("DELETE FROM daily_data WHERE entry_id = ?");
+                        $stmt7->bind_param("i", $row6['entry_id']);
+                        $stmt7->execute();
+                    }
+                }
             }
         }
 

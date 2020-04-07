@@ -144,7 +144,6 @@ function GenWeekDay($maxConsumption, $workStart, $workEnd, $travelTime, $sleepin
 }
 
 function GenWeekEndDay($maxConsumption, $sleepingHoursStart, $sleepingHoursEnd, $hoursInDay,$day){
-    $consumed = 0;
     $data = array();
     $TimeOfDay = 1;//start point of hours loop
     while ($TimeOfDay < $hoursInDay) {
@@ -160,7 +159,6 @@ function GenWeekEndDay($maxConsumption, $sleepingHoursStart, $sleepingHoursEnd, 
         }
     }
     return $data;
-    //post to DB
 }
 
 function highConsumption($maxConsumption)

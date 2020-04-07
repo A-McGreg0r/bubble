@@ -3,6 +3,13 @@
 global $db;
 echo "Starting ";
 echo "Quarrying hub info";
+$maxConsumption = 0;
+$energy_usage = 0;
+
+$stmt = $db->prepare("SELECT * FROM hub_info");
+$stmt->execute();
+$result = $stmt->get_result();
+if ($result->num_rows >= 1) {
     $all = $result->fetch_all(MYSQLI_ASSOC);
     foreach ($all as $row) {
         $energy_used = 0;
@@ -19,7 +26,7 @@ echo "Quarrying hub info";
 
             foreach ($all5 as $row5) {
                 $stmt4 = $db->prepare("SELECT * FROM device_types WHERE type_id = ?");
-                echo "geting device consumsion ";
+                echo "getting device consumption ";
                 $stmt4->bind_param("i", $row5['device_type']);
                 $stmt4->execute();
                 $result4 = $stmt4->get_result();
@@ -89,7 +96,7 @@ function generatesConsumptionData($maxConsumption){
                 global $db;
                 $hubid =1;
                 $stmt2 = $db->prepare("INSERT INTO daily_data (hub_id, entry_day, entry_hour, energy_usage) VALUES (?, ?, ?, ?)");
-                $stmt2->bind_param("iiii", $hubid, $month, $day, $ArrayVal);
+                $stmt2->bind_param("iii", $hubid, $month, $day, $ArrayVal);
                 $stmt2->execute();
                 $stmt2->close();
                 ///echo "$month\t$day\t$ArrayVal\n";//push to array day data
@@ -98,7 +105,7 @@ function generatesConsumptionData($maxConsumption){
             global $db;
             $hubid =1;
             $stmt3 = $db->prepare("INSERT INTO monthly_data (hub_id, entry_day, entry_hour, energy_usage) VALUES (?, ?, ?, ?)");
-            $stmt3->bind_param("iiii", $hubid, $year, $month, $MonthTotal);
+            $stmt3->bind_param("iii", $hubid, $year, $month, $MonthTotal);
             $stmt3->execute();
             $stmt3->close();
             echo "$year\t$month\t $MonthTotal\n\n";

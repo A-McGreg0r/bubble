@@ -42,7 +42,7 @@ if ($result->num_rows >= 1) {
 generatesConsumptionData($maxConsumption,$db);
 
 function generatesConsumptionData($maxConsumption,$postTo){
-    echo "Starting DataGen";
+    echo "Starting DataGen\n";
     $day=1;
     $month=1;
     $year=2019;
@@ -51,7 +51,7 @@ function generatesConsumptionData($maxConsumption,$postTo){
 
     if ($maxConsumption == 0) {
         $maxConsumption = 250;
-    }//back up gor dataGeanaration
+    }//back up gor dataGeneration
 
     $hoursInDay = 24;//number of hours in a day
     $sleepingHoursStart = 22;
@@ -64,12 +64,12 @@ function generatesConsumptionData($maxConsumption,$postTo){
     $monthData=array();
 
     while($year<=2020)
-    {   //echo"\n$year :\t";
+    {
         while($month<=$maxMonths){
             $Name = date("M", mktime(0,0,0,$month,$day,$year));
             //echo"\n$month :$Name\n";
             $d=cal_days_in_month(CAL_GREGORIAN,$month,$year);
-            //dayloop
+            //dayLoop
             $MonthTotal=0;
             while($day <= $d){
                 $Name = date("D", mktime(0,0,0,$month,$day,$year));
@@ -92,14 +92,12 @@ function generatesConsumptionData($maxConsumption,$postTo){
                 $stmt2->bind_param("iiii", 1, $month, $day, $ArrayVal);
                 $stmt2->execute();
                 $stmt2->close();
-                ///echo "$month\t$day\t$ArrayVal\n";//push to array day data
                 $day++;
             }
             $stmt3 = $postTo->prepare("INSERT INTO monthly_data (hub_id, entry_day, entry_hour, energy_usage) VALUES (?, ?, ?, ?)");
             $stmt3->bind_param("iiii", 1, $year, $month, $MonthTotal);
             $stmt3->execute();
             $stmt3->close();
-            //echo "$year\t$month\t $MonthTotal\n\n";
 
             unset($dayData);
             $dayData=array();
@@ -119,9 +117,7 @@ function generatesConsumptionData($maxConsumption,$postTo){
 
 
 
-//genscripts
-
-
+//genScripts
 function GenWeekDay($maxConsumption, $workStart, $workEnd, $travelTime, $sleepingHoursStart, $sleepingHoursEnd,$day)
 {
     $data = array();
@@ -180,7 +176,7 @@ function highConsumption($maxConsumption)
     $energy_used = 0;
     $energy_usage = 0;
 
-    $numerator = rand(2, 10);
+    $numerator = rand(2,10);
     $denominator = rand(3, 10);
     while ($numerator > $denominator) {
         $numerator = rand(2, 10);
@@ -195,6 +191,5 @@ function highConsumption($maxConsumption)
 
 function lowConsumption($maxConsumption)
 {
-    $energy_used = rand(0, $maxConsumption / 3);
-    return $energy_used;
+    return rand(0, $maxConsumption / 3);
 }

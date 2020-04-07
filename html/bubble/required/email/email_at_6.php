@@ -24,7 +24,7 @@ if ($result->num_rows >= 1) {
             $all2 = $result2->fetch_all(MYSQLI_ASSOC);
             foreach($all2 as $row2){
 
-                $stmt3 = $db->prepare("SELECT * FROM daily_data WHERE hub_id = ?");
+                $stmt3 = $db->prepare("SELECT * FROM hourly_data WHERE hub_id = ?");
                 $stmt3->bind_param("i",$row2['hub_id']);
                 $stmt3->execute();
                 $result3 = $stmt3->get_result();
@@ -43,7 +43,7 @@ if ($result->num_rows >= 1) {
             if($allow_emails == "Yes"){
                 $first_name = $row['first_name'];
                 $email = $row['email'];
-                $budget = $row['budget'];
+                $budget = $row['budget'] / 31; // for daily stats
 
                 $mail = new PHPMailer;
                 $mail->isSMTP();
@@ -61,7 +61,12 @@ if ($result->num_rows >= 1) {
 
                 $logo = "<img src='cid:logo' style='width:100px'>";
                 $email_welcome = "<h3 style='font-weight:400'>Dear $first_name,<h3>";
-                $email_body = "<h4 style='font-weight:400'>You are nearing your set budget of &#163;$budget per month!<br>You have currently spent &#163;$total_spent.<br>To reduce the amount you spend, please consider turning off all electronic devices when not in use, or have heaters or air conditioning units on at a lower setting.</h4>";
+                $email_body = '';
+                if ($budget < $total_spent){
+                    $email_body = "<h4 style='font-weight:400'>You have gone above your set budget of &#163;$budget per day!<br>You have currently spent &#163;$total_spent.<br>To reduce the amount you spend, please consider turning off all electronic devices when not in use, or have heaters or air conditioning units on at a lower setting.<br>Better luck tomorrow!</h4>";
+                } else {
+                    $email_body = "<h4 style='font-weight:400'>Congratulations, you have gone kept within your set budget of &#163;$budget per day!<br>You have currently spent &#163;$total_spent.<br>Good luck for tomorrow, keep it up!</h4>";
+                }
                 $email_signoff = "<h4 style='font-weight:400'>Kind regards,<br>The Bubble Team</h4>";
                 $email_signature = "Jamie Rice - Organisational Manager <br> Bruce Wilson - Technical Manager <br> Rory Dobson - Liaison Officer <br> Andrew MacGregor - Web Developer <br> Michael Linton - Software Engineer <br> Mark Kostryckyj - Software Developer";
                 $email_content = "<div style='font-family:arial'>$email_welcome $email_body $email_signoff</div> <hr><div style='text-align:center'> $logo <br> $email_signature</div>";

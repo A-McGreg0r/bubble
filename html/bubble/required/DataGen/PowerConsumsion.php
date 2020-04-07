@@ -88,14 +88,14 @@ function generatesConsumptionData($maxConsumption,$postTo){
                 $MonthTotal = $MonthTotal + $ArrayVal;
 
                 $stmt2 = $postTo->prepare("INSERT INTO daily_data (hub_id, entry_day, entry_hour, energy_usage) VALUES (?, ?, ?, ?)");
-                $stmt2->bind_param("iiii", 1, $month, $day, $ArrayVal);
+                $stmt2->bind_param("iii", 1, $month, $day, $ArrayVal);
                 $stmt2->execute();
                 $stmt2->close();
                 ///echo "$month\t$day\t$ArrayVal\n";//push to array day data
                 $day++;
             }
             $stmt3 = $postTo->prepare("INSERT INTO monthly_data (hub_id, entry_day, entry_hour, energy_usage) VALUES (?, ?, ?, ?)");
-            $stmt3->bind_param("iiii", 1, $year, $month, $MonthTotal);
+            $stmt3->bind_param("iii", 1, $year, $month, $MonthTotal);
             $stmt3->execute();
             $stmt3->close();
             //echo "$year\t$month\t $MonthTotal\n\n";

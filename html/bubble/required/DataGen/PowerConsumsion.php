@@ -47,7 +47,6 @@ function generatesConsumptionData($maxConsumption,$postTo){
     $month=1;
     $year=2019;
     $maxMonths=12;
-    $dayCount = 1;//start point for days in week
 
     if ($maxConsumption == 0) {
         $maxConsumption = 250;
@@ -66,14 +65,11 @@ function generatesConsumptionData($maxConsumption,$postTo){
     while($year<=2020)
     {
         while($month<=$maxMonths){
-            $Name = date("M", mktime(0,0,0,$month,$day,$year));
-            //echo"\n$month :$Name\n";
             $d=cal_days_in_month(CAL_GREGORIAN,$month,$year);
             //dayLoop
             $MonthTotal=0;
             while($day <= $d){
                 $Name = date("D", mktime(0,0,0,$month,$day,$year));
-                //echo "\n$month\t$day :$Name\t\n";
 
                 if($Name=="Mon"||$Name=="Tue"||$Name=="Wed"||$Name=="Thu"||$Name=="Fri"){
                     $passer =array_sum(GenWeekDay($maxConsumption, $workStart, $workEnd, $travelTime, $sleepingHoursStart, $sleepingHoursEnd,$day));
@@ -122,7 +118,7 @@ function GenWeekDay($maxConsumption, $workStart, $workEnd, $travelTime, $sleepin
 {
     $data = array();
     $consumed = 0;
-    $workingHours = $workEnd - $workStart;
+
     $hoursInDay = 24;
     $TimeOfDay=1;
 
@@ -130,21 +126,17 @@ function GenWeekDay($maxConsumption, $workStart, $workEnd, $travelTime, $sleepin
 
         if ($TimeOfDay > $workStart - $travelTime && $TimeOfDay < $workEnd + $travelTime) {
             $consumed = lowConsumption($maxConsumption);
-            echo "$day\t$TimeOfDay\t$consumed\n";
             array_push($data, $consumed);
-
 
         } else if ($TimeOfDay < $sleepingHoursStart && $TimeOfDay > $sleepingHoursEnd) {
-
             $consumed = $consumed + highConsumption($maxConsumption);
-            echo "$day\t$TimeOfDay\t$consumed\n";//push to array hour data
             array_push($data, $consumed);
+
         } else {
             $consumed = lowConsumption($maxConsumption);
-            echo "$day\t$TimeOfDay\t$consumed\n";//push to array hour data
             array_push($data, $consumed);
-        }
 
+        }
         $TimeOfDay = +$TimeOfDay + 1;
 
     }

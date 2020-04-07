@@ -39,11 +39,11 @@ if ($result->num_rows >= 1) {
 }
 generatesConsumptionData($maxConsumption);
 function generatesConsumptionData($maxConsumption){
+    echo "Starting DataGen";
     $day=1;
     $month=1;
     $year=2019;
     $maxMonths=12;
-    $daysInWeek = 7;//number of days in the week
     $dayCount = 1;//start point for days in week
 
     if ($maxConsumption == 0) {
@@ -84,6 +84,7 @@ function generatesConsumptionData($maxConsumption){
                 $dayArrayPointer=$day-1;
                 $ArrayVal = $dayData[$dayArrayPointer];
                 $MonthTotal = $MonthTotal + $ArrayVal;
+
                 $stmt2 = $db->prepare("INSERT INTO daily_data (hub_id, entry_day, entry_hour, energy_usage) VALUES (?, ?, ?, ?)");
                 $stmt2->bind_param("iiii", 1, $month, $day, $ArrayVal);
                 $stmt2->execute();
@@ -109,7 +110,7 @@ function generatesConsumptionData($maxConsumption){
         $year++;
 
     }
-
+    echo "Ending DataGen";
 }
 
 

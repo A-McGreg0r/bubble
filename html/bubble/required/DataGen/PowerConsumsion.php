@@ -37,8 +37,8 @@ if ($result->num_rows >= 1) {
         }
     }
 }
-generatesConsumptionData($maxConsumption);
-function generatesConsumptionData($maxConsumption){
+generatesConsumptionData($maxConsumption,$db);
+function generatesConsumptionData($maxConsumption,$postTo){
     echo "Starting DataGen";
     $day=1;
     $month=1;
@@ -85,14 +85,14 @@ function generatesConsumptionData($maxConsumption){
                 $ArrayVal = $dayData[$dayArrayPointer];
                 $MonthTotal = $MonthTotal + $ArrayVal;
 
-                $stmt2 = $db->prepare("INSERT INTO daily_data (hub_id, entry_day, entry_hour, energy_usage) VALUES (?, ?, ?, ?)");
+                $stmt2 = $postTo->prepare("INSERT INTO daily_data (hub_id, entry_day, entry_hour, energy_usage) VALUES (?, ?, ?, ?)");
                 $stmt2->bind_param("iiii", 1, $month, $day, $ArrayVal);
                 $stmt2->execute();
                 $stmt2->close();
                 ///echo "$month\t$day\t$ArrayVal\n";//push to array day data
                 $day++;
             }
-            $stmt3 = $db->prepare("INSERT INTO monthly_data (hub_id, entry_day, entry_hour, energy_usage) VALUES (?, ?, ?, ?)");
+            $stmt3 = $postTo->prepare("INSERT INTO monthly_data (hub_id, entry_day, entry_hour, energy_usage) VALUES (?, ?, ?, ?)");
             $stmt3->bind_param("iiii", 1, $year, $month, $MonthTotal);
             $stmt3->execute();
             $stmt3->close();

@@ -1,5 +1,7 @@
 <?php
 echo "Starting \n";
+
+require "../config.php";
 global $db;
 
 $maxConsumption = 0;

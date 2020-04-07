@@ -5,6 +5,20 @@ global $db;
 $year = date("Y");
 $month = date("m");
 $day = date("d");
+$leap = date("L");
+
+$auto_delete = 0;
+
+if($month == 4 || $month == 6 || $month == 9 || $month == 11){
+    $auto_delete = 30;
+} else if ($month == 2 && $leap == 1){
+    $auto_delete = 29;
+} else if ($month == 2){
+    $auto_delete = 28;
+} else {
+    $auto_delete = 31;
+}
+
 
 $stmt = $db->prepare("SELECT * FROM hub_info");
 $stmt->execute();
@@ -30,17 +44,23 @@ if ($result->num_rows >= 1) {
             $all4 = $result4->fetch_all(MYSQLI_ASSOC);
             foreach($all4 as $row4){
                 $daily_energy = $daily_energy + $row4['energy_usage'];
-                if ($num_rows >= 24){
-                    $num_rows = $num_rows - 1;
-                    $stmt6 = $db->prepare("DELETE FROM hourly_data WHERE entry_id = ?");
-                    $stmt6->bind_param("i", $row4['entry_id']);
-                    $stmt6->execute();
-                }
             }
                 
             $stmt5 = $db->prepare("INSERT INTO daily_data (hub_id, entry_month, entry_day, energy_usage) VALUES (?, ?, ?, ?)");
             $stmt5->bind_param("iiii", $hub_id, $month, $day, $daily_energy);
             $stmt5->execute();
+
+            $stmt6 = $db->prepare("SELECT * FROM daily_data WHERE hub_id = ?");
+            $stmt6->bind_param("i", $hub_id);
+            $stmt6->execute();
+            $result6 = $stmt6->get_result();
+            $num_row6 = $result6->num_rows;
+            if ($num_row6 >= $auto_delete) {
+                $num_row6 = $num_row6 - 1;
+                $stmt6 = $db->prepare("DELETE FROM daily_data WHERE entry_id = ?");
+                $stmt6->bind_param("i", $row6['entry_id']);
+                $stmt6->execute();
+            }
         }
 
         $stmt2->close();

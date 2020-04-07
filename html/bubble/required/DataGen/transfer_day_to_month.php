@@ -30,17 +30,23 @@ if ($result->num_rows >= 1) {
             $all4 = $result4->fetch_all(MYSQLI_ASSOC);
             foreach($all4 as $row4){
                 $monthly_energy = $monthly_energy + $row4['energy_usage'];
-                if ($num_rows >= 13){
-                    $num_rows = $num_rows - 1;
-                    $stmt6 = $db->prepare("DELETE FROM daily_data WHERE entry_id = ?");
-                    $stmt6->bind_param("i", $row4['entry_id']);
-                    $stmt6->execute();
-                }
             }
                 
             $stmt5 = $db->prepare("INSERT INTO monthly_data (hub_id, entry_year, entry_month, energy_usage) VALUES (?, ?, ?, ?)");
             $stmt5->bind_param("iiii", $hub_id, $year, $month, $monthly_energy);
             $stmt5->execute();
+
+            $stmt6 = $db->prepare("SELECT * FROM monthly_data WHERE hub_id = ?");
+            $stmt6->bind_param("i", $hub_id);
+            $stmt6->execute();
+            $result6 = $stmt6->get_result();
+            $num_row6 = $result6->num_rows;
+            if ($num_row6 >= 12) {
+                $num_row6 = $num_row6 - 1;
+                $stmt6 = $db->prepare("DELETE FROM monthly_data WHERE entry_id = ?");
+                $stmt6->bind_param("i", $row6['entry_id']);
+                $stmt6->execute();
+            }
         }
 
         $stmt2->close();

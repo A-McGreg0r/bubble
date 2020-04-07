@@ -39,6 +39,18 @@ if ($result->num_rows >= 1) {
             $stmt5 = $db->prepare("INSERT INTO hourly_data (hub_id, entry_day, entry_hour, energy_usage) VALUES (?, ?, ?, ?)");
             $stmt5->bind_param("iiii", $hub_id, $day, $hour, $hourly_energy);
             $stmt5->execute();
+
+            $stmt6 = $db->prepare("SELECT * FROM hourly_data WHERE hub_id = ?");
+            $stmt6->bind_param("i", $hub_id);
+            $stmt6->execute();
+            $result6 = $stmt6->get_result();
+            $num_row6 = $result6->num_rows;
+            if ($num_row6 >= 24) {
+                $num_row6 = $num_row6 - 1;
+                $stmt6 = $db->prepare("DELETE FROM hourly_data WHERE entry_id = ?");
+                $stmt6->bind_param("i", $row6['entry_id']);
+                $stmt6->execute();
+            }
         }
 
         $stmt2->close();

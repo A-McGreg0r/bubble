@@ -30,6 +30,12 @@ if ($result->num_rows >= 1) {
             $all4 = $result4->fetch_all(MYSQLI_ASSOC);
             foreach($all4 as $row4){
                 $daily_energy = $daily_energy + $row4['energy_usage'];
+                if ($num_rows >= 24){
+                    $num_rows = $num_rows - 1;
+                    $stmt6 = $db->prepare("DELETE FROM hourly_data WHERE entry_id = ?");
+                    $stmt6->bind_param("i", $row4['entry_id']);
+                    $stmt6->execute();
+                }
             }
                 
             $stmt5 = $db->prepare("INSERT INTO daily_data (hub_id, entry_month, entry_day, energy_usage) VALUES (?, ?, ?, ?)");

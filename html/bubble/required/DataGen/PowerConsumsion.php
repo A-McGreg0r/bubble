@@ -40,6 +40,7 @@ if ($result->num_rows >= 1) {
     }
 }
 generatesConsumptionData($maxConsumption,$db);
+
 function generatesConsumptionData($maxConsumption,$postTo){
     echo "Starting DataGen";
     $day=1;
@@ -75,10 +76,10 @@ function generatesConsumptionData($maxConsumption,$postTo){
                 //echo "\n$month\t$day :$Name\t\n";
 
                 if($Name=="Mon"||$Name=="Tue"||$Name=="Wed"||$Name=="Thu"||$Name=="Fri"){
-                    $passer =array_sum(GenWeekDay($maxConsumption, $dayCount, $workStart, $workEnd, $travelTime, $sleepingHoursStart, $sleepingHoursEnd,$day));
+                    $passer =array_sum(GenWeekDay($maxConsumption, $workStart, $workEnd, $travelTime, $sleepingHoursStart, $sleepingHoursEnd,$day));
                     array_push($dayData,$passer);
                 }else if($Name =="Sat"||$Name=="Sun"){
-                    $passer = array_sum(GenWeekEndDay($maxConsumption, $dayCount, $sleepingHoursStart, $sleepingHoursEnd, $hoursInDay,$day));
+                    $passer = array_sum(GenWeekEndDay($maxConsumption, $sleepingHoursStart, $sleepingHoursEnd, $hoursInDay,$day));
                     array_push($dayData,$passer);
                 }else{echo"something has gone wrong";}
 

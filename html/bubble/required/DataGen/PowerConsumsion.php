@@ -39,9 +39,9 @@ if ($result->num_rows >= 1) {
         }
     }
 }
-generatesConsumptionData($maxConsumption,$db);
+generatesConsumptionData($maxConsumption, $db);
 
-function generatesConsumptionData($maxConsumption,$postTo){
+function generatesConsumptionData($maxConsumption, $postTo){
     echo "Starting DataGen\n";
     $day=1;
     $month=1;
@@ -61,6 +61,7 @@ function generatesConsumptionData($maxConsumption,$postTo){
     $travelTime=1;
     $dayData=array();
     $monthData=array();
+    $hub_id = 1;
 
     while($year<=2020)
     {
@@ -84,14 +85,14 @@ function generatesConsumptionData($maxConsumption,$postTo){
                 $ArrayVal = $dayData[$dayArrayPointer];
                 $MonthTotal = $MonthTotal + $ArrayVal;
 
-                $stmt2 = $postTo->prepare("INSERT INTO daily_data (hub_id, entry_day, entry_hour, energy_usage) VALUES (?, ?, ?, ?)");
-                $stmt2->bind_param("iiid", 1, $month, $day, $ArrayVal);
+                $stmt2 = $postTo->prepare("INSERT INTO daily_data (hub_id, entry_month, entry_day, energy_usage) VALUES (?, ?, ?, ?)");
+                $stmt2->bind_param("iiid", $hub_id, $month, $day, $ArrayVal);
                 $stmt2->execute();
                 $stmt2->close();
                 $day++;
             }
-            $stmt3 = $postTo->prepare("INSERT INTO monthly_data (hub_id, entry_day, entry_hour, energy_usage) VALUES (?, ?, ?, ?)");
-            $stmt3->bind_param("iiid", 1, $year, $month, $MonthTotal);
+            $stmt3 = $postTo->prepare("INSERT INTO monthly_data (hub_id, entry_year, entry_month, energy_usage) VALUES (?, ?, ?, ?)");
+            $stmt3->bind_param("iiid", $hub_id, $year, $month, $MonthTotal);
             $stmt3->execute();
             $stmt3->close();
 

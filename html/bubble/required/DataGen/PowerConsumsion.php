@@ -13,7 +13,6 @@ $result = $stmt->get_result();
 if ($result->num_rows >= 1) {
     $all = $result->fetch_all(MYSQLI_ASSOC);
     foreach ($all as $row) {
-        $energy_used = 0;
         $maxConsumption = 0;
 
         $stmt5 = $db->prepare("SELECT * FROM device_info WHERE hub_id = ?");
@@ -31,8 +30,7 @@ if ($result->num_rows >= 1) {
                 if ($result4->num_rows >= 1) {
                     $all4 = $result4->fetch_all(MYSQLI_ASSOC);
                     foreach ($all4 as $row4) {
-                        $maxConsumption = $energy_used + $row4['energy_usage'];
-                        $energy_usage = $row4['energy_usage'];
+                        $maxConsumption = $maxConsumption + $row4['energy_usage'];
                     }
                 }
             }
@@ -110,9 +108,6 @@ function generatesConsumptionData($maxConsumption, $postTo){
     }
     echo "Ending DataGen";
 }
-
-
-
 
 //genScripts
 function GenWeekDay($maxConsumption, $workStart, $workEnd, $travelTime, $sleepingHoursStart, $sleepingHoursEnd,$day)

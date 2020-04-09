@@ -1,18 +1,14 @@
 
-function toggleRoom(hub_id, room_id, status){
-    let url = "required/action_device.php";
-
-    var on_or_off = "on";
-    if(status == 1) {
-        on_or_off = "off";
-    }
+function toggleRoom(hub_id, room_id, status, room_name){
+    let url = "required/on_off_room_function.php";
     
     $.ajax({
         type:'POST',
         url: url,
-        data:{ type: "room", hubID: hub_id, id: room_id, stat: status},
+        data:{ type: "room", hubID: hub_id, id: room_id, stat: status, room_name: room_name},
         success:function(){
-            alert(room_id + "turned " + on_or_off)
+            $('#profile-attr').load(document.URL + ' #profile-attr');
+            $('#messages-attr').load(document.URL + ' #messages-attr');
         },
         error: function(data){
             alert("error!");
@@ -21,8 +17,8 @@ function toggleRoom(hub_id, room_id, status){
 }
 
 
-function toggleDevice(hub_id, device_id) {
-    let url = "required/action_device.php";
+function toggleDevice(hub_id, device_id, status, name) {
+    let url = "required/on_off_device_function.php";
     
     $.ajax({
         type:'POST',

@@ -6,7 +6,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 //GRAB TYPE FROM POST
-$type = "device";
+$type = "toggledevice";
 if(isset($_POST['type'])) $status = $_POST['type'];
 
 //GRAB RELEVANT FLAGS
@@ -19,7 +19,7 @@ if(isset($_POST['id'])) $id = $_POST['id'];
 
 switch($type){
     case "toggledevice":       
-        $stmt = $db->prepare("UPDATE device_info SET device_status = IF(device_status<>0, 0, 4) WHERE device_id = ?");
+        $stmt = $db->prepare("UPDATE device_info SET device_status = IF(device_status!=0, 0, 4) WHERE device_id = ?");
 
         $stmt->bind_param("i", $id);
         $stmt->execute();

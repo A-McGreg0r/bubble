@@ -7,13 +7,13 @@ error_reporting(E_ALL);
 
 //GRAB TYPE FROM POST
 $type = "toggledevice";
-if(isset($_POST['type'])) $type = $_POST['type'];
+if(isset($_POST['type'])) $status = $_POST['type'];
 
 //GRAB RELEVANT FLAGS
-$status = 0;
-if(isset($_POST['stat'])) $status = $_POST['stat'];
+$scale = 0;
+if(isset($_POST['scale'])) $scale = $_POST['scale'];
 $hub_id = 0;
-if(isset($_POST['hubID'])) $hub_id = $_POST['hubID'];
+if(isset($_POST['hub_id'])) $hub_id = $_POST['hub_id'];
 $id = 0;
 if(isset($_POST['id'])) $id = $_POST['id'];
 
@@ -34,22 +34,28 @@ switch($type){
 
         echo("{\"status\":$new_status}");
     break;
-    // case "scaledevice":       
-    //     // $stmt = $db->prepare("UPDATE device_info SET device_status = IF(device_status<>0, 0, 4) WHERE device_id = ?");
+    case "scaledevice":       
 
-    //     // $stmt->bind_param("i", $device_id);
-    //     // $stmt->execute();
-    //     // $stmt->close();
+        if($scale < 0 || $scale > 4){
+            echo("{\"error\":\"Invalid scale!\"}");
+            exit(0);
+        }
 
-    //     // $stmt2 = $db->prepare("SELECT device_status FROM device_info WHERE device_id = ?");
-    //     // $stmt2->bind_param("i", $device_id);
-    //     // $stmt2->execute();
-    //     // $result = $stmt2->get_result();
-    //     // $row = $result->fetch_assoc();
-    //     // $new_status = $row['device_status'];
+        $stmt = $db->prepare("UPDATE device_info SET device_status = ? WHERE device_id = ?");
 
-    //     echo("{\"status\":0}");
-    // break;
+        $stmt->bind_param("ii", $scale, $device_id);
+        $stmt->execute();
+        $stmt->close();
+
+        $stmt2 = $db->prepare("SELECT device_status FROM device_info WHERE device_id = ?");
+        $stmt2->bind_param("i", $device_id);
+        $stmt2->execute();
+        $result = $stmt2->get_result();
+        $row = $result->fetch_assoc();
+        $new_status = $row['device_status'];
+
+        echo("{\"status\":$new_status}");
+    break;
     case "room":
         //GET CURRENT STATUS OF ROOM
         $stmt = $db->prepare("SELECT device_status FROM device_info WHERE hub_id = ? AND room_id = ?");
@@ -74,7 +80,7 @@ switch($type){
         $stmt2->bind_param("iii", $new_room_status, $hub_id, $id);
         $stmt2->execute();
         $stmt2->close();
-        echo("{\"status1\":$new_room_status, \"test\":\"UPDATE device_info SET device_status = $new_room_status WHERE hub_id = $hub_id AND room_id = $room_id\"}");
+        echo("{\"status\":$new_room_status}");
 
     break;
 }

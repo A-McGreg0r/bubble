@@ -5,7 +5,7 @@ function toggleRoom(hub_id, room_id){
     $.ajax({
         type:'POST',
         url: url,
-        data:{ type: "room", hubID: hub_id, id: room_id},
+        data:{ type: "room", hub_id: hub_id, id: room_id},
         success:function(){
             $('#profile-attr').load(document.URL + ' #profile-attr');
             $('#messages-attr').load(document.URL + ' #messages-attr');
@@ -23,7 +23,7 @@ function toggleDevice(hub_id, device_id) {
     $.ajax({
         type:'POST',
         url: url,
-        data:{ type: "toggledevice", hubID: hub_id, id: device_id},
+        data:{ type: "toggledevice", hub_id: hub_id, id: device_id},
         success:function(data){
             $('#profile-attr').load(document.URL + ' #profile-attr');
             $('#messages-attr').load(document.URL + ' #messages-attr');
@@ -40,7 +40,7 @@ function scaleDevice(hub_id, device_id, scale) {
     $.ajax({
         type:'POST',
         url: url,
-        data:{ type: "scaledevice", hubID: hub_id, id: device_id},
+        data:{ type: "scaledevice", hub_id: hub_id, id: device_id},
         success:function(data){
             $('#profile-attr').load(document.URL + ' #profile-attr');
             $('#messages-attr').load(document.URL + ' #messages-attr');

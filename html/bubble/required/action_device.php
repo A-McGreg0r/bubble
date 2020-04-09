@@ -15,7 +15,7 @@ if(isset($_POST['stat'])) $status = $_POST['stat'];
 $hub_id = 0;
 if(isset($_POST['hubID'])) $hub_id = $_POST['hubID'];
 $id = 0;
-if(isset($_POST['id'])) $device_id = $_POST['id'];
+if(isset($_POST['id'])) $id = $_POST['id'];
 
 switch($type){
     case "toggledevice":       

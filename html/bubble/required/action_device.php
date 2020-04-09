@@ -10,6 +10,8 @@ $type = "toggledevice";
 if(isset($_POST['type'])) $status = $_POST['type'];
 
 //GRAB RELEVANT FLAGS
+$type = '';
+if(isset($_POST['type'])) $type = $_POST['type'];
 $scale = 0;
 if(isset($_POST['scale'])) $scale = $_POST['scale'];
 $hub_id = 0;
@@ -43,12 +45,12 @@ switch($type){
 
         $stmt = $db->prepare("UPDATE device_info SET device_status = ? WHERE device_id = ?");
 
-        $stmt->bind_param("ii", $scale, $device_id);
+        $stmt->bind_param("ii", $scale, $id);
         $stmt->execute();
         $stmt->close();
 
         $stmt2 = $db->prepare("SELECT device_status FROM device_info WHERE device_id = ?");
-        $stmt2->bind_param("i", $device_id);
+        $stmt2->bind_param("i", $id);
         $stmt2->execute();
         $result = $stmt2->get_result();
         $row = $result->fetch_assoc();

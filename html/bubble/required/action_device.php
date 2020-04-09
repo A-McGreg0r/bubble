@@ -71,7 +71,7 @@ switch($type){
             $new_room_status = 0;
         }
         $stmt = $db->prepare("UPDATE device_info SET device_status = ? WHERE hub_id = ? AND room_id = ?");
-        // echo("{\"test\":\"UPDATE device_info SET device_status = $new_room_status WHERE hub_id = $hub_id AND room_id = $room_id\"}");
+        echo("{\"test\":\"UPDATE device_info SET device_status = $new_room_status WHERE hub_id = $hub_id AND room_id = $room_id\"}");
         $stmt->bind_param("iii", $new_room_status, $hub_id, $id);
         $stmt->execute();
         $stmt->close();

@@ -34,22 +34,22 @@ switch($type){
 
         echo("{\"status\":$new_status}");
     break;
-    case "scaledevice":       
-        // $stmt = $db->prepare("UPDATE device_info SET device_status = IF(device_status<>0, 0, 4) WHERE device_id = ?");
+    // case "scaledevice":       
+    //     // $stmt = $db->prepare("UPDATE device_info SET device_status = IF(device_status<>0, 0, 4) WHERE device_id = ?");
 
-        // $stmt->bind_param("i", $device_id);
-        // $stmt->execute();
-        // $stmt->close();
+    //     // $stmt->bind_param("i", $device_id);
+    //     // $stmt->execute();
+    //     // $stmt->close();
 
-        // $stmt2 = $db->prepare("SELECT device_status FROM device_info WHERE device_id = ?");
-        // $stmt2->bind_param("i", $device_id);
-        // $stmt2->execute();
-        // $result = $stmt2->get_result();
-        // $row = $result->fetch_assoc();
-        // $new_status = $row['device_status'];
+    //     // $stmt2 = $db->prepare("SELECT device_status FROM device_info WHERE device_id = ?");
+    //     // $stmt2->bind_param("i", $device_id);
+    //     // $stmt2->execute();
+    //     // $result = $stmt2->get_result();
+    //     // $row = $result->fetch_assoc();
+    //     // $new_status = $row['device_status'];
 
-        echo("{\"status\":0}");
-    break;
+    //     echo("{\"status\":0}");
+    // break;
     case "room":
         //GET CURRENT STATUS OF ROOM
         $stmt = $db->prepare("SELECT device_status FROM device_info WHERE hub_id = ? AND room_id = ?");

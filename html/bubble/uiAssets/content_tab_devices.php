@@ -72,7 +72,7 @@ html;
                     $colour2 = '';
                     $colour3 = '';
                     $background = '';
-                    if($status == 1){
+                    if($status > 0){
                         $colour = 'rgb(56,56,56)!important';
                         $colour2 = 'transparent!important';
                         $colour3 = 'rgb(56,56,56)!important';

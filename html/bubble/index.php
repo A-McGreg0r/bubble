@@ -9,6 +9,7 @@
 
     //REQUIRES SESSIONS
     session_start();
+    $_SESSION['which_tab'] = 'main';
     //SETUP VARIABLES
     $isLoggedIn = isset($_SESSION['user_id']);
     //CLOSE SESSION
@@ -41,7 +42,14 @@
         if(isset($_GET['email'])) $email = $_GET['email'];
         $name = '';
         if(isset($_GET['name'])) $name = $_GET['name'];
+        $hub_id = 0;
+        if(isset($_GET['hub_id'])) $hub_id = $_GET['hub_id'];
+        $room_id = 0;
+        if(isset($_GET['room_id'])) $room_id = $_GET['room_id'];
+        $status = 0;
+        if(isset($_GET['status'])) $status = $_GET['status'];
         $html = '';
+
 
         // SWITCH DEPENDING ON URL ACTION
         switch($action){
@@ -66,7 +74,19 @@
         //GET URL ACTION
         $action = '';
         if(isset($_GET['action'])) $action = $_GET['action'];
-        $html = '';        
+        $hub_id = 0;
+        if(isset($_GET['hub_id'])) $hub_id = $_GET['hub_id'];
+        $room_id = 0;
+        if(isset($_GET['room_id'])) $room_id = $_GET['room_id'];
+        $device_id = 0;
+        if(isset($_GET['device_id'])) $device_id = $_GET['device_id'];
+        $status = 0;
+        if(isset($_GET['status'])) $status = $_GET['status'];
+        $room_name = '';
+        if(isset($_GET['room_name'])) $room_name = $_GET['room_name'];
+        $device_name = '';
+        if(isset($_GET['device_name'])) $device_name = $_GET['device_name'];
+        $html = '';  
         
         if($action != "logout" && $action != 'adddevice' && !userHasHub()){
             load('./index.php?action=adddevice');
@@ -82,7 +102,7 @@
             case 'logout':
                 include './required/action_logout.php';
                 $html .= generateLogout();
-            break;
+                break;
             case 'adddevice':
                 include './uiAssets/content_adddevice.php';
                 $html .= generateQRReader();
@@ -94,6 +114,24 @@
             case 'account':
                 include './uiAssets/content_account.php';
                 $html .= generateAccount();
+                break;
+            case 'onoff_room':
+                $_SESSION['status'] = $status;
+                $_SESSION['hub_id'] = $hub_id;
+                $_SESSION['room_id'] = $room_id;
+                $_SESSION['room_name'] = $room_name;
+
+                include './required/on_off_room_function.php';
+                $html .= generateOnOff_room();
+                break;
+            case 'onoff_device':
+                $_SESSION['status'] = $status;
+                $_SESSION['hub_id'] = $hub_id;
+                $_SESSION['device_id'] = $device_id;
+                $_SESSION['device_name'] = $device_name;
+
+                include './required/on_off_device_function.php';
+                $html .= generateOnOff_device();
                 break;
             default:
                 include "appCore.php";

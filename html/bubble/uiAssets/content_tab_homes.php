@@ -112,14 +112,14 @@ function generateHomeTab()
                         $all7 = $result7->fetch_all(MYSQLI_ASSOC);
                         foreach($all7 as $row7){
                             $n = $n + 1;
-                            $energy_usage7 = $row7['energy_usage'];
+                            $energy_usage7 = $row7['energy_usage']/1000;
                             $month7 = $row7['entry_month'];
                             $count = $count + $energy_usage7;
                             array_push($dataPoints, array($energy_usage7));
                             array_push($dataLabels, array($month7));
                         }
                         for($i = 0; $i < sizeof($dataPoints); $i++){
-                            array_push($AvgPoints,$count/$n);
+                            array_push($AvgPoints,money_format('%.3n',$count/$n));
                         }
                     }
                     $cost_year = $energy_last_year * $energy_cost;
@@ -143,14 +143,14 @@ function generateHomeTab()
                         $all8 = $result8->fetch_all(MYSQLI_ASSOC);
                         foreach($all8 as $row8){
                             $n = $n + 1;
-                            $energy_usage8 = $row8['energy_usage'];
+                            $energy_usage8 = $row8['energy_usage']/1000;
                             $day8 = $row8['entry_day'];
                             $count = $count + $energy_usage8;
                             array_push($dataPoints, array($energy_usage8));
                             array_push($dataLabels, array($day8));
                         }
                         for($i = 0; $i < sizeof($dataPoints); $i++){
-                            array_push($AvgPoints,$count/$n);
+                            array_push($AvgPoints,money_format('%.3n',$count/$n));
                         }
                     }
                     $cost_month = $energy_last_month * $energy_cost;
@@ -174,14 +174,14 @@ function generateHomeTab()
                         $all9 = $result9->fetch_all(MYSQLI_ASSOC);
                         foreach($all9 as $row9){
                             $n = $n + 1;
-                            $energy_usage9 = $row9['energy_usage'];
+                            $energy_usage9 = $row9['energy_usage']/1000;
                             $hour9 = $row9['entry_hour'];
                             $count = $count + $energy_usage9;
                             array_push($dataPoints, array($energy_usage9));
                             array_push($dataLabels, array($hour9));
                         }
                         for($i = 0; $i < sizeof($dataPoints); $i++){
-                            array_push($AvgPoints,$count/$n);
+                            array_push($AvgPoints,money_format('%.3n',$count/$n));
                         }
                     }
                     $cost_day = $energy_last_day * $energy_cost;
@@ -211,12 +211,10 @@ function generateHomeTab()
                     <div class="card col-lg">
                     <!-- Card header -->
                         <div class="card-header" role="tab" id="heading$hub_id">
-                            <a data-toggle="collapse" data-parent="#accordionEx194" href="#collapse$hub_id" aria-expanded="true" aria-controls="collapse4">
+                            <a data-toggle="collapse" data-parent="#accordionEx194" aria-expanded="true" aria-controls="collapse4">
                                 <h3 class="mb-0 mt-3 red-text">
                                     <div class="row">
                                         <div class="col-auto mr-auto"><strong>$hub_name</strong></div>
-                                        <div class="col-auto"><i class="fas fa-angle-down rotate-icon fa-2x"></i></div>
-        
                                     </div>
                                 </h3>
                             </a>
@@ -245,7 +243,7 @@ function generateHomeTab()
                                     </tr>
                                     <tr class="stats-row">
                                         <td class="stats-left"><strong>&ensp;Cost:</br>&ensp;Remaining Budget:</strong></td>
-                                        <td class="stats-right"><strong>£$cost_month_round&ensp;</br>£$budget_remaining_round&ensp;</strong></td>
+                                        <td class="stats-right double-stat"><strong>£$cost_month_round&ensp;</br>£$budget_remaining_round&ensp;</strong></td>
                                     </tr>
                                     <tr class="stats-row">
                                         <td class="stats-left"><strong>&ensp;Power Used This Year:</strong></td>
@@ -282,8 +280,8 @@ function generateHomeTab()
                                                                 labels: ["Spent [£]", "Remaining [£]"],
                                                                 datasets: [{
                                                                 data: [$cost_day_round, $budget_day_remaining_round],
-                                                                backgroundColor: ["rgba(109, 171, 166, 1)", "rgba(0, 0, 0, 0.1)"],
-                                                                hoverBackgroundColor: ["rgba(99, 161, 156, 1)", "rgba(0, 0, 0, 0.15)"]
+                                                                backgroundColor: ["rgb(226, 183, 28)", "rgb(56,56,56)"],
+                                                                hoverBackgroundColor: ["rgb(246, 203, 48)", "rgb(76,76,76)"]
                                                                 }]
                                                                 },
                                                                 options: {
@@ -312,8 +310,8 @@ function generateHomeTab()
                                                             labels: ["Spent [£]", "Remaining [£]"],
                                                             datasets: [{
                                                             data: [$cost_month_round, $budget_remaining_round],
-                                                            backgroundColor: ["rgba(109, 171, 166, 1)", "rgba(0, 0, 0, 0.1)"],
-                                                            hoverBackgroundColor: ["rgba(99, 161, 156, 1)", "rgba(0, 0, 0, 0.15)"]
+                                                            backgroundColor: ["rgb(226, 183, 28)", "rgb(56,56,56)"],
+                                                            hoverBackgroundColor: ["rgb(246, 203, 48)", "rgb(76,76,76)"]
                                                             }]
                                                             },
                                                             options: {
@@ -340,8 +338,8 @@ function generateHomeTab()
                                                                 labels: ["Spent [£]", "Budget [£]"],
                                                                 datasets: [{
                                                                 data: [$cost_year_round, $budget_year_remaining_round],
-                                                                backgroundColor: ["rgba(109, 171, 166, 1)", "rgba(0, 0, 0, 0.1)"],
-                                                                hoverBackgroundColor: ["rgba(99, 161, 156, 1)", "rgba(0, 0, 0, 0.15)"]
+                                                                backgroundColor: ["rgb(226, 183, 28)", "rgb(56,56,56)"],
+                                                                hoverBackgroundColor: ["rgb(246, 203, 48)", "rgb(76,76,76)"]
                                                                 }]
                                                                 },
                                                                 options: {
@@ -378,17 +376,18 @@ function generateHomeTab()
                                             </select>
                                     <!--chart canvas-->        
                                     <canvas id="masterLineChart"></canvas>
+                                    <small class="form-text text-muted mb-4" style="text-align:center">Graph will automatically populate over time</small>
     
                                     <script type="text/javascript">
                                         //todo cahe where datas comeing from                                         
                                         //Supplied Datasets to display
                                         //hourly 1 upto 24
                                         //TODO change expected usage to power genarated once implmented
-                                        let data1 = { "labels": $DataLabelsYearEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "Average", "data": $dataAvgYearEncoded, "backgroundColor": "rgba(109, 171, 166, 0)", "borderColor": "rgba(109, 171, 166, 1)", "borderWidth": 2 },{ "label": "Power Usage", "data": $dataPointsYearEncoded, "backgroundColor": "rgba(0, 0, 0, 0.1)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
+                                        let data1 = { "labels": $DataLabelsYearEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "Average", "data": $dataAvgYearEncoded, "backgroundColor": "rgba(109, 171, 166, 0)", "borderColor": "rgb(226, 183, 28)", "borderWidth": 2 },{ "label": "Power Usage [kWh]", "data": $dataPointsYearEncoded, "backgroundColor": "rgb(56,56,56)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
                                         //days upto 31 days
-                                        let data2 = { "labels": $DataLabelsMonthEncoded,"label": "Expected Usage:", "datasets": [{ "label": "Average", "data": $dataAvgMonthEncoded, "backgroundColor": "rgba(109, 171, 166, 0)", "borderColor": "rgba(109, 171, 166, 1)", "borderWidth": 2 },{ "label": "Power Usage", "data": $dataPointsMonthEncoded, "backgroundColor": "rgba(0, 0, 0, 0.1)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
+                                        let data2 = { "labels": $DataLabelsMonthEncoded,"label": "Expected Usage:", "datasets": [{ "label": "Average", "data": $dataAvgMonthEncoded, "backgroundColor": "rgba(109, 171, 166, 0)", "borderColor": "rgb(226, 183, 28)", "borderWidth": 2 },{ "label": "Power Usage [kWh]", "data": $dataPointsMonthEncoded, "backgroundColor": "rgb(56,56,56)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
                                         //months upto 12
-                                        let data3 = { "labels": $DataLabelsDayEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "Average", "data": $dataAvgDayEncoded, "backgroundColor": "rgba(109, 171, 166, 0)", "borderColor": "rgba(109, 171, 166, 1)", "borderWidth": 2 },{ "label": "Power Usage", "data": $dataPointsDayEncoded, "backgroundColor": "rgba(0, 0, 0, 0.1)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
+                                        let data3 = { "labels": $DataLabelsDayEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "Average", "data": $dataAvgDayEncoded, "backgroundColor": "rgba(109, 171, 166, 0)", "borderColor": "rgb(226, 183, 28)", "borderWidth": 2 },{ "label": "Power Usage [kWh]", "data": $dataPointsDayEncoded, "backgroundColor": "rgb(56,56,56)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
                                         
 
                                         // Draw the initial chart
@@ -428,7 +427,7 @@ function generateHomeTab()
                                     });
 
                                 </script>
-
+                                
                                     </div>
 
                                     

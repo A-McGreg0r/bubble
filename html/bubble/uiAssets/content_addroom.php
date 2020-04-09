@@ -23,6 +23,7 @@ function generateAddRoom(){
                             name="roomName"
                             required size="3"
                             value="$roomName"/>
+                            <small class="form-text text-muted mb-4" style="text-align:center">Room must have a unique name</small>
                     </div>
 
                     <!-- Password -->

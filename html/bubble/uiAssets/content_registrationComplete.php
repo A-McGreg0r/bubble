@@ -17,7 +17,7 @@ function generateRegistrationComplete(){
                     <img class="confirmation-logo" src="img/favicon.png">
                     <p class="text-center">Hi $name!<br>Thank you for registering for bubble!<br/>Please return to the <a href="index.php">Login Page</a> to login</p>
                 </div>
-            </di'v>
+            </div>
         </div>   
 html;
     return $html;

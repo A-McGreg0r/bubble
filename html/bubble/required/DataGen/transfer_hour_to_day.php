@@ -29,9 +29,16 @@ if ($result->num_rows >= 1) {
 
         $hub_id = $row['hub_id'];
 
-        $stmt2 = $db->prepare("SELECT * FROM daily_data");
-        $stmt2->execute();
-        $result2 = $stmt2->get_result();
+        $month_end = 0;
+        if ($month == 4 || $month == 6 || $month == 9 || $month == 11) {
+            $month_end = 30;
+        } else if ($month == 2 && $leap == 0) {
+            $month_end = 28;
+        } else if ($month == 2 && $leap == 1) {
+            $month_end = 29;
+        } else {
+            $month_end = 31;
+        }
 
         $daily_energy = 0;
 
@@ -64,6 +71,22 @@ if ($result->num_rows >= 1) {
                         $stmt7->bind_param("i", $row6['entry_id']);
                         $stmt7->execute();
                     }
+                }
+            }
+        }
+
+        $stmt2 = $db->prepare("SELECT * FROM daily_data");
+        $stmt2->execute();
+        $result2 = $stmt2->get_result();
+        $num_rows = $result2->num_rows;
+        if ($num_rows >= 1) {
+            $all2 = $result2->fetch_all(MYSQLI_ASSOC);
+            foreach($all2 as $row2){
+                if ($num_rows >= $month_end){
+                    $num_rows = $num_rows - 1;
+                    $stmt6 = $db->prepare("DELETE FROM daily_data WHERE entry_id = ?");
+                    $stmt6->bind_param("i", $row2['entry_id']);
+                    $stmt6->execute();
                 }
             }
         }

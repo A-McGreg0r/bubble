@@ -10,12 +10,12 @@ h2 {
 }
 
 a {
-    color: rgb(109, 171, 166);
+    color: rgb(226, 183, 28);
     font-weight: 900;
 }
 
 a:hover, .nav-link.active {
-    color: rgb(56, 56, 56);
+    color: rgb(226, 183, 28)!important;
 }
 
 .text-center {
@@ -25,15 +25,15 @@ a:hover, .nav-link.active {
 
 .btn-outline-info {
     transition: 0.25s ease;
-    color: rgb(109, 171, 166)!important;
-    border: 2px solid rgb(109, 171, 166)!important;
+    color: rgb(56, 56, 56)!important;
+    border: 2px solid rgb(56, 56, 56)!important;
     font-weight: 900;
 }
 
 .btn-outline-info:hover {
-    color: rgb(109, 171, 166)!important;
-    background-color: rgba(200, 211, 209, 0.7)!important;
-    border: 2px solid rgb(109, 171, 166)!important;
+    color: rgb(56, 56, 56)!important;
+    background-color: rgb(226, 183, 28)!important;
+    border: 2px solid rgb(56, 56, 56)!important;
     transition: 0.25s ease;
     transform: scale(1.05);
     -webkit-transform: scale(1.05);
@@ -50,11 +50,12 @@ ul {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: rgb(109, 171, 166);
+    background: rgb(226, 183, 28);
 }
 
 .red-text {
-    color: rgb(109, 171, 166)!important;
+    color: rgb(226, 183, 28)!important;
+    cursor: default!important;
 }
 
 .front-img {
@@ -62,7 +63,7 @@ ul {
 }
 
 .nav-link {
-    color: rgb(109, 171, 166);
+    color: rgb(56,56,56);
 }
 
 .form-row {
@@ -103,12 +104,20 @@ ul {
     border-top: none;
 }
 
+.card:nth-of-type(even) {
+    border-radius: 0!important;
+}
+
+.card:nth-of-type(odd) {
+    border-radius: 0!important;
+}
+
 .accordion {
     border-bottom: 1px solid rgba(0,0,0,0.125);
 }
 
 .text-light {
-    color: rgb(56, 56, 56)!important;
+    color: rgb(56,56,56)!important;
 }
 
 .mb-4, .my-4 {
@@ -119,11 +128,25 @@ ul {
 }
 
 .my-4 {
-    border: 2px solid rgb(109, 171, 166)!important;
+    border: 2px solid rgb(56, 56, 56)!important;
 }
 
-.grey-out:nth-of-type(odd), .card-header{
-    background-color: rgba(0, 0, 0, 0.05)!important;
+.grey-out:nth-of-type(even), .card-header{
+    background-color: rgb(56,56,56)!important;
+    color: rgb(227, 184, 28)!important;
+}
+
+.grey-out, .grey-out-rooms {
+    border: 1px solid rgb(56,56,56)!important;
+}
+
+.grey-out-rooms:nth-of-type(odd), .grey-out-account:nth-of-type(odd), .card-header{
+    background-color: rgb(56,56,56);
+    color: rgb(227, 184, 28);
+}
+
+.alternating-border:nth-of-type(even) {
+    border: 1px solid rgb(56,56,56)!important;
 }
 
 .col-lg {
@@ -133,10 +156,11 @@ ul {
 .card-header {
     padding-left: 2rem!important;
     padding-right: 3rem!important;
+    cursor: default!important;
 }
 
 .navbar.navbar-dark .breadcrumb .nav-item .nav-link, .navbar.navbar-dark .navbar-nav .nav-item .nav-link {
-    color: rgb(109, 171, 166)!important;
+    color: rgb(56,56,56)!important;
 }
 
 .border {
@@ -153,7 +177,8 @@ ul {
 }
 
 .mr-auto {
-    margin-top: 0!important;
+    margin-top: 0px!important;
+    margin-bottom: 10px!important;
 }
 
 p {
@@ -210,7 +235,8 @@ table td {
 }
 
 .account-row:nth-of-type(even), .account-first, .stats-row:nth-of-type(even), .stats-row:nth-of-type(0) {
-    background-color: rgba(0, 0, 0, 0.05)!important;
+    color: rgb(226, 183, 28)!important;
+    background-color: rgb(56,56,56)!important;
 }
 
 .right-column {
@@ -221,6 +247,7 @@ table td {
 
 .btn.btn-sm {
     font-size: 0.9rem!important;
+    margin-bottom: 20px!important;
 }
 
 hr {
@@ -267,6 +294,7 @@ hr {
 .account-left {
     border-top-left-radius: 0.25rem!important;
     border-bottom-left-radius: 0.25rem!important;
+    min-width: 140px;
 }
 
 .login-links {
@@ -329,4 +357,42 @@ select {
 
 .budget-input label {
     margin-left: 15px!important;
+}
+
+.text-dark {
+    color: rgb(56, 56, 56);
+}
+
+.double-stat {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.custom-control-label::before {
+    background-color: transparent!important;
+}
+
+.custom-control-input:checked~.custom-control-label::before {
+    background-color: #1b29c1!important;
+    border: 1px solid #1b29c1!important;;
+}
+
+.device_room_heading {
+    font-size: 1.5rem!important;
+    margin-top: 40px!important;
+    margin-bottom: 10px!important;
+    text-align: center!important;
+}
+
+.device_room_heading:nth-of-type(1) {
+    margin-top: 0px!important;
+}
+
+.onOffLabel {
+    margin-top: -6px;
+    font-size: 1.5rem;
+}
+
+.room_icon {
+    margin-top: 0px;
 }

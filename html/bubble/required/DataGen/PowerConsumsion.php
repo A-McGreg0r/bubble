@@ -4,6 +4,9 @@ echo "Starting \n";
 require "../config.php";
 global $db;
 
+global $db;
+echo "Starting ";
+echo "Quarrying hub info";
 $maxConsumption = 0;
 $energy_usage = 0;
 
@@ -16,14 +19,17 @@ if ($result->num_rows >= 1) {
         $maxConsumption = 0;
 
         $stmt5 = $db->prepare("SELECT * FROM device_info WHERE hub_id = ?");
-        $stmt5->bind_param("i", $row['hub_id']);
+        echo "Quarrying device info";
+        $stmt5->bind_param("i", $row['1']);
         $stmt5->execute();
         $result5 = $stmt5->get_result();
+        echo "collected device info";
         if ($result5->num_rows >= 1) {
             $all5 = $result5->fetch_all(MYSQLI_ASSOC);
-            foreach ($all5 as $row5) {
 
+            foreach ($all5 as $row5) {
                 $stmt4 = $db->prepare("SELECT * FROM device_types WHERE type_id = ?");
+                echo "getting device consumption ";
                 $stmt4->bind_param("i", $row5['device_type']);
                 $stmt4->execute();
                 $result4 = $stmt4->get_result();

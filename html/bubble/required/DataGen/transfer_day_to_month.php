@@ -5,6 +5,7 @@ global $db;
 $year = date("Y");
 $month = date("m");
 $day = date("d");
+$leap = date("L");
 
 $stmt = $db->prepare("SELECT * FROM hub_info");
 $stmt->execute();
@@ -14,10 +15,6 @@ if ($result->num_rows >= 1) {
     foreach($all as $row){
 
         $hub_id = $row['hub_id'];
-
-        $stmt2 = $db->prepare("SELECT * FROM monthly_data");
-        $stmt2->execute();
-        $result2 = $stmt2->get_result();
 
         $monthly_energy = 0;
 
@@ -50,6 +47,22 @@ if ($result->num_rows >= 1) {
                         $stmt7->bind_param("i", $row6['entry_id']);
                         $stmt7->execute();
                     }
+                }
+            }
+        }
+
+        $stmt2 = $db->prepare("SELECT * FROM monthly_data");
+        $stmt2->execute();
+        $result2 = $stmt2->get_result();
+        $num_rows = $result2->num_rows;
+        if ($num_rows >= 1) {
+            $all2 = $result2->fetch_all(MYSQLI_ASSOC);
+            foreach($all2 as $row2){
+                if ($num_rows >= 12){
+                    $num_rows = $num_rows - 1;
+                    $stmt6 = $db->prepare("DELETE FROM monthly_data WHERE entry_id = ?");
+                    $stmt6->bind_param("i", $row2['entry_id']);
+                    $stmt6->execute();
                 }
             }
         }

@@ -1,11 +1,11 @@
 
-function toggleRoom(hub_id, room_id, status, room_name){
-    let url = "required/on_off_room_function.php";
+function toggleRoom(hub_id, room_id){
+    let url = "required/action_device.php";
     
     $.ajax({
         type:'POST',
         url: url,
-        data:{ type: "room", hubID: hub_id, id: room_id, stat: status, room_name: room_name},
+        data:{ type: "room", hubID: hub_id, id: room_id},
         success:function(){
             $('#profile-attr').load(document.URL + ' #profile-attr');
             $('#messages-attr').load(document.URL + ' #messages-attr');
@@ -17,8 +17,8 @@ function toggleRoom(hub_id, room_id, status, room_name){
 }
 
 
-function toggleDevice(hub_id, device_id, status, name) {
-    let url = "required/on_off_device_function.php";
+function toggleDevice(hub_id, device_id) {
+    let url = "required/action_device.php";
     
     $.ajax({
         type:'POST',

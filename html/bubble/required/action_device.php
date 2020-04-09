@@ -14,19 +14,19 @@ $status = 0;
 if(isset($_POST['stat'])) $status = $_POST['stat'];
 $hub_id = 0;
 if(isset($_POST['hubID'])) $hub_id = $_POST['hubID'];
-$device_id = 0;
+$id = 0;
 if(isset($_POST['id'])) $device_id = $_POST['id'];
 
 switch($type){
     case "toggledevice":       
         $stmt = $db->prepare("UPDATE device_info SET device_status = IF(device_status<>0, 0, 4) WHERE device_id = ?");
 
-        $stmt->bind_param("i", $device_id);
+        $stmt->bind_param("i", $id);
         $stmt->execute();
         $stmt->close();
 
         $stmt2 = $db->prepare("SELECT device_status FROM device_info WHERE device_id = ?");
-        $stmt2->bind_param("i", $device_id);
+        $stmt2->bind_param("i", $id);
         $stmt2->execute();
         $result = $stmt2->get_result();
         $row = $result->fetch_assoc();
@@ -53,7 +53,7 @@ switch($type){
     case "room":
         //GET CURRENT STATUS OF ROOM
         $stmt = $db->prepare("SELECT device_status FROM device_info WHERE hub_id = ? AND room_id = ?");
-        $stmt->bind_param("ii", $hub_id, $room_id);
+        $stmt->bind_param("ii", $hub_id, $id);
         $stmt->execute();
         $result = $stmt->get_result();
         $old_room_status = 0;
@@ -72,7 +72,7 @@ switch($type){
         }
         $stmt = $db->prepare("UPDATE device_info SET device_status = ? WHERE hub_id = ? AND room_id = ?");
         // echo("{\"test\":\"UPDATE device_info SET device_status = $new_room_status WHERE hub_id = $hub_id AND room_id = $room_id\"}");
-        $stmt->bind_param("iii", $new_room_status, $hub_id, $room_id);
+        $stmt->bind_param("iii", $new_room_status, $hub_id, $id);
         $stmt->execute();
         $stmt->close();
         echo("{\"status\":$new_room_status}");

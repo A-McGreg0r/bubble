@@ -23,10 +23,27 @@ function toggleDevice(hub_id, device_id) {
     $.ajax({
         type:'POST',
         url: url,
-        data:{ type: "device", hubID: hub_id, id: device_id},
+        data:{ type: "toggledevice", hubID: hub_id, id: device_id},
         success:function(data){
             $('#profile-attr').load(document.URL + ' #profile-attr').fadeIn('500');
             $('#messages-attr').load(document.URL + ' #messages-attr').fadeIn('500');
+        },
+        error: function(data){
+            alert("error!");
+        }
+    });
+}
+
+function scaleDevice(hub_id, device_id, scale) {
+    let url = "required/action_device.php";
+    
+    $.ajax({
+        type:'POST',
+        url: url,
+        data:{ type: "scaledevice", hubID: hub_id, id: device_id},
+        success:function(data){
+            $('#profile-attr').load(document.URL + ' #profile-attr');
+            $('#messages-attr').load(document.URL + ' #messages-attr');
         },
         error: function(data){
             alert("error!");

@@ -2,6 +2,7 @@
 
 echo shell_exec("/../email/myemail.py");
 
+
 function generateLoginPage(){
     $email = '';
     if (isset($_POST['email'])) $email = $_POST['email'];

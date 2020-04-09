@@ -48,7 +48,7 @@ switch($type){
         // $row = $result->fetch_assoc();
         // $new_status = $row['device_status'];
 
-        // echo("{\"status\":$new_status}");
+        echo("{\"status\":0}");
     break;
     case "room":
         //GET CURRENT STATUS OF ROOM

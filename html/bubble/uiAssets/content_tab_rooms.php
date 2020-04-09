@@ -71,7 +71,7 @@ html;
                 if ($result2->num_rows > 0) {
                     while($rowDevice = $result2->fetch_assoc()) {
                         $status = $rowDevice['device_status'];
-                        if($status == 1){
+                        if($status > 0){
                             $colour = 'rgb(56,56,56)';
                             $colour2 = 'transparent';
                             $colour3 = 'rgb(56,56,56)';

@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 
 //GRAB TYPE FROM POST
 $type = "toggledevice";
-if(isset($_POST['type'])) $status = $_POST['type'];
+if(isset($_POST['type'])) $type = $_POST['type'];
 
 //GRAB RELEVANT FLAGS
 $status = 0;

@@ -57,8 +57,8 @@ html;
                 $stmt1->close();
 
                 $colour = 'transparent';
-                $colour2 = '';
-                $colour3 = '';
+                $colour2 = 'rgb(0,0,0)';
+                $colour3 = 'rgb(0,0,0)';
                 $background = '';
 
                 //GRAB ALL DEVICES 
@@ -71,10 +71,9 @@ html;
                 if ($result2->num_rows > 0) {
                     while($rowDevice = $result2->fetch_assoc()) {
                         $status = $rowDevice['device_status'];
-                        if($status > 0){
-                            $colour = 'rgb(56,56,56)';
+                        if($status >= 1){
+                            $colour = 'rgb(0,0,0)';
                             $colour2 = 'transparent';
-                            $colour3 = 'rgb(56,56,56)';
                             $background = 'rgb(226, 183, 28)';
                         }
                     }
@@ -84,7 +83,7 @@ html;
                 //GENERATE CARD FOR ROOM
                 $html .= <<<html
                 <!-- Card -->
-                <div class="card mb-4 container text-dark grey-out-rooms alternating-border" style="background-color:$background" id="$room_id" onclick="toggleRoom($hub_id,$room_id)">
+                <div class="card mb-4 container text-dark grey-out-rooms alternating-border" style="background-color:$background" id="$room_id" onclick="toggleRoom($hub_id,$room_id,$status)">
                     <!--Card image-->
                     <div class="view overlay">
                         <div class="mask rgba-white-slight"></div>

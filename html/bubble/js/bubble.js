@@ -7,8 +7,8 @@ function toggleRoom(hub_id, room_id){
         url: url,
         data:{ type: "room", hubID: hub_id, id: room_id},
         success:function(){
-            $('#profile-attr').load(document.URL + ' #profile-attr').fadeIn('500');
-            $('#messages-attr').load(document.URL + ' #messages-attr').fadeIn('500');
+            $('#profile-attr').load(document.URL + ' #profile-attr');
+            $('#messages-attr').load(document.URL + ' #messages-attr');
         },
         error: function(data){
             alert("error!");
@@ -25,8 +25,8 @@ function toggleDevice(hub_id, device_id) {
         url: url,
         data:{ type: "device", hubID: hub_id, id: device_id},
         success:function(data){
-            $('#profile-attr').load(document.URL + ' #profile-attr').fadeIn('500');
-            $('#messages-attr').load(document.URL + ' #messages-attr').fadeIn('500');
+            $('#profile-attr').load(document.URL + ' #profile-attr');
+            $('#messages-attr').load(document.URL + ' #messages-attr');
         },
         error: function(data){
             alert("error!");

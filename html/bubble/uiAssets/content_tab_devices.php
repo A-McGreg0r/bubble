@@ -68,15 +68,24 @@ html;
                     $room_id = json_encode($row['room_id']);
                     $status = $row['device_status'];
 
-                    $colour = 'transparent!important';
-                    $colour2 = '';
-                    $colour3 = '';
+                    $colour = 'rgb(0,0,0)';
+                    $colour2 = 'rgb(0,0,0)';
+                    $colour3 = 'rgb(0,0,0)';
                     $background = '';
-                    if($status > 0){
-                        $colour = 'rgb(56,56,56)!important';
-                        $colour2 = 'transparent!important';
-                        $colour3 = 'rgb(56,56,56)!important';
-                        $background = 'rgb(226, 183, 28)!important';
+                    if($status == 0){
+                        $colour = 'transparent';
+                    } else if($status == 1){
+                        $colour2 = 'transparent';
+                        $background = 'linear-gradient(to right, rgb(226, 183, 28) 0%, rgb(226, 183, 28) 25%, transparent 25%';
+                    } else if($status == 2){
+                        $colour2 = 'transparent';
+                        $background = 'linear-gradient(to right, rgb(226, 183, 28) 0%, rgb(226, 183, 28) 50%, transparent 50%';
+                    } else if($status == 3){
+                        $colour2 = 'transparent';
+                        $background = 'linear-gradient(to right, rgb(226, 183, 28) 0%, rgb(226, 183, 28) 75%, transparent 75%';
+                    } else if($status == 4){
+                        $colour2 = 'transparent';
+                        $background = 'linear-gradient(to right, rgb(226, 183, 28) 0%, rgb(226, 183, 28) 100%, transparent 100%';
                     }
 
                     //GET ICON FROM ICON TABLE
@@ -91,7 +100,7 @@ html;
                     //GENERATE CARD FOR DEVICE
                     $html .= <<<html
                     <!-- Card -->
-                    <div id="device_$device_id" class="card mb-4 container text-dark grey-out" style="background-color:$background" onclick="toggleDevice($hub_id, $device_id)">
+                    <div id="device_$device_id" class="card mb-4 container text-dark grey-out" style="background-image:$background" onclick="toggleDevice($hub_id, $device_id)">
                         <!--Card image-->
                         <div class="view overlay">
                             <div class="mask rgba-white-slight"></div>

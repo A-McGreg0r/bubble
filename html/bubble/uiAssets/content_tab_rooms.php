@@ -56,7 +56,7 @@ html;
                 $iconText = $row1['type_icon'];
                 $stmt1->close();
 
-                $colour = 'transparent';
+                $colour = 'rgb(0,0,0)';
                 $colour2 = 'rgb(0,0,0)';
                 $colour3 = 'rgb(0,0,0)';
                 $background = '';
@@ -66,6 +66,7 @@ html;
                 $stmt2->bind_param("ii", $hub_id, $room_id);
                 $stmt2->execute();
                 $result2 = $stmt2->get_result();
+                $setting = "off";
 
                 //FIGURE OUT WHETHER ALL DEVICES ARE OFF OR IF SOME ARE ON. DISPLAY COLOUR ACCORDINGLY
                 if ($result2->num_rows > 0) {
@@ -75,6 +76,7 @@ html;
                             $colour = 'rgb(0,0,0)';
                             $colour2 = 'transparent';
                             $background = 'rgb(226, 183, 28)';
+                            $setting = "on";
                         }
                     }
                 }
@@ -101,7 +103,7 @@ html;
                         
                         <div class="d-flex flex-column" style="font-size:1.5rem">
                             <!-- Default switch -->
-                            <p class="onOffLabel"><strong style="color:$colour2">off</strong><strong style="color:$colour">on</strong></p>
+                            <p class="onOffLabel"><strong style="color:$colour">$setting</strong></p>
                         </div>
                     </div>
                 </div>

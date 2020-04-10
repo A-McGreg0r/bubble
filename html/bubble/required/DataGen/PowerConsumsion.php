@@ -207,3 +207,4 @@ function lowConsumption($maxConsumption)
     $energy_used = rand(0, $maxConsumption / 3);
     return $energy_used;
 }
+}

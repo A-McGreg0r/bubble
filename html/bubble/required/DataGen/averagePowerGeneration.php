@@ -56,25 +56,26 @@ function _main($Y, $anual_power_gen) {
             case 0:
                 $m=12;
 				$pointer=$mid; //warm to cold - cooling
-				$x=-1; //decrument initially
+				$x=-1; //decrement initially
+
                 echo "winter<br>";
                 break;
             case 1:
                 $m=3;
 				$pointer=0; //cold to warm - warming
-				$x=1; //incrument initially
+				$x=1; //increment initially
                 echo "<br>spring<br>";
                 break;
             case 2:
                 $m=6;
                 $pointer=0; //warm to hot - warming
-				$x=1; //incrument initially
+				$x=1; //increment initially
                 echo "<br>summer<br>";
                 break;
             case 3:
                 $m=9;
                 $pointer=$mid; //hot to warm - cooling
-				$x=-1; //decrument initially
+				$x=-1; //decrement initially
                 echo "<br>fall<br>";
                 break;
             default:
@@ -177,7 +178,7 @@ function _main($Y, $anual_power_gen) {
     $Y=$Y;//INT::Year
     $P=$anual_power_gen;
     $S=inti_seasons($Y);//Array::Sum of number of days per season
-    $inc = array();//Array::Seasonal incruments
+    $inc = array();//Array::Seasonal increments
     for ($i=0;$i<4;$i++){
         array_push($inc, daily_inc($i, $S));
         daily_calc($i, $S, $inc, $P, $Y);

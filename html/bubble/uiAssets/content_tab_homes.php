@@ -230,7 +230,7 @@ function generateHomeTab()
                                 <table class="stats-table">
                                     
                                     <tr class="stats-row">
-                                        <td class="stats-left"><strong>&ensp;Power Used Today:</strong></td>
+                                        <td class="stats-left"><strong>&ensp;Daily Usage:</strong></td>
                                         <td class="stats-right">$energy_last_day kWh&ensp;</td>
                                     </tr>
                                     <tr class="stats-row">
@@ -238,7 +238,7 @@ function generateHomeTab()
                                         <td class="stats-right"><strong>£$cost_day_round&ensp;</strong></td>
                                     </tr>
                                     <tr class="stats-row">
-                                        <td class="stats-left"><strong>&ensp;Power Used This Month:&ensp;&ensp;</strong></td>
+                                        <td class="stats-left"><strong>&ensp;Monthly Usage:&ensp;&ensp;</strong></td>
                                         <td class="stats-right">$energy_last_month kWh&ensp;</td>
                                     </tr>
                                     <tr class="stats-row">
@@ -246,7 +246,7 @@ function generateHomeTab()
                                         <td class="stats-right double-stat"><strong>£$cost_month_round&ensp;</br>£$budget_remaining_round&ensp;</strong></td>
                                     </tr>
                                     <tr class="stats-row">
-                                        <td class="stats-left"><strong>&ensp;Power Used This Year:</strong></td>
+                                        <td class="stats-left"><strong>&ensp;Annual Usage:</strong></td>
                                         <td class="stats-right">$energy_last_year kWh&ensp;</td>
                                     </tr>
                                     <tr class="stats-row">

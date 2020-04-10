@@ -67,6 +67,11 @@ html;
                     $device_type = $row['device_type'];
                     $room_id = json_encode($row['room_id']);
                     $status = $row['device_status'];
+                    $setting = "on";
+
+                    if($device_type == 2 || $device_type == 4){
+                        $setting = "$status&nbsp;&nbsp;";
+                    }
 
                     $colour = 'rgb(0,0,0)';
                     $colour2 = 'rgb(0,0,0)';
@@ -76,13 +81,13 @@ html;
                         $colour = 'transparent';
                     } else if($status == 1){
                         $colour2 = 'transparent';
-                        $background = 'linear-gradient(to right, rgb(226, 183, 28) 0%, rgb(226, 183, 28) 25%, transparent 25%';
+                        $background = 'linear-gradient(to right, rgb(226, 183, 28) 0%, rgb(226, 183, 28) 25%, rgb(56,56,56) 25%, rgb(56,56,56) 25.05%, transparent 25.05%';
                     } else if($status == 2){
                         $colour2 = 'transparent';
-                        $background = 'linear-gradient(to right, rgb(226, 183, 28) 0%, rgb(226, 183, 28) 50%, transparent 50%';
+                        $background = 'linear-gradient(to right, rgb(226, 183, 28) 0%, rgb(226, 183, 28) 50%, rgb(56,56,56) 50%, rgb(56,56,56) 50.05%, transparent 50.05%';
                     } else if($status == 3){
                         $colour2 = 'transparent';
-                        $background = 'linear-gradient(to right, rgb(226, 183, 28) 0%, rgb(226, 183, 28) 75%, transparent 75%';
+                        $background = 'linear-gradient(to right, rgb(226, 183, 28) 0%, rgb(226, 183, 28) 75%, rgb(56,56,56) 75%, rgb(56,56,56) 75.05%, transparent 75.05%';
                     } else if($status == 4){
                         $colour2 = 'transparent';
                         $background = 'linear-gradient(to right, rgb(226, 183, 28) 0%, rgb(226, 183, 28) 100%, transparent 100%';
@@ -119,7 +124,7 @@ html;
                             
                             <div class="d-flex flex-column">
                                 <!-- Default switch -->
-                                <p class="onOffLabel"><strong id="device_2_$device_id" style="color:$colour2">off</strong><strong id="device_1_$device_id" style="color:$colour">on</strong></p>
+                                <p class="onOffLabel"><strong id="device_2_$device_id" style="color:$colour2">off</strong><strong id="device_1_$device_id" style="color:$colour">$setting</strong></p>
                             </div>
                         </div>
                     </div>

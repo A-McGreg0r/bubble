@@ -117,7 +117,7 @@ ul {
 }
 
 .text-light {
-    color: rgb(56,56,56)!important;
+    color: rgb(0,0,0)!important;
 }
 
 .mb-4, .my-4 {
@@ -131,13 +131,14 @@ ul {
     border: 2px solid rgb(56, 56, 56)!important;
 }
 
-.grey-out:nth-of-type(even), .card-header{
-    background-color: rgb(56,56,56)!important;
+.grey-out, .grey-out-rooms, .card-header{
+    background-color: rgb(56,56,56);
     color: rgb(227, 184, 28)!important;
+    margin-bottom: 5px!important;
 }
 
 .grey-out, .grey-out-rooms {
-    border: 1px solid rgb(56,56,56)!important;
+    border: 2px solid rgb(0,0,0)!important;
 }
 
 .grey-out-rooms:nth-of-type(odd), .grey-out-account:nth-of-type(odd), .card-header{
@@ -145,9 +146,6 @@ ul {
     color: rgb(227, 184, 28);
 }
 
-.alternating-border:nth-of-type(even) {
-    border: 1px solid rgb(56,56,56)!important;
-}
 
 .col-lg {
     padding: 0!important;
@@ -264,8 +262,8 @@ hr {
     margin-left: 20%!important;
     margin-right: 20%!important;
     padding: 1rem!important;
-    color: rgba(56, 56, 56, 1)!important;
-    border-bottom: 1px solid rgba(56, 56, 56, 1);
+    color: rgba(0, 0, 0, 1)!important;
+    border-bottom: 1px solid rgba(0, 0, 0, 1);
     text-align: center;
     margin-bottom: 2rem!important;
     font-weight: 500!important;

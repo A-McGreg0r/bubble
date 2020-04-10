@@ -19,19 +19,19 @@ a:hover, .nav-link.active {
 }
 
 .text-center {
-    color: rgb(56, 56, 56)!important;
+    color: rgb(0, 0, 0)!important;
     font-weight: 900;
 }
 
 .btn-outline-info {
     transition: 0.25s ease;
-    color: rgb(56, 56, 56)!important;
+    color: rgb(0, 0, 0)!important;
     border: 2px solid rgb(56, 56, 56)!important;
     font-weight: 900;
 }
 
 .btn-outline-info:hover {
-    color: rgb(56, 56, 56)!important;
+    color: rgb(0, 0, 0)!important;
     background-color: rgb(226, 183, 28)!important;
     border: 2px solid rgb(56, 56, 56)!important;
     transition: 0.25s ease;
@@ -56,6 +56,7 @@ ul {
 .red-text {
     color: rgb(226, 183, 28)!important;
     cursor: default!important;
+    padding-bottom: 10px!important;
 }
 
 .front-img {
@@ -63,7 +64,7 @@ ul {
 }
 
 .nav-link {
-    color: rgb(56,56,56);
+    color: rgb(0,0,0);
 }
 
 .form-row {
@@ -100,8 +101,21 @@ ul {
 }
 
 .card {
-    border: 1px solid rgba(0,0,0,0.125);
+    border: 1px solid rgba(0,0,0,1);
     border-top: none;
+}
+
+.nav-link {
+    border-bottom: 1px solid rgb(0, 0, 0)!important;
+}
+
+.nav-tabs {
+    border: none!important;
+}
+
+.nav-link.active {
+    border: 1px solid rgb(0, 0, 0)!important;
+    border-bottom: none!important;
 }
 
 .card:nth-of-type(even) {
@@ -113,11 +127,11 @@ ul {
 }
 
 .accordion {
-    border-bottom: 1px solid rgba(0,0,0,0.125);
+    border-bottom: 1px solid rgba(0,0,0,1);
 }
 
 .text-light {
-    color: rgb(56,56,56)!important;
+    color: rgb(0,0,0)!important;
 }
 
 .mb-4, .my-4 {
@@ -127,17 +141,14 @@ ul {
     border: none!important;
 }
 
-.my-4 {
-    border: 2px solid rgb(56, 56, 56)!important;
-}
-
-.grey-out:nth-of-type(even), .card-header{
-    background-color: rgb(56,56,56)!important;
+.grey-out, .grey-out-rooms, .card-header{
+    background-color: rgb(56,56,56);
     color: rgb(227, 184, 28)!important;
+    margin-bottom: 5px!important;
 }
 
 .grey-out, .grey-out-rooms {
-    border: 1px solid rgb(56,56,56)!important;
+    border: 2px solid rgb(0,0,0)!important;
 }
 
 .grey-out-rooms:nth-of-type(odd), .grey-out-account:nth-of-type(odd), .card-header{
@@ -145,9 +156,6 @@ ul {
     color: rgb(227, 184, 28);
 }
 
-.alternating-border:nth-of-type(even) {
-    border: 1px solid rgb(56,56,56)!important;
-}
 
 .col-lg {
     padding: 0!important;
@@ -157,10 +165,17 @@ ul {
     padding-left: 2rem!important;
     padding-right: 3rem!important;
     cursor: default!important;
+    border-bottom: 1px solid rgb(0,0,0);
 }
 
 .navbar.navbar-dark .breadcrumb .nav-item .nav-link, .navbar.navbar-dark .navbar-nav .nav-item .nav-link {
-    color: rgb(56,56,56)!important;
+    color: rgb(0,0,0)!important;
+}
+
+.nav-item {
+    flex-basis: 0;
+    flex-grow: 1;
+    text-align: center;
 }
 
 .border {
@@ -178,7 +193,7 @@ ul {
 
 .mr-auto {
     margin-top: 0px!important;
-    margin-bottom: 10px!important;
+    margin-bottom: 0px!important;
 }
 
 p {
@@ -253,6 +268,11 @@ table td {
 hr {
     width: 120%;
     margin-left: -1rem!important;
+    border: 0.5px solid rgb(0,0,0);
+}
+
+.waves-effect {
+    border: none!important;
 }
 
 .overview {
@@ -264,8 +284,8 @@ hr {
     margin-left: 20%!important;
     margin-right: 20%!important;
     padding: 1rem!important;
-    color: rgba(56, 56, 56, 1)!important;
-    border-bottom: 1px solid rgba(56, 56, 56, 1);
+    color: rgba(0, 0, 0, 1)!important;
+    border-bottom: 1px solid rgba(0, 0, 0, 1);
     text-align: center;
     margin-bottom: 2rem!important;
     font-weight: 500!important;
@@ -306,7 +326,7 @@ hr {
 }
 
 .custom-select {
-    color: rgb(56, 56, 56)!important;
+    color: rgb(0, 0, 0)!important;
 }
 
 .alter-display {
@@ -315,7 +335,7 @@ hr {
 
 .room-title {
     font-weight: 800!important;
-    color: rgb(56, 56, 56)!important;
+    color: rgb(0, 0, 0)!important;
     border-bottom: 1px solid rgba(56, 56, 56, 1);
     padding: 10px!important;
     margin-right: 10%!important;
@@ -360,7 +380,7 @@ select {
 }
 
 .text-dark {
-    color: rgb(56, 56, 56);
+    color: rgb(0, 0, 0);
 }
 
 .double-stat {
@@ -395,4 +415,15 @@ select {
 
 .room_icon {
     margin-top: 0px;
+}
+
+.my-4 {
+    border: 2px solid rgb(56, 56, 56)!important;
+}
+
+.login-links {
+    padding-top: 0.5rem!important;
+    padding-bottom: 0.5rem!important;
+    padding-left: none!important;
+    padding-right: none!important;
 }

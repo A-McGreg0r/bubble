@@ -1,18 +1,14 @@
 
-function toggleRoom(hub_id, room_id, status){
+function toggleRoom(hub_id, room_id){
     let url = "required/action_device.php";
-
-    var on_or_off = "on";
-    if(status == 1) {
-        on_or_off = "off";
-    }
     
     $.ajax({
         type:'POST',
         url: url,
-        data:{ type: "room", hubID: hub_id, id: room_id, stat: status},
+        data:{ type: "room", hub_id: hub_id, id: room_id},
         success:function(){
-            alert(room_id + "turned " + on_or_off)
+            $('#profile-attr').load(document.URL + ' #profile-attr');
+            $('#messages-attr').load(document.URL + ' #messages-attr');
         },
         error: function(data){
             alert("error!");
@@ -20,6 +16,13 @@ function toggleRoom(hub_id, room_id, status){
     });
 }
 
+function alterDevice(hub_id, device_id, device_type, current_state){
+    if(device_type == 2 || device_type == 4){
+        scaleDevice(hub_id, device_id, current_state);
+    } else {
+        toggleDevice(hub_id, device_id);
+    }
+}
 
 function toggleDevice(hub_id, device_id) {
     let url = "required/action_device.php";
@@ -27,24 +30,31 @@ function toggleDevice(hub_id, device_id) {
     $.ajax({
         type:'POST',
         url: url,
-        data:{ type: "device", hubID: hub_id, id: device_id},
+        data:{ type: "toggledevice", hub_id: hub_id, id: device_id},
         success:function(data){
-            var jsonData = JSON.parse(data);
-            switch(jsonData.status){
-                case 0:
-                    $('#device_'+device_id).animate({backgroundColor: '!important'}, 'slow');
-                    $('#device_1_'+device_id).animate({color: 'transparent!important'}, 'slow');
-                    $('#device_2_'+device_id).animate({color: ''}, 'slow');
-                    $('#device_3_'+device_id).animate({color: ''}, 'slow');
+            $('#profile-attr').load(document.URL + ' #profile-attr');
+            $('#messages-attr').load(document.URL + ' #messages-attr');
+        },
+        error: function(data){
+            alert("error!");
+        }
+    });
+}
 
-                break;
-                case 1:
-                    $('#device_'+device_id).animate({backgroundColor: 'rgb(226, 183, 28)!important'}, 'slow');
-                    $('#device_1_'+device_id).animate({color: 'rgb(56,56,56)!important'}, 'slow');
-                    $('#device_2_'+device_id).animate({color: 'transparent!important'}, 'slow');
-                    $('#device_3_'+device_id).animate({color: 'rgb(56,56,56)!important'}, 'slow');
-                break;
-            }
+function scaleDevice(hub_id, device_id, scale) {
+    let url = "required/action_device.php";
+    if (scale < 4){
+        scale = scale + 1;
+    } else {
+        scale = 0;
+    }
+    $.ajax({
+        type:'POST',
+        url: url,
+        data:{ type: "scaledevice", hub_id: hub_id, id: device_id, scale: scale},
+        success:function(data){
+            $('#profile-attr').load(document.URL + ' #profile-attr');
+            $('#messages-attr').load(document.URL + ' #messages-attr');
         },
         error: function(data){
             alert("error!");

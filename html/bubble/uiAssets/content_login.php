@@ -2,6 +2,7 @@
 
 echo shell_exec("/../email/myemail.py");
 
+
 function generateLoginPage(){
     $email = '';
     if (isset($_POST['email'])) $email = $_POST['email'];
@@ -37,18 +38,18 @@ function generateLoginPage(){
                     <ul class="nav nav-tabs  tabs-2" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link login-links active" data-toggle="tab" href="#panel1" role="tab">
-                                <i class="fas fa-user mr-1"></i>Login
+                                <i class="fas fa-user mr-1"></i><br>Login
                             </a>
                         </li>
 
                         <li class="nav-item ">
                             <a class="nav-link login-links" data-toggle="tab" href="#panel2" role="tab">
-                                <i class="fas fa-user-plus mr-1"></i>Sign up
+                                <i class="fas fa-user-plus mr-1"></i><br>Sign up
                             </a>
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link login-links" data-toggle="tab" href="#panel3" role="tab">
-                                <i class="fas fa-user-plus mr-1"></i>Reset
+                                <i class="fas fa-user-plus mr-1"></i><br>Reset
                             </a>
                         </li>
                     </ul>

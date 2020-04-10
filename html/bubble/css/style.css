@@ -420,3 +420,10 @@ select {
 .my-4 {
     border: 2px solid rgb(56, 56, 56)!important;
 }
+
+.login-links {
+    padding-top: 0.5rem!important;
+    padding-bottom: 0.5rem!important;
+    padding-left: none!important;
+    padding-right: none!important;
+}

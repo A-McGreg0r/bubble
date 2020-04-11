@@ -520,3 +520,47 @@ select {
         width: 80%;
     }
 }
+
+.weather_bar {
+    padding-top: 10px;
+    font-family: Roboto,sans-serif;
+    font-size: 60px;
+    text-align: center;
+    border-bottom: 1px solid rgb(0,0,0);
+}
+
+.weather_symbol {
+    width: 100px;
+}
+
+.weather_advice {
+    font-family: Roboto,sans-serif;
+    margin-bottom: 20px;
+}
+
+.weather-page {
+    border-left: 1px solid rgb(0,0,0);
+    border-right: 1px solid rgb(0,0,0);
+}
+
+.weather_advice_body {
+    margin-left: 20px;
+    margin-right: 20px;
+    font-weight: 500;
+}
+
+.advice_point td {
+    text-align: center;
+    padding: 10px;
+    border-radius: 0.25rem;
+}
+
+.advice_point:nth-of-type(even) {
+    background-color: rgb(56,56,56);
+    color: rgb(226, 183, 28);
+}
+
+.weather_table {
+    width: 100%;
+    text-align: center;
+}

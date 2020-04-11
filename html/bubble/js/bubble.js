@@ -1,3 +1,8 @@
+function propogate(id) {
+    event.stopPropagation();
+    openModal(id);
+}
+
 function openModal(id) {
     var modal = document.getElementById(id);
     if (modal && modal.style) {
@@ -10,7 +15,6 @@ function openModal(id) {
             modal.style.display = 'none';
         }
     }
-    event.stopPropagation();
 }
 
 function startTimer(id, hour_value, minute_value) {

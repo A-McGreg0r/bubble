@@ -82,11 +82,6 @@ function generateHomeTab()
 
                     $energy_last_month = $energy_last_month / 1000;
 
-
-
-
-
-
                     $dataPoints = array();
                     $dataPoints = array();
                     $AvgPoints = array();
@@ -118,7 +113,8 @@ function generateHomeTab()
                         }
                     }
                     $energy_last_year = $energy_last_year / 1000;
-                    $cost_year = $energy_last_year * $energy_cost;//
+                    $cost_year = $energy_last_year * $energy_cost;//bug?
+
                     $cost_year_round = number_format($cost_year,2);
                     $DataLabelsYearEncoded = json_encode($dataLabels);
                     $dataPointsYearEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);

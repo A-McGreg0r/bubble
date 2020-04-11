@@ -297,7 +297,7 @@ function generateHomeTab()
                                                                 },
                                                                 options: {
                                                                 responsive: true;
-                                                                pointHitRadius: 7px;
+                                                                pointHitRadius: 10px;
                                                                 }
                                                                 });
                                                             </script>

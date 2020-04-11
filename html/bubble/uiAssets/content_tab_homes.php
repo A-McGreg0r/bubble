@@ -97,17 +97,18 @@ function generateHomeTab()
 
                     $energy_last_year = $energy_last_year / 1000;
 
-                    //todo add querrys for pulling power usage
                     $dataPoints = array();
                     $dataPoints = array();
                     $AvgPoints = array();
                     $dataLabels = array();
-                    $count = 0;
 
-                    $stmt7 = $db->prepare("SELECT * FROM monthly_data");
+
+                    $stmt7 = $db->prepare("SELECT * FROM monthly_data WHERE hub_id = ?");
+                    $stmt7->bind_param("i", $hub_id);
                     $stmt7->execute();
                     $result7 = $stmt7->get_result();
                     if ($result7->num_rows >= 1) {
+                        $count=0;
                         $n = 0;
                         $all7 = $result7->fetch_all(MYSQLI_ASSOC);
                         foreach($all7 as $row7){
@@ -122,7 +123,7 @@ function generateHomeTab()
                             array_push($AvgPoints,money_format('%.3n',$count/$n));
                         }
                     }
-                    $cost_year = $energy_last_year * $energy_cost;
+                    $cost_year = $energy_last_year * $energy_cost;//
                     $cost_year_round = number_format($cost_year,2);
                     $DataLabelsYearEncoded = json_encode($dataLabels);
                     $dataPointsYearEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);

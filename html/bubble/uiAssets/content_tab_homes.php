@@ -116,10 +116,7 @@ function generateHomeTab()
                             $month7 = $row7['entry_month'];
                             $count = $count + $energy_usage7;
                             array_push($dataPoints, array($energy_usage7));
-
-                            $dateObj   = DateTime::createFromFormat('!m', $month7);
-                            $monthName = $dateObj->format('F');
-                            array_push($dataLabels, array($monthName));
+                            array_push($dataLabels, array($month7));
                         }
                         for($i = 0; $i < sizeof($dataPoints); $i++){
                             array_push($AvgPoints,money_format('%.3n',$count/$n));
@@ -150,12 +147,7 @@ function generateHomeTab()
                             $day8 = $row8['entry_day'];
                             $count = $count + $energy_usage8;
                             array_push($dataPoints, array($energy_usage8));
-
-                            $dateObj   = DateTime::createFromFormat('!m', $day8);
-                            $dayName = $dateObj->format('D'); // March
-
-                            array_push($dataLabels, array($dayName));
-
+                            array_push($dataLabels, array($day8));
                         }
                         for($i = 0; $i < sizeof($dataPoints); $i++){
                             array_push($AvgPoints,money_format('%.3n',$count/$n));

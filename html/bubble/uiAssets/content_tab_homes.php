@@ -386,11 +386,7 @@ function generateHomeTab()
                             <!--col 3-->
 
                             <div class="col-lg">
-                            
-                            </div>
-                            
-                            
-                                    <h4 class="section-title overview">Power Usage</h4>
+                            <h4 class="section-title overview">Power Usage</h4>
                                     
                                     <div class="container border border-primary">
                                           <!--change chart drop down-->
@@ -455,6 +451,10 @@ function generateHomeTab()
                                 </script>
                                 
                              </div>
+                            </div>
+                            
+                            
+                                    
                             
                             <!--col 3-->
                         </div>

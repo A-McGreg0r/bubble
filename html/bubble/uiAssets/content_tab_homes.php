@@ -404,9 +404,9 @@ function generateHomeTab()
                                           <!--change chart drop down-->
                                             <select id="chartPicker" class="browser-default custom-select dropdown">
                                                 <option selected="selected">Choose time period</option>
-                                                <option value="0">Year</option>
-                                                <option value="1">Month</option>
-                                                <option value="2">Day</option>
+                                                <option value="0">Current Year</option>
+                                                <option value="1">Current Month</option>
+                                                <option value="2">Today</option>
                                             </select>
                                     <!--chart canvas-->        
                                     <canvas id="masterLineChart"></canvas>

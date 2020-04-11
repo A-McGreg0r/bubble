@@ -10,18 +10,18 @@ function generateHomeTab()
         $user_id = $_SESSION['user_id'];
 
         session_write_close();
-        $stmt3 = $db->prepare("SELECT * FROM user_info WHERE user_id = ?");
-        $stmt3->bind_param("i", $user_id);
-        $stmt3->execute();
-        $result3 = $stmt3->get_result();
+        $stmt0 = $db->prepare("SELECT * FROM user_info WHERE user_id = ?");
+        $stmt0->bind_param("i", $user_id);
+        $stmt0->execute();
+        $result3 = $stmt0->get_result();
         if ($result3->num_rows === 1) {
             extract($result3->fetch_assoc());
         }
 
-        $stmt = $db->prepare("SELECT * FROM hub_users WHERE user_id = ?");
-        $stmt->bind_param("i", $user_id);
-        $stmt->execute();
-        $result = $stmt->get_result();
+        $stmt1 = $db->prepare("SELECT * FROM hub_users WHERE user_id = ?");
+        $stmt1->bind_param("i", $user_id);
+        $stmt1->execute();
+        $result = $stmt1->get_result();
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 $hub_id = $row['hub_id'];
@@ -53,10 +53,10 @@ function generateHomeTab()
                     $day = date("d");
                     $energy_last_day = 0;
 
-                    $stmt4 = $db->prepare("SELECT * FROM hourly_data WHERE hub_id = ? AND entry_day = ?");
-                    $stmt4->bind_param("ii", $hub_id, $day);
-                    $stmt4->execute();
-                    $result4 = $stmt4->get_result();
+                    $stmt3 = $db->prepare("SELECT * FROM hourly_data WHERE hub_id = ? AND entry_day = ?");
+                    $stmt3->bind_param("ii", $hub_id, $day);
+                    $stmt3->execute();
+                    $result4 = $stmt3->get_result();
                     if ($result4->num_rows >= 1) {
                         $all4 = $result4->fetch_all(MYSQLI_ASSOC);
                         foreach($all4 as $row4){
@@ -69,10 +69,10 @@ function generateHomeTab()
                     $month = date("m");
                     $energy_last_month = 0;
 
-                    $stmt5 = $db->prepare("SELECT * FROM daily_data WHERE hub_id = ? AND entry_month = ?");
-                    $stmt5->bind_param("ii", $hub_id, $month);
-                    $stmt5->execute();
-                    $result5 = $stmt5->get_result();
+                    $stmt4 = $db->prepare("SELECT * FROM daily_data WHERE hub_id = ? AND entry_month = ?");
+                    $stmt4->bind_param("ii", $hub_id, $month);
+                    $stmt4->execute();
+                    $result5 = $stmt4->get_result();
                     if ($result5->num_rows >= 1) {
                         $all5 = $result5->fetch_all(MYSQLI_ASSOC);
                         foreach($all5 as $row5){
@@ -84,10 +84,10 @@ function generateHomeTab()
 
                     $energy_last_year = 0;
 
-                    $stmt6 = $db->prepare("SELECT * FROM monthly_data WHERE hub_id = ?");
-                    $stmt6->bind_param("i", $hub_id);
-                    $stmt6->execute();
-                    $result6 = $stmt6->get_result();
+                    $stmt5 = $db->prepare("SELECT * FROM monthly_data WHERE hub_id = ?");
+                    $stmt5->bind_param("i", $hub_id);
+                    $stmt5->execute();
+                    $result6 = $stmt5->get_result();
                     if ($result6->num_rows >= 1) {
                         $all6 = $result6->fetch_all(MYSQLI_ASSOC);
                         foreach($all6 as $row6){
@@ -104,9 +104,9 @@ function generateHomeTab()
                     $dataLabels = array();
                     $count = 0;
 
-                    $stmt7 = $db->prepare("SELECT * FROM monthly_data");
-                    $stmt7->execute();
-                    $result7 = $stmt7->get_result();
+                    $stmt6 = $db->prepare("SELECT * FROM monthly_data");
+                    $stmt6->execute();
+                    $result7 = $stmt6->get_result();
                     if ($result7->num_rows >= 1) {
                         $n = 0;
                         $all7 = $result7->fetch_all(MYSQLI_ASSOC);
@@ -135,19 +135,19 @@ function generateHomeTab()
                     $dataLabels = array();
                     $count = 0;
 
-                    $stmt8 = $db->prepare("SELECT * FROM daily_data");
-                    $stmt8->execute();
-                    $result8 = $stmt8->get_result();
-                    if ($result8->num_rows >= 1) {
+                    $stmt7 = $db->prepare("SELECT * FROM daily_data");
+                    $stmt7->execute();
+                    $result7 = $stmt7->get_result();
+                    if ($result7->num_rows >= 1) {
                         $n = 0;
-                        $all8 = $result8->fetch_all(MYSQLI_ASSOC);
-                        foreach($all8 as $row8){
+                        $all7 = $result7->fetch_all(MYSQLI_ASSOC);
+                        foreach($all7 as $row7){
                             $n = $n + 1;
-                            $energy_usage8 = $row8['energy_usage']/1000;
-                            $day8 = $row8['entry_day'];
-                            $count = $count + $energy_usage8;
-                            array_push($dataPoints, array($energy_usage8));
-                            array_push($dataLabels, array($day8));
+                            $energy_usage7 = $row7['energy_usage']/1000;
+                            $day7 = $row7['entry_day'];
+                            $count = $count + $energy_usage7;
+                            array_push($dataPoints, array($energy_usage7));
+                            array_push($dataLabels, array($day7));
                         }
                         for($i = 0; $i < sizeof($dataPoints); $i++){
                             array_push($AvgPoints,money_format('%.3n',$count/$n));
@@ -489,7 +489,7 @@ html;
             }
         }
 
-        $stmt->close();
+        $stmt1->close();
     }
 
     $html .= "</div>";

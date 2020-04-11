@@ -152,10 +152,12 @@ function generateHomeTab()
                             array_push($dataPoints, array($energy_usage8));
 
                             $dateObj   = DateTime::createFromFormat('!m', $day8);
-                            $dayName = $dateObj->format('F');
+                            $dayName = $dateObj->format('D'); // March
+
+                            echo $dayName;
                             array_push($dataLabels, array($dayName));
 
-                            array_push($dataLabels, array($day8));
+                            array_push($dataLabels, array($dayName+": "+$day8));
                         }
                         for($i = 0; $i < sizeof($dataPoints); $i++){
                             array_push($AvgPoints,money_format('%.3n',$count/$n));

@@ -224,8 +224,8 @@ function generateHomeTab()
                         <!-- Card body -->
                         <div id="collapse$hub_id" class="collapse show" role="tabpanel" aria-labelledby="heading$hub_id" data-parent="#accordionEx194">
                             <div class="card-body pt-0 justify-content-center ">
-                            
-                            <!--coll 1-->
+                        <div class="container">   
+                             <!--coll 1-->
                             <div class="col-lg-6">
                                 <h4 class="section-title">Overview</h4>
                                 <table class="stats-table">
@@ -456,6 +456,8 @@ function generateHomeTab()
                              </div>
                             
                             <!--col 3-->
+                        </div>
+                           
                             
                             
 

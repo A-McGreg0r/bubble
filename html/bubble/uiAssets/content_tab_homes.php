@@ -398,8 +398,9 @@ function generateHomeTab()
                                           <!--change chart drop down-->
                                             <select id="chartPicker" class="browser-default custom-select dropdown">
                                                 <option selected="selected">Choose time period</option>
-                                                <option value="1">Month $textMonth</option>
-                                                <option value="2">Day $textDay</option>
+                                                <option value="0">Year</option>
+                                                <option value="1">Month - $textMonth</option>
+                                                <option value="2">Day - $textDay</option>
                                             </select>
                                     <!--chart canvas-->        
                                     <canvas id="masterLineChart"></canvas>

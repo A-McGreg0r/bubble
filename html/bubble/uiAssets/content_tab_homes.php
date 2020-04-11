@@ -222,11 +222,9 @@ function generateHomeTab()
         
                         <!-- Card body -->
                         <div id="collapse$hub_id" class="collapse show" role="tabpanel" aria-labelledby="heading$hub_id" data-parent="#accordionEx194">
-                            <div class="card-body pt-0 justify-content-center col-lg-6">
-                            <!--todo change 3 donuts to carousels-->
-                                <div class="flex-sm-row ">    
-
-                                <h4 class="section-title">Overview</h4>
+                            <div class="card-body pt-0 justify-content-center ">
+                            <div class="col-lg-6">
+                                                            <h4 class="section-title">Overview</h4>
                                 <table class="stats-table">
                                     
                                     <tr class="stats-row">
@@ -256,6 +254,10 @@ function generateHomeTab()
                                 </table>
                                 <small class="form-text text-muted mb-4" style="text-align:center">Costing at £$energy_cost_round per kWh</small>
                                 <hr>
+                            </div>
+                                <div class="flex-sm-row ">    
+
+
                                 
                                 
                                 <!--Carousel Container--> 

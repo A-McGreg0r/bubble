@@ -481,7 +481,8 @@ select {
 .timerBtn {
     display: inline-block;
     width: 80%;
-    border: 2px solid rgb(0,0,0)!important;
+    background-color: white;
+    border: 2px solid rgb(0,0,0);
 }
 
 .timer_icon {

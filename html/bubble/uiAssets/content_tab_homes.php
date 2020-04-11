@@ -222,7 +222,7 @@ function generateHomeTab()
         
                         <!-- Card body -->
                         <div id="collapse$hub_id" class="collapse show" role="tabpanel" aria-labelledby="heading$hub_id" data-parent="#accordionEx194">
-                            <div class="card-body pt-0 justify-content-center " style="max-width:100%">
+                            <div class="card-body pt-0 justify-content-center col-lg-6">
                             <!--todo change 3 donuts to carousels-->
                                 <div class="flex-sm-row ">    
 

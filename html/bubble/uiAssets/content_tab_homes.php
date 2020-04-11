@@ -208,7 +208,7 @@ function generateHomeTab()
 
                     $html .= <<<html
                     <!-- Accordion card -->
-                    <div class="card col-lg">
+                    <div class="card col-lg-6">
                     <!-- Card header -->
                         <div class="card-header" role="tab" id="heading$hub_id">
                             <a data-toggle="collapse" data-parent="#accordionEx194" aria-expanded="true" aria-controls="collapse4">

@@ -48,9 +48,10 @@ function generateHomeTab()
                         foreach($all4 as $row4){
                             $energy_last_day = $energy_last_day + $row4['energy_usage'];
                         }
+                        $energy_last_day = $energy_last_day / 1000;
                     }
 
-                    $energy_last_day = $energy_last_day / 1000;
+
 
                     $month = date("m");
                     $energy_last_month = 0;

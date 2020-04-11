@@ -384,7 +384,7 @@ function generateHomeTab()
                             
                             <!--col 3-->
                             <hr class="section-break">
-                            <div class="card col-lg">
+                            <div class="col-lg">
                             
                             </div>
                             

@@ -37,18 +37,7 @@ function generateHomeTab()
                         $hub_name = "My Home";
                     }
 
-                    $stmt2 = $db->prepare("SELECT * FROM test_data WHERE hub_id = ?");
-                    $stmt2->bind_param("i", $hub_id);
-                    $stmt2->execute();
-                    $result2 = $stmt2->get_result();
 
-                    if ($result2->num_rows === 1) {
-                        $row2 = $result2->fetch_assoc();
-                        $cost_day = $row2['cost_day'];
-                        $cost_month = $row2['cost_month'];
-                        $cost_total = $row2['cost_total'];
-                        $cost_variance = $cost_total - $cost_month;
-                    }
 
                     $day = date("d");
                     $energy_last_day = 0;
@@ -89,21 +78,21 @@ function generateHomeTab()
 
                     $energy_last_year = 0;
 
-                    $stmt7 = $db->prepare("SELECT * FROM monthly_data WHERE hub_id = ?");
-                    $stmt7->bind_param("i", $hub_id);
-                    $stmt7->execute();
-                    $result7 = $stmt7->get_result();
-                    if ($result7->num_rows >= 1) {
+                    $stmt6 = $db->prepare("SELECT * FROM monthly_data WHERE hub_id = ?");
+                    $stmt6->bind_param("i", $hub_id);
+                    $stmt6->execute();
+                    $result6 = $stmt6->get_result();
+                    if ($result6->num_rows >= 1) {
                         $count=0;
                         $n = 0;
-                        $all7 = $result7->fetch_all(MYSQLI_ASSOC);
-                        foreach($all7 as $row7){
+                        $all6 = $result6->fetch_all(MYSQLI_ASSOC);
 
-                            $energy_last_year = $energy_last_year + $row7['energy_usage'];
+                        foreach($all6 as $row6){
+                            $energy_last_year = $energy_last_year + $row6['energy_usage'];
 
                             $n = $n + 1;
-                            $energy_usage7 = $row7['energy_usage']/1000;
-                            $month7 = $row7['entry_month'];
+                            $energy_usage7 = $row6['energy_usage']/1000;
+                            $month7 = $row6['entry_month'];
                             $count = $count + $energy_usage7;
                             array_push($dataPoints, array($energy_usage7));
                             array_push($dataLabels, array($month7));

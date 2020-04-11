@@ -293,12 +293,12 @@ function generateHomeTab()
                                                                 datasets: [{
                                                                 data: [$cost_day_round, $budget_day_remaining_round],
                                                                 backgroundColor: ["rgb(226, 183, 28)", "rgb(56,56,56)"],
-                                                                hoverBackgroundColor: ["rgb(246, 203, 48)", "rgb(76,76,76)"]
+                                                                hoverBackgroundColor: ["rgb(246, 203, 48)", "rgb(76,76,76)"],
+                                                                pointHitRadius: [10]
                                                                 }]
                                                                 },
                                                                 options: {
-                                                                responsive: true,
-                                                                pointHitRadius: 10px,
+                                                                responsive:true
                                                                 }
                                                                 });
                                                             </script>

@@ -268,7 +268,7 @@ function generateHomeTab()
                             document.onload(myLineChart.update();)
                             </script>
                            
-                            <div class="card col-lg-6">
+                            <div class="card col-lg-6 border border-0">
                             <!--Carousel Container--> 
                                 <h4 class="section-title">Expenditure</h4>
                                     <div id="chart-carousel" class="carousel slide" data-ride="carousel">

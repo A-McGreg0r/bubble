@@ -82,26 +82,11 @@ function generateHomeTab()
 
                     $energy_last_month = $energy_last_month / 1000;
 
-                    $energy_last_year = 0;
-
-                    $stmt6 = $db->prepare("SELECT * FROM monthly_data WHERE hub_id = ?");
-                    $stmt6->bind_param("i", $hub_id);
-                    $stmt6->execute();
-                    $result6 = $stmt6->get_result();
-                    if ($result6->num_rows >= 1) {
-                        $all6 = $result6->fetch_all(MYSQLI_ASSOC);
-                        foreach($all6 as $row6){
-                            $energy_last_year = $energy_last_year + $row6['energy_usage'];
-                        }
-                    }
-
-                    $energy_last_year = $energy_last_year / 1000;
-
                     $dataPoints = array();
                     $dataPoints = array();
                     $AvgPoints = array();
                     $dataLabels = array();
-
+                    $energy_last_year = 0;
 
                     $stmt7 = $db->prepare("SELECT * FROM monthly_data WHERE hub_id = ?");
                     $stmt7->bind_param("i", $hub_id);
@@ -112,6 +97,9 @@ function generateHomeTab()
                         $n = 0;
                         $all7 = $result7->fetch_all(MYSQLI_ASSOC);
                         foreach($all7 as $row7){
+
+                            $energy_last_year = $energy_last_year + $row7['energy_usage'];
+
                             $n = $n + 1;
                             $energy_usage7 = $row7['energy_usage']/1000;
                             $month7 = $row7['entry_month'];

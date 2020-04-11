@@ -448,7 +448,7 @@ function generateHomeTab()
                                 </script>
                                 
                                     </div>
-                            </div>
+                            
                             <!--col 3-->
                             
                             

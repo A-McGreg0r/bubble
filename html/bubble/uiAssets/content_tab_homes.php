@@ -37,21 +37,21 @@ function generateHomeTab()
                         $hub_name = "My Home";
                     }
 
-
+                    $energy_last_day = 0;
                     $stmt4 = $db->prepare("SELECT * FROM hourly_data WHERE hub_id = ? AND entry_day = ?");
                     $stmt4->bind_param("ii", $hub_id, $day);
                     $stmt4->execute();
                     $result4 = $stmt4->get_result();
-                    if ($result4->num_rows >= 1) {
-                        $all4 = $result4->fetch_all(MYSQLI_ASSOC);
-                        $energy_last_day = 0;
-                        foreach($all4 as $row4){
-                            $energy_last_day = $energy_last_day + $row4['energy_usage'];
+                        if ($result4->num_rows >= 1) {
+                            $all4 = $result4->fetch_all(MYSQLI_ASSOC);
+
+                            foreach($all4 as $row4){
+                                $energy_last_day = $energy_last_day + $row4['energy_usage'];
+                            }
+
                         }
-                        $energy_last_day = $energy_last_day / 1000;
-                    }
 
-
+                    $energy_last_day = $energy_last_day / 1000;
 
                     $month = date("m");
                     $energy_last_month = 0;

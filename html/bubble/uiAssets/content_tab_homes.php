@@ -388,7 +388,7 @@ function generateHomeTab()
                             <div class="col-lg">
                             <h4 class="section-title overview">Power Usage</h4>
                                     
-                                    <div class="container border border-primary">
+                                    <div class="container">
                                           <!--change chart drop down-->
                                             <select id="chartPicker" class="browser-default custom-select dropdown">
                                                 <option selected="selected">Choose time period</option>

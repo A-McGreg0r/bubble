@@ -210,8 +210,6 @@ function generateHomeTab()
                     $budget_day_remaining_round = number_format($budget_day_remaining,2);
                     $budget_year_remaining_round = money_format('%.2n', $budget_year_remaining);
 
-                    $textDay =date(D);
-                    $textMonth = date(M);
                     $command = escapeshellcmd('/required/email/myemail.py');
                     $output = shell_exec($command);
                     echo $output;
@@ -407,8 +405,8 @@ function generateHomeTab()
                                             <select id="chartPicker" class="browser-default custom-select dropdown">
                                                 <option selected="selected">Choose time period</option>
                                                 <option value="0">Year</option>
-                                                <option value="1">Month - $textMonth</option>
-                                                <option value="2">Day - $textDay</option>
+                                                <option value="1">Month</option>
+                                                <option value="2">Day</option>
                                             </select>
                                     <!--chart canvas-->        
                                     <canvas id="masterLineChart"></canvas>

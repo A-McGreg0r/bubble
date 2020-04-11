@@ -116,7 +116,10 @@ function generateHomeTab()
                             $month7 = $row7['entry_month'];
                             $count = $count + $energy_usage7;
                             array_push($dataPoints, array($energy_usage7));
-                            array_push($dataLabels, array($month7));
+
+                            $dateObj   = DateTime::createFromFormat('!m', $month7);
+                            $monthName = $dateObj->format('F');
+                            array_push($dataLabels, array($monthName));
                         }
                         for($i = 0; $i < sizeof($dataPoints); $i++){
                             array_push($AvgPoints,money_format('%.3n',$count/$n));

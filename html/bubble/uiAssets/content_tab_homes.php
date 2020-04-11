@@ -382,6 +382,8 @@ function generateHomeTab()
                             <!--col 3-->
                             <div class="card col-lg">
                             
+                            </div>
+                            
                             <hr class="section-break">
                                     <h4 class="section-title overview">Power Usage</h4>
                                     
@@ -447,7 +449,7 @@ function generateHomeTab()
 
                                 </script>
                                 
-                                    </div>
+                             </div>
                             
                             <!--col 3-->
                             

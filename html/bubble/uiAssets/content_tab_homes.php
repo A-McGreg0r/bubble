@@ -154,10 +154,8 @@ function generateHomeTab()
                             $dateObj   = DateTime::createFromFormat('!m', $day8);
                             $dayName = $dateObj->format('D'); // March
 
-                            echo $dayName;
                             array_push($dataLabels, array($dayName));
 
-                            array_push($dataLabels, array($dayName));
                         }
                         for($i = 0; $i < sizeof($dataPoints); $i++){
                             array_push($AvgPoints,money_format('%.3n',$count/$n));

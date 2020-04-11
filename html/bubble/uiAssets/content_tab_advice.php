@@ -63,7 +63,7 @@ function generateAdviceTab()
                     } else if($temp < 14 && $temp >= 9) {
                         $weather_symbol = "<img class='weather_symbol' src='../img/cloud.png'>";
                         $bg = "#b7c2cc";
-                        $advice = "<table class='weather_table'><tr><td>It's a mild day!</td></tr><tr class='advice_point'><td>You should consider turning off all heaters to save energy.</td></tr><tr class='advice_point'><td>Turn off your light bulbs, open your curtains wide, and let the natural light in.</td></tr></table>";
+                        $advice = "<table class='weather_table'><tr><td>It's a mild day!</td></tr><tr class='advice_point'><td>You should consider keeping heaters on low to save energy.</td></tr><tr class='advice_point'><td>Turn off your light bulbs in rooms that have enough natural light</td></tr></table>";
                     } else if($temp < 9 && $temp >= 5) {
                         $weather_symbol = "<img class='weather_symbol' src='../img/dark_cloud.png'>";
                         $bg = "#bcbcbc";

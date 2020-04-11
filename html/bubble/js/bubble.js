@@ -1,4 +1,5 @@
 function propogate(id) {
+    event.preventDefault();
     event.stopPropagation();
     openModal(id);
 }
@@ -6,14 +7,11 @@ function propogate(id) {
 function openModal(id) {
     var modal = document.getElementById(id);
     if (modal && modal.style) {
-        if(modal.style.display == 'none'){
-            modal.style.display = 'block';
-            setTimeout(function () {
-                modal.style.maxHeight = '100%';
-            }, 1);
-        } else {
-            modal.style.display = 'none';
-        }
+        if (modal.style.display == "block") {
+            modal.style.display = "none";
+          } else {
+            modal.style.display = "block";
+          }
     }
 }
 

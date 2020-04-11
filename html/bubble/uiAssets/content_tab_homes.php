@@ -208,6 +208,7 @@ function generateHomeTab()
 
                     $html .= <<<html
                     <!-- Accordion card -->
+                    
                     <div class="card col-lg">
                     <!-- Card header -->
                         <div class="card-header" role="tab" id="heading$hub_id">
@@ -222,10 +223,12 @@ function generateHomeTab()
         
                         <!-- Card body -->
                         <div id="collapse$hub_id" class="collapse show" role="tabpanel" aria-labelledby="heading$hub_id" data-parent="#accordionEx194">
-                            <div class="card-body pt-0 justify-content-center " style="max-width:100%">
-                            <!--todo change 3 donuts to carousels-->
-                                <div class="flex-sm-row ">    
-
+                            <div class="card-body pt-0 justify-content-center ">
+                        <div class="container">   
+                             <!--coll 1-->
+                        <div class="row"
+                        </div>     
+                            <div class="col-lg-6">
                                 <h4 class="section-title">Overview</h4>
                                 <table class="stats-table">
                                     
@@ -254,11 +257,19 @@ function generateHomeTab()
                                         <td class="stats-right"><strong>£$cost_year_round&ensp;</strong></td>
                                     </tr>
                                 </table>
-                                <small class="form-text text-muted mb-4" style="text-align:center">Costing at £$energy_cost_round per kWh</small>
-                                <hr>
-                                
-                                
-                                <!--Carousel Container--> 
+                                <small class="form-text text-muted mb-4" style="text-align:center">Costing at £$energy_cost_round per kWh</small>                
+                            </div>
+                            
+                            <!--col 1-->
+                            
+                            
+                            <!--col 2-->
+                            <script>
+                            document.onload(myLineChart.update();)
+                            </script>
+                           
+                            <div class="card col-lg-6 border border-0">
+                            <!--Carousel Container--> 
                                 <h4 class="section-title">Expenditure</h4>
                                     <div id="chart-carousel" class="carousel slide" data-ride="carousel">
                                         <!--Donut carousel-->
@@ -266,7 +277,7 @@ function generateHomeTab()
                                         
                                             <!--Donut 1-->
                                                   <div class="carousel-item active">                           
-                                                        <div class="col border border-primary rounded m-2" style="max-width:100%">
+                                                        <div class="col" style="max-width:100%">
                                                             <h4 class="text-centre text-dark centre-text">Daily</h4>
                                                             
                                                             <canvas style="max-width:50% min-width:30%" id="heatingUsage"></canvas>
@@ -295,10 +306,9 @@ function generateHomeTab()
                                              
                                             <!--Donut 2-->             
                                                   <div class="carousel-item">
-                                                        <div class="col border border-primary cen rounded m-2" style="max-width:100%">
+                                                        <div class="col">
                                                         
                                                         <h4 class="text-centre text-dark centre-text">Monthly</h4>
-                                                    
                                                         <canvas style="max-width:50% min-width:30%" id="heatingUsage1"></canvas>
                                                         
                                                         <script>
@@ -326,7 +336,7 @@ function generateHomeTab()
                                             
                                             <!--Donut 3-->             
                                                   <div class="carousel-item">
-                                                        <div class="col border border-primary rounded m-2" style="max-width:100%">
+                                                        <div class="col" style="max-width:100%">
                                                             <h4 class="text-centre text-dark centre-text">Yearly</h4>
                                                             <canvas style="max-width:50% min-width:30%" id="heatingUsage2"></canvas>
                                                             <script>
@@ -372,11 +382,16 @@ function generateHomeTab()
                                          <small class="form-text text-muted mb-4" style="text-align:center">Budget of £$budget_round per Month</small>
                                     </div>
                                     <!--Carousel Container-->
+                            </div>
+                            <!--col 2-->
+                            
+                            
+                            <!--col 3-->
 
-                                    <hr class="section-break">
-                                    <h4 class="section-title overview">Power Usage</h4>
+                            <div class="col-lg">
+                            <h4 class="section-title overview">Power Usage</h4>
                                     
-                                    <div class="container border border-primary">
+                                    <div class="container">
                                           <!--change chart drop down-->
                                             <select id="chartPicker" class="browser-default custom-select dropdown">
                                                 <option selected="selected">Choose time period</option>
@@ -436,7 +451,24 @@ function generateHomeTab()
 
                                 </script>
                                 
-                                    </div>
+                             </div>
+                            </div>
+                            
+                            
+                                    
+                            
+                            <!--col 3-->
+                        </div>
+                           
+                            
+                            
+
+
+                                
+                                
+                                
+
+                                    
 
                                     
                                </div> 

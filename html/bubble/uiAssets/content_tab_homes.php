@@ -8,8 +8,8 @@ function generateHomeTab()
 
     if (isset($_SESSION['user_id'])) {
         $user_id = $_SESSION['user_id'];
-        session_write_close();
 
+        session_write_close();
         $stmt3 = $db->prepare("SELECT * FROM user_info WHERE user_id = ?");
         $stmt3->bind_param("i", $user_id);
         $stmt3->execute();
@@ -17,7 +17,7 @@ function generateHomeTab()
         if ($result3->num_rows === 1) {
             extract($result3->fetch_assoc());
         }
-        //todo is this needed?
+
         $stmt = $db->prepare("SELECT * FROM hub_users WHERE user_id = ?");
         $stmt->bind_param("i", $user_id);
         $stmt->execute();
@@ -37,18 +37,31 @@ function generateHomeTab()
                         $hub_name = "My Home";
                     }
 
+                    $stmt2 = $db->prepare("SELECT * FROM test_data WHERE hub_id = ?");
+                    $stmt2->bind_param("i", $hub_id);
+                    $stmt2->execute();
+                    $result2 = $stmt2->get_result();
+
+                    if ($result2->num_rows === 1) {
+                        $row2 = $result2->fetch_assoc();
+                        $cost_day = $row2['cost_day'];
+                        $cost_month = $row2['cost_month'];
+                        $cost_total = $row2['cost_total'];
+                        $cost_variance = $cost_total - $cost_month;
+                    }
+
+                    $day = date("d");
                     $energy_last_day = 0;
+
                     $stmt4 = $db->prepare("SELECT * FROM hourly_data WHERE hub_id = ? AND entry_day = ?");
                     $stmt4->bind_param("ii", $hub_id, $day);
                     $stmt4->execute();
                     $result4 = $stmt4->get_result();
                     if ($result4->num_rows >= 1) {
                         $all4 = $result4->fetch_all(MYSQLI_ASSOC);
-
                         foreach($all4 as $row4){
                             $energy_last_day = $energy_last_day + $row4['energy_usage'];
                         }
-
                     }
 
                     $energy_last_day = $energy_last_day / 1000;
@@ -69,11 +82,6 @@ function generateHomeTab()
 
                     $energy_last_month = $energy_last_month / 1000;
 
-                    $dataPoints = array();
-                    $dataPoints = array();
-                    $AvgPoints = array();
-                    $dataLabels = array();
-
                     $energy_last_year = 0;
 
                     $stmt6 = $db->prepare("SELECT * FROM monthly_data WHERE hub_id = ?");
@@ -81,16 +89,31 @@ function generateHomeTab()
                     $stmt6->execute();
                     $result6 = $stmt6->get_result();
                     if ($result6->num_rows >= 1) {
-                        $count=0;
-                        $n = 0;
                         $all6 = $result6->fetch_all(MYSQLI_ASSOC);
-
                         foreach($all6 as $row6){
                             $energy_last_year = $energy_last_year + $row6['energy_usage'];
+                        }
+                    }
 
+                    $energy_last_year = $energy_last_year / 1000;
+
+                    //todo add querrys for pulling power usage
+                    $dataPoints = array();
+                    $dataPoints = array();
+                    $AvgPoints = array();
+                    $dataLabels = array();
+                    $count = 0;
+
+                    $stmt7 = $db->prepare("SELECT * FROM monthly_data");
+                    $stmt7->execute();
+                    $result7 = $stmt7->get_result();
+                    if ($result7->num_rows >= 1) {
+                        $n = 0;
+                        $all7 = $result7->fetch_all(MYSQLI_ASSOC);
+                        foreach($all7 as $row7){
                             $n = $n + 1;
-                            $energy_usage7 = $row6['energy_usage']/1000;
-                            $month7 = $row6['entry_month'];
+                            $energy_usage7 = $row7['energy_usage']/1000;
+                            $month7 = $row7['entry_month'];
                             $count = $count + $energy_usage7;
                             array_push($dataPoints, array($energy_usage7));
                             array_push($dataLabels, array($month7));
@@ -99,9 +122,7 @@ function generateHomeTab()
                             array_push($AvgPoints,money_format('%.3n',$count/$n));
                         }
                     }
-                    $energy_last_year = $energy_last_year / 1000;
-                    $cost_year = $energy_last_year * $energy_cost;//bug?
-
+                    $cost_year = $energy_last_year * $energy_cost;
                     $cost_year_round = number_format($cost_year,2);
                     $DataLabelsYearEncoded = json_encode($dataLabels);
                     $dataPointsYearEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
@@ -134,7 +155,7 @@ function generateHomeTab()
                     }
                     $cost_month = $energy_last_month * $energy_cost;
                     $cost_month_round = number_format($cost_month,2);
-
+                    $DataSumMonthEncoded = json_encode(array_sum($dataPoints), JSON_NUMERIC_CHECK);
                     $DataLabelsMonthEncoded = json_encode($dataLabels);
                     $dataPointsMonthEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
                     $dataAvgMonthEncoded = json_encode($AvgPoints, JSON_NUMERIC_CHECK);
@@ -272,12 +293,12 @@ function generateHomeTab()
                                                                 datasets: [{
                                                                 data: [$cost_day_round, $budget_day_remaining_round],
                                                                 backgroundColor: ["rgb(226, 183, 28)", "rgb(56,56,56)"],
-                                                                hoverBackgroundColor: ["rgb(246, 203, 48)", "rgb(76,76,76)"],
-                                                                pointHitRadius: [10]
+                                                                hoverBackgroundColor: ["rgb(246, 203, 48)", "rgb(76,76,76)"]
                                                                 }]
                                                                 },
                                                                 options: {
-                                                                responsive:true
+                                                                responsive: [true],
+                                                                
                                                                 }
                                                                 });
                                                             </script>

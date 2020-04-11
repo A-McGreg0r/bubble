@@ -1,3 +1,37 @@
+function openModal(id) {
+    var modal = document.getElementById(id);
+    if (modal && modal.style) {
+        if(modal.style.display == 'none'){
+            modal.style.display = 'block';
+            setTimeout(function () {
+                modal.style.maxHeight = '100%';
+            }, 1);
+        } else {
+            modal.style.display = 'none';
+        }
+    }
+    event.stopPropagation();
+}
+
+function startTimer(id, hour_value, minute_value) {
+    var hour = $('#' + hour_value).val();
+    var minute = $('#' + minute_value).val();
+
+    let url = "required/action_timer.php";
+    
+    $.ajax({
+        type:'POST',
+        url: url,
+        data:{ device_id: id, hour: hour, minute: minute},
+        success:function(){
+            $('#profile-attr').load(document.URL + ' #profile-attr');
+            $('#messages-attr').load(document.URL + ' #messages-attr');
+        },
+        error: function(data){
+            alert("error!");
+        }
+    });
+}
 
 function toggleRoom(hub_id, room_id){
     let url = "required/action_device.php";

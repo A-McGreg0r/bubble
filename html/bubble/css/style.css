@@ -26,14 +26,14 @@ a:hover, .nav-link.active {
 .btn-outline-info {
     transition: 0.25s ease;
     color: rgb(0, 0, 0)!important;
-    border: 2px solid rgb(56, 56, 56)!important;
+    border: 2px solid rgb(56,56,56)!important;
     font-weight: 900;
 }
 
 .btn-outline-info:hover {
     color: rgb(0, 0, 0)!important;
     background-color: rgb(226, 183, 28)!important;
-    border: 2px solid rgb(56, 56, 56)!important;
+    border: 2px solid rgb(56,56,56)!important;
     transition: 0.25s ease;
     transform: scale(1.05);
     -webkit-transform: scale(1.05);
@@ -141,8 +141,8 @@ ul {
     border: none!important;
 }
 
-.grey-out, .grey-out-rooms, .card-header{
-    background-color: rgb(56,56,56);
+.grey-out, .grey-out-rooms {
+    background-color: rgb(110,110,110);
     color: rgb(227, 184, 28)!important;
     margin-bottom: 5px!important;
 }
@@ -152,8 +152,13 @@ ul {
 }
 
 .grey-out-rooms:nth-of-type(odd), .grey-out-account:nth-of-type(odd), .card-header{
-    background-color: rgb(56,56,56);
+    background-color: rgb(110,110,110);
     color: rgb(227, 184, 28);
+}
+
+.card-header {
+    background-color: rgb(56,56,56);
+    padding-bottom: 15px;
 }
 
 
@@ -418,7 +423,7 @@ select {
 }
 
 .my-4 {
-    border: 2px solid rgb(56, 56, 56)!important;
+    border: 2px solid rgb(56,56,56)!important;
 }
 
 .login-links {
@@ -426,4 +431,92 @@ select {
     padding-bottom: 0.5rem!important;
     padding-left: none!important;
     padding-right: none!important;
+}
+
+.modalTimer {
+    display: none;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-height: 0;
+    margin-top: 10px;
+    margin-bottom: -10px;
+    transition: max-height 10s ease;
+}
+
+.modalContent {
+    z-index: 1;
+    transition: all 1s linear;
+    border: 2px solid rgb(0,0,0);
+    text-align: center;
+    background-color: rgb(110,110,110);
+    color: rgb(0,0,0);
+    max-height: 90%;
+    width: 90%;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    padding: 1%;
+    line-height: 22px;
+    overflow-y: scroll;
+    align-items: center;
+    justify-content: center;
+    padding-left: 15px;
+}
+
+.modalHeader {
+    font-weight: 900;
+}
+
+.timerModal {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: -15px;
+}
+
+.timerBtn {
+    display: inline-block;
+    width: 80%;
+}
+
+.timer_icon {
+    z-index: 10;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    display: none;
+    text-align: center;
+    align-items: center;
+    vertical-align: middle;
+    font-size: 30px;
+    background-color: #ffffff;
+    width: 35px;
+    height: 35px;
+    padding: 2.5px;
+    border-radius: 30px;
+}
+
+.shiftSub {
+    margin-top: 5px;
+}
+
+@media (min-width: 576px) {
+    .modalContent {
+        width: 90%;
+    }
+}
+
+@media (min-width: 768px) {
+    .modalContent {
+        width: 90%;
+    }
+}
+
+@media (min-width: 992px) {
+    .modalContent {
+        width: 80%;
+    }
 }

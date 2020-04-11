@@ -224,9 +224,166 @@ function generateHomeTab()
                         <!-- Card body -->
                         <div id="collapse$hub_id" class="collapse show" role="tabpanel" aria-labelledby="heading$hub_id" data-parent="#accordionEx194">
                             <div class="card-body pt-0 justify-content-center ">
+                        <div class="container">   
+                             <!--coll 1-->
+                        <div class="row"
+                        </div>     
+                            <div class="col-lg-6">
+                                <h4 class="section-title">Overview</h4>
+                                <table class="stats-table">
+                                    
+                                    <tr class="stats-row">
+                                        <td class="stats-left"><strong>&ensp;Daily Usage:</strong></td>
+                                        <td class="stats-right">$energy_last_day kWh&ensp;</td>
+                                    </tr>
+                                    <tr class="stats-row">
+                                        <td class="stats-left"><strong>&ensp;Cost:</strong></td>
+                                        <td class="stats-right"><strong>£$cost_day_round&ensp;</strong></td>
+                                    </tr>
+                                    <tr class="stats-row">
+                                        <td class="stats-left"><strong>&ensp;Monthly Usage:&ensp;&ensp;</strong></td>
+                                        <td class="stats-right">$energy_last_month kWh&ensp;</td>
+                                    </tr>
+                                    <tr class="stats-row">
+                                        <td class="stats-left"><strong>&ensp;Cost:</br>&ensp;Remaining Budget:</strong></td>
+                                        <td class="stats-right double-stat"><strong>£$cost_month_round&ensp;</br>£$budget_remaining_round&ensp;</strong></td>
+                                    </tr>
+                                    <tr class="stats-row">
+                                        <td class="stats-left"><strong>&ensp;Annual Usage:</strong></td>
+                                        <td class="stats-right">$energy_last_year kWh&ensp;</td>
+                                    </tr>
+                                    <tr class="stats-row">
+                                        <td class="stats-left"><strong>&ensp;Cost:</strong></td>
+                                        <td class="stats-right"><strong>£$cost_year_round&ensp;</strong></td>
+                                    </tr>
+                                </table>
+                                <small class="form-text text-muted mb-4" style="text-align:center">Costing at £$energy_cost_round per kWh</small>                
+                            </div>
                             
-                        <div class="container"> 
-                          
+                            <!--col 1-->
+                            
+                            
+                            <!--col 2-->
+                            <div class="card col-lg-6">
+                            <!--Carousel Container--> 
+                                <h4 class="section-title">Expenditure</h4>
+                                    <div id="chart-carousel" class="carousel slide" data-ride="carousel">
+                                        <!--Donut carousel-->
+                                        <div class="carousel-inner">
+                                        
+                                            <!--Donut 1-->
+                                                  <div class="carousel-item active">                           
+                                                        <div class="col border border-primary rounded m-2" style="max-width:100%">
+                                                            <h4 class="text-centre text-dark centre-text">Daily</h4>
+                                                            
+                                                            <canvas style="max-width:50% min-width:30%" id="heatingUsage"></canvas>
+                                                            
+                                                            <script>
+                                                                //doughnut
+                                                                var ctxD = document.getElementById("heatingUsage").getContext("2d");
+                                                                var myLineChart = new Chart(ctxD, {
+                                                                type: "doughnut",
+                                                                data: {
+                                                                labels: ["Spent [£]", "Remaining [£]"],
+                                                                datasets: [{
+                                                                data: [$cost_day_round, $budget_day_remaining_round],
+                                                                backgroundColor: ["rgb(226, 183, 28)", "rgb(56,56,56)"],
+                                                                hoverBackgroundColor: ["rgb(246, 203, 48)", "rgb(76,76,76)"]
+                                                                }]
+                                                                },
+                                                                options: {
+                                                                responsive: true
+                                                                }
+                                                                });
+                                                            </script>
+                                                        </div>
+                                                  </div>      
+                                            <!--Donut 1-->                                                    
+                                             
+                                            <!--Donut 2-->             
+                                                  <div class="carousel-item">
+                                                        <div class="col border border-primary cen rounded m-2" style="max-width:100%">
+                                                        
+                                                        <h4 class="text-centre text-dark centre-text">Monthly</h4>
+                                                    
+                                                        <canvas style="max-width:50% min-width:30%" id="heatingUsage1"></canvas>
+                                                        
+                                                        <script>
+                                                            //doughnut
+                                                            var ctxD = document.getElementById("heatingUsage1").getContext("2d");
+                                                            var myLineChart = new Chart(ctxD, {
+                                                            type: "doughnut",
+                                                            data: {
+                                                            labels: ["Spent [£]", "Remaining [£]"],
+                                                            datasets: [{
+                                                            data: [$cost_month_round, $budget_remaining_round],
+                                                            backgroundColor: ["rgb(226, 183, 28)", "rgb(56,56,56)"],
+                                                            hoverBackgroundColor: ["rgb(246, 203, 48)", "rgb(76,76,76)"]
+                                                            }]
+                                                            },
+                                                            options: {
+                                                            responsive: true
+                                                            }
+                                                            });
+                                                        </script>
+                                                    </div>
+                                                    
+                                                  </div>
+                                            <!--Donut 2-->    
+                                            
+                                            <!--Donut 3-->             
+                                                  <div class="carousel-item">
+                                                        <div class="col border border-primary rounded m-2" style="max-width:100%">
+                                                            <h4 class="text-centre text-dark centre-text">Yearly</h4>
+                                                            <canvas style="max-width:50% min-width:30%" id="heatingUsage2"></canvas>
+                                                            <script>
+                                                                //doughnut
+                                                                var ctxD = document.getElementById("heatingUsage2").getContext("2d");
+                                                                var myLineChart = new Chart(ctxD, {
+                                                                type: "doughnut",
+                                                                data: {
+                                                                labels: ["Spent [£]", "Budget [£]"],
+                                                                datasets: [{
+                                                                data: [$cost_year_round, $budget_year_remaining_round],
+                                                                backgroundColor: ["rgb(226, 183, 28)", "rgb(56,56,56)"],
+                                                                hoverBackgroundColor: ["rgb(246, 203, 48)", "rgb(76,76,76)"]
+                                                                }]
+                                                                },
+                                                                options: {
+                                                                responsive: true
+                                                                }
+                                                                });
+                                                            </script>
+                                                        </div>
+                                                  </div>
+                                            <!--Donut 3-->  
+                                            <!--button for Donut carousel -->
+                                              <a class="carousel-control-prev" href="#chart-carousel" role="button" data-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                              </a>
+                                              <a class="carousel-control-next" href="#chart-carousel" role="button" data-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                              </a>  
+                                                       
+                                        </div>
+                                        <!--Donut carousel-->
+                                        <script>
+                                             //enabling touch controls
+                                                $('.carousel').carousel({
+                                                touch: true // default
+                                                });
+                                         </script>
+
+                                         <small class="form-text text-muted mb-4" style="text-align:center">Budget of £$budget_round per Month</small>
+                                    </div>
+                                    <!--Carousel Container-->
+                            </div>
+                            <!--col 2-->
+                            
+                            
+                            <!--col 3-->
 
                             <div class="col-lg">
                             

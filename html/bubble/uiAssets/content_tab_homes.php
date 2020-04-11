@@ -273,7 +273,7 @@ function generateHomeTab()
                                         
                                             <!--Donut 1-->
                                                   <div class="carousel-item active">                           
-                                                        <div class="col border border-primary rounded m-2" style="max-width:100%">
+                                                        <div class="col rounded m-2" style="max-width:100%">
                                                             <h4 class="text-centre text-dark centre-text">Daily</h4>
                                                             
                                                             <canvas style="max-width:50% min-width:30%" id="heatingUsage"></canvas>

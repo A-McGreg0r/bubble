@@ -271,8 +271,9 @@ table td {
 }
 
 hr {
-    width: 120%;
-    margin-left: -1rem!important;
+    width: 200%;
+    margin-left: -10rem!important;
+    margin-right: -10rem!important;
     border: 0.5px solid rgb(0,0,0);
 }
 
@@ -507,17 +508,29 @@ select {
     .modalContent {
         width: 90%;
     }
+
+    #separater1, #separater2 {
+        display: block;
+    }
 }
 
 @media (min-width: 768px) {
     .modalContent {
         width: 90%;
     }
+
+    #separater1, #separater2 {
+        display: block;
+    }
 }
 
 @media (min-width: 992px) {
     .modalContent {
         width: 80%;
+    }
+
+    #separater1, #separater2 {
+        display: none;
     }
 }
 

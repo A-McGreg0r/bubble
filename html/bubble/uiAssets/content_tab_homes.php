@@ -262,6 +262,7 @@ function generateHomeTab()
                             
                             <!--col 1-->
                             
+                            <hr id="separater1">
                             
                             <!--col 2-->
                             <script>
@@ -385,7 +386,8 @@ function generateHomeTab()
                             </div>
                             <!--col 2-->
                             
-                            
+                            <hr id="separater2">
+
                             <!--col 3-->
 
                             <div class="col-lg">

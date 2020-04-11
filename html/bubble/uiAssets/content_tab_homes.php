@@ -258,11 +258,12 @@ function generateHomeTab()
                                 <small class="form-text text-muted mb-4" style="text-align:center">Costing at £$energy_cost_round per kWh</small>
                                 <hr>
                             </div>
+                            
                             <!--col 1-->
                             
                             
                             <!--col 2-->
-                            <div class="card col-lg">
+                            <div class="card col-lg-6">
                             <!--Carousel Container--> 
                                 <h4 class="section-title">Expenditure</h4>
                                     <div id="chart-carousel" class="carousel slide" data-ride="carousel">

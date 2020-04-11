@@ -208,6 +208,7 @@ function generateHomeTab()
 
                     $html .= <<<html
                     <!-- Accordion card -->
+                    <!--col 1-->
                     <div class="card col-lg">
                     <!-- Card header -->
                         <div class="card-header" role="tab" id="heading$hub_id">
@@ -255,12 +256,12 @@ function generateHomeTab()
                                 <small class="form-text text-muted mb-4" style="text-align:center">Costing at £$energy_cost_round per kWh</small>
                                 <hr>
                             </div>
-                                <div class="flex-sm-row ">    
-
-
-                                
-                                
-                                <!--Carousel Container--> 
+                            <!--col 1-->
+                            
+                            
+                            <!--col 2-->
+                            
+                            <!--Carousel Container--> 
                                 <h4 class="section-title">Expenditure</h4>
                                     <div id="chart-carousel" class="carousel slide" data-ride="carousel">
                                         <!--Donut carousel-->
@@ -374,6 +375,16 @@ function generateHomeTab()
                                          <small class="form-text text-muted mb-4" style="text-align:center">Budget of £$budget_round per Month</small>
                                     </div>
                                     <!--Carousel Container-->
+                            
+                            <!--col 2-->
+                            
+                            
+                                <div class="flex-sm-row ">    
+
+
+                                
+                                
+                                
 
                                     <hr class="section-break">
                                     <h4 class="section-title overview">Power Usage</h4>

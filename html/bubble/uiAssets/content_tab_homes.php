@@ -264,6 +264,10 @@ function generateHomeTab()
                             
                             
                             <!--col 2-->
+                            <script>
+                            document.onload(myLineChart.update();)
+                            </script>
+                           
                             <div class="card col-lg-6">
                             <!--Carousel Container--> 
                                 <h4 class="section-title">Expenditure</h4>
@@ -302,10 +306,9 @@ function generateHomeTab()
                                              
                                             <!--Donut 2-->             
                                                   <div class="carousel-item">
-                                                        <div class="col" style="max-width:100%">
+                                                        <div class="col">
                                                         
                                                         <h4 class="text-centre text-dark centre-text">Monthly</h4>
-                                                    
                                                         <canvas style="max-width:50% min-width:30%" id="heatingUsage1"></canvas>
                                                         
                                                         <script>

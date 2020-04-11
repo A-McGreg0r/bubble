@@ -36,10 +36,6 @@ function generateHomeTab()
                     if (empty($hub_name)) {
                         $hub_name = "My Home";
                     }
-
-
-
-                    $day = date("d");
                     $energy_last_day = 0;
 
                     $stmt4 = $db->prepare("SELECT * FROM hourly_data WHERE hub_id = ? AND entry_day = ?");
@@ -136,7 +132,7 @@ function generateHomeTab()
                     }
                     $cost_month = $energy_last_month * $energy_cost;
                     $cost_month_round = number_format($cost_month,2);
-                    $DataSumMonthEncoded = json_encode(array_sum($dataPoints), JSON_NUMERIC_CHECK);
+
                     $DataLabelsMonthEncoded = json_encode($dataLabels);
                     $dataPointsMonthEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
                     $dataAvgMonthEncoded = json_encode($AvgPoints, JSON_NUMERIC_CHECK);

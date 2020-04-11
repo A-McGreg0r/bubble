@@ -379,14 +379,9 @@ function generateHomeTab()
                             <!--col 2-->
                             
                             
-                                <div class="flex-sm-row ">    
-
-
-                                
-                                
-                                
-
-                                    <hr class="section-break">
+                            <!--col 3-->
+                            
+                            <hr class="section-break">
                                     <h4 class="section-title overview">Power Usage</h4>
                                     
                                     <div class="container border border-primary">
@@ -452,6 +447,17 @@ function generateHomeTab()
                                 </script>
                                 
                                     </div>
+                            
+                            <!--col 3-->
+                            
+                            
+
+
+                                
+                                
+                                
+
+                                    
 
                                     
                                </div> 

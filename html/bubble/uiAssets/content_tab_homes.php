@@ -383,11 +383,12 @@ function generateHomeTab()
                             
                             
                             <!--col 3-->
+                            <hr class="section-break">
                             <div class="card col-lg">
                             
                             </div>
                             
-                            <hr class="section-break">
+                            
                                     <h4 class="section-title overview">Power Usage</h4>
                                     
                                     <div class="container border border-primary">

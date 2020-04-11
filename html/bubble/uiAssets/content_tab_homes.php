@@ -260,7 +260,7 @@ function generateHomeTab()
                             
                             
                             <!--col 2-->
-                            
+                            <div class="card col-lg">
                             <!--Carousel Container--> 
                                 <h4 class="section-title">Expenditure</h4>
                                     <div id="chart-carousel" class="carousel slide" data-ride="carousel">
@@ -375,11 +375,12 @@ function generateHomeTab()
                                          <small class="form-text text-muted mb-4" style="text-align:center">Budget of £$budget_round per Month</small>
                                     </div>
                                     <!--Carousel Container-->
-                            
+                            </div>
                             <!--col 2-->
                             
                             
                             <!--col 3-->
+                            <div class="card col-lg">
                             
                             <hr class="section-break">
                                     <h4 class="section-title overview">Power Usage</h4>
@@ -447,7 +448,7 @@ function generateHomeTab()
                                 </script>
                                 
                                     </div>
-                            
+                            </div>
                             <!--col 3-->
                             
                             

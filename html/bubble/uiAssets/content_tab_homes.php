@@ -255,8 +255,7 @@ function generateHomeTab()
                                         <td class="stats-right"><strong>£$cost_year_round&ensp;</strong></td>
                                     </tr>
                                 </table>
-                                <small class="form-text text-muted mb-4" style="text-align:center">Costing at £$energy_cost_round per kWh</small>
-                                <hr>
+                                <small class="form-text text-muted mb-4" style="text-align:center">Costing at £$energy_cost_round per kWh</small>                
                             </div>
                             
                             <!--col 1-->
@@ -383,7 +382,7 @@ function generateHomeTab()
                             
                             
                             <!--col 3-->
-                            <hr class="section-break">
+
                             <div class="col-lg">
                             
                             </div>

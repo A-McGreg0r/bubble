@@ -226,7 +226,9 @@ function generateHomeTab()
                             <div class="card-body pt-0 justify-content-center ">
                         <div class="container">   
                              <!--coll 1-->
-                            <div class="col-lg-6">
+                        <div class="row"
+                        
+                        <div class="col-lg-6">
                                 <h4 class="section-title">Overview</h4>
                                 <table class="stats-table">
                                     
@@ -379,6 +381,8 @@ function generateHomeTab()
                                     <!--Carousel Container-->
                             </div>
                             <!--col 2-->
+                        </div>     
+                            
                             
                             
                             <!--col 3-->

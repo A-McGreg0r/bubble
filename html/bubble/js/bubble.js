@@ -88,8 +88,7 @@ $(window).on("load", function(){
             document.getElementById('home-tab-attr').classList.add("active");
         }
     });
-
-    var swipe_room = document.getElementById('room-encompass');
+    var swipe_room = document.getElementById('profile-attr');
     swipedetect(swipe_room, function(swipedir){
         // swipedir contains either "none", "left", "right", "top", or "down"
         if (swipedir =='left') {
@@ -106,7 +105,8 @@ $(window).on("load", function(){
         }
     });
 
-    var swipe_device = document.getElementById('device-encompass');
+    
+    var swipe_device = document.getElementById('messages-attr');
     swipedetect(swipe_device, function(swipedir){
         // swipedir contains either "none", "left", "right", "top", or "down"
         if (swipedir =='right') {
@@ -117,8 +117,6 @@ $(window).on("load", function(){
         }
     });
 });
-
-
 
 function openModal(id) {
     var modal = document.getElementById(id);
@@ -142,8 +140,8 @@ function startTimer(id, hour_value, minute_value) {
         url: url,
         data:{ device_id: id, hour: hour, minute: minute},
         success:function(){
-            $('#profile-attr').load(document.URL + ' #profile-attr');
-            $('#messages-attr').load(document.URL + ' #messages-attr');
+            $('#room-encompass').load(document.URL + ' #room-encompass');
+            $('#device-encompass').load(document.URL + ' #device-encompass');
         },
         error: function(data){
             alert("error!");

@@ -1,8 +1,54 @@
 function propogate(id) {
-    event.preventDefault();
     event.stopPropagation();
     openModal(id);
 }
+
+$( document ).on( "mobileinit", function() {
+    $.mobile.loader.prototype.options.disabled = true;
+    $.mobile.loadingMessage = false;
+    $.mobile.loading().hide();
+});
+
+$(window).on("load", function(){
+    $("#accordionEx194").on("swipeleft",function(){
+        document.getElementById('home-attr').classList.remove("active");
+        document.getElementById('advice-attr').classList.add("active");
+        document.getElementById('home-tab-attr').classList.remove("active");
+        document.getElementById('advice-tab-attr').classList.add("active");
+    });
+    $("#advice-encompass").on("swipeleft",function(){
+        document.getElementById('advice-attr').classList.remove("active");
+        document.getElementById('profile-attr').classList.add("active");
+        document.getElementById('advice-tab-attr').classList.remove("active");
+        document.getElementById('profile-tab-attr').classList.add("active");
+    });
+    $("#advice-encompass").on("swiperight",function(){
+        document.getElementById('advice-attr').classList.remove("active");
+        document.getElementById('home-attr').classList.add("active");
+        document.getElementById('advice-tab-attr').classList.remove("active");
+        document.getElementById('home-tab-attr').classList.add("active");
+    });
+    $("#room-encompass").on("swipeleft",function(){
+        document.getElementById('profile-attr').classList.remove("active");
+        document.getElementById('messages-attr').classList.add("active");
+        document.getElementById('profile-tab-attr').classList.remove("active");
+        document.getElementById('messages-tab-attr').classList.add("active");
+    });
+    $("#room-encompass").on("swiperight",function(){
+        document.getElementById('profile-attr').classList.remove("active");
+        document.getElementById('advice-attr').classList.add("active");
+        document.getElementById('profile-tab-attr').classList.remove("active");
+        document.getElementById('advice-tab-attr').classList.add("active");
+    });
+    $("#device-encompass").on("swiperight",function(){
+        document.getElementById('messages-attr').classList.remove("active");
+        document.getElementById('profile-attr').classList.add("active");
+        document.getElementById('messages-tab-attr').classList.remove("active");
+        document.getElementById('profile-tab-attr').classList.add("active");
+    });
+});
+
+
 
 function openModal(id) {
     var modal = document.getElementById(id);
@@ -97,7 +143,6 @@ function scaleDevice(hub_id, device_id, scale) {
         }
     });
 }
-
 
 function submitImage(){
     var url = "required/action_adddevice.php";

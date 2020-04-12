@@ -4,8 +4,9 @@ include_once dirname(__DIR__).'/required/config.php';
 
 function generateRoomTab(){
     global $db;
+    $html = '<div id="room-encompass">';
     //ADD NEW ROOM CARD, GENERATE ALWAYS AT TOP!
-    $html = <<<html
+    $html .= <<<html
         <a href="index.php?action=addroom">
             <div class="card mb-4 container">
                 <!--Card image-->
@@ -115,6 +116,7 @@ html;
     } else{
         exit("Error, user is not logged in!");
     }
+    $html .= "</div>";
     return $html;
 
 }

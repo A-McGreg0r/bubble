@@ -5,8 +5,9 @@ include_once dirname(__DIR__).'/required/config.php';
 function generateDeviceTab(){
     global $db;
     //ADD NEW DEVICE CARD, GENERATE ALWAYS AT TOP!
+    $html = $html = '<div id="device-encompass">';
 
-    $html = <<<html
+    $html .= <<<html
         <a href="index.php?action=adddevice">
             <div class="card mb-4 container">
                 <!--Card image-->
@@ -266,6 +267,7 @@ html;
     } else{
         exit("Error, user is not logged in!");
     }
+    $html .= "</div>";
     return $html;
 }
 

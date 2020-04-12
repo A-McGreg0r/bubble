@@ -262,7 +262,7 @@ function generateHomeTab()
                             
                             <!--col 1-->
                             
-                            <hr id="separater1">
+                            <hr id="separator1">
                             
                             <!--col 2-->
                             <script>

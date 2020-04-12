@@ -472,7 +472,7 @@ html;
             }
         }
 
-        $stmt1->close();
+        $stmt0->close();
     }
 
     $html .= "</div>";

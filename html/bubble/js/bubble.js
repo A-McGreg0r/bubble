@@ -58,16 +58,34 @@ $( document ).on( "mobileinit", function() {
 
 $(window).on("load", function(){
 
-    var swipe_home = document.getElementById('accordionEx194');
-    swipedetect(swipe_home, function(swipedir){
-        // swipedir contains either "none", "left", "right", "top", or "down"
-        if (swipedir =='left') {
-            document.getElementById('home-attr').classList.remove("active");
-            document.getElementById('advice-attr').classList.add("active");
-            document.getElementById('home-tab-attr').classList.remove("active");
-            document.getElementById('advice-tab-attr').classList.add("active");
+
+    var childs = document.getElementById( "accordionEx194" ).children;
+
+    for(var i = 0; childs[i]; i++){
+        if(childs[i].classList.contains("carousel")) {
+            continue;
+        } else {
+            swipedetect(childs[i], function(swipedir){
+                // swipedir contains either "none", "left", "right", "top", or "down"
+                if (swipedir =='left') {
+                    document.getElementById('home-attr').classList.remove("active");
+                    document.getElementById('advice-attr').classList.add("active");
+                    document.getElementById('home-tab-attr').classList.remove("active");
+                    document.getElementById('advice-tab-attr').classList.add("active");
+                }
+            });
         }
-    });
+    }
+    // var swipe_home = document.getElementById('accordionEx194');
+    // swipedetect(swipe_home, function(swipedir){
+    //     // swipedir contains either "none", "left", "right", "top", or "down"
+    //     if (swipedir =='left') {
+    //         document.getElementById('home-attr').classList.remove("active");
+    //         document.getElementById('advice-attr').classList.add("active");
+    //         document.getElementById('home-tab-attr').classList.remove("active");
+    //         document.getElementById('advice-tab-attr').classList.add("active");
+    //     }
+    // });
 
     var swipe_advice = document.getElementById('advice-encompass');
     swipedetect(swipe_advice, function(swipedir){

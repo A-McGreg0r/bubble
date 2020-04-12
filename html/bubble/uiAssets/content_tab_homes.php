@@ -272,7 +272,7 @@ function generateHomeTab()
                             <div class="card col-lg-6 border border-0 expenditure">
                             <!--Carousel Container--> 
                                 <h4 class="section-title expenditure">Expenditure</h4>
-                                    <div id="chart-carousel" class="carousel slide expenditure" data-ride="carousel" style="border:1px solid red">
+                                    <div id="chart-carousel" class="carousel slide expenditure" data-ride="carousel">
                                         <!--Donut carousel-->
                                         <div class="carousel-inner expenditure">
                                         

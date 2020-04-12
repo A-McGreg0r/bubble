@@ -368,7 +368,7 @@ function generateHomeTab()
                                                 });
                                          </script>
 
-                                         <small class="form-text text-muted mb-4" style="text-align:center expenditure">Budget of £$budget_round per Month</small>
+                                         <small class="form-text text-muted mb-4 text-center">Budget of £$budget_round per Month</small>
                                     </div>
                                     <!--Carousel Container-->
                             </div>

@@ -551,6 +551,12 @@ select {
     margin-top: -10px;
 }
 
+.weather_symbol_small {
+    margin-bottom: 6.5px;
+    width: 70px;
+    margin-top: 6.5px;
+}
+
 .weather_advice {
     font-family: Roboto,sans-serif;
     margin-bottom: 20px;
@@ -587,10 +593,7 @@ select {
     font-weight: 400!important;
 }
 
-.ui-loader {
-    display: none!important;
-}
-
-#home-attr, #accordionEx194, #advice-attr, #advice-encompass, #profile-attr, #messages-attr {
-    touch-action: manipulation;
+.weather_analysis {
+    font-weight: 900!important;
+    font-size: 18px!important;
 }

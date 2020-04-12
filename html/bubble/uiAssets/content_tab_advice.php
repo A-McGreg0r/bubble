@@ -53,11 +53,11 @@ function generateAdviceTab()
                     $weather_symbol = '';
 
                     if($temp >= 18) {
-                        $weather_symbol = "<img class='weather_symbol' src='../img/sun.png'>";
+                        $weather_symbol = "<img class='weather_symbol_small' src='../img/sun.png'>";
                         $bg = "#5fb0ff";
                         $advice = "<table class='weather_table'>
                                     <tr>
-                                        <td>It's a nice, hot day!</td>
+                                        <th class='weather_analysis'>It's a nice, hot day!</th>
                                     </tr>
                                     <tr class='advice_point'>
                                         <td>You should consider turning off all heaters to save energy</td>
@@ -82,7 +82,7 @@ function generateAdviceTab()
                         $bg = "#9ec7ee";
                         $advice = "<table class='weather_table'>
                                     <tr>
-                                        <td>It's a warm day!</td>
+                                        <th class='weather_analysis'>It's a warm day!</th>
                                     </tr>
                                     <tr class='advice_point'>
                                         <td>You should consider turning off all heaters to save energy</td>
@@ -103,7 +103,7 @@ function generateAdviceTab()
                         $bg = "#b7c2cc";
                         $advice = "<table class='weather_table'>
                                     <tr>
-                                        <td>It's a mild day!</td>
+                                        <th class='weather_analysis'>It's a mild day!</th>
                                     </tr>
                                     <tr class='advice_point'>
                                         <td>You should consider keeping heaters on low to save energy</td>
@@ -122,7 +122,7 @@ function generateAdviceTab()
                         $bg = "#bcbcbc";
                         $advice = "<table class='weather_table'>
                                     <tr>
-                                        <td>It's a chilly day!</td>
+                                        <th class='weather_analysis'>It's a chilly day!</th>
                                     </tr>
                                     <tr class='advice_point'>
                                         <td>You should consider turning off all air conditioners to save energy</td>
@@ -141,7 +141,7 @@ function generateAdviceTab()
                         $bg = "rgb(100, 100, 100)";
                         $advice = "<table class='weather_table'>
                                     <tr>
-                                        <td>It's a very cold day!</td>
+                                        <th class='weather_analysis'>It's a very cold day!</th>
                                     </tr>
                                     <tr class='advice_point'>
                                         <td>You should consider turning off all air conditioners to save energy</td>

@@ -1,3 +1,50 @@
+function swipedetect(el, callback){
+  
+    var touchsurface = el,
+    swipedir,
+    startX,
+    startY,
+    distX,
+    distY,
+    threshold = 150, //required min distance traveled to be considered swipe
+    restraint = 100, // maximum distance allowed at the same time in perpendicular direction
+    allowedTime = 300, // maximum time allowed to travel that distance
+    elapsedTime,
+    startTime,
+    handleswipe = callback || function(swipedir){}
+  
+    touchsurface.addEventListener('touchstart', function(e){
+        var touchobj = e.changedTouches[0];
+        swipedir = 'none';
+        dist = 0;
+        startX = touchobj.pageX;
+        startY = touchobj.pageY;
+        startTime = new Date().getTime(); // record time when finger first makes contact with surface
+        e.preventDefault();
+    }, false);
+  
+    touchsurface.addEventListener('touchmove', function(e){
+        e.preventDefault(); // prevent scrolling when inside DIV
+    }, false);
+  
+    touchsurface.addEventListener('touchend', function(e){
+        var touchobj = e.changedTouches[0];
+        distX = touchobj.pageX - startX; // get horizontal dist traveled by finger while in contact with surface
+        distY = touchobj.pageY - startY; // get vertical dist traveled by finger while in contact with surface
+        elapsedTime = new Date().getTime() - startTime; // get time elapsed
+        if (elapsedTime <= allowedTime){ // first condition for awipe met
+            if (Math.abs(distX) >= threshold && Math.abs(distY) <= restraint){ // 2nd condition for horizontal swipe met
+                swipedir = (distX < 0)? 'left' : 'right'; // if dist traveled is negative, it indicates left swipe
+            }
+            else if (Math.abs(distY) >= threshold && Math.abs(distX) <= restraint){ // 2nd condition for vertical swipe met
+                swipedir = (distY < 0)? 'up' : 'down'; // if dist traveled is negative, it indicates up swipe
+            }
+        }
+        handleswipe(swipedir);
+        e.preventDefault();
+    }, false);
+}
+
 function propogate(id) {
     event.stopPropagation();
     openModal(id);
@@ -10,41 +57,61 @@ $( document ).on( "mobileinit", function() {
 });
 
 $(window).on("load", function(){
-    $("#accordionEx194").on("swipeleft",function(){
-        document.getElementById('home-attr').classList.remove("active");
-        document.getElementById('advice-attr').classList.add("active");
-        document.getElementById('home-tab-attr').classList.remove("active");
-        document.getElementById('advice-tab-attr').classList.add("active");
+
+    var swipe_home = document.getElementById('accordionEx194');
+    swipedetect(swipe_home, function(swipedir){
+        // swipedir contains either "none", "left", "right", "top", or "down"
+        if (swipedir =='left') {
+            document.getElementById('home-attr').classList.remove("active");
+            document.getElementById('advice-attr').classList.add("active");
+            document.getElementById('home-tab-attr').classList.remove("active");
+            document.getElementById('advice-tab-attr').classList.add("active");
+        }
     });
-    $("#advice-encompass").on("swipeleft",function(){
-        document.getElementById('advice-attr').classList.remove("active");
-        document.getElementById('profile-attr').classList.add("active");
-        document.getElementById('advice-tab-attr').classList.remove("active");
-        document.getElementById('profile-tab-attr').classList.add("active");
+
+    var swipe_advice = document.getElementById('advice-encompass');
+    swipedetect(swipe_advice, function(swipedir){
+        // swipedir contains either "none", "left", "right", "top", or "down"
+        if (swipedir =='left') {
+            document.getElementById('advice-attr').classList.remove("active");
+            document.getElementById('profile-attr').classList.add("active");
+            document.getElementById('advice-tab-attr').classList.remove("active");
+            document.getElementById('profile-tab-attr').classList.add("active");
+        }
+        if (swipedir =='right') {
+            document.getElementById('advice-attr').classList.remove("active");
+            document.getElementById('home-attr').classList.add("active");
+            document.getElementById('advice-tab-attr').classList.remove("active");
+            document.getElementById('home-tab-attr').classList.add("active");
+        }
     });
-    $("#advice-encompass").on("swiperight",function(){
-        document.getElementById('advice-attr').classList.remove("active");
-        document.getElementById('home-attr').classList.add("active");
-        document.getElementById('advice-tab-attr').classList.remove("active");
-        document.getElementById('home-tab-attr').classList.add("active");
+
+    var swipe_room = document.getElementById('room-encompass');
+    swipedetect(swipe_room, function(swipedir){
+        // swipedir contains either "none", "left", "right", "top", or "down"
+        if (swipedir =='left') {
+            document.getElementById('profile-attr').classList.remove("active");
+            document.getElementById('messages-attr').classList.add("active");
+            document.getElementById('profile-tab-attr').classList.remove("active");
+            document.getElementById('messages-tab-attr').classList.add("active");
+        }
+        if (swipedir =='right') {
+            document.getElementById('profile-attr').classList.remove("active");
+            document.getElementById('advice-attr').classList.add("active");
+            document.getElementById('profile-tab-attr').classList.remove("active");
+            document.getElementById('advice-tab-attr').classList.add("active");
+        }
     });
-    $("#room-encompass").on("swipeleft",function(){
-        document.getElementById('profile-attr').classList.remove("active");
-        document.getElementById('messages-attr').classList.add("active");
-        document.getElementById('profile-tab-attr').classList.remove("active");
-        document.getElementById('messages-tab-attr').classList.add("active");
-    });
-    $("#room-encompass").on("swiperight",function(){
-        document.getElementById('profile-attr').classList.remove("active");
-        document.getElementById('advice-attr').classList.add("active");
-        document.getElementById('profile-tab-attr').classList.remove("active");
-        document.getElementById('advice-tab-attr').classList.add("active");
-    });
-    $("#device-encompass").on("swiperight",function(){
-        document.getElementById('messages-attr').classList.remove("active");
-        document.getElementById('profile-attr').classList.add("active");
-        document.getElementById('messages-tab-attr').classList.remove("active");
-        document.getElementById('profile-tab-attr').classList.add("active");
+
+    var swipe_device = document.getElementById('device-encompass');
+    swipedetect(swipe_device, function(swipedir){
+        // swipedir contains either "none", "left", "right", "top", or "down"
+        if (swipedir =='right') {
+            document.getElementById('messages-attr').classList.remove("active");
+            document.getElementById('profile-attr').classList.add("active");
+            document.getElementById('messages-tab-attr').classList.remove("active");
+            document.getElementById('profile-tab-attr').classList.add("active");
+        }
     });
 });
 

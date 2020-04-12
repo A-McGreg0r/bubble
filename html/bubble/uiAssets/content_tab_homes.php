@@ -455,32 +455,15 @@ function generateHomeTab()
                                 </script>
                                 
                              </div>
-                            </div>
-                            
-                            
-                                    
-                            
+                            </div>    
                             <!--col 3-->
+                            
                         </div>
-                           
-                            
-                            
 
-
-                                
-                                
-                                
-
-                                    
-
-                                    
                                </div> 
                             </div>
                         </div>
-                    </div>
-                
-              
-                                  
+                    </div>                          
                     <!-- Accordion card -->
 html;
                 }

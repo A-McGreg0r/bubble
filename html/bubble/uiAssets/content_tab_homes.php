@@ -40,7 +40,7 @@ function generateHomeTab()
                     $stmt2 = $db->prepare("SELECT * FROM test_data WHERE hub_id = ?");
                     $stmt2->bind_param("i", $hub_id);
                     $stmt2->execute();
-                    $result2 = $stmt2->get_result();
+
 
 
                     $day = date("d");

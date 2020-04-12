@@ -37,9 +37,6 @@ function generateHomeTab()
                         $hub_name = "My Home";
                     }
 
-
-
-
                     $day=date("d");
                     $energy_last_day = 0;
 
@@ -94,7 +91,8 @@ function generateHomeTab()
                     $dataLabels = array();
                     $count = 0;
 
-                    $stmt7 = $db->prepare("SELECT * FROM monthly_data");
+                    $stmt7 = $db->prepare("SELECT * FROM monthly_data WHERE hub_id = ?");
+                    $stmt7->bind_param("i", $hub_id);
                     $stmt7->execute();
                     $result7 = $stmt7->get_result();
                     if ($result7->num_rows >= 1) {
@@ -112,6 +110,7 @@ function generateHomeTab()
                             array_push($AvgPoints,money_format('%.3n',$count/$n));
                         }
                     }
+                    $energy_cost=0;
                     $cost_year = $energy_last_year * $energy_cost;
                     $cost_year_round = number_format($cost_year,2);
                     $DataLabelsYearEncoded = json_encode($dataLabels);
@@ -145,7 +144,6 @@ function generateHomeTab()
                     }
                     $cost_month = $energy_last_month * $energy_cost;
                     $cost_month_round = number_format($cost_month,2);
-                    $DataSumMonthEncoded = json_encode(array_sum($dataPoints), JSON_NUMERIC_CHECK);
                     $DataLabelsMonthEncoded = json_encode($dataLabels);
                     $dataPointsMonthEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
                     $dataAvgMonthEncoded = json_encode($AvgPoints, JSON_NUMERIC_CHECK);

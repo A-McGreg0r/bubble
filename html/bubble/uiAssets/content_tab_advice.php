@@ -55,23 +55,107 @@ function generateAdviceTab()
                     if($temp >= 18) {
                         $weather_symbol = "<img class='weather_symbol' src='../img/sun.png'>";
                         $bg = "#5fb0ff";
-                        $advice = "<table class='weather_table'><tr><td>It's a nice, hot day!</td></tr><tr class='advice_point'><td>You should consider turning off all heaters to save energy.</td></tr><tr class='advice_point'><td>Turn off your light bulbs, open your curtains wide, and let the natural light in.</td></tr></table>";
+                        $advice = "<table class='weather_table'>
+                                    <tr>
+                                        <td>It's a nice, hot day!</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>You should consider turning off all heaters to save energy</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>Turn off your light bulbs, open your curtains wide, and let the natural light in</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>It's hot enough to dry your washing outside, save the cost of using the tumble dryer</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>Open a window instead of using the air conditioner</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>The weather is glorious, go outside and get some fresh air</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>Have a cold dinner and save energy from your oven</td>
+                                    </tr></table>";
                     } else if($temp < 18 && $temp >= 14) {
                         $weather_symbol = "<img class='weather_symbol' src='../img/sun_cloud.png'>";
                         $bg = "#9ec7ee";
-                        $advice = "<table class='weather_table'><tr><td>It's a warm day!</td></tr><tr class='advice_point'><td>You should consider turning off all heaters to save energy.</td></tr><tr class='advice_point'><td>Turn off your light bulbs, open your curtains wide, and let the natural light in.</td></tr></table>";
+                        $advice = "<table class='weather_table'>
+                                    <tr>
+                                        <td>It's a warm day!</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>You should consider turning off all heaters to save energy</td>
+                                    </tr><tr class='advice_point'>
+                                        <td>Turn off your light bulbs, open your curtains wide, and let the natural light in</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>It's warm enough to dry your washing outside, save the cost of using the tumble dryer</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>The weather is nice, wouldn't it be nice to go outside for a bit? Turning all of your devices off of course...</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>A nice book in the sun sounds far more enjoyable than watching TV...</td>
+                                    </tr></table>";
                     } else if($temp < 14 && $temp >= 9) {
                         $weather_symbol = "<img class='weather_symbol' src='../img/cloud.png'>";
                         $bg = "#b7c2cc";
-                        $advice = "<table class='weather_table'><tr><td>It's a mild day!</td></tr><tr class='advice_point'><td>You should consider keeping heaters on low to save energy.</td></tr><tr class='advice_point'><td>Turn off your light bulbs in rooms that have enough natural light</td></tr></table>";
+                        $advice = "<table class='weather_table'>
+                                    <tr>
+                                        <td>It's a mild day!</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>You should consider keeping heaters on low to save energy</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>Turn off your light bulbs in rooms that have enough natural light</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>It probably isn't warm enough to have fun outside... maybe a brisk walk?</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>If it gets any colder it might be an idea to get a blanket</td>
+                                    </tr></table>";
                     } else if($temp < 9 && $temp >= 5) {
                         $weather_symbol = "<img class='weather_symbol' src='../img/dark_cloud.png'>";
                         $bg = "#bcbcbc";
-                        $advice = "<table class='weather_table'><tr><td>It's a chilly day!</td></tr><tr class='advice_point'><td>You should consider turning off all air conditioners to save energy.</td></tr><tr class='advice_point'><td>Try to keep heaters on lower settings.</td></tr></table>";
+                        $advice = "<table class='weather_table'>
+                                    <tr>
+                                        <td>It's a chilly day!</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>You should consider turning off all air conditioners to save energy</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>Try to keep heaters on lower settings</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>Cold drinks raise your body temperature, so forgo that hot cup of tea and keep the kettle off. This may be a myth actually...</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>What's your favourite quick, homely meal? Making a quick meal will use less energy</td>
+                                    </tr></table>";
                     } else if ($temp < 5) {
                         $weather_symbol = "<i class='far fa-snowflake weather_symbol' style='color:white'></i>";
                         $bg = "rgb(100, 100, 100)";
-                        $advice = "<table class='weather_table'><tr><td>It's a very cold day!</td></tr><tr class='advice_point'><td>You should consider turning off all air conditioners to save energy.</td></tr><tr class='advice_point'><td>Turn heaters up to keep warm, comfort is important too.</td></tr><tr class='advice_point'><td>Put a jumper on if you're cold</tr></td></table>";
+                        $advice = "<table class='weather_table'>
+                                    <tr>
+                                        <td>It's a very cold day!</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>You should consider turning off all air conditioners to save energy</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>Turn heaters up to keep warm, comfort is important too</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>This feels like a movie day, snuggle up in your duvets and settle to a movie. You might not even need the heaters...</tr>
+                                    </td>
+                                    <tr class='advice_point'>
+                                        <td>Put a jumper on if you're cold</tr>
+                                    </td>
+                                    </table>";
                     }
 
                     $html .= <<<html

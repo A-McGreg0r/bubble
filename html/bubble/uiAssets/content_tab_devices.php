@@ -160,11 +160,11 @@ html;
                             </div>
                         </div>
 
-                        <strong class="timer_icon" id="timer_$device_id" style="color:$colour; display:$timer_display" onclick="propogate('modal_$device_id')">$timer</strong>
+                        <strong class="timer_icon" id="timer_$device_id" style="color:$colour; display:$timer_display" onclick="propogate('modal_$device_id', 'content_$device_id')">$timer</strong>
                     </div>
 
                     <div class="modalTimer" id="modal_$device_id">
-                        <div class="modalContent">
+                        <div class="modalContent" id="content_$device_id">
                             <div class="modalHeader"><strong>$timer_text Turn $device_name off in:</strong></div>
                             <form>
                                 <div class="timerModal">

@@ -596,4 +596,5 @@ select {
 .weather_analysis {
     font-weight: 900!important;
     font-size: 18px!important;
+    padding: 10px!important;
 }

@@ -3,6 +3,7 @@ html, body {
     background-color: #ffffff;
     overflow-y: overlay;
     overflow-x: hidden;
+    transition: all .2s ease-in-out!important;
 }
 
 h2 {

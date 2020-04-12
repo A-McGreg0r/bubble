@@ -150,6 +150,11 @@ function startTimer(id, hour_value, minute_value) {
 }
 
 function toggleRoom(hub_id, room_id){
+    if (document.getElementById(room_id).style.backgroundColor != "rgb(226, 183, 28)"){
+        document.getElementById(room_id).style.backgroundColor = "rgb(226, 183, 28)";
+    } else {
+        document.getElementById(room_id).style.backgroundImage = "linear-gradient(to right, rgb(110, 110, 110) 0%, rgb(110, 110, 110) 100%, transparent 100%)";
+    }
     let url = "required/action_device.php";
     
     $.ajax({
@@ -170,12 +175,19 @@ function alterDevice(hub_id, device_id, device_type, current_state){
     if(device_type == 2 || device_type == 4){
         scaleDevice(hub_id, device_id, current_state);
     } else {
-        toggleDevice(hub_id, device_id);
+        toggleDevice(hub_id, device_id, current_state);
     }
 }
 
-function toggleDevice(hub_id, device_id) {
+function toggleDevice(hub_id, device_id, state) {
     let url = "required/action_device.php";
+    if (state == 0){
+        document.getElementById('device_'+device_id).style.backgroundColor = "rgb(226, 183, 28)";
+    } 
+    
+    if (state == 4) {
+        document.getElementById('device_'+device_id).style.backgroundImage = "linear-gradient(to right, rgb(110, 110, 110) 0%, rgb(110, 110, 110) 100%, transparent 100%)";
+    }
     
     $.ajax({
         type:'POST',
@@ -192,6 +204,22 @@ function toggleDevice(hub_id, device_id) {
 }
 
 function scaleDevice(hub_id, device_id, scale) {
+    if (scale == 0){
+        document.getElementById('device_'+device_id).style.backgroundImage = "linear-gradient(to right, rgb(226, 183, 28) 0%, rgb(226, 183, 28) 25%, rgb(56,56,56) 25%, rgb(56,56,56) calc(25% + 1px), transparent calc(25% + 1px))";
+    }
+    if (scale == 1) {
+        document.getElementById('device_'+device_id).style.backgroundImage = "linear-gradient(to right, rgb(226, 183, 28) 0%, rgb(226, 183, 28) 50%, rgb(56,56,56) 50%, rgb(56,56,56) calc(50% + 1px), transparent calc(50% + 1px))";
+    } 
+    if (scale == 2) {
+        document.getElementById('device_'+device_id).style.backgroundImage = "linear-gradient(to right, rgb(226, 183, 28) 0%, rgb(226, 183, 28) 75%, rgb(56,56,56) 75%, rgb(56,56,56) calc(75% + 1px), transparent calc(75% + 1px))";
+    }
+    if (scale == 3) {
+        document.getElementById('device_'+device_id).style.backgroundImage = "linear-gradient(to right, rgb(226, 183, 28) 0%, rgb(226, 183, 28) 100%, transparent 100%)";
+    }
+    if (scale == 4) {
+        document.getElementById('device_'+device_id).style.backgroundImage = "linear-gradient(to right, rgb(110, 110, 110) 0%, rgb(110, 110, 110) 100%, transparent 100%)";
+    }
+
     let url = "required/action_device.php";
     if (scale < 4){
         scale = scale + 1;

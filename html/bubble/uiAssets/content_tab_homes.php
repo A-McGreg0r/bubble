@@ -42,13 +42,6 @@ function generateHomeTab()
                     $stmt2->execute();
                     $result2 = $stmt2->get_result();
 
-                    if ($result2->num_rows === 1) {
-                        $row2 = $result2->fetch_assoc();
-                        $cost_day = $row2['cost_day'];
-                        $cost_month = $row2['cost_month'];
-                        $cost_total = $row2['cost_total'];
-                        $cost_variance = $cost_total - $cost_month;
-                    }
 
                     $day = date("d");
                     $energy_last_day = 0;

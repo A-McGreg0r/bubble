@@ -110,12 +110,12 @@ ul {
 }
 
 .nav-tabs {
-    border: none!important;
+    border-bottom: 1px solid rgb(0,0,0)!important;
 }
 
 .nav-link.active {
     border: 1px solid rgb(0, 0, 0)!important;
-    border-bottom: none!important;
+    border-bottom: 1px solid white!important;
 }
 
 .card:nth-of-type(even) {

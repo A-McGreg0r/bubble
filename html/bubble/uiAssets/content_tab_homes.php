@@ -50,11 +50,10 @@ function generateHomeTab()
                         $cost_variance = $cost_total - $cost_month;
                     }
 
-                    $day = date("d");
                     $energy_last_day = 0;
 
                     $stmt4 = $db->prepare("SELECT * FROM hourly_data WHERE hub_id = ? AND entry_day = ?");
-                    $stmt4->bind_param("ii", $hub_id, $day);
+                    $stmt4->bind_param("ii", $hub_id, date("d"));
                     $stmt4->execute();
                     $result4 = $stmt4->get_result();
                     if ($result4->num_rows >= 1) {

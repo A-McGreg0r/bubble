@@ -110,7 +110,6 @@ function generateHomeTab()
                             array_push($AvgPoints,money_format('%.3n',$count/$n));
                         }
                     }
-                    $energy_cost=0;
                     $cost_year = $energy_last_year * $energy_cost;
                     $cost_year_round = number_format($cost_year,2);
                     $DataLabelsYearEncoded = json_encode($dataLabels);

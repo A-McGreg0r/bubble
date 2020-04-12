@@ -37,9 +37,7 @@ function generateHomeTab()
                         $hub_name = "My Home";
                     }
 
-                    $stmt2 = $db->prepare("SELECT * FROM test_data WHERE hub_id = ?");
-                    $stmt2->bind_param("i", $hub_id);
-                    $stmt2->execute();
+
 
 
                     $day=date("d");

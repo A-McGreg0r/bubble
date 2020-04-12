@@ -69,7 +69,7 @@ function generateAccount(){
                             <div class="modal-content">
                               <div class="modal-body">
                                 <button class="btn btn-danger btn-sm btn-rounded" onclick="deleteAccount()">Delete</button>
-                                <button type="button" class="btn btn-primary">Cancel</button>
+                                <button type="button" class="btn btn-primary btn-sm btn-rounded">Cancel</button>
                               </div>
                           </div>
                         </div>

@@ -37,24 +37,11 @@ function generateHomeTab()
                         $hub_name = "My Home";
                     }
 
-                    $stmt2 = $db->prepare("SELECT * FROM test_data WHERE hub_id = ?");
-                    $stmt2->bind_param("i", $hub_id);
-                    $stmt2->execute();
-                    $result2 = $stmt2->get_result();
-
-                    if ($result2->num_rows === 1) {
-                        $row2 = $result2->fetch_assoc();
-                        $cost_day = $row2['cost_day'];
-                        $cost_month = $row2['cost_month'];
-                        $cost_total = $row2['cost_total'];
-                        $cost_variance = $cost_total - $cost_month;
-                    }
-
-                    $day = date("d");
+                    $day=date("d");
                     $energy_last_day = 0;
 
                     $stmt4 = $db->prepare("SELECT * FROM hourly_data WHERE hub_id = ? AND entry_day = ?");
-                    $stmt4->bind_param("ii", $hub_id, $day);
+                    $stmt4->bind_param("ii", $hub_id,$day );
                     $stmt4->execute();
                     $result4 = $stmt4->get_result();
                     if ($result4->num_rows >= 1) {
@@ -104,7 +91,8 @@ function generateHomeTab()
                     $dataLabels = array();
                     $count = 0;
 
-                    $stmt7 = $db->prepare("SELECT * FROM monthly_data");
+                    $stmt7 = $db->prepare("SELECT * FROM monthly_data WHERE hub_id = ?");
+                    $stmt7->bind_param("i", $hub_id);
                     $stmt7->execute();
                     $result7 = $stmt7->get_result();
                     if ($result7->num_rows >= 1) {
@@ -155,7 +143,6 @@ function generateHomeTab()
                     }
                     $cost_month = $energy_last_month * $energy_cost;
                     $cost_month_round = number_format($cost_month,2);
-                    $DataSumMonthEncoded = json_encode(array_sum($dataPoints), JSON_NUMERIC_CHECK);
                     $DataLabelsMonthEncoded = json_encode($dataLabels);
                     $dataPointsMonthEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
                     $dataAvgMonthEncoded = json_encode($AvgPoints, JSON_NUMERIC_CHECK);
@@ -297,7 +284,8 @@ function generateHomeTab()
                                                                 }]
                                                                 },
                                                                 options: {
-                                                                responsive: true
+                                                                responsive: [true],
+                                                                
                                                                 }
                                                                 });
                                                             </script>
@@ -363,11 +351,11 @@ function generateHomeTab()
                                             <!--Donut 3-->  
                                             <!--button for Donut carousel -->
                                               <a class="carousel-control-prev expenditure" href="#chart-carousel" role="button" data-slide="prev">
-                                                <span class="carousel-control-prev-icon expenditure" aria-hidden="true"></span>
+                                                <span class="carousel-control-prev-icon expenditure" aria-hidden="false"></span>
                                                 <span class="sr-only expenditure">Previous</span>
                                               </a>
                                               <a class="carousel-control-next expenditure" href="#chart-carousel" role="button" data-slide="next">
-                                                <span class="carousel-control-next-icon expenditure" aria-hidden="true"></span>
+                                                <span class="carousel-control-next-icon expenditure" aria-hidden="false"></span>
                                                 <span class="sr-only expenditure">Next</span>
                                               </a>  
                                                        
@@ -380,7 +368,7 @@ function generateHomeTab()
                                                 });
                                          </script>
 
-                                         <small class="form-text text-muted mb-4" style="text-align:center expenditure">Budget of £$budget_round per Month</small>
+                                         <small class="form-text text-muted mb-4 text" style="text-align:center">Budget of £$budget_round per Month</small>
                                     </div>
                                     <!--Carousel Container-->
                             </div>
@@ -397,9 +385,9 @@ function generateHomeTab()
                                           <!--change chart drop down-->
                                             <select id="chartPicker" class="browser-default custom-select dropdown">
                                                 <option selected="selected">Choose time period</option>
-                                                <option value="0">Year</option>
-                                                <option value="1">Month</option>
-                                                <option value="2">Day</option>
+                                                <option value="0">Current Year</option>
+                                                <option value="1">Current Month</option>
+                                                <option value="2">Today</option>
                                             </select>
                                     <!--chart canvas-->        
                                     <canvas id="masterLineChart"></canvas>

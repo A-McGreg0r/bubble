@@ -215,7 +215,7 @@ function generateHomeTab()
                              <!--coll 1-->
                         <div class="row"
                         </div>     
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 swipe" id="overview">
                                 <h4 class="section-title">Overview</h4>
                                 <table class="stats-table">
                                     
@@ -256,19 +256,19 @@ function generateHomeTab()
                             document.onload(myLineChart.update();)
                             </script>
                            
-                            <div class="card col-lg-6 border border-0">
+                            <div class="card col-lg-6 border border-0 expenditure">
                             <!--Carousel Container--> 
-                                <h4 class="section-title">Expenditure</h4>
-                                    <div id="chart-carousel" class="carousel slide" data-ride="carousel">
+                                <h4 class="section-title expenditure">Expenditure</h4>
+                                    <div id="chart-carousel" class="carousel slide expenditure" data-ride="carousel">
                                         <!--Donut carousel-->
-                                        <div class="carousel-inner">
+                                        <div class="carousel-inner expenditure">
                                         
                                             <!--Donut 1-->
-                                                  <div class="carousel-item active">                           
-                                                        <div class="col" style="max-width:100%">
+                                                  <div class="carousel-item expenditure active">                           
+                                                        <div class="col expenditure" style="max-width:100%">
                                                             <h4 class="text-centre text-dark centre-text">Daily</h4>
                                                             
-                                                            <canvas style="max-width:50% min-width:30%" id="heatingUsage"></canvas>
+                                                            <canvas class="expenditure" style="max-width:50% min-width:30%" id="heatingUsage"></canvas>
                                                             
                                                             <script>
                                                                 //doughnut
@@ -294,11 +294,11 @@ function generateHomeTab()
                                             <!--Donut 1-->                                                    
                                              
                                             <!--Donut 2-->             
-                                                  <div class="carousel-item">
-                                                        <div class="col">
+                                                  <div class="carousel-item expenditure">
+                                                        <div class="col expenditure">
                                                         
-                                                        <h4 class="text-centre text-dark centre-text">Monthly</h4>
-                                                        <canvas style="max-width:50% min-width:30%" id="heatingUsage1"></canvas>
+                                                        <h4 class="text-centre text-dark centre-text expenditure">Monthly</h4>
+                                                        <canvas class="expenditure" style="max-width:50% min-width:30%" id="heatingUsage1"></canvas>
                                                         
                                                         <script>
                                                             //doughnut
@@ -324,10 +324,10 @@ function generateHomeTab()
                                             <!--Donut 2-->    
                                             
                                             <!--Donut 3-->             
-                                                  <div class="carousel-item">
-                                                        <div class="col" style="max-width:100%">
-                                                            <h4 class="text-centre text-dark centre-text">Yearly</h4>
-                                                            <canvas style="max-width:50% min-width:30%" id="heatingUsage2"></canvas>
+                                                  <div class="carousel-item expenditure">
+                                                        <div class="col expenditure" style="max-width:100%">
+                                                            <h4 class="text-centre text-dark centre-text expenditure">Yearly</h4>
+                                                            <canvas class="expenditure" style="max-width:50% min-width:30%" id="heatingUsage2"></canvas>
                                                             <script>
                                                                 //doughnut
                                                                 var ctxD = document.getElementById("heatingUsage2").getContext("2d");
@@ -350,13 +350,13 @@ function generateHomeTab()
                                                   </div>
                                             <!--Donut 3-->  
                                             <!--button for Donut carousel -->
-                                              <a class="carousel-control-prev" href="#chart-carousel" role="button" data-slide="prev">
-                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                <span class="sr-only">Previous</span>
+                                              <a class="carousel-control-prev expenditure" href="#chart-carousel" role="button" data-slide="prev">
+                                                <span class="carousel-control-prev-icon expenditure" aria-hidden="true"></span>
+                                                <span class="sr-only expenditure">Previous</span>
                                               </a>
-                                              <a class="carousel-control-next" href="#chart-carousel" role="button" data-slide="next">
-                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                <span class="sr-only">Next</span>
+                                              <a class="carousel-control-next expenditure" href="#chart-carousel" role="button" data-slide="next">
+                                                <span class="carousel-control-next-icon expenditure" aria-hidden="true"></span>
+                                                <span class="sr-only expenditure">Next</span>
                                               </a>  
                                                        
                                         </div>
@@ -368,7 +368,7 @@ function generateHomeTab()
                                                 });
                                          </script>
 
-                                         <small class="form-text text-muted mb-4" style="text-align:center">Budget of £$budget_round per Month</small>
+                                         <small class="form-text text-muted mb-4" style="text-align:center expenditure">Budget of £$budget_round per Month</small>
                                     </div>
                                     <!--Carousel Container-->
                             </div>
@@ -378,7 +378,7 @@ function generateHomeTab()
 
                             <!--col 3-->
 
-                            <div class="col-lg">
+                            <div class="col-lg swipe" id="graph">
                             <h4 class="section-title overview">Power Usage</h4>
                                     
                                     <div class="container">

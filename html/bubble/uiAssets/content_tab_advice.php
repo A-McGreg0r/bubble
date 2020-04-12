@@ -4,7 +4,7 @@ include_once dirname(__DIR__) . '/required/config.php';
 function generateAdviceTab()
 {
     global $db;
-    $html = '<div class="accordion md-accordion z-depth-1-half weather-page" id="accordionEx194" role="tablist" aria-multiselectable="true">';
+    $html = '<div class="accordion md-accordion z-depth-1-half weather-page" id="advice-encompass" role="tablist" aria-multiselectable="true">';
 
     if (isset($_SESSION['user_id'])) {
         $user_id = $_SESSION['user_id'];

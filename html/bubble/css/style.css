@@ -582,3 +582,15 @@ select {
     width: 100%;
     text-align: center;
 }
+
+.weather_table td {
+    font-weight: 400!important;
+}
+
+.ui-loader {
+    display: none!important;
+}
+
+#home-attr, #accordionEx194, #advice-attr, #advice-encompass, #profile-attr, #messages-attr {
+    touch-action: manipulation;
+}

@@ -244,7 +244,7 @@ function generateHomeTab()
                                         <td class="stats-right"><strong>£$cost_year_round&ensp;</strong></td>
                                     </tr>
                                 </table>
-                                <small class="form-text text-muted mb-4" style="text-align:center">Costing at £$energy_cost_round per kWh</small>                
+                                <small class="form-text text-muted mb-4 text-center">Costing at £$energy_cost_round per kWh</small>                
                             </div>
                             
                             <!--col 1-->
@@ -368,7 +368,8 @@ function generateHomeTab()
                                                 });
                                          </script>
 
-                                         <small class="form-text text-muted mb-4 text-center">Budget of £$budget_round per Month</small>
+                               
+                                         <small class="text-muted mb-4 text-center">Budget of £$budget_round per Month</small>
                                     </div>
                                     <!--Carousel Container-->
                             </div>

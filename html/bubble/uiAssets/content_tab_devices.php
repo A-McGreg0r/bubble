@@ -50,6 +50,11 @@ html;
         while ($rowRoom = $resultRoom->fetch_assoc()) {
             $room_name = $rowRoom['room_name'];
             $room_id = $rowRoom['room_id'];
+            $html .= <<<html
+            <div class="device_room_heading">
+                <strong class="section-title">$room_name</strong>
+            </div>
+html;
             //GET ALL DEVICES IN THAT ROOM
             $stmtDevice = $db->prepare("SELECT * FROM device_info WHERE hub_id = ? AND room_id = ?");
             $stmtDevice->bind_param("ii", $hub_id, $room_id);
@@ -58,14 +63,7 @@ html;
 
             //LOOP THROUGH ALL DEVICES IN THAT ROOM
             if ($resultDevice->num_rows > 0) {
-
-                $html .= <<<html
-                <div class="device_room_heading">
-                    <strong class="section-title">$room_name</strong>
-                </div>
-html;
                 while ($row = $resultDevice->fetch_assoc()) {
-                
                     $device_id = $row['device_id'];
                     $device_name = $row['device_name'];
                     $device_type = $row['device_type'];

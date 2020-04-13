@@ -37,16 +37,6 @@
         //GET URL ACTION
         $action = '';
         if(isset($_GET['action'])) $action = $_GET['action'];
-        $email = '';
-        if(isset($_GET['email'])) $email = $_GET['email'];
-        $name = '';
-        if(isset($_GET['name'])) $name = $_GET['name'];
-        $hub_id = 0;
-        if(isset($_GET['hub_id'])) $hub_id = $_GET['hub_id'];
-        $room_id = 0;
-        if(isset($_GET['room_id'])) $room_id = $_GET['room_id'];
-        $status = 0;
-        if(isset($_GET['status'])) $status = $_GET['status'];
         $html = '';
 
 

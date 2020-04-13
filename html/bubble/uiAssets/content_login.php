@@ -61,7 +61,9 @@ function generateLoginPage(){
                         <div class="tab-pane fade in show active" id="panel1" role="tabpanel">
                             <!--Body-->
                             <div class="modal-body mb-1">
-
+                                <div id="loginErrorBox" class="text-center alert alert-danger">
+                                    <strong id="loginErrorDisplay"></strong>
+                                </div>
                                 <!-- Form -->
 
                                     <!-- Email -->
@@ -79,9 +81,6 @@ function generateLoginPage(){
                                     <div class="md-form">
                                         <label for="materialLoginFormPassword">Password</label>
                                         <input type="password" id="materialLoginFormPassword" class="form-control" name="password"/>
-                                    </div>
-                                    <div class="text-center alert alert-danger">
-                                        <h5 id="loginErrorDisplay"></h5>
                                     </div>
                                     <div class="d-flex justify-content-around">
                                         <div>

@@ -44,6 +44,8 @@ $( document ).on( "mobileinit", function() {
 });
 
 $(window).on("load", function(){
+    $("#loginErrorBox").hide();
+
     var overview = document.getElementById('overview');
 
     swipedetect(overview, function(swipedir){
@@ -265,6 +267,7 @@ function scaleDevice(hub_id, device_id, scale) {
 //------------------------Login functions----------------------------------------------------
 
 function sendLoginRequest(){
+    $("#loginErrorBox").hide();
     let url = "required/action_login.php";
     var userEmail = document.getElementById("materialLoginFormEmail").value;
     var userPassword = document.getElementById("materialLoginFormPassword").value;
@@ -279,7 +282,9 @@ function sendLoginRequest(){
             //LOGIN ERROR, DISPLAY ERROR TO USER
             if(result.error){
                 document.getElementById("materialLoginFormPassword").value = "";
-                $("#loginErrorDisplay").hide().html(result.error).fadeIn(500);
+                $("#loginErrorDisplay").html(result.error);
+                $("#loginErrorBox").hide().fadeIn(500);
+
             }
             //LOGIN SUCCESS
             if(result.success){
@@ -287,8 +292,8 @@ function sendLoginRequest(){
             }
         },
         error: function(data){
-            $("#loginErrorDisplay").hide().html("An unexpected error has occurred, please try again").fadeIn(500);
-
+            $("#loginErrorDisplay").html("An unexpected error has occurred, please try again");
+            $("#loginErrorBox").hide().fadeIn(500);
         }
     });
 }

@@ -98,7 +98,7 @@ if ($result->num_rows >= 1) {
                     $stmt7 = $db->prepare("UPDATE device_info SET minutes_on = ? WHERE device_id = ?");
                     $stmt7->bind_param('ii', $minutes_on, $id);
                     $stmt7->execute();
-                } else if ($energy_setting == 0 && $turn_off > 0){
+                } else if ($energy_setting == 0){
                     $stmt9 = $db->prepare("UPDATE device_info SET minutes_on = ?, turn_off = ? WHERE device_id = ?");
                     $stmt9->bind_param('iii', $zero, $zero, $id);
                     $stmt9->execute();

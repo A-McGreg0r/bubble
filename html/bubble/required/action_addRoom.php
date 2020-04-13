@@ -29,10 +29,11 @@
     if($result2->num_rows === 0){
         $stmt2->close();
         $stmt = $db->prepare("INSERT INTO room_info (hub_id, room_name, room_icon) VALUES (?, ?, ?)");
-        $stmt->bind_param("isi", $hub_id, $roomName, $roomIcon);
+        $stmt->bind_param("isi", $hub_id, $roomName, $icon);
         if ($stmt->execute()) {
             $stmt->close();
             load("../index.php?action=addroom&success=1&roomName=$roomName");
+            exit();
         }
         $stmt->close();
         load("../index.php?action=addroom&error=3&roomName=$roomName");

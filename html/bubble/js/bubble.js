@@ -117,6 +117,20 @@ $(window).on("load", function(){
 
 
 //------------------------Modal Function----------------------------------------------------
+function openModalRoom(id, close, open){
+    event.stopPropagation();
+    var id = document.getElementById(id);
+    var close = document.getElementById(close);
+    var open = document.getElementById(open);
+    close.style.display = "none";
+    open.style.display = "flex";
+    if (id.style.display == "flex") {
+        id.style.display = "none";
+    } else {
+        id.style.display = "flex";
+    }
+}
+
 function openModal(id, other, y, x, icon, icon2, state) {
     event.stopPropagation();
     var modal = document.getElementById(id);
@@ -180,12 +194,15 @@ function toggleRoom(hub_id, room_id){
         data:{ type: "room", hub_id: hub_id, id: room_id},
         success:function(){
             $('#room_reload_' + room_id).load(document.URL + ' #room_reload_' + room_id);
-            $('#messages-attr').load(document.URL + ' #messages-attr');
         },
         error: function(data){
             alert("error!");
         }
     });
+}
+
+function device_refresh(id) {
+    $("#reload_" + id).load(document.URL + " #reload_" + id);
 }
 
 function alterDevice(hub_id, device_id, device_type, current_state){

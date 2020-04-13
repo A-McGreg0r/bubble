@@ -5,7 +5,7 @@ include_once dirname(__DIR__).'/required/config.php';
 function generateDeviceTab(){
     global $db;
     //ADD NEW DEVICE CARD, GENERATE ALWAYS AT TOP!
-    $html = $html = '<div id="device-encompass">';
+    $html = '<div id="device-encompass">';
 
     $html .= <<<html
         <a href="index.php?action=adddevice">
@@ -103,7 +103,6 @@ html;
                     $stmt5->close();
 
                     $total_usage = $total_usage / 1000;
-                    $total_usage = $total_usage - $device_month;
                     $total_usage = number_format($total_usage,3);
 
                     $price = 0;
@@ -212,7 +211,7 @@ html;
 
                         <strong class="timer_icon" id="timer_$device_id" style="color:$colour; display:$timer_display" onclick="openModal('modal_$device_id', 'modal_stats_$device_id', 'timer_$device_id', 'timer_x_$device_id', 'stats_$device_id', 'stats_x_$device_id', $status)">$timer</strong>
                         <strong class="timer_icon_x" id="timer_x_$device_id" style="color:$colour; display:none" onclick="openModal('modal_$device_id', 'modal_stats_$device_id', 'timer_$device_id', 'timer_x_$device_id', 'stats_$device_id', 'stats_x_$device_id', $status)"><i class="fas fa-times"></i></strong>
-                        <i class="stats_icon fa" id="stats_$device_id" style="color:$colour;" onclick="openModal('modal_stats_$device_id', 'modal_$device_id', 'stats_$device_id', 'stats_x_$device_id', 'timer_$device_id', 'timer_x_$device_id', $status)">&#xf200;</i>
+                        <i class="stats_icon fa" id="stats_$device_id" style="color:$colour;" onclick="openModal('modal_stats_$device_id', 'modal_$device_id', 'stats_$device_id', 'stats_x_$device_id', 'timer_$device_id', 'timer_x_$device_id', $status)"><i class="fas fa-info-circle"></i></i>
                         <i class="stats_icon_x " id="stats_x_$device_id" style="color:$colour;" onclick="openModal('modal_stats_$device_id', 'modal_$device_id', 'stats_$device_id', 'stats_x_$device_id', 'timer_$device_id', 'timer_x_$device_id', $status)"><i class="fas fa-times"></i></i>
                     </div>
 
@@ -220,7 +219,7 @@ html;
                     </div>
                     <div class="modalStatsWrap" id="modal_stats_$device_id">
                         <div class="modalContent modalStats" id="content_$device_id">
-                            <div class="modalHeader"><strong>$device_name statistics:</strong></div>
+                            <div class="modalHeader"><strong>$device_name Statistics:</strong></div>
                                 <div class="modalBody">
                                     <div class="active">                           
                                         <div style="max-width:100% text-align:center">
@@ -240,7 +239,7 @@ html;
                                             </tr>
                                             <tr class="raise">
                                                 <td class="stats-left l-pad-stats tighten"><strong>
-                                                    Other Devices:
+                                                    All Devices:
                                                 </strong></td>
                                                 <td class="stats-right r-pad-stats tighten"><strong>
                                                     $total_usage kWh
@@ -254,7 +253,7 @@ html;
                                                 var myLineChart = new Chart(ctxD, {
                                                 type: "doughnut",
                                                 data: {
-                                                labels: ["$device_name [kWh]", "Other Devices [kWh]"],
+                                                labels: ["$device_name [kWh]", "All Devices [kWh]"],
                                                 datasets: [{
                                                 data: [$device_month, $total_usage],
                                                 backgroundColor: ["rgb(226, 183, 28)", "rgb(56,56,56)"],

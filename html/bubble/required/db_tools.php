@@ -49,7 +49,7 @@ function validateLogin($email = '', $pwd = '')
 
     # On success retrieve user_id, first_name, and last name from 'user' database.
     if (empty($errors)) {
-        echo("validated $email");
+        echo("validated ;$email;");
         $stmt->bind_param("s", $email);
         if (!$stmt->execute()) {
             $errors[] = "Execute failed: (" . $stmt->errno . ") " . $stmt->error;

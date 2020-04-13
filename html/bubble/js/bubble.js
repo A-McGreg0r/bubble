@@ -44,6 +44,9 @@ $( document ).on( "mobileinit", function() {
 });
 
 $(window).on("load", function(){
+    $("#loginErrorBox").hide();
+    $("#registerErrorBox").hide();
+
     var overview = document.getElementById('overview');
 
     swipedetect(overview, function(swipedir){
@@ -282,25 +285,93 @@ function scaleDevice(hub_id, device_id, scale) {
 //------------------------Login functions----------------------------------------------------
 
 function sendLoginRequest(){
-    let url = "required/action_login.php";
-    var userEmail = document.getElementById("materialLoginFormEmail").value;
-    var userPassword = document.getElementById("materialLoginFormPassword").value;
+    //CHANGE DISPLAY TO BE WAITING
+    $("#loginErrorBox").hide();
+    $("#materialLoginFormEmail").attr("disabled", true);
+    $("#materialLoginFormPassword").attr("disabled", true);
 
+    //GATHER REQUIRED DATA
+    let url = "required/action_login.php";
+    var userEmail = $("#materialLoginFormEmail").val();
+    var userPassword = $("#materialLoginFormPassword").val();
+
+    //SEND AJAX REQUEST
     $.ajax({
         type:'POST',
         url: url,
         data:{ email: userEmail, password: userPassword},
         success:function(data){
+            //PARSE RESPONSE JSON DATA
             var result = JSON.parse(data);
+
+            //LOGIN ERROR, DISPLAY ERROR TO USER
             if(result.error){
-                alert(result.error);
+                $("#materialLoginFormPassword").val("");
+                $("#loginErrorDisplay").html(result.error);
+                $("#loginErrorBox").hide().fadeIn(500);
+                $("#materialLoginFormEmail").removeAttr("disabled");
+                $("#materialLoginFormPassword").removeAttr("disabled");
             }
+            //LOGIN SUCCESS
             if(result.success){
                 location.reload();
             }
         },
         error: function(data){
-            alert("error!");
+            //INTERNAL SERVER ERROR HAS OCCURRED
+            $("#loginErrorDisplay").html("An unexpected error has occurred, please try again");
+            $("#loginErrorBox").hide().fadeIn(500);
+            $("#materialLoginFormEmail").removeAttr("disabled");
+            $("#materialLoginFormPassword").removeAttr("disabled");
+        }
+    });
+}
+
+function sendRegisterRequest(){
+    //CHANGE DISPLAY TO BE WAITING
+    $("#registerErrorBox").hide();
+
+    //GATHER REQUIRED DATA
+    let url = "required/action_register.php";
+
+    var userEmail = $("#materialRegisterFormEmail").val();
+    var userFirstName = $("#materialRegisterFormFirstName").val();
+    var userLastName = $("#materialRegisterFormLastName").val();
+    var userAddress1 = $("#materialRegisterFormAddress_l1").val();
+    var userAddress2 = $("#materialRegisterFormAddress_l2").val();
+    var userPostcode = $("#materialRegisterFormPostcode").val();
+    var userPassword1 = $("#materialRegisterFormPassword1").val();
+    var userPassword2 = $("#materialRegisterFormPassword2").val();
+    var userEnergyCost = $("#registerFormEnergyCost").val();
+    var userBudget = $("#registerFormBudget").val();
+    var userAllowEmails = $("#registerFormAllowEmails").val();
+
+    //SEND AJAX REQUEST
+    $.ajax({
+        type:'POST',
+        url: url,
+        data:{ email: userEmail, first_name: userFirstName, last_name: userLastName, address_l1: userAddress1, 
+            address_l2: userAddress2, postcode: userPostcode, pass1: userPassword1, pass2: userPassword2,
+            energy_cost: userEnergyCost, budget: userBudget, allow_emails: userAllowEmails},
+
+        success:function(data){
+            //PARSE RESPONSE JSON DATA
+            var result = JSON.parse(data);
+
+            //LOGIN ERROR, DISPLAY ERROR TO USER
+            if(result.error){
+                $("#registerErrorDisplay").html(result.error);
+                $("#registerErrorBox").hide().fadeIn(500);
+            }
+            if(result.success){
+                $("#modalUserName").html("Hi " + userFirstName + "!");
+                $("#registrationSuccessModal").modal();
+            }
+        },
+        error: function(data){
+            //INTERNAL SERVER ERROR HAS OCCURRED
+            $("#registerErrorDisplay").html("An unexpected error has occurred, please try again");
+            $("#registerErrorBox").hide().fadeIn(500);
         }
     });
 }

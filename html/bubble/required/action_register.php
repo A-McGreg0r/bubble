@@ -4,6 +4,7 @@ require 'config.php';
 require 'PepperedPasswords.php';
 session_start();
 
+//GRAB IP ADDRESS FROM CLIENT
 $ipaddress = '';
 if (getenv('HTTP_CLIENT_IP'))
     $ipaddress = getenv('HTTP_CLIENT_IP');
@@ -20,127 +21,119 @@ else if(getenv('REMOTE_ADDR'))
 else
     $ipaddress = 'UNKNOWN';
 
-//Check server has request in POST
+//ENSURE REQUEST HAS BEEN DELIVERED OVER POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    # Initialize an error array.
+    //INTITALISE ERRORS ARRAY
     $errors = array();
-    $A2 = NULL;
     $stmt = $db->prepare("INSERT INTO user_info (email, pass, first_name, last_name, address_l1, address_l2, postcode, energy_cost, budget, allow_emails, ip_address) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )");
-    $valuesArr = array();
-    $_SESSION['email'] = trim($_POST['email']);
-    $_SESSION['name'] = trim($_POST['first_name']);
 
-    # Check for a E-mail.
-    if (empty($_POST['email'])) {
-        $errors[] = 'Enter your email address.';
-    } else {
-        $valuesArr["email"] = trim($_POST['email']);
+    //GET VALID EMAIL ADDRESS
+    $userEmail = filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL);
+    if($userEmail == FALSE){
+        $errors[] = 'Please enter a valid email address';
     }
 
-    # Check for a first name.
-    if (empty($_POST['first_name'])) {
-        $errors[] = 'Enter your first name.';
-    } else {
-        $valuesArr["first_name"] = trim($_POST['first_name']);
+    //GET VALID FIRST NAME
+    $userFirstName = filter_input(INPUT_POST, "first_name", FILTER_SANITIZE_STRING);
+    if($userFirstName == FALSE){
+        $errors[] = 'Please enter a First Name';
     }
 
-    # Check for a last name.
-    if (empty($_POST['last_name'])) {
-        $errors[] = 'Enter your last name.';
-    } else {
-        $valuesArr["last_name"] = trim($_POST['last_name']);
+    //GET VALID LAST NAME
+    $userLastName = filter_input(INPUT_POST, "last_name", FILTER_SANITIZE_STRING);
+    if($userLastName == FALSE){
+        $errors[] = 'Please enter a Last Name';
     }
 
-    # Check for a adress line 1.
-    if (empty($_POST['address_l1'])) {
-        $errors[] = 'Enter first line of your Address';
-    } else {
-        $valuesArr["address_l1"] = trim($_POST['address_l1']);
+    //GET ADDRESS LINE
+    $userAddressL1 = filter_input(INPUT_POST, "address_l1", FILTER_SANITIZE_STRING);
+    if($userAddressL1 == FALSE){
+        $errors[] = 'Please enter an address';
     }
 
-    # Check for a adress line 2.
-    # Check for a adress line 1.
-    if (!empty($_POST['address_l2'])) {
-        $valuesArr["address_l2"] = trim($_POST['address_l2']);
-    }
+    //GET ADDRESS SECOND LINE IF REQUIRED
+    $userAddressL2 = filter_input(INPUT_POST, "address_l2", FILTER_SANITIZE_STRING);
     
-    # Check for a postcode
-    if (empty($_POST['postcode'])) {
-        $errors[] = 'Enter your postcode.';
-    } else {
-        $valuesArr["postcode"] = trim($_POST['postcode']);
+    //GET VALID POSTCODE
+    $userPostcode = filter_input(INPUT_POST, "postcode", FILTER_SANITIZE_STRING);
+    if($userPostcode == FALSE){
+        $errors[] = 'Please enter a valid postcode';
     }
 
-
-    # Check for a password and matching input passwords.
-    if (!empty($_POST['pass1'])) {
-        if ($_POST['pass1'] != $_POST['pass2']) {
-            $errors[] = 'Passwords do not match.';
-        } else {
-            //Using pepperedpasswords, generates a salted and peppered password to be stored in db            
-            $hasher = new PepperedPasswords($pepper);
-            $valuesArr["password"] = $hasher->hash(trim($_POST['pass1']));
-        }
-    } else {
-        $errors[] = 'Enter your password.';
+    //GET VALID PASSWORDS AND ENSURE MATCHING
+    $userPassword1 = filter_input(INPUT_POST, "pass1", FILTER_SANITIZE_STRING);
+    $userPassword2 = filter_input(INPUT_POST, "pass2", FILTER_SANITIZE_STRING);
+    if($userPassword1 == FALSE || $userPassword2 == FALSE){
+        $errors[] = 'Please enter a valid password';
+    }
+    if($userPassword2 != $userPassword1){
+        $errors[] = 'Please enter matching passwords';
     }
 
-    if (empty($_POST['energy_cost'])) {
-        $errors[] = 'Enter your energy price.';
-    } else {
-        $valuesArr["energy_cost"] = $_POST['energy_cost'];
+    //GET VALID ENERGY COST
+    $userEnergyCost = filter_input(INPUT_POST, "energy_cost", FILTER_SANITIZE_STRING);
+    if($userEnergyCost == FALSE){
+        $errors[] = 'Please enter an energy cost';
     }
 
-    if (empty($_POST['budget'])) {
-        $errors[] = 'Enter your budget.';
-    } else {
-        $valuesArr["budget"] = $_POST['budget'];
+    //GET VALID BUDGET
+    $userBudget = filter_input(INPUT_POST, "budget", FILTER_SANITIZE_STRING);
+    if($userBudget == FALSE){
+        $errors[] = 'Please enter a budget';
     }
 
-    if ($_POST['allow_emails'] == "Yes") {
-        $valuesArr["allow_emails"] = "Yes";
-    } else {
-        $valuesArr["allow_emails"] = "No";
+    //GET ALLOW EMAILS FLAG
+    $userAllowEmails = filter_input(INPUT_POST, "allow_emails", FILTER_SANITIZE_STRING);
+    if($userAllowEmails == FALSE){
+        $errors[] = 'Unexpected error, please refresh the page';
     }
 
-
-    # Check if email address already registered.
+    //IF NO ERRORS THROWN SO FAR
     if (empty($errors)) {
+        //ENSURE EMAIL ADDRESS ISNT ALREADY REGISTERED.
         $stmt2 = $db->prepare("SELECT * FROM user_info WHERE email = ?");
-        $stmt2->bind_param("s", $valuesArr["email"]);
+        $stmt2->bind_param("s", $userEmail);
         $stmt2->execute();
-        if ($stmt2->num_rows != 0) {
-            $errors[] = 'Email address already registered. <a href="../index.php">Login</a>';
+        $result = $stmt2->get_result();
+        if ($result->num_rows != 0) {
+            echo("{\"error\":\"Email address already registered. <a href=\\\"../index.php\\\">Login</a>\"}");
+            $stmt2->close();
+            exit(0);
         }
         $stmt2->close();
-    }
 
-    # On success register user inserting into 'users' database table.
-    if (empty($errors)) {
-        // not posting to database
-        $stmt->bind_param("sssssssdiss", $valuesArr["email"], $valuesArr["password"], $valuesArr["first_name"], $valuesArr["last_name"], $valuesArr["address_l1"], $valuesArr["address_l2"], $valuesArr["postcode"], $valuesArr["energy_cost"], $valuesArr["budget"], $valuesArr["allow_emails"], $ipaddress);
+        //USE PEPPERED PASSWORDS, GENERATE PASSWORD THAT HAS BEEN SALTED AND PEPPERED.       
+        $hasher = new PepperedPasswords($pepper);
+        $userHashedPassword = $hasher->hash($userPassword1);
+
+        //BIND PARAMETERS TO QUERY
+        $stmt->bind_param("sssssssdiss", $userEmail, $userHashedPassword, $userFirstName, $userLastName, $userAddressL1, $userAddressL2, $userPostcode,
+        $userEnergyCost, $userBudget, $userAllowEmails, $ipaddress);
+
+        //EXECUTE QUERY
         if (!$stmt->execute()) {
-            echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+            echo("{\"error\":\"Registration failed, try again!\"}");
         } 
 
+        //SUCCESS OR FAIL REGISTRATION
         if($stmt->affected_rows === 1){
-            load("../index.php?action=registerComplete");
+            echo("{\"success\":\"Registration successful\"}");
         }else{
-            load("../index.php?action=registerFailed");
+            echo("{\"error\":\"Registration failed, try again!\"}");
         }
-        # Close database connection.
-        $db->close();
+        $stmt->close();
         
-        exit();
-    } else { #Or report errors
-        echo '<div class="container"><h1>Error!</h1><p id="err_msg">The following error(s) occurred:<br>';
+        exit(0);
+    } else {
+        //RETURN ERRORS TO CLIENT, EXPLAIN WHAT WENT WRONG
+        echo("{\"error\":\"");
         foreach ($errors as $msg) {
             echo " - $msg<br>";
         }
-        echo 'Please try again.</p></div>';
+        echo("\"}");
 
-        # Close database connection.
-        $db->close();
+        $stmt->close();
+        exit(0);
     }
 }
 ?>

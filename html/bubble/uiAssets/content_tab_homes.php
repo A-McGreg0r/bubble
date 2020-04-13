@@ -253,7 +253,7 @@ function generateHomeTab()
                             
                             <!--col 2-->
                             <script>
-                            document.onload(myLineChart.update();)
+                            document.onload(doughnut.update();)
                             </script>
                            
                             <div class="card col-lg-6 border border-0 ">
@@ -273,7 +273,7 @@ function generateHomeTab()
                                                             <script>
                                                                 //doughnut
                                                                 var ctxD = document.getElementById("heatingUsage").getContext("2d");
-                                                                var myLineChart = new Chart(ctxD, {
+                                                                var doughnut = new Chart(ctxD, {
                                                                 type: "doughnut",
                                                                 data: {
                                                                 labels: ["Spent [£]", "Remaining [£]"],
@@ -303,7 +303,7 @@ function generateHomeTab()
                                                         <script>
                                                             //doughnut
                                                             var ctxD = document.getElementById("heatingUsage1").getContext("2d");
-                                                            var myLineChart = new Chart(ctxD, {
+                                                            var doughnut = new Chart(ctxD, {
                                                             type: "doughnut",
                                                             data: {
                                                             labels: ["Spent [£]", "Remaining [£]"],
@@ -331,7 +331,7 @@ function generateHomeTab()
                                                             <script>
                                                                 //doughnut
                                                                 var ctxD = document.getElementById("heatingUsage2").getContext("2d");
-                                                                var myLineChart = new Chart(ctxD, {
+                                                                var doughnut = new Chart(ctxD, {
                                                                 type: "doughnut",
                                                                 data: {
                                                                 labels: ["Spent [£]", "Budget [£]"],

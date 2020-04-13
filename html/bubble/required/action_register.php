@@ -29,40 +29,40 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt = $db->prepare("INSERT INTO user_info (email, pass, first_name, last_name, address_l1, address_l2, postcode, energy_cost, budget, allow_emails, ip_address) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )");
     $valuesArr = array();
     # Check for a E-mail.
-    if (!isset($_POST['email'])) {
+    if (empty($_POST['email'])) {
         $errors[] = 'Enter your email address.';
     } else {
         $valuesArr["email"] = trim($_POST['email']);
     }
 
     # Check for a first name.
-    if (!isset($_POST['first_name'])) {
+    if (empty($_POST['first_name'])) {
         $errors[] = 'Enter your first name.';
     } else {
         $valuesArr["first_name"] = trim($_POST['first_name']);
     }
 
     # Check for a last name.
-    if (!isset($_POST['last_name'])) {
+    if (empty($_POST['last_name'])) {
         $errors[] = 'Enter your last name.';
     } else {
         $valuesArr["last_name"] = trim($_POST['last_name']);
     }
 
     # Check for a address line 1.
-    if (!isset($_POST['address_l1'])) {
+    if (empty($_POST['address_l1'])) {
         $errors[] = 'Enter first line of your Address';
     } else {
         $valuesArr["address_l1"] = trim($_POST['address_l1']);
     }
 
     # Check for a address line 2.
-    if (isset($_POST['address_l2'])) {
+    if (!empty($_POST['address_l2'])) {
         $valuesArr["address_l2"] = trim($_POST['address_l2']);
     }
     
     # Check for a postcode
-    if (!isset($_POST['postcode'])) {
+    if (empty($_POST['postcode'])) {
         $errors[] = 'Enter your postcode.';
     } else {
         $valuesArr["postcode"] = trim($_POST['postcode']);
@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     # Check for a password and matching input passwords.
-    if (isset($_POST['pass1'])) {
+    if (!empty($_POST['pass1'])) {
         if ($_POST['pass1'] != $_POST['pass2']) {
             $errors[] = 'Passwords do not match.';
         } else {
@@ -82,13 +82,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $errors[] = 'Enter your password.';
     }
 
-    if (!isset($_POST['energy_cost'])) {
+    if (empty($_POST['energy_cost'])) {
         $errors[] = 'Enter your energy price.';
     } else {
         $valuesArr["energy_cost"] = $_POST['energy_cost'];
     }
 
-    if (!isset($_POST['budget'])) {
+    if (empty($_POST['budget'])) {
         $errors[] = 'Enter your budget.';
     } else {
         $valuesArr["budget"] = $_POST['budget'];

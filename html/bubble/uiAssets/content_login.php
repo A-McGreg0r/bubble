@@ -90,9 +90,9 @@ function generateLoginPage(){
                                 <!-- Form -->
                                 <!-- Email -->
                                 <div class="md-form">
-                                    <label for="materialLoginFormEmail">E-mail</label>
+                                    <label for="materialRegisterFormEmail">E-mail</label>
                                     <input type="email"
-                                        id="materialLoginFormEmail"
+                                        id="materialRegisterFormEmail"
                                         class="form-control form-control-sm validate hold-back"
                                         name="email"
                                         required size="20"

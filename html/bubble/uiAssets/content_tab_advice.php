@@ -137,7 +137,7 @@ function generateAdviceTab()
                                         <td>What's your favourite quick, homely meal? Making a quick meal will use less energy</td>
                                     </tr></table>";
                     } else if ($temp < 5) {
-                        $weather_symbol = "<i class='far fa-snowflake weather_symbol' style='color:white'></i>";
+                        $weather_symbol = "<i class='far fa-snowflake weather_symbol_large' style='color:white'></i>";
                         $bg = "rgb(100, 100, 100)";
                         $advice = "<table class='weather_table'>
                                     <tr>

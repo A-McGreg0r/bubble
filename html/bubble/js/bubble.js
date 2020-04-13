@@ -1,3 +1,4 @@
+//------------------------Swipe Function----------------------------------------------------
 function swipedetect(el, callback){
   
     var touchsurface = el,
@@ -34,10 +35,6 @@ function swipedetect(el, callback){
         }
         handleswipe(swipedir);
     }, false);
-}
-
-function propogate(id) {
-    openModal(id);
 }
 
 $( document ).on( "mobileinit", function() {
@@ -116,7 +113,10 @@ $(window).on("load", function(){
         }
     });
 });
+//------------------------Swipe Function----------------------------------------------------
 
+
+//------------------------Modal Function----------------------------------------------------
 function openModal(id, other, y, x, icon, icon2, state) {
     event.stopPropagation();
     var modal = document.getElementById(id);
@@ -142,7 +142,9 @@ function openModal(id, other, y, x, icon, icon2, state) {
           }
     }
 }
+//------------------------Modal Function----------------------------------------------------
 
+//------------------------Timer Function----------------------------------------------------
 function startTimer(id, hour_value, minute_value) {
     var hour = $('#' + hour_value).val();
     var minute = $('#' + minute_value).val();
@@ -154,15 +156,17 @@ function startTimer(id, hour_value, minute_value) {
         url: url,
         data:{ device_id: id, hour: hour, minute: minute},
         success:function(){
-            $('#room-encompass').load(document.URL + ' #room-encompass');
-            $('#device-encompass').load(document.URL + ' #device-encompass');
+            $('#reload_' + id).load(document.URL + ' #reload_' + id);
+            $('#timer_end_' + id).load(document.URL + ' #timer_end_' + id);
         },
         error: function(data){
             alert("error!");
         }
     });
 }
+//------------------------Timer Function----------------------------------------------------
 
+//------------------------Device switch Functions----------------------------------------------------
 function toggleRoom(hub_id, room_id){
     if (document.getElementById(room_id).style.backgroundColor != "rgb(226, 183, 28)"){
         document.getElementById(room_id).style.backgroundColor = "rgb(226, 183, 28)";
@@ -253,6 +257,8 @@ function scaleDevice(hub_id, device_id, scale) {
         }
     });
 }
+//------------------------Device switch Functions----------------------------------------------------
+
 
 function submitImage(){
     var url = "required/action_adddevice.php";

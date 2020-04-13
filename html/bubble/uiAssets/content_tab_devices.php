@@ -314,7 +314,7 @@ html;
                     <div class="modalTimer" id="modal_$device_id">
                         <div class="modalContent" id="content_$device_id">
                             <div class="modalHeader"><strong>Turn $device_name off in:</strong></div>
-                            <div class="timer-end"><strong>$timer_text<strong></div>
+                            <div class="timer-end" id="timer_end_$device_id"><strong>$timer_text<strong></div>
                             <form>
                                 <div class="timerModal">
                                     <select id="hour_$device_id" name="energy_cost" class="form-control-sm dropdown validate drop-up">

@@ -625,6 +625,12 @@ select {
     margin-top: 6.5px;
 }
 
+.weather_symbol_large {
+    margin-bottom: 16px;
+    font-size: 50px;
+    margin-top: 16px;
+}
+
 .weather_advice {
     font-family: Roboto,sans-serif;
     margin-bottom: 20px;

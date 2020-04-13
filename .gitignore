@@ -1,4 +1,4 @@
 .bash_history
 .tmp
 # ignore severConfig
-required/server-config.php
+html/bubble/required/server-config.php

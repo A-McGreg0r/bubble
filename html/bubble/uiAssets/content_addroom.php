@@ -23,9 +23,9 @@ function generateAddRoom(){
         break;
     }
     
-
     if($success !== FALSE){
         $html .= <<<pageHTML
+        "$success"
         <div class="container">
             <div class="col-lg-12">
                 <div class="row alter-display text-center align-middle">

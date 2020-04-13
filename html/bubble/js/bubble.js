@@ -346,6 +346,9 @@ function sendRegisterRequest(){
                 $("#registerErrorDisplay").html(result.error);
                 $("#registerErrorBox").hide().fadeIn(500);
             }
+            if(result.success){
+                location.reload();
+            }
         },
         error: function(data){
             //INTERNAL SERVER ERROR HAS OCCURRED

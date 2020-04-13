@@ -59,9 +59,6 @@ function generateLoginPage(){
                     <div class="tab-content ">
                         <!--Panel 1 login Tab panel -->
                         <div class="tab-pane fade in show active" id="panel1" role="tabpanel">
-                        <div class="text-center">
-                            <h5 id="loginErrorDisplay"></h5>
-                        </div>
                             <!--Body-->
                             <div class="modal-body mb-1">
 
@@ -96,7 +93,9 @@ function generateLoginPage(){
 
                                     <!-- Sign in button -->
                                     <button id="login_button" onclick="sendLoginRequest()" class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit" value="submit">Log in</button>
-
+                                    <div class="text-center" class="is-invalid form-control">
+                                        <h5 id="loginErrorDisplay"></h5>
+                                    </div>
                             </div>
                         </div>
                         <!--Panel 1 login Tab -->

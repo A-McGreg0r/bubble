@@ -436,15 +436,7 @@ select {
     padding-right: none!important;
 }
 
-.modalTimer {
-    display: none;
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-bottom: 5px;
-    overflow-x: hidden;
-}
-
-.modalStatsWrap {
+.modalTimer, .modalStatsWrap {
     display: none;
     margin-left: 20px;
     margin-right: 20px;

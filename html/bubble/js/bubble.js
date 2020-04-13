@@ -156,7 +156,12 @@ function startTimer(id, hour_value, minute_value) {
         url: url,
         data:{ device_id: id, hour: hour, minute: minute},
         success:function(){
-            $('#reload_' + id).load(document.URL + ' #reload_' + id);
+            $('#reload_' + id).load(document.URL + ' #reload_' + id, function(){
+                var button = document.getElementById('timer_' + id);
+                var button_x = document.getElementById('timer_x_' + id);
+                button.style.display = "none";
+                button_x.style.display = "block";
+            });
             $('#timer_end_' + id).load(document.URL + ' #timer_end_' + id);
         },
         error: function(data){

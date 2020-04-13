@@ -28,7 +28,7 @@ if ($num_rows8 >= 1) {
         }
 
         $stmt10 = $db->prepare("UPDATE device_info SET minute_data = ? WHERE device_id = ?");
-        $stmt10->bind_param("iii", $zero, $id);
+        $stmt10->bind_param("ii", $zero, $id);
         $stmt10->execute();
     }
 }

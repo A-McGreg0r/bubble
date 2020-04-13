@@ -276,7 +276,7 @@ function sendLoginRequest(){
         success:function(data){
             var result = JSON.parse(data);
             if(result.error){
-                alert(result.error);
+                document.getElementById("materialLoginFormPassword").value = "";
             }
             if(result.success){
                 location.reload();

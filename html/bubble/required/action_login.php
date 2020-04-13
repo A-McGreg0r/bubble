@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo("{\"success\":\"Login successful\"}");
         exit(0);
     } else {
-        echo("{\"error\":\"Unknown username or password $userPassword $userEmail\"}");
+        echo("{\"error\":\"Unknown username or password\"}");
         exit(0);
     }
 

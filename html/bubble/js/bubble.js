@@ -291,8 +291,8 @@ function sendLoginRequest(){
                 $("#materialLoginFormPassword").val("");
                 $("#loginErrorDisplay").html(result.error);
                 $("#loginErrorBox").hide().fadeIn(500);
-                $("#materialLoginFormEmail").remvAttr("disabled");
-                $("#materialLoginFormPassword").remvAttr("disabled");
+                $("#materialLoginFormEmail").removeAttr("disabled");
+                $("#materialLoginFormPassword").removeAttr("disabled");
             }
             //LOGIN SUCCESS
             if(result.success){
@@ -303,8 +303,8 @@ function sendLoginRequest(){
             //INTERNAL SERVER ERROR HAS OCCURRED
             $("#loginErrorDisplay").html("An unexpected error has occurred, please try again");
             $("#loginErrorBox").hide().fadeIn(500);
-            $("#materialLoginFormEmail").remvAttr("disabled");
-            $("#materialLoginFormPassword").remvAttr("disabled");
+            $("#materialLoginFormEmail").removeAttr("disabled");
+            $("#materialLoginFormPassword").removeAttr("disabled");
         }
     });
 }

@@ -204,6 +204,7 @@ function toggleDevice(hub_id, device_id, state) {
     
     if (state == 4) {
         document.getElementById('device_'+device_id).style.backgroundImage = "linear-gradient(to right, rgb(110, 110, 110) 0%, rgb(110, 110, 110) 100%, transparent 100%)";
+        $('#modal_' + device_id).load(document.URL + ' #modal_' + device_id);
     }
     
     $.ajax({
@@ -235,6 +236,7 @@ function scaleDevice(hub_id, device_id, scale) {
     }
     if (scale == 4) {
         document.getElementById('device_'+device_id).style.backgroundImage = "linear-gradient(to right, rgb(110, 110, 110) 0%, rgb(110, 110, 110) 100%, transparent 100%)";
+        $('#modal_' + device_id).load(document.URL + ' #modal_' + device_id);
     }
 
     let url = "required/action_device.php";

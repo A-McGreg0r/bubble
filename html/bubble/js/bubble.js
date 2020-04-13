@@ -269,13 +269,13 @@ function scaleDevice(hub_id, device_id, scale) {
 function sendLoginRequest(){
     //CHANGE DISPLAY TO BE WAITING
     $("#loginErrorBox").hide();
-    $("materialLoginFormEmail").prop("disabled", true);
-    $("materialLoginFormPassword").prop("disabled", true);
+    $("#materialLoginFormEmail").prop("disabled", true);
+    $("#materialLoginFormPassword").prop("disabled", true);
 
     //GATHER REQUIRED DATA
     let url = "required/action_login.php";
-    var userEmail = $("materialLoginFormEmail").val();
-    var userPassword = $("materialLoginFormPassword").val();
+    var userEmail = $("#materialLoginFormEmail").val();
+    var userPassword = $("#materialLoginFormPassword").val();
 
     //SEND AJAX REQUEST
     $.ajax({
@@ -288,11 +288,11 @@ function sendLoginRequest(){
 
             //LOGIN ERROR, DISPLAY ERROR TO USER
             if(result.error){
-                $("materialLoginFormPassword").val("");
+                $("#materialLoginFormPassword").val("");
                 $("#loginErrorDisplay").html(result.error);
                 $("#loginErrorBox").hide().fadeIn(500);
-                $("materialLoginFormEmail").prop("disabled", false);
-                $("materialLoginFormPassword").prop("disabled", false);
+                $("#materialLoginFormEmail").prop("disabled", false);
+                $("#materialLoginFormPassword").prop("disabled", false);
             }
             //LOGIN SUCCESS
             if(result.success){
@@ -303,8 +303,8 @@ function sendLoginRequest(){
             //INTERNAL SERVER ERROR HAS OCCURRED
             $("#loginErrorDisplay").html("An unexpected error has occurred, please try again");
             $("#loginErrorBox").hide().fadeIn(500);
-            $("materialLoginFormEmail").prop("disabled", false);
-            $("materialLoginFormPassword").prop("disabled", false);
+            $("#materialLoginFormEmail").prop("disabled", false);
+            $("#materialLoginFormPassword").prop("disabled", false);
         }
     });
 }

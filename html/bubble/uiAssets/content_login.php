@@ -59,8 +59,9 @@ function generateLoginPage(){
                     <div class="tab-content ">
                         <!--Panel 1 login Tab panel -->
                         <div class="tab-pane fade in show active" id="panel1" role="tabpanel">
-                        <h4 id="loginErrorDisplay">The simple smart home.</h4>
-
+                        <div class="text-center">
+                            <h5 id="loginErrorDisplay"></h5>
+                        </div>
                             <!--Body-->
                             <div class="modal-body mb-1">
 

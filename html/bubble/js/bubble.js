@@ -275,15 +275,20 @@ function sendLoginRequest(){
         data:{ email: userEmail, password: userPassword},
         success:function(data){
             var result = JSON.parse(data);
+
+            //LOGIN ERROR, DISPLAY ERROR TO USER
             if(result.error){
                 document.getElementById("materialLoginFormPassword").value = "";
+                $("#loginErrorDisplay").hide().html(result.error).fadeIn(500);
             }
+            //LOGIN SUCCESS
             if(result.success){
                 location.reload();
             }
         },
         error: function(data){
-            alert("error!");
+            $("#loginErrorDisplay").hide().html("An unexpected error has occurred, please try again").fadeIn(500);
+
         }
     });
 }

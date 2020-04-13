@@ -35,6 +35,7 @@ html;
     session_start();
     if(isset($_SESSION['hub_id'])){
         $hub_id = $_SESSION['hub_id'];
+        $user_id = $_SESSION['user_id'];
         session_write_close();
 
         //GET ALL ROOMS FOR A SPECIFIC HUB
@@ -77,6 +78,53 @@ html;
                     $timer_hours = $timer_hour / 60;
                     $timer_minutes = $timer_value % 60;
                     $timer_text = "";
+                    $device_hour = $row['minute_data'] / 1000;
+                    $device_day = $row['hour_data'] / 1000;
+                    $device_month = $row['day_data'] / 1000;
+                    $device_year = $row['month_data'] / 1000;
+                    $total_usage = 0;
+                    
+                    $device_hour = number_format($device_hour, 3);
+                    $device_day = number_format($device_day, 3);
+                    $device_month = number_format($device_month, 3);
+                    $device_year = number_format($device_year, 3);
+
+                    $stmt5 = $db->prepare("SELECT * FROM device_info WHERE hub_id = ?");
+                    $stmt5->bind_param("i", $hub_id);
+                    $stmt5->execute();
+                    $result5 = $stmt5->get_result();
+
+                    //LOOP THROUGH ALL DEVICES IN THAT ROOM
+                    if ($result5->num_rows > 0) {
+                        while ($row5 = $result5->fetch_assoc()) {
+                            $total_usage = $total_usage + $row5['day_data'];
+                        }
+                    }
+                    $stmt5->close();
+
+                    $total_usage = $total_usage / 1000;
+                    $total_usage = $total_usage - $device_month;
+
+                    $price = 0;
+
+                    $stmt4 = $db->prepare("SELECT * FROM user_info WHERE user_id = ?");
+                    $stmt4->bind_param("i", $user_id);
+                    $stmt4->execute();
+                    $result4 = $stmt4->get_result();
+                    if($result4->num_rows == 1){
+                        $row = $result4->fetch_assoc();
+                        $price = $row['energy_cost'];
+                    }
+
+                    $price_hour = $device_hour * $price;
+                    $price_day = $device_day * $price;
+                    $price_month = $device_month * $price;
+                    $price_year = $device_year * $price;
+
+                    $price_hour = number_format($price_hour,2);
+                    $price_day = number_format($price_day,2);
+                    $price_month = number_format($price_month,2);
+                    $price_year = number_format($price_year,2);
 
                     $hour = date("H");
                     $minute = date("i");
@@ -138,6 +186,7 @@ html;
                     //GENERATE CARD FOR DEVICE
                     $html .= <<<html
                     <!-- Card -->
+                    <div id="reload_$device_id">
                     <div id="device_$device_id" class="card mb-4 container text-dark grey-out" style="background-image:$background" onclick="alterDevice($hub_id, $device_id, $device_type, $status)">
                         <!--Card image-->
                         <div class="view overlay">
@@ -153,7 +202,6 @@ html;
                                     <strong class="room_icon">$icon</strong> &nbsp; <strong>$device_name</strong>
                                 </div>                     
                             </div>
-
                             
                             <div class="d-flex flex-column">
                                 <!-- Default switch -->
@@ -161,12 +209,109 @@ html;
                             </div>
                         </div>
 
-                        <strong class="timer_icon" id="timer_$device_id" style="color:$colour; display:$timer_display" onclick="propogate('modal_$device_id', 'content_$device_id')">$timer</strong>
+                        <strong class="timer_icon" id="timer_$device_id" style="color:$colour; display:$timer_display" onclick="openModal('modal_$device_id', 'modal_stats_$device_id')">$timer</strong>
+                        <strong class="stats_icon fa" id="stats_$device_id" style="color:$colour;" onclick="openModal('modal_stats_$device_id', 'modal_$device_id')">&#xf200;</strong>
+                    </div>
+
+                    
+                    </div>
+                    <div class="modalStatsWrap" id="modal_stats_$device_id">
+                        <div class="modalContent modalStats" id="content_$device_id">
+                            <div class="modalHeader"><strong>$device_name statistics:</strong></div>
+                                <div class="modalBody">
+                                    <div class="active">                           
+                                        <div style="max-width:100% text-align:center">
+                                    
+                                            <h4 class="modalSub">Comparison</h4>
+                                            
+                                            <canvas class="stats-pie " style="max-width:400px display:inline-block" id="stats_doughnut_$device_id" width="924" height="426"></canvas>
+                                            
+                                            <table class="stats-table comparison">
+                                            <tr class="stats-row">
+                                                <td class="stats-left l-pad-stats tighten"><strong>
+                                                    $device_name:
+                                                </strong></td>
+                                                <td class="stats-right r-pad-stats tighten"><strong>
+                                                    $device_month kWh
+                                                </strong></td>
+                                            </tr>
+                                            <tr class="raise">
+                                                <td class="stats-left l-pad-stats tighten"><strong>
+                                                    Other Devices:
+                                                </strong></td>
+                                                <td class="stats-right r-pad-stats tighten"><strong>
+                                                    $total_usage kWh
+                                                </strong></td>
+                                            </tr>
+                                            </table>
+
+                                            <script>
+                                                //doughnut
+                                                var ctxD = document.getElementById("stats_doughnut_$device_id").getContext("2d");
+                                                var myLineChart = new Chart(ctxD, {
+                                                type: "doughnut",
+                                                data: {
+                                                labels: ["$device_name [kWh]", "Other Devices [kWh]"],
+                                                datasets: [{
+                                                data: [$device_month, $total_usage],
+                                                backgroundColor: ["rgb(226, 183, 28)", "rgb(56,56,56)"],
+                                                hoverBackgroundColor: ["rgb(246, 203, 48)", "rgb(76,76,76)"]
+                                                }]
+                                                },
+                                                options: {
+                                                    responsive: [true],
+                                                    
+                                                    }
+                                                });
+                                            </script>
+                                        </div>
+                                </div>      
+                                <hr>
+                                <div class="modalSub">
+                                    Energy Used
+                                </div>
+                                <table class="stats-table">
+                                    <tr class="stats-row">
+                                        <td class="stats-left l-pad-stats"><strong>
+                                            This hour:<br>Cost:
+                                        </strong></td>
+                                        <td class="stats-right r-pad-stats"><strong>
+                                            $device_hour kWh<br>&#163; $price_hour
+                                        </strong></td>
+                                    </tr>
+                                    <tr class="stats-row">
+                                        <td class="stats-left l-pad-stats"><strong>
+                                            Today:<br>Cost:
+                                        </strong></td>
+                                        <td class="stats-right r-pad-stats"><strong>
+                                            $device_day kWh<br>&#163; $price_day
+                                        </strong></td>
+                                    </tr>
+                                    <tr class="stats-row">
+                                        <td class="stats-left l-pad-stats"><strong>
+                                            This month:<br>Cost:
+                                        </strong></td>
+                                        <td class="stats-right r-pad-stats"><strong>
+                                            $device_month kWh<br>&#163; $price_month
+                                        </strong></td>
+                                    </tr>
+                                    <tr class="stats-row">
+                                        <td class="stats-left l-pad-stats"><strong>
+                                            This year:<br>Cost:
+                                        </strong></td>
+                                        <td class="stats-right r-pad-stats"><strong>
+                                            $device_year kWh<br>&#163; $price_year
+                                        </strong></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="modalTimer" id="modal_$device_id">
                         <div class="modalContent" id="content_$device_id">
-                            <div class="modalHeader"><strong>$timer_text Turn $device_name off in:</strong></div>
+                            <div class="modalHeader"><strong>Turn $device_name off in:</strong></div>
+                            <div class="timer-end"><strong>$timer_text<strong></div>
                             <form>
                                 <div class="timerModal">
                                     <select id="hour_$device_id" name="energy_cost" class="form-control-sm dropdown validate drop-up">

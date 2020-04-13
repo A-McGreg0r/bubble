@@ -37,7 +37,6 @@ function swipedetect(el, callback){
 }
 
 function propogate(id) {
-    event.stopPropagation();
     openModal(id);
 }
 
@@ -118,13 +117,16 @@ $(window).on("load", function(){
     });
 });
 
-function openModal(id) {
+function openModal(id, other) {
+    event.stopPropagation();
     var modal = document.getElementById(id);
+    var close = document.getElementById(other);
     if (modal && modal.style) {
         if (modal.style.display == "block") {
             modal.style.display = "none";
           } else {
             modal.style.display = "block";
+            close.style.display = "none";
           }
     }
 }
@@ -162,7 +164,7 @@ function toggleRoom(hub_id, room_id){
         url: url,
         data:{ type: "room", hub_id: hub_id, id: room_id},
         success:function(){
-            $('#profile-attr').load(document.URL + ' #profile-attr');
+            $('#room_reload_' + room_id).load(document.URL + ' #room_reload_' + room_id);
             $('#messages-attr').load(document.URL + ' #messages-attr');
         },
         error: function(data){
@@ -195,7 +197,7 @@ function toggleDevice(hub_id, device_id, state) {
         data:{ type: "toggledevice", hub_id: hub_id, id: device_id},
         success:function(data){
             $('#profile-attr').load(document.URL + ' #profile-attr');
-            $('#messages-attr').load(document.URL + ' #messages-attr');
+            $('#reload_' + device_id).load(document.URL + ' #reload_' + device_id);
         },
         error: function(data){
             alert("error!");
@@ -232,7 +234,7 @@ function scaleDevice(hub_id, device_id, scale) {
         data:{ type: "scaledevice", hub_id: hub_id, id: device_id, scale: scale},
         success:function(data){
             $('#profile-attr').load(document.URL + ' #profile-attr');
-            $('#messages-attr').load(document.URL + ' #messages-attr');
+            $('#reload_' + device_id).load(document.URL + ' #reload_' + device_id);
         },
         error: function(data){
             alert("error!");

@@ -288,8 +288,8 @@ hr {
 
 .section-title {
     display: block!important;
-    margin-left: 20%!important;
-    margin-right: 20%!important;
+    margin-left: 15%!important;
+    margin-right: 15%!important;
     padding: 1rem!important;
     color: rgba(0, 0, 0, 1)!important;
     border-bottom: 1px solid rgba(0, 0, 0, 1);
@@ -310,6 +310,7 @@ hr {
 .stats-left {
     border-top-left-radius: 0.25rem!important;
     border-bottom-left-radius: 0.25rem!important;
+    text-align: left;
 }
 
 .stats-right {
@@ -437,38 +438,45 @@ select {
 
 .modalTimer {
     display: none;
-    position: relative;
-    width: 100%;
-    height: 100%;
-    max-height: 100%;
-    margin-top: 10px;
-    margin-bottom: -10px;
-    transition: max-height 10s ease;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 5px;
+    overflow-x: hidden;
+}
+
+.modalStatsWrap {
+    display: none;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 5px;
+    overflow-x: hidden;
 }
 
 .modalContent {
-    z-index: 1;
+    z-index: 11;
     transition: all 1s linear;
     border: 2px solid rgb(0,0,0);
     text-align: center;
     background-color: rgb(110,110,110);
     color: rgb(0,0,0);
-    max-height: 90%;
-    width: 90%;
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -20%);
-    padding: 1%;
+    max-height: 100%;
+    width: 100%;
     line-height: 22px;
-    overflow-y: scroll;
     align-items: center;
     justify-content: center;
-    padding-left: 15px;
+    overflow-x: hidden;
 }
 
 .modalHeader {
+    padding: 20px;
+    border-bottom: 1px solid black;
+    background-color: rgb(56,56,56);
+    color: rgb(226, 183, 28);
+    width: 100%;
     font-weight: 900;
+    font-size: 24px;
+    margin-bottom: 20px;
+    line-height: 30px;
 }
 
 .timerModal {
@@ -484,13 +492,18 @@ select {
     width: 80%;
     background-color: white;
     border: 2px solid rgb(0,0,0);
+    margin-bottom: 15px!important;
+}
+
+.timer-end {
+    margin-top: -10px;
 }
 
 .timer_icon {
     z-index: 10;
     position: absolute;
-    top: -10px;
-    right: -10px;
+    top: -7px;
+    right: -7px;
     display: none;
     text-align: center;
     align-items: center;
@@ -503,13 +516,35 @@ select {
     border-radius: 30px;
 }
 
+.stats_icon {
+    display: flex!important;
+    z-index: 10;
+    position: absolute;
+    top: -7px;
+    left: -7px;
+    display: none;
+    text-align: center;
+    align-items: center;
+    vertical-align: middle;
+    font-size: 25px!important;
+    background-color: #ffffff;
+    width: 35px;
+    height: 35px;
+    padding-left: 6px;
+    padding-top: 2px;
+    border-radius: 30px;
+}
+
 .shiftSub {
     margin-top: 5px;
 }
 
+
+
 @media (min-width: 576px) {
+
     .modalContent {
-        width: 90%;
+        width: 100%;
     }
 
     #separater1, #separater2 {
@@ -518,8 +553,16 @@ select {
 }
 
 @media (min-width: 768px) {
+    @media (orientation:portrait){
+        .landscape {
+            display: block!important;
+        }
+    }
+
     .modalContent {
         width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
     }
 
     #separater1, #separater2 {
@@ -528,8 +571,11 @@ select {
 }
 
 @media (min-width: 992px) {
+
     .modalContent {
-        width: 80%;
+        width: 60%;
+        margin-left: 20%;
+        margin-right: 20%;
     }
 
     #separater1, #separater2 {
@@ -585,7 +631,7 @@ select {
     color: rgb(226, 183, 28);
 }
 
-.weather_table {
+.weather_table, .stats_table {
     width: 100%;
     text-align: center;
 }
@@ -598,4 +644,87 @@ select {
     font-weight: 900!important;
     font-size: 18px!important;
     padding: 10px!important;
+}
+
+.tilt-icon {
+    width: 120px;
+}
+
+.orientation {
+    text-align: center;
+    display: none;
+}
+
+@media (max-width: 576px) {
+    @media (orientation:landscape){
+        .landscape {
+            display: block!important;
+        }
+    }
+
+    @media (orientation:portrait){
+        .landscape {
+            display: none!important;
+        }
+
+        .orientation {
+            display: block;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    @media (orientation:landscape){
+        #masterLineChart {
+            width: 430px!important;
+            height: 215px!important;
+            margin-left: 40px!important;
+        }
+    }
+}
+
+.r-pad-stats {
+    padding-right: 15px;
+}
+
+.l-pad-stats {
+    padding-left: 15px;
+}
+
+.modalStats {
+    padding-bottom: 15px;
+    background-color: white!important;
+}
+
+.modalBody {
+    width: 100%;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.modalSub {
+    font-size: 20px;
+    font-weight: 600;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid black;
+}
+
+.stats-pie {
+    margin-bottom: 20px;
+}
+
+.comparison {
+    margin-bottom: 15px;
+}
+
+.raise {
+    margin-top: -10px;
+}
+
+.tighten {
+    height: 2rem!important;
 }

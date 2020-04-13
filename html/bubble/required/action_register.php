@@ -107,7 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $userHashedPassword = $hasher->hash($userPassword1);
 
         //BIND PARAMETERS TO QUERY
-        $stmt->bind_param("sssssssdiss", $userEmail, $userPassword1, $userFirstName, $userLastName, $userAddressL1, $userAddressL2, $userPostcode,
+        $stmt->bind_param("sssssssdiss", $userEmail, $userHashedPassword, $userFirstName, $userLastName, $userAddressL1, $userAddressL2, $userPostcode,
         $userEnergyCost, $userBudget, $userAllowEmails, $ipaddress);
 
         //EXECUTE QUERY

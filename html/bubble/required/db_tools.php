@@ -49,7 +49,7 @@ function validateLogin($email = '', $pwd = '')
 
     # On success retrieve user_id, first_name, and last name from 'user' database.
     if (empty($errors)) {
-        echo("validated");
+        echo("validated $email");
         $stmt->bind_param("s", $email);
         if (!$stmt->execute()) {
             $errors[] = "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
@@ -58,7 +58,7 @@ function validateLogin($email = '', $pwd = '')
         $result = $stmt->get_result();
      
         if($result->num_rows === 1){
-            echo("found row");
+            echo("found row $email");
 
             $row = $result->fetch_assoc();
             $checked = $hasher->verify($pwd, $row['pass']);

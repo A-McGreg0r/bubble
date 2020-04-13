@@ -100,8 +100,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $valuesArr["allow_emails"] = "No";
     }
 
-	print_r($_POST);
-	print_r($errors);
     //ENSURE EMAIL ADDRESS ISNT ALREADY REGISTERED.
     if (empty($errors)) {
         $stmt2 = $db->prepare("SELECT * FROM user_info WHERE email = ?");

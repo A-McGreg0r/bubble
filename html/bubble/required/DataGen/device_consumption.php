@@ -51,12 +51,6 @@ if ($result->num_rows >= 1) {
                             $stmt10->execute();
                         } else if($energy_setting == 2){
                             $energy_used = $energy_used + ($row4['energy_usage'] / 2);
-<<<<<<< HEAD
-                            $stmt11->execute();
-                        } else if($energy_setting == 3){
-                            $energy_used = $energy_used + ($row4['energy_usage'] / 4 * 3);
-                            $stmt12->execute();
-=======
                             $nrg = $row5['minute_data'] + (($row4['energy_usage'] / 2) / 60);
                             $nrg_hour = $row5['hour_data'] + (($row4['energy_usage'] / 2) / 60);
                             $nrg_day = $row5['day_data'] + (($row4['energy_usage'] / 2) / 60);
@@ -73,7 +67,6 @@ if ($result->num_rows >= 1) {
                             $stmt10 = $db->prepare("UPDATE device_info SET minute_data = ?, hour_data = ?, day_data = ?, month_data = ? WHERE device_id = ?");
                             $stmt10->bind_param("ddddi", $nrg, $nrg_hour, $nrg_day, $nrg_month, $id);
                             $stmt10->execute();
->>>>>>> 1d45762c7cd4128fb4eb0f5ba54ac5b9c602ef72
                         } else if($energy_setting == 4){
                             $energy_used = $energy_used + $row4['energy_usage'];
                             $nrg = $row5['minute_data'] + ($row4['energy_usage'] / 60);

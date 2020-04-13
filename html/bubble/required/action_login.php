@@ -1,18 +1,22 @@
 <?php
-# Open database connection.
-
-# Get connection, load, and validate functions.
+//REQUIRE CONFIG FILE
 require 'config.php';
 
-# PROCESS LOGIN ATTEMPT.
-# Check form submitted.
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
+    //GATHER INPUT FROM POST DATA, VALIDATE AND SANITIZE
+    $userEmail = filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL);
+    $userPassword = filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING);
 
-    # Check login.
-    list ($check, $data) = validateLogin($db, $_POST['email'], $_POST['password']);
+    //IF DATA INVALID
+    if($userEmail == FALSE || $userPassword == FALSE){
+        load('../index.php?error=0');
+    }
 
-    # On success set session data and display logged in page.
+    //VALIDATE PROVIDED LOGIN INFORMATION
+    list ($check, $data) = validateLogin($db, $userEmail, $userPassword);
+
+    //IF SUCCESSFUL, BEGIN SESSION< STORE DATA
     if ($check) {
         # Access session.
         session_start();
@@ -21,15 +25,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['last_name'] = $data['last_name'];
         session_write_close();
 
-        load('../index.php');#need to chance index to php
-    } # Or on failure set errors.
-    else {
-        $errors = $data;
+        load('../index.php');
+    } else {
+        load('../index.php?error=1');
     }
 
 }
-#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-# Added to script:::Continue to display login page on failure.
-
-load('../index.php');
+load('../index.php?error=2');
 ?>

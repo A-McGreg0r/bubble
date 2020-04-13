@@ -261,6 +261,32 @@ function scaleDevice(hub_id, device_id, scale) {
 //------------------------Device switch Functions----------------------------------------------------
 
 
+
+//------------------------Login functions----------------------------------------------------
+
+function sendLoginRequest(){
+
+    
+    let url = "required/action_login.php";
+
+    $.ajax({
+        type:'POST',
+        url: url,
+        data:{ email: "", password: ""},
+        success:function(data){
+
+        },
+        error: function(data){
+            alert("error!");
+        }
+    });
+}
+
+
+
+//------------------------Login functions----------------------------------------------------
+
+
 function submitImage(){
     var url = "required/action_adddevice.php";
     var video = document.querySelector("#videoElement");

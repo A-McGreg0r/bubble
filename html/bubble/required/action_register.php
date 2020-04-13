@@ -28,7 +28,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $A2 = NULL;
     $stmt = $db->prepare("INSERT INTO user_info (email, pass, first_name, last_name, address_l1, address_l2, postcode, energy_cost, budget, allow_emails, ip_address) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )");
     $valuesArr = array();
-
     # Check for a E-mail.
     if (!isset($_POST['email'])) {
         $errors[] = 'Enter your email address.';
@@ -101,7 +100,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $valuesArr["allow_emails"] = "No";
     }
 
-
+	print_r($_POST);
+	print_r($errors);
     //ENSURE EMAIL ADDRESS ISNT ALREADY REGISTERED.
     if (empty($errors)) {
         $stmt2 = $db->prepare("SELECT * FROM user_info WHERE email = ?");
@@ -123,7 +123,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } 
 
         if($stmt->affected_rows === 1){
-            load("../index.php?action=registerComplete");
+     //       load("../index.php?action=registerComplete");
         }else{
             echo("{\"error\":\"Registration failed, try again!\"}");
         }

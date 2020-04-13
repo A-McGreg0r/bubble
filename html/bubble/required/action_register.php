@@ -21,13 +21,11 @@ else if(getenv('REMOTE_ADDR'))
 else
     $ipaddress = 'UNKNOWN';
 
-//Check server has request in POST
+//ENSURE REQUEST HAS BEEN DELIVERED OVER POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    # Initialize an error array.
+    //INTITALISE ERRORS ARRAY
     $errors = array();
-    $A2 = NULL;
     $stmt = $db->prepare("INSERT INTO user_info (email, pass, first_name, last_name, address_l1, address_l2, postcode, energy_cost, budget, allow_emails, ip_address) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )");
-    $valuesArr = array();
 
     //GET VALID EMAIL ADDRESS
     $userEmail = filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL);
@@ -90,21 +88,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $errors[] = 'Unexpected error, please refresh the page';
     }
 
-    //ENSURE EMAIL ADDRESS ISNT ALREADY REGISTERED.
+    //IF NO ERRORS THROWN SO FAR
     if (empty($errors)) {
+        //ENSURE EMAIL ADDRESS ISNT ALREADY REGISTERED.
         $stmt2 = $db->prepare("SELECT * FROM user_info WHERE email = ?");
         $stmt2->bind_param("s", $userEmail);
         $stmt2->execute();
         $result = $stmt2->get_result();
         if ($result->num_rows != 0) {
-            echo("{\"error\":\"Email address already registered. <a href=\"../index.php\">Login</a>\"}");
+            echo("{\"error\":\"Email address already registered. <a href=\\\"../index.php\\\">Login</a>\"}");
+            $stmt2->close();
             exit(0);
         }
         $stmt2->close();
-    }
 
-    //IF NO ERRORS THROWN SO FAR
-    if (empty($errors)) {
         //USE PEPPERED PASSWORDS, GENERATE PASSWORD THAT HAS BEEN SALTED AND PEPPERED.       
         $hasher = new PepperedPasswords($pepper);
         $userHashedPassword = $hasher->hash($userPassword1);

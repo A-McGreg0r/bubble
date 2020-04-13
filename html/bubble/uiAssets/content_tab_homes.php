@@ -253,7 +253,6 @@ function generateHomeTab()
                             
                             <!--col 2-->
                             <script>
-                            //used to stop the charts refresing the page
                             document.onload(doughnut.update();)
                             </script>
                            

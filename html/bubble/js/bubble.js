@@ -126,16 +126,16 @@ function openModal(id, other, y, x, icon, icon2, state) {
     var icon2 = document.getElementById(icon2);
     var close = document.getElementById(other);
     if (modal && modal.style) {
-        if (modal.style.display == "block") {
+        if (modal.style.display == "flex") {
             modal.style.display = "none";
             x.style.display = "none";
-            y.style.display = "block";
+            y.style.display = "flex";
           } else {
-            modal.style.display = "block";
-            x.style.display = "block";
+            modal.style.display = "flex";
+            x.style.display = "flex";
             y.style.display = "none";
             if(state != 0){
-                icon.style.display = "block";
+                icon.style.display = "flex";
             }
             icon2.style.display = "none";
             close.style.display = "none";

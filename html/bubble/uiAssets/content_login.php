@@ -248,7 +248,7 @@ function generateLoginPage(){
                                 </div>
 
                                 <div id="registerErrorBox" class="text-center alert alert-danger">
-                                    <strong id="registerErrorBox"></strong>
+                                    <strong id="registerErrorDisplay"></strong>
                                 </div>
 
                                 <div class="container">

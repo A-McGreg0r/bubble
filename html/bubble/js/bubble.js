@@ -317,7 +317,7 @@ function sendRegisterRequest(){
     //GATHER REQUIRED DATA
     let url = "required/action_register.php";
 
-    var userEmail = $("#materialLoginFormEmail").val();
+    var userEmail = $("#materialRegisterFormEmail").val();
     var userFirstName = $("#materialRegisterFormFirstName").val();
     var userLastName = $("#materialRegisterFormLastName").val();
     var userAddress1 = $("#materialRegisterFormAddress_l1").val();

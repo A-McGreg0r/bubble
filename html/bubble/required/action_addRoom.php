@@ -8,13 +8,13 @@
     $roomName = filter_input(INPUT_POST, "roomName", FILTER_SANITIZE_STRING);
     $icon = filter_input(INPUT_POST, "icon", FILTER_SANITIZE_NUMBER_INT);
 
-    if($roomName === FALSE || $icon === FALSE){
+    if($roomName == FALSE || $icon == FALSE){
         load("../index.php?action=addroom&error=0");
     }
 
     //BEGIN SESSION
     session_start();
-    if(isset($_SESSION['hub_id']){
+    if(isset($_SESSION['hub_id'])){
         $hub_id = $_SESSION['hub_id'];
     } else {
         load("../index.php?action=addroom&error=1");

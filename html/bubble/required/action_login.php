@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //IF DATA INVALID
     if($userEmail == FALSE || $userPassword == FALSE){
         echo("{\"error\":\"Invalid username or password\"}");
-        exit();
+        exit(0);
     }
 
     //VALIDATE PROVIDED LOGIN INFORMATION
@@ -26,13 +26,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['last_name'] = $data['last_name'];
         session_write_close();
         echo("{\"success\":\"Login successful\"}");
-        exit();
+        exit(0);
     } else {
         echo("{\"error\":\"Unknown username or password\"}");
-        exit();
+        exit(0);
     }
 
 }
 echo("{\"error\":\"Login failed\"}");
-exit();
+exit(0);
 ?>

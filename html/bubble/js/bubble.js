@@ -267,24 +267,32 @@ function scaleDevice(hub_id, device_id, scale) {
 //------------------------Login functions----------------------------------------------------
 
 function sendLoginRequest(){
+    //CHANGE DISPLAY TO BE WAITING
     $("#loginErrorBox").hide();
-    let url = "required/action_login.php";
-    var userEmail = document.getElementById("materialLoginFormEmail").value;
-    var userPassword = document.getElementById("materialLoginFormPassword").value;
+    $("materialLoginFormEmail").prop("disabled", true);
+    $("materialLoginFormPassword").prop("disabled", true);
 
+    //GATHER REQUIRED DATA
+    let url = "required/action_login.php";
+    var userEmail = $("materialLoginFormEmail").val();
+    var userPassword = $("materialLoginFormPassword").val();
+
+    //SEND AJAX REQUEST
     $.ajax({
         type:'POST',
         url: url,
         data:{ email: userEmail, password: userPassword},
         success:function(data){
+            //PARSE RESPONSE JSON DATA
             var result = JSON.parse(data);
 
             //LOGIN ERROR, DISPLAY ERROR TO USER
             if(result.error){
-                document.getElementById("materialLoginFormPassword").value = "";
+                $("materialLoginFormPassword").val("");
                 $("#loginErrorDisplay").html(result.error);
                 $("#loginErrorBox").hide().fadeIn(500);
-
+                $("materialLoginFormEmail").prop("disabled", false);
+                $("materialLoginFormPassword").prop("disabled", false);
             }
             //LOGIN SUCCESS
             if(result.success){
@@ -292,8 +300,11 @@ function sendLoginRequest(){
             }
         },
         error: function(data){
+            //INTERNAL SERVER ERROR HAS OCCURRED
             $("#loginErrorDisplay").html("An unexpected error has occurred, please try again");
             $("#loginErrorBox").hide().fadeIn(500);
+            $("materialLoginFormEmail").prop("disabled", false);
+            $("materialLoginFormPassword").prop("disabled", false);
         }
     });
 }

@@ -156,7 +156,6 @@ function startTimer(id, hour_value, minute_value) {
         url: url,
         data:{ device_id: id, hour: hour, minute: minute},
         success:function(){
-            $('#reload_' + id).load(document.URL + ' #reload_' + id);
             $('#timer_end_' + id).load(document.URL + ' #timer_end_' + id);
         },
         error: function(data){

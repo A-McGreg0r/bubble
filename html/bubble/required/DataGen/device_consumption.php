@@ -43,36 +43,36 @@ if ($result->num_rows >= 1) {
                         if($energy_setting == 1){
                             $energy_used = $energy_used + ($row4['energy_usage'] / 4);
                             $nrg = $row5['minute_data'] + (($row4['energy_usage'] / 4) / 60);
-                            $nrg_hour = $row5['hour_data'] + $nrg;
-                            $nrg_day = $row5['day_data'] + $nrg;
-                            $nrg_month = $row5['month_data'] + $nrg;
+                            $nrg_hour = $row5['hour_data'] + (($row4['energy_usage'] / 4) / 60);
+                            $nrg_day = $row5['day_data'] + (($row4['energy_usage'] / 4) / 60);
+                            $nrg_month = $row5['month_data'] + (($row4['energy_usage'] / 4) / 60);
                             $stmt10 = $db->prepare("UPDATE device_info SET minute_data = ?, hour_data = ?, day_data = ?, month_data = ? WHERE device_id = ?");
                             $stmt10->bind_param("ddddi", $nrg, $nrg_hour, $nrg_day, $nrg_month, $id);
                             $stmt10->execute();
                         } else if($energy_setting == 2){
                             $energy_used = $energy_used + ($row4['energy_usage'] / 2);
                             $nrg = $row5['minute_data'] + (($row4['energy_usage'] / 2) / 60);
-                            $nrg_hour = $row5['hour_data'] + $nrg;
-                            $nrg_day = $row5['day_data'] + $nrg;
-                            $nrg_month = $row5['month_data'] + $nrg;
+                            $nrg_hour = $row5['hour_data'] + (($row4['energy_usage'] / 2) / 60);
+                            $nrg_day = $row5['day_data'] + (($row4['energy_usage'] / 2) / 60);
+                            $nrg_month = $row5['month_data'] + (($row4['energy_usage'] / 2) / 60);
                             $stmt10 = $db->prepare("UPDATE device_info SET minute_data = ?, hour_data = ?, day_data = ?, month_data = ? WHERE device_id = ?");
                             $stmt10->bind_param("ddddi", $nrg, $nrg_hour, $nrg_day, $nrg_month, $id);
                             $stmt10->execute();
                         } else if($energy_setting == 3){
                             $energy_used = $energy_used + ($row4['energy_usage'] / 4 * 3);
                             $nrg = $row5['minute_data'] + ((($row4['energy_usage'] / 4) * 3) / 60);
-                            $nrg_hour = $row5['hour_data'] + $nrg;
-                            $nrg_day = $row5['day_data'] + $nrg;
-                            $nrg_month = $row5['month_data'] + $nrg;
+                            $nrg_hour = $row5['hour_data'] + ((($row4['energy_usage'] / 4) * 3) / 60);
+                            $nrg_day = $row5['day_data'] + ((($row4['energy_usage'] / 4) * 3) / 60);
+                            $nrg_month = $row5['month_data'] + ((($row4['energy_usage'] / 4) * 3) / 60);
                             $stmt10 = $db->prepare("UPDATE device_info SET minute_data = ?, hour_data = ?, day_data = ?, month_data = ? WHERE device_id = ?");
                             $stmt10->bind_param("ddddi", $nrg, $nrg_hour, $nrg_day, $nrg_month, $id);
                             $stmt10->execute();
                         } else if($energy_setting == 4){
                             $energy_used = $energy_used + $row4['energy_usage'];
                             $nrg = $row5['minute_data'] + ($row4['energy_usage'] / 60);
-                            $nrg_hour = $row5['hour_data'] + $nrg;
-                            $nrg_day = $row5['day_data'] + $nrg;
-                            $nrg_month = $row5['month_data'] + $nrg;
+                            $nrg_hour = $row5['hour_data'] + ($row4['energy_usage'] / 60);
+                            $nrg_day = $row5['day_data'] + ($row4['energy_usage'] / 60);
+                            $nrg_month = $row5['month_data'] + ($row4['energy_usage'] / 60);
                             $stmt10 = $db->prepare("UPDATE device_info SET minute_data = ?, hour_data = ?, day_data = ?, month_data = ? WHERE device_id = ?");
                             $stmt10->bind_param("ddddi", $nrg, $nrg_hour, $nrg_day, $nrg_month, $id);
                             $stmt10->execute();

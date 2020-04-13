@@ -104,6 +104,7 @@ html;
 
                     $total_usage = $total_usage / 1000;
                     $total_usage = $total_usage - $device_month;
+                    $total_usage = number_format($total_usage,3);
 
                     $price = 0;
 

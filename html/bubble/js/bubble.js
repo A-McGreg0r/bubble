@@ -117,7 +117,7 @@ $(window).on("load", function(){
     });
 });
 
-function openModal(id, other, y, x, icon, icon2) {
+function openModal(id, other, y, x, icon, icon2, state) {
     event.stopPropagation();
     var modal = document.getElementById(id);
     var x = document.getElementById(x);
@@ -134,7 +134,9 @@ function openModal(id, other, y, x, icon, icon2) {
             modal.style.display = "block";
             x.style.display = "block";
             y.style.display = "none";
-            icon.style.display = "block";
+            if(state != 0){
+                icon.style.display = "block";
+            }
             icon2.style.display = "none";
             close.style.display = "none";
           }

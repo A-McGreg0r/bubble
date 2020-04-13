@@ -210,10 +210,10 @@ html;
                             </div>
                         </div>
 
-                        <strong class="timer_icon" id="timer_$device_id" style="color:$colour; display:$timer_display" onclick="openModal('modal_$device_id', 'modal_stats_$device_id', 'timer_$device_id', 'timer_x_$device_id', 'stats_$device_id', 'stats_x_$device_id')">$timer</strong>
-                        <strong class="timer_icon" id="timer_x_$device_id" style="color:$colour; display:none" onclick="openModal('modal_$device_id', 'modal_stats_$device_id', 'timer_$device_id', 'timer_x_$device_id', 'stats_$device_id', 'stats_x_$device_id')"><i class="fas fa-times"></i></strong>
-                        <i class="stats_icon fa" id="stats_$device_id" style="color:$colour;" onclick="openModal('modal_stats_$device_id', 'modal_$device_id', 'stats_$device_id', 'stats_x_$device_id', 'timer_$device_id', 'timer_x_$device_id')">&#xf200;</i>
-                        <i class="stats_icon_x " id="stats_x_$device_id" style="color:$colour;" onclick="openModal('modal_stats_$device_id', 'modal_$device_id', 'stats_$device_id', 'stats_x_$device_id', 'timer_$device_id', 'timer_x_$device_id')"><i class="fas fa-times"></i></i>
+                        <strong class="timer_icon" id="timer_$device_id" style="color:$colour; display:$timer_display" onclick="openModal('modal_$device_id', 'modal_stats_$device_id', 'timer_$device_id', 'timer_x_$device_id', 'stats_$device_id', 'stats_x_$device_id', $status)">$timer</strong>
+                        <strong class="timer_icon timer_icon_x" id="timer_x_$device_id" style="color:$colour; display:none" onclick="openModal('modal_$device_id', 'modal_stats_$device_id', 'timer_$device_id', 'timer_x_$device_id', 'stats_$device_id', 'stats_x_$device_id', $status)"><i class="fas fa-times"></i></strong>
+                        <i class="stats_icon fa" id="stats_$device_id" style="color:$colour;" onclick="openModal('modal_stats_$device_id', 'modal_$device_id', 'stats_$device_id', 'stats_x_$device_id', 'timer_$device_id', 'timer_x_$device_id', $status)">&#xf200;</i>
+                        <i class="stats_icon_x " id="stats_x_$device_id" style="color:$colour;" onclick="openModal('modal_stats_$device_id', 'modal_$device_id', 'stats_$device_id', 'stats_x_$device_id', 'timer_$device_id', 'timer_x_$device_id', $status)"><i class="fas fa-times"></i></i>
                     </div>
 
                     

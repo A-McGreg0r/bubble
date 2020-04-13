@@ -26,6 +26,10 @@ if ($num_rows8 >= 1) {
             $stmt9->bind_param("iii", $zero, $hour_data, $id);
             $stmt9->execute();
         }
+
+        $stmt10 = $db->prepare("UPDATE device_info SET minute_data = ? WHERE device_id = ?");
+        $stmt10->bind_param("iii", $zero, $id);
+        $stmt10->execute();
     }
 }
 

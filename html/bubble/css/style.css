@@ -551,7 +551,7 @@ select {
     border-radius: 30px;
 }
 
-.timer_icon:hover, .stats_icon:hover {
+.timer_icon:hover, .stats_icon:hover, .stats_icon_x:hover, .timer_icon_x:hover {
     cursor: pointer;
     transform: scale(1.06);
 }

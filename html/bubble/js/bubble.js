@@ -265,16 +265,22 @@ function scaleDevice(hub_id, device_id, scale) {
 //------------------------Login functions----------------------------------------------------
 
 function sendLoginRequest(){
-
-    
     let url = "required/action_login.php";
+    var userEmail = document.getElementById("materialLoginFormEmail").value;
+    var userPassword = document.getElementById("materialLoginFormPassword").value;
 
     $.ajax({
         type:'POST',
         url: url,
-        data:{ email: "", password: ""},
+        data:{ email: userEmail, password: userPassword},
         success:function(data){
-
+            var result = JSON.parse(data);
+            if(result.error){
+                alert(result.error);
+            }
+            if(result.success){
+                location.reload();
+            }
         },
         error: function(data){
             alert("error!");

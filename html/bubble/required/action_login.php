@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     //IF DATA INVALID
     if($userEmail == FALSE || $userPassword == FALSE){
-        load('../index.php?error=0');
+        echo("{\"error\":\"Invalid username or password\"}");
     }
 
     //VALIDATE PROVIDED LOGIN INFORMATION
@@ -24,12 +24,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['first_name'] = $data['first_name'];
         $_SESSION['last_name'] = $data['last_name'];
         session_write_close();
+        echo("{\"success\":\"Login successful\"}");
 
-        load('../index.php');
     } else {
-        load('../index.php?error=1');
+        echo("{\"error\":\"Unknown username or password\"}");
     }
 
 }
-load('../index.php?error=2');
+echo("{\"error\":\"Login failed\"}");
 ?>

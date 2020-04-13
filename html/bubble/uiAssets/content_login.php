@@ -80,7 +80,7 @@ function generateLoginPage(){
                                         <label for="materialLoginFormPassword">Password</label>
                                         <input type="password" id="materialLoginFormPassword" class="form-control" name="password"/>
                                     </div>
-                                    <div class="text-center" class="alert alert-danger">
+                                    <div class="text-center alert alert-danger">
                                         <h5 id="loginErrorDisplay"></h5>
                                     </div>
                                     <div class="d-flex justify-content-around">

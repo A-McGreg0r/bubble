@@ -35,7 +35,7 @@ function generateAddRoom(){
             </div>
         </div>
 pageHTML;
-    }else
+    } else {
         $html .= <<<pageHTML
         <div class="container">
             <div class="col-lg-12">

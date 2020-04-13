@@ -51,7 +51,7 @@ function validateLogin($email = '', $pwd = '')
     if (empty($errors)) {
         $stmt->bind_param("s", $email);
         if (!$stmt->execute()) {
-            echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+            $errors[] = "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
         } 
 
         $result = $stmt->get_result();
@@ -61,13 +61,8 @@ function validateLogin($email = '', $pwd = '')
             $checked = $hasher->verify($pwd, $row['pass']);
             if($checked){
                 return array(true, $row);
-            }else{
-                $errors[] = 'Email address and password not found.';
             }
-        } else {
-            echo "Error! Multiple rows when expecting 1!";
         }
- 
      
         /* free results */
         $stmt->free_result();

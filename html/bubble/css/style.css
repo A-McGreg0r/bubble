@@ -492,6 +492,7 @@ select {
     background-color: white;
     border: 2px solid rgb(0,0,0);
     margin-bottom: 15px!important;
+    margin-top: 10px!important;
 }
 
 .timer-end {
@@ -516,7 +517,23 @@ select {
 }
 
 .stats_icon {
-    display: flex!important;
+    z-index: 10;
+    position: absolute;
+    top: -7px;
+    left: -7px;
+    text-align: center;
+    align-items: center;
+    vertical-align: middle;
+    font-size: 25px!important;
+    background-color: #ffffff;
+    width: 35px;
+    height: 35px;
+    padding-left: 3px;
+    padding-top: 7px;
+    border-radius: 30px;
+}
+
+.stats_icon_x {
     z-index: 10;
     position: absolute;
     top: -7px;
@@ -525,12 +542,12 @@ select {
     text-align: center;
     align-items: center;
     vertical-align: middle;
-    font-size: 25px!important;
+    font-size: 30px!important;
     background-color: #ffffff;
     width: 35px;
     height: 35px;
-    padding-left: 6px;
-    padding-top: 2px;
+    padding-left: 3px;
+    padding-top: 3px;
     border-radius: 30px;
 }
 

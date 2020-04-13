@@ -117,15 +117,25 @@ $(window).on("load", function(){
     });
 });
 
-function openModal(id, other) {
+function openModal(id, other, y, x, icon, icon2) {
     event.stopPropagation();
     var modal = document.getElementById(id);
+    var x = document.getElementById(x);
+    var y = document.getElementById(y);
+    var icon = document.getElementById(icon);
+    var icon2 = document.getElementById(icon2);
     var close = document.getElementById(other);
     if (modal && modal.style) {
         if (modal.style.display == "block") {
             modal.style.display = "none";
+            x.style.display = "none";
+            y.style.display = "block";
           } else {
             modal.style.display = "block";
+            x.style.display = "block";
+            y.style.display = "none";
+            icon.style.display = "block";
+            icon2.style.display = "none";
             close.style.display = "none";
           }
     }

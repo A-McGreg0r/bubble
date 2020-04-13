@@ -36,7 +36,7 @@ function validateLogin($email = '', $pwd = '')
         echo("No email");
         $errors[] = 'Enter your email address.';
     } else {
-        echo("email :$email:");
+        echo("email ;$email;");
 
         $email = trim($email);
     }

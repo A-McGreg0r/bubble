@@ -64,7 +64,6 @@ function generateLoginPage(){
                             <div class="modal-body mb-1">
 
                                 <!-- Form -->
-                                <form class="text-center" style="color: rgb(39,104,88);" action="required/action_login.php" method="POST">
 
                                     <!-- Email -->
                                     <div class="md-form">
@@ -94,9 +93,8 @@ function generateLoginPage(){
                                     </div>
 
                                     <!-- Sign in button -->
-                                    <button id="login_button" onclick="postData('stuff')" class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit" value="submit">Log in</button>
+                                    <button id="login_button" onclick="sendLoginRequest()" class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit" value="submit">Log in</button>
 
-                                </form>
                             </div>
                         </div>
                         <!--Panel 1 login Tab -->

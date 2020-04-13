@@ -1,18 +1,22 @@
 <?php
-# Open database connection.
-
-# Get connection, load, and validate functions.
+//REQUIRE CONFIG FILE
 require 'config.php';
 
-# PROCESS LOGIN ATTEMPT.
-# Check form submitted.
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
+    //GATHER INPUT FROM POST DATA, VALIDATE AND SANITIZE
+    $userEmail = filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL);
+    $userPassword = filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING);
 
-    # Check login.
-    list ($check, $data) = validateLogin($db, $_POST['email'], $_POST['password']);
+    //IF DATA INVALID
+    if($userEmail == FALSE || $userPassword == FALSE){
+        echo("{\"error\":\"Invalid username or password\"}");
+    }
 
-    # On success set session data and display logged in page.
+    //VALIDATE PROVIDED LOGIN INFORMATION
+    list ($check, $data) = validateLogin($db, $userEmail, $userPassword);
+
+    //IF SUCCESSFUL, BEGIN SESSION< STORE DATA
     if ($check) {
         # Access session.
         session_start();
@@ -20,16 +24,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['first_name'] = $data['first_name'];
         $_SESSION['last_name'] = $data['last_name'];
         session_write_close();
+        echo("{\"success\":\"Login successful\"}");
 
-        load('../index.php');#need to chance index to php
-    } # Or on failure set errors.
-    else {
-        $errors = $data;
+    } else {
+        echo("{\"error\":\"Unknown username or password\"}");
     }
 
 }
-#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-# Added to script:::Continue to display login page on failure.
-
-load('../index.php');
+echo("{\"error\":\"Login failed\"}");
 ?>

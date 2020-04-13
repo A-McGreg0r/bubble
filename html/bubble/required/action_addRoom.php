@@ -17,7 +17,7 @@
     if(isset($_SESSION['hub_id'])){
         $hub_id = $_SESSION['hub_id'];
     } else {
-        load("../index.php?action=addroom&error=1");
+        load("../index.php?action=addroom&error=1&roomName=$roomName");
     }
     //END SESSION
     session_write_close();
@@ -27,16 +27,17 @@
     $stmt2->execute();
     $result2 = $stmt2->get_result();
     if($result2->num_rows === 0){
+        $stmt2->close();
         $stmt = $db->prepare("INSERT INTO room_info (hub_id, room_name, room_icon) VALUES (?, ?, ?)");
         $stmt->bind_param("isi", $hub_id, $roomName, $roomIcon);
         if ($stmt->execute()) {
-            $stmt2->close();
             $stmt->close();
-            load("../index.php?action=addroom&success=1");
+            load("../index.php?action=addroom&success=1&roomName=$roomName");
         }
         $stmt->close();
+        load("../index.php?action=addroom&error=3&roomName=$roomName");
     }
     $stmt2->close();
-    load("../index.php?action=addroom&error=2");
+    load("../index.php?action=addroom&error=2&roomName=$roomName");
 
 ?>

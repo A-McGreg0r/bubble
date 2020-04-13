@@ -22,6 +22,9 @@ function generateAddRoom(){
             case 2:
                 $errorString = "Room name already exists!";
             break;
+            case 3:
+                $errorString = "Room creation failed! Please try again";
+            break;
         }
     }
     

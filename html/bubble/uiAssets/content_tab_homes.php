@@ -37,24 +37,11 @@ function generateHomeTab()
                         $hub_name = "My Home";
                     }
 
-                    $stmt2 = $db->prepare("SELECT * FROM test_data WHERE hub_id = ?");
-                    $stmt2->bind_param("i", $hub_id);
-                    $stmt2->execute();
-                    $result2 = $stmt2->get_result();
-
-                    if ($result2->num_rows === 1) {
-                        $row2 = $result2->fetch_assoc();
-                        $cost_day = $row2['cost_day'];
-                        $cost_month = $row2['cost_month'];
-                        $cost_total = $row2['cost_total'];
-                        $cost_variance = $cost_total - $cost_month;
-                    }
-
-                    $day = date("d");
+                    $day=date("d");
                     $energy_last_day = 0;
 
                     $stmt4 = $db->prepare("SELECT * FROM hourly_data WHERE hub_id = ? AND entry_day = ?");
-                    $stmt4->bind_param("ii", $hub_id, $day);
+                    $stmt4->bind_param("ii", $hub_id,$day );
                     $stmt4->execute();
                     $result4 = $stmt4->get_result();
                     if ($result4->num_rows >= 1) {
@@ -104,7 +91,8 @@ function generateHomeTab()
                     $dataLabels = array();
                     $count = 0;
 
-                    $stmt7 = $db->prepare("SELECT * FROM monthly_data");
+                    $stmt7 = $db->prepare("SELECT * FROM monthly_data WHERE hub_id = ?");
+                    $stmt7->bind_param("i", $hub_id);
                     $stmt7->execute();
                     $result7 = $stmt7->get_result();
                     if ($result7->num_rows >= 1) {
@@ -155,7 +143,6 @@ function generateHomeTab()
                     }
                     $cost_month = $energy_last_month * $energy_cost;
                     $cost_month_round = number_format($cost_month,2);
-                    $DataSumMonthEncoded = json_encode(array_sum($dataPoints), JSON_NUMERIC_CHECK);
                     $DataLabelsMonthEncoded = json_encode($dataLabels);
                     $dataPointsMonthEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
                     $dataAvgMonthEncoded = json_encode($AvgPoints, JSON_NUMERIC_CHECK);
@@ -208,6 +195,7 @@ function generateHomeTab()
 
                     $html .= <<<html
                     <!-- Accordion card -->
+                    
                     <div class="card col-lg">
                     <!-- Card header -->
                         <div class="card-header" role="tab" id="heading$hub_id">
@@ -222,15 +210,17 @@ function generateHomeTab()
         
                         <!-- Card body -->
                         <div id="collapse$hub_id" class="collapse show" role="tabpanel" aria-labelledby="heading$hub_id" data-parent="#accordionEx194">
-                            <div class="card-body pt-0 justify-content-center " style="max-width:100%">
-                            <!--todo change 3 donuts to carousels-->
-                                <div class="flex-sm-row ">    
-
+                            <div class="card-body pt-0 justify-content-center ">
+                        <div class="container">   
+                             <!--coll 1-->
+                        <div class="row"
+                        </div>     
+                            <div class="col-lg-6 swipe" id="overview">
                                 <h4 class="section-title">Overview</h4>
                                 <table class="stats-table">
                                     
                                     <tr class="stats-row">
-                                        <td class="stats-left"><strong>&ensp;Power Used Today:</strong></td>
+                                        <td class="stats-left"><strong>&ensp;Daily Usage:</strong></td>
                                         <td class="stats-right">$energy_last_day kWh&ensp;</td>
                                     </tr>
                                     <tr class="stats-row">
@@ -238,7 +228,7 @@ function generateHomeTab()
                                         <td class="stats-right"><strong>£$cost_day_round&ensp;</strong></td>
                                     </tr>
                                     <tr class="stats-row">
-                                        <td class="stats-left"><strong>&ensp;Power Used This Month:&ensp;&ensp;</strong></td>
+                                        <td class="stats-left"><strong>&ensp;Monthly Usage:&ensp;&ensp;</strong></td>
                                         <td class="stats-right">$energy_last_month kWh&ensp;</td>
                                     </tr>
                                     <tr class="stats-row">
@@ -246,7 +236,7 @@ function generateHomeTab()
                                         <td class="stats-right double-stat"><strong>£$cost_month_round&ensp;</br>£$budget_remaining_round&ensp;</strong></td>
                                     </tr>
                                     <tr class="stats-row">
-                                        <td class="stats-left"><strong>&ensp;Power Used This Year:</strong></td>
+                                        <td class="stats-left"><strong>&ensp;Annual Usage:</strong></td>
                                         <td class="stats-right">$energy_last_year kWh&ensp;</td>
                                     </tr>
                                     <tr class="stats-row">
@@ -254,22 +244,31 @@ function generateHomeTab()
                                         <td class="stats-right"><strong>£$cost_year_round&ensp;</strong></td>
                                     </tr>
                                 </table>
-                                <small class="form-text text-muted mb-4" style="text-align:center">Costing at £$energy_cost_round per kWh</small>
-                                <hr>
-                                
-                                
-                                <!--Carousel Container--> 
-                                <h4 class="section-title">Expenditure</h4>
-                                    <div id="chart-carousel" class="carousel slide" data-ride="carousel">
+                                <small class="form-text text-muted mb-4" style="text-align:center">Costing at £$energy_cost_round per kWh</small>                
+                            </div>
+                            
+                            <!--col 1-->
+                            
+                            <hr id="separater1">
+                            
+                            <!--col 2-->
+                            <script>
+                            document.onload(myLineChart.update();)
+                            </script>
+                           
+                            <div class="card col-lg-6 border border-0 ">
+                            <!--Carousel Container--> 
+                                <h4 class="section-title ">Expenditure</h4>
+                                    <div id="chart-carousel" class="carousel slide " data-ride="carousel">
                                         <!--Donut carousel-->
-                                        <div class="carousel-inner">
+                                        <div class="carousel-inner ">
                                         
                                             <!--Donut 1-->
-                                                  <div class="carousel-item active">                           
-                                                        <div class="col border border-primary rounded m-2" style="max-width:100%">
+                                                  <div class="carousel-item  active">                           
+                                                        <div class="col " style="max-width:100%">
                                                             <h4 class="text-centre text-dark centre-text">Daily</h4>
                                                             
-                                                            <canvas style="max-width:50% min-width:30%" id="heatingUsage"></canvas>
+                                                            <canvas class="" style="max-width:50% min-width:30%" id="heatingUsage"></canvas>
                                                             
                                                             <script>
                                                                 //doughnut
@@ -285,7 +284,8 @@ function generateHomeTab()
                                                                 }]
                                                                 },
                                                                 options: {
-                                                                responsive: true
+                                                                responsive: [true],
+                                                                
                                                                 }
                                                                 });
                                                             </script>
@@ -294,12 +294,11 @@ function generateHomeTab()
                                             <!--Donut 1-->                                                    
                                              
                                             <!--Donut 2-->             
-                                                  <div class="carousel-item">
-                                                        <div class="col border border-primary cen rounded m-2" style="max-width:100%">
+                                                  <div class="carousel-item ">
+                                                        <div class="col ">
                                                         
-                                                        <h4 class="text-centre text-dark centre-text">Monthly</h4>
-                                                    
-                                                        <canvas style="max-width:50% min-width:30%" id="heatingUsage1"></canvas>
+                                                        <h4 class="text-centre text-dark centre-text ">Monthly</h4>
+                                                        <canvas class="" style="max-width:50% min-width:30%" id="heatingUsage1"></canvas>
                                                         
                                                         <script>
                                                             //doughnut
@@ -325,10 +324,10 @@ function generateHomeTab()
                                             <!--Donut 2-->    
                                             
                                             <!--Donut 3-->             
-                                                  <div class="carousel-item">
-                                                        <div class="col border border-primary rounded m-2" style="max-width:100%">
-                                                            <h4 class="text-centre text-dark centre-text">Yearly</h4>
-                                                            <canvas style="max-width:50% min-width:30%" id="heatingUsage2"></canvas>
+                                                  <div class="carousel-item ">
+                                                        <div class="col " style="max-width:100%">
+                                                            <h4 class="text-centre text-dark centre-text ">Yearly</h4>
+                                                            <canvas class="" style="max-width:50% min-width:30%" id="heatingUsage2"></canvas>
                                                             <script>
                                                                 //doughnut
                                                                 var ctxD = document.getElementById("heatingUsage2").getContext("2d");
@@ -349,7 +348,17 @@ function generateHomeTab()
                                                             </script>
                                                         </div>
                                                   </div>
-                                            <!--Donut 3-->                
+                                            <!--Donut 3-->  
+                                            <!--button for Donut carousel -->
+                                              <a class="carousel-control-prev " href="#chart-carousel" role="button" data-slide="prev">
+                                                <span class="carousel-control-prev-icon " aria-hidden="false"></span>
+                                                <span class="sr-only ">Previous</span>
+                                              </a>
+                                              <a class="carousel-control-next " href="#chart-carousel" role="button" data-slide="next">
+                                                <span class="carousel-control-next-icon " aria-hidden="false"></span>
+                                                <span class="sr-only ">Next</span>
+                                              </a>  
+                                                       
                                         </div>
                                         <!--Donut carousel-->
                                         <script>
@@ -359,20 +368,31 @@ function generateHomeTab()
                                                 });
                                          </script>
 
-                                         <small class="form-text text-muted mb-4" style="text-align:center">Budget of £$budget_round per Month</small>
+                                         <small class="form-text text-muted mb-4 text" style="text-align:center">Budget of £$budget_round per Month</small>
                                     </div>
                                     <!--Carousel Container-->
+                            </div>
+                            <!--col 2-->
+                            
+                            <hr id="separater2">
 
-                                    <hr class="section-break">
-                                    <h4 class="section-title overview">Power Usage</h4>
+                            <!--col 3-->
+
+                            <div class="col-lg swipe" id="graph">
+                            <h4 class="section-title overview">Power Usage</h4>
+
+                            <div class="orientation">
+                                <img src="../img/orientation.png" class="tilt-icon">
+                                <div>Please rotate phone to view graph </div>
+                            </div>
                                     
-                                    <div class="container border border-primary">
+                                    <div class="container landscape">
                                           <!--change chart drop down-->
                                             <select id="chartPicker" class="browser-default custom-select dropdown">
                                                 <option selected="selected">Choose time period</option>
-                                                <option value="0">Year</option>
-                                                <option value="1">Month</option>
-                                                <option value="2">Day</option>
+                                                <option value="0">Current Year</option>
+                                                <option value="1">Current Month</option>
+                                                <option value="2">Today</option>
                                             </select>
                                     <!--chart canvas-->        
                                     <canvas id="masterLineChart"></canvas>
@@ -420,15 +440,30 @@ function generateHomeTab()
                                             } else if (selectedChart ==2){
                                             masterLineChart["config"]["data"] = data3; //<--- THIS WORKS!
                                             masterLineChart.update();
-                                            }else{
-                                                alert('Something has gone wrong?')
                                             }
                                         });
                                     });
 
                                 </script>
                                 
-                                    </div>
+                             </div>
+                            </div>
+                            
+                            
+                                    
+                            
+                            <!--col 3-->
+                        </div>
+                           
+                            
+                            
+
+
+                                
+                                
+                                
+
+                                    
 
                                     
                                </div> 

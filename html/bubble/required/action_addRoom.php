@@ -4,6 +4,7 @@
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
     include_once dirname(__DIR__).'/required/config.php';
+    global $db;
 
     $roomName = $_POST['roomName'];
     $roomIcon = $_POST['icon'];
@@ -12,8 +13,8 @@
     session_start();
     $hub_id = $_SESSION['hub_id'];
 
-    $stmt2 = $db->prepare("SELECT * FROM room_info WHERE room_name = ?");
-    $stmt2->bind_param("s", $roomName);
+    $stmt2 = $db->prepare("SELECT * FROM room_info WHERE hub_id = ? AND room_name = ?");
+    $stmt2->bind_param("is", $hub_id, $roomName);
     $stmt2->execute();
     $result2 = $stmt2->get_result();
     if($result2 === 0){

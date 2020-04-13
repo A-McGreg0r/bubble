@@ -7,6 +7,50 @@ $month = date("m");
 $day = date("d");
 $leap = date("L");
 
+$stmt8 = $db->prepare("SELECT * FROM device_info");
+$stmt8->execute();
+$result8 = $stmt8->get_result();
+$num_rows8 = $result8->num_rows;
+if ($num_rows8 >= 1) {
+    $all8 = $result8->fetch_all(MYSQLI_ASSOC);
+    foreach($all8 as $row8){
+        $id = $row8['device_id'];
+        $zero = 0;
+        
+        $day_data = $row8['day_data'] + $hour_data;
+
+        if($month == 4 || $month == 6 || $month == 9 || $month == 11){
+            if($day == 30){
+                $day_data = 0;
+                $stmt9 = $db->prepare("UPDATE device_info SET hour_data = ?, day_data = ? WHERE device_id = ?");
+                $stmt9->bind_param("iii", $zero, $day_data, $id);
+                $stmt9->execute();
+            }
+        } else if ($month == 2 && $leap == 1){
+            if($day == 29){
+                $day_data = 0;
+                $stmt9 = $db->prepare("UPDATE device_info SET hour_data = ?, day_data = ? WHERE device_id = ?");
+                $stmt9->bind_param("iii", $zero, $day_data, $id);
+                $stmt9->execute();
+            }
+        } else if ($month == 2){
+            if($day == 28){
+                $day_data = 0;
+                $stmt9 = $$stmt9 = $db->prepare("UPDATE device_info SET hour_data = ?, day_data = ? WHERE device_id = ?");
+                $stmt9->bind_param("iii", $zero, $day_data, $id);
+                $stmt9->execute();
+            }
+        } else {
+            if($day == 31){
+                $day_data = 0;
+                $stmt9 = $db->prepare("UPDATE device_info SET hour_data = ?, day_data = ? WHERE device_id = ?");
+                $stmt9->bind_param("iii", $zero, $day_data, $id);
+                $stmt9->execute();
+            }
+        }
+    }
+}
+
 $auto_delete = 0;
 
 if($month == 4 || $month == 6 || $month == 9 || $month == 11){

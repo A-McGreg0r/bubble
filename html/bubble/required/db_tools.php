@@ -22,7 +22,7 @@ function load($page = 'login.php')
 
 
 # Function to check email address and password.
-function validateLogin($email = '', $pwd = '')
+function validateLogin($email, $pwd = '')
 {
     global $pepper, $db;
     require 'PepperedPasswords.php';
@@ -30,19 +30,15 @@ function validateLogin($email = '', $pwd = '')
     $errors = array();
 
     $stmt = $db->prepare("SELECT user_id, first_name, last_name, pass FROM user_info WHERE email=?");
-
     # Check email field.
-    if (empty($email)) {
-        echo("No email");
+    if (!isset($email)) {
         $errors[] = 'Enter your email address.';
     } else {
-        echo("email ;$email;");
-
         $email = trim($email);
     }
 
     # Check password field.
-    if (empty($pwd)) {
+    if (!isset($pwd)) {
         $errors[] = 'Enter your password.';
     } else {
         $pwd = trim($pwd);
@@ -52,17 +48,14 @@ function validateLogin($email = '', $pwd = '')
 
     # On success retrieve user_id, first_name, and last name from 'user' database.
     if (empty($errors)) {
-        echo("validated ;$email;");
         $stmt->bind_param("s", $email);
         if (!$stmt->execute()) {
             $errors[] = "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
         } 
-
+	
         $result = $stmt->get_result();
      
-        if($result->num_rows === 1){
-            echo("found row $email");
-
+        if($result->num_rows === 1) {
             $row = $result->fetch_assoc();
             $checked = $hasher->verify($pwd, $row['pass']);
             if($checked){

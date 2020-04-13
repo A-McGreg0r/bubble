@@ -125,6 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
         exit(0);
     } else {
+        //RETURN ERRORS TO CLIENT, EXPLAIN WHAT WENT WRONG
         echo("{\"error\":\"");
         foreach ($errors as $msg) {
             echo " - $msg<br>";

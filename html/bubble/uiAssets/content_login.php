@@ -263,6 +263,21 @@ function generateLoginPage(){
                                 <div>
                                     <button onclick="sendRegisterRequest()" class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit" value="submit">Sign up</button>
                                 </div>
+
+                                <div id="registrationSuccessModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="container">
+                                                <div class="text-center">
+                                                    <div class="text-center confirmation">
+                                                        <img class="confirmation-logo" src="img/favicon.png">
+                                                        <p class="text-center">Hi <p id="modalUserName">!<br>Thank you for registering for bubble!<br/>Please return to the <a href="index.php">Login Page</a> to login</p>
+                                                    </div>
+                                                </div>
+                                            </div>                                       
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <!--Panel 3 Forgot Password Tab panel -->

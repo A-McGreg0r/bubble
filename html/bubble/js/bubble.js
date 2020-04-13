@@ -347,7 +347,8 @@ function sendRegisterRequest(){
                 $("#registerErrorBox").hide().fadeIn(500);
             }
             if(result.success){
-                location.reload();
+                $("#modalUserName") = userFirstName;
+                $("#registrationSuccessModal").modal();
             }
         },
         error: function(data){

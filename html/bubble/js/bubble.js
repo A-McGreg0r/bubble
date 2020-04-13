@@ -269,8 +269,8 @@ function scaleDevice(hub_id, device_id, scale) {
 function sendLoginRequest(){
     //CHANGE DISPLAY TO BE WAITING
     $("#loginErrorBox").hide();
-    $("#materialLoginFormEmail").prop("disabled", true);
-    $("#materialLoginFormPassword").prop("disabled", true);
+    $("#materialLoginFormEmail").attr("disabled", "disabled");
+    $("#materialLoginFormPassword").attr("disabled", "disabled");
 
     //GATHER REQUIRED DATA
     let url = "required/action_login.php";
@@ -291,8 +291,8 @@ function sendLoginRequest(){
                 $("#materialLoginFormPassword").val("");
                 $("#loginErrorDisplay").html(result.error);
                 $("#loginErrorBox").hide().fadeIn(500);
-                $("#materialLoginFormEmail").prop("disabled", false);
-                $("#materialLoginFormPassword").prop("disabled", false);
+                $("#materialLoginFormEmail").attr("disabled", "");
+                $("#materialLoginFormPassword").attr("disabled", "");
             }
             //LOGIN SUCCESS
             if(result.success){
@@ -303,8 +303,8 @@ function sendLoginRequest(){
             //INTERNAL SERVER ERROR HAS OCCURRED
             $("#loginErrorDisplay").html("An unexpected error has occurred, please try again");
             $("#loginErrorBox").hide().fadeIn(500);
-            $("#materialLoginFormEmail").prop("disabled", false);
-            $("#materialLoginFormPassword").prop("disabled", false);
+            $("#materialLoginFormEmail").attr("disabled", "");
+            $("#materialLoginFormPassword").attr("disabled", "");
         }
     });
 }

@@ -264,6 +264,30 @@ function generateLoginPage(){
                                     <button onclick="sendRegisterRequest()" class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit" value="submit">Sign up</button>
                                 </div>
 
+                                <!-- Modal -->
+                                <div class="modal fade" id="registrationSuccessModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Welcome!</h5>
+                                                <button type="button" onclick="location.reload()" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="text-center">
+                                                    <div class="text-center confirmation">
+                                                        <img class="confirmation-logo" src="img/favicon.png">
+                                                        <p class="text-center"><p id="modalUserName"></p>!<br>Thank you for registering for bubble!<br/>Please return to the <a href="index.php">Login Page</a> to login</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" onclick="location.reload()" class="btn btn-secondary" data-dismiss="modal">Login</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div id="registrationSuccessModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
@@ -271,7 +295,7 @@ function generateLoginPage(){
                                                 <div class="text-center">
                                                     <div class="text-center confirmation">
                                                         <img class="confirmation-logo" src="img/favicon.png">
-                                                        <p class="text-center"><span>Hi <p id="modalUserName"></p></span>!<br>Thank you for registering for bubble!<br/>Please return to the <a href="index.php">Login Page</a> to login</p>
+                                                        <p class="text-center"><p id="modalUserName"></p>!<br>Thank you for registering for bubble!<br/>Please return to the <a href="index.php">Login Page</a> to login</p>
                                                     </div>
                                                 </div>
                                             </div>                                       

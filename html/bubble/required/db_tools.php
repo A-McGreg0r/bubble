@@ -33,8 +33,11 @@ function validateLogin($email = '', $pwd = '')
 
     # Check email field.
     if (empty($email)) {
+        echo("No email");
         $errors[] = 'Enter your email address.';
     } else {
+        echo("email :$email:");
+
         $email = trim($email);
     }
 

@@ -80,7 +80,9 @@ function generateLoginPage(){
                                         <label for="materialLoginFormPassword">Password</label>
                                         <input type="password" id="materialLoginFormPassword" class="form-control" name="password"/>
                                     </div>
-
+                                    <div class="text-center" class="alert alert-danger">
+                                        <h5 id="loginErrorDisplay"></h5>
+                                    </div>
                                     <div class="d-flex justify-content-around">
                                         <div>
                                             <!-- Remember me -->
@@ -93,9 +95,7 @@ function generateLoginPage(){
 
                                     <!-- Sign in button -->
                                     <button id="login_button" onclick="sendLoginRequest()" class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit" value="submit">Log in</button>
-                                    <div class="text-center" class="is-invalid form-control">
-                                        <h5 id="loginErrorDisplay"></h5>
-                                    </div>
+
                             </div>
                         </div>
                         <!--Panel 1 login Tab -->

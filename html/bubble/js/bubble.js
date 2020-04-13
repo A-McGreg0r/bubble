@@ -45,6 +45,7 @@ $( document ).on( "mobileinit", function() {
 
 $(window).on("load", function(){
     $("#loginErrorBox").hide();
+    $("#registerErrorBox").hide();
 
     var overview = document.getElementById('overview');
 
@@ -305,6 +306,51 @@ function sendLoginRequest(){
             $("#loginErrorBox").hide().fadeIn(500);
             $("#materialLoginFormEmail").removeAttr("disabled");
             $("#materialLoginFormPassword").removeAttr("disabled");
+        }
+    });
+}
+
+function sendRegisterRequest(){
+    //CHANGE DISPLAY TO BE WAITING
+    $("#registerErrorBox").hide();
+
+    //GATHER REQUIRED DATA
+    let url = "required/action_register.php";
+
+    var userEmail = $("#materialLoginFormEmail").val();
+    var userFirstName = $("#materialRegisterFormFirstName").val();
+    var userLastName = $("#materialRegisterFormLastName").val();
+    var userAddress1 = $("#materialRegisterFormAddress_l1").val();
+    var userAddress2 = $("#materialRegisterFormAddress_l2").val();
+    var userPostcode = $("#materialRegisterFormPostcode").val();
+    var userPassword1 = $("#materialRegisterFormPassword1").val();
+    var userPassword2 = $("#materialRegisterFormPassword2").val();
+    var userEnergyCost = $("#registerFormEnergyCost").val();
+    var userBudget = $("#registerFormBudget").val();
+    var userAllowEmails = $("#registerFormAllowEmails").val();
+
+    //SEND AJAX REQUEST
+    $.ajax({
+        type:'POST',
+        url: url,
+        data:{ email: userEmail, first_name: userFirstName, last_name: userLastName, address_l1: userAddress1, 
+            address_l2: userAddress2, postcode: userPostcode, pass1: userPassword1, pass2: userPassword2,
+            energy_cost: userEnergyCost, budget: userBudget, allow_emails: userAllowEmails},
+
+        success:function(data){
+            //PARSE RESPONSE JSON DATA
+            var result = JSON.parse(data);
+
+            //LOGIN ERROR, DISPLAY ERROR TO USER
+            if(result.error){
+                $("#registerErrorDisplay").html(result.error);
+                $("#registerErrorBox").hide().fadeIn(500);
+            }
+        },
+        error: function(data){
+            //INTERNAL SERVER ERROR HAS OCCURRED
+            $("#registerErrorDisplay").html("An unexpected error has occurred, please try again");
+            $("#registerErrorBox").hide().fadeIn(500);
         }
     });
 }

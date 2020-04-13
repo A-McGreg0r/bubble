@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //VALIDATE PROVIDED LOGIN INFORMATION
     list ($check, $data) = validateLogin($userEmail, $userPassword);
 
-    //IF SUCCESSFUL, BEGIN SESSION< STORE DATA
+    //IF SUCCESSFUL, BEGIN SESSION, STORE DATA
     if ($check) {
         # Access session.
         session_start();

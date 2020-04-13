@@ -4,6 +4,7 @@ require 'config.php';
 require 'PepperedPasswords.php';
 session_start();
 
+//GRAB IP ADDRESS FROM CLIENT
 $ipaddress = '';
 if (getenv('HTTP_CLIENT_IP'))
     $ipaddress = getenv('HTTP_CLIENT_IP');
@@ -27,45 +28,42 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $A2 = NULL;
     $stmt = $db->prepare("INSERT INTO user_info (email, pass, first_name, last_name, address_l1, address_l2, postcode, energy_cost, budget, allow_emails, ip_address) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )");
     $valuesArr = array();
-    $_SESSION['email'] = trim($_POST['email']);
-    $_SESSION['name'] = trim($_POST['first_name']);
 
     # Check for a E-mail.
-    if (empty($_POST['email'])) {
+    if (!isset($_POST['email'])) {
         $errors[] = 'Enter your email address.';
     } else {
         $valuesArr["email"] = trim($_POST['email']);
     }
 
     # Check for a first name.
-    if (empty($_POST['first_name'])) {
+    if (!isset($_POST['first_name'])) {
         $errors[] = 'Enter your first name.';
     } else {
         $valuesArr["first_name"] = trim($_POST['first_name']);
     }
 
     # Check for a last name.
-    if (empty($_POST['last_name'])) {
+    if (!isset($_POST['last_name'])) {
         $errors[] = 'Enter your last name.';
     } else {
         $valuesArr["last_name"] = trim($_POST['last_name']);
     }
 
-    # Check for a adress line 1.
-    if (empty($_POST['address_l1'])) {
+    # Check for a address line 1.
+    if (!isset($_POST['address_l1'])) {
         $errors[] = 'Enter first line of your Address';
     } else {
         $valuesArr["address_l1"] = trim($_POST['address_l1']);
     }
 
-    # Check for a adress line 2.
-    # Check for a adress line 1.
-    if (!empty($_POST['address_l2'])) {
+    # Check for a address line 2.
+    if (isset($_POST['address_l2'])) {
         $valuesArr["address_l2"] = trim($_POST['address_l2']);
     }
     
     # Check for a postcode
-    if (empty($_POST['postcode'])) {
+    if (!isset($_POST['postcode'])) {
         $errors[] = 'Enter your postcode.';
     } else {
         $valuesArr["postcode"] = trim($_POST['postcode']);
@@ -73,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     # Check for a password and matching input passwords.
-    if (!empty($_POST['pass1'])) {
+    if (isset($_POST['pass1'])) {
         if ($_POST['pass1'] != $_POST['pass2']) {
             $errors[] = 'Passwords do not match.';
         } else {
@@ -85,13 +83,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $errors[] = 'Enter your password.';
     }
 
-    if (empty($_POST['energy_cost'])) {
+    if (!isset($_POST['energy_cost'])) {
         $errors[] = 'Enter your energy price.';
     } else {
         $valuesArr["energy_cost"] = $_POST['energy_cost'];
     }
 
-    if (empty($_POST['budget'])) {
+    if (!isset($_POST['budget'])) {
         $errors[] = 'Enter your budget.';
     } else {
         $valuesArr["budget"] = $_POST['budget'];
@@ -104,13 +102,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
 
-    # Check if email address already registered.
+    //ENSURE EMAIL ADDRESS ISNT ALREADY REGISTERED.
     if (empty($errors)) {
         $stmt2 = $db->prepare("SELECT * FROM user_info WHERE email = ?");
         $stmt2->bind_param("s", $valuesArr["email"]);
         $stmt2->execute();
         if ($stmt2->num_rows != 0) {
-            $errors[] = 'Email address already registered. <a href="../index.php">Login</a>';
+            echo("{\"error\":\"Email address already registered. <a href=\"../index.php\">Login</a>\"}");
+            exit(0);
         }
         $stmt2->close();
     }
@@ -126,21 +125,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if($stmt->affected_rows === 1){
             load("../index.php?action=registerComplete");
         }else{
-            load("../index.php?action=registerFailed");
+            echo("{\"error\":\"Registration failed, try again!\"}");
         }
         # Close database connection.
-        $db->close();
+        $stmt->close();
         
         exit();
-    } else { #Or report errors
-        echo '<div class="container"><h1>Error!</h1><p id="err_msg">The following error(s) occurred:<br>';
+    } else {
+        echo("{\"error\":\"");
         foreach ($errors as $msg) {
             echo " - $msg<br>";
         }
-        echo 'Please try again.</p></div>';
+        echo("\"}");
 
         # Close database connection.
-        $db->close();
+        $stmt->close();
     }
 }
 ?>

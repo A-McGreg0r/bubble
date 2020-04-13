@@ -29,6 +29,9 @@ if ($result->num_rows >= 1) {
             $all5 = $result5->fetch_all(MYSQLI_ASSOC);
             foreach($all5 as $row5){
                 $energy_setting = $row5['device_status'];
+                $minutes_on = $row5['minutes_on'];
+                $turn_off = $row5['turn_off'];
+                $id = $row5['device_id'];
 
                 $stmt4 = $db->prepare("SELECT * FROM device_types WHERE type_id = ?");
                 $stmt4->bind_param("i", $row5['device_type']);
@@ -41,12 +44,38 @@ if ($result->num_rows >= 1) {
                             $energy_used = $energy_used + ($row4['energy_usage'] / 4);
                         } else if($energy_setting == 2){
                             $energy_used = $energy_used + ($row4['energy_usage'] / 2);
+                            $stmt11->execute();
                         } else if($energy_setting == 3){
                             $energy_used = $energy_used + ($row4['energy_usage'] / 4 * 3);
+                            $stmt12->execute();
                         } else if($energy_setting == 4){
                             $energy_used = $energy_used + $row4['energy_usage'];
                         }
                     }
+                }
+
+                $zero = 0;
+                $turn_off_on_minute = $minutes_on + 1;
+                
+                if($energy_setting >= 1){
+                    if($turn_off >= 1){
+                        if ($turn_off == $turn_off_on_minute){
+                            $stmt8 = $db->prepare("UPDATE device_info SET device_status = ?, minutes_on = ?, turn_off = ? WHERE device_id = ?");
+                            $stmt8->bind_param('iiii', $zero, $zero, $zero, $id);
+                            $stmt8->execute();
+
+                            $energy_setting = 0;
+                        }
+                    }
+
+                    $minutes_on = $minutes_on + 1;
+                    $stmt7 = $db->prepare("UPDATE device_info SET minutes_on = ? WHERE device_id = ?");
+                    $stmt7->bind_param('ii', $minutes_on, $id);
+                    $stmt7->execute();
+                } else if ($energy_setting == 0 && $turn_off > 0){
+                    $stmt9 = $db->prepare("UPDATE device_info SET minutes_on = ?, turn_off = ? WHERE device_id = ?");
+                    $stmt9->bind_param('iii', $zero, $zero, $id);
+                    $stmt9->execute();
                 }
             }
         }

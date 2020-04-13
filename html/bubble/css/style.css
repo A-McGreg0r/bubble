@@ -496,7 +496,6 @@ select {
     position: absolute;
     top: -7px;
     right: -7px;
-    display: none;
     text-align: center;
     align-items: center;
     vertical-align: middle;
@@ -509,6 +508,7 @@ select {
 }
 
 .stats_icon {
+    display: flex;
     z-index: 10;
     position: absolute;
     top: -7px;
@@ -520,8 +520,8 @@ select {
     background-color: #ffffff;
     width: 35px;
     height: 35px;
-    padding-left: 3px;
-    padding-top: 7px;
+    padding-left: 6px;
+    padding-top: 2px;
     border-radius: 30px;
 }
 
@@ -538,8 +538,26 @@ select {
     background-color: #ffffff;
     width: 35px;
     height: 35px;
-    padding-left: 1.5px;
-    padding-top: 2.5px;
+    padding-left: 7.5px;
+    padding-top: 1.5px;
+    border-radius: 30px;
+}
+
+.timer_icon_x {
+    display: none;
+    z-index: 10;
+    position: absolute;
+    top: -7px;
+    right: -7px;
+    text-align: center;
+    align-items: center;
+    vertical-align: middle;
+    font-size: 30px;
+    background-color: #ffffff;
+    width: 35px;
+    height: 35px;
+    padding-left: 7px;
+    padding-top: 1px;
     border-radius: 30px;
 }
 

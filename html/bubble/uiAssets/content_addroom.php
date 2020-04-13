@@ -11,16 +11,18 @@ function generateAddRoom(){
 
     $errorString = "";
     //HANDLE ERRORS
-    switch($error){
-        case 0:
-            $errorString = "Invalid room name or icon!";
-        break;
-        case 1:
-            $errorString = "Cannot find hub! Are you logged in?";
-        break;
-        case 2:
-            $errorString = "Room name already exists!";
-        break;
+    if(isset($error)){
+        switch($error){
+            case 0:
+                $errorString = "Invalid room name or icon!";
+            break;
+            case 1:
+                $errorString = "Cannot find hub! Are you logged in?";
+            break;
+            case 2:
+                $errorString = "Room name already exists!";
+            break;
+        }
     }
     
     if(isset($success)){

@@ -46,7 +46,8 @@ ul {
 
 /* width */
 ::-webkit-scrollbar {
-    width: 15px;
+    width: 10px;
+    background: rgb(110,110,110);
 }
 
 /* Handle */
@@ -472,6 +473,7 @@ select {
 
 .modalStats {
     max-height: none!important;
+    height: auto!important;
 }
 
 .modalContentTimer {
@@ -618,6 +620,13 @@ select {
         margin-right: 5%;
     } */
 
+    .modalStatsWrap {
+        padding-left: 20vw!important;
+        padding-right: 20vw!important;
+        padding-top: 15vh!important;
+        padding-bottom: 15vh!important;
+    }
+
     #separater1, #separater2 {
         display: block;
     }
@@ -632,8 +641,10 @@ select {
     } */
 
     .modalStatsWrap {
-        padding-left: 20vw!important;
-        padding-right: 20vw!important;
+        padding-left: 25vw!important;
+        padding-right: 25vw!important;
+        padding-top: 5vh!important;
+        padding-bottom: 5vh!important;
     }
 
     #separater1, #separater2 {
@@ -792,4 +803,30 @@ select {
 
 .tighten {
     height: 2rem!important;
+}
+
+.home-table {
+    margin: 20px;
+    margin-bottom: 0;
+    text-align: center!important;
+}
+
+.home-left {
+    margin-right: 10px;
+}
+
+.home-right {
+    margin-left: 10px;
+}
+
+.grey-out-home {
+    background-color: rgb(110,110,110);
+    color: rgb(226, 183, 28);
+    border: 2px solid black!important;
+}
+
+.grey-out-home:hover, .grey-out-home-right:hover {
+    cursor: pointer;
+    background-color: rgb(226, 183, 28)!important;
+    color: black!important;
 }

@@ -188,7 +188,7 @@ html;
                     $html .= <<<html
                     <!-- Card -->
                     <div id="reload_$device_id">
-                    <div id="device_$device_id" class="card mb-4 container text-dark grey-out" style="background-image:$background" onclick="alterDevice($hub_id, $device_id, $device_type, $status)">
+                    <div id="device_$device_id" class="card mb-4 container text-dark grey-out" style="background-image:$background" onclick="alterDevice($hub_id, $device_id, $device_type, $status);refreshDevice($device_id);refreshRoom($room_id);">
                         <!--Card image-->
                         <div class="view overlay">
                             <div class="mask rgba-white-slight"></div>

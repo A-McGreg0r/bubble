@@ -216,6 +216,14 @@ function alterDevice(hub_id, device_id, device_type, current_state){
     }
 }
 
+function refreshRoom(room_id) {
+    $('#room_reload_' + room_id).load(document.URL + ' #room_reload_' + room_id);
+}
+
+function refreshDevice(device_id) {
+    $('#reload_' + device_id).load(document.URL + ' #reload_' + device_id);
+}
+
 function toggleDevice(hub_id, device_id, state) {
     let url = "required/action_device.php";
     if (state == 0){
@@ -230,10 +238,9 @@ function toggleDevice(hub_id, device_id, state) {
     $.ajax({
         type:'POST',
         url: url,
-        data:{ type: "toggledevice", hub_id: hub_id, id: device_id},
+        data:{ type: "toggledevice", hub_id: hub_id, id: device_id, state: state},
         success:function(data){
-            $('#profile-attr').load(document.URL + ' #profile-attr');
-            $('#reload_' + device_id).load(document.URL + ' #reload_' + device_id);
+            
         },
         error: function(data){
             alert("error!");
@@ -270,8 +277,6 @@ function scaleDevice(hub_id, device_id, scale) {
         url: url,
         data:{ type: "scaledevice", hub_id: hub_id, id: device_id, scale: scale},
         success:function(data){
-            $('#profile-attr').load(document.URL + ' #profile-attr');
-            $('#reload_' + device_id).load(document.URL + ' #reload_' + device_id);
         },
         error: function(data){
             alert("error!");

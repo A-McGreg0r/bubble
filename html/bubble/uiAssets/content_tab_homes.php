@@ -189,6 +189,36 @@ function generateHomeTab()
                     $budget_day_remaining_round = number_format($budget_day_remaining,2);
                     $budget_year_remaining_round = money_format('%.2n', $budget_year_remaining);
 
+                    $all_homes = "";
+
+                    $stmt10 = $db->prepare("SELECT * FROM device_info WHERE hub_id = ?");
+                    $stmt10->bind_param("i", $hub_id);
+                    $stmt10->execute();
+                    $result10 = $stmt10->get_result();
+                    if ($result10->num_rows >= 1) {
+                        $all10 = $result10->fetch_all(MYSQLI_ASSOC);
+                        foreach($all10 as $row10){
+                            $device_id = $row10['device_id'];
+                            $device_type = $row10['device_type'];
+                            $on = 4;
+
+                            $all_homes .= "alterDevice($hub_id, $device_id, $device_type, $on);refreshDevice($device_id);";
+                        }
+                    }
+
+                    $stmt11 = $db->prepare("SELECT * FROM room_info WHERE hub_id = ?");
+                    $stmt11->bind_param("i", $hub_id);
+                    $stmt11->execute();
+                    $result11 = $stmt11->get_result();
+                    if ($result11->num_rows >= 1) {
+                        $all11 = $result11->fetch_all(MYSQLI_ASSOC);
+                        foreach($all11 as $row11){
+                            $id_room = $row11['room_id'];
+
+                            $all_homes .= "refreshRoom($id_room);";
+                        }
+                    }
+
                     $command = escapeshellcmd('/required/email/myemail.py');
                     $output = shell_exec($command);
                     echo $output;
@@ -209,6 +239,51 @@ function generateHomeTab()
                         </div>
         
                         <!-- Card body -->
+                            <table class="home-table">
+                                <tr>
+                                    <td>
+                                        <div id="reload_device_id" class="home-left">
+                                            <div id="device_device_id" class="card mb-4 container text-dark grey-out-home" style="" onclick="">
+                                            <!--Card image-->
+                                            <div class="view overlay">
+                                                <div class="mask rgba-white-slight"></div>
+                                            </div>
+                                    
+                                            <!--Card content-->
+                                            <div class="card-body justify-content-between">
+                                        
+                                                <!--Title-->      
+                                                <div class="flex-column">  
+                                                    <div id="device_3_device_id" class="flex-sm-row" style="">
+                                                        <strong class="room_icon"><i class="fa fa-home"></i><br></strong> &nbsp; <strong>Change House</strong>
+                                                    </div>                     
+                                                </div>
+                                            </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div id="" class="home-right">
+                                        <div id="" class="card mb-4 container text-dark grey-out-home" style="" onclick="$all_homes">
+                                        <!--Card image-->
+                                        <div class="view overlay">
+                                            <div class="mask rgba-white-slight"></div>
+                                        </div>
+                                
+                                        <!--Card content-->
+                                        <div class="card-body justify-content-between">
+                                    
+                                            <!--Title-->      
+                                            <div class="flex-column">  
+                                                <div id="" class="flex-sm-row" style="">
+                                                    <strong class="room_icon"><i class="fa fa-home"></i><br></strong> &nbsp; <strong>Turn Off Home</strong>
+                                                </div>                     
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        
                         <div id="collapse$hub_id" class="collapse show" role="tabpanel" aria-labelledby="heading$hub_id" data-parent="#accordionEx194">
                             <div class="card-body pt-0 justify-content-center ">
                         <div class="container">   
@@ -253,7 +328,7 @@ function generateHomeTab()
                             
                             <!--col 2-->
                             <script>
-                            document.onload(doughnut.update();)
+                            document.onload(myLineChart.update();)
                             </script>
                            
                             <div class="card col-lg-6 border border-0 ">
@@ -273,7 +348,7 @@ function generateHomeTab()
                                                             <script>
                                                                 //doughnut
                                                                 var ctxD = document.getElementById("heatingUsage").getContext("2d");
-                                                                var doughnut = new Chart(ctxD, {
+                                                                var myLineChart = new Chart(ctxD, {
                                                                 type: "doughnut",
                                                                 data: {
                                                                 labels: ["Spent [£]", "Remaining [£]"],
@@ -303,7 +378,7 @@ function generateHomeTab()
                                                         <script>
                                                             //doughnut
                                                             var ctxD = document.getElementById("heatingUsage1").getContext("2d");
-                                                            var doughnut = new Chart(ctxD, {
+                                                            var myLineChart = new Chart(ctxD, {
                                                             type: "doughnut",
                                                             data: {
                                                             labels: ["Spent [£]", "Remaining [£]"],
@@ -331,7 +406,7 @@ function generateHomeTab()
                                                             <script>
                                                                 //doughnut
                                                                 var ctxD = document.getElementById("heatingUsage2").getContext("2d");
-                                                                var doughnut = new Chart(ctxD, {
+                                                                var myLineChart = new Chart(ctxD, {
                                                                 type: "doughnut",
                                                                 data: {
                                                                 labels: ["Spent [£]", "Budget [£]"],

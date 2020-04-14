@@ -77,7 +77,7 @@ html;
                     $timer_hour = $timer_value - ($timer_value % 60);
                     $timer_hours = $timer_hour / 60;
                     $timer_minutes = $timer_value % 60;
-                    $timer_text = "";
+                    $timer_text = "<strong style='color:rgb(226,183,28)'>No timer set</strong><br>";
                     $device_hour = $row['minute_data'] / 1000;
                     $device_day = $row['hour_data'] / 1000;
                     $device_month = $row['day_data'] / 1000;
@@ -211,24 +211,24 @@ html;
                         </div>
 
                         <strong class="timer_icon" id="timer_$device_id" style="color:$colour; display:$timer_display" onclick="openModal('modal_$device_id', 'modal_stats_$device_id', 'timer_$device_id', 'timer_x_$device_id', 'stats_$device_id', 'stats_x_$device_id', $status)">$timer</strong>
-                        <strong class="timer_icon_x" id="timer_x_$device_id" style="color:$colour; display:none" onclick="openModal('modal_$device_id', 'modal_stats_$device_id', 'timer_$device_id', 'timer_x_$device_id', 'stats_$device_id', 'stats_x_$device_id', $status)"><i class="fas fa-times"></i></strong>
                         <i class="stats_icon fa" id="stats_$device_id" style="color:$colour;" onclick="openModal('modal_stats_$device_id', 'modal_$device_id', 'stats_$device_id', 'stats_x_$device_id', 'timer_$device_id', 'timer_x_$device_id', $status)"><i class="fas fa-info-circle"></i></i>
-                        <i class="stats_icon_x " id="stats_x_$device_id" style="color:$colour;" onclick="openModal('modal_stats_$device_id', 'modal_$device_id', 'stats_$device_id', 'stats_x_$device_id', 'timer_$device_id', 'timer_x_$device_id', $status)"><i class="fas fa-times"></i></i>
+                        
                     </div>
 
                     
                     </div>
-                    <div class="modalStatsWrap" id="modal_stats_$device_id">
+                    <div class="modal modalStatsWrap" id="modal_stats_$device_id">
                         <div class="modalContent modalStats" id="content_$device_id">
+                            <div class="x-adjust"><i class="stats_icon_x " id="stats_x_$device_id" style="color:$colour;" onclick="openModal('modal_stats_$device_id', 'modal_$device_id', 'stats_$device_id', 'stats_x_$device_id', 'timer_$device_id', 'timer_x_$device_id', $status)"><i class="fas fa-times"></i></i></div>
                             <div class="modalHeader"><strong>$device_name Statistics:</strong></div>
                                 <div class="modalBody">
                                     <div class="active">                           
                                         <div style="max-width:100% text-align:center">
                                     
                                             <h4 class="modalSub">Comparison</h4>
-                                            
-                                            <canvas class="stats-pie " style="max-width:400px display:inline-block" id="stats_doughnut_$device_id" width="924" height="426"></canvas>
-                                            
+
+                                                <canvas class="stats-pie " style="max-width:400px display:inline-block" id="stats_doughnut_$device_id" width="924" height="426"></canvas>
+
                                             <table class="stats-table comparison">
                                             <tr class="stats-row">
                                                 <td class="stats-left l-pad-stats tighten"><strong>
@@ -311,8 +311,9 @@ html;
                         </div>
                     </div>
 
-                    <div class="modalTimer" id="modal_$device_id">
-                        <div class="modalContent" id="content_$device_id">
+                    <div class="modal modalTimer" id="modal_$device_id">
+                        <div class="modalContent modalContentTimer" id="content_$device_id">
+                            <div class="x-adjust">                            <strong class="timer_icon_x" id="timer_x_$device_id" style="color:$colour; display:none" onclick="openModal('modal_$device_id', 'modal_stats_$device_id', 'timer_$device_id', 'timer_x_$device_id', 'stats_$device_id', 'stats_x_$device_id', $status)"><i class="fas fa-times"></i></strong></div>
                             <div class="modalHeader"><strong>Turn $device_name off in:</strong></div>
                             <div class="timer-end" id="timer_end_$device_id"><strong>$timer_text<strong></div>
                             <form>
@@ -400,6 +401,7 @@ html;
                                     <p class="shiftSub"><strong>&nbsp;minute(s)</strong></p>
                                 </div>
                             </form>
+
                             <div style="display:block">
                                 <p class="timerBtn btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" onclick="startTimer($device_id, 'hour_$device_id', 'minute_$device_id')">Start Timer</p>
                             </div>

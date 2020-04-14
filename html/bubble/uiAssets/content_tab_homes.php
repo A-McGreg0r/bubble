@@ -191,6 +191,7 @@ function generateHomeTab()
 
                     $all_homes = "";
 
+                    $count = 0;
                     $stmt10 = $db->prepare("SELECT * FROM device_info WHERE hub_id = ?");
                     $stmt10->bind_param("i", $hub_id);
                     $stmt10->execute();
@@ -203,7 +204,17 @@ function generateHomeTab()
                             $on = 4;
 
                             $all_homes .= "alterDevice($hub_id, $device_id, $device_type, $on);refreshDevice($device_id);";
+                            if($row10['device_status'] > 0){
+                                $count++;
+                            }
                         }
+                    }
+
+                    $s_or_not = "";
+                    if($count == 1){
+                        $s_or_not = "device";
+                    } else {
+                        $s_or_not = "devices";
                     }
 
                     $stmt11 = $db->prepare("SELECT * FROM room_info WHERE hub_id = ?");
@@ -255,14 +266,14 @@ function generateHomeTab()
                                                 <!--Title-->      
                                                 <div class="flex-column">  
                                                     <div id="device_3_device_id" class="flex-sm-row" style="">
-                                                        <strong class="room_icon"><i class="fa fa-home"></i><br></strong> &nbsp; <strong>Change House</strong>
+                                                        <strong class="room_icon"><i class="fa fa-home"></i><br></strong><strong>Change House<br><strong style="color:black">$hub_name</strong></strong>
                                                     </div>                     
                                                 </div>
                                             </div>
                                     </div>
                                 </td>
                                 <td>
-                                    <div id="" class="home-right">
+                                    <div class="home-right">
                                         <div id="" class="card mb-4 container text-dark grey-out-home" style="" onclick="$all_homes">
                                         <!--Card image-->
                                         <div class="view overlay">
@@ -275,7 +286,7 @@ function generateHomeTab()
                                             <!--Title-->      
                                             <div class="flex-column">  
                                                 <div id="" class="flex-sm-row" style="">
-                                                    <strong class="room_icon"><i class="fa fa-home"></i><br></strong> &nbsp; <strong>Turn Off Home</strong>
+                                                    <strong class="room_icon"><i class="fa fa-home"></i><br></strong><strong style="text-align:center">Turn Off Home <br><strong id="home_devices" style="color:black">$count $s_or_not on</strong></strong>
                                                 </div>                     
                                             </div>
                                         </div>
@@ -283,6 +294,7 @@ function generateHomeTab()
                                 </td>
                             </tr>
                         </table>
+                        <hr>
                         
                         <div id="collapse$hub_id" class="collapse show" role="tabpanel" aria-labelledby="heading$hub_id" data-parent="#accordionEx194">
                             <div class="card-body pt-0 justify-content-center ">

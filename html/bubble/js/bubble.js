@@ -197,6 +197,7 @@ function toggleRoom(hub_id, room_id){
         data:{ type: "room", hub_id: hub_id, id: room_id},
         success:function(){
             $('#room_reload_' + room_id).load(document.URL + ' #room_reload_' + room_id);
+            $('#home_devices').load(document.URL + ' #home_devices');
         },
         error: function(data){
             alert("error!");
@@ -240,7 +241,7 @@ function toggleDevice(hub_id, device_id, state) {
         url: url,
         data:{ type: "toggledevice", hub_id: hub_id, id: device_id, state: state},
         success:function(data){
-            
+            $('#home_devices').load(document.URL + ' #home_devices');
         },
         error: function(data){
             alert("error!");
@@ -277,6 +278,7 @@ function scaleDevice(hub_id, device_id, scale) {
         url: url,
         data:{ type: "scaledevice", hub_id: hub_id, id: device_id, scale: scale},
         success:function(data){
+            $('#home_devices').load(document.URL + ' #home_devices');
         },
         error: function(data){
             alert("error!");

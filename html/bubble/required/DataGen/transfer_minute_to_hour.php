@@ -61,8 +61,8 @@ if ($result->num_rows >= 1) {
 
             $hourly_energy = intval($hourly_energy);
                 
-            $stmt5 = $db->prepare("INSERT INTO hourly_data (hub_id, entry_day, entry_hour, energy_usage) VALUES (?, ?, ?, ?)");
-            $stmt5->bind_param("iiii", $hub_id, $day, $hour, $hourly_energy);
+            $stmt5 = $db->prepare("INSERT INTO hourly_data (hub_id, entry_day, entry_hour, energy_usage, entry_month) VALUES (?, ?, ?, ?, ?)");
+            $stmt5->bind_param("iiiii", $hub_id, $day, $hour, $hourly_energy, $month);
             $stmt5->execute();
 
             $stmt6 = $db->prepare("SELECT * FROM hourly_data WHERE hub_id = ?");

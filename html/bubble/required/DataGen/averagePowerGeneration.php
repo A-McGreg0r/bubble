@@ -1,6 +1,7 @@
 <?php
-function _main($Y, $anual_power_gen) {
 
+function _main($Y, $anual_power_gen) {
+	
     function inti_seasons($Y) {
         $sum_winter=0;
         $sum_spring=0;
@@ -53,6 +54,20 @@ function _main($Y, $anual_power_gen) {
         $mid=round(($sum/2),0); //nth day = total days / 2
         $previous_max_days=0; //sum of previous moths days
 		$even=$sum % 2 == 0;
+		$watts_sum=0;
+		
+		$db = new mysqli("localhost", "root", '', "wamp");
+		if ($db->connect_error) {
+			die("Connection failed: " . $db->connect_error);
+		}
+		
+		$inst_monthly_gen = $db->prepare("INSERT INTO monthly_gen (entry_id, hub_id, entry_year, entry_month, energy_gen) VALUES (?, ?, ?, ?, ?)");
+		$inst_monthly_gen->bind_param("iiiid", $default, $hub_id, $Y, $m, $watts_sum);
+		
+		$inst_daily_gen = $db->prepare("INSERT INTO daily_gen (entry_id, hub_id, entry_month, entry_day, energy_gen) VALUES (?, ?, ?, ?, ?)");
+		$inst_daily_gen->bind_param("iiiid", $default, $hub_id, $m, $d, $watts);
+		
+		$hub_id=1;
 
         switch ($case) {
             case 0:
@@ -89,11 +104,13 @@ function _main($Y, $anual_power_gen) {
 			$dim = $d-$previous_max_days;	//days into month
 			
 			if ($dim > $max_days) {
+				$inst_monthly_gen->execute();
 				$previous_max_days=$previous_max_days+$max_days;
 				if ($m==12){$m=1;}
 				else{$m++;}
 				$max_days=cal_days_in_month(CAL_GREGORIAN, $m, $Y);
 				$dim = 1;
+				$watts_sum=0;
 			}
 			
 			echo "day[ $d ] :: ";
@@ -104,14 +121,17 @@ function _main($Y, $anual_power_gen) {
 			}
 			else {$pointer=$pointer+$x;}
 			$percentage=$pointer*$inc/100;
-			$watts=round($percentage*$P, 2);
+			$watts=$percentage*$P;
             echo "$watts <br>";
-			hourly_calc($case, $percentage, $P, $dim);			
+			$watts_sum=$watts_sum+$watts;
+			$inst_daily_gen->execute();
+			hourly_calc($case, $percentage, $P, $dim, $m);			
 
         }
+		$inst_monthly_gen->execute();
     }
 
-    function hourly_calc($case, $percentage, $P, $d) {
+    function hourly_calc($case, $percentage, $P, $d, $m) {
         $S=0;
         switch ($case) {
             case 0:
@@ -171,7 +191,14 @@ function _main($Y, $anual_power_gen) {
             $sum=(2*$S)-$peak;
             $qV = ($percentage)/($sum);
         }
-
+		$db = new mysqli("localhost", "root", '', "wamp");
+			// Check connection
+		if ($db->connect_error) {
+			die("Connection failed: " . $db->connect_error);
+		}
+		$inst_hourly_gen = $db->prepare("INSERT INTO hourly_gen (entry_id, hub_id, entry_month, entry_day, entry_hour, energy_gen) VALUES (?, ?, ?, ?, ?, ?)");
+		$inst_hourly_gen->bind_param("iiiiid", $default, $hub_id, $m, $d, $h, $watts);
+		$hub_id=1;
         for ($h=$rise; $h <= $set; $h++) {
             //INSERT INTO TABLE
             $i=$h-$rise;
@@ -183,6 +210,7 @@ function _main($Y, $anual_power_gen) {
             echo "| * $N * | ";
             echo "hour[ $h ]::";
             echo $watts;echo "<br>";
+			$inst_hourly_gen->execute();
         }
 
         for ($i=0; $i <= $barlength; $i++) {echo '-';}
@@ -202,5 +230,5 @@ function _main($Y, $anual_power_gen) {
     
 }
 
-_main(intval(date("Y")), 1000.0)
+_main(intval(date("Y")), 2500000.0)
 ?>

@@ -103,6 +103,7 @@ html;
                     $stmt5->close();
 
                     $total_usage = $total_usage / 1000;
+                    $total_usage = $total_usage - $device_month;
                     $total_usage = number_format($total_usage,3);
 
                     $price = 0;
@@ -239,7 +240,7 @@ html;
                                             </tr>
                                             <tr class="raise">
                                                 <td class="stats-left l-pad-stats tighten"><strong>
-                                                    All Devices:
+                                                    Other Devices:
                                                 </strong></td>
                                                 <td class="stats-right r-pad-stats tighten"><strong>
                                                     $total_usage kWh
@@ -253,7 +254,7 @@ html;
                                                 var myLineChart = new Chart(ctxD, {
                                                 type: "doughnut",
                                                 data: {
-                                                labels: ["$device_name [kWh]", "All Devices [kWh]"],
+                                                labels: ["$device_name [kWh]", "Other Devices [kWh]"],
                                                 datasets: [{
                                                 data: [$device_month, $total_usage],
                                                 backgroundColor: ["rgb(226, 183, 28)", "rgb(56,56,56)"],

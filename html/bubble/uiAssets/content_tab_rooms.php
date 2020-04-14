@@ -139,6 +139,8 @@ html;
                 $price_month = number_format(($room_month * $price),2);
                 $price_year = number_format(($room_year * $price),2);
 
+                $total_usage = $total_usage - $room_month;
+
                 $html .= <<<html
                     toggleRoom($hub_id,$room_id);">
                     <!--Card image-->
@@ -189,7 +191,7 @@ html;
                                         </tr>
                                         <tr class="raise">
                                             <td class="stats-left l-pad-stats tighten"><strong>
-                                                All Rooms:
+                                                Other Rooms:
                                             </strong></td>
                                             <td class="stats-right r-pad-stats tighten"><strong>
                                                 $total_usage kWh
@@ -203,7 +205,7 @@ html;
                                             var myLineChart = new Chart(ctxD, {
                                             type: "doughnut",
                                             data: {
-                                            labels: ["$room_name [kWh]", "All Rooms [kWh]"],
+                                            labels: ["$room_name [kWh]", "Other Rooms [kWh]"],
                                             datasets: [{
                                             data: [$room_month, $total_usage],
                                             backgroundColor: ["rgb(226, 183, 28)", "rgb(56,56,56)"],

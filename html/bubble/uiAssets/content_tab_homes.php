@@ -200,12 +200,12 @@ function generateHomeTab()
                         $all10 = $result10->fetch_all(MYSQLI_ASSOC);
                         foreach($all10 as $row10){
                             $device_id = $row10['device_id'];
+                            $device_status = $row10['device_status'];
                             $device_type = $row10['device_type'];
                             $on = 4;
-
-                            $all_homes .= "alterDevice($hub_id, $device_id, $device_type, $on);refreshDevice($device_id);";
                             if($row10['device_status'] > 0){
                                 $count++;
+                                $all_homes .= "alterDevice($hub_id, $device_id, $device_type, $on);refreshDevice($device_id);";
                             }
                         }
                     }
@@ -229,6 +229,8 @@ function generateHomeTab()
                             $all_homes .= "refreshRoom($id_room);";
                         }
                     }
+
+                    $all_homes .= "refreshHomeButton();";
 
                     $command = escapeshellcmd('/required/email/myemail.py');
                     $output = shell_exec($command);
@@ -273,7 +275,7 @@ function generateHomeTab()
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="home-right">
+                                    <div id="home_devices" class="home-right">
                                         <div id="" class="card mb-4 container text-dark grey-out-home" style="" onclick="$all_homes">
                                         <!--Card image-->
                                         <div class="view overlay">
@@ -286,7 +288,7 @@ function generateHomeTab()
                                             <!--Title-->      
                                             <div class="flex-column">  
                                                 <div id="" class="flex-sm-row" style="">
-                                                    <strong class="room_icon"><i class="fa fa-home"></i><br></strong><strong style="text-align:center">Turn Off Home <br><strong id="home_devices" style="color:black">$count $s_or_not on</strong></strong>
+                                                    <strong class="room_icon"><i class="fa fa-home"></i><br></strong><strong style="text-align:center">Turn Off Home <br><strong style="color:black">$count $s_or_not on</strong></strong>
                                                 </div>                     
                                             </div>
                                         </div>

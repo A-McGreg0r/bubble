@@ -142,7 +142,7 @@ html;
                 $total_usage = $total_usage - $room_month;
 
                 $html .= <<<html
-                    toggleRoom($hub_id,$room_id);">
+                    toggleRoom($hub_id,$room_id);refreshHomeButton();">
                     <!--Card image-->
                     <div class="view overlay">
                         <div class="mask rgba-white-slight"></div>

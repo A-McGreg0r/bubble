@@ -225,6 +225,10 @@ function refreshDevice(device_id) {
     $('#reload_' + device_id).load(document.URL + ' #reload_' + device_id);
 }
 
+function refreshHomeButton() {
+    $('#home_devices').load(document.URL + ' #home_devices');
+}
+
 function toggleDevice(hub_id, device_id, state) {
     let url = "required/action_device.php";
     if (state == 0){
@@ -241,7 +245,7 @@ function toggleDevice(hub_id, device_id, state) {
         url: url,
         data:{ type: "toggledevice", hub_id: hub_id, id: device_id, state: state},
         success:function(data){
-            $('#home_devices').load(document.URL + ' #home_devices');
+            
         },
         error: function(data){
             alert("error!");
@@ -278,7 +282,7 @@ function scaleDevice(hub_id, device_id, scale) {
         url: url,
         data:{ type: "scaledevice", hub_id: hub_id, id: device_id, scale: scale},
         success:function(data){
-            $('#home_devices').load(document.URL + ' #home_devices');
+
         },
         error: function(data){
             alert("error!");

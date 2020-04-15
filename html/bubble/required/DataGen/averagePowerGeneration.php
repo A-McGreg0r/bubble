@@ -1,5 +1,4 @@
 <?php
-global $db;
 function _main($Y, $anual_power_gen) {
 	
     function inti_seasons($Y) {
@@ -55,7 +54,8 @@ function _main($Y, $anual_power_gen) {
         $previous_max_days=0; //sum of previous moths days
 		$even=$sum % 2 == 0;
 		$watts_sum=0;
-		
+
+		global $db;
 		$inst_monthly_gen = $db->prepare("INSERT INTO monthly_gen (entry_id, hub_id, entry_year, entry_month, energy_gen) VALUES (?, ?, ?, ?, ?)");
 		$inst_monthly_gen->bind_param("iiiid", $default, $hub_id, $Y, $m, $watts_sum);
 		
@@ -187,6 +187,7 @@ function _main($Y, $anual_power_gen) {
             $qV = ($percentage)/($sum);
         }
         
+        global $db;
 		$inst_hourly_gen = $db->prepare("INSERT INTO hourly_gen (entry_id, hub_id, entry_month, entry_day, entry_hour, energy_gen) VALUES (?, ?, ?, ?, ?, ?)");
 		$inst_hourly_gen->bind_param("iiiiid", $default, $hub_id, $m, $d, $h, $watts);
 		$hub_id=1;

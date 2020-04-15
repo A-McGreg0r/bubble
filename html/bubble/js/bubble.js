@@ -127,7 +127,16 @@ function changeHub(id) {
         url: url,
         data:{ hub_id: id},
         success:function(){
-            location.reload();
+            //PARSE RESPONSE JSON DATA
+            var result = JSON.parse(data);
+
+            //LOGIN ERROR, DISPLAY ERROR TO USER
+            if(result.error){
+
+            }
+            if(result.success){
+                location.reload();
+            }
         },
         error: function(data){
             alert("Failed to change hub, please try again!");

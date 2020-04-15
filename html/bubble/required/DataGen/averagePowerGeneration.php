@@ -1,4 +1,7 @@
 <?php
+echo "Starting \n";
+require "../config.php";
+
 function _main($Y, $anual_power_gen) {
 	
     function inti_seasons($Y) {
@@ -50,7 +53,7 @@ function _main($Y, $anual_power_gen) {
     function daily_calc($case, $S, $I, $P, $Y) {
         $inc = $I[$case]; //total inc for the season
         $sum = $S[$case]; //sum of days in season
-        $mid=round(($sum/2),0); //nth day = total days / 2
+        $mid = round(($sum/2),0); //nth day = total days / 2
         $previous_max_days=0; //sum of previous moths days
 		$even=$sum % 2 == 0;
 		$watts_sum=0;

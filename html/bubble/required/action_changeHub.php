@@ -1,5 +1,5 @@
 <?php
-//REUIQRE CONFIG FILE
+//REQUIRE CONFIG FILE
 include_once 'config.php';
 
 //GET NEW HUB ID FROM POST REQUEST

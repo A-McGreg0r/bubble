@@ -18,7 +18,7 @@ if (isset($hub_id)) {
         $stmt->execute();
         $result = $stmt->get_result();
         //USER IS ALLOWED TO CHANGE TO THIS NEW HUB
-        if($result->numrows > 0){
+        if($result->num_rows > 0){
             //UPDATE HUB ID
             $_SESSION['hub_id'] = $hub_id;
             echo("{\"success\":\"Change successful\"}");

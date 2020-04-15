@@ -5,7 +5,7 @@ function generateHomeTab()
 {
     global $db;
     $html = '<div class="accordion md-accordion z-depth-1-half" id="accordionEx194" role="tablist" aria-multiselectable="true">';
-
+    session_start();
     if (isset($_SESSION['user_id'])) {
         $user_id = $_SESSION['user_id'];
 

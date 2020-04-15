@@ -5,21 +5,6 @@ require 'PepperedPasswords.php';
 session_start();
 
 //GRAB IP ADDRESS FROM CLIENT
-$ipaddress = '';
-if (getenv('HTTP_CLIENT_IP'))
-    $ipaddress = getenv('HTTP_CLIENT_IP');
-else if(getenv('HTTP_X_FORWARDED_FOR'))
-    $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
-else if(getenv('HTTP_X_FORWARDED'))
-    $ipaddress = getenv('HTTP_X_FORWARDED');
-else if(getenv('HTTP_FORWARDED_FOR'))
-    $ipaddress = getenv('HTTP_FORWARDED_FOR');
-else if(getenv('HTTP_FORWARDED'))
-    $ipaddress = getenv('HTTP_FORWARDED');
-else if(getenv('REMOTE_ADDR'))
-    $ipaddress = getenv('REMOTE_ADDR');
-else
-    $ipaddress = 'UNKNOWN';
 
 //ENSURE REQUEST HAS BEEN DELIVERED OVER POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -107,8 +92,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $userHashedPassword = $hasher->hash($userPassword1);
 
         //BIND PARAMETERS TO QUERY
-        $stmt->bind_param("sssssssdiss", $userEmail, $userHashedPassword, $userFirstName, $userLastName, $userAddressL1, $userAddressL2, $userPostcode,
-        $userEnergyCost, $userBudget, $userAllowEmails, $ipaddress);
+        $stmt->bind_param("sssssssdis", $userEmail, $userHashedPassword, $userFirstName, $userLastName, $userAddressL1, $userAddressL2, $userPostcode,
+        $userEnergyCost, $userBudget, $userAllowEmails);
 
         //EXECUTE QUERY
         if (!$stmt->execute()) {

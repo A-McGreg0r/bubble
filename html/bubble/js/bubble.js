@@ -118,8 +118,23 @@ $(window).on("load", function(){
 });
 //------------------------Swipe Function----------------------------------------------------
 
+function changeHub(id) {
+    var url = window.location.href.split('?')[0];
+    location.href = url + "?hub=" + id;
+}
+
 
 //------------------------Modal Function----------------------------------------------------
+function openModalHome(id){
+    event.stopPropagation();
+    var id = document.getElementById(id);
+    if (id.style.display == "flex") {
+        id.style.display = "none";
+    } else {
+        id.style.display = "flex";
+    }
+}
+
 function openModalRoom(id, close, open){
     event.stopPropagation();
     var id = document.getElementById(id);
@@ -204,6 +219,7 @@ function toggleRoom(hub_id, room_id){
         url: url,
         data:{ type: "room", hub_id: hub_id, id: room_id},
         success:function(){
+            
         },
         error: function(data){
             alert("error!");
@@ -298,7 +314,7 @@ function scaleDevice(hub_id, device_id, scale) {
             url: url,
             data:{ type: "scaledevice", hub_id: hub_id, id: device_id, scale: scale},
             success:function(data){
-
+                
             },
             error: function(data){
                 alert("error!");

@@ -321,7 +321,9 @@ html;
                             <div class="x-adjust">
                             <strong class="timer_icon_x" id="timer_x_$device_id" style="color:$colour; display:none" onclick="openModal('modal_$device_id', 'modal_stats_$device_id', 'timer_$device_id', 'timer_x_$device_id', 'stats_$device_id', 'stats_x_$device_id', $status)"><i class="fas fa-times"></i></strong></div>
                             <div class="modalHeader"><strong>Turn $device_name off in:</strong></div>
-                            <div class="timer-end" id="timer_end_$device_id"><strong>$timer_text<strong></div>
+                            <div class="modalMain">
+                            <div class="timer-end" id="timer_end_$device_id"><strong>$timer_text</strong></div>
+                            
                             <form>
                                 <div class="timerModal">
                                     <select id="hour_$device_id" name="energy_cost" class="form-control-sm dropdown validate drop-up">
@@ -410,6 +412,7 @@ html;
 
                             <div style="display:block">
                                 <p class="timerBtn btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" onclick="startTimer($device_id, 'hour_$device_id', 'minute_$device_id')">Start Timer</p>
+                            </div>
                             </div>
                         </div>
                     </div>

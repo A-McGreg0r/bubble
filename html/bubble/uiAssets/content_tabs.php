@@ -33,7 +33,7 @@ function generateTabs(){
     
     
     <!-- Tab panes -->
-    <div class="tab-content">
+    <div class="tab-content" id="tab-content">
         <div class="tab-pane active" id="home-attr" role="tabpanel" aria-labelledby="home-tab-attr">
             '.generateHomeTab().'
         </div>

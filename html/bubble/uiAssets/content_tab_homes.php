@@ -18,19 +18,23 @@ function generateHomeTab()
             extract($result3->fetch_assoc());
         }
 
-        $stmt = $db->prepare("SELECT * FROM hub_users WHERE user_id = ?");
+        $stmt = $db->prepare("SELECT * FROM hub_users WHERE user_id = ? LIMIT 1");
         $stmt->bind_param("i", $user_id);
         $stmt->execute();
         $result = $stmt->get_result();
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 $hub_id = $row['hub_id'];
+                if(isset($_GET['hub'])) $hub_id = $_GET['hub'];
+                $_SESSION['hub_id'] = $hub_id;
                 $stmt1 = $db->prepare("SELECT * FROM hub_info WHERE hub_id = ?");
                 $stmt1->bind_param("i", $hub_id);
                 $stmt1->execute();
                 $result1 = $stmt1->get_result();
 
                 if ($result1->num_rows === 1) {
+
+                    
                     $row1 = $result1->fetch_assoc();
                     $hub_name = $row1['hub_name'];
                     if (empty($hub_name)) {
@@ -201,6 +205,29 @@ function generateHomeTab()
                         $s_or_not = "devices";
                     }
 
+                    $all_hubs = "<table style='width:100%'>";
+                    $stmt12 = $db->prepare("SELECT * FROM hub_users WHERE user_id = ?");
+                    $stmt12->bind_param("i", $user_id);
+                    $stmt12->execute();
+                    $result12 = $stmt12->get_result();
+                    if ($result12->num_rows > 0) {
+                        while ($row12 = $result12->fetch_assoc()) {
+                            $row_id = $row12['hub_id'];
+                            $stmt13 = $db->prepare("SELECT * FROM hub_info WHERE hub_id = ?");
+                            $stmt13->bind_param("i", $row_id);
+                            $stmt13->execute();
+                            $result13 = $stmt13->get_result();
+                            if ($result13->num_rows > 0) {
+                                while ($row13 = $result13->fetch_assoc()) {
+                                    $name = $row13['hub_name'];
+                                    $all_hubs .= "<tr style='text-align:center' onclick='changeHub($row_id)'><td class='hub_row'>$name</td></tr>";
+                                }
+                            }
+                        }
+                    }
+                    $all_hubs .= "</table>";
+        
+
                     $stmt11 = $db->prepare("SELECT * FROM room_info WHERE hub_id = ?");
                     $stmt11->bind_param("i", $hub_id);
                     $stmt11->execute();
@@ -242,6 +269,20 @@ function generateHomeTab()
                     $html .= <<<html
                     <!-- Accordion card -->
                     
+                    <div class="modal modalStatsWrap" id="hub_select">
+                        <div class="modalContent modalStats" id="">
+                            <div class="x-adjust"><i class="stats_icon_x " id="" style="display:flex" onclick="openModalHome('hub_select')"><i class="fas fa-times"></i></i>
+                            </div>
+                            <div class="modalHeader"><strong>Change Hub</strong></div>
+                            <div class="modalBody">
+                            </div>
+                            <div class="modalSub">
+                                Available Hubs
+                            </div>
+                            $all_hubs
+                        </div>
+                    </div>
+
                     <div class="card col-lg">
                     <!-- Card header -->
                         <div class="card-header" role="tab" id="heading$hub_id">
@@ -253,12 +294,13 @@ function generateHomeTab()
                                 </h3>
                             </a>
                         </div>
+
         
                         <!-- Card body -->
                             <table class="home-table">
                                 <tr>
                                     <td style="width:50%">
-                                        <div id="reload_device_id" class="home-left">
+                                        <div id="reload_device_id" class="home-left" onclick="openModalHome('hub_select')">
                                     
                                             <!--Card content-->
                                             <div class="">

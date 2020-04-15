@@ -478,11 +478,11 @@ function generateHomeTab()
                                     <!--Donut 3-->  
                                     <!--button for Donut carousel -->
                                         <a class="carousel-control-prev " href="#chart-carousel" role="button" data-slide="prev">
-                                        <span class="carousel-control-prev-icon " aria-hidden="false"></span>
+                                        <span class="carousel-control-prev-icon " aria-hidden="false"><i class="fas fa-angle-double-left"></i></span>
                                         <span class="sr-only ">Previous</span>
                                         </a>
                                         <a class="carousel-control-next " href="#chart-carousel" role="button" data-slide="next">
-                                        <span class="carousel-control-next-icon " aria-hidden="false"></span>
+                                        <span class="carousel-control-next-icon " aria-hidden="false"><i class="fas fa-angle-double-right"></i></span>
                                         <span class="sr-only ">Next</span>
                                         </a>  
                                                 

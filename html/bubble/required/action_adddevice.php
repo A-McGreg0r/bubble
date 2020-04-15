@@ -22,6 +22,7 @@
         $decoded = $decoded . base64_decode(substr($imageURI,$i*256,256));    
     //BEGIN SESSION
     session_start();
+    //GRAB USER_ID
     $user_id = $_SESSION['user_id'];
     //END SESSION
     session_write_close();
@@ -52,15 +53,38 @@
                     //INSERT LINK IN HUB_USERS BETWEEN NEWLY ADDED HUB AND USER_ID FROM LOGGED IN SESSION
                     $row = $result->fetch_assoc();
                     $hub_id = $row['hub_id'];
-                    $stmt1 = $db->prepare("INSERT INTO hub_users (user_id, hub_id) VALUES (?, ?)");
-                    $stmt1->bind_param("ii", $user_id, $hub_id);
-                    if ($stmt1->execute()) {
-                        echo "Sucessfully registered your new hub!\nNavigate Home to view your newly added Hub!";
-                    }else{
-                        echo "Hmm, something went wrong, please refresh the page and try again";
-                    }
-                    $stmt1->close();
 
+                    //CHECK IF THE HUB ALREADY HAS AN OWNER
+                    $stmtOwner = $db->prepare("SELECT * FROM hub_owners WHERE hub_id = ?");
+                    $stmtOwner->bind_param("i", $hub_id);
+                    $stmtOwner->execute();
+                    $resultOwner = $stmtOwner->get_result();
+
+                    //IF THE HUB DOESNT HAVE AN OWNER
+                    if($resultOwner->num_rows == 0){
+
+                        //ADD OWNER IN OWNERS TABLE
+                        $stmtAddOwner = $db->prepare("INSERT INTO hub_owners (hub_id,hub_owner_id) VALUES (?, ?)");
+                        $stmtAddOwner->bind_param("ii", $hub_id, $user_id);
+                        if(!$stmtAddOwner->execute()){
+                            echo "Hmm, something went wrong, please contact customer support!";
+                        }
+                        $stmtAddOwner->close();
+
+                        //INSERT JOIN BETWEEN USER AND ACCOUNT
+                        $stmt1 = $db->prepare("INSERT INTO hub_users (user_id, hub_id) VALUES (?, ?)");
+                        $stmt1->bind_param("ii", $user_id, $hub_id);
+                        if ($stmt1->execute()) {
+                            echo "Sucessfully registered your new hub!\nNavigate home to view your newly added hub!";
+                        }else{
+                            echo "Hmm, something went wrong, please refresh the page and try again";
+                        }
+                        $stmt1->close(); 
+                    } else {//THE HUB HAS AN OWNER, REQUEST ACCESS FROM OWNER
+                        echo "An access request to the owner of this hub has been sent! Please ask them to check the email associated with their account, and confirm your access.";
+
+                    }
+                    $stmtOwner->close();
                 } else {
                     echo "This Hub doesnt appear registered with us yet. Ensure the device has a green flashing LED on the top. For more troubleshooting, see <a href=\"index.php?action=troubleshooting\"Our Troubleshooting Tips</a>";
                 }

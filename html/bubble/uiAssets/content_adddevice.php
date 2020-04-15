@@ -10,7 +10,9 @@ function generateQRReader(){
         <div class="col-lg-12">
             <div class="row justify-content-center">
                 <div class="text-center align-middle">
-                    <h3>Add new devices by scanning the QR code on the device</h3>
+                    <h3>Add a new hub or device by scanning the QR code on the device</h3>
+                    <h5>Hub already setup on a different account? No worries, scan the qr code below and we will send a request to your hub's owner to allow you to connect</h5>
+
                     <div id="devicetext" style="width:100%"></div>
                 </div>
                 <div class="align-middle">

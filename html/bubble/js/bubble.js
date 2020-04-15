@@ -126,7 +126,7 @@ function changeHub(id) {
         type:'POST',
         url: url,
         data:{ hub_id: id},
-        success:function(){
+        success:function(data){
             //PARSE RESPONSE JSON DATA
             var result = JSON.parse(data);
 

@@ -2,7 +2,6 @@
 //Connect to the db
 require 'config.php';
 require 'PepperedPasswords.php';
-session_start();
 
 //ENSURE REQUEST HAS BEEN DELIVERED OVER POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -103,6 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo("{\"success\":\"Registration successful\"}");
             //SEND REGISTRATION EMAIL
             require "email/registration_email.php";
+            sendRegistrationEmail($userEmail, $userFirstName);
         }else{
             echo("{\"error\":\"Registration failed, try again!\"}");
         }

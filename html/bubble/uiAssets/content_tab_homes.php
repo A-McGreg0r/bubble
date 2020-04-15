@@ -591,7 +591,7 @@ function generateHomeTab()
             <!-- Accordion card -->
 html;
         }
-        $stmt1->close();
+        $stmtHub->close();
 
             
         

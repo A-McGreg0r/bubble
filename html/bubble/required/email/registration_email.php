@@ -5,7 +5,7 @@ require 'vendor/autoload.php';
 function sendRegistrationEmail($userEmail, $userName){
     $mail = new PHPMailer;
     $mail->isSMTP();
-    $mail->SMTPDebug = 2;
+    // $mail->SMTPDebug = 2;
     $mail->Host = 'smtp.gmail.com';
     $mail->Port = 587;
     $mail->SMTPAuth = true;
@@ -15,7 +15,7 @@ function sendRegistrationEmail($userEmail, $userName){
     $mail->addAddress($userEmail, $userName);
     $mail->Subject = 'Welcome to Bubble';
     $mail->isHTML(true);
-    $mail->AddEmbeddedImage('img/favicon.png', 'logo');
+    $mail->AddEmbeddedImage('../../img/favicon.png', 'logo');
     
     $logo = "<img src='cid:logo' style='width:100px'>";
     $email_welcome = "<h3 style='font-weight:400'>Dear $userName,<h3>";

@@ -819,13 +819,15 @@ select {
     margin-left: 10px;
 }
 
-.grey-out-home {
+.home-right, .home-left {
     background-color: rgb(110,110,110);
     color: rgb(226, 183, 28);
     border: 2px solid black!important;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
-.grey-out-home:hover, .grey-out-home-right:hover {
+.home-right:hover, .home-left:hover {
     cursor: pointer;
     background-color: rgb(226, 183, 28)!important;
     color: black!important;
@@ -833,4 +835,28 @@ select {
 
 #overview {
     margin-top: -20px;
+}
+
+b {
+    display: none;
+}
+
+.loader {
+    display: none;
+    border: 5px solid rgb(56,56,56);
+    border-top: 5px solid white;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    animation: spin 1s linear infinite;
+  }
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#home_loader {
+    margin-top: 14px;
+    margin-bottom: 15px;
 }

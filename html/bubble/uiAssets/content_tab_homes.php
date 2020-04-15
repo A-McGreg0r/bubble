@@ -189,26 +189,10 @@ function generateHomeTab()
                     $budget_day_remaining_round = number_format($budget_day_remaining,2);
                     $budget_year_remaining_round = money_format('%.2n', $budget_year_remaining);
 
-                    $all_homes = "";
+                    $all_homes = "styleHome();";
 
                     $count = 0;
-                    $stmt10 = $db->prepare("SELECT * FROM device_info WHERE hub_id = ?");
-                    $stmt10->bind_param("i", $hub_id);
-                    $stmt10->execute();
-                    $result10 = $stmt10->get_result();
-                    if ($result10->num_rows >= 1) {
-                        $all10 = $result10->fetch_all(MYSQLI_ASSOC);
-                        foreach($all10 as $row10){
-                            $device_id = $row10['device_id'];
-                            $device_status = $row10['device_status'];
-                            $device_type = $row10['device_type'];
-                            $on = 4;
-                            if($row10['device_status'] > 0){
-                                $count++;
-                                $all_homes .= "alterDevice($hub_id, $device_id, $device_type, $on);refreshDevice($device_id);";
-                            }
-                        }
-                    }
+                    
 
                     $s_or_not = "";
                     if($count == 1){
@@ -225,8 +209,27 @@ function generateHomeTab()
                         $all11 = $result11->fetch_all(MYSQLI_ASSOC);
                         foreach($all11 as $row11){
                             $id_room = $row11['room_id'];
+                            $room_on = 0;
 
-                            $all_homes .= "refreshRoom($id_room);";
+                            $stmt10 = $db->prepare("SELECT * FROM device_info WHERE hub_id = ? AND room_id = ?");
+                            $stmt10->bind_param("ii", $hub_id, $id_room);
+                            $stmt10->execute();
+                            $result10 = $stmt10->get_result();
+                            if ($result10->num_rows >= 1) {
+                                $all10 = $result10->fetch_all(MYSQLI_ASSOC);
+                                foreach($all10 as $row10){
+                                    $device_id = $row10['device_id'];
+                                    if($row10['device_status'] > 0){
+                                        $room_on = 1;
+                                        $count++;
+                                        $all_homes .= "refreshDevice($device_id);";
+                                    }
+                                }
+                            }
+                            if($room_on == 1){
+                                $all_homes .= "toggleRoom($hub_id,$id_room);";
+                                $all_homes .= "refreshRoom($id_room);";
+                            }
                         }
                     }
 
@@ -254,41 +257,32 @@ function generateHomeTab()
                         <!-- Card body -->
                             <table class="home-table">
                                 <tr>
-                                    <td>
+                                    <td style="width:50%">
                                         <div id="reload_device_id" class="home-left">
-                                            <div id="device_device_id" class="card mb-4 container text-dark grey-out-home" style="" onclick="">
-                                            <!--Card image-->
-                                            <div class="view overlay">
-                                                <div class="mask rgba-white-slight"></div>
-                                            </div>
                                     
                                             <!--Card content-->
-                                            <div class="card-body justify-content-between">
+                                            <div class="">
                                         
                                                 <!--Title-->      
-                                                <div class="flex-column">  
-                                                    <div id="device_3_device_id" class="flex-sm-row" style="">
+                                                <div class="">  
+                                                    <div id="device_3_device_id" class="" style="">
                                                         <strong class="room_icon"><i class="fa fa-home"></i><br></strong><strong>Change House<br><strong style="color:black">$hub_name</strong></strong>
                                                     </div>                     
                                                 </div>
                                             </div>
                                     </div>
                                 </td>
-                                <td>
-                                    <div id="home_devices" class="home-right">
-                                        <div id="" class="card mb-4 container text-dark grey-out-home" style="" onclick="$all_homes">
-                                        <!--Card image-->
-                                        <div class="view overlay">
-                                            <div class="mask rgba-white-slight"></div>
-                                        </div>
+                                <td style="width:50%">
+                                    <div id="home_devices" class="home-right" style="text-align:center">
                                 
                                         <!--Card content-->
-                                        <div class="card-body justify-content-between">
+                                        <div id="home_off_content" class="" onclick="$all_homes">
                                     
                                             <!--Title-->      
-                                            <div class="flex-column">  
-                                                <div id="" class="flex-sm-row" style="">
-                                                    <strong class="room_icon"><i class="fa fa-home"></i><br></strong><strong style="text-align:center">Turn Off Home <br><strong style="color:black">$count $s_or_not on</strong></strong>
+                                            <div class=""> 
+                                                <div id="home_loader" class="loader"></div>
+                                                <div id="home_button_text" class="" style="">
+                                                    <strong class="room_icon"><i class="fa fa-home"></i><br></strong><strong >Turn Off Home <br><strong style="color:black">$count $s_or_not on</strong></strong>
                                                 </div>                     
                                             </div>
                                         </div>

@@ -108,7 +108,7 @@ html;
                 $html .= <<<html
                 <!-- Card -->
                 <div id="room_reload_$room_id">
-                <div class="card mb-4 container text-dark grey-out-rooms alternating-border" style="background-color:$background" id="$room_id" onclick="
+                <div class="card mb-4 container text-dark grey-out-rooms alternating-border" style="background-color:$background" id="$room_id" onclick="toggleRoom($hub_id,$room_id);
 html;
                 $room_hour = 0;
                 $room_day = 0;
@@ -125,7 +125,7 @@ html;
                         $room_day = $room_day + $rowDevice3['hour_data'];
                         $room_month = $room_month + $rowDevice3['day_data'];
                         $room_year = $room_year + $rowDevice3['month_data'];
-                        $html .= "device_refresh($id);";
+                        $html .= "refreshDevice($id);";
                     }
                 }
                 $total_usage = number_format(($total_usage / 1000),3);
@@ -142,7 +142,7 @@ html;
                 $total_usage = $total_usage - $room_month;
 
                 $html .= <<<html
-                    toggleRoom($hub_id,$room_id);refreshHomeButton();">
+                    refreshRoom($room_id);refreshHomeButton();">
                     <!--Card image-->
                     <div class="view overlay">
                         <div class="mask rgba-white-slight"></div>
@@ -160,7 +160,7 @@ html;
                         
                         <div class="d-flex flex-column" style="font-size:1.5rem">
                             <!-- Default switch -->
-                            <p class="onOffLabel"><strong style="color:$colour">$setting</strong></p>
+                            <p class="onOffLabel"><strong id="room_setting_$room_id" style="color:$colour">$setting</strong><div id="room_loader_$room_id" class="loader"></div></p>
                         </div>
                     </div>
                     

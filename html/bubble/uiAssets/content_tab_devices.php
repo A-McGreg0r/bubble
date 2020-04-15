@@ -206,7 +206,7 @@ html;
                             
                             <div class="d-flex flex-column">
                                 <!-- Default switch -->
-                                <p class="onOffLabel"><strong id="device_1_$device_id" style="color:$colour">$setting</strong></p>
+                                <p class="onOffLabel"><strong id="device_1_$device_id" style="color:$colour">$setting</strong><div id="loader_$device_id" class="loader"></div></p>
                             </div>
                         </div>
 

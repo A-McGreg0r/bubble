@@ -183,7 +183,15 @@ function startTimer(id, hour_value, minute_value) {
 //------------------------Timer Function----------------------------------------------------
 
 //------------------------Device switch Functions----------------------------------------------------
+function styleHome() {
+    document.getElementById('home_button_text').style.display = "none";
+    document.getElementById('home_loader').style.display = "inline-block";
+}
+
 function toggleRoom(hub_id, room_id){
+    document.getElementById('room_setting_'+room_id).style.display = "none";
+    document.getElementById('room_loader_'+room_id).style.display = "block";
+
     if (document.getElementById(room_id).style.backgroundColor != "rgb(226, 183, 28)"){
         document.getElementById(room_id).style.backgroundColor = "rgb(226, 183, 28)";
     } else {
@@ -196,17 +204,11 @@ function toggleRoom(hub_id, room_id){
         url: url,
         data:{ type: "room", hub_id: hub_id, id: room_id},
         success:function(){
-            $('#room_reload_' + room_id).load(document.URL + ' #room_reload_' + room_id);
-            $('#home_devices').load(document.URL + ' #home_devices');
         },
         error: function(data){
             alert("error!");
         }
     });
-}
-
-function device_refresh(id) {
-    $("#reload_" + id).load(document.URL + " #reload_" + id);
 }
 
 function alterDevice(hub_id, device_id, device_type, current_state){
@@ -226,11 +228,14 @@ function refreshDevice(device_id) {
 }
 
 function refreshHomeButton() {
-    $('#home_devices').load(document.URL + ' #home_devices');
+    $('#home_devices').load(document.URL + ' #home_off_content');
 }
 
 function toggleDevice(hub_id, device_id, state) {
     let url = "required/action_device.php";
+    document.getElementById('device_1_'+device_id).style.display = "none";
+    document.getElementById('loader_'+device_id).style.display = "block";
+
     if (state == 0){
         document.getElementById('device_'+device_id).style.backgroundColor = "rgb(226, 183, 28)";
     } 
@@ -254,6 +259,9 @@ function toggleDevice(hub_id, device_id, state) {
 }
 
 function scaleDevice(hub_id, device_id, scale) {
+    document.getElementById('device_1_'+device_id).style.display = "none";
+    document.getElementById('loader_'+device_id).style.display = "block";
+
     if (scale == 0){
         document.getElementById('device_'+device_id).style.backgroundImage = "linear-gradient(to right, rgb(226, 183, 28) 0%, rgb(226, 183, 28) 25%, rgb(56,56,56) 25%, rgb(56,56,56) calc(25% + 1px), transparent calc(25% + 1px))";
     }

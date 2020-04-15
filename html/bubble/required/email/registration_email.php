@@ -25,12 +25,10 @@ function sendRegistrationEmail($userEmail, $userName){
     $email_content = "<div style='font-family:arial'>$email_welcome $email_body $email_signoff</div> <hr><div style='text-align:center'> $logo <br> $email_signature</div>";
     
     $mail->Body = (string) $email_content;
-    //$mail->addAttachment('test.txt');
+
     if (!$mail->send()) {
-        echo 'Mailer Error: ' . $mail->ErrorInfo;
-    } else {
-        echo "Email sent to $userEmail\n";
-    }
+        //ERROR THROW
+    } 
 }
 
 ?>

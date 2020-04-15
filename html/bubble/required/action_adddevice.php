@@ -81,6 +81,8 @@
                         }
                         $stmt1->close(); 
                     } else {//THE HUB HAS AN OWNER, REQUEST ACCESS FROM OWNER
+                        
+                        
                         echo "An access request to the owner of this hub has been sent! Please ask them to check the email associated with their account, and confirm your access.";
 
                     }

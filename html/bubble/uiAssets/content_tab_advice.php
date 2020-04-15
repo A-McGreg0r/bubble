@@ -8,6 +8,8 @@ function generateAdviceTab()
 
     if (isset($_SESSION['user_id'])) {
         $user_id = $_SESSION['user_id'];
+        $hub_id = $_SESSION['hub_id'];
+        $ip_address = "";
 
         session_write_close();
         $stmt3 = $db->prepare("SELECT * FROM user_info WHERE user_id = ?");
@@ -18,13 +20,12 @@ function generateAdviceTab()
             extract($result3->fetch_assoc());
         }
 
-        $stmt = $db->prepare("SELECT * FROM hub_users WHERE user_id = ?");
-        $stmt->bind_param("i", $user_id);
+        $stmt = $db->prepare("SELECT * FROM hub_users WHERE hub_id = ? AND user_id = ?");
+        $stmt->bind_param("ii", $hub_id, $user_id);
         $stmt->execute();
         $result = $stmt->get_result();
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                $hub_id = $row['hub_id'];
                 $stmt1 = $db->prepare("SELECT * FROM hub_info WHERE hub_id = ?");
                 $stmt1->bind_param("i", $hub_id);
                 $stmt1->execute();
@@ -35,15 +36,15 @@ function generateAdviceTab()
                 if ($result1->num_rows === 1) {
                     $row1 = $result1->fetch_assoc();
                     $hub_name = $row1['hub_name'];
+                    $ip_address = $row1['hub_public_adr'];
                     if (empty($hub_name)) {
                         $hub_name = "My Home";
                     }
 
-                    $ip = $ip_address;
-                    // $latlong = explode(",", file_get_contents('https://ipapi.co/' . $ip . '/latlong/'));
-                    // $weather = file_get_contents('http://api.openweathermap.org/data/2.5/weather?lat=' . $latlong[0] . '&lon=' . $latlong[1] . '&appid=f35e0bdca477a802831ce6202240dc8d');
-                    // $current_weather = json_decode($weather,true);
-                    // $temp = $current_weather['main']['temp'];
+                    $latlong = explode(",", file_get_contents('https://ipapi.co/' . $ip_address . '/latlong/'));
+                    $weather = file_get_contents('http://api.openweathermap.org/data/2.5/weather?lat=' . $latlong[0] . '&lon=' . $latlong[1] . '&appid=f35e0bdca477a802831ce6202240dc8d');
+                    $current_weather = json_decode($weather,true);
+                    $temp = $current_weather['main']['temp'];
 
                     $temp = $temp - 273;
                     $temp_round = number_format($temp,1);

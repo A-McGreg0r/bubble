@@ -15,120 +15,91 @@ function generateAccount(){
             extract($result->fetch_assoc());
 
             $html = <<<html
+        <!-- Page Content --> 
         <div class="container-fluid justify-content-center">
-        <!-- Card --> 
+        
+            <!-- Card --> 
             <div class="card mb-4 small-gap">
-                <!--Card content-->
-
-            <!--account detals-->
-            <div class="containerjustify-content-center"
-                <div class="col-lg-6">
-                    <div class="d-flex flex-column justify-content-center account-heading">  
-                            <h4 class="bold-title">My Account</h4>
-                    </div>
+            
+                <!-- Card content: account details -->
+                <div class="container justify-content-center">
+                    <!--col om to center content-->
+                    <div class="col-lg-6">
+                        <!-- header-->
+                        <div class="d-flex flex-column justify-content-center account-heading">  
+                                <h4 class="bold-title">My Account</h4>
+                        </div>
+                        
+                        <!-- table -->
+                        <table class="account-table" align="centre">
+                            <tr class="account-row account-first">
+                                <td class="account-left"><strong>&ensp;First Name:</strong></td>
+                                <td class="right-column">$first_name&ensp;</td>
+                            <tr>
+                            <tr class="account-row">
+                                <td class="account-left"><strong>&ensp;Last Name:</strong></td>
+                                <td class="right-column">$last_name&ensp;</td>
+                            </tr>
+                            <tr class="account-row">
+                                <td class="account-left"><strong>&ensp;Email Address:</strong></td>
+                                <td class="right-column">$email&ensp;</td>
+                            </tr>
+                            <tr class="account-row">
+                                <td class="account-left"><strong>&ensp;Address:</strong></td>
+                                <td class="right-column">$address_l1, $address_l2&ensp;</td>
+                            </tr>
+                            <tr class="account-row">
+                                <td class="account-left"><strong>&ensp;Postcode:</strong></td>
+                                <td class="right-column">$postcode&ensp;</td>
+                            </tr>
+                            <tr class="account-row">
+                                <td class="account-left"><strong>&ensp;Energy Price:</strong></td>
+                                <td class="right-column">£$energy_cost&ensp;</td>
+                            </tr>
+                            <tr class="account-row">
+                                <td class="account-left"><strong>&ensp;Monthly Budget:</strong></td>
+                                <td class="right-column">£$budget&ensp;</td>
+                            </tr>
+                        </table>
+                        <!-- table -->
+                        
+                        <!--button for deploying model-->
+                        <button type="button" class="btn btn-danger btn-sm btn-rounded" data-toggle="modal" data-target="#basicModal">Delete Account</button>
                     
-                    <table class="account-table" align="centre">
-                        <tr class="account-row account-first">
-                            <td class="account-left"><strong>&ensp;First Name:</strong></td>
-                            <td class="right-column">$first_name&ensp;</td>
-                        <tr>
-                        <tr class="account-row">
-                            <td class="account-left"><strong>&ensp;Last Name:</strong></td>
-                            <td class="right-column">$last_name&ensp;</td>
-                        </tr>
-                        <tr class="account-row">
-                            <td class="account-left"><strong>&ensp;Email Address:</strong></td>
-                            <td class="right-column">$email&ensp;</td>
-                        </tr>
-                        <tr class="account-row">
-                            <td class="account-left"><strong>&ensp;Address:</strong></td>
-                            <td class="right-column">$address_l1, $address_l2&ensp;</td>
-                        </tr>
-                        <tr class="account-row">
-                            <td class="account-left"><strong>&ensp;Postcode:</strong></td>
-                            <td class="right-column">$postcode&ensp;</td>
-                        </tr>
-                        <tr class="account-row">
-                            <td class="account-left"><strong>&ensp;Energy Price:</strong></td>
-                            <td class="right-column">£$energy_cost&ensp;</td>
-                        </tr>
-                        <tr class="account-row">
-                            <td class="account-left"><strong>&ensp;Monthly Budget:</strong></td>
-                            <td class="right-column">£$budget&ensp;</td>
-                        </tr>
-                    </table>
                     
-                    <!--button to deploy model-->
-                    <button type="button" class="btn btn-danger btn-sm btn-rounded" data-toggle="modal" data-target="#basicModal">Delete Account</button>
-                
-                
-                    <!--Model deployed by button-->
-                    <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <!--Header-->
-                                <div class="modal-header">
-                                    <h3>Are You sure?</h3>
-                                </div>
+                        <!--Model deployed by button-->
+                        <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <!-- Dialog -->
+                            <div class="modal-dialog" role="document">
+                                <!-- Content -->
+                                <div class="modal-content">
                                 
-                                <!--Body-->
-                                <div class="modal-body">
-                                
-                                    <button class="btn btn-danger btn-sm btn-rounded" onclick="deleteAccount()">Yes: delete account</button>
-                                    <button type="button" class="btn btn-primary btn-sm btn-rounded">No go back.</button>
+                                    <!--Header-->
+                                    <div class="modal-header">
+                                        <h3>Are You sure?</h3>
+                                    </div>
+                                    
+                                    <!--Body-->
+                                    <div class="modal-body">
+                                    
+                                        <button class="btn btn-danger btn-sm btn-rounded" onclick="deleteAccount()">Yes: delete account</button>
+                                        <button type="button" class="btn btn-primary btn-sm btn-rounded">No: go back.</button>
+                                        
+                                    </div>
                                     
                                 </div>
+                                
                             </div>
                         </div>
+                    <!--col om to center content-->
                     </div>
-                
-                </div>
-            </div>                
-
-                    
-            </div>            
-            <div class="card mb-4 text-dark grey-out-account">
-                <!--Card content-->
-                <div class="flex-nowrap justify-content-between">
-                    
-                <table class="account-table" align="centre">
-                    <tr class="account-row account-first">
-                        <td class="account-left"><strong>&ensp;First Name:</strong></td>
-                        <td class="right-column">$first_name&ensp;</td>
-                    <tr>
-                    <tr class="account-row">
-                        <td class="account-left"><strong>&ensp;Last Name:</strong></td>
-                        <td class="right-column">$last_name&ensp;</td>
-                    </tr>
-                    <tr class="account-row">
-                        <td class="account-left"><strong>&ensp;Email Address:</strong></td>
-                        <td class="right-column">$email&ensp;</td>
-                    </tr>
-                    <tr class="account-row">
-                        <td class="account-left"><strong>&ensp;Address:</strong></td>
-                        <td class="right-column">$address_l1, $address_l2&ensp;</td>
-                    </tr>
-                    <tr class="account-row">
-                        <td class="account-left"><strong>&ensp;Postcode:</strong></td>
-                        <td class="right-column">$postcode&ensp;</td>
-                    </tr>
-                    <tr class="account-row">
-                        <td class="account-left"><strong>&ensp;Energy Price:</strong></td>
-                        <td class="right-column">£$energy_cost&ensp;</td>
-                    </tr>
-                    <tr class="account-row">
-                        <td class="account-left"><strong>&ensp;Monthly Budget:</strong></td>
-                        <td class="right-column">£$budget&ensp;</td>
-                    </tr>
-                </table>
-
-                </div>        
-                        <!-- Modal -->
-
-            <!-- Card -->    
-    
-    
-            <!-- Editable table -->
+                <!-- Card content: account details -->    
+                </div>                
+            <!-- Card End-->       
+            </div>   
+                   
+            
+            <!--Card with Editable table -->
             <div class="card">
                 <h3 class="card-header text-center font-weight-bold text-uppercase py-4 border-upper">Devices</h3>
                 <div class="card-body">
@@ -304,6 +275,7 @@ pageHTML;
             });
         </script>
         </div>
+        <!-- Page Content --> 
         ';
         }
 

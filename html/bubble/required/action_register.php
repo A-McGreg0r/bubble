@@ -4,13 +4,11 @@ require 'config.php';
 require 'PepperedPasswords.php';
 session_start();
 
-//GRAB IP ADDRESS FROM CLIENT
-
 //ENSURE REQUEST HAS BEEN DELIVERED OVER POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //INTITALISE ERRORS ARRAY
     $errors = array();
-    $stmt = $db->prepare("INSERT INTO user_info (email, pass, first_name, last_name, address_l1, address_l2, postcode, energy_cost, budget, allow_emails, ip_address) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )");
+    $stmt = $db->prepare("INSERT INTO user_info (email, pass, first_name, last_name, address_l1, address_l2, postcode, energy_cost, budget, allow_emails) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )");
 
     //GET VALID EMAIL ADDRESS
     $userEmail = filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL);

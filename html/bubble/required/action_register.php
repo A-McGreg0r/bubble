@@ -104,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if($stmt->affected_rows === 1){
             echo("{\"success\":\"Registration successful\"}");
             //SEND REGISTRATION EMAIL
-            include dirname(__DIR__).'/required/email/registration_email.php';
+            require "email/registration_email.php";
         }else{
             echo("{\"error\":\"Registration failed, try again!\"}");
         }

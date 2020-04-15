@@ -19,9 +19,9 @@ function generateAccount(){
         <!-- Card --> 
             <div class="card mb-4 small-gap">
                 <!--Card content-->
-                <div class="d-flex justify-content-between account-heading">
+                <div class="d-flex  account-heading">
         
-                    <div class="d-flex flex-column">  
+                    <div class="d-flex flex-column justify-content-center">  
                         <h4 class="bold-title">My Account</h4>
                     </div>
                 </div>

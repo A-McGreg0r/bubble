@@ -324,11 +324,11 @@ function generateHomeTab()
                             
                                     <!--Title-->      
                                     <div class=""> 
-                                        <div id="home_loader" class="loader col-md-4"></div>
-                                        <div id="home_button_text" class="" style="">
-                                            <strong class="room_icon"><i class="fa fa-home"></i><br></strong><strong >Turn Off Home <br><strong style="color:black">$count $s_or_not on</strong></strong>
-                                        </div>                     
-                                    </div>
+                                        <div id="home_loader" class="loader">
+                                            <div id="home_button_text" class="" style="col-md-4">
+                                                <strong class="room_icon"><i class="fa fa-home"></i><br></strong><strong >Turn Off Home <br><strong style="color:black">$count $s_or_not on</strong></strong>
+                                            </div>                     
+                                        </div>
                                 </div>
                             </div>
                         </td>

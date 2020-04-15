@@ -309,7 +309,7 @@ function generateHomeTab()
                                 
                                         <!--Title-->      
                                         <div class="">  
-                                            <div id="device_3_device_id" class=" col-md-6" style="">
+                                            <div id="device_3_device_id" class=" col-md-4" style="">
                                                 <strong class="room_icon"><i class="fa fa-home"></i><br></strong><strong>Change House<br><strong style="color:black">$hub_name</strong></strong>
                                             </div>                     
                                         </div>
@@ -324,7 +324,7 @@ function generateHomeTab()
                             
                                     <!--Title-->      
                                     <div class=""> 
-                                        <div id="home_loader" class="loader col-sm-4"></div>
+                                        <div id="home_loader" class="loader col-md-4"></div>
                                         <div id="home_button_text" class="" style="">
                                             <strong class="room_icon"><i class="fa fa-home"></i><br></strong><strong >Turn Off Home <br><strong style="color:black">$count $s_or_not on</strong></strong>
                                         </div>                     

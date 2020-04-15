@@ -103,6 +103,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         //SUCCESS OR FAIL REGISTRATION
         if($stmt->affected_rows === 1){
             echo("{\"success\":\"Registration successful\"}");
+            //SEND REGISTRATION EMAIL
+            ob_start();
+            include dirname(__DIR__).'/required/email/registration_email.php';
+            $data = ob_get_clean();
+            ob_end_flush();
         }else{
             echo("{\"error\":\"Registration failed, try again!\"}");
         }

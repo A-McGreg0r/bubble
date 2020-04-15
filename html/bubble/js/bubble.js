@@ -119,8 +119,29 @@ $(window).on("load", function(){
 //------------------------Swipe Function----------------------------------------------------
 
 function changeHub(id) {
-    var url = window.location.href.split('?')[0];
-    location.href = url + "?hub=" + id;
+
+    let url = "required/action_changeHub.php";
+
+    $.ajax({
+        type:'POST',
+        url: url,
+        data:{ hub_id: id},
+        success:function(data){
+            //PARSE RESPONSE JSON DATA
+            var result = JSON.parse(data);
+
+            //LOGIN ERROR, DISPLAY ERROR TO USER
+            if(result.error){
+
+            }
+            if(result.success){
+                location.reload();
+            }
+        },
+        error: function(data){
+            alert("Failed to change hub, please try again!");
+        }
+    });
 }
 
 

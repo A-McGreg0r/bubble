@@ -232,70 +232,79 @@ function refreshHomeButton() {
 }
 
 function toggleDevice(hub_id, device_id, state) {
-    let url = "required/action_device.php";
-    document.getElementById('device_1_'+device_id).style.display = "none";
-    document.getElementById('loader_'+device_id).style.display = "block";
 
-    if (state == 0){
-        document.getElementById('device_'+device_id).style.backgroundColor = "rgb(226, 183, 28)";
-    } 
-    
-    if (state == 4) {
-        document.getElementById('device_'+device_id).style.backgroundImage = "linear-gradient(to right, rgb(110, 110, 110) 0%, rgb(110, 110, 110) 100%, transparent 100%)";
-        $('#modal_' + device_id).load(document.URL + ' #content_timer_' + device_id);
-    }
-    
-    $.ajax({
-        type:'POST',
-        url: url,
-        data:{ type: "toggledevice", hub_id: hub_id, id: device_id, state: state},
-        success:function(data){
-            
-        },
-        error: function(data){
-            alert("error!");
+    if(state == -1){
+        alert("Your device seems to have a fault. Seek repairs or replace device.");
+    } else {
+        let url = "required/action_device.php";
+        document.getElementById('device_1_'+device_id).style.display = "none";
+        document.getElementById('loader_'+device_id).style.display = "block";
+
+        if (state == 0){
+            document.getElementById('device_'+device_id).style.backgroundColor = "rgb(226, 183, 28)";
+        } 
+        
+        if (state == 4) {
+            document.getElementById('device_'+device_id).style.backgroundImage = "linear-gradient(to right, rgb(110, 110, 110) 0%, rgb(110, 110, 110) 100%, transparent 100%)";
+            $('#modal_' + device_id).load(document.URL + ' #content_timer_' + device_id);
         }
-    });
+        
+        $.ajax({
+            type:'POST',
+            url: url,
+            data:{ type: "toggledevice", hub_id: hub_id, id: device_id, state: state},
+            success:function(data){
+                
+            },
+            error: function(data){
+                alert("error!");
+            }
+        });
+    }
 }
 
 function scaleDevice(hub_id, device_id, scale) {
-    document.getElementById('device_1_'+device_id).style.display = "none";
-    document.getElementById('loader_'+device_id).style.display = "block";
-
-    if (scale == 0){
-        document.getElementById('device_'+device_id).style.backgroundImage = "linear-gradient(to right, rgb(226, 183, 28) 0%, rgb(226, 183, 28) 25%, rgb(56,56,56) 25%, rgb(56,56,56) calc(25% + 1px), transparent calc(25% + 1px))";
-    }
-    if (scale == 1) {
-        document.getElementById('device_'+device_id).style.backgroundImage = "linear-gradient(to right, rgb(226, 183, 28) 0%, rgb(226, 183, 28) 50%, rgb(56,56,56) 50%, rgb(56,56,56) calc(50% + 1px), transparent calc(50% + 1px))";
-    } 
-    if (scale == 2) {
-        document.getElementById('device_'+device_id).style.backgroundImage = "linear-gradient(to right, rgb(226, 183, 28) 0%, rgb(226, 183, 28) 75%, rgb(56,56,56) 75%, rgb(56,56,56) calc(75% + 1px), transparent calc(75% + 1px))";
-    }
-    if (scale == 3) {
-        document.getElementById('device_'+device_id).style.backgroundImage = "linear-gradient(to right, rgb(226, 183, 28) 0%, rgb(226, 183, 28) 100%, transparent 100%)";
-    }
-    if (scale == 4) {
-        document.getElementById('device_'+device_id).style.backgroundImage = "linear-gradient(to right, rgb(110, 110, 110) 0%, rgb(110, 110, 110) 100%, transparent 100%)";
-        $('#modal_' + device_id).load(document.URL + ' #modal_' + device_id);
-    }
-
-    let url = "required/action_device.php";
-    if (scale < 4){
-        scale = scale + 1;
+    if(scale == -1){
+        alert("Your device seems to have a fault. Seek repairs or replace device.");
     } else {
-        scale = 0;
-    }
-    $.ajax({
-        type:'POST',
-        url: url,
-        data:{ type: "scaledevice", hub_id: hub_id, id: device_id, scale: scale},
-        success:function(data){
+        document.getElementById('device_1_'+device_id).style.display = "none";
+        document.getElementById('loader_'+device_id).style.display = "block";
 
-        },
-        error: function(data){
-            alert("error!");
+        if (scale == 0){
+            document.getElementById('device_'+device_id).style.backgroundImage = "linear-gradient(to right, rgb(226, 183, 28) 0%, rgb(226, 183, 28) 25%, rgb(56,56,56) 25%, rgb(56,56,56) calc(25% + 1px), transparent calc(25% + 1px))";
         }
-    });
+        if (scale == 1) {
+            document.getElementById('device_'+device_id).style.backgroundImage = "linear-gradient(to right, rgb(226, 183, 28) 0%, rgb(226, 183, 28) 50%, rgb(56,56,56) 50%, rgb(56,56,56) calc(50% + 1px), transparent calc(50% + 1px))";
+        } 
+        if (scale == 2) {
+            document.getElementById('device_'+device_id).style.backgroundImage = "linear-gradient(to right, rgb(226, 183, 28) 0%, rgb(226, 183, 28) 75%, rgb(56,56,56) 75%, rgb(56,56,56) calc(75% + 1px), transparent calc(75% + 1px))";
+        }
+        if (scale == 3) {
+            document.getElementById('device_'+device_id).style.backgroundImage = "linear-gradient(to right, rgb(226, 183, 28) 0%, rgb(226, 183, 28) 100%, transparent 100%)";
+        }
+        if (scale == 4) {
+            document.getElementById('device_'+device_id).style.backgroundImage = "linear-gradient(to right, rgb(110, 110, 110) 0%, rgb(110, 110, 110) 100%, transparent 100%)";
+            $('#modal_' + device_id).load(document.URL + ' #modal_' + device_id);
+        }
+
+        let url = "required/action_device.php";
+        if (scale < 4){
+            scale = scale + 1;
+        } else {
+            scale = 0;
+        }
+        $.ajax({
+            type:'POST',
+            url: url,
+            data:{ type: "scaledevice", hub_id: hub_id, id: device_id, scale: scale},
+            success:function(data){
+
+            },
+            error: function(data){
+                alert("error!");
+            }
+        });
+    }
 }
 //------------------------Device switch Functions----------------------------------------------------
 

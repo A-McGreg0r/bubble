@@ -28,6 +28,12 @@ switch($type){
         } else if ($state == 0) {
             $state = 4;
         }
+
+        $chance_of_break = rand(1,1000);
+        if($chance_of_break <= 1) {
+            $state = 0 - 1;
+        }
+        
         $stmt = $db->prepare("UPDATE device_info SET device_status = ? WHERE device_id = ?");
 
         $stmt->bind_param("ii", $state, $id);
@@ -41,6 +47,11 @@ switch($type){
         if($scale < 0 || $scale > 4){
             echo("{\"error\":\"Invalid scale!\"}");
             exit(0);
+        }
+
+        $chance_of_break = rand(1,1000);
+        if($chance_of_break <= 1) {
+            $scale = 0 - 1;
         }
 
         $stmt = $db->prepare("UPDATE device_info SET device_status = ? WHERE device_id = ?");
@@ -78,7 +89,7 @@ switch($type){
         }else{
             $new_room_status = 0;
         }
-        $stmt2 = $db->prepare("UPDATE device_info SET device_status = ? WHERE hub_id = ? AND room_id = ?");
+        $stmt2 = $db->prepare("UPDATE device_info SET device_status = IF(device_status!=-1,?,-1) WHERE hub_id = ? AND room_id = ?");
         $stmt2->bind_param("iii", $new_room_status, $hub_id, $id);
         $stmt2->execute();
         $stmt2->close();

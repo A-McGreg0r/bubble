@@ -173,6 +173,11 @@ html;
                     } else if($status == 4){
                         $colour2 = 'transparent';
                         $background = 'linear-gradient(to right, rgb(226, 183, 28) 0%, rgb(226, 183, 28) 100%, transparent 100%';
+                    } else if($status == -1){
+                        $colour2 = 'transparent';
+                        $background = 'linear-gradient(to right, #c20c0c 0%, #c20c0c 100%, transparent 100%';
+                        $setting = "Fault";
+                        $timer_display = 'none';
                     }
 
                     //GET ICON FROM ICON TABLE

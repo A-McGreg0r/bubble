@@ -213,6 +213,7 @@ function generateHomeTab()
             $budget_year_remaining_round = money_format('%.2n', $budget_year_remaining);
 
             $all_homes = "styleHome();";
+            $timers = "";
 
             $count = 0;
             
@@ -294,6 +295,7 @@ change_button;
                             if($row10['device_status'] > 0){
                                 $room_on = 1;
                                 $count++;
+                                $timers .= "startTimer($device_id, 'hour_home', 'minute_home');";
                                 $all_homes .= "refreshDevice($device_id);";
                             }
                         }
@@ -304,6 +306,7 @@ change_button;
                     }
                 }
             }
+            $timer = "<i class='far fa-clock'></i>&nbsp;";
 
             $all_homes .= "refreshHomeButton();";
 
@@ -363,10 +366,117 @@ change_button;
                                                         <i class="fa fa-home"></i>
                                                         <br>Turn Off Home <br>
                                                         <strong style="color:black">$count $s_or_not on </strong>
+                                                        <strong class="timer_icon" id="timer_home" style="display:flex;color:black;margin-right:15px;" onclick="openModal('modal_timer_home', 'timer_x_home')">$timer</strong>
                                                     </strong>
                                                     
                                                 </div> 
-                                        </div>      
+                                        </div>   
+                                        
+                                        <div class="modal modalTimer" id="modal_timer_home">
+                                    
+                                        <div class="modalContent modalContentTimer" id="content_timer_home">
+                                        <div class="x-adjust">
+                                        <strong class="timer_icon_x" id="timer_x_home" style="display:none" onclick="openModal('modal_timer_home','timer_x_home')"><i class="fas fa-times"></i></strong></div>
+                                        <div class="modalHeader"><strong>Turn home off in:</strong></div>
+                                        <div class="modalMain" id="timer_none">
+                                        <div class="timer-end" id="timer_end_home"><strong></strong></div>
+                                        
+                                        <form>
+                                            <div class="timerModal">
+                                                <select id="hour_home" name="energy_cost" class="form-control-sm dropdown validate drop-up">
+                                                    <option value="0" selected>00</option>
+                                                    <option value="1">01</option>
+                                                    <option value="2">02</option>
+                                                    <option value="3">03</option>
+                                                    <option value="4">04</option>
+                                                    <option value="5">05</option>
+                                                    <option value="6">06</option>
+                                                    <option value="7">07</option>
+                                                    <option value="8">08</option>
+                                                    <option value="9">09</option>
+                                                    <option value="10">10</option>
+                                                </select>
+                                                
+                                                <p class="shiftSub"><strong>&nbsp;hour(s)&nbsp;</strong></p>
+                                                <p><strong><h4>:&nbsp;</h4></strong></p>
+
+                                                <select id="minute_home" name="energy_cost" class="form-control-sm dropdown validate drop-up">
+                                                    <option value="0" selected>00</option>
+                                                    <option value="1">01</option>
+                                                    <option value="2">02</option>
+                                                    <option value="3">03</option>
+                                                    <option value="4">04</option>
+                                                    <option value="5">05</option>
+                                                    <option value="6">06</option>
+                                                    <option value="7">07</option>
+                                                    <option value="8">08</option>
+                                                    <option value="9">09</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
+                                                    <option value="13">13</option>
+                                                    <option value="14">14</option>
+                                                    <option value="15">15</option>
+                                                    <option value="16">16</option>
+                                                    <option value="17">17</option>
+                                                    <option value="18">18</option>
+                                                    <option value="19">19</option>
+                                                    <option value="20">20</option>
+                                                    <option value="21">21</option>
+                                                    <option value="22">22</option>
+                                                    <option value="23">23</option>
+                                                    <option value="24">24</option>
+                                                    <option value="25">25</option>
+                                                    <option value="26">26</option>
+                                                    <option value="27">27</option>
+                                                    <option value="28">28</option>
+                                                    <option value="29">29</option>
+                                                    <option value="30">30</option>
+                                                    <option value="31">31</option>
+                                                    <option value="32">32</option>
+                                                    <option value="33">33</option>
+                                                    <option value="34">34</option>
+                                                    <option value="35">35</option>
+                                                    <option value="36">36</option>
+                                                    <option value="37">37</option>
+                                                    <option value="38">38</option>
+                                                    <option value="39">39</option>
+                                                    <option value="40">40</option>
+                                                    <option value="41">41</option>
+                                                    <option value="42">42</option>
+                                                    <option value="43">43</option>
+                                                    <option value="44">44</option>
+                                                    <option value="45">45</option>
+                                                    <option value="46">46</option>
+                                                    <option value="47">47</option>
+                                                    <option value="48">48</option>
+                                                    <option value="49">49</option>
+                                                    <option value="50">50</option>
+                                                    <option value="51">51</option>
+                                                    <option value="52">52</option>
+                                                    <option value="53">53</option>
+                                                    <option value="54">54</option>
+                                                    <option value="55">55</option>
+                                                    <option value="56">56</option>
+                                                    <option value="57">57</option>
+                                                    <option value="58">58</option>
+                                                    <option value="59">59</option>
+                                                </select>
+
+                                                <p class="shiftSub"><strong>&nbsp;minute(s)</strong></p>
+                                            </div>
+                                        </form>
+
+                                        <div style="display:block">
+                                            <p class="timerBtn btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" onclick="$timers;styleHomeTimer();">Start Timer</p>
+                                        </div>
+
+                                        
+
+                                        </div>
+                                        <i class="fas fa-check" id="timer-tick" style="margin-left:calc(50% - 40px);width:90px;height:80px;color:black;font-size:75px;display:none;"></i>
+                                    </div>
+                                </div>   
                             </div>
                         </div>
                         <!--right col end -->   

@@ -225,6 +225,19 @@ function styleHome() {
     document.getElementById('home_devices').style.backgroundColor = "rgb(226, 183, 28)";
 }
 
+function styleHomeTimer() {
+    document.getElementById('timer_none').style.display = "none";
+    document.getElementById('timer-tick').style.display = "block";
+    document.getElementById('timer-tick').classList.add('animated');
+    document.getElementById('timer-tick').classList.add('slow');
+    document.getElementById('timer-tick').classList.add('zoomIn');
+    setTimeout(function() {
+        document.getElementById('timer-tick').classList.remove('zoomIn');
+        document.getElementById('timer_none').style.display = "block";
+        document.getElementById('timer-tick').style.display = "none";
+    }, 2000);
+}
+
 function toggleRoom(hub_id, room_id){
     document.getElementById('room_setting_'+room_id).style.display = "none";
     document.getElementById('room_loader_'+room_id).style.display = "block";

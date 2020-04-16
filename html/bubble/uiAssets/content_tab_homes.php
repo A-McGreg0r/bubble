@@ -208,6 +208,9 @@ function generateHomeTab()
 
             //FIND ALL HUBS REGISTERED TO USER, ADD MODAL AND BUTTONS THAT ALLOW CHANGING BETWEEN HUBS
 
+            $change_button = "";
+            $home_button_style = "<div class='col col-md justify-content-center' style='max-width: 1050px'>";
+
             $all_hubs = "<table style='width:100%'>";
             $stmt12 = $db->prepare("SELECT * FROM hub_users WHERE user_id = ?");
             $stmt12->bind_param("i", $user_id);
@@ -215,6 +218,10 @@ function generateHomeTab()
             $result12 = $stmt12->get_result();
             if ($result12->num_rows > 0) {
                 while ($row12 = $result12->fetch_assoc()) {
+                    if($result12->num_rows > 1){
+                        $change_button = "<div class='col col-md justify-content-center' style='max-width: 575px'><!--function call--><div id='reload_device_id' class='home-left' style='text-align:center' onclick='openModalHome('hub_select')'><!--left text--><div id='device_3_device_id' class='justify-content-center'><strong class='room_icon'><i class='fa fa-home'></i><br>Change House<br><strong style='color:black'>$hub_name </strong></strong></div></div></div>";
+                        $home_button_style = "<div class='col col-md justify-content-center' style='max-width: 575px'>";
+                    }
                     $row_id = $row12['hub_id'];
                     $stmt13 = $db->prepare("SELECT * FROM hub_info WHERE hub_id = ?");
                     $stmt13->bind_param("i", $row_id);
@@ -302,26 +309,12 @@ function generateHomeTab()
 
 
                 <!-- testing new buttons -->
-                    <div class="row justify-content-center" style="padding: 20px">
+                    <div class="row justify-content-center" id="top-buttons" style="padding: 20px;padding-bottom: 5px;">
                         <!--left col-->
-                        <div class="col col-md justify-content-center" style="max-width: 575px">
-                            <!--function call-->
-                            <div id="reload_device_id" class="home-left" style="text-align:center" onclick="openModalHome('hub_select')">
-                                <!--left text-->
-                                <div id="device_3_device_id" class="justify-content-center">
-                                    <strong class="room_icon">
-                                        <i class="fa fa-home"></i>
-                                        <br>Change House<br>
-                                        <strong style="color:black">$hub_name </strong>
-                                    </strong>
-                                </div>                          
-                            </div>
-  
-                            
-                        </div>
+                        $change_button
                         
                         <!--right col-->
-                        <div class="col col-md justify-content-center" style="max-width: 575px">
+                        $home_button_style
                             <div id="home_devices" class="home-right" style="text-align:center ">
                           
                                     <!--right button-->
@@ -347,7 +340,7 @@ function generateHomeTab()
                 <!-- testing new buttons -->
 
 
-
+            <hr id="button_seperator" style="margin-bottom: 0;">
 
                 <!-- Card body -->               
                 <div id="collapse$hub_id" class="collapse show" role="tabpanel" aria-labelledby="heading$hub_id" data-parent="#accordionEx194">
@@ -397,7 +390,7 @@ function generateHomeTab()
                     document.onload(myLineChart.update();)
                     </script>
                     
-                    <div class="card col-lg-6 border border-0 ">
+                    <div class="card col-lg-6 border border-0 " id="expenditure">
                     <!--Carousel Container--> 
                         <h4 class="section-title ">Expenditure</h4>
                             <div id="chart-carousel" class="carousel slide " data-ride="carousel">
@@ -548,7 +541,7 @@ function generateHomeTab()
                                 //Supplied Datasets to display
                                 //hourly 1 upto 24
                                 //TODO change expected usage to power genarated once implmented
-                                let data1 = { "labels": $DataLabelsYearEncoded,"label": "Expected Usage: ", "datasets": [{ "data": $dataAvgYearEncoded, "backgroundColor": "rgba(109, 171, 166, 0)", "borderColor": "rgb(226, 183, 28)", "borderWidth": 2 },{ "label": "Power Usage [kWh]", "data": $dataPointsYearEncoded, "backgroundColor": "rgb(56,56,56)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
+                                let data1 = { "labels": $DataLabelsYearEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "Average", "data": $dataAvgYearEncoded, "backgroundColor": "rgba(109, 171, 166, 0)", "borderColor": "rgb(226, 183, 28)", "borderWidth": 2 },{ "label": "Power Usage [kWh]", "data": $dataPointsYearEncoded, "backgroundColor": "rgb(56,56,56)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
                                 //days upto 31 days
                                 let data2 = { "labels": $DataLabelsMonthEncoded,"label": "Expected Usage:", "datasets": [{ "label": "Average", "data": $dataAvgMonthEncoded, "backgroundColor": "rgba(109, 171, 166, 0)", "borderColor": "rgb(226, 183, 28)", "borderWidth": 2 },{ "label": "Power Usage [kWh]", "data": $dataPointsMonthEncoded, "backgroundColor": "rgb(56,56,56)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
                                 //months upto 12

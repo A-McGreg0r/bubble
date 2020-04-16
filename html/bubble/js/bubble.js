@@ -47,6 +47,18 @@ $(window).on("load", function(){
     $("#loginErrorBox").hide();
     $("#registerErrorBox").hide();
 
+    var overview = document.getElementById('top-buttons');
+
+    swipedetect(overview, function(swipedir){
+        // swipedir contains either "none", "left", "right", "top", or "down"
+        if (swipedir =='left') {
+            document.getElementById('home-attr').classList.remove("active");
+            document.getElementById('advice-attr').classList.add("active");
+            document.getElementById('home-tab-attr').classList.remove("active");
+            document.getElementById('advice-tab-attr').classList.add("active");
+        }
+    });
+
     var overview = document.getElementById('overview');
 
     swipedetect(overview, function(swipedir){

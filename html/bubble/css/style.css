@@ -812,14 +812,6 @@ select {
     text-align: center!important;
 }
 
-.home-left {
-    margin-right: 10px;
-}
-
-.home-right {
-    margin-left: 10px;
-}
-
 .home-right, .home-left {
     background-color: rgb(110,110,110);
     color: rgb(226, 183, 28);
@@ -834,9 +826,6 @@ select {
     color: black!important;
 }
 
-#overview {
-    margin-top: -20px;
-}
 
 b {
     display: none;
@@ -884,4 +873,12 @@ b {
 
 .hub_row:hover {
     cursor: pointer;
+}
+
+.carousel-control-next, .carousel-control-prev {
+    color: black!important;
+}
+
+#button_separator {
+    margin-bottom: 0!important;
 }

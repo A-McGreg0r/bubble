@@ -234,6 +234,7 @@ function startTimer(id, hour_value, minute_value) {
 function styleHome() {
     document.getElementById('home_button_text').style.display = "none";
     document.getElementById('home_loader').style.display = "inline-block";
+    document.getElementById('home_devices').style.backgroundColor = "rgb(226, 183, 28)";
 }
 
 function toggleRoom(hub_id, room_id){
@@ -277,7 +278,9 @@ function refreshDevice(device_id) {
 }
 
 function refreshHomeButton() {
-    $('#home_devices').load(document.URL + ' #home_off_content');
+    $('#home_devices').load(document.URL + ' #home_off_content', function(){
+        document.getElementById('home_devices').style.backgroundColor = "rgb(110, 110, 110)";
+    });
 }
 
 function toggleDevice(hub_id, device_id, state) {

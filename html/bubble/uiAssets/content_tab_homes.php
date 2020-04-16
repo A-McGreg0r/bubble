@@ -329,7 +329,7 @@ change_button;
                         
                         <!--right col-->
                         $home_button_style
-                            <div id="home_devices" class="home-right" style="text-align:center ">
+                            <div id="home_devices" class="home-right" style="text-align:center;">
                           
                                     <!--right button-->
                                         <!--function call-->

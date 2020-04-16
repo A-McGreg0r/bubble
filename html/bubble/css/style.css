@@ -812,7 +812,7 @@ select {
     text-align: center!important;
 }
 
-.home-right, .home-left {
+#home_devices, .home-left {
     background-color: rgb(110,110,110);
     color: rgb(226, 183, 28);
     border: 2px solid black!important;
@@ -822,8 +822,6 @@ select {
 
 .home-right:hover, .home-left:hover {
     cursor: pointer;
-    background-color: rgb(226, 183, 28)!important;
-    color: black!important;
 }
 
 

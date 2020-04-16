@@ -225,5 +225,5 @@ function _main($Y, $anual_power_gen) {
     
 }
 
-_main(intval(2019), 2500000.0)
+//_main(intval(2019), 2500000.0)
 ?>

@@ -19,22 +19,109 @@ function generateAccount(){
         <div class="container-fluid justify-content-center">
         
             <!-- Card --> 
-            <div class="card mb-4 small-gap">
+            <div class="card mb-4 small-gap justify-content-center ">
             
                 <!-- Card content: account details -->
-                <div class="container justify-content-center">
-                    <!--col om to center content-->
-                    <div class="col-lg-6">
-                        <!-- header-->
-                        <div class="d-flex flex-column justify-content-center account-heading">  
-                                <h4 class="bold-title">My Account</h4>
+                <div class="container justify-content-center ">
+                    <!--Main Col-->
+                    <h4 class="bold-title">My Account</h4>
+                    
+                    <div class="col-md-6 justify-content-center">
+                        <div class="row account-row">
+                            <div class="col-sm-4">
+                                <strong>&ensp;First Name:</strong>
+                            </div>
+                            <div class="col-sm-4" style="margin-left: 30px">
+                                <strong>$first_name&ensp;</strong>
+                            </div>
                         </div>
                         
-                         <div class="d-flex flex-column justify-content-center">  
-                                <div class="d-table-row"       
-                         </div>
+                        <div class="row account-row">
+                            <div class="col-sm-4">
+                                <strong>&ensp;Last Name:</strong>
+                            </div>
+                            <div class="col-sm-4" style="margin-left: 30px">
+                                <strong>$last_name&ensp;</strong>
+                            </div>
+                        </div>
                         
-                        <!-- table -->
+                        <div class="row account-row">
+                            <div class="col-sm-4">
+                                <strong>&ensp;Email Address:</strong>
+                            </div>
+                            <div class="col-sm-4 " style="margin-left: 30px">
+                                <strong>$email&ensp;</strong>
+                            </div>
+                        </div>
+                        
+                        <div class="row account-row">
+                            <div class="col-sm-4">
+                                <strong>&ensp;Address:</strong>
+                            </div>
+                            
+                            <div class="col-sm-4 " style="margin-left: 45px">
+                                <div class="row">
+                                    <strong>$address_l1&ensp;</strong>
+                                </div>
+                                
+                                <div class="row">
+                                    <strong>$address_l2&ensp;</strong>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="row account-row">
+                            <div class="col-sm-4">
+                                <strong>&ensp;Postcode:</strong>
+                            </div>
+                            <div class="col-sm-4" style="margin-left: 30px">
+                                <strong>$postcode&ensp;</strong>
+                            </div>
+                        </div>
+                        
+                        <div class="row account-row">
+                            <div class="col-sm-4">
+                                <strong>&ensp;Energy Price:</strong>
+                            </div>
+                            <div class="col-sm-4" style="margin-left: 30px">
+                                <strong>$energy_cost&ensp;</strong><!--TODO make updateabul-->
+                            </div>
+                        </div>
+                        
+                        <div class="row account-row">
+                            <div class="col-sm-4">
+                                <strong>&ensp;Monthly Budget:</strong>
+                            </div>
+                            <div class="col-sm-4" style="margin-left: 30px">
+                                <strong>$budget&ensp;</strong><!--TODO make updateabul-->
+                            </div>
+                        </div>
+                    
+                        <div class="row" style="margin-top: 20px" style="min-width: 120px">
+                            <div class="col-sm-4">
+                                <button type="button" class="btn-sm btn-primary  btn-rounded" data-toggle="modal" data-target="#updateAccountModal">Update Account</button>
+                            </div>
+                            <div class="col-sm-4">
+                                <button type="button" class="btn-sm btn-danger  btn-rounded" data-toggle="modal" data-target="#removeAccountModal">Delete Account</button>
+                            </div>
+                        </div>
+                                            
+                    </div>
+                    <!--Main Col-->
+                    
+                <!--button for deploying model-->
+
+                    
+                </div>
+                    <!--col om to center content-->
+                    <div class="col-lg-10 justify-content-center">
+                        <!-- header-->
+                        <!--
+                        <div class="d-flex flex-column account-heading text-center">  
+                           old header     
+                        </div>
+
                         <table class="account-table" align="centre">
                             <tr class="account-row account-first">
                                 <td class="account-left"><strong>&ensp;First Name:</strong></td>
@@ -65,14 +152,13 @@ function generateAccount(){
                                 <td class="right-column">£$budget&ensp;</td>
                             </tr>
                         </table>
-                        <!-- table -->
+                        -->
                         
                         <!--button for deploying model-->
-                        <button type="button" class="btn btn-danger btn-sm btn-rounded" data-toggle="modal" data-target="#basicModal">Delete Account</button>
                     
                     
                         <!--Model deployed by button-->
-                        <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="removeAccountModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <!-- Dialog -->
                             <div class="modal-dialog" role="document">
                                 <!-- Content -->

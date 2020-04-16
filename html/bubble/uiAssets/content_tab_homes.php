@@ -271,6 +271,7 @@ change_button;
                 }
             }
             $all_hubs .= "</table>";
+            $icon = "none";
 
             //GET ROOMS LINKED TO HUB_ID AND ADD TURN OFF ALL DEVICES BUTTON
 
@@ -301,6 +302,7 @@ change_button;
                         }
                     }
                     if($room_on == 1){
+                        $icon = "flex";
                         $all_homes .= "toggleRoom($hub_id,$id_room);";
                         $all_homes .= "refreshRoom($id_room);";
                     }
@@ -366,7 +368,7 @@ change_button;
                                             <i class="fa fa-home"></i>
                                             <br>Turn Off Home <br>
                                             <strong style="color:black">$count $s_or_not on </strong>
-                                            <strong class="timer_icon" id="timer_home" style="display:flex;color:black;margin-right:15px;" onclick="openModal('modal_timer_home', 'timer_x_home')">$timer</strong>
+                                            <strong class="timer_icon" id="timer_home" style="display:$icon;color:black;margin-right:15px;" onclick="openModal('modal_timer_home', 'timer_x_home')">$timer</strong>
                                         </strong>
                                                     
                                     </div> 

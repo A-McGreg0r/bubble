@@ -235,6 +235,7 @@ function styleHomeTimer() {
         document.getElementById('timer-tick').classList.remove('zoomIn');
         document.getElementById('timer_none').style.display = "block";
         document.getElementById('timer-tick').style.display = "none";
+        $('#modal_timer_home').load(document.URL + ' #content_timer_home');
     }, 2000);
 }
 

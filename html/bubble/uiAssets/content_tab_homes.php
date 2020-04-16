@@ -383,7 +383,7 @@ change_button;
                                     
                 <div class="modalContent modalContentTimer" id="content_timer_home"> 
                     <div class="x-adjust">
-                        <strong class="timer_icon_x" id="timer_x_home" style="display:none" onclick="openModal('modal_timer_home','timer_x_home')"><i class="fas fa-times"></i></strong></div>
+                        <strong class="timer_icon_x" id="timer_x_home" onclick="openModal('modal_timer_home','timer_x_home')"><i class="fas fa-times"></i></strong></div>
                         <div class="modalHeader"><strong>Turn home off in:</strong></div>
                         <div class="modalMain" id="timer_none">
                             <div class="timer-end" id="timer_end_home"><strong></strong></div>

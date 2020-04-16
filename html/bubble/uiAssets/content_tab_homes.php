@@ -307,9 +307,8 @@ function generateHomeTab()
                         <div class="col col-md justify-content-center" style="max-width: 575px">
                             <!--function call-->
                             <div id="reload_device_id" class="home-left" style="text-align:center" onclick="openModalHome('hub_select')">
-                                <!--left button-->
-                                <div id="device_3_device_id" class="justify-content-center" style="">
-                                    <!--left text-->
+                                <!--left text-->
+                                <div id="device_3_device_id" class="justify-content-center">
                                     <strong class="room_icon">
                                         <i class="fa fa-home"></i>
                                         <br>Change House<br>
@@ -323,16 +322,17 @@ function generateHomeTab()
                         
                         <!--right col-->
                         <div class="col col-md justify-content-center" style="max-width: 575px">
-                            <div id="home_devices" class="home-right" style="text-align:center">
+                            <div id="home_devices" class="home-right" style="text-align:center ">
                           
                                     <!--right button-->
                                         <!--function call-->
-                                        <div id="home_off_content" class="" onclick="$all_homes">
+                                        <div id="home_off_content" onclick="$all_homes">
+                                        
                                             <div id="home_loader" class="loader"></div>
-                                                <div id="home_button_text" class="" style="">
-                                                    <!--right text-->
-                                                    
-                                                    <strong class="room_icon ">
+                                            
+                                                <!--right text-->
+                                                <div id="home_button_text">
+                                                    <strong class="room_icon">
                                                         <i class="fa fa-home"></i>
                                                         <br>Turn Off Home <br>
                                                         <strong style="color:black">$count $s_or_not on </strong>

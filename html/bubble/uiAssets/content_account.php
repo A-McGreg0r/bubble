@@ -30,6 +30,10 @@ function generateAccount(){
                                 <h4 class="bold-title">My Account</h4>
                         </div>
                         
+                         <div class="d-flex flex-column justify-content-center">  
+                                <div class="d-table-row"       
+                         </div>
+                        
                         <!-- table -->
                         <table class="account-table" align="centre">
                             <tr class="account-row account-first">

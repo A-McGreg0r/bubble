@@ -219,7 +219,21 @@ function generateHomeTab()
             if ($result12->num_rows > 0) {
                 while ($row12 = $result12->fetch_assoc()) {
                     if($result12->num_rows > 1){
-                        $change_button = "<div class='col col-md justify-content-center' style='max-width: 575px'><!--function call--><div id='reload_device_id' class='home-left' style='text-align:center' onclick='openModalHome('hub_select')'><!--left text--><div id='device_3_device_id' class='justify-content-center'><strong class='room_icon'><i class='fa fa-home'></i><br>Change House<br><strong style='color:black'>$hub_name </strong></strong></div></div></div>";
+                        $change_button = <<<change_button
+                        <div class='col col-md justify-content-center' style='max-width: 575px'>
+                        <!--function call-->
+                            <div id='reload_device_id' class='home-left' style='text-align:center' onclick='openModalHome("hub_select")'>
+                                <!--left text-->
+                                <div id='device_3_device_id' class='justify-content-center'>
+                                    <strong class='room_icon'>
+                                        <i class='fa fa-home'></i>
+                                        <br>Change House<br>
+                                        <strong style='color:black'>$hub_name </strong>
+                                    </strong>
+                                </div>
+                            </div>
+                        </div>
+change_button;
                         $home_button_style = "<div class='col col-md justify-content-center' style='max-width: 575px'>";
                     }
                     $row_id = $row12['hub_id'];

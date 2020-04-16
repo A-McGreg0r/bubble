@@ -110,7 +110,7 @@ if ($result->num_rows >= 1) {
             $stmt6->execute();
             $result6 = $stmt6->get_result();
             $num_row6 = $result6->num_rows;
-            if ($num_row6 >= $auto_delete) {
+            if ($num_row6 > $auto_delete) {
                 $all6 = $result6->fetch_all(MYSQLI_ASSOC);
                 foreach($all6 as $row6){
                     $num_row6 = $num_row6 - 1;
@@ -123,18 +123,41 @@ if ($result->num_rows >= 1) {
             }
         }
 
-        $stmt2 = $db->prepare("SELECT * FROM daily_data");
-        $stmt2->execute();
-        $result2 = $stmt2->get_result();
-        $num_rows = $result2->num_rows;
-        if ($num_rows >= 1) {
-            $all2 = $result2->fetch_all(MYSQLI_ASSOC);
-            foreach($all2 as $row2){
-                if ($num_rows >= $month_end){
-                    $num_rows = $num_rows - 1;
-                    $stmt6 = $db->prepare("DELETE FROM daily_data WHERE entry_id = ?");
-                    $stmt6->bind_param("i", $row2['entry_id']);
-                    $stmt6->execute();
+        $stmt11 = $db->prepare("SELECT * FROM hourly_gen WHERE hub_id = ?");
+        $stmt11->bind_param("i", $hub_id);
+        $stmt11->execute();
+        $result11 = $stmt11->get_result();
+        $num_rows11 = $result11->num_rows;
+        if ($num_rows11 >= 1) {
+            $all11 = $result11->fetch_all(MYSQLI_ASSOC);
+            foreach($all11 as $row11){
+                $daily_gen = $daily_gen + $row11['energy_gen'];
+                if($num_rows11 > 24){
+                    $num_rows11 - 1;
+                    $stmt17 = $db->prepare("DELETE FROM hourly_gen WHERE entry_id = ?");
+                    $stmt17->bind_param("i", $row11['entry_id']);
+                    $stmt17->execute();
+                }
+            }
+                
+            $stmt12 = $db->prepare("INSERT INTO daily_gen (hub_id, entry_month, entry_day, energy_gen) VALUES (?, ?, ?, ?)");
+            $stmt12->bind_param("iiid", $hub_id, $month, $day, $daily_gen);
+            $stmt12->execute();
+
+            $stmt13 = $db->prepare("SELECT * FROM daily_gen WHERE hub_id = ?");
+            $stmt13->bind_param("i", $hub_id);
+            $stmt13->execute();
+            $result13 = $stmt13->get_result();
+            $num_row13 = $result13->num_rows;
+            if ($num_row13 >= $auto_delete) {
+                $all13 = $result13->fetch_all(MYSQLI_ASSOC);
+                foreach($all13 as $row13){
+                    $num_row13 = $num_row13 - 1;
+                    if ($num_row13 >= $auto_delete) {
+                        $stmt14 = $db->prepare("DELETE FROM daily_gen WHERE entry_id = ?");
+                        $stmt14->bind_param("i", $row13['entry_id']);
+                        $stmt14->execute();
+                    }
                 }
             }
         }
@@ -145,4 +168,5 @@ if ($result->num_rows >= 1) {
         $stmt5->close();
     }
 }
+
 $stmt->close();

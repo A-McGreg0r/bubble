@@ -451,6 +451,10 @@ select {
     padding-top: calc(50vh - 17.5vh)!important;
 }
 
+#content_timer_home {
+    max-height: 188px!important;
+}
+
 .modalStatsWrap {
     padding-top: 5vw!important;
 }

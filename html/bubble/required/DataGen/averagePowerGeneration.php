@@ -1,6 +1,7 @@
 <?php
-echo "Starting \n";
+echo "Starting <br>";
 require "../config.php";
+global $db;
 
 function _main($Y, $anual_power_gen) {
 	
@@ -58,12 +59,11 @@ function _main($Y, $anual_power_gen) {
 		$even=$sum % 2 == 0;
 		$watts_sum=0;
 
-		global $db;
 		$inst_monthly_gen = $db->prepare("INSERT INTO monthly_gen (entry_id, hub_id, entry_year, entry_month, energy_gen) VALUES (?, ?, ?, ?, ?)");
 		$inst_monthly_gen->bind_param("iiiid", $default, $hub_id, $Y, $m, $watts_sum);
 		
-		$inst_daily_gen = $db->prepare("INSERT INTO daily_gen (entry_id, hub_id, entry_month, entry_day, energy_gen) VALUES (?, ?, ?, ?, ?)");
-		$inst_daily_gen->bind_param("iiiid", $default, $hub_id, $m, $d, $watts);
+		$inst_daily_gen = $db->prepare("INSERT INTO daily_gen (entry_id, hub_id, entry_year, entry_month, entry_day, energy_gen) VALUES (?, ?, ?, ?, ?, ?)");
+		$inst_daily_gen->bind_param("iiiiid", $default, $hub_id, $Y, $m, $d, $watts);
 		
 		$hub_id=1;
 
@@ -190,9 +190,8 @@ function _main($Y, $anual_power_gen) {
             $qV = ($percentage)/($sum);
         }
         
-        global $db;
-		$inst_hourly_gen = $db->prepare("INSERT INTO hourly_gen (entry_id, hub_id, entry_month, entry_day, entry_hour, energy_gen) VALUES (?, ?, ?, ?, ?, ?)");
-		$inst_hourly_gen->bind_param("iiiiid", $default, $hub_id, $m, $d, $h, $watts);
+		$inst_hourly_gen = $db->prepare("INSERT INTO hourly_gen (entry_id, hub_id, entry_year, entry_month, entry_day, entry_hour, energy_gen) VALUES (?, ?, ?, ?, ?, ?, ?)");
+		$inst_hourly_gen->bind_param("iiiiiid", $default, $hub_id, $Y, $m, $d, $h, $watts);
 		$hub_id=1;
         for ($h=$rise; $h <= $set; $h++) {
             //INSERT INTO TABLE
@@ -225,5 +224,5 @@ function _main($Y, $anual_power_gen) {
     
 }
 
-//_main(intval(2019), 2500000.0)
+//_main(intval(2020), 2500000.0)
 ?>

@@ -182,28 +182,16 @@ function openModalRoom(id, close, open){
     }
 }
 
-function openModal(id, other, y, x, icon, icon2, state) {
+function openModal(id, x) {
     event.stopPropagation();
     var modal = document.getElementById(id);
     var x = document.getElementById(x);
-    var y = document.getElementById(y);
-    var icon = document.getElementById(icon);
-    var icon2 = document.getElementById(icon2);
-    var close = document.getElementById(other);
     if (modal && modal.style) {
         if (modal.style.display == "flex") {
             modal.style.display = "none";
-            x.style.display = "none";
-            y.style.display = "flex";
           } else {
             modal.style.display = "flex";
             x.style.display = "flex";
-            y.style.display = "none";
-            if(state != 0){
-                icon.style.display = "flex";
-            }
-            icon2.style.display = "none";
-            close.style.display = "none";
           }
     }
 }
@@ -336,7 +324,7 @@ function scaleDevice(hub_id, device_id, scale) {
         }
         if (scale == 4) {
             document.getElementById('device_'+device_id).style.backgroundImage = "linear-gradient(to right, rgb(110, 110, 110) 0%, rgb(110, 110, 110) 100%, transparent 100%)";
-            $('#modal_' + device_id).load(document.URL + ' #modal_' + device_id);
+            $('#modal_' + device_id).load(document.URL + ' #content_timer_' + device_id);
         }
 
         let url = "required/action_device.php";

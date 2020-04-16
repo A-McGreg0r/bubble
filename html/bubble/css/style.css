@@ -440,7 +440,6 @@ select {
 .modalTimer, .modalStatsWrap {
     margin-left: 0px!important;
     margin-right: 0px!important;
-    display: none;
     margin-left: 20px;
     margin-right: 20px;
     margin-bottom: 5px;
@@ -628,8 +627,20 @@ select {
         padding-bottom: 15vh!important;
     }
 
+    .weather_advice_body {
+        margin-left: 75px!important;
+        margin-right: 75px!important;
+    }
+
     #separater1, #separater2 {
         display: block;
+    }
+}
+
+@media (min-width: 850px) {
+    .weather_advice_body {
+        margin-left: 150px!important;
+        margin-right: 150px!important;
     }
 }
 
@@ -646,6 +657,11 @@ select {
         padding-right: 25vw!important;
         padding-top: 5vh!important;
         padding-bottom: 5vh!important;
+    }
+
+    .weather_advice_body {
+        margin-left: 300px!important;
+        margin-right: 300px!important;
     }
 
     #separater1, #separater2 {

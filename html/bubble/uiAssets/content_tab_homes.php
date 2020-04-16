@@ -88,43 +88,47 @@ function generateHomeTab()
             $energy_last_year = $energy_last_year / 1000;
 
             //-----------------------------CALCULATE DATA FOR GRAPH PLOTTING-----------------------------------
+            
             $dataPoints = array();
-            $dataPoints = array();
-            $AvgPoints = array();
             $dataLabels = array();
-            $count = 0;
+            $dataGenPoints = array();
 
             $stmt7 = $db->prepare("SELECT * FROM monthly_data WHERE hub_id = ?");
             $stmt7->bind_param("i", $hub_id);
             $stmt7->execute();
             $result7 = $stmt7->get_result();
             if ($result7->num_rows >= 1) {
-                $n = 0;
                 $all7 = $result7->fetch_all(MYSQLI_ASSOC);
                 foreach($all7 as $row7){
-                    $n = $n + 1;
                     $energy_usage7 = $row7['energy_usage']/1000;
+                    $year7 = $row7['entry_year'];
                     $month7 = $row7['entry_month'];
-                    $count = $count + $energy_usage7;
                     array_push($dataPoints, array($energy_usage7));
                     array_push($dataLabels, array($month7));
                 }
-                for($i = 0; $i < sizeof($dataPoints); $i++){
-                    array_push($AvgPoints,money_format('%.3n',$count/$n));
+            }
+
+            $stmt14 = $db->prepare("SELECT * FROM monthly_gen WHERE hub_id = ?");
+            $stmt14->bind_param("i", $hub_id);
+            $stmt14->execute();
+            $result14 = $stmt14->get_result();
+            if ($result14->num_rows >= 1) {
+                $all14 = $result14->fetch_all(MYSQLI_ASSOC);
+                foreach($all14 as $row14){
+                    $energy_gen14 = number_format($row14['energy_gen'] / 1000, 3);
+                    array_push($dataGenPoints, array($energy_gen14));
                 }
             }
+
             $cost_year = $energy_last_year * $energy_cost;
             $cost_year_round = number_format($cost_year,2);
             $DataLabelsYearEncoded = json_encode($dataLabels);
             $dataPointsYearEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
-            $dataAvgYearEncoded = json_encode($AvgPoints, JSON_NUMERIC_CHECK);
-
+            $dataGenYearEncoded = json_encode($dataGenPoints, JSON_NUMERIC_CHECK);
 
             $dataPoints = array();
-            $dataPoints = array();
-            $AvgPoints = array();
             $dataLabels = array();
-            $count = 0;
+            $dataGenPoints = array();
 
             $stmt8 = $db->prepare("SELECT * FROM daily_data");
             $stmt8->execute();
@@ -136,25 +140,32 @@ function generateHomeTab()
                     $n = $n + 1;
                     $energy_usage8 = $row8['energy_usage']/1000;
                     $day8 = $row8['entry_day'];
-                    $count = $count + $energy_usage8;
                     array_push($dataPoints, array($energy_usage8));
                     array_push($dataLabels, array($day8));
                 }
-                for($i = 0; $i < sizeof($dataPoints); $i++){
-                    array_push($AvgPoints,money_format('%.3n',$count/$n));
+            }
+
+            $stmt15 = $db->prepare("SELECT * FROM daily_gen WHERE hub_id = ?");
+            $stmt15->bind_param("i", $hub_id);
+            $stmt15->execute();
+            $result15 = $stmt15->get_result();
+            if ($result15->num_rows >= 1) {
+                $all15 = $result15->fetch_all(MYSQLI_ASSOC);
+                foreach($all15 as $row15){
+                    $energy_gen15 = number_format($row15['energy_gen'] / 1000, 3);
+                    array_push($dataGenPoints, array($energy_gen15));
                 }
             }
+
             $cost_month = $energy_last_month * $energy_cost;
             $cost_month_round = number_format($cost_month,2);
             $DataLabelsMonthEncoded = json_encode($dataLabels);
             $dataPointsMonthEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
-            $dataAvgMonthEncoded = json_encode($AvgPoints, JSON_NUMERIC_CHECK);
+            $dataGenMonthEncoded = json_encode($dataGenPoints, JSON_NUMERIC_CHECK);
 
             $dataPoints = array();
-            $dataPoints = array();
-            $AvgPoints = array();
             $dataLabels = array();
-            $count = 0;
+            $dataGenPoints = array();
 
             $stmt9 = $db->prepare("SELECT * FROM hourly_data");
             $stmt9->execute();
@@ -166,19 +177,28 @@ function generateHomeTab()
                     $n = $n + 1;
                     $energy_usage9 = $row9['energy_usage']/1000;
                     $hour9 = $row9['entry_hour'];
-                    $count = $count + $energy_usage9;
                     array_push($dataPoints, array($energy_usage9));
                     array_push($dataLabels, array($hour9));
                 }
-                for($i = 0; $i < sizeof($dataPoints); $i++){
-                    array_push($AvgPoints,money_format('%.3n',$count/$n));
+            }
+
+            $stmt16 = $db->prepare("SELECT * FROM hourly_gen WHERE hub_id = ?");
+            $stmt16->bind_param("i", $hub_id);
+            $stmt16->execute();
+            $result16 = $stmt16->get_result();
+            if ($result16->num_rows >= 1) {
+                $all16 = $result16->fetch_all(MYSQLI_ASSOC);
+                foreach($all16 as $row16){
+                    $energy_gen16 = number_format($row16['energy_gen'] / 1000, 3);
+                    array_push($dataGenPoints, array($energy_gen16));
                 }
             }
+
             $cost_day = $energy_last_day * $energy_cost;
             $cost_day_round = number_format($cost_day,2);
             $DataLabelsDayEncoded = json_encode($dataLabels);
             $dataPointsDayEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
-            $dataAvgDayEncoded = json_encode($AvgPoints, JSON_NUMERIC_CHECK);
+            $dataGenDayEncoded = json_encode($dataGenPoints, JSON_NUMERIC_CHECK);
 
             $energy_cost_round = number_format($energy_cost,2);
             $budget_round = number_format($budget,2);
@@ -555,11 +575,11 @@ change_button;
                                 //Supplied Datasets to display
                                 //hourly 1 upto 24
                                 //TODO change expected usage to power genarated once implmented
-                                let data1 = { "labels": $DataLabelsYearEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "Average", "data": $dataAvgYearEncoded, "backgroundColor": "rgba(109, 171, 166, 0)", "borderColor": "rgb(226, 183, 28)", "borderWidth": 2 },{ "label": "Power Usage [kWh]", "data": $dataPointsYearEncoded, "backgroundColor": "rgb(56,56,56)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
+                                let data1 = { "labels": $DataLabelsYearEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "Energy Generated [kWh]", "data": $dataGenYearEncoded, "backgroundColor": "rgba(226, 183, 28, 0.4)", "borderColor": "rgb(226, 183, 28)", "borderWidth": 2 },{ "label": "Energy Used [kWh]", "data": $dataPointsYearEncoded, "backgroundColor": "rgb(56,56,56)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
                                 //days upto 31 days
-                                let data2 = { "labels": $DataLabelsMonthEncoded,"label": "Expected Usage:", "datasets": [{ "label": "Average", "data": $dataAvgMonthEncoded, "backgroundColor": "rgba(109, 171, 166, 0)", "borderColor": "rgb(226, 183, 28)", "borderWidth": 2 },{ "label": "Power Usage [kWh]", "data": $dataPointsMonthEncoded, "backgroundColor": "rgb(56,56,56)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
+                                let data2 = { "labels": $DataLabelsMonthEncoded,"label": "Expected Usage:", "datasets": [{ "label": "Energy Generated [kWh]", "data": $dataGenMonthEncoded, "backgroundColor": "rgba(226, 183, 28, 0.4)", "borderColor": "rgb(226, 183, 28)", "borderWidth": 2 },{ "label": "Energy Used [kWh]", "data": $dataPointsMonthEncoded, "backgroundColor": "rgb(56,56,56)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
                                 //months upto 12
-                                let data3 = { "labels": $DataLabelsDayEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "Average", "data": $dataAvgDayEncoded, "backgroundColor": "rgba(109, 171, 166, 0)", "borderColor": "rgb(226, 183, 28)", "borderWidth": 2 },{ "label": "Power Usage [kWh]", "data": $dataPointsDayEncoded, "backgroundColor": "rgb(56,56,56)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
+                                let data3 = { "labels": $DataLabelsDayEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "Energy Generated [kWh]", "data": $dataGenDayEncoded, "backgroundColor": "rgba(226, 183, 28, 0.4)", "borderColor": "rgb(226, 183, 28)", "borderWidth": 2 },{ "label": "Energy Used [kWh]", "data": $dataPointsDayEncoded, "backgroundColor": "rgb(56,56,56)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
                                 
 
                                 // Draw the initial chart

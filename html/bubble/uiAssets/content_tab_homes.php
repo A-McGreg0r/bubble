@@ -298,45 +298,58 @@ function generateHomeTab()
                 </div>
 
 
-                <!-- Card body -->
-                    <table class="home-table">
-                        <tr>
-                            <td style="width:50%">
-                                <div id="reload_device_id" class="home-left" onclick="openModalHome('hub_select')">
-                            
-                                    <!--Card content-->
-                                    <div class="">
-                                
-                                        <!--Title-->      
-                                        <div class="">  
-                                            <div id="device_3_device_id" class="" style="">
-                                                <strong class="room_icon"><i class="fa fa-home"></i><br></strong><strong>Change House<br><strong style="color:black">$hub_name</strong></strong>
-                                            </div>                     
-                                        </div>
-                                    </div>
+
+
+
+                <!-- testing new buttons -->
+                    <div class="row justify-content-center" style="padding: 20px">
+                        <!--left col-->
+                        <div class="col col-md justify-content-center" style="max-width: 575px">
+                            <!--function call-->
+                            <div id="reload_device_id" class="home-left" style="text-align:center" onclick="openModalHome('hub_select')">
+                                <!--left button-->
+                                <div id="device_3_device_id" class="justify-content-center" style="">
+                                    <!--left text-->
+                                    <strong class="room_icon">
+                                        <i class="fa fa-home"></i>
+                                        <br>Change House<br>
+                                        <strong style="color:black">$hub_name </strong>
+                                    </strong>
+                                </div>                          
                             </div>
-                        </td>
-                        <td style="width:50%">
-                            <div id="home_devices" class="home-right" style="text-align:center">
+  
+                            
+                        </div>
                         
-                                <!--Card content-->
-                                <div id="home_off_content" class="" onclick="$all_homes">
-                            
-    
-                                     <!--Title-->      
-                                    <div class=""> 
-                                        <div id="home_loader" class="loader"></div>
-                                        <div id="home_button_text" class="" style="">
-                                            <strong class="room_icon"><i class="fa fa-home"></i><br></strong><strong >Turn Off Home <br><strong style="color:black">$count $s_or_not on</strong></strong>
-                                        </div>                     
-                                    </div>
-                                </div>
+                        <!--right col-->
+                        <div class="col col-md justify-content-center" style="max-width: 575px">
+                            <div id="home_devices" class="home-right" style="text-align:center">
+                          
+                                    <!--right button-->
+                                        <!--function call-->
+                                        <div id="home_off_content" class="" onclick="$all_homes">
+                                            <div id="home_loader" class="loader"></div>
+                                                <div id="home_button_text" class="" style="">
+                                                    <!--right text-->
+                                                    
+                                                    <strong class="room_icon ">
+                                                        <i class="fa fa-home"></i>
+                                                        <br>Turn Off Home <br>
+                                                        <strong style="color:black">$count $s_or_not on </strong>
+                                                    </strong>
+                                                    
+                                                </div> 
+                                        </div>      
                             </div>
-                        </td>
-                    </tr>
-                </table>
-                <hr>
-                
+                        </div>
+                        <!--right col end -->   
+                    </div>     
+                <!-- testing new buttons -->
+
+
+
+
+                <!-- Card body -->               
                 <div id="collapse$hub_id" class="collapse show" role="tabpanel" aria-labelledby="heading$hub_id" data-parent="#accordionEx194">
                     <div class="card-body pt-0 justify-content-center ">
                 <div class="container">   
@@ -476,15 +489,19 @@ function generateHomeTab()
                                                     </script>
                                                 </div>
                                             </div>
-                                    <!--Donut 3-->  
+                                    <!--Donut 3--> 
+                                     
                                     <!--button for Donut carousel -->
                                         <a class="carousel-control-prev " href="#chart-carousel" role="button" data-slide="prev">
-                                        <span class="carousel-control-prev-icon " aria-hidden="false"><i class="fas fa-angle-double-left"></i></span>
-                                        <span class="sr-only ">Previous</span>
+                                                <span class="carousel-control-prev-icon ">
+                                                    <i class="fas fa-angle-double-left"></i></span>
+                                                <span class="sr-only ">Previous</span>
                                         </a>
+                                        
                                         <a class="carousel-control-next " href="#chart-carousel" role="button" data-slide="next">
-                                        <span class="carousel-control-next-icon " aria-hidden="false"><i class="fas fa-angle-double-right"></i></span>
-                                        <span class="sr-only ">Next</span>
+                                            <span class="carousel-control-next-icon ">
+                                                <i class="fas fa-angle-double-right"></i></span>
+                                            <span class="sr-only ">Next</span>
                                         </a>  
                                                 
                                 </div>
@@ -595,7 +612,7 @@ html;
         $stmtHub->close();
 
             
-        
+
 
     }
 

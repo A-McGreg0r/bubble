@@ -14,9 +14,11 @@
     //CLOSE SESSION
     session_write_close();
 
+    //GRAB FILE CONTENTS FROM PREGENERATED HTML TEMPLATE
     $pageHTML = file_get_contents($templatesDir.'mainTemplate.html');
 
     $content = '';
+
     //GENERATE REMAINING PAGE
     if($isLoggedIn){
         $content = generate_loggedInContent();
@@ -24,6 +26,7 @@
         $content = generate_loginPage();
     }
 
+    //REPLACE TAGS INSIDE TEMPLATE WITH GENERATED CONTENT
     $pageHTML = str_replace('$MAIN_BODY', $content, $pageHTML);
 
     //ECHO HTML TO PAGE
@@ -32,49 +35,60 @@
 
     //////////////////////////////////////////////////////////////////// FUNCTIONS ///////////////////////////////////////////////////////////////////////
 
+    /**
+     * GENERATOR FUNCTION FOR NON-LOGGED IN USERS, E.G. LOGIN, SIGNUP, FORGOT PASSWORD
+     */
     function generate_loginPage(){
         global $templatesDir;
         //GET URL ACTION
         $action = '';
         if(isset($_GET['action'])) $action = $_GET['action'];
+        
         $html = '';
 
-
-        // SWITCH DEPENDING ON URL ACTION
+        //SWITCH DEPENDING ON URL ACTION
+        /**
+         * SWITCH BASED ON ACTION.
+         * INCLUDE REQUIRED FILE, THEN CALL FUNCTION DEFINED INSIDE PHP FILE
+         * THIS ALLOWS US TO GENERATE THE CONTENT THROUGH PHP, THEN INSERT THAT CONTENT INTO THE PREGENERATED HTML-TEMPLATE
+         */       
         switch($action){
-            case 'registerComplete':
-                include "./uiAssets/content_registrationComplete.php";
-                $html .= generateRegistrationComplete();
-            break;
-            case 'registerFailed':
-
-            break;
             default:
                 include "./uiAssets/content_login.php";
                 $html .= generateLoginPage();
             break;
         }
 
-
         return $html;
     }
 
+    /**
+     * GENERATOR FUNCTION FOR GENERATING LOGGED IN CONTENT
+     */
     function generate_loggedInContent(){
         //GET URL ACTION
         $action = '';
         if(isset($_GET['action'])) $action = $_GET['action'];
+        
         $html = '';  
 
+        //CHECK IF THE USER HAS NOT SETUP A HUB YET. IF THEY HAVE NOT SETUP A HUB, NAVIGATE TO THE ADD DEVICE PAGE.
+        //THIS IS FORCED, AS THE MAIN TAB PAGES WOULD HAVE NO INFO ON THEM ANYWAY
         if($action != "logout" && $action != 'adddevice' && !userHasHub()){
             load('./index.php?action=adddevice');
             exit();
         }
 
-        //ALL PAGES NEED NAVIGATION
+        //ADD NAVIGATION TO THE TOP OF THE PAGE
         include './uiAssets/content_userNav.php';
         $html .= generateUserNav();
 
         //SWITCH DEPENDING ON URL ACTION
+        /**
+         * SWITCH BASED ON ACTION.
+         * INCLUDE REQUIRED FILE, THEN CALL FUNCTION DEFINED INSIDE PHP FILE
+         * THIS ALLOWS US TO GENERATE THE CONTENT THROUGH PHP, THEN INSERT THAT CONTENT INTO THE PREGENERATED HTML-TEMPLATE
+         */
         switch($action){
             case 'logout':
                 include './required/action_logout.php';
@@ -83,7 +97,7 @@
             case 'adddevice':
                 include './uiAssets/content_adddevice.php';
                 $html .= generateQRReader();
-            break;
+                break;
             case 'addroom':
                 include './uiAssets/content_addroom.php';
                 $html .= generateAddRoom();
@@ -93,8 +107,9 @@
                 $html .= generateAccount();
                 break;
             default:
-                include "appCore.php";
-                $html .= generateAppCore();
+                include "uiAssets/content_tabs.php";
+                $html .= generateTabs();
+                break;
         }
         return $html;
     }

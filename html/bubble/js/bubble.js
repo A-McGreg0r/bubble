@@ -132,7 +132,10 @@ $(document).ready(function(){
     //HIDE VALUES FOR REGISTER AND SIGN IN FORMS
     $("#loginErrorBox").hide();
     $("#registerErrorBox").hide();
+
+    //SETUP ACCOUNT PAGE DEVICE MOVING
     $('select').change(function(){
+        
         alert($(this).val());    
     });
 });

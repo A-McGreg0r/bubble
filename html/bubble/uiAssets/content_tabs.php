@@ -1,4 +1,5 @@
 <?php
+//GENERATE MAIN TABS, AND ADD CONTENT INTO TABS
 function generateTabs(){
     require 'content_tab_homes.php';
     require 'content_tab_advice.php';
@@ -43,7 +44,6 @@ function generateTabs(){
         <div class="tab-pane" id="profile-attr" role="tabpanel" aria-labelledby="profile-tab-attr">
             '.generateRoomTab().'
         </div>
-    
         <div class="tab-pane" id="messages-attr" role="tabpanel" aria-labelledby="messages-tab-attr">
             '.generateDeviceTab().'
         </div>

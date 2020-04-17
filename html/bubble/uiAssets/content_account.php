@@ -355,6 +355,7 @@ pageHTML;
         }
         $stmt->close();
     }
+    session_write_close();
 
     return $html;
 

@@ -132,8 +132,8 @@ function generateAccount()
                                         <strong> Warring:   This will completely delete your account and can't be undone!</strong>
                                     </div>
                                     <div class="modal-footer justify-content-lg-between">
-                                        <button class="btn btn-danger btn-sm btn-rounded" onclick="deleteAccount()">Yes: delete account</button>
-                                        <button type="button" class="btn btn-primary btn-sm btn-rounded" data-dismiss="modal" >No: go back.</button>
+                                        <button class="btn btn-danger btn-sm btn-rounded" data-dismiss="modal" >Cancel</button>
+                                        <button type="button" class="btn btn-primary btn-sm btn-rounded" >Update</button>
                                     </div>
                                     
                                 </div>

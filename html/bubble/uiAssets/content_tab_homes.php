@@ -324,6 +324,7 @@ change_button;
                     <div class="modalHeader"><strong>Change Hub</strong></div>
                     <div class="modalBody">
                     </div>
+                    <!-- a list of hubs-->
                     <div class="modalSub">
                         Available Hubs
                     </div>
@@ -337,6 +338,7 @@ change_button;
                     <a data-toggle="collapse" data-parent="#accordionEx194" aria-expanded="true" aria-controls="collapse4">
                         <h3 class="mb-0 mt-3 red-text">
                             <div class="row">
+                            <!--hub names-->
                                 <div class="col-auto mr-auto"><strong>$hub_name</strong></div>
                             </div>
                         </h3>
@@ -364,6 +366,7 @@ change_button;
                                                 
                                     <!--right text-->
                                     <div id="home_button_text">
+                                    <!--method for turning all device off in a home-->
                                         <strong class="room_icon">    
                                             <i class="fa fa-home"></i>
                                             <br>Turn Off Home <br>
@@ -380,7 +383,7 @@ change_button;
                 <!-- testing new buttons -->
 
             <div class="modal modalTimer" id="modal_timer_home">
-                                    
+                <!--todo comment this-->                   
                 <div class="modalContent modalContentTimer" id="content_timer_home"> 
                     <div class="x-adjust">
                         <strong class="timer_icon_x" id="timer_x_home" onclick="openModal('modal_timer_home','timer_x_home')"><i class="fas fa-times"></i></strong></div>
@@ -496,7 +499,7 @@ change_button;
                     <div class="col-lg-6 swipe" id="overview">
                         <h4 class="section-title">Cost Overview</h4>
                         <table class="stats-table">
-                            
+                            <!--energy costing-->
                             <tr class="stats-row">
                                 <td class="stats-left"><strong>&ensp;Daily Usage:</strong></td>
                                 <td class="stats-right">$energy_last_day kWh&ensp;</td>
@@ -530,10 +533,11 @@ change_button;
                     <hr id="separater1">
                     
                     <!--col 2-->
+                    <!--force doughnuts to update on page load -->
                     <script>
                     document.onload(myLineChart.update();)
                     </script>
-                    
+                    <!--energy costing-->
                     <div class="card col-lg-6 border border-0 " id="expenditure">
                     <!--Carousel Container--> 
                         <h4 class="section-title ">Expenditure</h4>

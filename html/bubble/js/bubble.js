@@ -132,10 +132,10 @@ $(document).ready(function(){
     //HIDE VALUES FOR REGISTER AND SIGN IN FORMS
     $("#loginErrorBox").hide();
     $("#registerErrorBox").hide();
-
     $('select').change(function(){
         alert($(this).val());    
     });​
+
 });
 
 

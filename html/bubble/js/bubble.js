@@ -134,10 +134,7 @@ $(document).ready(function(){
     $("#registerErrorBox").hide();
 
     $('select').change(function(){
-        alert($(this).val());
-        if ($(this).val() == "2"){
-            alert("call the do something function on option 2");
-         }        
+        alert($(this).val());    
     });​
 });
 

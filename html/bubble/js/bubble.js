@@ -154,7 +154,7 @@ $(document).ready(function(){
                     alert("Failed to move device: "+result.error);
                 }
                 if(result.success){
-                    $("#currentRoom_"+deviceId)
+                    $("#moveDevice_"+deviceId+" option[value=-1]").attr('selected', 'selected');
                     $("#currentRoom_"+deviceId).html("Current Room: " + roomName);
 
                 }

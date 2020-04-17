@@ -50,7 +50,7 @@ function generateAccount()
                             <div class="col-md">
                                 <strong>&ensp;Email Address:</strong>
                             </div>
-                            <div class="col-md " style="margin-left: 30px">
+                            <div class="col-md " style="margin-left: 3%">
                                 <strong>$email&ensp;</strong>
                             </div>
                         </div>
@@ -60,7 +60,7 @@ function generateAccount()
                                 <strong>&ensp;Address:</strong>
                             </div>
                             
-                            <div class="col-md" style="margin-left: 50px">
+                            <div class="col-md" style="margin-left: 3%">
                                 <div class="flex-md-row">
                                     <strong>$address_l1&ensp;</strong>
                                 </div>
@@ -144,14 +144,15 @@ function generateAccount()
                             <!-- Dialog -->
                             <div class="modal-dialog modal-lg" role="document">
                             <!--Header-->
-                            <div class="modal-header">
-                                <h3 class="bold-title">Update Account</h3>
-                            </div>
+                           
                                 <!-- Content -->
-                                <div class="modal-content ">                                
+                                <div class="modal-content ">
+                                    <div class="modal-header">
+                                        <h3 class="bold-title">Update Account</h3>
+                                    </div>                                
                                     <div class="col-lg">
                                     <!--Body-->
-                                    <div class="row" style="margin: 0">
+                                    <div class="row" style="margin: 0; padding-top: 5px; padding-bottom: 5px">
                                         <div class="col-md">
                                             <h4>Account details</h4>
                                         </div>
@@ -162,7 +163,7 @@ function generateAccount()
                                     </div>
                                     
                                      <!--First Name-->  
-                                        <div class="row">
+                                        <div class="row" style="padding-top: 5px; padding-bottom: 5px">
                                             <div class="col-md">
                                                 <strong>&ensp;First Name: $first_name&ensp;</strong>
                                             </div>
@@ -172,7 +173,7 @@ function generateAccount()
                                         </div>
                                         
                                         <!--Last Name-->
-                                        <div class="row">
+                                        <div class="row" style="padding-top: 5px; padding-bottom: 5px">
                                             <div class="col-md">
                                                 <strong>&ensp;Last Name: $last_name&ensp;</strong>
                                             </div>
@@ -182,9 +183,9 @@ function generateAccount()
                                         </div>
                                         
                                         <!--E-mail-->
-                                        <div class="row">
+                                        <div class="row" style="padding-top: 5px; padding-bottom: 5px">
                                             <div class="col-md">
-                                                <strong>&ensp;Email Address: $email&ensp;</strong>
+                                                <strong>&ensp;Email Address: $email&ensp;</strong><!--todo fix md size alinment issue-->
                                             </div>
                                             <div class="col-md">
                                                 <input class="form-control" type="text" placeholder="$email">
@@ -192,36 +193,40 @@ function generateAccount()
                                         </div>
                                         
                                         <!--Address-->
-                                        <div class="row"style="margin: 0">
+                                        <div class="row" style="margin-left: 0; padding-top: 5px; padding-bottom: 5px">
 
                                                 <div class="col-md">
                                                     <div class="row" >
                                                         <strong>&ensp;Address:</strong>  
                                                     </div>
-                                                    <div class="row" style="margin: 0">
-                                                        <strong>$address_l1</strong>
+                                                    <div class="row" style="padding-top: 5px; padding-bottom: 5px">
+                                                        <div class="col-md">
+                                                            <strong>$address_l1</strong>
+                                                        </div>
+                                                        <div class="col-md" style="margin-left: -2%;">
+                                                            <input class="form-control" type="text" placeholder="$address_l1">
+                                                        </div>
+                                                        
                                                     </div>
                                                     
-                                                    <div class="row" style="margin: 0">
-                                                        <strong>$address_l2</strong>
+                                                     <div class="row" style=" padding-top: 5px; padding-bottom: 5px">
+                                                        <div class="col-md">
+                                                            <strong>$address_l2</strong>
+                                                        </div>
+                                                        <div class="col-md" style="margin-left: -2%;">
+                                                            <input class="form-control" type="text" placeholder="$address_l2">
+                                                        </div>
+                                                        
                                                     </div>
-
-                                                </div>
+                                                    
                                                 
-                                                <div class="col-md">
-                                                    <div class="row" style="margin-left: 0;">
-                                                        <input class="form-control" type="text" placeholder="$address_l1">
-                                                    </div>
-                                                    
-                                                    <div class="row" style="margin-left: 0;">
-                                                        <input class="form-control" type="text" placeholder="$address_l2">
-                                                    </div>
                                                 </div>
+                                    
                       
                                         </div>
 
                                         <!--Postcode-->
-                                        <div class="row">
+                                        <div class="row" style="padding-top: 5px; padding-bottom: 5px">
                                             <div class="col-md">
                                                 <strong>&ensp;Postcode:$postcode&ensp;</strong>
                                             </div>
@@ -230,7 +235,7 @@ function generateAccount()
                                                 </div>
                                         </div>
                                                 
-                                        <div class="row">
+                                        <div class="row" style="padding-top: 5px; padding-bottom: 5px">
                                             <div class="col-md">
                                                 <strong>&ensp;Energy Price: $energy_cost&ensp;</strong>
                                             </div>
@@ -239,7 +244,7 @@ function generateAccount()
                                                 </div>
                                         </div>
                                                 
-                                        <div class="row">
+                                        <div class="row" style="padding-top: 5px; padding-bottom: 5px">
                                             <div class="col-md">
                                                 <strong>&ensp;Monthly Budget: $budget&ensp;</strong>
                                             </div>

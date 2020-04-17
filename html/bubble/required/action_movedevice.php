@@ -51,8 +51,12 @@
     $stmt->bind_param("iii", $room_id, $hub_id, $device_id);
     if ($stmt->execute()) {
         $result = $stmt->get_result();
-        if($result->num_rows == 1){
+        if($result->affected_rows == 1){
             echo("{\"success\":\"Device moved\"}");
+            $stmt->close();
+            exit();
+        }else{
+            echo("{\"error\":\"Failed to move device, try again\"}");
             $stmt->close();
             exit();
         }

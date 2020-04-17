@@ -134,10 +134,10 @@ $(document).ready(function(){
     $("#registerErrorBox").hide();
     $('select').change(function(){
         alert($(this).val());    
-    });​
-
+    });
 });
 
+//------------------------Moving Hubs Function----------------------------------------------------
 
 function changeHub(id) {
 

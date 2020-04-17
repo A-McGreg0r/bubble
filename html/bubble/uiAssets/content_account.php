@@ -142,22 +142,25 @@ function generateAccount()
                         <!--Model deployed by update account button-->
                         <div class="modal fade" id="updateAccountModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <!-- Dialog -->
-                            <div class="modal-dialog" role="document">
+                            <div class="modal-dialog modal-lg" role="document">
                             <!--Header-->
                             <div class="modal-header">
                                 <h3 class="bold-title">Update Account</h3>
                             </div>
                                 <!-- Content -->
-                                <div class="modal-content">                                
+                                <div class="modal-content ">                                
                                     <div class="col-lg">
                                     <!--Body-->
-                                    <div class="col-md">
-                                        <h4>Account details</h4>
+                                    <div class="row" style="margin: 0">
+                                        <div class="col-md">
+                                            <h4>Account details</h4>
+                                        </div>
+                                        
+                                        <div class="col-md">
+                                            <h4>New details</h4>
+                                        </div>
                                     </div>
                                     
-                                    <div class="col-md">
-                                        <h4>New details</h4>
-                                    </div>
                                      <!--First Name-->  
                                         <div class="row">
                                             <div class="col-md">
@@ -167,6 +170,7 @@ function generateAccount()
                                                     <input class="form-control" type="text" placeholder="$first_name">
                                                 </div>
                                         </div>
+                                        
                                         <!--Last Name-->
                                         <div class="row">
                                             <div class="col-md">
@@ -176,6 +180,7 @@ function generateAccount()
                                                 <input class="form-control" type="text" placeholder="$last_name">
                                             </div>
                                         </div>
+                                        
                                         <!--E-mail-->
                                         <div class="row">
                                             <div class="col-md">
@@ -187,30 +192,32 @@ function generateAccount()
                                         </div>
                                         
                                         <!--Address-->
-                                        <div class="row">
-                                            <div class="col-md">
-                                                
-                                                    <strong>&ensp;Address:</strong>                             
+                                        <div class="row"style="margin: 0">
 
-                                                <div class="row" style="padding-left: 15px">
-                                                    <div class="col-md">
+                                                <div class="col-md">
+                                                    <div class="row" >
+                                                        <strong>&ensp;Address:</strong>  
+                                                    </div>
+                                                    <div class="row" style="margin: 0">
                                                         <strong>$address_l1</strong>
                                                     </div>
-                                                        <div class="col-md">
-                                                            <input class="form-control" type="text" placeholder="$address_l1">
-                                                         </div>
-                                                </div>
-                                                
-                                                <div class="row" style="padding-left: 15px">
-                                                    <div class="col-md">
+                                                    
+                                                    <div class="row" style="margin: 0">
                                                         <strong>$address_l2</strong>
                                                     </div>
-                                                        <div class="col-md">
-                                                            <input class="form-control" type="text" placeholder="$address_l2">
-                                                        </div>
+
                                                 </div>
                                                 
-                                            </div>
+                                                <div class="col-md">
+                                                    <div class="row" style="margin-left: 0;">
+                                                        <input class="form-control" type="text" placeholder="$address_l1">
+                                                    </div>
+                                                    
+                                                    <div class="row" style="margin-left: 0;">
+                                                        <input class="form-control" type="text" placeholder="$address_l2">
+                                                    </div>
+                                                </div>
+                      
                                         </div>
 
                                         <!--Postcode-->
@@ -223,7 +230,7 @@ function generateAccount()
                                                 </div>
                                         </div>
                                                 
-                                        <div class="row ">
+                                        <div class="row">
                                             <div class="col-md">
                                                 <strong>&ensp;Energy Price: $energy_cost&ensp;</strong>
                                             </div>
@@ -232,7 +239,7 @@ function generateAccount()
                                                 </div>
                                         </div>
                                                 
-                                        <div class="row ">
+                                        <div class="row">
                                             <div class="col-md">
                                                 <strong>&ensp;Monthly Budget: $budget&ensp;</strong>
                                             </div>
@@ -241,7 +248,7 @@ function generateAccount()
                                                 </div>
                                         </div>
                                             
-                                        <div class="row modal-footer justify-content-lg-between" style="margin 50px">
+                                        <div class="modal-footer justify-content-lg-between" style="margin 50px">
                                             <div class="col-md">
                                                 <button type="button" class="btn-sm btn-primary  btn-rounded" data-toggle="modal" data-target="#updateAccountModal">Update Account</button>
                                             </div>

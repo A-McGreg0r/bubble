@@ -154,8 +154,8 @@ $(document).ready(function(){
                     alert("Failed to move device: "+result.error);
                 }
                 if(result.success){
-                    $(this).val("-1");
-                    $("currentRoom_"+deviceId).html("Current Room: " + roomName);
+                    $("#currentRoom_"+deviceId)
+                    $("#currentRoom_"+deviceId).html("Current Room: " + roomName);
 
                 }
             },

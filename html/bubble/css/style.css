@@ -451,11 +451,11 @@ select {
     width: 100%;
     background-color: rgba(0, 0, 0, 0.9);
     padding: 5vw!important;
-    padding-top: calc(50vh - 17.5vh)!important;
+    padding-top: calc(50vh - 20vh)!important;
 }
 
 #content_timer_home {
-    max-height: 190px!important;
+    max-height: 220px!important;
 }
 
 .modalStatsWrap {
@@ -463,7 +463,7 @@ select {
 }
 
 .modalContent {
-    max-height: 220px;
+    max-height: 252px;
     z-index: 11;
     transition: all 1s linear;
     border: 2px solid rgb(0,0,0);

@@ -209,7 +209,17 @@ function startTimer(id, hour_value, minute_value) {
         url: url,
         data:{ device_id: id, hour: hour, minute: minute},
         success:function(){
-            $('#timer_end_' + id).load(document.URL + ' #timer_end_' + id);
+            document.getElementById('time_button_text_' + id).style.display = "none";
+            document.getElementById('timer-tick-' + id).style.display = "block";
+            document.getElementById('timer-tick-' + id).classList.add('animated');
+            document.getElementById('timer-tick-' + id).classList.add('slow');
+            document.getElementById('timer-tick-' + id).classList.add('zoomIn');
+            setTimeout(function() {
+                document.getElementById('timer-tick-' + id).classList.remove('zoomIn');
+                document.getElementById('time_button_text_' + id).style.display = "block";
+                document.getElementById('timer-tick-' + id).style.display = "none";
+                $('#timer_end_' + id).load(document.URL + ' #timer_end_' + id);
+            }, 2000);
         },
         error: function(data){
             alert("error!");

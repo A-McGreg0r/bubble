@@ -41,10 +41,10 @@ function generateAdviceTab()
                         $hub_name = "My Home";
                     }
 
-                    $latlong = explode(",", file_get_contents('https://ipapi.co/' . $ip_address . '/latlong/'));
-                    $weather = file_get_contents('http://api.openweathermap.org/data/2.5/weather?lat=' . $latlong[0] . '&lon=' . $latlong[1] . '&appid=f35e0bdca477a802831ce6202240dc8d');
-                    $current_weather = json_decode($weather,true);
-                    $temp = $current_weather['main']['temp'];
+                    // $latlong = explode(",", file_get_contents('https://ipapi.co/' . $ip_address . '/latlong/'));
+                    // $weather = file_get_contents('http://api.openweathermap.org/data/2.5/weather?lat=' . $latlong[0] . '&lon=' . $latlong[1] . '&appid=f35e0bdca477a802831ce6202240dc8d');
+                    // $current_weather = json_decode($weather,true);
+                    // $temp = $current_weather['main']['temp'];
 
                     $temp = $temp - 273;
                     $temp_round = number_format($temp,1);

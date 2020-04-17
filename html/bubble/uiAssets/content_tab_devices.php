@@ -322,8 +322,8 @@ html;
                         <div class="modalContent modalContentTimer" id="content_timer_$device_id">
                             <div class="x-adjust">
                             <strong class="timer_icon_x" id="timer_x_$device_id" style="color:$colour; display:none" onclick="openModal('modal_$device_id','timer_x_$device_id')"><i class="fas fa-times"></i></strong></div>
-                            <div class="modalHeader"><strong>Turn $device_name off in:</strong></div>
-                            <div class="modalMain">
+                            <div class="modalHeader"><strong>Turn off<br><strong style="font-size:20px">$device_name</strong></strong></div>
+                            <div class="modalMain" id="time_button_text_$device_id">
                             <div class="timer-end" id="timer_end_$device_id"><strong>$timer_text</strong></div>
                             
                             <form>
@@ -416,6 +416,7 @@ html;
                                 <p class="timerBtn btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" onclick="startTimer($device_id, 'hour_$device_id', 'minute_$device_id')">Start Timer</p>
                             </div>
                             </div>
+                            <i class="fas fa-check" id="timer-tick-$device_id" style="margin-left:calc(50% - 40px);width:90px;height:80px;color:black;font-size:75px;display:none;"></i>
                         </div>
                     </div>
 html;

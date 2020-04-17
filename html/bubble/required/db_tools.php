@@ -83,6 +83,7 @@ function userHasHub(){
     session_start();
     //IF THE USER'S SESSION ALREADY HAS A HUB ID, WE KNOW THE USER HAS A HUB
     if(isset($_SESSION['hub_id'])){
+        session_write_close();
         return true;
     }
 
@@ -91,6 +92,7 @@ function userHasHub(){
     //FIND ALL HUBS IN JOIN TABLE THAT HAVE THE USER ID AS ASSOCIATED
     $stmt = $db->prepare("SELECT hub_id FROM hub_users WHERE user_id=?");
     $stmt->bind_param("s", $_SESSION['user_id']);
+    session_write_close();
     if (!$stmt->execute()) {
         echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
     } 
@@ -105,6 +107,8 @@ function userHasHub(){
     $stmt->get_result();
     $row = $result->fetch_assoc();
     //IF THE STATEMENT RETURNS ROWS, GRAB THE FIRST, SET SESSION. THIS WILL ONLY BE DONE ON INITIAL LOGIN
+    session_start();
+
     $_SESSION['hub_id'] = $row['hub_id'];
     
     //FINISH UP, CLOSE SESSION AND STATEMENTS, RETURN

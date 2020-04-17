@@ -1,9 +1,10 @@
 <?php
-include_once dirname(__DIR__).'/required/config.php';
-function generateAccount(){
+include_once dirname(__DIR__) . '/required/config.php';
+function generateAccount()
+{
     global $db;
     session_start();
-    if(isset($_SESSION['user_id'])){
+    if (isset($_SESSION['user_id'])) {
         $user_id = $_SESSION['user_id'];
 
         session_write_close();
@@ -142,114 +143,122 @@ function generateAccount(){
                         <div class="modal fade" id="updateAccountModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <!-- Dialog -->
                             <div class="modal-dialog" role="document">
+                            <!--Header-->
+                            <div class="modal-header">
+                                <h3 class="bold-title">Update Account</h3>
+                            </div>
                                 <!-- Content -->
                                 <div class="modal-content">                                
-                                    <!--Header-->
-                                    <div class="modal-header">
-                                        <h3>Update Account</h3>
-                                    </div>
+                                    <div class="col-lg">
                                     <!--Body-->
-                                       <h4 class="bold-title">Account details</h4>
-                                       <h4 class="bold-title">New details</h4>
-                    
-                                            <div class="col-lg">
-                                                <div class="row">
-                                                    <div class="col-md">
-                                                        <strong>&ensp;First Name: $first_name&ensp;</strong>
-                                                       
-                                                    </div>
-                                                    <div class="col-md">
-                                                        <input class="form-control" type="text" placeholder="$first_name">
-                                                    </div>
+                                    <div class="col-md">
+                                        <h4>Account details</h4>
+                                    </div>
+                                    
+                                    <div class="col-md">
+                                        <h4>New details</h4>
+                                    </div>
+                                     <!--First Name-->  
+                                        <div class="row">
+                                            <div class="col-md">
+                                                <strong>&ensp;First Name: $first_name&ensp;</strong>
+                                            </div>
+                                                <div class="col-md">
+                                                    <input class="form-control" type="text" placeholder="$first_name">
                                                 </div>
+                                        </div>
+                                        <!--Last Name-->
+                                        <div class="row">
+                                            <div class="col-md">
+                                                <strong>&ensp;Last Name: $last_name&ensp;</strong>
+                                            </div>
+                                            <div class="col-md"">
+                                                <input class="form-control" type="text" placeholder="$last_name">
+                                            </div>
+                                        </div>
+                                        <!--E-mail-->
+                                        <div class="row">
+                                            <div class="col-md">
+                                                <strong>&ensp;Email Address: $email&ensp;</strong>
+                                            </div>
+                                            <div class="col-md">
+                                                <input class="form-control" type="text" placeholder="$email">
+                                            </div>
+                                        </div>
+                                        
+                                        <!--Address-->
+                                        <div class="row">
+                                            <div class="col-md">
                                                 
-                                                <div class="row">
+                                                    <strong>&ensp;Address:</strong>                             
+
+                                                <div class="row" style="padding-left: 15px">
                                                     <div class="col-md">
-                                                        <strong>&ensp;Last Name: $last_name&ensp;</strong>
+                                                        <strong>$address_l1</strong>
                                                     </div>
-                                                    <div class="col-md"">
-                                                        <input class="form-control" type="text" placeholder="$last_name">
-                                                    </div>
-                                                </div>
-                                                
-                                                <div class="row">
-                                                    <div class="col-md">
-                                                        <strong>&ensp;Email Address: $email&ensp;</strong>
-                                                    </div>
-                                                    <div class="col-md">
-                                                        <input class="form-control" type="text" placeholder="$email">
-                                                    </div>
-                                                </div>
-                                                
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <strong>&ensp;Address:</strong>
-                                                            <div class="row">
-                                                                <strong>$address_l1&ensp;</strong>
-                                                            </div>
-                                                            
-                                                            <div class="row">
-                                                                <strong>$address_l2&ensp;</strong>
-                                                            </div>
-                                                    </div>
-                                                    
-                                                    <div class="col-md-6">
-                                                        <div class="row">
+                                                        <div class="col-md">
                                                             <input class="form-control" type="text" placeholder="$address_l1">
-                                                        </div>
-                                                        
-                                                        <div class="row">
+                                                         </div>
+                                                </div>
+                                                
+                                                <div class="row" style="padding-left: 15px">
+                                                    <div class="col-md">
+                                                        <strong>$address_l2</strong>
+                                                    </div>
+                                                        <div class="col-md">
                                                             <input class="form-control" type="text" placeholder="$address_l2">
                                                         </div>
-                                                    </div>
                                                 </div>
                                                 
-                                                
-                                                <div class="row">
-                                                    <div class="col-md">
-                                                        <strong>&ensp;Postcode:$postcode&ensp;</strong>
-                                                    </div>
-                                                    <div class="col-md">
-                                                        <input class="form-control" type="text" placeholder="$postcode">
-                                                    </div>
-                                                </div>
-                                                
-                                                <div class="row ">
-                                                    <div class="col-md">
-                                                        <strong>&ensp;Energy Price: $energy_cost&ensp;</strong>
-                                                    </div>
-                                                    <div class="col-md">
-                                                        <input class="form-control" type="text" placeholder="$energy_cost">
-                                                    </div>
-                                                </div>
-                                                
-                                                <div class="row ">
-                                                    <div class="col-md">
-                                                        <strong>&ensp;Monthly Budget: $budget&ensp;</strong>
-                                                    </div>
-                                                    <div class="col-md">
-                                                        <input class="form-control" type="text" placeholder="$budget">
-                                                    </div>
-                                                </div>
-                                            
-                                                <div class="row" style="margin 50px" style="min-width: 120px">
-                                                    <div class="col-md">
-                                                        <button type="button" class="btn-sm btn-primary  btn-rounded" data-toggle="modal" data-target="#updateAccountModal">Update Account</button>
-                                                    </div>
-                                                    <div class="col-md">
-                                                        <button type="button" class="btn-sm btn-danger  btn-rounded" data-toggle="modal" data-target="#removeAccountModal">Delete Account</button>
-                                                    </div>
-                                                </div>
-                                                            
                                             </div>
+                                        </div>
+
+                                        <!--Postcode-->
+                                        <div class="row">
+                                            <div class="col-md">
+                                                <strong>&ensp;Postcode:$postcode&ensp;</strong>
+                                            </div>
+                                                <div class="col-md">
+                                                    <input class="form-control" type="text" placeholder="$postcode">
+                                                </div>
+                                        </div>
+                                                
+                                        <div class="row ">
+                                            <div class="col-md">
+                                                <strong>&ensp;Energy Price: $energy_cost&ensp;</strong>
+                                            </div>
+                                                <div class="col-md">
+                                                    <input class="form-control" type="text" placeholder="$energy_cost">
+                                                </div>
+                                        </div>
+                                                
+                                        <div class="row ">
+                                            <div class="col-md">
+                                                <strong>&ensp;Monthly Budget: $budget&ensp;</strong>
+                                            </div>
+                                                <div class="col-md">
+                                                    <input class="form-control" type="text" placeholder="$budget">
+                                                </div>
+                                        </div>
+                                            
+                                        <div class="row modal-footer justify-content-lg-between" style="margin 50px">
+                                            <div class="col-md">
+                                                <button type="button" class="btn-sm btn-primary  btn-rounded" data-toggle="modal" data-target="#updateAccountModal">Update Account</button>
+                                            </div>
+                                                <div class="col-md">
+                                                    <button type="button" class="btn-sm btn-danger  btn-rounded" data-toggle="modal" data-target="#removeAccountModal">Delete Account</button>
+                                                </div>
+                                        </div>
+                                                            
+                                </div>
                                 
                             </div>
                         </div>
                     <!--col om to center content-->
-                    </div>
-                <!-- Card content: account details -->    
-                </div>                
-            <!-- Card End-->       
+                        </div>
+                        <!-- Card End-->     
+              
+                 
            
                    
             
@@ -276,7 +285,7 @@ html;
             $result1 = $stmt1->get_result();
             //SELECT ALL HUBS FROM USERID
             if ($result1->num_rows > 0) {
-                while($row = $result1->fetch_assoc()) {
+                while ($row = $result1->fetch_assoc()) {
                     $hub_id = $row['hub_id'];
                     $stmt2 = $db->prepare("SELECT * FROM device_info WHERE hub_id = ?");
                     $stmt2->bind_param("i", $hub_id);
@@ -284,7 +293,7 @@ html;
                     $result2 = $stmt2->get_result();
                     //SELECT ALL DEVICES FROM HUB_ID
                     if ($result2->num_rows > 0) {
-                        while($row2 = $result2->fetch_assoc()) {
+                        while ($row2 = $result2->fetch_assoc()) {
                             $device_id = $row2['device_id'];
                             $device_name = $row2['device_name'];
                             $device_type = $row2['device_type'];
@@ -311,20 +320,20 @@ html;
                                     <td class="pt-3-half">$energy_consumption Wh</td>
                                     <td class="pt-3-half">
                                     <select name="moveDevice_$device_id"class="deviceLocation browser-default custom-select dropdown">
-                                        <option id="currentRoom_$device_id" value="-1" disabled selected>Current: $roomName</option>
+                                        <option value="0" disabled selected>Current: $roomName</option>
 
 device;
-                                        $stmt5 = $db->prepare("SELECT * FROM room_info WHERE hub_id = ?");
-                                        $stmt5->bind_param("i", $hub_id);
-                                        $stmt5->execute();
-                                        $result5 = $stmt5->get_result();
-                                        while($row5 = $result5->fetch_assoc()) {
-                                            $val = $row5['room_name'];
-                                            $room_id = $row5['room_id'];
+                            $stmt5 = $db->prepare("SELECT * FROM room_info WHERE hub_id = ?");
+                            $stmt5->bind_param("i", $hub_id);
+                            $stmt5->execute();
+                            $result5 = $stmt5->get_result();
+                            while ($row5 = $result5->fetch_assoc()) {
+                                $val = $row5['room_name'];
+                                $room_id = $row5['room_id'];
 
-                                            $html .= "<option value=\"$room_id.$device_id.$val\">Move to: $val</option>";
-                                        }
-                                        $html .= <<<pageHTML
+                                $html .= "<option value=\"$room_id.$device_id\">Move to: $val</option>";
+                            }
+                            $html .= <<<pageHTML
 
                                         </select>
                                     </td>
@@ -349,8 +358,8 @@ pageHTML;
                 </div>
             </div>
         </div>';
-        
-        $html .= '
+
+            $html .= '
         <script>
             const $tableID = $("#table");
             const $BTN = $("#export-btn");
@@ -369,6 +378,23 @@ pageHTML;
                 }
     
                 $row.prev().before($row.get(0));
+            });
+
+            $tableID.on("click", ".deviceLocation", function () {
+                var url = "required/action_movedevice.php";
+                var dataQuery = $(this).value;
+                $.ajax({
+                    type:\'POST\',
+                    url: url,
+                    data:{ data: dataQuery},
+                    success:function(data){
+
+                    },
+                    error: function(data){
+
+                    }
+                });
+
             });
     
             $tableID.on("click", ".table-down", function () {
@@ -423,4 +449,5 @@ pageHTML;
     return $html;
 
 }
+
 ?>

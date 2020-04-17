@@ -44,9 +44,6 @@ $( document ).on( "mobileinit", function() {
 });
 
 $(window).on("load", function(){
-    $("#loginErrorBox").hide();
-    $("#registerErrorBox").hide();
-
     var overview = document.getElementById('top-buttons');
 
     swipedetect(overview, function(swipedir){
@@ -129,6 +126,18 @@ $(window).on("load", function(){
     });
 });
 //------------------------Swipe Function----------------------------------------------------
+
+
+$(document).ready(function(){
+    //HIDE VALUES FOR REGISTER AND SIGN IN FORMS
+    $("#loginErrorBox").hide();
+    $("#registerErrorBox").hide();
+    $('select').change(function(){
+        alert($(this).val());    
+    });
+});
+
+//------------------------Moving Hubs Function----------------------------------------------------
 
 function changeHub(id) {
 

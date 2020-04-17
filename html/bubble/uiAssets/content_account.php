@@ -310,7 +310,7 @@ html;
                                     <td class="pt-3-half">$icon<br>$device_name</td>
                                     <td class="pt-3-half">$energy_consumption Wh</td>
                                     <td class="pt-3-half">
-                                    <select class="deviceLocation browser-default custom-select dropdown">
+                                    <select name="moveDevice_$device_id"class="deviceLocation browser-default custom-select dropdown">
                                         <option value="0" disabled selected>Current: $roomName</option>
 
 device;
@@ -320,9 +320,9 @@ device;
                                         $result5 = $stmt5->get_result();
                                         while($row5 = $result5->fetch_assoc()) {
                                             $val = $row5['room_name'];
-                                            $inc = $row5['room_id'];
+                                            $room_id = $row5['room_id'];
 
-                                            $html .= "<option value=\"$inc.$device_id\">Move to: $val</option>";
+                                            $html .= "<option value=\"$room_id.$device_id\">Move to: $val</option>";
                                         }
                                         $html .= <<<pageHTML
 

@@ -6,6 +6,12 @@
     $room_id = filter_input(INPUT_POST, "room_id", FILTER_SANITIZE_NUMBER_INT);
     $device_id = filter_input(INPUT_POST, "device_id", FILTER_SANITIZE_NUMBER_INT);
 
+    //CHECK DATA IS VALID
+    if($room_id == FALSE || $icon == device_id){
+        echo("{\"error\":\"Invalid request\"}");
+        exit();
+    }
+    
     //BEGIN SESSION
     session_start();
     $hub_id = $_SESSION['hub_id'];
@@ -58,13 +64,5 @@
         $stmt->close();
         exit();
     }
-
-
-
-
-
-
-
-
-
+    exit();
 ?>

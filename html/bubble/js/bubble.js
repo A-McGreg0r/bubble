@@ -127,6 +127,8 @@ $(window).on("load", function(){
 });
 //------------------------Swipe Function----------------------------------------------------
 
+//------------------------DOCUMENT READY----------------------------------------------------
+
 
 $(document).ready(function(){
     //HIDE VALUES FOR REGISTER AND SIGN IN FORMS
@@ -136,11 +138,13 @@ $(document).ready(function(){
     //SETUP ACCOUNT PAGE DEVICE MOVING
     $('select').change(function(){
         let url = "required/action_moveDevice.php";
+        //GATHER DATA FROM THE DROPDOWN BOX
         let value = $(this).val().split(".");
         let roomId = value[0];
         let deviceId = value[1];
         let roomName = value[2];
 
+        //CREATE AJAX CALL
         $.ajax({
             type:'POST',
             url: url,
@@ -149,15 +153,14 @@ $(document).ready(function(){
                 //PARSE RESPONSE JSON DATA
                 var result = JSON.parse(data);
 
-                //LOGIN ERROR, DISPLAY ERROR TO USER
+                //ERROR, DISPLAY ERROR TO USER
                 if(result.error){
                     alert("Failed to move device: "+result.error);
                 }
                 if(result.success){
-                    // $('#moveDevice_'+deviceId).prop('selectedIndex', 0);
-
+                    //MOVE SUCCESS, CHANGE CURRENT ROOM SHOWN
                     $("#currentRoom_"+deviceId).prop('selected', true);
-                    $("#currentRoom_"+deviceId).html("Current Room: " + roomName);
+                    $("#currentRoom_"+deviceId).html("Current: " + roomName);
 
                 }
             },
@@ -168,9 +171,12 @@ $(document).ready(function(){
     });
 });
 
+//------------------------DOCUMENT READY----------------------------------------------------
+
 //------------------------Moving Hubs Function----------------------------------------------------
 
 function changeHub(id) {
+    //MAKE AJAX REQUEST TO ACTION_CHANGEHUB
     let url = "required/action_changeHub.php";
     $.ajax({
         type:'POST',
@@ -180,10 +186,11 @@ function changeHub(id) {
             //PARSE RESPONSE JSON DATA
             var result = JSON.parse(data);
 
-            //LOGIN ERROR, DISPLAY ERROR TO USER
+            //CHANGE HUB ERROR, DISPLAY ERROR TO USER
             if(result.error){
                 alert("Failed to change hub, please try again!");
             }
+            //HUB CHANGE SUCCESSFUL, REFRESH PAGE
             if(result.success){
                 location.reload();
             }
@@ -193,9 +200,10 @@ function changeHub(id) {
         }
     });
 }
+//------------------------Moving Hubs Function----------------------------------------------------
 
 
-//------------------------Modal Function----------------------------------------------------
+//------------------------Modal Functions----------------------------------------------------
 function openModalHome(id){
     event.stopPropagation();
     var id = document.getElementById(id);
@@ -379,40 +387,40 @@ function toggleDevice(hub_id, device_id, state) {
     }
 }
 
-function scaleDevice(hub_id, device_id, scale) {
-    if(scale == -1){
+function scaleDevice(hub_id, device_id, state) {
+    if(state == -1){
         alert("Your device seems to have a fault. Seek repairs or replace device.");
     } else {
         document.getElementById('device_1_'+device_id).style.display = "none";
         document.getElementById('loader_'+device_id).style.display = "block";
 
-        if (scale == 0){
+        if (state == 0){
             document.getElementById('device_'+device_id).style.backgroundImage = "linear-gradient(to right, rgb(226, 183, 28) 0%, rgb(226, 183, 28) 25%, rgb(56,56,56) 25%, rgb(56,56,56) calc(25% + 1px), transparent calc(25% + 1px))";
         }
-        if (scale == 1) {
+        if (state == 1) {
             document.getElementById('device_'+device_id).style.backgroundImage = "linear-gradient(to right, rgb(226, 183, 28) 0%, rgb(226, 183, 28) 50%, rgb(56,56,56) 50%, rgb(56,56,56) calc(50% + 1px), transparent calc(50% + 1px))";
         } 
-        if (scale == 2) {
+        if (state == 2) {
             document.getElementById('device_'+device_id).style.backgroundImage = "linear-gradient(to right, rgb(226, 183, 28) 0%, rgb(226, 183, 28) 75%, rgb(56,56,56) 75%, rgb(56,56,56) calc(75% + 1px), transparent calc(75% + 1px))";
         }
-        if (scale == 3) {
+        if (state == 3) {
             document.getElementById('device_'+device_id).style.backgroundImage = "linear-gradient(to right, rgb(226, 183, 28) 0%, rgb(226, 183, 28) 100%, transparent 100%)";
         }
-        if (scale == 4) {
+        if (state == 4) {
             document.getElementById('device_'+device_id).style.backgroundImage = "linear-gradient(to right, rgb(110, 110, 110) 0%, rgb(110, 110, 110) 100%, transparent 100%)";
             $('#modal_' + device_id).load(document.URL + ' #content_timer_' + device_id);
         }
 
         let url = "required/action_device.php";
-        if (scale < 4){
-            scale = scale + 1;
+        if (state < 4){
+            state = state + 1;
         } else {
-            scale = 0;
+            state = 0;
         }
         $.ajax({
             type:'POST',
             url: url,
-            data:{ type: "scaledevice", hub_id: hub_id, id: device_id, scale: scale},
+            data:{ type: "scaledevice", hub_id: hub_id, id: device_id, state: state},
             success:function(data){
                 
             },
@@ -526,38 +534,52 @@ function sendRegisterRequest(){
 
 
 function submitImage(){
-    var url = "required/action_adddevice.php";
+    //SUBMIT IMAGE FROM ADD DEVICE PAGE
+    var url = "required/action_addDevice.php";
+    
+    //GET PAGE ELEMENTS FOR USE LATER
     var video = document.querySelector("#videoElement");
     var loading = document.querySelector("#loading");
     var submitButton = document.querySelector("#submitImage");
     var devicetext = document.querySelector("#devicetext");
 
+    //GET THE CURRENT PIXELS FROM THE CANVAS(THE VIDEO FEED)
     var canvas = document.createElement("canvas");
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
     canvas.getContext('2d').drawImage(video, 0, 0);
+    
+    //STORE IMAGE DATA IN BASE64 STRING, THIS STRING WILL BE SENT TO SERVER
     var dataQuery = canvas.toDataURL();
+    
+    //SET PAGE FEATURES TO INVISIBLE/SHOWN, TELL USER THEIR IMAGE IS BEING PROCESSED AND TO WAIT
     video.style.visibility = "hidden";
     loading.style.visibility = "visible";
     submitButton.style.visibility = "hidden";
     devicetext.innerText = "";
 
+    //CREATE AJAX CALL
     $.ajax({
         type:'POST',
         url: url,
         data:{ photo: dataQuery},
         success:function(data){
+            //SENDING DATA WAS SUCCESSFUL, BUT CHECK WHAT SERVER SAID ABOUT IMAGE
+
+            //CANNOT FIND QR CODE INSIDE IMAGE
             if(!data || data == "\n"){
                 video.style.visibility = "visible";
                 loading.style.visibility = "hidden";
                 submitButton.style.visibility = "visible";
                 devicetext.innerText = "Unable to find a QR code, please try again!";
             }else{
+                //FOUND QR CODE, DISPLAY RESULT TO USER.
                 loading.style.visibility = "hidden";
                 devicetext.innerText = data;
             }
         },
         error: function(data){
+            //THERE WAS A SERVER ERROR OR COMMUNICATION ERROR, TRY AGAIN
             video.style.visibility = "visible";
             loading.style.visibility = "hidden";
             submitButton.style.visibility = "visible";

@@ -4,19 +4,19 @@ include_once 'config.php';
 
 //GRAB TYPE FROM POST
 $type = "toggledevice";
-if(isset($_POST['type'])) $status = $_POST['type'];
+if(isset($_POST['type'])) $type = filter_input(INPUT_POST, "type", FILTER_SANITIZE_STRING);
 
 //GRAB RELEVANT FLAGS
-$type = '';
-if(isset($_POST['type'])) $type = $_POST['type'];
-$scale = 0;
-if(isset($_POST['scale'])) $scale = $_POST['scale'];
 $state = 0;
-if(isset($_POST['state'])) $state = $_POST['state'];
-$hub_id = 0;
-if(isset($_POST['hub_id'])) $hub_id = $_POST['hub_id'];
+if(isset($_POST['state'])) $state = filter_input(INPUT_POST, "state", FILTER_SANITIZE_NUMBER_INT);
 $id = 0;
-if(isset($_POST['id'])) $id = $_POST['id'];
+if(isset($_POST['id'])) $id = filter_input(INPUT_POST, "id", FILTER_SANITIZE_NUMBER_INT);
+
+
+if($type == FALSE || $id == FALSE || $state == FALSE){
+    echo("{\"error\":\"Invalid params, try again!\"}");
+}
+
 
 switch($type){
     case "toggledevice":  
@@ -41,19 +41,19 @@ switch($type){
     break;
     case "scaledevice":       
 
-        if($scale < 0 || $scale > 4){
+        if($state < 0 || $state > 4){
             echo("{\"error\":\"Invalid scale!\"}");
             exit(0);
         }
 
         $chance_of_break = rand(1,1000);
         if($chance_of_break <= 1) {
-            $scale = 0 - 1;
+            $state = -1;
         }
 
         $stmt = $db->prepare("UPDATE device_info SET device_status = ? WHERE device_id = ?");
 
-        $stmt->bind_param("ii", $scale, $id);
+        $stmt->bind_param("ii", $state, $id);
         $stmt->execute();
         $stmt->close();
 

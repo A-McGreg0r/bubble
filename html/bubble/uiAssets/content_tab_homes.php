@@ -553,7 +553,7 @@ change_button;
                                                     <canvas class="" style="max-width:50% min-width:30%" id="heatingUsage"></canvas>
                                                     
                                                     <script>
-                                                        //doughnut
+                                                        //doughnut chart script
                                                         var ctxD = document.getElementById("heatingUsage").getContext("2d");
                                                         var myLineChart = new Chart(ctxD, {
                                                         type: "doughnut",
@@ -583,7 +583,7 @@ change_button;
                                                 <canvas class="" style="max-width:50% min-width:30%" id="heatingUsage1"></canvas>
                                                 
                                                 <script>
-                                                    //doughnut
+                                                    //doughnut chart script
                                                     var ctxD = document.getElementById("heatingUsage1").getContext("2d");
                                                     var myLineChart = new Chart(ctxD, {
                                                     type: "doughnut",
@@ -611,7 +611,7 @@ change_button;
                                                     <h4 class="text-centre text-dark centre-text ">Yearly</h4>
                                                     <canvas class="" style="max-width:50% min-width:30%" id="heatingUsage2"></canvas>
                                                     <script>
-                                                        //doughnut
+                                                        //doughnut chart script
                                                         var ctxD = document.getElementById("heatingUsage2").getContext("2d");
                                                         var myLineChart = new Chart(ctxD, {
                                                         type: "doughnut",
@@ -632,7 +632,7 @@ change_button;
                                             </div>
                                     <!--Donut 3--> 
                                      
-                                    <!--button for Donut carousel -->
+                                    <!--buttons for Donut carousel -->
                                         <a class="carousel-control-prev " href="#chart-carousel" role="button" data-slide="prev">
                                                 <span class="carousel-control-prev-icon ">
                                                     <i class="fas fa-angle-double-left"></i></span>
@@ -646,13 +646,13 @@ change_button;
                                         </a>  
                                                 
                                 </div>
-                                <!--Donut carousel-->
+                                <!--Donut carouse endl-->
                                 <script>
-                                        //enabling touch controls
-                                        $('.carousel').carousel({
-                                        touch: true // default
-                                        });
-                                    </script>
+                                    //enabling touch controls
+                                    $('.carousel').carousel({
+                                    touch: true // default
+                                    });
+                                </script>
 
                                     <small class="form-text text-muted mb-4 text" style="text-align:center">Budget of £$budget_round per Month</small>
                             </div>
@@ -666,7 +666,7 @@ change_button;
 
                     <div class="col-lg swipe" id="graph">
                     <h4 class="section-title overview">Power Usage</h4>
-
+                    <!--Place holder for large graph if screen is to small-->
                     <div class="orientation">
                         <img src="../img/orientation.png" class="tilt-icon">
                         <div>Please rotate phone to view graph </div>
@@ -684,11 +684,9 @@ change_button;
                             <canvas id="masterLineChart"></canvas>
                             <small class="form-text text-muted mb-4" style="text-align:center">Graph will automatically populate over time</small>
 
-                            <script type="text/javascript">
-                                //todo cahe where datas comeing from                                         
+                            <script type="text/javascript">                                      
                                 //Supplied Datasets to display
                                 //hourly 1 upto 24
-                                //TODO change expected usage to power genarated once implmented
                                 let data1 = { "labels": $DataLabelsYearEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "Energy Generated [kWh]", "data": $dataGenYearEncoded, "backgroundColor": "rgba(226, 183, 28, 0.4)", "borderColor": "rgb(226, 183, 28)", "borderWidth": 2 },{ "label": "Energy Used [kWh]", "data": $dataPointsYearEncoded, "backgroundColor": "rgb(56,56,56)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
                                 //days upto 31 days
                                 let data2 = { "labels": $DataLabelsMonthEncoded,"label": "Expected Usage:", "datasets": [{ "label": "Energy Generated [kWh]", "data": $dataGenMonthEncoded, "backgroundColor": "rgba(226, 183, 28, 0.4)", "borderColor": "rgb(226, 183, 28)", "borderWidth": 2 },{ "label": "Energy Used [kWh]", "data": $dataPointsMonthEncoded, "backgroundColor": "rgb(56,56,56)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
@@ -712,7 +710,7 @@ change_button;
                                         }
                                     });
                         
-                            // Called on Change
+                            // Called on Change :used to swap between diffrent data sets
                             $(document).ready(function(){
                                 $("select.dropdown").change(function(){
                                     let selectedChart = $(this).children("option:selected").val();

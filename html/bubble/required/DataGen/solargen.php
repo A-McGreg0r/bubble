@@ -1,6 +1,5 @@
 <?php
 require "../config.php";
-global $db;
 
 function _main($Y, $anual_power_gen) {
 	
@@ -154,8 +153,6 @@ function _main($Y, $anual_power_gen) {
             $qV = ($percentage)/($sum);
         }
         
-		$inst_hourly_gen = $db->prepare("INSERT INTO hourly_gen (entry_id, hub_id, entry_year, entry_month, entry_day, entry_hour, energy_gen) VALUES (?, ?, ?, ?, ?, ?, ?)");
-		$inst_hourly_gen->bind_param("iiiiiid", $default, $hub_id, $Y, $m, $d, $h, $watts);
 		$hub_id=1;
         for ($h=$rise; $h <= $set; $h++) {
             //INSERT INTO TABLE
@@ -164,11 +161,31 @@ function _main($Y, $anual_power_gen) {
             elseif ($repeat){$repeat=false;}
             else {$N--;}
             $watts = $N * $qV * $P;
-			if (intval(date('H'))==$h){ 
+			if ((intval(date('H'))+1)==$h){ 
 				echo "| * $N * | ";
 				echo "hour[ $h ]::";
-				echo $watts;echo "<br>";
-				$inst_hourly_gen->execute();
+                echo $watts;echo "\n";
+                global $db;
+                $inst_hourly_gen = $db->prepare("INSERT INTO hourly_gen (hub_id, entry_month, entry_day, entry_hour, energy_gen) VALUES (?, ?, ?, ?, ?)");
+                $inst_hourly_gen->bind_param("iiiid", $hub_id, $m, $d, $h, $watts);
+                $inst_hourly_gen->execute();
+
+                $stmt13 = $db->prepare("SELECT * FROM hourly_gen WHERE hub_id = ?");
+                $stmt13->bind_param("i", $hub_id);
+                $stmt13->execute();
+                $result13 = $stmt13->get_result();
+                $num_row13 = $result13->num_rows;
+                if ($num_row13 >= 24) {
+                    $all13 = $result13->fetch_all(MYSQLI_ASSOC);
+                    foreach($all13 as $row13){
+                        $num_row13 = $num_row13 - 1;
+                        if ($num_row13 >= 24) {
+                            $stmt14 = $db->prepare("DELETE FROM hourly_gen WHERE entry_id = ?");
+                            $stmt14->bind_param("i", $row13['entry_id']);
+                            $stmt14->execute();
+                        }
+                    }
+                }
 				break;
 			}
         }

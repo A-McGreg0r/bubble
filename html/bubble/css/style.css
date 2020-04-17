@@ -454,8 +454,12 @@ select {
     padding-top: calc(50vh - 20vh)!important;
 }
 
+.modalTimer {
+    overflow-y: none;
+}
+
 #content_timer_home {
-    max-height: 220px!important;
+    max-height: 221px!important;
 }
 
 .modalStatsWrap {
@@ -463,7 +467,7 @@ select {
 }
 
 .modalContent {
-    max-height: 252px;
+    max-height: 253px;
     z-index: 11;
     transition: all 1s linear;
     border: 2px solid rgb(0,0,0);

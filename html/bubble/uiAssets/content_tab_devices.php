@@ -198,32 +198,32 @@ html;
                     $html .= <<<html
                     <!-- Card -->
                     <div id="reload_$device_id">
-                    <div id="device_$device_id" class="card mb-4 container text-dark grey-out" style="background-image:$background" onclick="alterDevice($hub_id, $device_id, $device_type, $status);refreshDevice($device_id);refreshRoom($room_id);refreshHomeButton();">
-                        <!--Card image-->
-                        <div class="view overlay">
-                            <div class="mask rgba-white-slight"></div>
-                        </div>
-                
-                        <!--Card content-->
-                        <div class="card-body d-flex justify-content-between">
+                        <div id="device_$device_id" class="card mb-4 container text-dark grey-out" style="background-image:$background" onclick="alterDevice($hub_id, $device_id, $device_type, $status);refreshDevice($device_id);refreshRoom($room_id);refreshHomeButton();">
+                            <!--Card image-->
+                            <div class="view overlay">
+                                <div class="mask rgba-white-slight"></div>
+                            </div>
                     
-                            <!--Title-->      
-                            <div class="d-flex flex-column">  
-                                <div id="device_3_$device_id" class="flex-sm-row" style="color:$colour3">
-                                    <strong class="room_icon">$icon</strong> &nbsp; <strong>$device_name</strong>
-                                </div>                     
-                            </div>
-                            
-                            <div class="d-flex flex-column">
-                                <!-- Default switch -->
-                                <p class="onOffLabel"><strong id="device_1_$device_id" style="color:$colour">$setting</strong><div id="loader_$device_id" class="loader"></div></p>
-                            </div>
-                        </div>
-
-                        <strong class="timer_icon" id="timer_$device_id" style="color:$colour; display:$timer_display" onclick="openModal('modal_$device_id', 'timer_x_$device_id')">$timer</strong>
-                        <i class="stats_icon fa" id="stats_$device_id" style="color:$colour;" onclick="openModal('modal_stats_$device_id', 'stats_x_$device_id')"><i class="fas fa-info-circle"></i></i>
+                            <!--Card content-->
+                            <div class="card-body d-flex justify-content-between">
                         
-                    </div>                    
+                                <!--Title-->      
+                                <div class="d-flex flex-column">  
+                                    <div id="device_3_$device_id" class="flex-sm-row" style="color:$colour3">
+                                        <strong class="room_icon">$icon</strong> &nbsp; <strong>$device_name</strong>
+                                    </div>                     
+                                </div>
+                                
+                                <div class="d-flex flex-column">
+                                    <!-- Default switch -->
+                                    <p class="onOffLabel"><strong id="device_1_$device_id" style="color:$colour">$setting</strong><div id="loader_$device_id" class="loader"></div></p>
+                                </div>
+                            </div>
+
+                            <strong class="timer_icon" id="timer_$device_id" style="color:$colour; display:$timer_display" onclick="openModal('modal_$device_id', 'timer_x_$device_id')">$timer</strong>
+                            <i class="stats_icon fa" id="stats_$device_id" style="color:$colour;" onclick="openModal('modal_stats_$device_id', 'stats_x_$device_id')"><i class="fas fa-info-circle"></i></i>
+                            
+                        </div>                    
                     </div>
 
 
@@ -433,6 +433,30 @@ html;
 html;
                     
                 }
+            }else{
+                $html.= <<<html
+                <a href="index.php?action=account">
+                <div class="card mb-4 container">
+                    <!--Card image-->
+                    <div class="view overlay">
+                        <div class="mask rgba-white-slight"></div>
+                    </div>
+            
+                    <!--Card content-->
+                    <div class="card-body d-flex justify-content-between">
+            
+                    <!--Title-->      
+                        <div class="d-flex flex-column">  
+                            <strong>There are no devices in this room. Click to move a device to this room</strong>
+                        </div>
+                        
+                        <div class="d-flex flex-column">
+                            <i class="far fa-plus-square"></i>
+                        </div>
+                    </div>
+                </div>
+            </a>
+html;
             }
             $stmtDevice->close();
         }

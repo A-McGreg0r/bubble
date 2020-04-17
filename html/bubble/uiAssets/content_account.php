@@ -260,7 +260,7 @@ function generateAccount()
                                         
                                             </div>
                                                 <div class="col-md">
-                                                    <button type="button" class="btn btn-primary btn-sm btn-rounded" >Update</button>
+                                                    <button type="button" class="btn btn-primary btn-sm btn-rounded" onclick="" >Update</button>
                                                 </div>
                                         </div>
                                                             

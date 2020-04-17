@@ -50,16 +50,9 @@
     $stmt = $db->prepare("UPDATE device_info SET room_id = ? WHERE hub_id = ? AND device_id = ?");
     $stmt->bind_param("iii", $room_id, $hub_id, $device_id);
     if ($stmt->execute()) {
-        $result = $stmt->get_result();
-        if($result->affected_rows == 1){
-            echo("{\"success\":\"Device moved\"}");
-            $stmt->close();
-            exit();
-        }else{
-            echo("{\"error\":\"Failed to move device, try again\"}");
-            $stmt->close();
-            exit();
-        }
+        echo("{\"success\":\"Device moved\"}");
+        $stmt->close();
+        exit();
     }else{
         echo("{\"error\":\"Database connection error, try again\"}");
         $stmt->close();

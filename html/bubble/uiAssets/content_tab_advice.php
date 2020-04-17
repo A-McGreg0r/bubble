@@ -31,7 +31,7 @@ function generateAdviceTab()
                 $stmt1->execute();
                 $result1 = $stmt1->get_result();
 
-                $temp = rand(280,303);
+                $temp = rand(273,303);
 
                 if ($result1->num_rows === 1) {
                     $row1 = $result1->fetch_assoc();
@@ -77,6 +77,24 @@ function generateAdviceTab()
                                     </tr>
                                     <tr class='advice_point'>
                                         <td>Have a cold dinner and save energy from your oven</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>You could close your window blinds and curtains during the day to keep the temperature down</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>Take a shorter and cooler shower</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>Ensure the boiler is set to a lower setting as water will heat up much faster on a hot day</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>Try and limit hairdryer use and let it dry naturally</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>Keep the fridge full. An empty fridge wastes far more energy than a full one as when food is compacted together it keeps cooler longer and easier</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td></td>
                                     </tr></table>";
                     } else if($temp < 18 && $temp >= 14) {
                         $weather_symbol = "<img class='weather_symbol' src='../img/sun_cloud.png'>";
@@ -98,6 +116,21 @@ function generateAdviceTab()
                                     </tr>
                                     <tr class='advice_point'>
                                         <td>A nice book in the sun sounds far more enjoyable than watching TV...</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>You can close your window blinds and curtains during the day to keep the temperature down</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>Washing clothes at 30-40 degrees will save energy</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>Take a shorter and cooler shower</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>Keep the fridge full. An empty fridge wastes far more energy than a full one as when food is compacted together it keeps cooler longer and easier</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>Ensure the boiler is set to a lower setting as water will heat up much faster on a warm day</td>
                                     </tr></table>";
                     } else if($temp < 14 && $temp >= 9) {
                         $weather_symbol = "<img class='weather_symbol' src='../img/cloud.png'>";
@@ -117,7 +150,26 @@ function generateAdviceTab()
                                     </tr>
                                     <tr class='advice_point'>
                                         <td>If it gets any colder it might be an idea to get a blanket</td>
-                                    </tr></table>";
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>Washing clothes at 30-40 degrees will save energy</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>Keep your heating at a consistent level, as turning it off and on uses more energy</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>Drop the pressure of your shower and try make it short</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>Keep the oven door open after cooking a meal, let the heat spread through your kitchen</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>Keep the fridge full. An empty fridge wastes far more energy than a full one as when food is compacted together it keeps cooler longer and easier</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>Drawing the curtains will keep a substantial amount of heat in</td>
+                                    </tr>
+                                    </table>";
                     } else if($temp < 9 && $temp >= 5) {
                         $weather_symbol = "<img class='weather_symbol' src='../img/dark_cloud.png'>";
                         $bg = "#bcbcbc";
@@ -136,7 +188,32 @@ function generateAdviceTab()
                                     </tr>
                                     <tr class='advice_point'>
                                         <td>What's your favourite quick, homely meal? Making a quick meal will use less energy</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>Washing clothes at 30-40 degrees will save energy</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>Ensure all windows are sealed tightly to prevent draught</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>Wear warm clothing, you could save up to £60 per year by turning your thermostat down by just 1 degree!</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>Keep your heating at a consistent level, as turning it off and on uses more energy</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>Keep the oven door open after cooking a meal, let the heat spread through your kitchen</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>Keep the fridge full. An empty fridge wastes far more energy than a full one as when food is compacted together it keeps cooler longer and easier</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>Don't place anything in front of the radiator that will block the heat</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>Drawing the curtains will keep a substantial amount of heat in</td>
                                     </tr></table>";
+
                     } else if ($temp < 5) {
                         $weather_symbol = "<i class='far fa-snowflake weather_symbol_large' style='color:white'></i>";
                         $bg = "rgb(100, 100, 100)";
@@ -156,6 +233,30 @@ function generateAdviceTab()
                                     <tr class='advice_point'>
                                         <td>Put a jumper on if you're cold</tr>
                                     </td>
+                                    <tr class='advice_point'>
+                                        <td>Washing clothes at 30-40 degrees will save energy</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>Ensure all windows are sealed tightly to prevent draught</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>Wear warm clothing, you could save up to £60 per year by turning your thermostat down by just 1 degree!</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>Keep your heating at a consistent level, as turning it off and on uses more energy</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>Keep the oven door open after cooking a meal, let the heat spread through your kitchen</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>Keep the fridge full. An empty fridge wastes far more energy than a full one as when food is compacted together it keeps cooler longer and easier</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>Don't place anything in front of the radiator that will block the heat</td>
+                                    </tr>
+                                    <tr class='advice_point'>
+                                        <td>Drawing the curtains will keep a substantial amount of heat in</td>
+                                    </tr>
                                     </table>";
                     }
 

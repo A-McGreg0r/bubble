@@ -100,7 +100,7 @@ html;
                 $result5 = $stmt5->get_result();
                 if ($result5->num_rows > 0) {
                     while($rowDevice5 = $result5->fetch_assoc()) {
-                        $total_usage = $total_usage + $rowDevice5['month_data'];
+                        $total_usage = $total_usage + $rowDevice5['day_data'];
                     }
                 }
                 

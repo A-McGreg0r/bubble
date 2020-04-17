@@ -1,5 +1,5 @@
 <?php
-//Connect to the db
+//CONNECT TO DATABASE BACKEND
 require 'config.php';
 require 'PepperedPasswords.php';
 

@@ -12,7 +12,13 @@
     use Zxing\QrReader;
 
     //GET PHOTO FROM POST BASE64 DATA
-    $imageURI = $_POST['photo'];
+    $imageURI = filter_input(INPUT_POST, "photo", FILTER_SANITIZE_STRING);
+
+    if($imageURI == FALSE){
+        echo "Hmm, something went wrong, please refresh the page and try again";
+
+    }
+    
     $imageURI = str_replace(' ', '+', $imageURI);
 	$imageURI = str_replace('data:image/png;base64,', '', $imageURI);
 

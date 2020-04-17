@@ -149,7 +149,7 @@ function _main($Y, $anual_power_gen) {
             case 2:
                 //Summer
                 //Daylight hours::14
-                //6-9 nice
+                //6-9
                 $rise=6;
                 $set=22;
                 break;

@@ -139,6 +139,8 @@ $(document).ready(function(){
         let value = $(this).val().split(".");
         let roomId = value[0];
         let deviceId = value[1];
+        let roomName = value[2];
+
         $.ajax({
             type:'POST',
             url: url,
@@ -149,10 +151,12 @@ $(document).ready(function(){
 
                 //LOGIN ERROR, DISPLAY ERROR TO USER
                 if(result.error){
-
+                    alert("Failed to move device: "+result.error);
                 }
                 if(result.success){
-                    location.reload();
+                    $(this).val("-1");
+                    $("currentRoom_"+deviceId).html("Current Room: " + roomName);
+
                 }
             },
             error: function(data){
@@ -165,9 +169,7 @@ $(document).ready(function(){
 //------------------------Moving Hubs Function----------------------------------------------------
 
 function changeHub(id) {
-
     let url = "required/action_changeHub.php";
-
     $.ajax({
         type:'POST',
         url: url,
@@ -178,7 +180,7 @@ function changeHub(id) {
 
             //LOGIN ERROR, DISPLAY ERROR TO USER
             if(result.error){
-
+                alert("Failed to change hub, please try again!");
             }
             if(result.success){
                 location.reload();

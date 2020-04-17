@@ -249,6 +249,20 @@ function styleHomeTimer() {
     }, 2000);
 }
 
+function styleRoomTimer(id) {
+    document.getElementById('time_button_room_text_' + id).style.display = "none";
+    document.getElementById('timer-tick-room-' + id).style.display = "block";
+    document.getElementById('timer-tick-room-' + id).classList.add('animated');
+    document.getElementById('timer-tick-room-' + id).classList.add('slow');
+    document.getElementById('timer-tick-room-' + id).classList.add('zoomIn');
+    setTimeout(function() {
+        document.getElementById('timer-tick-room-' + id).classList.remove('zoomIn');
+        document.getElementById('time_button_room_text_' + id).style.display = "block";
+        document.getElementById('timer-tick-room-' + id).style.display = "none";
+        $('#modal_room_' + id).load(document.URL + ' #content_room_timer_' + id);
+    }, 2000);
+}
+
 function toggleRoom(hub_id, room_id){
     document.getElementById('room_setting_'+room_id).style.display = "none";
     document.getElementById('room_loader_'+room_id).style.display = "block";

@@ -462,6 +462,10 @@ select {
     max-height: 221px!important;
 }
 
+.modalRoomTimer{
+    max-height: 229px!important;
+}
+
 .modalStatsWrap {
     padding-top: 5vw!important;
 }

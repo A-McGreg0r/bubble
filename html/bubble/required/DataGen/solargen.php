@@ -154,16 +154,22 @@ function _main($Y, $anual_power_gen) {
         }
         
 		$hub_id=1;
-        for ($h=$rise; $h <= $set; $h++) {
+        for ($h=0; $h <= 23; $h++) {
             //INSERT INTO TABLE
             $i=$h-$rise;
             if ($i < $peak) {$N++;}
             elseif ($repeat){$repeat=false;}
             else {$N--;}
             $watts = $N * $qV * $P;
-			if ((intval(date('H'))+1)==$h){ 
-				echo "| * $N * | ";
-				echo "hour[ $h ]::";
+			if ($h == (intval(date('H'))+1)){ 
+                
+				echo "| * $rise - $set * | ";
+                echo "hour[ $h ]::";
+                if($h > $rise && $h < $set){
+                    $watts = $watts /5 * (rand(40,100)/100);
+                } else {
+                    $watts = 0;
+                }
                 echo $watts;echo "\n";
                 global $db;
                 $inst_hourly_gen = $db->prepare("INSERT INTO hourly_gen (hub_id, entry_month, entry_day, entry_hour, energy_gen) VALUES (?, ?, ?, ?, ?)");
@@ -186,7 +192,6 @@ function _main($Y, $anual_power_gen) {
                         }
                     }
                 }
-				break;
 			}
         }
         

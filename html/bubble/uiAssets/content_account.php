@@ -27,7 +27,7 @@ function generateAccount()
                     <!--Main Col-->
                     <h4 class="bold-title">My Account</h4>
                     
-              
+                        <!--Account Details : first name-->
                         <div class="row account-row ">
                             <div class="col-md">
                                 <strong>&ensp;First Name:</strong>
@@ -36,7 +36,7 @@ function generateAccount()
                                 <strong>$first_name&ensp;</strong>
                             </div>
                         </div>
-                        
+                        <!--Account Details : second name-->
                         <div class="row account-row">
                             <div class="col-md">
                                 <strong>&ensp;Last Name:</strong>
@@ -46,6 +46,7 @@ function generateAccount()
                             </div>
                         </div>
                         
+                        <!--Account Details : E-mail-->
                         <div class="row account-row">
                             <div class="col-md">
                                 <strong>&ensp;Email Address:</strong>
@@ -54,24 +55,24 @@ function generateAccount()
                                 <strong>$email&ensp;</strong>
                             </div>
                         </div>
-                        
+                        <!--Account Details :Address-->
                         <div class="row account-row">
                             <div class="col-md">
                                 <strong>&ensp;Address:</strong>
                             </div>
-                            
+                            <!--Account Details :Address line 1-->
                             <div class="col-md" style="margin-left: 3%">
                                 <div class="flex-md-row">
                                     <strong>$address_l1&ensp;</strong>
                                 </div>
-                                
+                                <!--Account Details :Address line 2-->
                                 <div class="flex-md-row">
                                     <strong>$address_l2&ensp;</strong>
                                 </div>
                             </div>
                         </div>
                         
-                        
+                        <!--Account Details : Postcode-->
                         <div class="row account-row">
                             <div class="col-md">
                                 <strong>&ensp;Postcode:</strong>
@@ -80,7 +81,7 @@ function generateAccount()
                                 <strong>$postcode&ensp;</strong>
                             </div>
                         </div>
-                        
+                        <!--Account Details : Energy price-->
                         <div class="row account-row">
                             <div class="col-md">
                                 <strong>&ensp;Energy Price:</strong>
@@ -89,7 +90,7 @@ function generateAccount()
                                 <strong>$energy_cost&ensp;</strong><!--TODO make updateabul-->
                             </div>
                         </div>
-                        
+                        <!--Account Details : Monthly Budget-->
                         <div class="row account-row">
                             <div class="col-md">
                                 <strong>&ensp;Monthly Budget:</strong>
@@ -252,7 +253,7 @@ function generateAccount()
                                                     <input class="form-control" type="text" placeholder="$budget">
                                                 </div>
                                         </div>
-                                            
+                                        <!--Model footer-->    
                                         <div class="modal-footer justify-content-lg-between" style="margin 50px">
                                             <div class="col-md">
                                                 <button type="button" class="btn-sm btn-primary  btn-rounded" data-toggle="modal" data-target="#updateAccountModal">Update Account</button>

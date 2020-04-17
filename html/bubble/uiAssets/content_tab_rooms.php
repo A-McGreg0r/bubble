@@ -398,31 +398,7 @@ html;
     } else{
         exit("Error, user is not logged in!");
     }
-
-    $device_output = json_encode($device_output);
-    $output_names = json_encode($output_names);
     $html .= <<<html
-    <hr>
-    <canvas class="stats-pie " style="max-width:400px display:inline-block" id="room_stats_doughnut_room" width="924" height="426"></canvas>
-    <script>
-        //doughnut
-        var ctxD = document.getElementById("room_stats_doughnut_room").getContext("2d");
-        var myLineChart = new Chart(ctxD, {
-        type: "doughnut",
-        data: {
-        labels: $output_names,
-        datasets: [{
-        data: $device_output,
-        backgroundColor: ["rgb(226, 183, 28)", "rgb(56,56,56)"],
-        hoverBackgroundColor: ["rgb(246, 203, 48)", "rgb(76,76,76)"]
-        }]
-        },
-        options: {
-            responsive: [true],
-            
-            }
-        });
-    </script>
     </div>
 html;
     return $html;

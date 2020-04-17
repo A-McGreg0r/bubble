@@ -45,6 +45,9 @@ html;
             $price = $row4['energy_cost'];
         }
 
+        $device_output = array();
+        $output_names = array();
+
         //GET ALL ROOMS FOR HUB ID
         $stmt = $db->prepare("SELECT * FROM room_info WHERE hub_id = ?");
         $stmt->bind_param("i", $hub_id);
@@ -81,6 +84,7 @@ html;
                 $timers = "";
                 $timer = "<i class='far fa-clock'></i>&nbsp;";
                 $timer_display = "none";
+                $device_add = 0;
 
                 //FIGURE OUT WHETHER ALL DEVICES ARE OFF OR IF SOME ARE ON. DISPLAY COLOUR ACCORDINGLY
                 if ($result2->num_rows > 0) {
@@ -94,10 +98,14 @@ html;
                             $setting = "on";
                             $timers .= "startTimer($id_device, 'room_hour_$room_id', 'room_minute_$room_id');";
                             $timer_display = "flex";
+
+                            $device_add = $device_add + $rowDevice['day_data'];
                         }
                     }
                 }
-                $stmt2->close();
+
+                
+                array_push($output_names, $room_name);
 
                 $total_usage = 0;
                 $stmt5 = $db->prepare("SELECT * FROM device_info WHERE hub_id = ?");
@@ -145,7 +153,13 @@ html;
                 $price_month = number_format(($room_month * $price),2);
                 $price_year = number_format(($room_year * $price),2);
 
+                array_push($device_output, $price_month);
+
                 $total_usage = $total_usage - $room_month;
+                $total_price = number_format($total_usage * $price, 2);
+
+                $percent = number_format(((100 / ($total_price + $price_month)) * $price_month), 1);
+
 
                 $html .= <<<html
                     refreshRoom($room_id);refreshHomeButton();">
@@ -183,7 +197,7 @@ html;
                                 <div class="active">                           
                                     <div style="max-width:100% text-align:center">
                                 
-                                        <h4 class="modalSub">Comparison</h4>
+                                        <h4 class="modalSub">Month's Comparison</h4>
                                         
                                         <canvas class="stats-pie " style="max-width:400px display:inline-block" id="room_stats_doughnut_$room_id" width="924" height="426"></canvas>
                                         
@@ -193,7 +207,7 @@ html;
                                                 $room_name:
                                             </strong></td>
                                             <td class="stats-right r-pad-stats tighten"><strong>
-                                                $room_month kWh
+                                                £$price_month
                                             </strong></td>
                                         </tr>
                                         <tr class="raise">
@@ -201,7 +215,15 @@ html;
                                                 Other Rooms:
                                             </strong></td>
                                             <td class="stats-right r-pad-stats tighten"><strong>
-                                                $total_usage kWh
+                                                £$total_price
+                                            </strong></td>
+                                        </tr>
+                                        <tr class="raise">
+                                            <td class="stats-left l-pad-stats tighten"><strong>
+                                                Percentage:
+                                            </strong></td>
+                                            <td class="stats-right r-pad-stats tighten"><strong>
+                                                $percent %
                                             </strong></td>
                                         </tr>
                                         </table>
@@ -212,9 +234,9 @@ html;
                                             var myLineChart = new Chart(ctxD, {
                                             type: "doughnut",
                                             data: {
-                                            labels: ["$room_name [kWh]", "Other Rooms [kWh]"],
+                                            labels: ["$room_name [£]", "Other Rooms [£]"],
                                             datasets: [{
-                                            data: [$room_month, $total_usage],
+                                            data: [$price_month, $total_price],
                                             backgroundColor: ["rgb(226, 183, 28)", "rgb(56,56,56)"],
                                             hoverBackgroundColor: ["rgb(246, 203, 48)", "rgb(76,76,76)"]
                                             }]
@@ -376,7 +398,33 @@ html;
     } else{
         exit("Error, user is not logged in!");
     }
-    $html .= "</div>";
+
+    $device_output = json_encode($device_output);
+    $output_names = json_encode($output_names);
+    $html .= <<<html
+    <hr>
+    <canvas class="stats-pie " style="max-width:400px display:inline-block" id="room_stats_doughnut_room" width="924" height="426"></canvas>
+    <script>
+        //doughnut
+        var ctxD = document.getElementById("room_stats_doughnut_room").getContext("2d");
+        var myLineChart = new Chart(ctxD, {
+        type: "doughnut",
+        data: {
+        labels: $output_names,
+        datasets: [{
+        data: $device_output,
+        backgroundColor: ["rgb(226, 183, 28)", "rgb(56,56,56)"],
+        hoverBackgroundColor: ["rgb(246, 203, 48)", "rgb(76,76,76)"]
+        }]
+        },
+        options: {
+            responsive: [true],
+            
+            }
+        });
+    </script>
+    </div>
+html;
     return $html;
 
 }

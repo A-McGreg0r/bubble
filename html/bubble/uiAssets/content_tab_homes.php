@@ -494,7 +494,7 @@ change_button;
                 <div class="row"
                 </div>     
                     <div class="col-lg-6 swipe" id="overview">
-                        <h4 class="section-title">Overview</h4>
+                        <h4 class="section-title">Cost Overview</h4>
                         <table class="stats-table">
                             
                             <tr class="stats-row">

@@ -127,6 +127,9 @@ html;
                     $price_month = number_format($price_month,2);
                     $price_year = number_format($price_year,2);
 
+                    $total_price = number_format($total_usage * $price, 2);
+                    $percent = number_format(((100 / ($total_price + $price_month)) * $price_month), 1);
+
                     $hour = date("H");
                     $minute = date("i");
 
@@ -232,7 +235,7 @@ html;
                                     <div class="active">                           
                                         <div style="max-width:100% text-align:center">
                                     
-                                            <h4 class="modalSub">Comparison</h4>
+                                            <h4 class="modalSub">Month's Comparison</h4>
 
                                                 <canvas class="stats-pie " style="max-width:400px display:inline-block" id="stats_doughnut_$device_id" width="924" height="426"></canvas>
 
@@ -242,7 +245,7 @@ html;
                                                     $device_name:
                                                 </strong></td>
                                                 <td class="stats-right r-pad-stats tighten"><strong>
-                                                    $device_month kWh
+                                                    £$price_month
                                                 </strong></td>
                                             </tr>
                                             <tr class="raise">
@@ -250,7 +253,15 @@ html;
                                                     Other Devices:
                                                 </strong></td>
                                                 <td class="stats-right r-pad-stats tighten"><strong>
-                                                    $total_usage kWh
+                                                    £$total_price
+                                                </strong></td>
+                                            </tr>
+                                            <tr class="raise">
+                                                <td class="stats-left l-pad-stats tighten"><strong>
+                                                    Percentage:
+                                                </strong></td>
+                                                <td class="stats-right r-pad-stats tighten"><strong>
+                                                    $percent %
                                                 </strong></td>
                                             </tr>
                                             </table>
@@ -261,9 +272,9 @@ html;
                                                 var myLineChart = new Chart(ctxD, {
                                                 type: "doughnut",
                                                 data: {
-                                                labels: ["$device_name [kWh]", "Other Devices [kWh]"],
+                                                labels: ["$device_name [£]", "Other Devices [£]"],
                                                 datasets: [{
-                                                data: [$device_month, $total_usage],
+                                                data: [$price_month, $total_price],
                                                 backgroundColor: ["rgb(226, 183, 28)", "rgb(56,56,56)"],
                                                 hoverBackgroundColor: ["rgb(246, 203, 48)", "rgb(76,76,76)"]
                                                 }]

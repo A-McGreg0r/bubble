@@ -370,23 +370,6 @@ pageHTML;
     
                 $row.prev().before($row.get(0));
             });
-
-            $tableID.on("click", ".deviceLocation", function () {
-                var url = "required/action_movedevice.php";
-                var dataQuery = $(this).value;
-                $.ajax({
-                    type:\'POST\',
-                    url: url,
-                    data:{ data: dataQuery},
-                    success:function(data){
-
-                    },
-                    error: function(data){
-
-                    }
-                });
-
-            });
     
             $tableID.on("click", ".table-down", function () {
     

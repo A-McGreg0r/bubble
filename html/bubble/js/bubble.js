@@ -135,8 +135,30 @@ $(document).ready(function(){
 
     //SETUP ACCOUNT PAGE DEVICE MOVING
     $('select').change(function(){
-        
-        alert($(this).val());    
+        let url = "required/action_moveDevice.php";
+        let value = $(this).val().split(".");
+        let roomId = value[0];
+        let deviceId = value[1];
+        $.ajax({
+            type:'POST',
+            url: url,
+            data:{ room_id: roomId, device_id: deviceId},
+            success:function(data){
+                //PARSE RESPONSE JSON DATA
+                var result = JSON.parse(data);
+
+                //LOGIN ERROR, DISPLAY ERROR TO USER
+                if(result.error){
+
+                }
+                if(result.success){
+                    location.reload();
+                }
+            },
+            error: function(data){
+                alert("Failed to change hub, please try again!");
+            }
+        });
     });
 });
 

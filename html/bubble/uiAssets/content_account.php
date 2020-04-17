@@ -132,8 +132,8 @@ function generateAccount()
                                         <strong> Warring:   This will completely delete your account and can't be undone!</strong>
                                     </div>
                                     <div class="modal-footer justify-content-lg-between">
-                                        <button class="btn btn-danger btn-sm btn-rounded" data-dismiss="modal" >Cancel</button>
-                                        <button type="button" class="btn btn-primary btn-sm btn-rounded" >Update</button>
+                                        <button class="btn btn-danger btn-sm btn-rounded" >Yes: delete account</button>
+                                        <button type="button" class="btn btn-primary btn-sm btn-rounded" data-dismiss="modal" >No: go back.</button>
                                     </div>
                                     
                                 </div>
@@ -256,10 +256,11 @@ function generateAccount()
                                         <!--Model footer-->    
                                         <div class="modal-footer justify-content-lg-between" style="margin 50px">
                                             <div class="col-md">
-                                                <button type="button" class="btn-sm btn-primary  btn-rounded" data-toggle="modal" data-target="#updateAccountModal">Update Account</button>
+                                                  <button class="btn btn-danger btn-sm btn-rounded" data-dismiss="modal" >Cancel</button>
+                                        
                                             </div>
                                                 <div class="col-md">
-                                                    <button type="button" class="btn-sm btn-danger  btn-rounded" data-toggle="modal" data-target="#removeAccountModal">Delete Account</button>
+                                                    <button type="button" class="btn btn-primary btn-sm btn-rounded" >Update</button>
                                                 </div>
                                         </div>
                                                             

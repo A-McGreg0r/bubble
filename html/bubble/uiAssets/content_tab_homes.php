@@ -673,10 +673,9 @@ change_button;
                             <div class="container landscape">
                                     <!--change chart drop down-->
                                     <select id="chartPicker" class="browser-default custom-select dropdown">
-                                        <option selected="selected">Choose time period</option>
-                                        <option value="0">Current Year</option>
-                                        <option value="1">Current Month</option>
-                                        <option value="2">Today</option>
+                                        <option selected="selected" value="2">Time period: Today</option>
+                                        <option value="1">Time period: Current Month</option>
+                                        <option value="0">Time period: Current Year</option>
                                     </select>
                             <!--chart canvas-->        
                             <canvas id="masterLineChart"></canvas>

@@ -52,8 +52,8 @@ if ($num_rows8 >= 1) {
         }
 
         //Reset the hour_data column for the individual devices
-        $stmt10 = $db->prepare("UPDATE device_info SET hour_data = ? WHERE device_id = ?");
-        $stmt10->bind_param("ii", $zero, $id);
+        $stmt10 = $db->prepare("UPDATE device_info SET minute_data = ?, hour_data = ? WHERE device_id = ?");
+        $stmt10->bind_param("iii", $zero, $zero, $id);
         $stmt10->execute();
     }
 }

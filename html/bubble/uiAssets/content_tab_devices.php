@@ -128,7 +128,41 @@ html;
                     $price_year = number_format($price_year,2);
 
                     $total_price = number_format($total_usage * $price, 2);
-                    $percent = number_format(((100 / ($total_price + $price_month)) * $price_month), 1);
+                    $percent = 0;
+                    $graph = '<strong style="color:red">Graph will generate shortly.</strong>';
+
+                    if(($total_price + $price_month) != 0){
+                        $percent = number_format(((100 / ($total_price + $price_month)) * $price_month), 1);
+                        $graph = <<<graph
+                        <canvas class="stats-pie " style="max-width:400px display:inline-block" id="stats_doughnut_$device_id" width="924" height="426"></canvas>
+                        <table class="stats-table comparison">
+                        <tr class="stats-row">
+                            <td class="stats-left l-pad-stats tighten"><strong>
+                                $device_name:
+                            </strong></td>
+                            <td class="stats-right r-pad-stats tighten"><strong>
+                                £$price_month
+                            </strong></td>
+                        </tr>
+                        <tr class="raise">
+                            <td class="stats-left l-pad-stats tighten"><strong>
+                                Other Devices:
+                            </strong></td>
+                            <td class="stats-right r-pad-stats tighten"><strong>
+                                £$total_price
+                            </strong></td>
+                        </tr>
+                        <tr class="raise">
+                            <td class="stats-left l-pad-stats tighten"><strong>
+                                Percentage:
+                            </strong></td>
+                            <td class="stats-right r-pad-stats tighten"><strong>
+                                $percent %
+                            </strong></td>
+                        </tr>
+                        </table>
+graph;
+                    }
 
                     $hour = date("H");
                     $minute = date("i");
@@ -237,34 +271,7 @@ html;
                                     
                                             <h4 class="modalSub">Month's Comparison</h4>
 
-                                                <canvas class="stats-pie " style="max-width:400px display:inline-block" id="stats_doughnut_$device_id" width="924" height="426"></canvas>
-
-                                            <table class="stats-table comparison">
-                                            <tr class="stats-row">
-                                                <td class="stats-left l-pad-stats tighten"><strong>
-                                                    $device_name:
-                                                </strong></td>
-                                                <td class="stats-right r-pad-stats tighten"><strong>
-                                                    £$price_month
-                                                </strong></td>
-                                            </tr>
-                                            <tr class="raise">
-                                                <td class="stats-left l-pad-stats tighten"><strong>
-                                                    Other Devices:
-                                                </strong></td>
-                                                <td class="stats-right r-pad-stats tighten"><strong>
-                                                    £$total_price
-                                                </strong></td>
-                                            </tr>
-                                            <tr class="raise">
-                                                <td class="stats-left l-pad-stats tighten"><strong>
-                                                    Percentage:
-                                                </strong></td>
-                                                <td class="stats-right r-pad-stats tighten"><strong>
-                                                    $percent %
-                                                </strong></td>
-                                            </tr>
-                                            </table>
+                                            $graph
 
                                             <script>
                                                 //doughnut

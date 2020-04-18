@@ -1,4 +1,6 @@
 //------------------------Swipe Function----------------------------------------------------
+
+//Found with the help of http://www.javascriptkit.com/javatutors/touchevents2.shtml
 function swipedetect(el, callback){
   
     var touchsurface = el,
@@ -205,7 +207,10 @@ function changeHub(id) {
 
 //------------------------Modal Functions----------------------------------------------------
 function openModalHome(id){
+    //Prevent parent onclick events
     event.stopPropagation();
+
+    //Change display of modal
     var id = document.getElementById(id);
     if (id.style.display == "flex") {
         id.style.display = "none";
@@ -215,7 +220,10 @@ function openModalHome(id){
 }
 
 function openModalRoom(id, close, open){
+    //Prevent parent onclick events
     event.stopPropagation();
+
+    //Change display of modal
     var id = document.getElementById(id);
     var close = document.getElementById(close);
     var open = document.getElementById(open);
@@ -229,7 +237,10 @@ function openModalRoom(id, close, open){
 }
 
 function openModal(id, x) {
+    //Prevent parent onclick events
     event.stopPropagation();
+
+    //Change display of modal
     var modal = document.getElementById(id);
     var x = document.getElementById(x);
     if (modal && modal.style) {
@@ -245,21 +256,25 @@ function openModal(id, x) {
 
 //------------------------Timer Function----------------------------------------------------
 function startTimer(id, hour_value, minute_value) {
+    //Get value from hour : minute form
     var hour = $('#' + hour_value).val();
     var minute = $('#' + minute_value).val();
 
     let url = "required/action_timer.php";
     
+    //Call timer script
     $.ajax({
         type:'POST',
         url: url,
         data:{ device_id: id, hour: hour, minute: minute},
         success:function(){
+            //Animation for tick
             document.getElementById('time_button_text_' + id).style.display = "none";
             document.getElementById('timer-tick-' + id).style.display = "block";
             document.getElementById('timer-tick-' + id).classList.add('animated');
             document.getElementById('timer-tick-' + id).classList.add('slow');
             document.getElementById('timer-tick-' + id).classList.add('zoomIn');
+            //Wait 2 seconds until animation is over, then reset timer
             setTimeout(function() {
                 document.getElementById('timer-tick-' + id).classList.remove('zoomIn');
                 document.getElementById('time_button_text_' + id).style.display = "block";
@@ -276,17 +291,20 @@ function startTimer(id, hour_value, minute_value) {
 
 //------------------------Device switch Functions----------------------------------------------------
 function styleHome() {
+    //Set loader spinning on click and set background colour
     document.getElementById('home_button_text').style.display = "none";
     document.getElementById('home_loader').style.display = "inline-block";
     document.getElementById('home_devices').style.backgroundColor = "rgb(226, 183, 28)";
 }
 
 function styleHomeTimer() {
+    //Animate tick when timer set
     document.getElementById('timer_none').style.display = "none";
     document.getElementById('timer-tick').style.display = "block";
     document.getElementById('timer-tick').classList.add('animated');
     document.getElementById('timer-tick').classList.add('slow');
     document.getElementById('timer-tick').classList.add('zoomIn');
+    //Wait two seconds for animation then reset timer
     setTimeout(function() {
         document.getElementById('timer-tick').classList.remove('zoomIn');
         document.getElementById('timer_none').style.display = "block";
@@ -296,11 +314,13 @@ function styleHomeTimer() {
 }
 
 function styleRoomTimer(id) {
+    //Animate tick when timer set
     document.getElementById('time_button_room_text_' + id).style.display = "none";
     document.getElementById('timer-tick-room-' + id).style.display = "block";
     document.getElementById('timer-tick-room-' + id).classList.add('animated');
     document.getElementById('timer-tick-room-' + id).classList.add('slow');
     document.getElementById('timer-tick-room-' + id).classList.add('zoomIn');
+    //Wait two seconds for animation then reset timer
     setTimeout(function() {
         document.getElementById('timer-tick-room-' + id).classList.remove('zoomIn');
         document.getElementById('time_button_room_text_' + id).style.display = "block";
@@ -313,6 +333,7 @@ function toggleRoom(hub_id, room_id){
     document.getElementById('room_setting_'+room_id).style.display = "none";
     document.getElementById('room_loader_'+room_id).style.display = "block";
 
+    //Set background colour to match new setting
     if (document.getElementById(room_id).style.backgroundColor != "rgb(226, 183, 28)"){
         document.getElementById(room_id).style.backgroundColor = "rgb(226, 183, 28)";
     } else {
@@ -320,6 +341,7 @@ function toggleRoom(hub_id, room_id){
     }
     let url = "required/action_device.php";
     
+    //Call action device to toggle room
     $.ajax({
         type:'POST',
         url: url,
@@ -334,6 +356,7 @@ function toggleRoom(hub_id, room_id){
 }
 
 function alterDevice(hub_id, device_id, device_type, current_state){
+    //If fad switch send to scale device, if not then toggle device
     if(device_type == 2 || device_type == 4){
         scaleDevice(hub_id, device_id, current_state);
     } else {
@@ -342,28 +365,35 @@ function alterDevice(hub_id, device_id, device_type, current_state){
 }
 
 function refreshRoom(room_id) {
+    //Refresh room
     $('#room_reload_' + room_id).load(document.URL + ' #room_reload_' + room_id);
 }
 
 function refreshDevice(device_id) {
+    //Refresh device
     $('#reload_' + device_id).load(document.URL + ' #reload_' + device_id);
 }
 
 function refreshHomeButton() {
+    //Refresh home button and reset background colour
     $('#home_devices').load(document.URL + ' #home_off_content', function(){
         document.getElementById('home_devices').style.backgroundColor = "rgb(110, 110, 110)";
     });
 }
 
+//Function to turn devices on/off
 function toggleDevice(hub_id, device_id, state) {
 
+    //If device has fault return alert
     if(state == -1){
         alert("Your device seems to have a fault. Seek repairs or replace device.");
     } else {
+        
         let url = "required/action_device.php";
         document.getElementById('device_1_'+device_id).style.display = "none";
         document.getElementById('loader_'+device_id).style.display = "block";
 
+        //Style device button to match new setting
         if (state == 0){
             document.getElementById('device_'+device_id).style.backgroundColor = "rgb(226, 183, 28)";
         } 
@@ -373,6 +403,7 @@ function toggleDevice(hub_id, device_id, state) {
             $('#modal_' + device_id).load(document.URL + ' #content_timer_' + device_id);
         }
         
+        //Call action_device to toggle device
         $.ajax({
             type:'POST',
             url: url,
@@ -388,12 +419,15 @@ function toggleDevice(hub_id, device_id, state) {
 }
 
 function scaleDevice(hub_id, device_id, state) {
+
+    //If device has fault then return alert
     if(state == -1){
         alert("Your device seems to have a fault. Seek repairs or replace device.");
     } else {
         document.getElementById('device_1_'+device_id).style.display = "none";
         document.getElementById('loader_'+device_id).style.display = "block";
 
+        //Style button to match new setting
         if (state == 0){
             document.getElementById('device_'+device_id).style.backgroundImage = "linear-gradient(to right, rgb(226, 183, 28) 0%, rgb(226, 183, 28) 25%, rgb(56,56,56) 25%, rgb(56,56,56) calc(25% + 1px), transparent calc(25% + 1px))";
         }
@@ -412,11 +446,14 @@ function scaleDevice(hub_id, device_id, state) {
         }
 
         let url = "required/action_device.php";
+        //Set new state
         if (state < 4){
             state = state + 1;
         } else {
             state = 0;
         }
+
+        //Call action_device to toggle fade device
         $.ajax({
             type:'POST',
             url: url,

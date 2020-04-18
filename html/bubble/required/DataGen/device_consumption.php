@@ -168,10 +168,12 @@ if ($result->num_rows >= 1) {
         $stmt11->execute();
         $result11 = $stmt11->get_result();
         if($result11->num_rows == 0){
+            //Create new if row doesn't already exist
             $stmt12 = $db->prepare("INSERT INTO hourly_data (hub_id, entry_day, entry_hour, energy_usage, entry_month) VALUES (?, ?, ?, ?, ?)");
             $stmt12->bind_param("iiidi", $hub_id, $day, $hour, $energy_used, $month);
             $stmt12->execute();
 
+            //Delete rows if the call exceeds 24 rows
             $stmt17 = $db->prepare("SELECT * FROM hourly_data WHERE hub_id = ?");
             $stmt17->bind_param("i", $hub_id);
             $stmt17->execute();
@@ -191,6 +193,7 @@ if ($result->num_rows >= 1) {
         } else {
             $all11 = $result11->fetch_all(MYSQLI_ASSOC);
             foreach($all11 as $row11){
+                //Update to add in the additonal minute's data
                 $energy_used = $energy_used + $row11['energy_usage'];
                 $stmt12 = $db->prepare("UPDATE hourly_data SET energy_usage = ? WHERE hub_id = ? AND entry_day = ? AND entry_hour = ? AND entry_month = ?");
                 $stmt12->bind_param("diiii", $energy_used, $hub_id, $day, $hour, $month);
@@ -204,10 +207,12 @@ if ($result->num_rows >= 1) {
         $stmt13->execute();
         $result13 = $stmt13->get_result();
         if($result13->num_rows == 0){
+            //Create new if row doesn't already exist
             $stmt14 = $db->prepare("INSERT INTO daily_data (hub_id, entry_month, entry_day, energy_usage) VALUES (?, ?, ?, ?)");
             $stmt14->bind_param("iiid", $hub_id, $month, $day, $energy_used);
             $stmt14->execute();
 
+            //Delete so there's only a month's worth of data retained
             $stmt19 = $db->prepare("SELECT * FROM daily_data WHERE hub_id = ?");
             $stmt19->bind_param("i", $hub_id);
             $stmt19->execute();
@@ -227,6 +232,7 @@ if ($result->num_rows >= 1) {
         } else {
             $all13 = $result13->fetch_all(MYSQLI_ASSOC);
             foreach($all13 as $row13){
+                //Update to add in the additonal minute's data
                 $energy_used = $energy_used + $row13['energy_usage'];
                 $stmt14 = $db->prepare("UPDATE daily_data SET energy_usage = ? WHERE hub_id = ? AND entry_month = ? AND entry_day = ?");
                 $stmt14->bind_param("diii", $energy_used, $hub_id, $month, $day);
@@ -240,10 +246,12 @@ if ($result->num_rows >= 1) {
         $stmt15->execute();
         $result15 = $stmt15->get_result();
         if($result15->num_rows == 0){
+            //Create new if row doesn't already exist
             $stmt16 = $db->prepare("INSERT INTO monthly_data (hub_id, entry_year, entry_month, energy_usage) VALUES (?, ?, ?, ?)");
             $stmt16->bind_param("iiid", $hub_id, $year, $month, $energy_used);
             $stmt16->execute();
 
+            //Delete any over the number of 12
             $stmt21 = $db->prepare("SELECT * FROM monthly_data WHERE hub_id = ?");
             $stmt21->bind_param("i", $hub_id);
             $stmt21->execute();
@@ -263,6 +271,7 @@ if ($result->num_rows >= 1) {
         } else {
             $all15 = $result15->fetch_all(MYSQLI_ASSOC);
             foreach($all15 as $row15){
+                //Update to add in the additonal minute's data
                 $energy_used = $energy_used + $row15['energy_usage'];
                 $stmt16 = $db->prepare("UPDATE monthly_data SET energy_usage = ? WHERE hub_id = ? AND entry_year = ? AND entry_month = ?");
                 $stmt16->bind_param("diii", $energy_used, $hub_id, $year, $month);

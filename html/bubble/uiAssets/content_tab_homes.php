@@ -54,7 +54,7 @@ function generateHomeTab()
                 }
             }
 
-            $energy_last_day = $energy_last_day / 1000;
+            $energy_last_day = number_format(($energy_last_day / 1000),2,'.','');
 
             $month = date("m");
             $energy_last_month = 0;
@@ -70,7 +70,7 @@ function generateHomeTab()
                 }
             }
 
-            $energy_last_month = $energy_last_month / 1000;
+            $energy_last_month = number_format(($energy_last_month / 1000),2,'.','');
 
             $energy_last_year = 0;
 
@@ -85,7 +85,7 @@ function generateHomeTab()
                 }
             }
 
-            $energy_last_year = $energy_last_year / 1000;
+            $energy_last_year = number_format(($energy_last_year / 1000),2,'.','');
 
             //-----------------------------CALCULATE DATA FOR GRAPH PLOTTING-----------------------------------
             

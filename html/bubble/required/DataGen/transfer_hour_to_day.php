@@ -7,6 +7,7 @@ $month = date("m");
 $day = date("d");
 $leap = date("L");
 
+//Loop through all devices
 $stmt8 = $db->prepare("SELECT * FROM device_info");
 $stmt8->execute();
 $result8 = $stmt8->get_result();
@@ -19,6 +20,7 @@ if ($num_rows8 >= 1) {
         
         $day_data = $row8['day_data'] + $hour_data;
 
+        //Delete the data stored in the month_data column of the device at the end of the month
         if($month == 4 || $month == 6 || $month == 9 || $month == 11){
             if($day == 30){
                 $day_data = 0;
@@ -49,6 +51,7 @@ if ($num_rows8 >= 1) {
             }
         }
 
+        //Reset the hour_data column for the individual devices
         $stmt10 = $db->prepare("UPDATE device_info SET hour_data = ? WHERE device_id = ?");
         $stmt10->bind_param("ii", $zero, $id);
         $stmt10->execute();
@@ -57,6 +60,7 @@ if ($num_rows8 >= 1) {
 
 $auto_delete = 0;
 
+//Find the end of the current month for deletion of data
 if($month == 4 || $month == 6 || $month == 9 || $month == 11){
     $auto_delete = 30;
 } else if ($month == 2 && $leap == 1){
@@ -67,7 +71,7 @@ if($month == 4 || $month == 6 || $month == 9 || $month == 11){
     $auto_delete = 31;
 }
 
-
+//Loop through hubs
 $stmt = $db->prepare("SELECT * FROM hub_info");
 $stmt->execute();
 $result = $stmt->get_result();
@@ -77,19 +81,9 @@ if ($result->num_rows >= 1) {
 
         $hub_id = $row['hub_id'];
 
-        $month_end = 0;
-        if ($month == 4 || $month == 6 || $month == 9 || $month == 11) {
-            $month_end = 30;
-        } else if ($month == 2 && $leap == 0) {
-            $month_end = 28;
-        } else if ($month == 2 && $leap == 1) {
-            $month_end = 29;
-        } else {
-            $month_end = 31;
-        }
-
         $daily_energy = 0;
 
+        //Delete data from hourly gen if the number of rows per hub exceeds 24
         $stmt11 = $db->prepare("SELECT * FROM hourly_gen WHERE hub_id = ?");
         $stmt11->bind_param("i", $hub_id);
         $stmt11->execute();
@@ -98,6 +92,7 @@ if ($result->num_rows >= 1) {
         if ($num_rows11 >= 1) {
             $all11 = $result11->fetch_all(MYSQLI_ASSOC);
             foreach($all11 as $row11){
+                //Add up all values of hourly_gen
                 $daily_gen = $daily_gen + $row11['energy_gen'];
                 if($num_rows11 > 24){
                     $num_rows11 - 1;
@@ -107,10 +102,12 @@ if ($result->num_rows >= 1) {
                 }
             }
                 
+            //Insert hourly gen data into daily gen table
             $stmt12 = $db->prepare("INSERT INTO daily_gen (hub_id, entry_month, entry_day, energy_gen) VALUES (?, ?, ?, ?)");
             $stmt12->bind_param("iiid", $hub_id, $month, $day, $daily_gen);
             $stmt12->execute();
 
+            //Delete from daily gen so that there is only the number of rows needed per month
             $stmt13 = $db->prepare("SELECT * FROM daily_gen WHERE hub_id = ?");
             $stmt13->bind_param("i", $hub_id);
             $stmt13->execute();

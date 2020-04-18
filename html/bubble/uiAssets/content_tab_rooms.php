@@ -158,8 +158,11 @@ html;
                 $total_usage = $total_usage - $room_month;
                 $total_price = number_format($total_usage * $price, 2);
 
-                $percent = number_format(((100 / ($total_price + $price_month)) * $price_month), 1);
+                $percent = 0;
 
+                if(($total_price + $price_month) != 0){
+                    $percent = number_format(((100 / ($total_price + $price_month)) * $price_month), 1);
+                }
 
                 $html .= <<<html
                     refreshRoom($room_id);refreshHomeButton();">

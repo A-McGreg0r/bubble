@@ -121,7 +121,7 @@ function generateHomeTab()
             }
 
             $cost_year = $energy_last_year * $energy_cost;
-            $cost_year_round = number_format($cost_year,2);
+            $cost_year_round = number_format($cost_year,2,'.','');
             $DataLabelsYearEncoded = json_encode($dataLabels);
             $dataPointsYearEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
             $dataGenYearEncoded = json_encode($dataGenPoints, JSON_NUMERIC_CHECK);
@@ -158,7 +158,7 @@ function generateHomeTab()
             }
 
             $cost_month = $energy_last_month * $energy_cost;
-            $cost_month_round = number_format($cost_month,2);
+            $cost_month_round = number_format($cost_month,2,'.','');
             $DataLabelsMonthEncoded = json_encode($dataLabels);
             $dataPointsMonthEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
             $dataGenMonthEncoded = json_encode($dataGenPoints, JSON_NUMERIC_CHECK);
@@ -195,22 +195,22 @@ function generateHomeTab()
             }
 
             $cost_day = $energy_last_day * $energy_cost;
-            $cost_day_round = number_format($cost_day,2);
+            $cost_day_round = number_format($cost_day,2,'.','');
             $DataLabelsDayEncoded = json_encode($dataLabels);
             $dataPointsDayEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
             $dataGenDayEncoded = json_encode($dataGenPoints, JSON_NUMERIC_CHECK);
 
-            $energy_cost_round = number_format($energy_cost,2);
-            $budget_round = number_format($budget,2);
+            $energy_cost_round = number_format($energy_cost,2,'.','');
+            $budget_round = number_format($budget,2,'.','');
             $budget_remaining = $budget - $cost_month;
-            $budget_remaining_round = number_format($budget_remaining,2);
+            $budget_remaining_round = number_format($budget_remaining,2,'.','');
 
             $budget_day = $budget / 28;
             $budget_year = $budget * 12;
             $budget_day_remaining = $budget_day - $cost_day;
             $budget_year_remaining = $budget_year - $cost_year;
-            $budget_day_remaining_round = number_format($budget_day_remaining,2);
-            $budget_year_remaining_round = money_format('%.2n', $budget_year_remaining);
+            $budget_day_remaining_round = number_format($budget_day_remaining,2,'.','');
+            $budget_year_remaining_round = number_format($budget_year_remaining,2,'.','');
 
             $all_homes = "styleHome();";
             $timers = "";
@@ -592,7 +592,7 @@ change_button;
                                                     }]
                                                     },
                                                     options: {
-                                                    responsive: true
+                                                    responsive: [true],
                                                     }
                                                     });
                                                 </script>
@@ -620,7 +620,7 @@ change_button;
                                                         }]
                                                         },
                                                         options: {
-                                                        responsive: true
+                                                        responsive: [true],
                                                         }
                                                         });
                                                     </script>

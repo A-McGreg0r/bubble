@@ -100,7 +100,7 @@ function generateHomeTab()
             if ($result7->num_rows >= 1) {
                 $all7 = $result7->fetch_all(MYSQLI_ASSOC);
                 foreach($all7 as $row7){
-                    $energy_usage7 = $row7['energy_usage']/1000;
+                    $energy_usage7 = number_format(($row7['energy_usage']/1000),3,'.','');
                     $year7 = $row7['entry_year'];
                     $month7 = $row7['entry_month'];
                     array_push($dataPoints, array($energy_usage7));
@@ -139,7 +139,7 @@ function generateHomeTab()
                 $all8 = $result8->fetch_all(MYSQLI_ASSOC);
                 foreach($all8 as $row8){
                     $n = $n + 1;
-                    $energy_usage8 = $row8['energy_usage']/1000;
+                    $energy_usage8 = number_format(($row8['energy_usage']/1000),3,'.','');
                     $day8 = $row8['entry_day'];
                     array_push($dataPoints, array($energy_usage8));
                     array_push($dataLabels, array($day8));
@@ -177,7 +177,7 @@ function generateHomeTab()
                 $all9 = $result9->fetch_all(MYSQLI_ASSOC);
                 foreach($all9 as $row9){
                     $n = $n + 1;
-                    $energy_usage9 = $row9['energy_usage']/1000;
+                    $energy_usage9 = number_format(($row9['energy_usage']/1000),3,'.','');
                     $hour9 = $row9['entry_hour'];
                     array_push($dataPoints, array($energy_usage9));
                     array_push($dataLabels, array($hour9));

@@ -193,10 +193,9 @@ if ($result->num_rows >= 1) {
         } else {
             $all11 = $result11->fetch_all(MYSQLI_ASSOC);
             foreach($all11 as $row11){
-                //Update to add in the additonal minute's data
-                $energy_used = $energy_used + $row11['energy_usage'];
+                $energy_used_day = $energy_used + $row11['energy_usage'];
                 $stmt12 = $db->prepare("UPDATE hourly_data SET energy_usage = ? WHERE hub_id = ? AND entry_day = ? AND entry_hour = ? AND entry_month = ?");
-                $stmt12->bind_param("diiii", $energy_used, $hub_id, $day, $hour, $month);
+                $stmt12->bind_param("diiii", $energy_used_day, $hub_id, $day, $hour, $month);
                 $stmt12->execute();
             }
         }
@@ -233,9 +232,9 @@ if ($result->num_rows >= 1) {
             $all13 = $result13->fetch_all(MYSQLI_ASSOC);
             foreach($all13 as $row13){
                 //Update to add in the additonal minute's data
-                $energy_used = $energy_used + $row13['energy_usage'];
+                $energy_used_month = $energy_used + $row13['energy_usage'];
                 $stmt14 = $db->prepare("UPDATE daily_data SET energy_usage = ? WHERE hub_id = ? AND entry_month = ? AND entry_day = ?");
-                $stmt14->bind_param("diii", $energy_used, $hub_id, $month, $day);
+                $stmt14->bind_param("diii", $energy_used_month, $hub_id, $month, $day);
                 $stmt14->execute();
             }
         }
@@ -272,9 +271,9 @@ if ($result->num_rows >= 1) {
             $all15 = $result15->fetch_all(MYSQLI_ASSOC);
             foreach($all15 as $row15){
                 //Update to add in the additonal minute's data
-                $energy_used = $energy_used + $row15['energy_usage'];
+                $energy_used_year = $energy_used + $row15['energy_usage'];
                 $stmt16 = $db->prepare("UPDATE monthly_data SET energy_usage = ? WHERE hub_id = ? AND entry_year = ? AND entry_month = ?");
-                $stmt16->bind_param("diii", $energy_used, $hub_id, $year, $month);
+                $stmt16->bind_param("diii", $energy_used_year, $hub_id, $year, $month);
                 $stmt16->execute();
             }
         }

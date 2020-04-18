@@ -90,39 +90,6 @@ if ($result->num_rows >= 1) {
 
         $daily_energy = 0;
 
-        $stmt4 = $db->prepare("SELECT * FROM hourly_data WHERE hub_id = ?");
-        $stmt4->bind_param("i", $hub_id);
-        $stmt4->execute();
-        $result4 = $stmt4->get_result();
-        $num_rows = $result4->num_rows;
-        if ($num_rows >= 1) {
-            $all4 = $result4->fetch_all(MYSQLI_ASSOC);
-            foreach($all4 as $row4){
-                $daily_energy = $daily_energy + $row4['energy_usage'];
-            }
-                
-            $stmt5 = $db->prepare("INSERT INTO daily_data (hub_id, entry_month, entry_day, energy_usage) VALUES (?, ?, ?, ?)");
-            $stmt5->bind_param("iiii", $hub_id, $month, $day, $daily_energy);
-            $stmt5->execute();
-
-            $stmt6 = $db->prepare("SELECT * FROM daily_data WHERE hub_id = ?");
-            $stmt6->bind_param("i", $hub_id);
-            $stmt6->execute();
-            $result6 = $stmt6->get_result();
-            $num_row6 = $result6->num_rows;
-            if ($num_row6 > $auto_delete) {
-                $all6 = $result6->fetch_all(MYSQLI_ASSOC);
-                foreach($all6 as $row6){
-                    $num_row6 = $num_row6 - 1;
-                    if ($num_row6 >= $auto_delete) {
-                        $stmt7 = $db->prepare("DELETE FROM daily_data WHERE entry_id = ?");
-                        $stmt7->bind_param("i", $row6['entry_id']);
-                        $stmt7->execute();
-                    }
-                }
-            }
-        }
-
         $stmt11 = $db->prepare("SELECT * FROM hourly_gen WHERE hub_id = ?");
         $stmt11->bind_param("i", $hub_id);
         $stmt11->execute();

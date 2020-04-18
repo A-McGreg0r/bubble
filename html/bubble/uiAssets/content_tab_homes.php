@@ -130,7 +130,8 @@ function generateHomeTab()
             $dataLabels = array();
             $dataGenPoints = array();
 
-            $stmt8 = $db->prepare("SELECT * FROM daily_data");
+            $stmt8 = $db->prepare("SELECT * FROM daily_data WHERE hub_id = ?");
+            $stmt8->bind_param("i", $hub_id);
             $stmt8->execute();
             $result8 = $stmt8->get_result();
             if ($result8->num_rows >= 1) {
@@ -167,7 +168,8 @@ function generateHomeTab()
             $dataLabels = array();
             $dataGenPoints = array();
 
-            $stmt9 = $db->prepare("SELECT * FROM hourly_data");
+            $stmt9 = $db->prepare("SELECT * FROM hourly_data WHERE hub_id = ?");
+            $stmt9->bind_param("i", $hub_id);
             $stmt9->execute();
             $result9 = $stmt9->get_result();
             if ($result9->num_rows >= 1) {

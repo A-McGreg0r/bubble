@@ -2,10 +2,12 @@
 use PHPMailer\PHPMailer\PHPMailer;
 require 'vendor/autoload.php';
 
+//Send user email upon registration
 function sendRegistrationEmail($userEmail, $userName){
+
+    //Set up email link
     $mail = new PHPMailer;
     $mail->isSMTP();
-    // $mail->SMTPDebug = 2;
     $mail->Host = 'smtp.gmail.com';
     $mail->Port = 587;
     $mail->SMTPAuth = true;
@@ -17,6 +19,7 @@ function sendRegistrationEmail($userEmail, $userName){
     $mail->isHTML(true);
     $mail->AddEmbeddedImage('../../img/favicon.png', 'logo');
     
+    //Set up welcome email
     $logo = "<img src='cid:logo' style='width:100px'>";
     $email_welcome = "<h3 style='font-weight:400'>Dear $userName,<h3>";
     $email_body = "<h4 style='font-weight:400'>Welcome to Bubble!<br>We hope you enjoy our smart home application!</h4>";

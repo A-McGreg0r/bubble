@@ -4,6 +4,8 @@ use PHPMailer\PHPMailer\PHPMailer;
 require 'vendor/autoload.php';
 
 global $db;
+
+//Loop through all users
 $stmt = $db->prepare("SELECT * FROM user_info");
 $stmt->execute();
 $result = $stmt->get_result();
@@ -12,6 +14,7 @@ if ($result->num_rows >= 1) {
     $all = $result->fetch_all(MYSQLI_ASSOC);
     foreach($all as $row){
 
+        //Loop through hubs associated with the user
         $stmt2 = $db->prepare("SELECT * FROM hub_users WHERE user_id = ?");
         $stmt2->bind_param("i",$row['user_id']);
         $stmt2->execute();
@@ -24,6 +27,7 @@ if ($result->num_rows >= 1) {
             $all2 = $result2->fetch_all(MYSQLI_ASSOC);
             foreach($all2 as $row2){
 
+                //Scan hourly data of hub to get user statistics
                 $stmt3 = $db->prepare("SELECT * FROM hourly_data WHERE hub_id = ?");
                 $stmt3->bind_param("i",$row2['hub_id']);
                 $stmt3->execute();
@@ -40,6 +44,7 @@ if ($result->num_rows >= 1) {
             $total_spent = $energy_used / 1000 * $energy_cost;
             $total_spent_round = number_format($total_spent,2);
 
+            //If user has allowed emails
             $allow_emails = $row['allow_emails'];
             if($allow_emails == "Yes"){
                 $first_name = $row['first_name'];
@@ -47,6 +52,7 @@ if ($result->num_rows >= 1) {
                 $budget = $row['budget'] / 31; // for daily stats
                 $budget_round = number_format($budget,2);
 
+                //Set up email link
                 $mail = new PHPMailer;
                 $mail->isSMTP();
                 $mail->SMTPDebug = 2;
@@ -61,6 +67,7 @@ if ($result->num_rows >= 1) {
                 $mail->isHTML(true);
                 $mail->AddEmbeddedImage('img/favicon.png', 'logo');
 
+                //Set up email with stats personal to user
                 $logo = "<img src='cid:logo' style='width:100px'>";
                 $email_welcome = "<h3 style='font-weight:400'>Dear $first_name,<h3>";
                 $email_body = '';

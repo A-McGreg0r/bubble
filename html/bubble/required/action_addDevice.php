@@ -139,7 +139,7 @@
 
                         $stmtAccess = $db->prepare("INSERT INTO hub_access_requests (request_user_id, owner_user_id, auth_key, expiry_date) VALUES (?,?,?,?)")
                         $stmtAccess->bind_param("iiss", $user_id, $hub_owner_id, $hashed_access_key, time() + 24*60*60);
-                        if(!$stmt->execute()){
+                        if(!$stmtAccess->execute()){
                             echo("{\"error\":\"Unknown error, contact support\"}");
                             $stmtOwner->close();
                             $stmt->close();

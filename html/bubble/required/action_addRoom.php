@@ -7,6 +7,7 @@
 
     if($roomName == FALSE || $icon == FALSE){
         echo("{\"error\":\"Invalid request\"}");
+        exit(0);
     }
 
     //BEGIN SESSION
@@ -15,6 +16,8 @@
         $hub_id = $_SESSION['hub_id'];
     } else {
         echo("{\"error\":\"User is not logged in\"}");
+        session_write_close();
+        exit(0);
     }
     //END SESSION
     session_write_close();
@@ -30,13 +33,13 @@
         $stmt = $db->prepare("INSERT INTO room_info (hub_id, room_name, room_icon) VALUES (?, ?, ?)");
         $stmt->bind_param("isi", $hub_id, $roomName, $icon);
         if ($stmt->execute()) {
-            $stmt->close();
+            $stmt->close(0);
             echo("{\"success\":\"Room successfully added\"}");
             exit();
         }
         $stmt->close();
         echo("{\"error\":\"Room creation failed\"}");
-        exit();
+        exit(0);
     }
     $stmt2->close();
     echo("{\"error\":\"Room name already chosen, please chose another\"}");

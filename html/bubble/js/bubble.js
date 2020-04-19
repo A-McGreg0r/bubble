@@ -538,9 +538,9 @@ function confirmDeleteRoomModalConfirm(room_id){
             }
             //REMOVE ROOM SUCCESS
             if(result.success){
-                $('#room-encompass').load(document.URL + ' #room-encompass');
-                $('#confirmDeleteRoom_'+room_id).modal("hide");
                 $("#confirmDeleteRoomModalButton").removeAttr("disabled");
+                $('#confirmDeleteRoom_'+room_id).modal("hide");
+                $('#room-encompass').load(document.URL + ' #room-encompass');
             }
         },
         error: function(data){
@@ -579,9 +579,9 @@ function confirmDeleteDeviceModalConfirm(device_id){
             }
             //REMOVE DEVICE SUCCESS
             if(result.success){
-                $('#deviceList').load(document.URL + ' #deviceList');
                 $("#confirmDeleteDeviceModalButton").removeAttr("disabled");
                 $('#confirmDeleteDevice_'+device_id).modal().hide();
+                $('#deviceList').load(document.URL + ' #deviceList');
             }
         },
         error: function(data){

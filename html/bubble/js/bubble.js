@@ -469,7 +469,7 @@ function scaleDevice(hub_id, device_id, state) {
 }
 //------------------------Device switch Functions----------------------------------------------------
 
-//
+//------------------------Add room Functions----------------------------------------------------
 function addRoomModalSubmit(){
     //CHANGE DISPLAY TO BE WAITING
     $("#roomErrorDisplay").html("");

@@ -47,10 +47,21 @@ $(document).ready(function(){
         });
     });
 
+    //HANDLE ACTION FOR ADD DEVICE MODAL
+    var action = getUrlParameter("action");
+    if(action == "adddevice"){
+        $('addDeviceModal').modal();
+        openCamera();
+    }
+
     //HANDLE CLOSING THE CAMERA WHEN THE ADD DEVICE MODAL IS CLOSED
     $('#addDeviceModal').on('hidden.bs.modal', function () {
         closeCamera();
+        if(action == "adddevice"){
+            location.reload();
+        }
     });
+
 });
 
 //------------------------DOCUMENT READY----------------------------------------------------
@@ -808,4 +819,22 @@ function submitImage(){
     });
 }
 
+//--------------------------------HELPER FUNCTIONS --------------------------------------------
+/**
+ * Source: http://www.jquerybyexample.net/2012/06/get-url-parameters-using-jquery.html
+ * @param {*} sParam 
+ */
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = window.location.search.substring(1),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
 
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+        }
+    }
+};

@@ -97,6 +97,10 @@
                     include './uiAssets/content_account.php';
                     $html .= generateAccount();
                     break;
+                case 'access':
+                    include './uiAssets/content_access.php';
+                    $html .= generateAccessPage();
+                    break;
                 default:
                     include "uiAssets/content_tabs.php";
                     $html .= generateTabs();

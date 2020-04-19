@@ -9,6 +9,7 @@
     //LOAD QR CODE READING LIBRARY
     require dirname(__DIR__) . "/vendor/autoload.php";
     include_once dirname(__DIR__).'/required/config.php';
+    require 'PepperedPasswords.php';
     use Zxing\QrReader;
 
     //GET PHOTO FROM POST BASE64 DATA
@@ -114,6 +115,8 @@
                         }
                         $stmt1->close(); 
                     } else {//THE HUB HAS AN OWNER, REQUEST ACCESS FROM OWNER
+
+                        //GET HUB OWNERS INFORMATION
                         $stmtHubOwner = $db->prepare("SELECT hub_owner_id FROM hub_owners WHERE hub_id = ?");
                         $stmtHubOwner->bind_param("i", $hub_id);
                         if(!$stmtHubOwner->execute()){
@@ -125,9 +128,27 @@
                         }
                         $resultHubOwner = $stmtHubOwner->get_result();
                         $rowHubOwner = $resultHubOwner->fetch_assoc();
+                        $hub_owner_id = $rowHubOwner['hub_owner_id'];
                         $stmtHubOwner->close();
-                        $confirmLink = 'wasd';
-                        sendBaseEmailFromUserID($rowHubOwner['hub_owner_id'], "Bubble Access Request", "<h4 style='font-weight:400'>Someone has requested to access your Bubble Smarthome Hub.<br>If this wasn't you or someone you authorized, please ignore this email. Otherwise, click the link below: <br> $confirmLink</h4>");
+
+                        //GENERATE ACCESS KEY
+                        $hasher = new PepperedPasswords($pepper);
+
+                        $access_key = bin2hex(random_bytes(50));
+                        $hashed_access_key = $hasher->hash($access_key);
+
+                        $stmtAccess = $db->prepare("INSERT INTO hub_access_requests (request_user_id, owner_user_id, auth_key, expiry_date) VALUES (?,?,?,?)")
+                        $stmtAccess->bind_param("iiss", $user_id, $hub_owner_id, $hashed_access_key, time() + 24*60*60);
+                        if(!$stmt->execute()){
+                            echo("{\"error\":\"Unknown error, contact support\"}");
+                            $stmtOwner->close();
+                            $stmt->close();
+                            $stmtAccess->close();
+                            exit(0);
+                        }
+                        $confirmLink = 'https://bubble.rorydobson.com/index.php?action=access&key='.$access_key;
+
+                        sendBaseEmailFromUserID(, "Bubble Access Request", "<h4 style='font-weight:400'>Someone has requested to access your Bubble Smarthome Hub.<br>If this wasn't you or someone you authorized, please ignore this email. Otherwise, click the link below: <br> $confirmLink</h4>");
                        
                         echo("{\"success\":\"An access request to the owner of this hub has been sent! Please ask them to check the email associated with their account, and confirm your access!\"}");
                     }

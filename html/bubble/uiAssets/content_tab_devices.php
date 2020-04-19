@@ -83,7 +83,7 @@ html;
             //LOOP THROUGH ALL DEVICES IN THAT ROOM
             if ($resultDevice->num_rows > 0) {
                 while ($row = $resultDevice->fetch_assoc()) {
-                    addDevice($hub_id, $room_name, $row);
+                    $html .= addDevice($hub_id, $room_name, $row);
                 }
             }else{
                 $html.= <<<html

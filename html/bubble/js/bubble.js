@@ -517,7 +517,6 @@ function addRoomModalSubmit(){
 
 function confirmDeleteRoomModalConfirm(room_id){
     //CHANGE DISPLAY TO BE WAITING
-    $("#roomErrorDisplay").html("");
     $("#confirmDeleteRoomModalButton").attr("disabled", true);
 
     //GATHER REQUIRED DATA
@@ -532,12 +531,12 @@ function confirmDeleteRoomModalConfirm(room_id){
             //PARSE RESPONSE JSON DATA
             var result = JSON.parse(data);
 
-            //ADD ROOM ERROR, DISPLAY ERROR TO USER
+            //REMOVE ROOM ERROR, DISPLAY ERROR TO USER
             if(result.error){
-                // $("#roomErrorDisplay").html(result.error);
+                alert(result.error);
                 $("#confirmDeleteRoomModalButton").removeAttr("disabled");
             }
-            //ADD ROOM SUCCESS
+            //REMOVE ROOM SUCCESS
             if(result.success){
                 $('#room-encompass').load(document.URL + ' #room-encompass');
                 $('#confirmDeleteRoom_'+room_id).modal("hide");
@@ -546,11 +545,55 @@ function confirmDeleteRoomModalConfirm(room_id){
         },
         error: function(data){
             //INTERNAL SERVER ERROR HAS OCCURRED
-            // $("#roomErrorDisplay").html("An unexpected error has occurred, please try again");
+            alert("An unexpected error has occured, please try again");
             $("#confirmDeleteRoomModalButton").removeAttr("disabled");
         }
     });
 }
+
+//------------------------\ROOM RELATED FUNCTIONS----------------------------------------------------
+
+
+//------------------------DEVICE RELATED FUNCTIONS----------------------------------------------------
+
+function confirmDeleteDeviceModalConfirm(device_id){
+    //CHANGE DISPLAY TO BE WAITING
+    $("#confirmDeleteDeviceModalButton").attr("disabled", true);
+
+    //GATHER REQUIRED DATA
+    let url = "required/action_removeDevice.php";
+
+    //SEND AJAX REQUEST
+    $.ajax({
+        type:'POST',
+        url: url,
+        data:{ deviceId: device_id},
+        success:function(data){
+            //PARSE RESPONSE JSON DATA
+            var result = JSON.parse(data);
+
+            //REMOVE DEVICE ERROR, DISPLAY ERROR TO USER
+            if(result.error){
+                alert(result.error);
+                $("#confirmDeleteDeviceModalButton").removeAttr("disabled");
+            }
+            //REMOVE DEVICE SUCCESS
+            if(result.success){
+                $('#deviceList').load(document.URL + ' #deviceList');
+                $('#confirmDeleteDevice_'+device_id).modal("hide");
+                $("#confirmDeleteDeviceModalButton").removeAttr("disabled");
+            }
+        },
+        error: function(data){
+            //INTERNAL SERVER ERROR HAS OCCURRED
+            alert("An unexpected error has occured, please try again");
+            $("#confirmDeleteDeviceModalButton").removeAttr("disabled");
+        }
+    });
+}
+
+//------------------------\DEVICE RELATED FUNCTIONS----------------------------------------------------
+
 
 //------------------------Login functions----------------------------------------------------
 
@@ -649,6 +692,8 @@ function sendRegisterRequest(){
 
 
 //------------------------Login functions----------------------------------------------------
+
+
 
 
 function submitImage(){

@@ -254,7 +254,7 @@ function generateAccount(){
                    
             
             <!--Card with Editable table -->
-            <div class="card">
+            <div class="card" id="deviceList">
                 <h3 class="card-header text-center font-weight-bold text-uppercase py-4 border-upper">Devices</h3>
                 <div class="card-body">
                     <div id="table" class="table-editable">
@@ -323,7 +323,25 @@ device;
                                 </select>
                             </td>
                             <td>
-                                <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
+                                <button type="button" class="btn btn-danger btn-rounded btn-sm my-0" data-toggle="modal" data-target="#confirmDeleteDevice_$device_id">
+                                    Delete Device
+                                </button>
+                                <div class="modal fade" id="confirmDeleteDevice_$device_id" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteDeviceModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="confirmDeleteDeviceModalLabel">Confirm Delete Device</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">No, go back</button>
+                                                <button id="confirmDeleteDeviceModalButton" type="button" onclick="confirmDeleteDeviceModalConfirm($device_id)" class="btn btn-danger">Delete Room</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </td>
                         </tr>   
 pageHTML;

@@ -39,7 +39,6 @@ $(document).ready(function(){
                     //MOVE SUCCESS, CHANGE CURRENT ROOM SHOWN
                     $("#currentRoom_"+deviceId).prop('selected', true);
                     $("#currentRoom_"+deviceId).html("Current: " + roomName);
-
                 }
             },
             error: function(data){
@@ -386,6 +385,12 @@ function refreshDevice(device_id) {
     //Refresh device
     $('#reload_' + device_id).load(document.URL + ' #reload_' + device_id);
 }
+
+function refreshDevices() {
+    //Refresh device
+    $('#device-encompass').load(document.URL + ' #device-encompass');
+}
+
 
 function refreshHomeButton() {
     //Refresh home button and reset background colour
@@ -776,6 +781,8 @@ function submitImage(){
                 loading.style.visibility = "hidden";
                 devicetext.innerText = data;
                 closeCamera();
+                refreshHomeButton();
+                refreshDevices();
             }
         },
         error: function(data){

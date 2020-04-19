@@ -499,7 +499,7 @@ function addRoomModalSubmit(){
             //ADD ROOM SUCCESS
             if(result.success){
                 $('#room-encompass').load(document.URL + ' #room-encompass');
-                $('#addRoomModal').fade();
+                $('#addRoomModal').modal("hide");
                 $("#roomFormName").removeAttr("disabled");
                 $("#roomFormIcon").removeAttr("disabled");
                 $("#roomFormName").val("");

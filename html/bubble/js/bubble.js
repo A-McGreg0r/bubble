@@ -171,6 +171,11 @@ $(document).ready(function(){
             }
         });
     });
+
+    //HANDLE CLOSING THE CAMERA WHEN THE ADD DEVICE MODAL IS CLOSED
+    $('#addDeviceModal').on('hidden.bs.modal', function () {
+        closeCamera();
+    });
 });
 
 //------------------------DOCUMENT READY----------------------------------------------------
@@ -713,6 +718,12 @@ function openCamera(){
     }
 }
 
+function closeCamera(){
+    var video = document.querySelector("#videoElement");
+
+    video.srcObject.getTracks()[0].stop();
+}
+
 function submitImage(){
     //SUBMIT IMAGE FROM ADD DEVICE PAGE
     var url = "required/action_addDevice.php";
@@ -756,6 +767,7 @@ function submitImage(){
                 //FOUND QR CODE, DISPLAY RESULT TO USER.
                 loading.style.visibility = "hidden";
                 devicetext.innerText = data;
+                closeCamera();
             }
         },
         error: function(data){

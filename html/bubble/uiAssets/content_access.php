@@ -68,11 +68,13 @@ function generateAccessPage(){
                     <div class="container">
                         <div class="col-lg-12">
                             <div class="row justify-content-center">
-                                <div class="text-center align-middle">
+                                <div class="row text-center align-middle">
                                     <h3>User access request</h3>
                                 </div>
-                                <div class="align-middle">
+                                <div class="row align-middle">
                                     <p><strong>$request_user_email</strong> has requested access to your hub, $hub_name. Do you wish to accept?</p>
+                                </div>
+                                <div class="row align-middle">
                                     <button id="acceptRequestButton" type="button" class="btn btn-danger btn-rounded btn-sm my-0" data-toggle="modal" onclick='acceptAccessRequest("$auth_key", "$request_user_email");'>Accept</button>
                                 </div>
                             </div>

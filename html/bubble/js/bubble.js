@@ -849,7 +849,7 @@ function acceptAccessRequest(authkey, request_user_email){
             }
             //REMOVE ROOM SUCCESS
             if(result.success){
-
+                $("#acceptRequestButton").html("Successfully added user");
             }
         },
         error: function(data){

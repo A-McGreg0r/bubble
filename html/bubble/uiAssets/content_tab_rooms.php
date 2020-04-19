@@ -310,7 +310,7 @@ graph;
                                             </button>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No go back</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No, go back</button>
                                             <button id="confirmDeleteRoomModalButton" type="button" onclick="confirmDeleteRoomModalConfirm($room_id)" class="btn btn-primary">Delete Room</button>
                                         </div>
                                     </div>

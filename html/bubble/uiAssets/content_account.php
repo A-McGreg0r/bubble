@@ -337,7 +337,7 @@ device;
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">No, go back</button>
-                                                <button id="confirmDeleteDeviceModalButton" type="button" onclick="confirmDeleteDeviceModalConfirm($device_id)" class="btn btn-danger">Delete Room</button>
+                                                <button id="confirmDeleteDeviceModalButton" type="button" onclick="confirmDeleteDeviceModalConfirm($device_id);" class="btn btn-primary">Delete Device</button>
                                             </div>
                                         </div>
                                     </div>

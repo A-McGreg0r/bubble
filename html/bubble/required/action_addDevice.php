@@ -151,7 +151,7 @@
 
                         $confirmLink = 'https://bubble.rorydobson.com/index.php?action=access&key='.$access_key;
 
-                        sendBaseEmailFromUserID(, "Bubble Access Request", "<h4 style='font-weight:400'>Someone has requested to access your Bubble Smarthome Hub.<br>If this wasn't you or someone you authorized, please ignore this email. Otherwise, click the link below: <br> $confirmLink</h4>");
+                        sendBaseEmailFromUserID($hub_owner_id, "Bubble Access Request", "<h4 style='font-weight:400'>Someone has requested to access your Bubble Smarthome Hub.<br>If this wasn't you or someone you authorized, please ignore this email. Otherwise, click the link below: <br> $confirmLink</h4>");
                        
                         echo("{\"success\":\"An access request to the owner of this hub has been sent! Please ask them to check the email associated with their account, and confirm your access!\"}");
                     }

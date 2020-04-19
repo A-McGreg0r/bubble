@@ -717,7 +717,16 @@ function sendRegisterRequest(){
 //------------------------Qr code functions----------------------------------------------------
 
 function openCamera(){
+    //GET PAGE ELEMENTS FOR USE LATER
     var video = document.querySelector("#videoElement");
+    var loading = document.querySelector("#loading");
+    var submitButton = document.querySelector("#submitImage");
+    var devicetext = document.querySelector("#devicetext");
+    
+    devicetext.innerText = "";
+    video.style.visibility = "visible";
+    loading.style.visibility = "hidden";
+    submitButton.style.visibility = "visible";
 
     if (navigator.mediaDevices.getUserMedia) {
         navigator.mediaDevices.getUserMedia(

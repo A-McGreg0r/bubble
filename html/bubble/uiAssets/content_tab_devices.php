@@ -60,7 +60,7 @@ html;
             </div>
 html;
             while ($rowUnroomedDevices = $resultUnroomedDevices->fetch_assoc()) {
-                addDevice($hub_id, $rowUnroomedDevices);
+                addDevice($hub_id, "No room", $rowUnroomedDevices);
             }
         }
         $stmtUnroomedDevices->close();
@@ -83,7 +83,7 @@ html;
             //LOOP THROUGH ALL DEVICES IN THAT ROOM
             if ($resultDevice->num_rows > 0) {
                 while ($row = $resultDevice->fetch_assoc()) {
-                    addDevice($hub_id, $row);
+                    addDevice($hub_id, $room_name, $row);
                 }
             }else{
                 $html.= <<<html
@@ -120,7 +120,7 @@ html;
     return $html;
 }
 
-function addDevice($hub_id, $row){
+function addDevice($hub_id, $room_name, $row){
     global $db;
     $html = '';
     $device_id = $row['device_id'];

@@ -7,6 +7,11 @@ function generateAdviceTab()
     $html = '<div class="accordion md-accordion z-depth-1-half weather-page" id="advice-encompass" role="tablist" aria-multiselectable="true">';
 
     $hour = date('H') + 1;
+    if($hour == 24) {
+        $hour = "00";
+    } else if($hour < 10) {
+        $hour = "0$hour";
+    }
     $minute = date('i');
     $day = date('d');
     $month = date('m');

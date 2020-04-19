@@ -18,11 +18,6 @@ $(document).ready(function(){
             location.reload();
         }
     });
-
-    $('div[id^="modal_stats_"]').on('hidden.bs.modal', function () {
-        refreshDevices();
-    });
-
 });
 
 //------------------------DOCUMENT READY----------------------------------------------------
@@ -624,6 +619,10 @@ function attachDropdownSelectors(){
                 alert("Failed to change hub, please try again!");
             }
         });
+    });
+
+    $('div[id^="modal_stats_"]').on('hidden.bs.modal', function () {
+        refreshDevices();
     });
 }
 

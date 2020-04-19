@@ -4,6 +4,8 @@ use PHPMailer\PHPMailer\PHPMailer;
 require 'vendor/autoload.php';
 
 global $db;
+
+//Loop through all users
 $stmt = $db->prepare("SELECT * FROM user_info");
 $stmt->execute();
 $result = $stmt->get_result();
@@ -12,6 +14,8 @@ if ($result->num_rows >= 1) {
     $all = $result->fetch_all(MYSQLI_ASSOC);
     foreach($all as $row){
 
+        
+        //Loop through hubs associated with the user
         $stmt2 = $db->prepare("SELECT * FROM hub_users WHERE user_id = ?");
         $stmt2->bind_param("i",$row['user_id']);
         $stmt2->execute();
@@ -24,6 +28,7 @@ if ($result->num_rows >= 1) {
             $all2 = $result2->fetch_all(MYSQLI_ASSOC);
             foreach($all2 as $row2){
 
+                //Loop through all devices connected to hub
                 $stmt3 = $db->prepare("SELECT * FROM device_info WHERE hub_id = ?");
                 $stmt3->bind_param("i",$row2['hub_id']);
                 $stmt3->execute();
@@ -35,12 +40,15 @@ if ($result->num_rows >= 1) {
                             $hours = $row3['minutes_on'] / 60;
                             $device = $row3['device_name'];
                             $allow_emails = $row['allow_emails'];
+
+                            //If user has allowed emails
                             if($allow_emails == "Yes"){
                                 $first_name = $row['first_name'];
                                 $email = $row['email'];
                                 $budget = $row['budget'] / 31; // for daily stats
                                 $budget_round = number_format($budget,2);
                 
+                                //Set up email link
                                 $mail = new PHPMailer;
                                 $mail->isSMTP();
                                 $mail->SMTPDebug = 2;
@@ -55,6 +63,7 @@ if ($result->num_rows >= 1) {
                                 $mail->isHTML(true);
                                 $mail->AddEmbeddedImage('img/favicon.png', 'logo');
                 
+                                //Set up email message
                                 $logo = "<img src='cid:logo' style='width:100px'>";
                                 $email_welcome = "<h3 style='font-weight:400'>Dear $first_name,<h3>";
                                 $email_body = "<h4 style='font-weight:400'>$device has been on for $hours hours!<br>If you are no longer using it then please remember to turn it off.</h4>";
@@ -62,6 +71,7 @@ if ($result->num_rows >= 1) {
                                 $email_signature = "Jamie Rice - Organisational Manager <br> Bruce Wilson - Technical Manager <br> Rory Dobson - Liaison Officer <br> Andrew MacGregor - Web Developer <br> Michael Linton - Software Engineer <br> Mark Kostryckyj - Software Developer";
                                 $email_content = "<div style='font-family:arial'>$email_welcome $email_body $email_signoff</div> <hr><div style='text-align:center'> $logo <br> $email_signature</div>";
                 
+                                //Send email
                                 $mail->Body = (string) $email_content;
                                 //$mail->addAttachment('test.txt');
                                 if (!$mail->send()) {

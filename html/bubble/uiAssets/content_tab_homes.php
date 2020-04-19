@@ -54,7 +54,7 @@ function generateHomeTab()
                 }
             }
 
-            $energy_last_day = $energy_last_day / 1000;
+            $energy_last_day = number_format(($energy_last_day / 1000),2,'.','');
 
             $month = date("m");
             $energy_last_month = 0;
@@ -70,7 +70,7 @@ function generateHomeTab()
                 }
             }
 
-            $energy_last_month = $energy_last_month / 1000;
+            $energy_last_month = number_format(($energy_last_month / 1000),2,'.','');
 
             $energy_last_year = 0;
 
@@ -85,7 +85,7 @@ function generateHomeTab()
                 }
             }
 
-            $energy_last_year = $energy_last_year / 1000;
+            $energy_last_year = number_format(($energy_last_year / 1000),2,'.','');
 
             //-----------------------------CALCULATE DATA FOR GRAPH PLOTTING-----------------------------------
             
@@ -100,7 +100,7 @@ function generateHomeTab()
             if ($result7->num_rows >= 1) {
                 $all7 = $result7->fetch_all(MYSQLI_ASSOC);
                 foreach($all7 as $row7){
-                    $energy_usage7 = $row7['energy_usage']/1000;
+                    $energy_usage7 = number_format(($row7['energy_usage']/1000),3,'.','');
                     $year7 = $row7['entry_year'];
                     $month7 = $row7['entry_month'];
                     array_push($dataPoints, array($energy_usage7));
@@ -121,7 +121,7 @@ function generateHomeTab()
             }
 
             $cost_year = $energy_last_year * $energy_cost;
-            $cost_year_round = number_format($cost_year,2);
+            $cost_year_round = number_format($cost_year,2,'.','');
             $DataLabelsYearEncoded = json_encode($dataLabels);
             $dataPointsYearEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
             $dataGenYearEncoded = json_encode($dataGenPoints, JSON_NUMERIC_CHECK);
@@ -130,7 +130,8 @@ function generateHomeTab()
             $dataLabels = array();
             $dataGenPoints = array();
 
-            $stmt8 = $db->prepare("SELECT * FROM daily_data");
+            $stmt8 = $db->prepare("SELECT * FROM daily_data WHERE hub_id = ?");
+            $stmt8->bind_param("i", $hub_id);
             $stmt8->execute();
             $result8 = $stmt8->get_result();
             if ($result8->num_rows >= 1) {
@@ -138,7 +139,7 @@ function generateHomeTab()
                 $all8 = $result8->fetch_all(MYSQLI_ASSOC);
                 foreach($all8 as $row8){
                     $n = $n + 1;
-                    $energy_usage8 = $row8['energy_usage']/1000;
+                    $energy_usage8 = number_format(($row8['energy_usage']/1000),3,'.','');
                     $day8 = $row8['entry_day'];
                     array_push($dataPoints, array($energy_usage8));
                     array_push($dataLabels, array($day8));
@@ -158,7 +159,7 @@ function generateHomeTab()
             }
 
             $cost_month = $energy_last_month * $energy_cost;
-            $cost_month_round = number_format($cost_month,2);
+            $cost_month_round = number_format($cost_month,2,'.','');
             $DataLabelsMonthEncoded = json_encode($dataLabels);
             $dataPointsMonthEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
             $dataGenMonthEncoded = json_encode($dataGenPoints, JSON_NUMERIC_CHECK);
@@ -167,7 +168,8 @@ function generateHomeTab()
             $dataLabels = array();
             $dataGenPoints = array();
 
-            $stmt9 = $db->prepare("SELECT * FROM hourly_data");
+            $stmt9 = $db->prepare("SELECT * FROM hourly_data WHERE hub_id = ?");
+            $stmt9->bind_param("i", $hub_id);
             $stmt9->execute();
             $result9 = $stmt9->get_result();
             if ($result9->num_rows >= 1) {
@@ -175,7 +177,7 @@ function generateHomeTab()
                 $all9 = $result9->fetch_all(MYSQLI_ASSOC);
                 foreach($all9 as $row9){
                     $n = $n + 1;
-                    $energy_usage9 = $row9['energy_usage']/1000;
+                    $energy_usage9 = number_format(($row9['energy_usage']/1000),3,'.','');
                     $hour9 = $row9['entry_hour'];
                     array_push($dataPoints, array($energy_usage9));
                     array_push($dataLabels, array($hour9));
@@ -195,22 +197,22 @@ function generateHomeTab()
             }
 
             $cost_day = $energy_last_day * $energy_cost;
-            $cost_day_round = number_format($cost_day,2);
+            $cost_day_round = number_format($cost_day,2,'.','');
             $DataLabelsDayEncoded = json_encode($dataLabels);
             $dataPointsDayEncoded = json_encode($dataPoints, JSON_NUMERIC_CHECK);
             $dataGenDayEncoded = json_encode($dataGenPoints, JSON_NUMERIC_CHECK);
 
-            $energy_cost_round = number_format($energy_cost,2);
-            $budget_round = number_format($budget,2);
+            $energy_cost_round = number_format($energy_cost,2,'.','');
+            $budget_round = number_format($budget,2,'.','');
             $budget_remaining = $budget - $cost_month;
-            $budget_remaining_round = number_format($budget_remaining,2);
+            $budget_remaining_round = number_format($budget_remaining,2,'.','');
 
             $budget_day = $budget / 28;
             $budget_year = $budget * 12;
             $budget_day_remaining = $budget_day - $cost_day;
             $budget_year_remaining = $budget_year - $cost_year;
-            $budget_day_remaining_round = number_format($budget_day_remaining,2);
-            $budget_year_remaining_round = money_format('%.2n', $budget_year_remaining);
+            $budget_day_remaining_round = number_format($budget_day_remaining,2,'.','');
+            $budget_year_remaining_round = number_format($budget_year_remaining,2,'.','');
 
             $all_homes = "styleHome();";
             $timers = "";
@@ -596,7 +598,7 @@ change_button;
                                                     }]
                                                     },
                                                     options: {
-                                                    responsive: true
+                                                    responsive: [true],
                                                     }
                                                     });
                                                 </script>
@@ -624,7 +626,7 @@ change_button;
                                                         }]
                                                         },
                                                         options: {
-                                                        responsive: true
+                                                        responsive: [true],
                                                         }
                                                         });
                                                     </script>
@@ -675,10 +677,9 @@ change_button;
                             <div class="container landscape">
                                     <!--change chart drop down-->
                                     <select id="chartPicker" class="browser-default custom-select dropdown">
-                                        <option selected="selected">Choose time period</option>
-                                        <option value="0">Current Year</option>
-                                        <option value="1">Current Month</option>
-                                        <option value="2">Today</option>
+                                        <option selected="selected" value="2">Time period: Today</option>
+                                        <option value="1">Time period: Current Month</option>
+                                        <option value="0">Time period: Current Year</option>
                                     </select>
                             <!--chart canvas-->        
                             <canvas id="masterLineChart"></canvas>

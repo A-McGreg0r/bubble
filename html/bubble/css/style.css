@@ -693,7 +693,7 @@ select {
 }
 
 .weather_symbol {
-    margin-bottom: -7px;
+    margin-bottom: -30px;
     width: 100px;
     margin-top: -10px;
 }

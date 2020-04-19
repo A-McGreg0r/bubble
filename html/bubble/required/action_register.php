@@ -1,5 +1,5 @@
 <?php
-//Connect to the db
+//CONNECT TO DATABASE BACKEND
 require 'config.php';
 require 'PepperedPasswords.php';
 
@@ -101,8 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if($stmt->affected_rows === 1){
             echo("{\"success\":\"Registration successful\"}");
             //SEND REGISTRATION EMAIL
-            require "email/registration_email.php";
-            sendRegistrationEmail($userEmail, $userFirstName);
+            sendBaseEmail($userEmail, $userFirstName, "Welcome to Bubble!", "<h4 style='font-weight:400'>Welcome to Bubble!<br>We hope you enjoy our smart home application!</h4>");
         }else{
             echo("{\"error\":\"Registration failed, try again!\"}");
         }

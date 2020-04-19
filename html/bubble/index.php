@@ -72,18 +72,16 @@
         
         $html = '';  
 
+        //CHECK IF THE USER HAS NOT SETUP A HUB YET. IF THEY HAVE NOT SETUP A HUB, NAVIGATE TO THE ADD DEVICE PAGE.
+        //THIS IS FORCED, AS THE MAIN TAB PAGES WOULD HAVE NO INFO ON THEM ANYWAY
+        if($action != "logout" && $action != 'adddevice' && !userHasHub()){
+            load('./index.php?action=adddevice');
+            exit();
+        }
+
         //ADD NAVIGATION TO THE TOP OF THE PAGE
         include './uiAssets/content_userNav.php';
         $html .= generateUserNav();
-
-        
-        //CHECK IF THE USER HAS NOT SETUP A HUB YET. IF THEY HAVE NOT SETUP A HUB, NAVIGATE TO THE ADD DEVICE PAGE.
-        //THIS IS FORCED, AS THE MAIN TAB PAGES WOULD HAVE NO INFO ON THEM ANYWAY
-        if($action != "logout" && !userHasHub()){
-            include './uiAssets/content_addDevice.php';
-            $html .= generateQRReader();
-            exit();
-        }
 
         //SWITCH DEPENDING ON URL ACTION
         /**
@@ -95,6 +93,10 @@
             case 'logout':
                 include './required/action_logout.php';
                 $html .= generateLogout();
+                break;
+            case 'adddevice':
+                include './uiAssets/content_addDevice.php';
+                $html .= generateQRReader();
                 break;
             case 'account':
                 include './uiAssets/content_account.php';

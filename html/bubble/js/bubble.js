@@ -515,14 +515,13 @@ function addRoomModalSubmit(){
     });
 }
 
-function confirmDeleteRoomModalConfirm(){
+function confirmDeleteRoomModalConfirm(room_id){
     //CHANGE DISPLAY TO BE WAITING
     $("#roomErrorDisplay").html("");
     $("#confirmDeleteRoomModalButton").attr("disabled", true);
 
     //GATHER REQUIRED DATA
     let url = "required/action_removeRoom.php";
-    var room_id = $("#confirmDeleteRoom").attr("name");
 
     //SEND AJAX REQUEST
     $.ajax({
@@ -541,7 +540,7 @@ function confirmDeleteRoomModalConfirm(){
             //ADD ROOM SUCCESS
             if(result.success){
                 $('#room-encompass').load(document.URL + ' #room-encompass');
-                $('#confirmDeleteRoom').modal("hide");
+                $('#confirmDeleteRoom_'+room_id).modal("hide");
                 $("#confirmDeleteRoomModalButton").removeAttr("disabled");
             }
         },

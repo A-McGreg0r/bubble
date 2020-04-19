@@ -300,7 +300,7 @@ graph;
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmDeleteRoom">
                                 Delete Room
                             </button>
-                            <div class="modal fade" id="confirmDeleteRoom" value="$room_id" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteRoomModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="confirmDeleteRoom" name="$room_id" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteRoomModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">

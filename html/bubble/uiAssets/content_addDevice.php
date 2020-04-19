@@ -10,7 +10,7 @@ function generateQRReader($autoOpen = FALSE){
                 $(document).ready(function(){
                     $('#addDeviceModal').modal();
                     openCamera();
-                }
+                });
             </script>
 html;
     }

@@ -1,5 +1,6 @@
 <?php
 include_once dirname(__DIR__).'/required/config.php';
+include_once dirname(__DIR__).'/required/PepperedPasswords.php';
 
 function generateAccessPage(){
     global $db;
@@ -21,79 +22,70 @@ function generateAccessPage(){
         }
         
         //GET ROW FROM HUB ACCESS REQUESTS TABLE
-        $stmt = $db->prepare("SELECT * FROM hub_access_requests WHERE auth_key = ?");
-        $stmt->bind_param("s", $auth_key);
+        $stmt = $db->prepare("SELECT * FROM hub_access_requests WHERE owner_user_id = ?");
+        $stmt->bind_param("i", $user_id);
         if(!$stmt->execute()){
-            $html .= "Invalid key";
+            $html .= "Invalid user";
             $stmt->close();
             return $html;
         }
 
         $result = $stmt->get_result();
+        $hasher = new PepperedPasswords($pepper);
 
-        //ENSURE THAT THE AUTH KEY IS VALID
-        if($result->num_rows != 1){
-            $html .= "Invalid key";
-            $stmt->close();
-            return $html;
-        }
+        while($row = $result->fetch_assoc()){
+            if($hasher->verify($auth_key, $row['auth_key'])){
+                //GET REQUESTING USERS INFORMATION
+                $stmtRequestUser = $db->prepare("SELECT * FROM user_info WHERE user_id = ?");
+                $stmtRequestUser->bind_param("i", $row['request_user_id']);
+                if(!$stmtRequestUser->execute()){
+                    $html .= "Invalid requesting user - Contact customer support.";
+                    $stmtRequestUser->close();
+                    return $html;
+                }
+                $resultRequestUser = $stmtRequestUser->get_result();
+                $rowRequestUser = $resultRequestUser->fetch_assoc();
+                $stmtRequestUser->close();
+                $request_user_email = $rowRequestUser['email'];
 
-        $row = $result->fetch_assoc();
-        $stmt->close();
+                //GET HUB NAME
+                $stmtHub = $db->prepare("SELECT hub_name FROM hub_info WHERE hub_id = ?");
+                $stmtHub->bind_param("i",$row['hub_id']);
+                if(!$stmtHub->execute()){
+                    $html .= "Invalid hub.";
+                    $stmtHub->close();
+                    return $html;
+                }
+                $resultHub = $stmtHub->get_result();
+                $rowHub = $resultHub->fetch_assoc();
+                $stmtHub->close();
+                $hub_name = $rowHub['hub_name'];
 
-        //GET REQUESTING USERS INFORMATION
-        $stmtRequestUser = $db->prepare("SELECT * FROM user_info WHERE user_id = ?");
-        $stmtRequestUser->bind_param("i", $row['request_user_id']);
-        if(!$stmtRequestUser->execute()){
-            $html .= "Invalid requesting user - Contact customer support.";
-            $stmtRequestUser->close();
-            return $html;
-        }
-        $resultRequestUser = $stmtRequestUser->get_result();
-        $rowRequestUser = $resultRequestUser->fetch_assoc();
-        $stmtRequestUser->close();
-        $request_user_email = $rowRequestUser['email'];
 
-        //GET HUB NAME
-        $stmtHub = $db->prepare("SELECT hub_name FROM hub_info WHERE hub_id = ?");
-        $stmtHub->bind_param("i",$hub_id);
-        if(!$stmtHub->execute()){
-            $html .= "Invalid hub.";
-            $stmtHub->close();
-            return $html;
-        }
-        $resultHub = $stmtHub->get_result();
-        $rowHub = $resultHub->fetch_assoc();
-        $stmtHub->close();
-        $hub_name = $rowHub['hub_name'];
-
-        //ENSURE THAT THE LOGGED IN USER IS THE ONE THAT WAS SENT THE EMAIL
-        if($row['owner_user_id'] == $user_id){
-            //ENSURE KEY IS WITHIN A VALID DATE
-            if($row['expiry_date'] > time()){
-                $html .= <<<html
-                <div class="container">
-                    <div class="col-lg-12">
-                        <div class="row justify-content-center">
-                            <div class="text-center align-middle">
-                                <h3>User access request</h3>
-                            </div>
-                            <div class="align-middle">
-                                <p><strong>$request_user_email</strong> has requested access to your hub, $hub_name. Do you wish to accept?
+                //ENSURE KEY IS WITHIN A VALID DATE
+                if($row['expiry_date'] > time()){
+                    $html .= <<<html
+                    <div class="container">
+                        <div class="col-lg-12">
+                            <div class="row justify-content-center">
+                                <div class="text-center align-middle">
+                                    <h3>User access request</h3>
+                                </div>
+                                <div class="align-middle">
+                                    <p><strong>$request_user_email</strong> has requested access to your hub, $hub_name. Do you wish to accept?
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>   
-html;
-            }else{
-                $html .= "This key has expired, please ask the user to submit a new access request.";
-                return $html;
+                    </div>   
+        html;
+                }else{
+                    $html .= "This key has expired, please ask the user to submit a new access request.";
+                    return $html;
+                }
             }
-        }else{
-            $html .= "You are not authorised to perform this action.";
-            return $html;
         }
-        
+        $stmt->close();
+
 
     }
 

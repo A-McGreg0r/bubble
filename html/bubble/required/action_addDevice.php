@@ -143,8 +143,8 @@ error_reporting(E_ALL);
 
                         $expiry_date = time() + 24*60*60;
                         //INSERT ACCESS KEY INTO TABLE
-                        $stmtAccess = $db->prepare("INSERT INTO hub_access_requests (request_user_id, owner_user_id, auth_key, expiry_date) VALUES (?,?,?,?)");
-                        $stmtAccess->bind_param("iisi", $user_id, $hub_owner_id, $hashed_access_key, $expiry_date);
+                        $stmtAccess = $db->prepare("INSERT INTO hub_access_requests (request_user_id, owner_user_id, auth_key, hub_id, expiry_date) VALUES (?,?,?,?,?)");
+                        $stmtAccess->bind_param("iisi", $user_id, $hub_owner_id, $hashed_access_key, $hub_id, $expiry_date);
                         if(!$stmtAccess->execute()){
                             echo("{\"error\":\"Unknown error, contact support\"}");
                             $stmtOwner->close();

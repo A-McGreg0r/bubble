@@ -541,6 +541,8 @@ function confirmDeleteRoomModalConfirm(room_id){
                 $("#confirmDeleteRoomModalButton").removeAttr("disabled");
                 $('#confirmDeleteRoom_'+room_id).modal("hide");
                 $('#room-encompass').load(document.URL + ' #room-encompass');
+                $('body').removeClass('modal-open');
+                $('.modal-backdrop').remove();
             }
         },
         error: function(data){

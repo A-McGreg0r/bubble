@@ -320,7 +320,7 @@ device;
                                 }
                                 $html .= <<<pageHTML
 
-                                </select>
+                            </select>
                             </td>
                             <td>
                                 <button type="button" class="btn btn-danger btn-rounded btn-sm my-0" data-toggle="modal" data-target="#confirmDeleteDevice_$device_id">

@@ -335,6 +335,9 @@ graph;
                                 </table>
                             </div>
                             <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary btn-rounded btn-sm my-0" data-toggle="modal" data-target="#moveDevice_$device_id">
+                                    Move Device
+                                </button>
                                 <button type="button" class="btn btn-danger btn-rounded btn-sm my-0" data-toggle="modal" data-target="#confirmDeleteDevice_$device_id">
                                     Delete Device
                                 </button>
@@ -350,6 +353,40 @@ graph;
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">No, go back</button>
                                                 <button id="confirmDeleteDeviceModalButton" type="button" onclick="confirmDeleteDeviceModalConfirm($device_id);" class="btn btn-primary">Delete Device</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal fade" id="moveDevice_$device_id" tabindex="-1" role="dialog" aria-labelledby="moveDeviceLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="moveDeviceLabel">Move Device</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body>
+                                                <select name="moveDevice_$device_id"class="deviceLocation browser-default custom-select dropdown">
+                                                     <option id="currentRoom_$device_id" value="-1" disabled selected>Current: $roomName</option>
+            
+html;
+                                            $stmt5 = $db->prepare("SELECT * FROM room_info WHERE hub_id = ?");
+                                            $stmt5->bind_param("i", $hub_id);
+                                            $stmt5->execute();
+                                            $result5 = $stmt5->get_result();
+                                            while($row5 = $result5->fetch_assoc()) {
+                                                $val = $row5['room_name'];
+                                                $room_id = $row5['room_id'];
+            
+                                                $html .= "<option value=\"$room_id.$device_id.$val\">Move to: $val</option>";
+                                            }
+                                            $html .= <<<html
+            
+                                                </select>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Save Changes</button>
                                             </div>
                                         </div>
                                     </div>

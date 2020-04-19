@@ -581,6 +581,7 @@ function confirmDeleteDeviceModalConfirm(device_id){
             if(result.success){
                 $("#confirmDeleteDeviceModalButton").removeAttr("disabled");
                 $('#confirmDeleteDevice_'+device_id).modal().hide();
+                $('#device-encompass').load(document.URL + ' #device-encompass');
                 $('#deviceList').load(document.URL + ' #deviceList');
                 $('body').removeClass('modal-open');
                 $('.modal-backdrop').remove();

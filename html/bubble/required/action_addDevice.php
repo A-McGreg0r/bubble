@@ -121,43 +121,43 @@ error_reporting(E_ALL);
 
             break;
             default: //OTHER DEVICE
-                //BEGIN SESSION
-                session_start();
-                //GRAB USER_ID
-                $hub_id = $_SESSION['hub_id'];
-                //END SESSION
-                session_write_close();
+                // //BEGIN SESSION
+                // session_start();
+                // //GRAB USER_ID
+                // $hub_id = $_SESSION['hub_id'];
+                // //END SESSION
+                // session_write_close();
 
-                //SANITIZE DEVICE TYPE, CHECK THE DEVICE IS A KNOWN DEVICE TYPE
-                $stmtCheckType = $db->prepare("SELECT * FROM device_types WHERE type_id = ?");
-                $stmtCheckType->bind_param("i", $deviceType);
-                if(!$stmtCheckType->execute()){
-                    echo("{\"error\":\"Invalid device type\"}");
-                    $stmtCheckType->close();
-                    exit(0);
-                }
-                $result = $stmtCheckType->get_result();
-                if($result->num_rows != 1){
-                    echo("{\"error\":\"Unknown device type\"}");
-                    $stmtCheckType->close();
-                    exit(0);
-                }
-                //GET THE NAME OF THE DEVICE FOR DEFAULT NAME
-                $row = $result->fetch_assoc();
-                $device_name = $row['type_name'];
-                $stmtCheckType->close();
+                // //SANITIZE DEVICE TYPE, CHECK THE DEVICE IS A KNOWN DEVICE TYPE
+                // $stmtCheckType = $db->prepare("SELECT * FROM device_types WHERE type_id = ?");
+                // $stmtCheckType->bind_param("i", $deviceType);
+                // if(!$stmtCheckType->execute()){
+                //     echo("{\"error\":\"Invalid device type\"}");
+                //     $stmtCheckType->close();
+                //     exit(0);
+                // }
+                // $result = $stmtCheckType->get_result();
+                // if($result->num_rows != 1){
+                //     echo("{\"error\":\"Unknown device type\"}");
+                //     $stmtCheckType->close();
+                //     exit(0);
+                // }
+                // //GET THE NAME OF THE DEVICE FOR DEFAULT NAME
+                // $row = $result->fetch_assoc();
+                // $device_name = $row['type_name'];
+                // $stmtCheckType->close();
 
-                //PREPARE NEW DEVICE INSERTION
-                $stmtNewDevice = $db->prepare("INSERT INTO device_info (hub_id, device_auth_code, device_name, device_type, device_status) VALUES (?,?,?,?,0)");
-                $stmtNewDevice->bind_param("issi", $hub_id, $auth_key, $device_name, $deviceType);
-                if(!$stmtNewDevice->execute()){
-                    echo("{\"error\":\"Unknown error, please try again\"}");
-                    $stmtNewDevice->close();
-                    exit(0);
-                }
-                echo("{\"success\":\"Device successfully added\"}");
-                $stmtNewDevice->close();
-                exit(0);
+                // //PREPARE NEW DEVICE INSERTION
+                // $stmtNewDevice = $db->prepare("INSERT INTO device_info (hub_id, device_auth_code, device_name, device_type, device_status) VALUES (?,?,?,?,0)");
+                // $stmtNewDevice->bind_param("issi", $hub_id, $auth_key, $device_name, $deviceType);
+                // if(!$stmtNewDevice->execute()){
+                //     echo("{\"error\":\"Unknown error, please try again\"}");
+                //     $stmtNewDevice->close();
+                //     exit(0);
+                // }
+                // echo("{\"success\":\"Device successfully added\"}");
+                // $stmtNewDevice->close();
+                // exit(0);
             break;
         }
 

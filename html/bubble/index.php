@@ -72,17 +72,18 @@
         
         $html = '';  
 
+        //ADD NAVIGATION TO THE TOP OF THE PAGE
+        include './uiAssets/content_userNav.php';
+        $html .= generateUserNav();
+
+        
         //CHECK IF THE USER HAS NOT SETUP A HUB YET. IF THEY HAVE NOT SETUP A HUB, NAVIGATE TO THE ADD DEVICE PAGE.
         //THIS IS FORCED, AS THE MAIN TAB PAGES WOULD HAVE NO INFO ON THEM ANYWAY
-        if($action != "logout" && $action != 'adddevice' && !userHasHub()){
+        if($action != "logout" && !userHasHub()){
             include './uiAssets/content_addDevice.php';
             $html .= generateQRReader(TRUE);
             exit();
         }
-
-        //ADD NAVIGATION TO THE TOP OF THE PAGE
-        include './uiAssets/content_userNav.php';
-        $html .= generateUserNav();
 
         //SWITCH DEPENDING ON URL ACTION
         /**

@@ -1,7 +1,7 @@
 <?php
 include_once dirname(__DIR__).'/required/config.php';
 
-function generateQRReader($autoOpen = FALSE){
+function generateQRReader($autoOpen){
     $html = '';
 
     if($autoOpen){

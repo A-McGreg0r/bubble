@@ -469,7 +469,7 @@ function scaleDevice(hub_id, device_id, state) {
 }
 //------------------------Device switch Functions----------------------------------------------------
 
-//------------------------Add room Functions----------------------------------------------------
+//------------------------ROOM RELATED FUNCTIONS----------------------------------------------------
 function addRoomModalSubmit(){
     //CHANGE DISPLAY TO BE WAITING
     $("#roomErrorDisplay").html("");
@@ -515,6 +515,43 @@ function addRoomModalSubmit(){
     });
 }
 
+function confirmDeleteRoomModalConfirm(){
+    //CHANGE DISPLAY TO BE WAITING
+    $("#roomErrorDisplay").html("");
+    $("#confirmDeleteRoomModalButton").attr("disabled", true);
+
+    //GATHER REQUIRED DATA
+    let url = "required/action_removeRoom.php";
+    var room_id = $("#confirmDeleteRoom").val();
+
+    //SEND AJAX REQUEST
+    $.ajax({
+        type:'POST',
+        url: url,
+        data:{ roomId: room_id},
+        success:function(data){
+            //PARSE RESPONSE JSON DATA
+            var result = JSON.parse(data);
+
+            //ADD ROOM ERROR, DISPLAY ERROR TO USER
+            if(result.error){
+                // $("#roomErrorDisplay").html(result.error);
+                $("#confirmDeleteRoomModalButton").removeAttr("disabled");
+            }
+            //ADD ROOM SUCCESS
+            if(result.success){
+                $('#room-encompass').load(document.URL + ' #room-encompass');
+                $('#confirmDeleteRoom').modal("hide");
+                $("#confirmDeleteRoomModalButton").removeAttr("disabled");
+            }
+        },
+        error: function(data){
+            //INTERNAL SERVER ERROR HAS OCCURRED
+            // $("#roomErrorDisplay").html("An unexpected error has occurred, please try again");
+            $("#confirmDeleteRoomModalButton").removeAttr("disabled");
+        }
+    });
+}
 
 //------------------------Login functions----------------------------------------------------
 

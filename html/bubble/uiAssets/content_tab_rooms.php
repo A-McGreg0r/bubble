@@ -224,7 +224,7 @@ graph;
                         <i class="stats_icon fa" id="room_stats_$room_id" style="color:$colour;" onclick="openModalRoom('modal_room_stats_$room_id','room_stats_$room_id', 'room_stats_x_$room_id')"><i class="fas fa-info-circle"></i></i>
                     </div>
                 </div>
-                <div class="modal modalStatsWrap" id="modal_room_stats_$room_id">
+                <div class="modal modalStatsWrap fade" id="modal_room_stats_$room_id" role="dialog">
                     <div class="modalContent modalStats" id="content_$room_id">
                         <div class="x-adjust"><i class="stats_icon_x " id="room_stats_x_$room_id" style="color:$colour;" onclick="openModalRoom('modal_room_stats_$room_id','room_stats_x_$room_id','room_stats_$room_id')"><i class="fas fa-times"></i></i></div>
                         <div class="modalHeader"><strong>$room_name Statistics:</strong></div>
@@ -295,7 +295,27 @@ graph;
                                     </strong></td>
                                 </tr>
                             </table>
-
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmDeleteRoom">
+                                Delete Room
+                            </button>
+                            <div class="modal fade" id="confirmDeleteRoom" value="$room_id" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteRoomModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="confirmDeleteRoomModalLabel">Confirm Delete Room</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No go back</button>
+                                            <button id="confirmDeleteRoomModalButton" type="button" onclick="confirmDeleteRoomModalConfirm()" class="btn btn-primary">Delete Room</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

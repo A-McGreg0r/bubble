@@ -350,7 +350,9 @@ function refreshRoom(room_id) {
 
 function refreshDevice(device_id) {
     //Refresh device
-    $('#reload_' + device_id).load(document.URL + ' #reload_' + device_id);
+    $('#reload_' + device_id).load(document.URL + ' #reload_' + device_id, function(){
+        attachDropdownSelectors();
+    });
 }
 
 function refreshDevices() {

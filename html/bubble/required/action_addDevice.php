@@ -1,4 +1,8 @@
 <?php
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
     //////////////////////////////////////////////////////////// ADD DEVICE ACTION///////////////////////////////////////////////////
     /**
      * THIS FILE DOES A MAJORITY OF THE HEAVY LIFTING TO DO WITH QR CODES
@@ -137,9 +141,10 @@
                         $access_key = bin2hex(random_bytes(50));
                         $hashed_access_key = $hasher->hash($access_key);
 
+                        $expiry_date = time() + 24*60*60;
                         //INSERT ACCESS KEY INTO TABLE
                         $stmtAccess = $db->prepare("INSERT INTO hub_access_requests (request_user_id, owner_user_id, auth_key, expiry_date) VALUES (?,?,?,?)");
-                        $stmtAccess->bind_param("iisi", $user_id, $hub_owner_id, $hashed_access_key, time() + 24*60*60);
+                        $stmtAccess->bind_param("iisi", $user_id, $hub_owner_id, $hashed_access_key, $expiry_date);
                         if(!$stmtAccess->execute()){
                             echo("{\"error\":\"Unknown error, contact support\"}");
                             $stmtOwner->close();

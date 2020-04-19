@@ -55,8 +55,18 @@ if (isset($_SESSION['user_id'])) {
     $stmt = $db->prepare("INSERT INTO hub_users (hub_id, user_id) VALUES (?,?)");
     $stmt->bind_param("ii", $hub_id, $request_user_id);
     if($stmt->execute()){
-        echo("{\"success\":\"Successfully added new user\"}");
         $stmt->close();
+
+        //DELETE REQUEST ROW IN TABLE
+        $stmt2 = $db->prepare("DELETE FROM hub_access_requests WHERE auth_key = ?");
+        $stmt2->bind_param("s", $database_auth_key);
+        if($stmt2->execute()){
+            echo("{\"success\":\"Successfully added new user\"}");
+            $stmt2->close();
+            exit(0);
+        }
+        echo("{\"success\":\"Successfully added new user - 2\"}");
+        $stmt2->close();
         exit(0);
     }
     echo("{\"error\":\"Invalid request - 4\"}");

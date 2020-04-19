@@ -67,7 +67,7 @@ function generateAccessPage(){
                     $html .= <<<html
                     <div class="container">
                         <div class="col-lg-12">
-                            <div class="row justify-content-center">
+                            <div class="justify-content-center">
                                 <div class="row text-center align-middle">
                                     <h3>User access request</h3>
                                 </div>

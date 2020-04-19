@@ -49,7 +49,7 @@ if (isset($_SESSION['user_id'])) {
         $stmt->close();
         exit(0);
     }
-    echo("{\"error\":\"Invalid request - 3\"}");
+    echo("{\"error\":\"Invalid request - 3 $hub_id $request_user_id\"}");
     $stmt->close();
     exit(0);   
 

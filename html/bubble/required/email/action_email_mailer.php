@@ -36,7 +36,7 @@ function sendBaseEmail($userEmail, $userName, $emailSubject, $emailBody){
 
 }
 
-function sendEmailFromUserID($userID, $emailSubject, $emailBody){
+function sendBaseEmailFromUserID($userID, $emailSubject, $emailBody){
     global $db;
 
     $stmt = $db->prepare("SELECT email, first_name FROM user_info WHERE user_id = ?");

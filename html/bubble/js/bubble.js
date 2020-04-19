@@ -493,10 +493,17 @@ function addRoomModalSubmit(){
             //ADD ROOM ERROR, DISPLAY ERROR TO USER
             if(result.error){
                 $("#roomErrorDisplay").html(result.error);
+                $("#roomFormName").removeAttr("disabled");
+                $("#roomFormIcon").removeAttr("disabled");
             }
             //ADD ROOM SUCCESS
             if(result.success){
                 $('#room-encompass').load(document.URL + ' #room-encompass');
+                $('#addRoomModal').fade();
+                $("#roomFormName").removeAttr("disabled");
+                $("#roomFormIcon").removeAttr("disabled");
+                $("#roomFormName").val("");
+                $("#roomFormIcon").val("");
             }
         },
         error: function(data){

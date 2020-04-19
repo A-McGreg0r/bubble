@@ -247,7 +247,6 @@ table td {
 .account-row {
     margin-top: 5px;
     margin-bottom: 5px;
-
     border-radius: 0.25rem!important;
 }
 
@@ -902,6 +901,9 @@ b {
 
 .hub_row:hover {
     cursor: pointer;
+}
+.modal-row{
+    margin: 0;
 }
 
 .carousel-control-next, .carousel-control-prev {

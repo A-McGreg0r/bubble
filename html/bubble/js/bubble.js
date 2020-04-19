@@ -1,3 +1,28 @@
+
+//------------------------DOCUMENT READY----------------------------------------------------
+/**
+ * THIS FUNCTION IS CALLED WHEN THE DOCUMENT IS SET TO A READY STATE.
+ * THAT MEANS IT CAN BE USED TO EASILY ATTACH EVENT HANDLERS
+ */
+$(document).ready(function(){
+    //HIDE VALUES FOR REGISTER AND SIGN IN FORMS
+    $("#loginErrorBox").hide();
+    $("#registerErrorBox").hide();
+
+    attachDropdownSelectors();
+
+    //HANDLE CLOSING THE CAMERA WHEN THE ADD DEVICE MODAL IS CLOSED
+    $('#addDeviceModal').on('hidden.bs.modal', function () {
+        closeCamera();
+        if($(this).attr("auto-reload")){
+            location.reload();
+        }
+    });
+});
+
+//------------------------DOCUMENT READY----------------------------------------------------
+
+
 //------------------------Swipe Function----------------------------------------------------
 
 //Found with the help of http://www.javascriptkit.com/javatutors/touchevents2.shtml
@@ -128,52 +153,6 @@ $(window).on("load", function(){
     });
 });
 //------------------------Swipe Function----------------------------------------------------
-
-//------------------------DOCUMENT READY----------------------------------------------------
-
-
-$(document).ready(function(){
-    //HIDE VALUES FOR REGISTER AND SIGN IN FORMS
-    $("#loginErrorBox").hide();
-    $("#registerErrorBox").hide();
-
-    //SETUP ACCOUNT PAGE DEVICE MOVING
-    $('select').change(function(){
-        let url = "required/action_moveDevice.php";
-        //GATHER DATA FROM THE DROPDOWN BOX
-        let value = $(this).val().split(".");
-        let roomId = value[0];
-        let deviceId = value[1];
-        let roomName = value[2];
-
-        //CREATE AJAX CALL
-        $.ajax({
-            type:'POST',
-            url: url,
-            data:{ room_id: roomId, device_id: deviceId},
-            success:function(data){
-                //PARSE RESPONSE JSON DATA
-                var result = JSON.parse(data);
-
-                //ERROR, DISPLAY ERROR TO USER
-                if(result.error){
-                    alert("Failed to move device: "+result.error);
-                }
-                if(result.success){
-                    //MOVE SUCCESS, CHANGE CURRENT ROOM SHOWN
-                    $("#currentRoom_"+deviceId).prop('selected', true);
-                    $("#currentRoom_"+deviceId).html("Current: " + roomName);
-
-                }
-            },
-            error: function(data){
-                alert("Failed to change hub, please try again!");
-            }
-        });
-    });
-});
-
-//------------------------DOCUMENT READY----------------------------------------------------
 
 //------------------------Moving Hubs Function----------------------------------------------------
 
@@ -371,8 +350,18 @@ function refreshRoom(room_id) {
 
 function refreshDevice(device_id) {
     //Refresh device
-    $('#reload_' + device_id).load(document.URL + ' #reload_' + device_id);
+    $('#reload_' + device_id).load(document.URL + ' #reload_' + device_id, function(){
+        attachDropdownSelectors();
+    });
 }
+
+function refreshDevices() {
+    //Refresh device
+    $('#device-encompass').load(document.URL + ' #device-encompass', function(){
+        attachDropdownSelectors();
+    });
+}
+
 
 function refreshHomeButton() {
     //Refresh home button and reset background colour
@@ -469,6 +458,177 @@ function scaleDevice(hub_id, device_id, state) {
 }
 //------------------------Device switch Functions----------------------------------------------------
 
+//------------------------ROOM RELATED FUNCTIONS----------------------------------------------------
+function addRoomModalSubmit(){
+    //CHANGE DISPLAY TO BE WAITING
+    $("#roomErrorDisplay").html("");
+    $("#roomFormName").attr("disabled", true);
+    $("#roomFormIcon").attr("disabled", true);
+
+    //GATHER REQUIRED DATA
+    let url = "required/action_addRoom.php";
+    var room_name = $("#roomFormName").val();
+    var roomIcon = $("#roomFormIcon").val();
+
+    //SEND AJAX REQUEST
+    $.ajax({
+        type:'POST',
+        url: url,
+        data:{ roomName: room_name, icon: roomIcon},
+        success:function(data){
+            //PARSE RESPONSE JSON DATA
+            var result = JSON.parse(data);
+
+            //ADD ROOM ERROR, DISPLAY ERROR TO USER
+            if(result.error){
+                $("#roomErrorDisplay").html(result.error);
+                $("#roomFormName").removeAttr("disabled");
+                $("#roomFormIcon").removeAttr("disabled");
+            }
+            //ADD ROOM SUCCESS
+            if(result.success){
+                $('#room-encompass').load(document.URL + ' #room-encompass');
+                $('#addRoomModal').modal("hide");
+                $("#roomFormName").removeAttr("disabled");
+                $("#roomFormIcon").removeAttr("disabled");
+                $("#roomFormName").val("");
+                $("#roomFormIcon").val("");
+            }
+        },
+        error: function(data){
+            //INTERNAL SERVER ERROR HAS OCCURRED
+            $("#roomErrorDisplay").html("An unexpected error has occurred, please try again");
+            $("#roomFormName").removeAttr("disabled");
+            $("#roomFormIcon").removeAttr("disabled");
+        }
+    });
+}
+
+function confirmDeleteRoomModalConfirm(room_id){
+    //CHANGE DISPLAY TO BE WAITING
+    $("#confirmDeleteRoomModalButton").attr("disabled", true);
+
+    //GATHER REQUIRED DATA
+    let url = "required/action_removeRoom.php";
+
+    //SEND AJAX REQUEST
+    $.ajax({
+        type:'POST',
+        url: url,
+        data:{ roomId: room_id},
+        success:function(data){
+            //PARSE RESPONSE JSON DATA
+            var result = JSON.parse(data);
+
+            //REMOVE ROOM ERROR, DISPLAY ERROR TO USER
+            if(result.error){
+                alert(result.error);
+                $("#confirmDeleteRoomModalButton").removeAttr("disabled");
+            }
+            //REMOVE ROOM SUCCESS
+            if(result.success){
+                $("#confirmDeleteRoomModalButton").removeAttr("disabled");
+                $('#confirmDeleteRoom_'+room_id).modal("hide");
+                $('#room-encompass').load(document.URL + ' #room-encompass');
+            }
+        },
+        error: function(data){
+            //INTERNAL SERVER ERROR HAS OCCURRED
+            alert("An unexpected error has occured, please try again");
+            $("#confirmDeleteRoomModalButton").removeAttr("disabled");
+        }
+    });
+}
+
+//------------------------\ROOM RELATED FUNCTIONS----------------------------------------------------
+
+
+//------------------------DEVICE RELATED FUNCTIONS----------------------------------------------------
+
+function confirmDeleteDeviceModalConfirm(device_id){
+    //CHANGE DISPLAY TO BE WAITING
+    $("#confirmDeleteDeviceModalButton").attr("disabled", true);
+
+    //GATHER REQUIRED DATA
+    let url = "required/action_removeDevice.php";
+
+    //SEND AJAX REQUEST
+    $.ajax({
+        type:'POST',
+        url: url,
+        data:{ deviceId: device_id},
+        success:function(data){
+            //PARSE RESPONSE JSON DATA
+            var result = JSON.parse(data);
+
+            //REMOVE DEVICE ERROR, DISPLAY ERROR TO USER
+            if(result.error){
+                alert(result.error);
+                $("#confirmDeleteDeviceModalButton").removeAttr("disabled");
+            }
+            //REMOVE DEVICE SUCCESS
+            if(result.success){
+                $("#confirmDeleteDeviceModalButton").removeAttr("disabled");
+                $('#confirmDeleteDevice_'+device_id).modal().hide();
+                $('#device-encompass').load(document.URL + ' #device-encompass');
+                $('#deviceList').load(document.URL + ' #deviceList');
+                $('body').removeClass('modal-open');
+                $('.modal-backdrop').remove();
+            }
+        },
+        error: function(data){
+            //INTERNAL SERVER ERROR HAS OCCURRED
+            alert("An unexpected error has occured, please try again");
+            $("#confirmDeleteDeviceModalButton").removeAttr("disabled");
+        }
+    });
+}
+
+function attachDropdownSelectors(){
+    //SETUP ACCOUNT PAGE DEVICE MOVING.
+    /**
+     * USE JQUERY SELECTORS TO FIND DROP DOWN BOXES THAT START WITH THE moveDevice NAME.
+     * THEN, ATTACH EVENT LISTENER THAT TRIGGERS WHEN AN OPTION IS PICKED
+     */
+    $('select[name^="moveDevice_"]').change(function(){
+        let url = "required/action_moveDevice.php";
+        //GATHER DATA FROM THE DROPDOWN BOX
+        let value = $(this).val().split(".");
+        let roomId = value[0];
+        let deviceId = value[1];
+        let roomName = value[2];
+
+        //CREATE AJAX CALL
+        $.ajax({
+            type:'POST',
+            url: url,
+            data:{ room_id: roomId, device_id: deviceId},
+            success:function(data){
+                //PARSE RESPONSE JSON DATA
+                var result = JSON.parse(data);
+
+                //ERROR, DISPLAY ERROR TO USER
+                if(result.error){
+                    alert("Failed to move device: "+result.error);
+                }
+                if(result.success){
+                    //MOVE SUCCESS, CHANGE CURRENT ROOM SHOWN
+                    $("#currentRoom_"+deviceId).prop('selected', true);
+                    $("#currentRoom_"+deviceId).html("Current: " + roomName);
+                }
+            },
+            error: function(data){
+                alert("Failed to change hub, please try again!");
+            }
+        });
+    });
+
+    $('div[id^="modal_stats_"]').on('hidden.bs.modal', function () {
+        refreshDevices();
+    });
+}
+
+//------------------------\DEVICE RELATED FUNCTIONS----------------------------------------------------
 
 
 //------------------------Login functions----------------------------------------------------
@@ -569,6 +729,37 @@ function sendRegisterRequest(){
 
 //------------------------Login functions----------------------------------------------------
 
+//------------------------Qr code functions----------------------------------------------------
+
+function openCamera(){
+    //GET PAGE ELEMENTS FOR USE LATER
+    var video = document.querySelector("#videoElement");
+    var loading = document.querySelector("#loading");
+    var submitButton = document.querySelector("#submitImage");
+    var devicetext = document.querySelector("#devicetext");
+    
+    devicetext.innerText = "";
+    video.style.visibility = "visible";
+    loading.style.visibility = "hidden";
+    submitButton.style.visibility = "visible";
+
+    if (navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia(
+            { video: true }
+        ).then(function (stream) {
+            video.srcObject = stream;
+        })
+        .catch(function (err) {
+        console.log("Something went wrong!");
+        });
+    }
+}
+
+function closeCamera(){
+    var video = document.querySelector("#videoElement");
+
+    video.srcObject.getTracks()[0].stop();
+}
 
 function submitImage(){
     //SUBMIT IMAGE FROM ADD DEVICE PAGE
@@ -602,17 +793,23 @@ function submitImage(){
         data:{ photo: dataQuery},
         success:function(data){
             //SENDING DATA WAS SUCCESSFUL, BUT CHECK WHAT SERVER SAID ABOUT IMAGE
+            //PARSE RESPONSE JSON DATA
+            var result = JSON.parse(data);
 
-            //CANNOT FIND QR CODE INSIDE IMAGE
-            if(!data || data == "\n"){
+            if(result.error){
+                //CANNOT FIND QR CODE INSIDE IMAGE
                 video.style.visibility = "visible";
                 loading.style.visibility = "hidden";
                 submitButton.style.visibility = "visible";
-                devicetext.innerText = "Unable to find a QR code, please try again!";
-            }else{
+                devicetext.innerText = result.error;
+            }
+            if(result.success){
                 //FOUND QR CODE, DISPLAY RESULT TO USER.
                 loading.style.visibility = "hidden";
-                devicetext.innerText = data;
+                devicetext.innerText = result.success;
+                closeCamera();
+                refreshHomeButton();
+                refreshDevices();
             }
         },
         error: function(data){
@@ -620,10 +817,45 @@ function submitImage(){
             video.style.visibility = "visible";
             loading.style.visibility = "hidden";
             submitButton.style.visibility = "visible";
-            devicetext.innerText = "Unable to find a QR code, please try again!";
+            devicetext.innerText = "Unable to find a QR code, please try again";
 
         }
     });
 }
 
+//------------------------Qr code functions----------------------------------------------------
 
+//------------------------USER ACCESS FUNCTIONS----------------------------------------------------
+
+function acceptAccessRequest(authkey, request_user_email){
+    //CHANGE DISPLAY TO BE WAITING
+    $("#acceptRequestButton").attr("disabled", true);
+
+    //GATHER REQUIRED DATA
+    let url = "required/action_acceptAccess.php";
+
+    //SEND AJAX REQUEST
+    $.ajax({
+        type:'POST',
+        url: url,
+        data:{ auth_key: authkey, user_email: request_user_email},
+        success:function(data){
+            //PARSE RESPONSE JSON DATA
+            var result = JSON.parse(data);
+
+            //REMOVE ROOM ERROR, DISPLAY ERROR TO USER
+            if(result.error){
+                $("#acceptRequestButton").removeAttr("disabled");
+            }
+            //REMOVE ROOM SUCCESS
+            if(result.success){
+                $("#acceptRequestButton").html("Successfully added user");
+            }
+        },
+        error: function(data){
+            //INTERNAL SERVER ERROR HAS OCCURRED
+            alert("An unexpected error has occured, please try again");
+            $("#acceptRequestButton").removeAttr("disabled");
+        }
+    });
+}

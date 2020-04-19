@@ -7,7 +7,7 @@ function generateRoomTab(){
     $html = '<div id="room-encompass">';
     //ADD NEW ROOM CARD, GENERATE ALWAYS AT TOP!
     $html .= <<<html
-        <a href="index.php?action=addroom">
+        <a onclick='$("#addRoomModal").modal();'>
             <div class="card mb-4 container">
                 <!--Card image-->
                 <div class="view overlay">
@@ -44,6 +44,7 @@ html;
         while($row4 = $result4->fetch_assoc()) {
             $price = $row4['energy_cost'];
         }
+        $stmt4->close();
 
         $device_output = array();
         $output_names = array();
@@ -122,7 +123,7 @@ html;
                 $html .= <<<html
                 <!-- Card -->
                 <div id="room_reload_$room_id">
-                <div class="card mb-4 container text-dark grey-out-rooms alternating-border" style="background-color:$background" id="$room_id" onclick="toggleRoom($hub_id,$room_id);
+                    <div class="card mb-4 container text-dark grey-out-rooms alternating-border" style="background-color:$background" id="$room_id" onclick="toggleRoom($hub_id,$room_id);
 html;
                 $room_hour = 0;
                 $room_day = 0;
@@ -165,64 +166,63 @@ html;
                 if(($total_price + $price_month) != 0){
                     $percent = number_format(((100 / ($total_price + $price_month)) * $price_month), 1);
                     $graph = <<<graph
-                    <canvas class="stats-pie " style="max-width:400px display:inline-block" id="room_stats_doughnut_$room_id" width="924" height="426"></canvas>
-                                        
-                    <table class="stats-table comparison">
-                    <tr class="stats-row">
-                        <td class="stats-left l-pad-stats tighten"><strong>
-                            $room_name:
-                        </strong></td>
-                        <td class="stats-right r-pad-stats tighten"><strong>
-                            £$price_month
-                        </strong></td>
-                    </tr>
-                    <tr class="raise">
-                        <td class="stats-left l-pad-stats tighten"><strong>
-                            Other Rooms:
-                        </strong></td>
-                        <td class="stats-right r-pad-stats tighten"><strong>
-                            £$total_price
-                        </strong></td>
-                    </tr>
-                    <tr class="raise">
-                        <td class="stats-left l-pad-stats tighten"><strong>
-                            Percentage:
-                        </strong></td>
-                        <td class="stats-right r-pad-stats tighten"><strong>
-                            $percent %
-                        </strong></td>
-                    </tr>
-                    </table>
+                        <canvas class="stats-pie " style="max-width:400px display:inline-block" id="room_stats_doughnut_$room_id" width="924" height="426"></canvas>
+                                            
+                        <table class="stats-table comparison">
+                        <tr class="stats-row">
+                            <td class="stats-left l-pad-stats tighten"><strong>
+                                $room_name:
+                            </strong></td>
+                            <td class="stats-right r-pad-stats tighten"><strong>
+                                £$price_month
+                            </strong></td>
+                        </tr>
+                        <tr class="raise">
+                            <td class="stats-left l-pad-stats tighten"><strong>
+                                Other Rooms:
+                            </strong></td>
+                            <td class="stats-right r-pad-stats tighten"><strong>
+                                £$total_price
+                            </strong></td>
+                        </tr>
+                        <tr class="raise">
+                            <td class="stats-left l-pad-stats tighten"><strong>
+                                Percentage:
+                            </strong></td>
+                            <td class="stats-right r-pad-stats tighten"><strong>
+                                $percent %
+                            </strong></td>
+                        </tr>
+                        </table>
 graph;
                 }
 
                 $html .= <<<html
-                    refreshRoom($room_id);refreshHomeButton();">
-                    <!--Card image-->
-                    <div class="view overlay">
-                        <div class="mask rgba-white-slight"></div>
-                    </div>
-              
-                    <!--Card content-->
-                    <div class="card-body d-flex justify-content-between">
-              
-                    <!--Title-->      
-                        <div class="d-flex flex-column">  
-                            <div class="row" style="color:$colour3">
-                                <strong class="room_icon">$iconText</strong> &nbsp; <strong>$room_name</strong>
+                        refreshRoom($room_id);refreshHomeButton();">
+                        <!--Card image-->
+                        <div class="view overlay">
+                            <div class="mask rgba-white-slight"></div>
+                        </div>
+                
+                        <!--Card content-->
+                        <div class="card-body d-flex justify-content-between">
+                
+                        <!--Title-->      
+                            <div class="d-flex flex-column">  
+                                <div class="row" style="color:$colour3">
+                                    <strong class="room_icon">$iconText</strong> &nbsp; <strong>$room_name</strong>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex flex-column" style="font-size:1.5rem">
+                                <!-- Default switch -->
+                                <p class="onOffLabel"><strong id="room_setting_$room_id" style="color:$colour">$setting</strong><div id="room_loader_$room_id" class="loader"></div></p>
                             </div>
                         </div>
                         
-                        <div class="d-flex flex-column" style="font-size:1.5rem">
-                            <!-- Default switch -->
-                            <p class="onOffLabel"><strong id="room_setting_$room_id" style="color:$colour">$setting</strong><div id="room_loader_$room_id" class="loader"></div></p>
-                        </div>
+                        <strong class="timer_icon" id="room_timer_$room_id" style="color:black;display:$timer_display;" onclick="openModal('modal_room_$room_id', 'timer_room_x_$room_id')">$timer</strong>
+                        <i class="stats_icon fa" id="room_stats_$room_id" style="color:$colour;" onclick="openModalRoom('modal_room_stats_$room_id','room_stats_$room_id', 'room_stats_x_$room_id')"><i class="fas fa-info-circle"></i></i>
                     </div>
-                    
-                    <strong class="timer_icon" id="room_timer_$room_id" style="color:black;display:$timer_display;" onclick="openModal('modal_room_$room_id', 'timer_room_x_$room_id')">$timer</strong>
-                <i class="stats_icon fa" id="room_stats_$room_id" style="color:$colour;" onclick="openModalRoom('modal_room_stats_$room_id','room_stats_$room_id', 'room_stats_x_$room_id')"><i class="fas fa-info-circle"></i></i>
-                </div>
-                
                 </div>
                 <div class="modal modalStatsWrap" id="modal_room_stats_$room_id">
                     <div class="modalContent modalStats" id="content_$room_id">
@@ -296,8 +296,31 @@ graph;
                                 </tr>
                             </table>
                         </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmDeleteRoom_$room_id">
+                                Delete Room
+                            </button>
+                            <div class="modal fade" id="confirmDeleteRoom_$room_id" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteRoomModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="confirmDeleteRoomModalLabel">Confirm Delete Room</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No, go back</button>
+                                            <button id="confirmDeleteRoomModalButton" type="button" onclick="confirmDeleteRoomModalConfirm($room_id)" class="btn btn-primary">Delete Room</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+
 
                 <div class="modal modalTimer" id="modal_room_$room_id">
                         <div class="modalContent modalContentTimer modalRoomTimer" id="content_room_timer_$room_id">
@@ -406,7 +429,64 @@ html;
     } else{
         exit("Error, user is not logged in!");
     }
+
+    //CREATE ADD ROOM MODAL AND CONTROl
     $html .= <<<html
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="addRoomModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Add a new room to your house</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="col-lg-12">
+                            <div class="row alter-display align-middle reduce-space">
+                                <p id="roomErrorDisplay"></p>
+                                <!-- Room Name -->
+                                <div class="md-form">
+                                    <label for="roomFormName">Room Name</label>
+                                    <input type="text"
+                                        id="roomFormName"
+                                        class="form-control form-control-sm"
+                                        name="roomName"
+                                        required size="3"
+                                        value=""/>
+                                        <small class="form-text text-muted mb-4" style="text-align:center">Room must have a unique name</small>
+                                </div>
+        
+                                <!-- Icon dropdown -->
+                                <div class="md-form">
+                                    <select id="roomFormIcon" name="icon" class="browser-default custom-select dropdown">
+                                        <option value="" disabled selected>Choose your icon</option>
+html;
+                                        $stmt = $db->prepare("SELECT * FROM room_types");
+                                        $stmt->execute();
+                                        $result = $stmt->get_result();
+                                        $inc = 0;
+                                        while($row = $result->fetch_assoc()) {
+                                            $inc++;
+                                            $val = $row['type_description'];
+                                            $html .= "<option value=\"$inc\">$val</option>";
+                                        }
+                                        $html .= <<<html
+        
+                                    </select>
+                                </div>        
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" onclick="addRoomModalSubmit()" class="btn btn-secondary">Add Room</button>
+                </div>
+            </div>
+        </div>
     </div>
 html;
     return $html;

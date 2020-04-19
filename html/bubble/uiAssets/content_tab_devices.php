@@ -493,7 +493,7 @@ html;
     } else{
         exit("Error, user is not logged in!");
     }
-    $html .= "</div>".generateQRReader(FALSE);
+    $html .= "</div>".generateQRReader();
     return $html;
 }
 

@@ -81,7 +81,7 @@
         //THIS IS FORCED, AS THE MAIN TAB PAGES WOULD HAVE NO INFO ON THEM ANYWAY
         if($action != "logout" && !userHasHub()){
             include './uiAssets/content_addDevice.php';
-            $html .= generateQRReader(TRUE);
+            $html .= generateQRReader();
             exit();
         }
 

@@ -778,18 +778,20 @@ function submitImage(){
         data:{ photo: dataQuery},
         success:function(data){
             //SENDING DATA WAS SUCCESSFUL, BUT CHECK WHAT SERVER SAID ABOUT IMAGE
-
-            if(data.error){
+            //PARSE RESPONSE JSON DATA
+            var result = JSON.parse(data);
+            
+            if(result.error){
                 //CANNOT FIND QR CODE INSIDE IMAGE
                 video.style.visibility = "visible";
                 loading.style.visibility = "hidden";
                 submitButton.style.visibility = "visible";
-                devicetext.innerText = data.error;
+                devicetext.innerText = result.error;
             }
-            if(data.result){
+            if(result.result){
                 //FOUND QR CODE, DISPLAY RESULT TO USER.
                 loading.style.visibility = "hidden";
-                devicetext.innerText = data;
+                devicetext.innerText = result.result;
                 closeCamera();
                 refreshHomeButton();
                 refreshDevices();

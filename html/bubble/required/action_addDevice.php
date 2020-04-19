@@ -151,7 +151,7 @@ error_reporting(E_ALL);
                 $stmtNewDevice = $db->prepare("INSERT INTO device_info (hub_id, device_auth_code, device_name, device_type, device_status) VALUES (?,?,?,?,0)");
                 $stmtNewDevice->bind_param("issi", $hub_id, $auth_key, $device_name, $deviceType);
                 if(!$stmtNewDevice->execute()){
-                    echo("{\"error\":\"Unknown error, please try again\"}");
+                    echo("{\"error\":\"Device already registered, please check the devices page\"}");
                     $stmtNewDevice->close();
                     exit(0);
                 }

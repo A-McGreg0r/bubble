@@ -700,14 +700,14 @@ select {
 }
 
 .weather_symbol_small {
-    margin-bottom: 6.5px;
+    margin-bottom: -20px;
     width: 70px;
     margin-top: 6.5px;
 }
 
 .weather_symbol_large {
-    margin-bottom: 16px;
-    font-size: 50px;
+    margin-bottom: -14px;
+    font-size: 60px;
     margin-top: 16px;
 }
 

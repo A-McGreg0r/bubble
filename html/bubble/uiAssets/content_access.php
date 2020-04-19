@@ -3,7 +3,7 @@ include_once dirname(__DIR__).'/required/config.php';
 include_once dirname(__DIR__).'/required/PepperedPasswords.php';
 
 function generateAccessPage(){
-    global $db;
+    global $db, $pepper;
     $html = '';
     session_start();
 

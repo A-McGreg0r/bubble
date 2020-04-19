@@ -696,8 +696,22 @@ function sendRegisterRequest(){
 
 //------------------------Login functions----------------------------------------------------
 
+//------------------------Qr code functions----------------------------------------------------
 
+function openCamera(){
+    var video = document.querySelector("#videoElement");
 
+    if (navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia(
+            { video: true }
+        ).then(function (stream) {
+            video.srcObject = stream;
+        })
+        .catch(function (err) {
+        console.log("Something went wrong!");
+        });
+    }
+}
 
 function submitImage(){
     //SUBMIT IMAGE FROM ADD DEVICE PAGE
@@ -749,7 +763,7 @@ function submitImage(){
             video.style.visibility = "visible";
             loading.style.visibility = "hidden";
             submitButton.style.visibility = "visible";
-            devicetext.innerText = "Unable to find a QR code, please try again!";
+            devicetext.innerText = "Unable to find a QR code, please try again";
 
         }
     });

@@ -368,7 +368,7 @@ graph;
                                             </div>
                                             <div class="modal-body>
                                                 <select name="moveDevice_$device_id"class="deviceLocation browser-default custom-select dropdown">
-                                                     <option id="currentRoom_$device_id" value="-1" disabled selected>Current: $roomName</option>
+                                                     <option id="currentRoom_$device_id" value="-1" disabled selected>Current: $room_name</option>
             
 html;
                                             $stmt5 = $db->prepare("SELECT * FROM room_info WHERE hub_id = ?");

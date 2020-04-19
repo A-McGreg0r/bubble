@@ -360,8 +360,9 @@ function refreshDevice(device_id) {
 
 function refreshDevices() {
     //Refresh device
-    $('#device-encompass').load(document.URL + ' #device-encompass');
-    attachDropdownSelectors();
+    $('#device-encompass').load(document.URL + ' #device-encompass', function(){
+        attachDropdownSelectors();
+    });
 }
 
 

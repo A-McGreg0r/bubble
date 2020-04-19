@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
     //////////////////////////////////////////////////////////// ADD DEVICE ACTION///////////////////////////////////////////////////
     /**
      * THIS FILE DOES A MAJORITY OF THE HEAVY LIFTING TO DO WITH QR CODES

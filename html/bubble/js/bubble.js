@@ -55,7 +55,7 @@ $(document).ready(function(){
         }
     });
 
-    $('div id^="modal_stats_"').on('hidden.bs.modal', function () {
+    $('div[id^="modal_stats_"]').on('hidden.bs.modal', function () {
         refreshDevices();
     });
 

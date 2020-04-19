@@ -1,10 +1,19 @@
 <?php
 include_once dirname(__DIR__).'/required/config.php';
 
-function generateQRReader(){
+function generateQRReader($autoOpen = FALSE){
     $html = '';
-    $op = '';
 
+    if($autoOpen){
+        $html .= <<<html
+            <script>
+                $(document).ready(function(){
+                    $('#addDeviceModal').modal();
+                    openCamera();
+                }
+            </script>
+html;
+    }
     $html .= <<<pageHTML
 
     <div class="modal fade" id="addDeviceModal" tabindex="-1" role="dialog" aria-labelledby="addDeviceModalLabel" aria-hidden="true">

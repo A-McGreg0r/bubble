@@ -226,7 +226,7 @@ html;
                         </div>                    
                     </div>
 
-
+                    <!--modal-->
                     <div class="modal modalStatsWrap" id="modal_stats_$device_id">
                         <div class="modalContent modalStats" id="content_$device_id">
                             <div class="x-adjust"><i class="stats_icon_x " id="stats_x_$device_id" style="color:$colour;" onclick="openModal('modal_stats_$device_id', 'stats_x_$device_id')"><i class="fas fa-times"></i></i></div>

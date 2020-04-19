@@ -97,6 +97,15 @@ function generateAccount(){
                                 <strong>$budget&ensp;</strong><!--TODO make updateabul-->
                             </div>
                         </div>
+                        
+                        <div class="row account-row">
+                            <div class="col-md">
+                                <strong>&ensp;Solar Panel Rating:</strong>
+                            </div>
+                            <div class="col-sm" style="margin-left: 30px">
+                                <strong>$solargen&ensp;</strong><!--TODO make updateabul-->
+                            </div>
+                        </div>
                     
                         <div class="row" style="margin-bottom: 50px">
                         <!--button for deploying models-->
@@ -229,6 +238,15 @@ function generateAccount(){
                                                     </div>
                                                     <div class="col-md">
                                                         <input class="form-control" type="text" placeholder="$budget">
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="row ">
+                                                    <div class="col-md">
+                                                        <strong>&ensp;Solar Panel Rating: $solargen&ensp;</strong>
+                                                    </div>
+                                                    <div class="col-md">
+                                                        <input class="form-control" type="text" placeholder="$solargen">
                                                     </div>
                                                 </div>
                                             

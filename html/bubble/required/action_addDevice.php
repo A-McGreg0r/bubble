@@ -54,8 +54,9 @@
             exit(0);
         }
 
+        $raw_auth_code = substr($qrText, 3);
         //GET AUTH_KEY, SANITIZE THIS VARIABLE!
-        $auth_key = filter_var(substr($qrText, 3), FILTER_SANITIZE_STRING);
+        $auth_key = filter_var($raw_auth_code, FILTER_SANITIZE_STRING);
 
         //CHECK SANITIZATION WORKED, IF NOT, EXIT!
         if($auth_key == FALSE){
@@ -134,16 +135,17 @@
                 }
                 $result = $stmtCheckType->get_result();
                 if($result->num_rows != 1){
-                    echo("{\"error\":\"Invalid device type\"}");
+                    echo("{\"error\":\"Unknown device type\"}");
                     $stmtCheckType->close();
                     exit(0);
                 }
                 //GET THE NAME OF THE DEVICE FOR DEFAULT NAME
-                $device_name = $result->fetch_assoc()['type_name'];
+                $row = $result->fetch_assoc();
+                $device_name = $row['type_name'];
                 $stmtCheckType->close();
 
                 //PREPARE NEW DEVICE INSERTION
-                $stmtNewDevice = $db->prepare("INSERT INTO device_info (hub_id, device_auth_code, device_name, device_type, device_status) VALUES (?,?,?,?,0);");
+                $stmtNewDevice = $db->prepare("INSERT INTO device_info (hub_id, device_auth_code, device_name, device_type, device_status) VALUES (?,?,?,?,0)");
                 $stmtNewDevice->bind_param("issi", $hub_id, $auth_key, $device_name, $deviceType);
                 if(!$stmtNewDevice->execute()){
                     echo("{\"error\":\"Unknown error, please try again\"}");

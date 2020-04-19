@@ -522,7 +522,7 @@ function confirmDeleteRoomModalConfirm(){
 
     //GATHER REQUIRED DATA
     let url = "required/action_removeRoom.php";
-    var room_id = $("#confirmDeleteRoom").val();
+    var room_id = $("#confirmDeleteRoom").attr("name");
 
     //SEND AJAX REQUEST
     $.ajax({

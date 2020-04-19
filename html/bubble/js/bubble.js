@@ -822,3 +822,40 @@ function submitImage(){
         }
     });
 }
+
+//------------------------Qr code functions----------------------------------------------------
+
+//------------------------USER ACCESS FUNCTIONS----------------------------------------------------
+
+function acceptAccessRequest(authkey, request_user_email){
+    //CHANGE DISPLAY TO BE WAITING
+    $("#acceptRequestButton").attr("disabled", true);
+
+    //GATHER REQUIRED DATA
+    let url = "required/action_acceptAccess.php";
+
+    //SEND AJAX REQUEST
+    $.ajax({
+        type:'POST',
+        url: url,
+        data:{ auth_key: authkey, user_email: request_user_email},
+        success:function(data){
+            //PARSE RESPONSE JSON DATA
+            var result = JSON.parse(data);
+
+            //REMOVE ROOM ERROR, DISPLAY ERROR TO USER
+            if(result.error){
+
+            }
+            //REMOVE ROOM SUCCESS
+            if(result.success){
+
+            }
+        },
+        error: function(data){
+            //INTERNAL SERVER ERROR HAS OCCURRED
+            alert("An unexpected error has occured, please try again");
+            $("#confirmDeleteRoomModalButton").removeAttr("disabled");
+        }
+    });
+}

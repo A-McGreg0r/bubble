@@ -73,6 +73,7 @@ function generateAccessPage(){
                                 </div>
                                 <div class="align-middle">
                                     <p><strong>$request_user_email</strong> has requested access to your hub, $hub_name. Do you wish to accept?
+                                    <button id="acceptRequestButton" type="button" class="btn btn-danger btn-rounded btn-sm my-0" data-toggle="modal" onclick="acceptAccessRequest($auth_key, $request_user_email)";>Accept</button>
                                 </div>
                             </div>
                         </div>

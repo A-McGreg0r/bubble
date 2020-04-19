@@ -72,40 +72,36 @@
         
         $html = '';  
 
-        //CHECK IF THE USER HAS NOT SETUP A HUB YET. IF THEY HAVE NOT SETUP A HUB, NAVIGATE TO THE ADD DEVICE PAGE.
-        //THIS IS FORCED, AS THE MAIN TAB PAGES WOULD HAVE NO INFO ON THEM ANYWAY
-        if($action != "logout" && $action != 'adddevice' && !userHasHub()){
-            load('./index.php?action=adddevice');
-            exit();
-        }
-
         //ADD NAVIGATION TO THE TOP OF THE PAGE
         include './uiAssets/content_userNav.php';
         $html .= generateUserNav();
 
-        //SWITCH DEPENDING ON URL ACTION
-        /**
-         * SWITCH BASED ON ACTION.
-         * INCLUDE REQUIRED FILE, THEN CALL FUNCTION DEFINED INSIDE PHP FILE
-         * THIS ALLOWS US TO GENERATE THE CONTENT THROUGH PHP, THEN INSERT THAT CONTENT INTO THE PREGENERATED HTML-TEMPLATE
-         */
-        switch($action){
-            case 'logout':
-                include './required/action_logout.php';
-                $html .= generateLogout();
-                break;
-            case 'adddevice':
-                include './uiAssets/content_addDevice.php';
-                $html .= generateQRReader();
-                break;
-            case 'account':
-                include './uiAssets/content_account.php';
-                $html .= generateAccount();
-                break;
-            default:
-                include "uiAssets/content_tabs.php";
-                $html .= generateTabs();
-                break;
+        //CHECK IF THE USER HAS NOT SETUP A HUB YET. IF THEY HAVE NOT SETUP A HUB, NAVIGATE TO THE ADD DEVICE PAGE.
+        //THIS IS FORCED, AS THE MAIN TAB PAGES WOULD HAVE NO INFO ON THEM ANYWAY
+        if($action != "logout"  && !userHasHub()){
+            include './uiAssets/content_addDevice.php';
+            $html .= generateQRReader(TRUE);
+        }else{
+            //SWITCH DEPENDING ON URL ACTION
+            /**
+             * SWITCH BASED ON ACTION.
+             * INCLUDE REQUIRED FILE, THEN CALL FUNCTION DEFINED INSIDE PHP FILE
+             * THIS ALLOWS US TO GENERATE THE CONTENT THROUGH PHP, THEN INSERT THAT CONTENT INTO THE PREGENERATED HTML-TEMPLATE
+             */
+            switch($action){
+                case 'logout':
+                    include './required/action_logout.php';
+                    $html .= generateLogout();
+                    break;
+                case 'account':
+                    include './uiAssets/content_account.php';
+                    $html .= generateAccount();
+                    break;
+                default:
+                    include "uiAssets/content_tabs.php";
+                    $html .= generateTabs();
+                    break;
+            }
         }
         return $html;
     }

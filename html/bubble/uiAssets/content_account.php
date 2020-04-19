@@ -263,7 +263,7 @@ function generateAccount(){
                                                     <input class="form-control" type="text" placeholder="$postcode">
                                                 </div>
                                         </div>
-                                                
+                                         <!--Energy Cost -->     
                                         <div class="row" style="padding-top: 5px; padding-bottom: 5px">
                                             <div class="col-md">
                                                 <strong>&ensp;Energy Price: $energy_cost&ensp;</strong>
@@ -272,13 +272,23 @@ function generateAccount(){
                                                     <input class="form-control" type="text" placeholder="$energy_cost">
                                                 </div>
                                         </div>
-                                                
+                                        <!--Budget -->     
                                         <div class="row" style="padding-top: 5px; padding-bottom: 5px">
                                             <div class="col-md">
                                                 <strong>&ensp;Monthly Budget: $budget&ensp;</strong>
                                             </div>
                                                 <div class="col-md">
                                                     <input class="form-control" type="text" placeholder="$budget">
+                                                </div>
+                                        </div>
+                                        
+                                        <!--Soler Rateing --> 
+                                        <div class="row" style="padding-top: 5px; padding-bottom: 5px">
+                                            <div class="col-md">
+                                                <strong>&ensp;Soler rating: $solargen&ensp;</strong>
+                                            </div>
+                                                <div class="col-md">
+                                                    <input class="form-control" type="text" placeholder="$solargen">
                                                 </div>
                                         </div>
                                         <!--Model footer-->    

@@ -333,6 +333,27 @@ graph;
                                     </tr>
                                 </table>
                             </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger btn-rounded btn-sm my-0" data-toggle="modal" data-target="#confirmDeleteDevice_$device_id">
+                                    Delete Device
+                                </button>
+                                <div class="modal fade" id="confirmDeleteDevice_$device_id" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteDeviceModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="confirmDeleteDeviceModalLabel">Confirm Delete Device</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">No, go back</button>
+                                                <button id="confirmDeleteDeviceModalButton" type="button" onclick="confirmDeleteDeviceModalConfirm($device_id);" class="btn btn-primary">Delete Device</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 

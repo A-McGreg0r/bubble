@@ -50,7 +50,7 @@ $(document).ready(function(){
     //HANDLE ACTION FOR ADD DEVICE MODAL
     var action = getUrlParameter("action");
     if(action == "adddevice"){
-        $('addDeviceModal').modal();
+        $('#addDeviceModal').modal();
         openCamera();
     }
 

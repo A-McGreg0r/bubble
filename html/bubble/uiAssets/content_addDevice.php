@@ -9,6 +9,8 @@ function generateQRReader($autoOpen = FALSE){
             <script>
                 $(document).ready(function(){
                     $('#addDeviceModal').modal();
+                    $('#addDeviceModal').attr("auto-reload", true);
+
                     openCamera();
                 });
             </script>

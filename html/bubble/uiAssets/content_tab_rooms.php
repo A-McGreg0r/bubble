@@ -224,7 +224,7 @@ graph;
                         <i class="stats_icon fa" id="room_stats_$room_id" style="color:$colour;" onclick="openModalRoom('modal_room_stats_$room_id','room_stats_$room_id', 'room_stats_x_$room_id')"><i class="fas fa-info-circle"></i></i>
                     </div>
                 </div>
-                <div class="modal modalStatsWrap fade" id="modal_room_stats_$room_id">
+                <div class="modal modalStatsWrap" id="modal_room_stats_$room_id">
                     <div class="modalContent modalStats" id="content_$room_id">
                         <div class="x-adjust"><i class="stats_icon_x " id="room_stats_x_$room_id" style="color:$colour;" onclick="openModalRoom('modal_room_stats_$room_id','room_stats_x_$room_id','room_stats_$room_id')"><i class="fas fa-times"></i></i></div>
                         <div class="modalHeader"><strong>$room_name Statistics:</strong></div>

@@ -13,7 +13,7 @@ function generateAccessPage(){
         session_write_close();
 
         //SANITIZE GIVEN AUTH KEY
-        $auth_key = filter_input(INPUT_GET, "access", FILTER_SANITIZE_STRING);
+        $auth_key = filter_input(INPUT_GET, "key", FILTER_SANITIZE_STRING);
 
         if($auth_key == FALSE){
             $html .= "Invalid request";

@@ -39,6 +39,7 @@ $(document).ready(function(){
                     //MOVE SUCCESS, CHANGE CURRENT ROOM SHOWN
                     $("#currentRoom_"+deviceId).prop('selected', true);
                     $("#currentRoom_"+deviceId).html("Current: " + roomName);
+                    refreshDevices();
                 }
             },
             error: function(data){

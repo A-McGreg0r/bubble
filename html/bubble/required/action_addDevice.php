@@ -63,6 +63,12 @@
             echo("{\"error\":\"Auth key is invalid, please try again\"}");
             exit(0);
         }
+
+        //IF THE USER TRIES TO REGISTER SOMETHING BEFORE REGISTERING A HUB, STOP THEM
+        if($deviceType != 0 && !userHasHub()){
+            echo("{\"error\":\"You must register a hub before adding other devices!\"}");
+            exit(0);
+        }
         
         //SWITCH FOR DEVICE TYPE
         switch($deviceType){
@@ -163,7 +169,7 @@
                 $stmtNewDevice = $db->prepare("INSERT INTO device_info (hub_id, device_auth_code, device_name, device_type, device_status) VALUES (?,?,?,?,0)");
                 $stmtNewDevice->bind_param("issi", $hub_id, $auth_key, $device_name, $deviceType);
                 if(!$stmtNewDevice->execute()){
-                    echo("{\"error\":\"Device already registered, please check the devices page\"}");
+                    echo("{\"error\":\"Is the device already registered? If not, try again\"}");
                     $stmtNewDevice->close();
                     exit(0);
                 }

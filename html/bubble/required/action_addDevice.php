@@ -160,7 +160,9 @@ error_reporting(E_ALL);
                 exit(0);
             break;
         }
-
+    }else{
+        echo("{\"error\":\"Cannot find QR code, try again\"}");
+        exit(0);
     }
 
 

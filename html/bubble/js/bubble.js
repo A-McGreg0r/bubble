@@ -779,13 +779,14 @@ function submitImage(){
         success:function(data){
             //SENDING DATA WAS SUCCESSFUL, BUT CHECK WHAT SERVER SAID ABOUT IMAGE
 
-            //CANNOT FIND QR CODE INSIDE IMAGE
-            if(!data || data == "\n"){
+            if(data.error){
+                //CANNOT FIND QR CODE INSIDE IMAGE
                 video.style.visibility = "visible";
                 loading.style.visibility = "hidden";
                 submitButton.style.visibility = "visible";
-                devicetext.innerText = "Unable to find a QR code, please try again!";
-            }else{
+                devicetext.innerText = data.error;
+            }
+            if(data.result){
                 //FOUND QR CODE, DISPLAY RESULT TO USER.
                 loading.style.visibility = "hidden";
                 devicetext.innerText = data;

@@ -1,6 +1,7 @@
 <!-- Card deck -->
 <?php
 include_once dirname(__DIR__).'/required/config.php';
+include_once "content_addDevice.php";
 
 function generateDeviceTab(){
     global $db;
@@ -8,7 +9,7 @@ function generateDeviceTab(){
     $html = '<div id="device-encompass">';
 
     $html .= <<<html
-        <a href="index.php?action=adddevice">
+        <a onclick="$("#addDeviceModal").modal();">
             <div class="card mb-4 container">
                 <!--Card image-->
                 <div class="view overlay">
@@ -492,7 +493,7 @@ html;
     } else{
         exit("Error, user is not logged in!");
     }
-    $html .= "</div>";
+    $html .= "</div>".generateQRReader();
     return $html;
 }
 

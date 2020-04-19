@@ -32,6 +32,7 @@
     $user_id = $_SESSION['user_id'];
     //END SESSION
     session_write_close();
+
     //PUT CONTENTS INTO FILE, THIS IS REQUIRED FOR QRCODE READER
     file_put_contents(dirname(__DIR__).'/upload/'.$user_id.".png",$decoded);
     //LOAD FILE AGAIN
@@ -56,6 +57,7 @@
         //GET AUTH_KEY, SANITIZE THIS VARIABLE!
         $auth_key = filter_var(substr($qrText, 3), FILTER_SANITIZE_STRING);
 
+        //CHECK SANITIZATION WORKED, IF NOT, EXIT!
         if($auth_key == FALSE){
             echo("{\"error\":\"Auth key is invalid, please try again\"}");
             exit(0);
@@ -87,7 +89,11 @@
                         $stmtAddOwner = $db->prepare("INSERT INTO hub_owners (hub_id,hub_owner_id) VALUES (?, ?)");
                         $stmtAddOwner->bind_param("ii", $hub_id, $user_id);
                         if(!$stmtAddOwner->execute()){
-                            echo "Hmm, something went wrong, please contact customer support!";
+                            echo("{\"error\":\"Unknown error, contact support\"}");
+                            $stmtAddOwner->close();
+                            $stmtOwner->close();
+                            $stmt->close();
+                            exit(0;)
                         }
                         $stmtAddOwner->close();
 
@@ -95,20 +101,17 @@
                         $stmt1 = $db->prepare("INSERT INTO hub_users (user_id, hub_id) VALUES (?, ?)");
                         $stmt1->bind_param("ii", $user_id, $hub_id);
                         if ($stmt1->execute()) {
-                            echo "Sucessfully registered your new hub!\nNavigate home to view your newly added hub!";
+                            echo("{\"success\":\"Sucessfully registered your new hub!\"}");
                         }else{
-                            echo "Hmm, something went wrong, please refresh the page and try again";
+                            echo("{\"error\":\"Unknown error, contact support\"}");
                         }
                         $stmt1->close(); 
                     } else {//THE HUB HAS AN OWNER, REQUEST ACCESS FROM OWNER
-                        
-                        
-                        echo "An access request to the owner of this hub has been sent! Please ask them to check the email associated with their account, and confirm your access.";
-
+                        echo("{\"success\":\"An access request to the owner of this hub has been sent! Please ask them to check the email associated with their account, and confirm your access.!\"}");
                     }
                     $stmtOwner->close();
                 } else {
-                    echo "This Hub doesnt appear registered with us yet. Ensure the device has a green flashing LED on the top. For more troubleshooting, see <a href=\"index.php?action=troubleshooting\"Our Troubleshooting Tips</a>";
+                    echo("{\"error\":\"This Hub doesnt appear registered with us yet. Ensure the device has a green flashing LED on the top. For more troubleshooting, see <a href=\"index.php?action=troubleshooting\"Our Troubleshooting Tips</a>\"}");
                 }
                 $stmt->close();
 

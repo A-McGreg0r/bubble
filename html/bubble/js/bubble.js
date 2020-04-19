@@ -39,7 +39,6 @@ $(document).ready(function(){
                     //MOVE SUCCESS, CHANGE CURRENT ROOM SHOWN
                     $("#currentRoom_"+deviceId).prop('selected', true);
                     $("#currentRoom_"+deviceId).html("Current: " + roomName);
-                    refreshDevices();
                 }
             },
             error: function(data){
@@ -55,6 +54,13 @@ $(document).ready(function(){
             location.reload();
         }
     });
+
+    $('div id^="modal_stats_"').on('hidden.bs.modal', function () {
+        refreshDevices();
+    });
+
+
+
 
 });
 

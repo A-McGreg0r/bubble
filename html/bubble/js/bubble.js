@@ -845,7 +845,7 @@ function acceptAccessRequest(authkey, request_user_email){
 
             //REMOVE ROOM ERROR, DISPLAY ERROR TO USER
             if(result.error){
-
+                $("#acceptRequestButton").removeAttr("disabled");
             }
             //REMOVE ROOM SUCCESS
             if(result.success){
@@ -855,7 +855,7 @@ function acceptAccessRequest(authkey, request_user_email){
         error: function(data){
             //INTERNAL SERVER ERROR HAS OCCURRED
             alert("An unexpected error has occured, please try again");
-            $("#confirmDeleteRoomModalButton").removeAttr("disabled");
+            $("#acceptRequestButton").removeAttr("disabled");
         }
     });
 }

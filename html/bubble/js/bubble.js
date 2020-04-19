@@ -580,8 +580,8 @@ function confirmDeleteDeviceModalConfirm(device_id){
             //REMOVE DEVICE SUCCESS
             if(result.success){
                 $('#deviceList').load(document.URL + ' #deviceList');
-                $('#confirmDeleteDevice_'+device_id).modal("hide");
                 $("#confirmDeleteDeviceModalButton").removeAttr("disabled");
+                $('#confirmDeleteDevice_'+device_id).modal().hide();
             }
         },
         error: function(data){

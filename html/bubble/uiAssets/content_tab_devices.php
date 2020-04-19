@@ -366,7 +366,7 @@ graph;
                                                 <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                            <div class="modal-body>
+                                            <div class="modal-body">
                                                 <select name="moveDevice_$device_id"class="deviceLocation browser-default custom-select dropdown">
                                                      <option id="currentRoom_$device_id" value="-1" disabled selected>Current: $room_name</option>
             

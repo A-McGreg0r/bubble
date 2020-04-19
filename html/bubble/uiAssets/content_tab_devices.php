@@ -60,7 +60,7 @@ html;
             </div>
 html;
             while ($rowUnroomedDevices = $resultUnroomedDevices->fetch_assoc()) {
-                addDevice($hub_id, "No room", $rowUnroomedDevices);
+                $html .= addDevice($hub_id, "No room", $rowUnroomedDevices);
             }
         }
         $stmtUnroomedDevices->close();

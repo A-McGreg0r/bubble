@@ -60,7 +60,7 @@ html;
             </div>
 html;
             while ($rowUnroomedDevices = $resultUnroomedDevices->fetch_assoc()) {
-                addDevice($hub_id, $row);
+                addDevice($hub_id, $rowUnroomedDevices);
             }
         }
         $stmtUnroomedDevices->close();
@@ -121,6 +121,7 @@ html;
 }
 
 function addDevice($hub_id, $row){
+    global $db;
     $html = '';
     $device_id = $row['device_id'];
     $device_name = $row['device_name'];

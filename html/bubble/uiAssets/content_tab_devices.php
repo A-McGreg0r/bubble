@@ -368,20 +368,21 @@ graph;
                                             </div>
                                             <div class="modal-body">
                                                 <select name="moveDevice_$device_id"class="deviceLocation browser-default custom-select dropdown">
-                                                     <option id="currentRoom_$device_id" value="-1" disabled selected>Current: $room_name</option>
-            
+                                                    <option id="currentRoom_$device_id" value="-1" disabled selected>Current: $room_name</option>
 html;
-                                            $stmt5 = $db->prepare("SELECT * FROM room_info WHERE hub_id = ?");
-                                            $stmt5->bind_param("i", $hub_id);
-                                            $stmt5->execute();
-                                            $result5 = $stmt5->get_result();
-                                            while($row5 = $result5->fetch_assoc()) {
-                                                $val = $row5['room_name'];
-                                                $room_id = $row5['room_id'];
-            
-                                                $html .= "<option value=\"$room_id.$device_id.$val\">Move to: $val</option>";
-                                            }
-                                            $html .= <<<html
+                                                    $stmt5 = $db->prepare("SELECT * FROM room_info WHERE hub_id = ?");
+                                                    $stmt5->bind_param("i", $hub_id);
+                                                    $stmt5->execute();
+                                                    $result5 = $stmt5->get_result();
+                                                    while($row5 = $result5->fetch_assoc()) {
+                                                        $val = $row5['room_name'];
+                                                        $room_id = $row5['room_id'];
+                    
+                                                        $html .= "<option value=\"$room_id.$device_id.$val\">Move to: $val</option>";
+                                                    }
+                                                    $stmt5->close();
+
+                                                    $html .= <<<html
             
                                                 </select>
                                             </div>

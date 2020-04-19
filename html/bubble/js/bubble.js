@@ -9,43 +9,7 @@ $(document).ready(function(){
     $("#loginErrorBox").hide();
     $("#registerErrorBox").hide();
 
-    //SETUP ACCOUNT PAGE DEVICE MOVING.
-    /**
-     * USE JQUERY SELECTORS TO FIND DROP DOWN BOXES THAT START WITH THE moveDevice NAME.
-     * THEN, ATTACH EVENT LISTENER THAT TRIGGERS WHEN AN OPTION IS PICKED
-     */
-    $('select[name^="moveDevice_"]').change(function(){
-        let url = "required/action_moveDevice.php";
-        //GATHER DATA FROM THE DROPDOWN BOX
-        let value = $(this).val().split(".");
-        let roomId = value[0];
-        let deviceId = value[1];
-        let roomName = value[2];
-
-        //CREATE AJAX CALL
-        $.ajax({
-            type:'POST',
-            url: url,
-            data:{ room_id: roomId, device_id: deviceId},
-            success:function(data){
-                //PARSE RESPONSE JSON DATA
-                var result = JSON.parse(data);
-
-                //ERROR, DISPLAY ERROR TO USER
-                if(result.error){
-                    alert("Failed to move device: "+result.error);
-                }
-                if(result.success){
-                    //MOVE SUCCESS, CHANGE CURRENT ROOM SHOWN
-                    $("#currentRoom_"+deviceId).prop('selected', true);
-                    $("#currentRoom_"+deviceId).html("Current: " + roomName);
-                }
-            },
-            error: function(data){
-                alert("Failed to change hub, please try again!");
-            }
-        });
-    });
+    attachDropdownSelectors();
 
     //HANDLE CLOSING THE CAMERA WHEN THE ADD DEVICE MODAL IS CLOSED
     $('#addDeviceModal').on('hidden.bs.modal', function () {
@@ -58,9 +22,6 @@ $(document).ready(function(){
     $('div[id^="modal_stats_"]').on('hidden.bs.modal', function () {
         refreshDevices();
     });
-
-
-
 
 });
 
@@ -400,6 +361,7 @@ function refreshDevice(device_id) {
 function refreshDevices() {
     //Refresh device
     $('#device-encompass').load(document.URL + ' #device-encompass');
+    attachDropdownSelectors();
 }
 
 
@@ -621,6 +583,46 @@ function confirmDeleteDeviceModalConfirm(device_id){
             alert("An unexpected error has occured, please try again");
             $("#confirmDeleteDeviceModalButton").removeAttr("disabled");
         }
+    });
+}
+
+function attachDropdownSelectors(){
+    //SETUP ACCOUNT PAGE DEVICE MOVING.
+    /**
+     * USE JQUERY SELECTORS TO FIND DROP DOWN BOXES THAT START WITH THE moveDevice NAME.
+     * THEN, ATTACH EVENT LISTENER THAT TRIGGERS WHEN AN OPTION IS PICKED
+     */
+    $('select[name^="moveDevice_"]').change(function(){
+        let url = "required/action_moveDevice.php";
+        //GATHER DATA FROM THE DROPDOWN BOX
+        let value = $(this).val().split(".");
+        let roomId = value[0];
+        let deviceId = value[1];
+        let roomName = value[2];
+
+        //CREATE AJAX CALL
+        $.ajax({
+            type:'POST',
+            url: url,
+            data:{ room_id: roomId, device_id: deviceId},
+            success:function(data){
+                //PARSE RESPONSE JSON DATA
+                var result = JSON.parse(data);
+
+                //ERROR, DISPLAY ERROR TO USER
+                if(result.error){
+                    alert("Failed to move device: "+result.error);
+                }
+                if(result.success){
+                    //MOVE SUCCESS, CHANGE CURRENT ROOM SHOWN
+                    $("#currentRoom_"+deviceId).prop('selected', true);
+                    $("#currentRoom_"+deviceId).html("Current: " + roomName);
+                }
+            },
+            error: function(data){
+                alert("Failed to change hub, please try again!");
+            }
+        });
     });
 }
 

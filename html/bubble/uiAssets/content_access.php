@@ -77,7 +77,7 @@ function generateAccessPage(){
                             </div>
                         </div>
                     </div>   
-        html;
+html;
                 }else{
                     $html .= "This key has expired, please ask the user to submit a new access request.";
                     return $html;
@@ -92,3 +92,4 @@ function generateAccessPage(){
     session_write_close();
     return $html;
 }
+?>

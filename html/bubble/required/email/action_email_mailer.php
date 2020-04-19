@@ -48,7 +48,7 @@ function sendBaseEmailFromUserID($userID, $emailSubject, $emailBody){
         //ERROR
     }
     $result = $stmt->get_result();
-    $row = $stmt->fetch_assoc();
+    $row = $result->fetch_assoc();
     $userEmail = $row['email'];
     $userFirstName = $row['first_name'];
     $stmt->close();

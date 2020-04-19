@@ -590,7 +590,8 @@ function attachDropdownSelectors(){
      * USE JQUERY SELECTORS TO FIND DROP DOWN BOXES THAT START WITH THE moveDevice NAME.
      * THEN, ATTACH EVENT LISTENER THAT TRIGGERS WHEN AN OPTION IS PICKED
      */
-    $('select[name^="moveDevice_"]').change(function(){
+    $('select[name^="moveDevice_"]').not('[hasEvent]').change(function(){
+        $(this).attr("hasEvent", "hasEvent");
         let url = "required/action_moveDevice.php";
         //GATHER DATA FROM THE DROPDOWN BOX
         let value = $(this).val().split(".");

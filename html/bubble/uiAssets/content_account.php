@@ -270,78 +270,70 @@ function generateAccount(){
                                 </thead>
                                 <tbody>
 html;
-            $stmt1 = $db->prepare("SELECT * FROM hub_users WHERE user_id = ?");
-            $stmt1->bind_param("i", $user_id);
-            $stmt1->execute();
-            $result1 = $stmt1->get_result();
-            //SELECT ALL HUBS FROM USERID
-            if ($result1->num_rows > 0) {
-                while($row = $result1->fetch_assoc()) {
-                    $hub_id = $row['hub_id'];
-                    $stmt2 = $db->prepare("SELECT * FROM device_info WHERE hub_id = ?");
-                    $stmt2->bind_param("i", $hub_id);
-                    $stmt2->execute();
-                    $result2 = $stmt2->get_result();
-                    //SELECT ALL DEVICES FROM HUB_ID
-                    if ($result2->num_rows > 0) {
-                        while($row2 = $result2->fetch_assoc()) {
-                            $device_id = $row2['device_id'];
-                            $device_name = $row2['device_name'];
-                            $device_type = $row2['device_type'];
-                            $device_room = $row2['room_id'];
+            //SELECT HUB FROM SESSION
+            $hub_id = $_SESSION['hub_id'];
+            $stmt2 = $db->prepare("SELECT * FROM device_info WHERE hub_id = ?");
+            $stmt2->bind_param("i", $hub_id);
+            $stmt2->execute();
+            $result2 = $stmt2->get_result();
+            //SELECT ALL DEVICES FROM HUB_ID
+            if ($result2->num_rows > 0) {
+                while($row2 = $result2->fetch_assoc()) {
+                    $device_id = $row2['device_id'];
+                    $device_name = $row2['device_name'];
+                    $device_type = $row2['device_type'];
+                    $device_room = $row2['room_id'];
 
-                            $stmt3 = $db->prepare("SELECT * FROM device_types WHERE type_id = ?");
-                            $stmt3->bind_param("i", $device_type);
-                            $stmt3->execute();
-                            $result3 = $stmt3->get_result();
-                            $row3 = $result3->fetch_assoc();
-                            $icon = $row3['type_icon'];
-                            $energy_consumption = $row3['energy_usage'];
+                    $stmt3 = $db->prepare("SELECT * FROM device_types WHERE type_id = ?");
+                    $stmt3->bind_param("i", $device_type);
+                    $stmt3->execute();
+                    $result3 = $stmt3->get_result();
+                    $row3 = $result3->fetch_assoc();
+                    $icon = $row3['type_icon'];
+                    $energy_consumption = $row3['energy_usage'];
 
-                            $stmt4 = $db->prepare("SELECT * FROM room_info WHERE room_id = ?");
-                            $stmt4->bind_param("i", $device_room);
-                            $stmt4->execute();
-                            $result4 = $stmt4->get_result();
-                            $row4 = $result4->fetch_assoc();
-                            $roomName = $row4['room_name'];
+                    $stmt4 = $db->prepare("SELECT * FROM room_info WHERE room_id = ?");
+                    $stmt4->bind_param("i", $device_room);
+                    $stmt4->execute();
+                    $result4 = $stmt4->get_result();
+                    $row4 = $result4->fetch_assoc();
+                    $roomName = $row4['room_name'];
 
-                            $html .= <<<device
-                                <tr>
-                                    <td class="pt-3-half">$icon<br>$device_name</td>
-                                    <td class="pt-3-half">$energy_consumption Wh</td>
-                                    <td class="pt-3-half">
-                                    <select name="moveDevice_$device_id"class="deviceLocation browser-default custom-select dropdown">
-                                        <option id="currentRoom_$device_id" value="-1" disabled selected>Current: $roomName</option>
+                    $html .= <<<device
+                        <tr>
+                            <td class="pt-3-half">$icon<br>$device_name</td>
+                            <td class="pt-3-half">$energy_consumption Wh</td>
+                            <td class="pt-3-half">
+                            <select name="moveDevice_$device_id"class="deviceLocation browser-default custom-select dropdown">
+                                <option id="currentRoom_$device_id" value="-1" disabled selected>Current: $roomName</option>
 
 device;
-                                        $stmt5 = $db->prepare("SELECT * FROM room_info WHERE hub_id = ?");
-                                        $stmt5->bind_param("i", $hub_id);
-                                        $stmt5->execute();
-                                        $result5 = $stmt5->get_result();
-                                        while($row5 = $result5->fetch_assoc()) {
-                                            $val = $row5['room_name'];
-                                            $room_id = $row5['room_id'];
+                                $stmt5 = $db->prepare("SELECT * FROM room_info WHERE hub_id = ?");
+                                $stmt5->bind_param("i", $hub_id);
+                                $stmt5->execute();
+                                $result5 = $stmt5->get_result();
+                                while($row5 = $result5->fetch_assoc()) {
+                                    $val = $row5['room_name'];
+                                    $room_id = $row5['room_id'];
 
-                                            $html .= "<option value=\"$room_id.$device_id.$val\">Move to: $val</option>";
-                                        }
-                                        $html .= <<<pageHTML
+                                    $html .= "<option value=\"$room_id.$device_id.$val\">Move to: $val</option>";
+                                }
+                                $html .= <<<pageHTML
 
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
-                                    </td>
-                                </tr>   
+                                </select>
+                            </td>
+                            <td>
+                                <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
+                            </td>
+                        </tr>   
 pageHTML;
-                            $stmt3->close();
-                            $stmt4->close();
+                    $stmt3->close();
+                    $stmt4->close();
 
-                        }
-                    }
-                    $stmt2->close();
                 }
             }
-            $stmt1->close();
+            $stmt2->close();
+
             $html .= '    
                             </tbody>
                         </table>

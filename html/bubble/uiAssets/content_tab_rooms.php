@@ -44,6 +44,7 @@ html;
         while($row4 = $result4->fetch_assoc()) {
             $price = $row4['energy_cost'];
         }
+        $stmt4->close();
 
         $device_output = array();
         $output_names = array();

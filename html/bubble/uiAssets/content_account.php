@@ -296,7 +296,7 @@ function generateAccount(){
                                             <div class="col-md">
                                                   <button class="btn btn-danger btn-sm btn-rounded" data-dismiss="modal" >Cancel</button>
                                         
-                                            </div>K
+                                            </div>
                                                 <div class="col-md">
                                                     <button type="button" class="btn btn-primary btn-sm btn-rounded" onclick="" >Update</button>
                                                 </div>

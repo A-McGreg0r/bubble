@@ -95,7 +95,7 @@
                 $html .= generateLogout();
                 break;
             case 'adddevice':
-                include './uiAssets/content_adddevice.php';
+                include './uiAssets/content_addDevice.php';
                 $html .= generateQRReader();
                 break;
             case 'account':

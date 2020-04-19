@@ -780,7 +780,7 @@ function submitImage(){
             //SENDING DATA WAS SUCCESSFUL, BUT CHECK WHAT SERVER SAID ABOUT IMAGE
             //PARSE RESPONSE JSON DATA
             var result = JSON.parse(data);
-            
+
             if(result.error){
                 //CANNOT FIND QR CODE INSIDE IMAGE
                 video.style.visibility = "visible";
@@ -788,10 +788,10 @@ function submitImage(){
                 submitButton.style.visibility = "visible";
                 devicetext.innerText = result.error;
             }
-            if(result.result){
+            if(result.success){
                 //FOUND QR CODE, DISPLAY RESULT TO USER.
                 loading.style.visibility = "hidden";
-                devicetext.innerText = result.result;
+                devicetext.innerText = result.success;
                 closeCamera();
                 refreshHomeButton();
                 refreshDevices();

@@ -9,6 +9,7 @@
     //REQUIRE VARIOUS DB CONNECTION COMPONENTS
     require 'connect_db.php';
     require 'db_tools.php';
+    require "email/action_email_mailer.php";
 
 
 ?>

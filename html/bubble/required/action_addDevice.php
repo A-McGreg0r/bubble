@@ -1,7 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
     //////////////////////////////////////////////////////////// ADD DEVICE ACTION///////////////////////////////////////////////////
     /**
      * THIS FILE DOES A MAJORITY OF THE HEAVY LIFTING TO DO WITH QR CODES
@@ -111,6 +108,20 @@ error_reporting(E_ALL);
                         }
                         $stmt1->close(); 
                     } else {//THE HUB HAS AN OWNER, REQUEST ACCESS FROM OWNER
+                        $stmtHubOwner = $db->prepare("SELECT hub_owner_id FROM hub_owners WHERE hub_id = ?");
+                        $stmtHubOwner->bind_param("i", $hub_id);
+                        if(!$stmtHubOwner->execute()){
+                            echo("{\"error\":\"Unknown error, contact support\"}");
+                            $stmtOwner->close();
+                            $stmt->close();
+                            $stmtHubOwner->close();
+                            exit(0);
+                        }
+                        $resultHubOwner = $stmtHubOwner->get_result();
+                        $rowHubOwner = $resultHubOwner->fetch_assoc();
+                        $stmtHubOwner->close();
+                        sendBaseEmailFromUserID($rowHubOwner['hub_owner_id'], "Bubble Access Request", "<h4 style='font-weight:400'>Someone has requested to access your Bubble Smarthome Hub.<br>If this wasn't you or someone you authorized, please ignore this email. Otherwise, click the link below: <br> $confirmLink</h4>");
+                       
                         echo("{\"success\":\"An access request to the owner of this hub has been sent! Please ask them to check the email associated with their account, and confirm your access.!\"}");
                     }
                     $stmtOwner->close();

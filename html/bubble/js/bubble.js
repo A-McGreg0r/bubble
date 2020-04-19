@@ -469,6 +469,44 @@ function scaleDevice(hub_id, device_id, state) {
 }
 //------------------------Device switch Functions----------------------------------------------------
 
+//
+function addRoomModalSubmit(){
+    //CHANGE DISPLAY TO BE WAITING
+    $("#roomErrorDisplay").html("");
+    $("#roomFormName").attr("disabled", true);
+    $("#roomFormIcon").attr("disabled", true);
+
+    //GATHER REQUIRED DATA
+    let url = "required/action_addRoom.php";
+    var room_name = $("#roomFormName").val();
+    var roomIcon = $("#roomFormIcon").val();
+
+    //SEND AJAX REQUEST
+    $.ajax({
+        type:'POST',
+        url: url,
+        data:{ roomName: room_name, icon: roomIcon},
+        success:function(data){
+            //PARSE RESPONSE JSON DATA
+            var result = JSON.parse(data);
+
+            //ADD ROOM ERROR, DISPLAY ERROR TO USER
+            if(result.error){
+                $("#roomErrorDisplay").html(result.error);
+            }
+            //ADD ROOM SUCCESS
+            if(result.success){
+                $('#room_encompass').load(document.URL + ' #room_encompass');
+            }
+        },
+        error: function(data){
+            //INTERNAL SERVER ERROR HAS OCCURRED
+            $("#roomErrorDisplay").html("An unexpected error has occurred, please try again");
+            $("#roomFormName").removeAttr("disabled");
+            $("#roomFormIcon").removeAttr("disabled");
+        }
+    });
+}
 
 
 //------------------------Login functions----------------------------------------------------

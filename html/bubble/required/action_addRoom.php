@@ -1,15 +1,12 @@
 <?php
     //////////////////////////////////////////////////////////// ADD ROOM ACTION///////////////////////////////////////////////////
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
     include_once dirname(__DIR__).'/required/config.php';
 
     $roomName = filter_input(INPUT_POST, "roomName", FILTER_SANITIZE_STRING);
     $icon = filter_input(INPUT_POST, "icon", FILTER_SANITIZE_NUMBER_INT);
 
     if($roomName == FALSE || $icon == FALSE){
-        load("../index.php?action=addroom&error=0");
+        echo("{\"error\":\"Invalid request\"}");
     }
 
     //BEGIN SESSION
@@ -17,28 +14,31 @@
     if(isset($_SESSION['hub_id'])){
         $hub_id = $_SESSION['hub_id'];
     } else {
-        load("../index.php?action=addroom&error=1&roomName=$roomName");
+        echo("{\"error\":\"User is not logged in\"}");
     }
     //END SESSION
     session_write_close();
 
+    //CHECK THAT THE ROOM NAME HASNT ALREADY BEEN CHOSEN
     $stmt2 = $db->prepare("SELECT * FROM room_info WHERE hub_id = ? AND room_name = ?");
     $stmt2->bind_param("is", $hub_id, $roomName);
     $stmt2->execute();
     $result2 = $stmt2->get_result();
     if($result2->num_rows === 0){
+        //PREPARE QUERY TO BE INSERTED INTO ROOM TABLE
         $stmt2->close();
         $stmt = $db->prepare("INSERT INTO room_info (hub_id, room_name, room_icon) VALUES (?, ?, ?)");
         $stmt->bind_param("isi", $hub_id, $roomName, $icon);
         if ($stmt->execute()) {
             $stmt->close();
-            load("../index.php?action=addroom&success=1&roomName=$roomName");
+            echo("{\"success\":\"Room successfully added\"}");
             exit();
         }
         $stmt->close();
-        load("../index.php?action=addroom&error=3&roomName=$roomName");
+        echo("{\"error\":\"Room creation failed\"}");
+        exit();
     }
     $stmt2->close();
-    load("../index.php?action=addroom&error=2&roomName=$roomName");
+    echo("{\"error\":\"Room name already chosen, please chose another\"}");
 
 ?>

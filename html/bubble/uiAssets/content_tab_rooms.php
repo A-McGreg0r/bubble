@@ -7,7 +7,7 @@ function generateRoomTab(){
     $html = '<div id="room-encompass">';
     //ADD NEW ROOM CARD, GENERATE ALWAYS AT TOP!
     $html .= <<<html
-        <a href="index.php?action=addroom">
+        <a onclick='$("#addRoomModal").modal();'>
             <div class="card mb-4 container">
                 <!--Card image-->
                 <div class="view overlay">
@@ -408,6 +408,61 @@ html;
         exit("Error, user is not logged in!");
     }
     $html .= <<<html
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="addRoomModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Add a new room to your house</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="col-lg-12">
+                            <div class="row alter-display align-middle reduce-space">
+                                <p id="roomErrorDisplay"></p>
+                                <!-- Room Name -->
+                                <div class="md-form">
+                                    <label for="roomFormName">Room Name</label>
+                                    <input type="text"
+                                        id="roomFormName"
+                                        class="form-control form-control-sm"
+                                        name="roomName"
+                                        required size="3"
+                                        value=""/>
+                                        <small class="form-text text-muted mb-4" style="text-align:center">Room must have a unique name</small>
+                                </div>
+        
+                                <!-- Icon dropdown -->
+                                <div class="md-form">
+                                    <select id="roomFormIcon" name="icon" class="browser-default custom-select dropdown">
+                                        <option value="" disabled selected>Choose your icon</option>
+html;
+                                        $stmt = $db->prepare("SELECT * FROM room_types");
+                                        $stmt->execute();
+                                        $result = $stmt->get_result();
+                                        $inc = 0;
+                                        while($row = $result->fetch_assoc()) {
+                                            $inc++;
+                                            $val = $row['type_description'];
+                                            $html .= "<option value=\"$inc\">$val</option>";
+                                        }
+                                        $html .= <<<html
+        
+                                    </select>
+                                </div>        
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" onclick="addRoomModalSubmit" class="btn btn-secondary" data-dismiss="modal">Add Room</button>
+                </div>
+            </div>
+        </div>
     </div>
 html;
     return $html;

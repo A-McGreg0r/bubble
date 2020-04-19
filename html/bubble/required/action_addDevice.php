@@ -137,8 +137,9 @@
                         $access_key = bin2hex(random_bytes(50));
                         $hashed_access_key = $hasher->hash($access_key);
 
-                        $stmtAccess = $db->prepare("INSERT INTO hub_access_requests (request_user_id, owner_user_id, auth_key, expiry_date) VALUES (?,?,?,?)")
-                        $stmtAccess->bind_param("iiss", $user_id, $hub_owner_id, $hashed_access_key, time() + 24*60*60);
+                        //INSERT ACCESS KEY INTO TABLE
+                        $stmtAccess = $db->prepare("INSERT INTO hub_access_requests (request_user_id, owner_user_id, auth_key, expiry_date) VALUES (?,?,?,?)");
+                        $stmtAccess->bind_param("iisi", $user_id, $hub_owner_id, $hashed_access_key, time() + 24*60*60);
                         if(!$stmtAccess->execute()){
                             echo("{\"error\":\"Unknown error, contact support\"}");
                             $stmtOwner->close();
@@ -146,6 +147,8 @@
                             $stmtAccess->close();
                             exit(0);
                         }
+                        $stmtAccess->close();
+
                         $confirmLink = 'https://bubble.rorydobson.com/index.php?action=access&key='.$access_key;
 
                         sendBaseEmailFromUserID(, "Bubble Access Request", "<h4 style='font-weight:400'>Someone has requested to access your Bubble Smarthome Hub.<br>If this wasn't you or someone you authorized, please ignore this email. Otherwise, click the link below: <br> $confirmLink</h4>");

@@ -138,7 +138,7 @@ $(document).ready(function(){
     $("#registerErrorBox").hide();
 
     //SETUP ACCOUNT PAGE DEVICE MOVING
-    $('select').change(function(){
+    $('select[name^="moveDevice_"]').change(function(){
         let url = "required/action_moveDevice.php";
         //GATHER DATA FROM THE DROPDOWN BOX
         let value = $(this).val().split(".");

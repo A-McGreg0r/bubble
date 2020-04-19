@@ -496,7 +496,7 @@ function addRoomModalSubmit(){
             }
             //ADD ROOM SUCCESS
             if(result.success){
-                $('#room_encompass').load(document.URL + ' #room_encompass');
+                $('#room-encompass').load(document.URL + ' #room-encompass');
             }
         },
         error: function(data){

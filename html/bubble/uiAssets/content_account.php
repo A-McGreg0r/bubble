@@ -285,7 +285,7 @@ function generateAccount(){
                                         <!--Soler Rateing --> 
                                         <div class="row" style="padding-top: 5px; padding-bottom: 5px">
                                             <div class="col-md">
-                                                <strong>&ensp;Soler rating: $solargen&ensp;</strong>
+                                                <strong>&ensp;Soler rating: $solargen Watts per hour&ensp;</strong>
                                             </div>
                                                 <div class="col-md">
                                                     <input class="form-control" type="text" placeholder="$solargen">

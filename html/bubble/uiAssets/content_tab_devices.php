@@ -395,7 +395,7 @@ graph;
                 </table>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary btn-rounded btn-sm my-0" data-toggle="modal" data-target="#moveDevice_$device_id">
+                <button type="button" class="btn btn-primary btn-rounded btn-sm my-0" data-toggle="modal" data-target="#moveDevice_$device_id">
                     Move Device
                 </button>
                 <button type="button" class="btn btn-danger btn-rounded btn-sm my-0" data-toggle="modal" data-target="#confirmDeleteDevice_$device_id">
@@ -411,8 +411,8 @@ graph;
                                 </button>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">No, go back</button>
-                                <button id="confirmDeleteDeviceModalButton" type="button" onclick="confirmDeleteDeviceModalConfirm($device_id);" class="btn btn-primary">Delete Device</button>
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">No, go back</button>
+                                <button id="confirmDeleteDeviceModalButton" type="button" onclick="confirmDeleteDeviceModalConfirm($device_id);" class="btn btn-danger">Delete Device</button>
                             </div>
                         </div>
                     </div>

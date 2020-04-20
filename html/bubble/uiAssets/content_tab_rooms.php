@@ -297,7 +297,7 @@ graph;
                             </table>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmDeleteRoom_$room_id">
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmDeleteRoom_$room_id">
                                 Delete Room
                             </button>
                             <div class="modal fade" id="confirmDeleteRoom_$room_id" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteRoomModalLabel" aria-hidden="true">
@@ -310,8 +310,8 @@ graph;
                                             </button>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No, go back</button>
-                                            <button id="confirmDeleteRoomModalButton" type="button" onclick="confirmDeleteRoomModalConfirm($room_id)" class="btn btn-primary">Delete Room</button>
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">No, go back</button>
+                                            <button id="confirmDeleteRoomModalButton" type="button" onclick="confirmDeleteRoomModalConfirm($room_id)" class="btn btn-danger">Delete Room</button>
                                         </div>
                                     </div>
                                 </div>

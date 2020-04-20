@@ -274,9 +274,10 @@ function generateAdviceTab()
 
                     $html .= <<<html
                     <div class="weather_bar" style="background-color:$bg">$weather_symbol<table style="width:100%"><tr><td style="font-weight:700;width:50%;font-size:40px!important;text-align:right;">&nbsp;$temp_round&#176;C&nbsp;</td><td style="line-height:12px;width:50%;text-align:left;"><strong style="font-size:12px">&nbsp;Time: $hour:$minute<br>&nbsp;Date: $day/$month/$year<br>&nbsp;Location: $location</strong></td></tr></table></div>
-                    <div class="weather_advice">
+                    <div class="weather_advice" style="text-align:center;">
                         <div class="weather_advice_header"><h4 class="section-title">Advice</h4></div>
-                        <div class="weather_advice_body">$advice</div>
+                        <div class="weather_advice_body" style="margin-bottom:20px">$advice</div>
+                        <small>Weather information provided by <a href="https://openweathermap.org/api">OpenWeatherMap</a></small>
                     </div>
 html;
                 }

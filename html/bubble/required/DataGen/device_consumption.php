@@ -154,7 +154,7 @@ if ($result->num_rows >= 1) {
             }
         }
         
-        $energy_used = $energy_used + 50; // to account for the hub energy consumption
+        $energy_used = $energy_used + 15; // to account for the hub energy consumption
         $energy_used = $energy_used / 60; // run once a minute
 
         //Insert the minute's energy usage into the minute data table

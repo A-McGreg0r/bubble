@@ -5,7 +5,7 @@ function generateAccount(){
     session_start();
     if(isset($_SESSION['user_id'])){
         $user_id = $_SESSION['user_id'];
-        $solargen='50147';
+        $solargen='320';
         session_write_close();
         $stmt = $db->prepare("SELECT * FROM user_info WHERE user_id = ?");
         $stmt->bind_param("i", $user_id);

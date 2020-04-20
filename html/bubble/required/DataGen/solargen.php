@@ -215,6 +215,6 @@ function cal_days_in_year($Y){
     for($m=1;$m<=12;$m++){ $d = $d + cal_days_in_month(CAL_GREGORIAN,$m,$Y); }
  return (intval($diy)*10);
 }
-
+$solargen=320;
 _main(intval(date('Y')), ($solargen*cal_days_in_year('Y')));
 

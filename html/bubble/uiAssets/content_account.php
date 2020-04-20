@@ -5,7 +5,7 @@ function generateAccount(){
     session_start();
     if(isset($_SESSION['user_id'])){
         $user_id = $_SESSION['user_id'];
-        $solargen='50147';
+        $solargen='320';
         session_write_close();
         $stmt = $db->prepare("SELECT * FROM user_info WHERE user_id = ?");
         $stmt->bind_param("i", $user_id);
@@ -285,7 +285,7 @@ function generateAccount(){
                                         <!--Soler Rateing --> 
                                         <div class="row" style="padding-top: 5px; padding-bottom: 5px">
                                             <div class="col-md">
-                                                <strong>&ensp;Soler rating: $solargen&ensp;</strong>
+                                                <strong>&ensp;Soler rating: $solargen Watts per hour&ensp;</strong>
                                             </div>
                                                 <div class="col-md">
                                                     <input class="form-control" type="text" placeholder="$solargen">

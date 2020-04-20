@@ -19,7 +19,7 @@ function generateAccount(){
         <div class="container justify-content-center">
         
             <!-- Card --> 
-            <div class="card justify-content-center">
+            <div class="card justify-content-center" style="border:none!important">
             
                 <!-- Card content: account details -->
                 <div class="col-md justify-content-center">
@@ -59,7 +59,7 @@ function generateAccount(){
                                 <strong>&ensp;Address:</strong>
                             </div>
                             
-                            <div class="col-md" style="margin-left: 50px">
+                            <div class="col-md" style="margin-left: 30px">
                                 <div class="flex-md-row">
                                     <strong>$address_l1&ensp;</strong>
                                 </div>
@@ -107,13 +107,13 @@ function generateAccount(){
                             </div>
                         </div>
                     
-                        <div class="row" style="margin-bottom: 50px">
+                        <div class="row" style="margin-bottom: 20px;margin-top: 20px;">
                         <!--button for deploying models-->
                             <div class="col-md">
-                                <button type="button" class="btn-sm btn-primary  btn-rounded" data-toggle="modal" data-target="#updateAccountModal">Update Account</button>
+                                <button type="button" class="btn btn-primary  btn-rounded" data-toggle="modal" data-target="#updateAccountModal">Update Account</button>
                             </div>
                             <div class="col-md">
-                                <button type="button" class="btn-sm btn-danger  btn-rounded" data-toggle="modal" data-target="#removeAccountModal">Delete Account</button>
+                                <button type="button" class="btn btn-danger  btn-rounded" data-toggle="modal" data-target="#removeAccountModal">Delete Account</button>
                             </div>
                         </div>
                                             

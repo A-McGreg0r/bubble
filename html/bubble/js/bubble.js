@@ -71,9 +71,21 @@ $( document ).on( "mobileinit", function() {
 });
 
 $(window).on("load", function(){
-    var overview = document.getElementById('top-buttons');
+    var tb = document.getElementById('top-buttons');
 
-    swipedetect(overview, function(swipedir){
+    swipedetect(tb, function(swipedir){
+        // swipedir contains either "none", "left", "right", "top", or "down"
+        if (swipedir =='left') {
+            document.getElementById('home-attr').classList.remove("active");
+            document.getElementById('advice-attr').classList.add("active");
+            document.getElementById('home-tab-attr').classList.remove("active");
+            document.getElementById('advice-tab-attr').classList.add("active");
+        }
+    });
+
+    var hr = document.getElementById('button_seperator');
+
+    swipedetect(hr, function(swipedir){
         // swipedir contains either "none", "left", "right", "top", or "down"
         if (swipedir =='left') {
             document.getElementById('home-attr').classList.remove("active");

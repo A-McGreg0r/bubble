@@ -210,7 +210,11 @@ function _main($Y, $anual_power_gen) {
     daily_calc($i, $S, $inc, $P, $Y);
     
 }
+function cal_days_in_year($Y){
+    $d=0; 
+    for($m=1;$m<=12;$m++){ $d = $d + cal_days_in_month(CAL_GREGORIAN,$m,$Y); }
+ return (intval($diy)*10);
+}
 
-_main(intval(date('Y')), 2500000.0)
-?>
+_main(intval(date('Y')), ($solargen*cal_days_in_year('Y')));
 

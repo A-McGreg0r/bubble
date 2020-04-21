@@ -85,7 +85,7 @@ function generateAccount(){
                                 <strong>&ensp;Energy Price:</strong>
                             </div>
                             <div class="col-md" style="margin-left: 30px">
-                                <strong>$energy_cost&ensp;</strong><!--TODO make updateabul-->
+                                <strong>£$energy_cost&ensp;</strong><!--TODO make updateabul-->
                             </div>
                         </div>
                         
@@ -94,7 +94,7 @@ function generateAccount(){
                                 <strong>&ensp;Monthly Budget:</strong>
                             </div>
                             <div class="col-sm" style="margin-left: 30px">
-                                <strong>$budget&ensp;</strong><!--TODO make updateabul-->
+                                <strong>£$budget&ensp;</strong><!--TODO make updateabul-->
                             </div>
                         </div>
                         
@@ -136,7 +136,7 @@ function generateAccount(){
                                     </div>
                                     <!--Body-->
                                     <div class="modal-body">
-                                        <strong> Warring:   This will completely delete your account and can't be undone!</strong>
+                                        <strong> Warning:   This will completely delete your account and can't be undone!</strong>
                                     </div>
                                     <div class="modal-footer justify-content-lg-between">
                                         <button class="btn btn-danger btn-sm btn-rounded" onclick="deleteAccount()">Yes: delete account</button>
@@ -160,7 +160,7 @@ function generateAccount(){
                                     </div>
                                     <!--Body-->
                                     <div class="modal-body">
-                                        <strong> Warring:   This will completely delete your account and can't be undone!</strong>
+                                        <strong> Warning:   This will completely delete your account and can't be undone!</strong>
                                     </div>
                                     <div class="modal-footer justify-content-lg-between">
                                         <button class="btn btn-danger btn-sm btn-rounded" >Yes: delete account</button>
@@ -172,14 +172,14 @@ function generateAccount(){
                             </div>
                         </div>
                         <!--Model deployed by update account button-->
-                        <div class="modal fade" id="updateAccountModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade modalStatsWrap" id="updateAccountModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <!-- Dialog -->
                             <div class="modal-dialog modal-lg" role="document">
                             <!--Header-->
                            
                                 <!-- Content -->
                                 <div class="modal-content ">
-                                    <div class="modal-header">
+                                    <div class="modalHeader">
                                         <h3 class="bold-title">Update Account</h3>
                                     </div>                                
                                     <div class="col-lg">
@@ -200,7 +200,7 @@ function generateAccount(){
                                                 <strong>&ensp;First Name: $first_name&ensp;</strong>
                                             </div>
                                                 <div class="col-md">
-                                                    <input class="form-control" type="text" placeholder="$first_name">
+                                                    <input id="ud1" class="form-control" type="text" placeholder="$first_name">
                                                 </div>
                                         </div>
                                         
@@ -210,7 +210,7 @@ function generateAccount(){
                                                 <strong>&ensp;Last Name: $last_name&ensp;</strong>
                                             </div>
                                             <div class="col-md"">
-                                                <input class="form-control" type="text" placeholder="$last_name">
+                                                <input id="ud2" class="form-control" type="text" placeholder="$last_name">
                                             </div>
                                         </div>
                                         
@@ -220,7 +220,7 @@ function generateAccount(){
                                                 <strong>&ensp;Email Address: $email&ensp;</strong><!--todo fix md size alinment issue-->
                                             </div>
                                             <div class="col-md">
-                                                <input class="form-control" type="text" placeholder="$email">
+                                                <input id="ud3" class="form-control" type="text" placeholder="$email">
                                             </div>
                                         </div>
                                         
@@ -236,7 +236,7 @@ function generateAccount(){
                                                             <strong>$address_l1</strong>
                                                         </div>
                                                         <div class="col-md" style="margin-left: -2%;">
-                                                            <input class="form-control" type="text" placeholder="$address_l1">
+                                                            <input id="ud4" class="form-control" type="text" placeholder="$address_l1">
                                                         </div>
                                                     </div>
                                                     
@@ -245,7 +245,7 @@ function generateAccount(){
                                                             <strong>$address_l2</strong>
                                                         </div>
                                                         <div class="col-md" style="margin-left: -2%;">
-                                                            <input class="form-control" type="text" placeholder="$address_l2">
+                                                            <input id="ud5" class="form-control" type="text" placeholder="$address_l2">
                                                         </div> 
                                                     </div>
                                                     
@@ -260,7 +260,7 @@ function generateAccount(){
                                                 <strong>&ensp;Postcode:$postcode&ensp;</strong>
                                             </div>
                                                 <div class="col-md">
-                                                    <input class="form-control" type="text" placeholder="$postcode">
+                                                    <input id="ud6" class="form-control" type="text" placeholder="$postcode">
                                                 </div>
                                         </div>
                                          <!--Energy Cost -->     
@@ -269,7 +269,39 @@ function generateAccount(){
                                                 <strong>&ensp;Energy Price: $energy_cost&ensp;</strong>
                                             </div>
                                                 <div class="col-md">
-                                                    <input class="form-control" type="text" placeholder="$energy_cost">
+                                                    <select id="ud7" class="form-control form-control-sm dropdown validate drop-up">
+                                                        <option value="" disabled selected>Select energy price per kWh</option>
+                                                        <option value="0.01">£0.01</option>
+                                                        <option value="0.02">£0.02</option>
+                                                        <option value="0.03">£0.03</option>
+                                                        <option value="0.04">£0.04</option>
+                                                        <option value="0.05">£0.05</option>
+                                                        <option value="0.06">£0.06</option>
+                                                        <option value="0.07">£0.07</option>
+                                                        <option value="0.08">£0.08</option>
+                                                        <option value="0.09">£0.09</option>
+                                                        <option value="0.10">£0.10</option>
+                                                        <option value="0.11">£0.11</option>
+                                                        <option value="0.12">£0.12</option>
+                                                        <option value="0.13">£0.13</option>
+                                                        <option value="0.14">£0.14</option>
+                                                        <option value="0.15">£0.15</option>
+                                                        <option value="0.16">£0.16</option>
+                                                        <option value="0.17">£0.17</option>
+                                                        <option value="0.18">£0.18</option>
+                                                        <option value="0.19">£0.19</option>
+                                                        <option value="0.20">£0.20</option>
+                                                        <option value="0.21">£0.21</option>
+                                                        <option value="0.22">£0.22</option>
+                                                        <option value="0.23">£0.23</option>
+                                                        <option value="0.24">£0.24</option>
+                                                        <option value="0.25">£0.25</option>
+                                                        <option value="0.26">£0.26</option>
+                                                        <option value="0.27">£0.27</option>
+                                                        <option value="0.28">£0.28</option>
+                                                        <option value="0.29">£0.29</option>
+                                                        <option value="0.30">£0.30</option>
+                                                    </select>
                                                 </div>
                                         </div>
                                         <!--Budget -->     
@@ -278,17 +310,17 @@ function generateAccount(){
                                                 <strong>&ensp;Monthly Budget: $budget&ensp;</strong>
                                             </div>
                                                 <div class="col-md">
-                                                    <input class="form-control" type="text" placeholder="$budget">
+                                                    <input id="ud8" class="form-control" type="text" placeholder="$budget">
                                                 </div>
                                         </div>
                                         
                                         <!--Soler Rateing --> 
                                         <div class="row" style="padding-top: 5px; padding-bottom: 5px">
                                             <div class="col-md">
-                                                <strong>&ensp;Soler rating: $solargen Watts per hour&ensp;</strong>
+                                                <strong>&ensp;Solar rating: $solargen Watts per hour&ensp;</strong>
                                             </div>
                                                 <div class="col-md">
-                                                    <input class="form-control" type="text" placeholder="$solargen">
+                                                    <input id="ud9" class="form-control" type="text" placeholder="$solargen">
                                                 </div>
                                         </div>
                                         <!--Model footer-->    
@@ -298,7 +330,7 @@ function generateAccount(){
                                         
                                             </div>
                                                 <div class="col-md">
-                                                    <button type="button" class="btn btn-primary btn-sm btn-rounded" onclick="" >Update</button>
+                                                    <button type="button" class="btn btn-primary btn-sm btn-rounded" onclick="updateAccount($user_id,'ud1','ud2','ud3','ud4','ud5','ud6','ud7','ud8','ud9')" >Update</button>
                                                 </div>
                                         </div>
                                                             

@@ -280,6 +280,36 @@ function startTimer(id, hour_value, minute_value) {
 }
 //------------------------Timer Function----------------------------------------------------
 
+//------------------------Update account function--------------------------------------------
+
+function updateAccount(id, fn, ln, email, adl1, adl2, post, ep, mb, sp) {
+    let url = "required/action_updateAccount.php";
+    var first_name = $('#' + fn).val();
+    var last_name = $('#' + ln).val();
+    var email_adr = $('#' + email).val();
+    var address_1 = $('#' + adl1).val();
+    var address_2 = $('#' + adl2).val();
+    var postcode = $('#' + post).val();
+    var energy_price = $('#' + ep).val();
+    var budget = $('#' + mb).val();
+    var solar = $('#' + sp).val();
+    
+    //Call action device to toggle room
+    $.ajax({
+        type:'POST',
+        url: url,
+        data:{id : id, fn: first_name, ln: last_name, email: email_adr, adl1: address_1, adl2: address_2, post: postcode, ep: energy_price, mb: budget, sp: solar},
+        success:function(){
+            location.reload();
+        },
+        error: function(data){
+            alert("error!");
+        }
+    });
+}
+
+//------------------------End Update account function--------------------------------------------
+
 //------------------------Device switch Functions----------------------------------------------------
 function styleHome() {
     //Set loader spinning on click and set background colour

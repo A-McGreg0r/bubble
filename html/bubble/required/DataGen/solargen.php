@@ -1,7 +1,15 @@
 <?php
 require "../config.php";
 
-function _main($Y, $anual_power_gen) {
+function _main($Y, $hourly_power_gen, $hub_id) {
+	
+	function cal_days_in_year($Y){
+    $d=0; 
+    for($m=1;$m<=12;$m++){ $d = $d + cal_days_in_month(CAL_GREGORIAN,$m,$Y); }
+	return (intval($diy)*10);
+	}
+	
+	$anual_power_gen=cal_days_in_year($Y)*$hourly_power_gen;
 	
     function inti_seasons($Y) {
         $sum_winter=0;
@@ -49,7 +57,7 @@ function _main($Y, $anual_power_gen) {
         return (($percentage/2) / $sum_total);
     }
 
-    function daily_calc($case, $S, $I, $P, $Y) {
+    function daily_calc($case, $S, $I, $P, $Y, $hub_id) {
         $inc = $I; //total inc for the season
         $sum = $S[$case]; //sum of days in season
         $mid = round(($sum/2),0); //nth day = total days / 2
@@ -105,7 +113,7 @@ function _main($Y, $anual_power_gen) {
 			$watts=$percentage*$P;
 			$watts_sum=$watts_sum+$watts;
 			if (intval(date('m'))==$m && intval(date('d'))==$dim){ 
-				hourly_calc($case, $percentage, $P, $dim, $m); 
+				hourly_calc($case, $percentage, $P, $dim, $m, $hub_id); 
 				break;
 			}		
         }
@@ -207,14 +215,20 @@ function _main($Y, $anual_power_gen) {
     elseif ($m < 9) {$i=2;}   //$m=6|7|8
     else {$i=3;}  //$m=9|10|11
     $inc = daily_inc($i, $S);
-    daily_calc($i, $S, $inc, $P, $Y);
+    daily_calc($i, $S, $inc, $P, $Y, $hub_id);
     
 }
-function cal_days_in_year($Y){
-    $d=0; 
-    for($m=1;$m<=12;$m++){ $d = $d + cal_days_in_month(CAL_GREGORIAN,$m,$Y); }
- return (intval($diy)*10);
-}
-$solargen=320;
-_main(intval(date('Y')), ($solargen*cal_days_in_year('Y')));
 
+$hub_cost = $db->prepare("SELECT * FROM hub_cost");
+$hub_cost->execute();
+$hub_cost_data = $hub_cost->get_result();
+
+if ($hub_cost_data->num_rows >= 1) {
+    $data = $hub_cost_data->fetch_all(MYSQLI_ASSOC);
+    foreach($data as $row){
+		$hub_id = $row['hub_id'];
+		$solargen = $row['solargen'];
+		_main(intval(date('Y')), $solargen, $hub_id);
+	}
+}
+?>

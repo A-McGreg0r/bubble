@@ -154,7 +154,15 @@ function generateHelpPage() {
                                     <h3 class="bold-title">Turn on a room</h3>
                                 </div>
                                 <div class="modalBody">
-                                    Hello
+                                    <div>To turn on all of the devices in a room, click on your desired room. The button
+                                        will turn yellow to indicate it is turning on, you will see
+                                        a loading symbol as the devices are turned on, then a status to the right of the button
+                                        saying 'on'. If there is just one device on in the room, it will be displayed as on, so will
+                                        default to turning the room off.
+                                        <br><br>Similarly, if you would like to turn off all of the devices in the room, 
+                                        click the room. The button will turn grey to indicate it is turning off, the loading icon
+                                        will appear, then the status will update to 'off'.</div>
+                                    <img src="img/turnOnRoom.JPG" style="max-width:90%;"/>
                                 </div>
                             </div>
                         </td>
@@ -172,7 +180,11 @@ function generateHelpPage() {
                                     <h3 class="bold-title">Setting a timer</h3>
                                 </div>
                                 <div class="modalBody">
-                                    Hello
+                                    <div>If a room is currently on, a small clock icon will appear in the top right corner of the button.
+                                        Clicking on this button will open up a small window that will allow you to set a timer that
+                                        will schedule the devices in that room to turn off. It will only set timers for devices that
+                                        are currently turned on, and any timer that has been set will be deleted if the room is turned off.</div>
+                                    <img src="img/roomTimer.png" style="max-width:90%;"/>
                                 </div>
                             </div>
                         </td>
@@ -190,7 +202,10 @@ function generateHelpPage() {
                                     <h3 class="bold-title">Adding a room</h3>
                                 </div>
                                 <div class="modalBody">
-                                    Hello
+                                    <div>In order to add a new room, there is a button at the very top of the Room Tab. Clicking on this button
+                                        will open up a small form in which you can input the name of the room and the icon you would like
+                                        it to have. Click on 'Add Room' at the bottom, and the new room will be added to the list.</div>
+                                    <img src="img/roomTimer.png" style="max-width:90%;"/>
                                 </div>
                             </div>
                         </td>
@@ -306,8 +321,26 @@ function generateHelpPage() {
                             </div>
                         </td>
                     </tr>
+                    <tr>
+                        <td style="cursor:pointer" onclick="openModalHelp('help19')">
+                            Why is my device red?
+                        </td>
+                    </tr>
+                    <tr style="display:none!important" id="help19">
+                        <td>
+                            <div class="modalStats" style="border: 1px solid black;" >
+                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help19')"><i class="fas fa-times"></i></i></div>
+                                <div class="modalHeader">
+                                    <h3 class="bold-title">Why is my device red?</h3>
+                                </div>
+                                <div class="modalBody">
+                                    Hello
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
                 </table>
-                <div class="section-title"><h4>Acount</h4></div>
+                <div class="section-title"><h4>Account</h4></div>
                 <table class="helpTable">
                     <tr>
                         <td style="cursor:pointer" onclick="openModalHelp('help15')">

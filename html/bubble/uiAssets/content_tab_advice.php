@@ -68,7 +68,7 @@ function generateAdviceTab()
                     if($temp >= 18) {
                         $weather_symbol = "<img class='weather_symbol_small' src='../img/sun.png'>";
                         $bg = "#5fb0ff";
-                        $advice = "<table class='weather_table'>
+                        $advice .= "<table class='weather_table'>
                                     <tr>
                                         <th class='weather_analysis'>It's a nice, hot day!</th>
                                     </tr>
@@ -104,14 +104,11 @@ function generateAdviceTab()
                                     </tr>
                                     <tr class='advice_point'>
                                         <td>Keep the fridge full. An empty fridge wastes far more energy than a full one as when food is compacted together it keeps cooler longer and easier.</td>
-                                    </tr>
-                                    <tr class='advice_point'>
-                                        <td>.</td>
                                     </tr></table>";
                     } else if($temp < 18 && $temp >= 14) {
                         $weather_symbol = "<img class='weather_symbol' src='../img/sun_cloud.png'>";
                         $bg = "#9ec7ee";
-                        $advice = "<table class='weather_table'>
+                        $advice .= "<table class='weather_table'>
                                     <tr>
                                         <th class='weather_analysis'>It's a warm day!</th>
                                     </tr>
@@ -147,7 +144,7 @@ function generateAdviceTab()
                     } else if($temp < 14 && $temp >= 9) {
                         $weather_symbol = "<img class='weather_symbol' src='../img/cloud.png'>";
                         $bg = "#b7c2cc";
-                        $advice = "<table class='weather_table'>
+                        $advice .= "<table class='weather_table'>
                                     <tr>
                                         <th class='weather_analysis'>It's a mild day!</th>
                                     </tr>
@@ -185,7 +182,7 @@ function generateAdviceTab()
                     } else if($temp < 9 && $temp >= 5) {
                         $weather_symbol = "<img class='weather_symbol' src='../img/dark_cloud.png'>";
                         $bg = "#bcbcbc";
-                        $advice = "<table class='weather_table'>
+                        $advice .= "<table class='weather_table'>
                                     <tr>
                                         <th class='weather_analysis'>It's a chilly day!</th>
                                     </tr>
@@ -229,7 +226,7 @@ function generateAdviceTab()
                     } else if ($temp < 5) {
                         $weather_symbol = "<i class='far fa-snowflake weather_symbol_large' style='color:white'></i>";
                         $bg = "rgb(100, 100, 100)";
-                        $advice = "<table class='weather_table'>
+                        $advice .= "<table class='weather_table'>
                                     <tr>
                                         <th class='weather_analysis'>It's a very cold day!</th>
                                     </tr>
@@ -240,11 +237,11 @@ function generateAdviceTab()
                                         <td>Turn heaters up to keep warm, comfort is important too.</td>
                                     </tr>
                                     <tr class='advice_point'>
-                                        <td>This feels like a movie day, snuggle up in your duvets and settle to a movie. You might not even need the heaters...</tr>
-                                    .</td>
+                                        <td>This feels like a movie day, snuggle up in your duvets and settle to a movie. You might not even need the heaters...</td>
+                                    </tr>
                                     <tr class='advice_point'>
-                                        <td>Put a jumper on if you're cold</tr>
-                                    .</td>
+                                        <td>Put a jumper on if you're cold.</td>
+                                    </tr>
                                     <tr class='advice_point'>
                                         <td>Washing clothes at 30-40 degrees will save energy.</td>
                                     </tr>

@@ -186,63 +186,6 @@ function generateLoginPage(){
                                         required size="20"/>
                                 </div>
 
-                                <!-- Energy Cost -->
-                                <div class="md-form">
-                                    <select name="energy_cost" id="registerFormEnergyCost" class="form-control form-control-sm dropdown validate drop-up">
-                                        <option value="" disabled selected>Select energy price per kWh</option>
-                                        <option value="0.01">£0.01</option>
-                                        <option value="0.02">£0.02</option>
-                                        <option value="0.03">£0.03</option>
-                                        <option value="0.04">£0.04</option>
-                                        <option value="0.05">£0.05</option>
-                                        <option value="0.06">£0.06</option>
-                                        <option value="0.07">£0.07</option>
-                                        <option value="0.08">£0.08</option>
-                                        <option value="0.09">£0.09</option>
-                                        <option value="0.10">£0.10</option>
-                                        <option value="0.11">£0.11</option>
-                                        <option value="0.12">£0.12</option>
-                                        <option value="0.13">£0.13</option>
-                                        <option value="0.14">£0.14</option>
-                                        <option value="0.15">£0.15</option>
-                                        <option value="0.16">£0.16</option>
-                                        <option value="0.17">£0.17</option>
-                                        <option value="0.18">£0.18</option>
-                                        <option value="0.19">£0.19</option>
-                                        <option value="0.20">£0.20</option>
-                                        <option value="0.21">£0.21</option>
-                                        <option value="0.22">£0.22</option>
-                                        <option value="0.23">£0.23</option>
-                                        <option value="0.24">£0.24</option>
-                                        <option value="0.25">£0.25</option>
-                                        <option value="0.26">£0.26</option>
-                                        <option value="0.27">£0.27</option>
-                                        <option value="0.28">£0.28</option>
-                                        <option value="0.29">£0.29</option>
-                                        <option value="0.30">£0.30</option>
-                                    </select>
-
-                                    <small class="form-text text-muted mb-4">
-                                        If you are unsure about your energy cost, please select £0.15 for the average UK price
-                                    </small>
-                                </div>
-
-                                <div class="md-form">
-                                    <span class="budget-input"> <p style="margin-top:8px">£</p>
-                                        <label data-error="wrong" data-success="right" for="budget">Please enter your monthly budget</label>
-                                        <input type="number"
-                                            id="registerFormBudget"
-                                            class="form-control form-control-sm validate drop-up"
-                                            aria-describedby=""
-                                            name="budget"
-                                            required size="20"
-                                            value=""/>
-                                    </span>
-                                    <small class="form-text text-muted mb-4">
-                                        If you are unsure about your budget, please select £58 for the average UK budget
-                                    </small>
-                                </div>
-
                                 <div class="md-form">
                                     <small class="form-text text-muted mb-4"><input id="registerFormAllowEmails" type="checkbox" checked="checked" name="allow_emails" value="Yes"/>&nbsp;I would like to receive email updates tailored to me</small>
                                 </div>

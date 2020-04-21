@@ -7,7 +7,7 @@ require 'PepperedPasswords.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //INTITALISE ERRORS ARRAY
     $errors = array();
-    $stmt = $db->prepare("INSERT INTO user_info (email, pass, first_name, last_name, address_l1, address_l2, postcode, energy_cost, budget, allow_emails) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )");
+    $stmt = $db->prepare("INSERT INTO user_info (email, pass, first_name, last_name, address_l1, address_l2, postcode, allow_emails) VALUES ( ?, ?, ?, ?, ?, ?, ?, ? )");
 
     //GET VALID EMAIL ADDRESS
     $userEmail = filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL);
@@ -53,16 +53,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     //GET VALID ENERGY COST
-    $userEnergyCost = filter_input(INPUT_POST, "energy_cost", FILTER_SANITIZE_STRING);
-    if($userEnergyCost == FALSE){
-        $errors[] = 'Please enter an energy cost';
-    }
+    // $userEnergyCost = filter_input(INPUT_POST, "energy_cost", FILTER_SANITIZE_STRING);
+    // if($userEnergyCost == FALSE){
+    //     $errors[] = 'Please enter an energy cost';
+    // }
 
-    //GET VALID BUDGET
-    $userBudget = filter_input(INPUT_POST, "budget", FILTER_SANITIZE_STRING);
-    if($userBudget == FALSE){
-        $errors[] = 'Please enter a budget';
-    }
+    // //GET VALID BUDGET
+    // $userBudget = filter_input(INPUT_POST, "budget", FILTER_SANITIZE_STRING);
+    // if($userBudget == FALSE){
+    //     $errors[] = 'Please enter a budget';
+    // }
 
     //GET ALLOW EMAILS FLAG
     $userAllowEmails = filter_input(INPUT_POST, "allow_emails", FILTER_SANITIZE_STRING);
@@ -89,8 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $userHashedPassword = $hasher->hash($userPassword1);
 
         //BIND PARAMETERS TO QUERY
-        $stmt->bind_param("sssssssdis", $userEmail, $userHashedPassword, $userFirstName, $userLastName, $userAddressL1, $userAddressL2, $userPostcode,
-        $userEnergyCost, $userBudget, $userAllowEmails);
+        $stmt->bind_param("ssssssss", $userEmail, $userHashedPassword, $userFirstName, $userLastName, $userAddressL1, $userAddressL2, $userPostcode, $userAllowEmails);
 
         //EXECUTE QUERY
         if (!$stmt->execute()) {

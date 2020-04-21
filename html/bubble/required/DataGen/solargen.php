@@ -117,7 +117,7 @@ function daily_calc($case, $S, $I, $P, $Y, $hub_id) {
 }
 
 function hourly_calc($case, $percentage, $P, $d, $m, $hub_id) {
-    $S=0;$i=0;
+    $S=0;$i=0;$N=0;
     switch ($case) {
         case 0:
             $rise=8;

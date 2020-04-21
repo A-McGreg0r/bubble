@@ -399,7 +399,7 @@ function refreshDevice(device_id) {
 
 function refreshDevices() {
     //Refresh device
-    $('#device-encompass').load(document.URL + ' #device-encompass', function(){
+    $('#messages-attr').load(document.URL + ' #device-encompass', function(){
         attachDropdownSelectors();
     });
 }

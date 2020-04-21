@@ -423,7 +423,7 @@ change_button;
                                             id="budgetInputBox"
                                             class="form-control"
                                             name="energy_cost"
-                                            placeholder="."
+                                            placeholder="$budget"
                                             value="$budget"/>
                                     </div>
                                     <!-- Solar gen -->
@@ -433,7 +433,7 @@ change_button;
                                             id="solarGenInputBox"
                                             class="form-control"
                                             name="energy_cost"
-                                            placeholder="."
+                                            placeholder="$solargen"
                                             value="$solargen"/>
                                     </div>
                                 </div>

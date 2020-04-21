@@ -5,7 +5,7 @@ global $db;
 function cal_days_in_year($Y){
     $d=0; 
     for($m=1;$m<=12;$m++){ $d = $d + cal_days_in_month(CAL_GREGORIAN,$m,$Y); }
-    return intval($d*10);
+    return intval($d*9);
 }
 
 function inti_seasons($Y) {
@@ -117,7 +117,7 @@ function daily_calc($case, $S, $I, $P, $Y, $hub_id) {
 }
 
 function hourly_calc($case, $percentage, $P, $d, $m, $hub_id) {
-    $S=0;
+    $S=0;$i=0;
     switch ($case) {
         case 0:
             $rise=8;
@@ -125,15 +125,15 @@ function hourly_calc($case, $percentage, $P, $d, $m, $hub_id) {
             break;
         case 1:
             $rise=7;
-            $set=21;
+            $set=19;
             break;
         case 2:
             $rise=6;
-            $set=22;
+            $set=20;
             break;
         case 3:
             $rise=7;
-            $set=21;
+            $set=19;
             break;
         default:
             echo "Invalid Season.";
@@ -144,7 +144,6 @@ function hourly_calc($case, $percentage, $P, $d, $m, $hub_id) {
     if (is_float($peak=$daylight_hours/2)) {$peak=round($daylight_hours/2, 0);$repeat=true;}
     else{$peak=(round($daylight_hours/2, 0)+1);$repeat=false;}
     echo "$peak peak <br>";
-    $N=0;
     for ($i=0; $i <= $peak; $i++) {
         if ($repeat && $i=$peak){$S = $S + ($i*2);}
         else{$S = $S + $i;}
@@ -160,8 +159,8 @@ function hourly_calc($case, $percentage, $P, $d, $m, $hub_id) {
     
     for ($h=0; $h <= 23; $h++) {
         //INSERT INTO TABLE
-        $i=1;
-        if ($i < $peak) {$N++;}
+
+        if ($i < $peak) {$N++;$i++;}
         elseif ($repeat){$repeat=false;}
         else {$N--;}
         $watts = $N * $qV * $P;
@@ -169,13 +168,7 @@ function hourly_calc($case, $percentage, $P, $d, $m, $hub_id) {
 		if ($h == (intval(date('H'))+1)){ 
 			echo "| * $N  * | ";
             echo "hour[ $h ]::";
-            if($h > $rise && $h < $set){
-                $watts = $watts / 5 * (rand(50,100)/100);
-            } else {
-                $watts = 0;
-            }
-            echo $watts;echo "\n";
-            global $db;
+            echo "$watts <br>";
             $inst_hourly_gen = $db->prepare("INSERT INTO hourly_gen (hub_id, entry_month, entry_day, entry_hour, energy_gen) VALUES (?, ?, ?, ?, ?)");
             $inst_hourly_gen->bind_param("iiiid", $hub_id, $m, $d, $h, $watts);
             $inst_hourly_gen->execute();

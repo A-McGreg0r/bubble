@@ -26,7 +26,7 @@ function generateHomeTab()
         $stmtUser->close();
 
         //GRAB HUB COSTING INFORMATION
-        $stmtHubCost = $db->prepare("SELECT * FROM hub_cst WHERE hub_id = ?");
+        $stmtHubCost = $db->prepare("SELECT * FROM hub_cost WHERE hub_id = ?");
         $stmtHubCost->bind_param("i", $hub_id);
         $stmtHubCost->execute();
         $resultHubCost = $stmtHubCost->get_result();

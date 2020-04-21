@@ -140,10 +140,10 @@ function hourly_calc($case, $percentage, $P, $d, $m, $hub_id) {
     }
     //from rise to set, allocate percentage
     $daylight_hours = ($set-$rise);
-
+    
     if (is_float($peak=$daylight_hours/2)) {$peak=round($daylight_hours/2, 0);$repeat=true;}
     else{$peak=(round($daylight_hours/2, 0)+1);$repeat=false;}
-
+    echo "$peak peak <br>";
     $N=0;
     for ($i=0; $i <= $peak; $i++) {
         if ($repeat && $i=$peak){$S = $S + ($i*2);}

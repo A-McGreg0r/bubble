@@ -381,8 +381,8 @@ change_button;
                             <div class="col-lg-12">
                                 <div class="row alter-display align-middle reduce-space">
                                     <div class="md-form">
-                                        label for="energyCostInputBox">Select energy price per kWh</label>
-                                        <select id="energyCostInputBox" class="form-control form-control-sm dropdown validate drop-up" value="$energy_cost">
+                                        <label for="energyCostInputBox">Select energy price per kWh</label>
+                                        <select id="energyCostInputBox" class="form-control form-control-sm dropdown" value="$energy_cost">
                                             <option value="0.01">£0.01</option>
                                             <option value="0.02">£0.02</option>
                                             <option value="0.03">£0.03</option>
@@ -421,9 +421,8 @@ change_button;
                                         <label for="budgetInputBox">Budget</label>
                                         <input type="text"
                                             id="budgetInputBox"
-                                            class="form-control form-control-sm"
+                                            class="form-control"
                                             name="energy_cost"
-                                            required size="3"
                                             value="$budget"/>
                                     </div>
                                     <!-- Solar gen -->
@@ -431,9 +430,8 @@ change_button;
                                         <label for="solarGenInputBox">Solar Panel Rating(Watts Per Hour)</label>
                                         <input type="text"
                                             id="solarGenInputBox"
-                                            class="form-control form-control-sm"
+                                            class="form-control"
                                             name="energy_cost"
-                                            required size="3"
                                             value="$solargen"/>
                                     </div>
                                 </div>

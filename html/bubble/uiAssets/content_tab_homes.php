@@ -253,7 +253,7 @@ function generateHomeTab()
             $change_costings = <<<change_button
             <div class='col col-md justify-content-center' style='max-width: 575px'>
             <!--function call-->
-                <div id='reload_device_id' class='home-left' style='text-align:center' onclick=''>
+                <div id='reload_device_id' class='home-left' style='text-align:center' onclick='openModalHome("costing_select")'>
                     <!--left text-->
                     <div id='device_3_device_id' class='justify-content-center'>
                         <strong class='room_icon'>
@@ -265,6 +265,8 @@ function generateHomeTab()
                 </div>
             </div>
 change_button;
+
+
             //FIND ALL HUBS REGISTERED TO USER, ADD MODAL AND BUTTONS THAT ALLOW CHANGING BETWEEN HUBS
 
             $change_button = "";
@@ -370,6 +372,54 @@ change_button;
                 </div>
             </div>
 
+            <div class="modal modalStatsWrap" id="costing_select">
+                <div class="modalContent modalStats" id="">
+                    <div class="x-adjust"><i class="stats_icon_x " id="" style="display:flex" onclick="openModalHome('costing_select')"><i class="fas fa-times"></i></i></div>
+                    <div class="modalHeader"><strong>Change Costings</strong></div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="col-lg-12">
+                                <div class="row alter-display align-middle reduce-space">
+                                    <!-- Energy Cost -->
+                                    <div class="md-form">
+                                        <label for="energyCostInputBox">Energy Cost</label>
+                                        <input type="text"
+                                            id="energyCostInputBox"
+                                            class="form-control form-control-sm"
+                                            name="energy_cost"
+                                            required size="3"
+                                            value="$energy_cost"/>
+                                    </div>
+                                    <!-- Budget -->
+                                    <div class="md-form">
+                                        <label for="budgetInputBox">Budget</label>
+                                        <input type="text"
+                                            id="budgetInputBox"
+                                            class="form-control form-control-sm"
+                                            name="energy_cost"
+                                            required size="3"
+                                            value="$budget"/>
+                                    </div>
+                                    <!-- Solar gen -->
+                                    <div class="md-form">
+                                        <label for="solarGenInputBox">Solar Panel Generation</label>
+                                        <input type="text"
+                                            id="solarGenInputBox"
+                                            class="form-control form-control-sm"
+                                            name="energy_cost"
+                                            required size="3"
+                                            value="$solargen"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" onclick="addRoomModalSubmit()" class="btn btn-secondary">Add Room</button>
+                    </div>
+                </div>
+            </div>
+
             <div class="card col-lg">
             <!-- Card header -->
                 <div class="card-header" role="tab" id="heading$hub_id">
@@ -382,10 +432,6 @@ change_button;
                         </h3>
                     </a>
                 </div>
-
-
-
-
 
                 <!-- new buttons -->
                     <div class="row justify-content-center" id="top-buttons" style="padding: 20px;padding-bottom: 5px;">

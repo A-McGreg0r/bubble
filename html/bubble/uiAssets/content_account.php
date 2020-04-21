@@ -12,6 +12,14 @@ function generateAccount(){
         $result = $stmt->get_result();
         if ($result->num_rows === 1) {
             extract($result->fetch_assoc());
+
+            $yes = '<option value="Yes" selected>Yes</option>';
+            $no = '<option value="No">No</option>';
+
+            if($allow_emails == "No"){
+                $yes = '<option value="Yes">Yes</option>';
+                $no = '<option value="No" selected>No</option>';
+            }
         
             $html = <<<html
         <!-- Page Content --> 
@@ -76,6 +84,15 @@ function generateAccount(){
                             </div>
                             <div class="col-md" style="margin-left: 30px">
                                 <strong>$postcode&ensp;</strong>
+                            </div>
+                        </div>
+
+                        <div class="row account-row">
+                            <div class="col-md">
+                                <strong>&ensp;Allow Emails:</strong>
+                            </div>
+                            <div class="col-md" style="margin-left: 30px">
+                                <strong>$allow_emails&ensp;</strong>
                             </div>
                         </div>
                         
@@ -220,6 +237,19 @@ function generateAccount(){
                                                     <input id="ud6" class="form-control" type="text" placeholder="$postcode">
                                                 </div>
                                         </div>
+
+                                        <div class="row" style="padding-top: 5px; padding-bottom: 5px">
+                                            <div class="col-md">
+                                                <strong>Allow Emails:&ensp;</strong>
+                                            </div>
+                                                <div class="col-md">
+                                                    <select id="ud7" name="allow_emails">
+                                                        $yes
+                                                        $no
+                                                    </select>
+                                                </div>
+                                        </div>
+
                                         <!--Model footer-->    
                                         <div class="modal-footer justify-content-lg-between" style="border:none!important">
                                             <div class="col-md">
@@ -227,7 +257,7 @@ function generateAccount(){
                                         
                                             </div>
                                                 <div class="col-md">
-                                                    <button type="button" class="btn btn-primary btn-sm btn-rounded" onclick="updateAccount($user_id,'ud1','ud2','ud3','ud4','ud5','ud6','ud7','ud8','ud9')" >Update</button>
+                                                    <button type="button" class="btn btn-primary btn-sm btn-rounded" onclick="updateAccount($user_id,'ud1','ud2','ud3','ud4','ud5','ud6','ud7')" >Update</button>
                                                 </div>
                                         </div>
                                                             

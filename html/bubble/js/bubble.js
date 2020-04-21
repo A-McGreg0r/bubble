@@ -282,7 +282,7 @@ function startTimer(id, hour_value, minute_value) {
 
 //------------------------Update account function--------------------------------------------
 
-function updateAccount(id, fn, ln, email, adl1, adl2, post, ep, mb, sp) {
+function updateAccount(id, fn, ln, email, adl1, adl2, post, ae) {
     let url = "required/action_updateAccount.php";
     var first_name = $('#' + fn).val();
     var last_name = $('#' + ln).val();
@@ -290,15 +290,13 @@ function updateAccount(id, fn, ln, email, adl1, adl2, post, ep, mb, sp) {
     var address_1 = $('#' + adl1).val();
     var address_2 = $('#' + adl2).val();
     var postcode = $('#' + post).val();
-    var energy_price = $('#' + ep).val();
-    var budget = $('#' + mb).val();
-    var solar = $('#' + sp).val();
+    var allow_email = $('#' + ae).val();
     
     //Call action device to toggle room
     $.ajax({
         type:'POST',
         url: url,
-        data:{id : id, fn: first_name, ln: last_name, email: email_adr, adl1: address_1, adl2: address_2, post: postcode, ep: energy_price, mb: budget, sp: solar},
+        data:{id : id, fn: first_name, ln: last_name, email: email_adr, adl1: address_1, adl2: address_2, post: postcode, ae: allow_email},
         success:function(){
             location.reload();
         },

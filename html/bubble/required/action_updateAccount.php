@@ -17,12 +17,8 @@ $adr2 = '';
 if(isset($_POST['adl2'])) $adr2 = $_POST['adl2'];
 $postcode = '';
 if(isset($_POST['post'])) $postcode = $_POST['post'];
-$energy_price = 0;
-if(isset($_POST['ep'])) $energy_price = $_POST['ep'];
-$budget = 0;
-if(isset($_POST['mb'])) $budget = $_POST['mb'];
-$solar = 0;
-if(isset($_POST['sp'])) $solar = $_POST['sp'];
+$allow_email = '';
+if(isset($_POST['ae'])) $allow_email = $_POST['ae'];
 
 //If an edit has been made, update the user information with the new value
 if($first_name != ''){
@@ -72,20 +68,10 @@ if($postcode != ''){
     $stmt->close();
 }
 
-//If an edit has been made, update the user information with the new value
-if($energy_price != 0){
-    $stmt = $db->prepare("UPDATE user_info SET energy_cost = ? WHERE user_id = ?");
-    $stmt->bind_param("di", $energy_price, $id);
-    $stmt->execute();
-    $stmt->close();
-}
+$stmt2 = $db->prepare("UPDATE user_info SET allow_emails = ? WHERE user_id = ?");
+$stmt2->bind_param("si", $allow_email, $id);
+$stmt2->execute();
+$stmt2->close();
 
-//If an edit has been made, update the user information with the new value
-if($budget != 0){
-    $stmt = $db->prepare("UPDATE user_info SET budget = ? WHERE user_id = ?");
-    $stmt->bind_param("ii", $budget, $id);
-    $stmt->execute();
-    $stmt->close();
-}
 
 ?>

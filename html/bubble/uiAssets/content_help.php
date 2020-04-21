@@ -96,27 +96,6 @@ function generateHelpPage() {
                 <div class="section-title"><h4>Advice Tab</h4></div>
                 <table class="helpTable">
                     <tr>
-                        <td style="cursor:pointer" onclick="openModalHelp('help4')">
-                            How do you know my location?
-                        </td>
-                    </tr>
-                    <tr style="display:none!important" id="help4">
-                        <td>
-                            <div class="modalStats" style="border: 1px solid black;" >
-                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help4')"><i class="fas fa-times"></i></i></div>
-                                <div class="modalHeader">
-                                    <h3 class="bold-title">How do you know my location?</h3>
-                                </div>
-                                <div class="modalBody">
-                                    <div>When you set up your hub, we store the IP address of the hub. The IP address is a numerical label
-                                    assigned to a device that can be interpreted to find a nearby location. 
-                                    Using this, we can determine the weather of the local area. This information is completely
-                                    secure, stored on our secure database.</div>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
                         <td style="cursor:pointer" onclick="openModalHelp('help5')">
                             What is the advice for?
                         </td>
@@ -137,7 +116,27 @@ function generateHelpPage() {
                             </div>
                         </td>
                     </tr>
-
+                    <tr>
+                        <td style="cursor:pointer" onclick="openModalHelp('help4')">
+                            How do you know my location?
+                        </td>
+                    </tr>
+                    <tr style="display:none!important" id="help4">
+                        <td>
+                            <div class="modalStats" style="border: 1px solid black;" >
+                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help4')"><i class="fas fa-times"></i></i></div>
+                                <div class="modalHeader">
+                                    <h3 class="bold-title">How do you know my location?</h3>
+                                </div>
+                                <div class="modalBody">
+                                    <div>When you set up your hub, we store the IP address of the hub. The IP address is a numerical label
+                                    assigned to a device that can be interpreted to find a nearby location. 
+                                    Using this, we can determine the weather of the local area. This information is completely
+                                    secure, stored on our secure database.</div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
                 </table>
                 <div class="section-title"><h4>Room Tab</h4></div>
                 <table class="helpTable">
@@ -205,7 +204,7 @@ function generateHelpPage() {
                                     <div>In order to add a new room, there is a button at the very top of the Room Tab. Clicking on this button
                                         will open up a small form in which you can input the name of the room and the icon you would like
                                         it to have. Click on 'Add Room' at the bottom, and the new room will be added to the list.</div>
-                                    <img src="img/roomTimer.png" style="max-width:90%;"/>
+                                    <img src="img/addRoom.png" style="max-width:90%;"/>
                                 </div>
                             </div>
                         </td>
@@ -223,7 +222,11 @@ function generateHelpPage() {
                                     <h3 class="bold-title">Removing a room</h3>
                                 </div>
                                 <div class="modalBody">
-                                    Hello
+                                    <div>To remove a room, click on the information button in the top left corner of the room button.
+                                    This will open up the statistics popup for the room. At the bottom of this popup, there
+                                    is a button that says 'Delete Room'. Click this button and another popup will appear asking for
+                                    confirmation. Click 'Delete Room', and the room will be deleted from your account.</div>
+                                    <img src="img/removeRoom.png" style="max-width:90%;"/>
                                 </div>
                             </div>
                         </td>

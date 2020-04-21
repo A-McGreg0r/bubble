@@ -140,8 +140,8 @@ function hourly_calc($case, $percentage, $P, $d, $m, $hub_id) {
     //from rise to set, allocate percentage
     $daylight_hours = ($set-$rise);
     
-    if (is_float($peak=$daylight_hours/4)) {$peak=round($daylight_hours/4, 0);$repeat=true;}
-    else{$peak=(round($daylight_hours/4, 0)+1);$repeat=false;}
+    if (is_float($peak=$daylight_hours/2)) {$peak=round($daylight_hours/2, 0);$repeat=true;}
+    else{$peak=(round($daylight_hours/2, 0)+1);$repeat=false;}
     echo "$peak peak <br>";
     for ($i=0; $i <= $peak; $i++) {
         if ($repeat && $i=$peak){$S = $S + ($i*2);}
@@ -163,12 +163,10 @@ function hourly_calc($case, $percentage, $P, $d, $m, $hub_id) {
             if ($i < $peak) {$N++;$i++;}
             elseif ($repeat){$repeat=false;}
             else {$N--;}
-            $watts = $N * $N * $qV * $P;
-            echo "$watts = $N * $qV * $P <br>";
+            $watts = 4 * $N * $qV * $P;
+            //echo "$watts = $N * $qV * $P <br>";
         }
-        else {
-            $watts = 0;
-        }
+        else { $watts = 0; }
         
 		if ($h == (intval(date('H'))+1)){ 
 			echo "| * $N  * | ";

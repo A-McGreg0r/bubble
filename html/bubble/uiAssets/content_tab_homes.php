@@ -205,12 +205,21 @@ function generateHomeTab()
             $energy_cost_round = number_format($energy_cost,2,'.','');
             $budget_round = number_format($budget,2,'.','');
             $budget_remaining = $budget - $cost_month;
+            if($budget_remaining < 0){
+                $budget_remaining = 0;
+            }
             $budget_remaining_round = number_format($budget_remaining,2,'.','');
 
             $budget_day = $budget / 28;
             $budget_year = $budget * 12;
             $budget_day_remaining = $budget_day - $cost_day;
+            if($budget_day_remaining < 0){
+                $budget_day_remaining = 0;
+            }
             $budget_year_remaining = $budget_year - $cost_year;
+            if($budget_year_remaining < 0){
+                $budget_year_remaining = 0;
+            }
             $budget_day_remaining_round = number_format($budget_day_remaining,2,'.','');
             $budget_year_remaining_round = number_format($budget_year_remaining,2,'.','');
 

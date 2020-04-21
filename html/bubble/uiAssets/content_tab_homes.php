@@ -689,15 +689,15 @@ change_button;
                                 //Supplied Datasets to display
                                 //hourly 1 upto 24
                                 let data1 = { "labels": $DataLabelsYearEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "Energy Generated [kWh]", "data": $dataGenYearEncoded, "backgroundColor": "rgba(226, 183, 28, 0.4)", "borderColor": "rgb(226, 183, 28)", "borderWidth": 2 },{ "label": "Energy Used [kWh]", "data": $dataPointsYearEncoded, "backgroundColor": "rgb(56,56,56)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
-                                let axis1 = { scales: { yAxes: [{ scaleLabel: { display: true, fontSize: 20, labelString: 'Energy [ kWh ]'}}], xAxes: [{ scaleLabel: { display: true, fontSize: 20, labelString: 'Months'}}]} }
+                                let axis1 = { elements: {point:{radius: 0}}, tooltips: {enabled: false}, scales: { yAxes: [{ scaleLabel: { display: true, fontSize: 20, labelString: 'Energy [ kWh ]'}}], xAxes: [{ scaleLabel: { display: true, fontSize: 20, labelString: 'Months'}}]} }
                                 
                                 //days upto 31 days
                                 let data2 = { "labels": $DataLabelsMonthEncoded,"label": "Expected Usage:", "datasets": [{ "label": "Energy Generated [kWh]", "data": $dataGenMonthEncoded, "backgroundColor": "rgba(226, 183, 28, 0.4)", "borderColor": "rgb(226, 183, 28)", "borderWidth": 2 },{ "label": "Energy Used [kWh]", "data": $dataPointsMonthEncoded, "backgroundColor": "rgb(56,56,56)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
-                                let axis2 = { scales: { yAxes: [{ scaleLabel: { display: true, fontSize: 20, labelString: 'Energy [ kWh ]'}}], xAxes: [{ scaleLabel: { display: true, fontSize: 20, labelString: 'Days'}}]} }
+                                let axis2 = { elements: {point:{radius: 0}}, tooltips: {enabled: false}, scales: { yAxes: [{ scaleLabel: { display: true, fontSize: 20, labelString: 'Energy [ kWh ]'}}], xAxes: [{ scaleLabel: { display: true, fontSize: 20, labelString: 'Days'}}]} }
                                 
                                 //months upto 12
                                 let data3 = { "labels": $DataLabelsDayEncoded,"label": "Expected Usage: ", "datasets": [{ "label": "Energy Generated [kWh]", "data": $dataGenDayEncoded, "backgroundColor": "rgba(226, 183, 28, 0.4)", "borderColor": "rgb(226, 183, 28)", "borderWidth": 2 },{ "label": "Energy Used [kWh]", "data": $dataPointsDayEncoded, "backgroundColor": "rgb(56,56,56)", "borderColor": "rgba(56, 56, 56, 1)", "borderWidth": 1 }] };
-                                let axis3 = { scales: { yAxes: [{ scaleLabel: { display: true, fontSize: 20, labelString: 'Energy [ kWh ]'}}], xAxes: [{ scaleLabel: { display: true, fontSize: 20, labelString: 'Hours'}}]} }
+                                let axis3 = { elements: {point:{radius: 0}}, tooltips: {enabled: false}, scales: { yAxes: [{ scaleLabel: { display: true, fontSize: 20, labelString: 'Energy [ kWh ]'}}], xAxes: [{ scaleLabel: { display: true, fontSize: 20, labelString: 'Hours'}}]} }
 
                                 // Draw the initial chart
                                 let ctxL = $("#masterLineChart")[0].getContext('2d');

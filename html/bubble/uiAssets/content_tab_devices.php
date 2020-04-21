@@ -169,8 +169,8 @@ function addDevice($hub_id, $user_id, $room_name, $row){
 
     $price = 0;
 
-    $stmt4 = $db->prepare("SELECT * FROM user_info WHERE user_id = ?");
-    $stmt4->bind_param("i", $user_id);
+    $stmt4 = $db->prepare("SELECT * FROM hub_cost WHERE hub_id = ?");
+    $stmt4->bind_param("i", $hub_id);
     $stmt4->execute();
     $result4 = $stmt4->get_result();
     if($result4->num_rows == 1){
@@ -559,16 +559,6 @@ html;
     </div>
 html;
     return $html;
-}
-
-function deviceCat($device_type, $device_name) {
-    if ($device_type == "heating" || $device_type == "airCon") {
-        $optionType = "<form class=\"range-field\" for=\"$device_name\"><input type=\"range\" min=\"0c\" max=\"40c\" /></form>";
-        //todo add option for different temp measurements farnehight, celcus
-    } else {
-        $optionType = "<label class=\"custom-control-label\" for=\"$device_name\">off/on</label>";
-    }
-    return $optionType;
 }
 ?>
 

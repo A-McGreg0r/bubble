@@ -1,5 +1,5 @@
 <?php
-////////////////////////////////////// DEVICE CONTROL SCRIPT/////////////////////////////////////////////
+
 include_once 'config.php';
 global $db;
 
@@ -34,5 +34,6 @@ $time += $time_on;
 $stmt = $db->prepare("UPDATE device_info SET turn_off = ? WHERE device_id = ?");
 $stmt->bind_param("ii", $time, $device_id);
 $stmt->execute();
+$stmt->close();
 
 ?>

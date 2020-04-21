@@ -259,7 +259,7 @@ function generateHomeTab()
                         <strong class='room_icon'>
                             <i class="fas fa-file-invoice-dollar"></i>
                             <br>Change Costings<br>
-                            <strong style='color:black'></strong>
+                            <strong style='color:black'>Budget: £$budget</strong>
                         </strong>
                     </div>
                 </div>

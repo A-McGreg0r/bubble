@@ -228,7 +228,7 @@ if ($hub_cost_data->num_rows >= 1) {
 		$hub_id = $row['hub_id'];
 		$solargen = $row['solargen'];
 		echo "$hub_id $solargen <br>";
-		_main(intval(date('Y')), $solargen, $hub_id);
+		_main(intval(date('Y')), intval($solargen), intval($hub_id));
 	}
 }
 ?>

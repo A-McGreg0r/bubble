@@ -21,6 +21,14 @@
     //END SESSION
     session_write_close();
 
+    $stmtUpdateDevices = $db->prepare("UPDATE device_info SET room_id = 0 WHERE room_id = ?");
+    $stmtUpdateDevices->bind_param("i", $room_id);
+    if(!$stmtUpdateDevices->execute()){
+        echo("{\"error\":\"Room deletion failed\"}");
+        $stmtUpdateDevices->close();
+        exit(0);
+    }
+    $stmtUpdateDevices->close();
     //DELETE ROW, ENSURING THAT THE HUB_ID IS PASSED IN.
     //THIS ENSURES THE USER IS WHO THEY SAY THEY ARE
     $stmtDeleteRoom = $db->prepare("DELETE FROM room_info WHERE room_id = ? AND hub_id = ?");
@@ -29,6 +37,7 @@
         echo("{\"error\":\"Room deletion failed\"}");
     }else{
         echo("{\"success\":\"Room successfully deleted\"}");
+
     }
     $stmtDeleteRoom->close();
     exit(0);

@@ -734,8 +734,6 @@ function sendRegisterRequest(){
     var userPostcode = $("#materialRegisterFormPostcode").val();
     var userPassword1 = $("#materialRegisterFormPassword1").val();
     var userPassword2 = $("#materialRegisterFormPassword2").val();
-    var userEnergyCost = $("#registerFormEnergyCost").val();
-    var userBudget = $("#registerFormBudget").val();
     var userAllowEmails = $("#registerFormAllowEmails").val();
 
     //SEND AJAX REQUEST
@@ -744,7 +742,7 @@ function sendRegisterRequest(){
         url: url,
         data:{ email: userEmail, first_name: userFirstName, last_name: userLastName, address_l1: userAddress1, 
             address_l2: userAddress2, postcode: userPostcode, pass1: userPassword1, pass2: userPassword2,
-            energy_cost: userEnergyCost, budget: userBudget, allow_emails: userAllowEmails},
+            allow_emails: userAllowEmails},
 
         success:function(data){
             //PARSE RESPONSE JSON DATA

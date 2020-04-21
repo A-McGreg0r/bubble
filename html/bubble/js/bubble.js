@@ -210,6 +210,19 @@ function openModalHome(id){
     }
 }
 
+function openModalAccount(id){
+    //Prevent parent onclick events
+    event.stopPropagation();
+
+    //Change display of modal
+    var id = document.getElementById(id);
+    if (id.style.display == "block") {
+        id.style.display = "none";
+    } else {
+        id.style.display = "block";
+    }
+}
+
 function openModalRoom(id, close, open){
     //Prevent parent onclick events
     event.stopPropagation();

@@ -99,7 +99,7 @@ function generateAccount(){
                         <div class="row" style="margin-bottom: 20px;margin-top: 20px;">
                         <!--button for deploying models-->
                             <div class="col-md">
-                                <button type="button" class="btn btn-primary  btn-rounded" data-toggle="modal" data-target="#updateAccountModal">Update Account</button>
+                                <button type="button" class="btn btn-primary  btn-rounded" onclick="openModalAccount('updateAccountModal')" >Update Account</button>
                             </div>
                             <div class="col-md">
                                 <button type="button" class="btn btn-danger  btn-rounded" data-toggle="modal" data-target="#removeAccountModal">Delete Account</button>
@@ -110,32 +110,6 @@ function generateAccount(){
                     <!--Main Col-->
                 </div>
 
-                    
-                    
-                        <!--Model deployed by Delete account button-->
-                        <div class="modal fade" id="removeAccountModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <!-- Dialog -->
-                            <div class="modal-dialog" role="document">
-                                <!-- Content -->
-                                <div class="modal-content">
-                                
-                                    <!--Header-->
-                                    <div class="modal-header">
-                                        <h3>Are You sure?</h3>
-                                    </div>
-                                    <!--Body-->
-                                    <div class="modal-body">
-                                        <strong> Warning:   This will completely delete your account and can't be undone!</strong>
-                                    </div>
-                                    <div class="modal-footer justify-content-lg-between">
-                                        <button class="btn btn-danger btn-sm btn-rounded" onclick="deleteAccount()">Yes: delete account</button>
-                                        <button type="button" class="btn btn-primary btn-sm btn-rounded" data-dismiss="modal" >No: go back.</button>
-                                    </div>
-                                    
-                                </div>
-                                
-                            </div>
-                        </div>
                                                 <!--Model deployed by Delete account button-->
                         <div class="modal fade" id="removeAccountModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <!-- Dialog -->
@@ -144,9 +118,7 @@ function generateAccount(){
                                 <div class="modal-content">
                                 
                                     <!--Header-->
-                                    <div class="modal-header">
-                                        <h3>Are You sure?</h3>
-                                    </div>
+                                    <div class="modalHeader" style="text-align:center"><strong>Are you sure?</strong></div>
                                     <!--Body-->
                                     <div class="modal-body">
                                         <strong> Warning:   This will completely delete your account and can't be undone!</strong>
@@ -161,17 +133,18 @@ function generateAccount(){
                             </div>
                         </div>
                         <!--Model deployed by update account button-->
-                        <div class="modal fade modalStatsWrap" id="updateAccountModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal modalStatsWrap" id="updateAccountModal">
                             <!-- Dialog -->
-                            <div class="modal-dialog modal-lg" role="document">
+                            <div class="" role="document" style="height:100%">
                             <!--Header-->
                            
                                 <!-- Content -->
-                                <div class="modal-content ">
+                                <div class="modalContent modalStats" style="overflow-y: auto;">
+                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:flex" onclick="openModalAccount('updateAccountModal')"><i class="fas fa-times"></i></i></div>
                                     <div class="modalHeader">
                                         <h3 class="bold-title">Update Account</h3>
                                     </div>                                
-                                    <div class="col-lg" style="padding-left:15px!important;padding-right:15px!important;">
+                                    <div class="col-lg" style="padding-left:15px!important;padding-right:15px!important;text-align:left!important;">
                                     <!--Body-->
                                     
                                      <!--First Name-->  
@@ -251,15 +224,8 @@ function generateAccount(){
                                         </div>
 
                                         <!--Model footer-->    
-                                        <div class="modal-footer justify-content-lg-between" style="border:none!important">
-                                            <div class="col-md">
-                                                  <button class="btn btn-danger btn-sm btn-rounded" data-dismiss="modal" >Cancel</button>
-                                        
-                                            </div>
-                                                <div class="col-md">
-                                                    <button type="button" class="btn btn-primary btn-sm btn-rounded" onclick="updateAccount($user_id,'ud1','ud2','ud3','ud4','ud5','ud6','ud7')" >Update</button>
-                                                </div>
-                                        </div>
+                                        <button style="margin-right:10%;margin-left:10%;width:80%!important;background-color:rgb(110,110,110)!important;" type="button" class="timerBtn btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" onclick="updateAccount($user_id,'ud1','ud2','ud3','ud4','ud5','ud6','ud7')" >Update</button>
+                                            
                                                             
                                 </div>
                                 

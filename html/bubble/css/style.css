@@ -911,3 +911,11 @@ b {
 #button_separator {
     margin-bottom: 0!important;
 }
+
+.modal-footer {
+    border:none!important;
+}
+
+body.modal-open {
+    overflow: overlay!important;
+}

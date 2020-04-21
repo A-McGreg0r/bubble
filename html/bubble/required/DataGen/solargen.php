@@ -1,4 +1,5 @@
-<?php
+
++<?php
 require "../config.php";
 global $db;
 
@@ -155,10 +156,10 @@ function hourly_calc($case, $percentage, $P, $d, $m, $hub_id) {
         $sum=(2*$S)-$peak;
         $qV = ($percentage)/($sum);
     }
-    
+    $S=0;$i=0;$N=0;
     for ($h=0; $h <= 23; $h++) {
         //INSERT INTO TABLE
-        $S=0;$i=0;$N=0;
+        
         if ($i < $peak) {$N++;$i++;}
         elseif ($repeat){$repeat=false;}
         else {$N--;}

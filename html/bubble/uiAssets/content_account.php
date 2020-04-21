@@ -80,33 +80,6 @@ function generateAccount(){
                             </div>
                         </div>
                         
-                        <div class="row account-row">
-                            <div class="col-md">
-                                <strong>&ensp;Energy Price:</strong>
-                            </div>
-                            <div class="col-md" style="margin-left: 30px">
-                                <strong>£$energy_cost&ensp;</strong><!--TODO make updateabul-->
-                            </div>
-                        </div>
-                        
-                        <div class="row account-row">
-                            <div class="col-md">
-                                <strong>&ensp;Monthly Budget:</strong>
-                            </div>
-                            <div class="col-sm" style="margin-left: 30px">
-                                <strong>£$budget&ensp;</strong><!--TODO make updateabul-->
-                            </div>
-                        </div>
-                        
-                        <div class="row account-row">
-                            <div class="col-md">
-                                <strong>&ensp;Solar Panel Rating:</strong>
-                            </div>
-                            <div class="col-sm" style="margin-left: 30px">
-                                <strong>$solargen Watts per hour&ensp;</strong><!--TODO make updateabul-->
-                            </div>
-                        </div>
-                    
                         <div class="row" style="margin-bottom: 20px;margin-top: 20px;">
                         <!--button for deploying models-->
                             <div class="col-md">
@@ -246,66 +219,6 @@ function generateAccount(){
                                             </div>
                                                 <div class="col-md">
                                                     <input id="ud6" class="form-control" type="text" placeholder="$postcode">
-                                                </div>
-                                        </div>
-                                         <!--Energy Cost -->     
-                                        <div class="row" style="padding-top: 5px; padding-bottom: 5px">
-                                            <div class="col-md">
-                                                <strong>Energy Price:&ensp;</strong>
-                                            </div>
-                                                <div class="col-md">
-                                                    <select id="ud7" class="form-control form-control-sm dropdown validate drop-up">
-                                                        <option value="" disabled selected>Select energy price per kWh</option>
-                                                        <option value="0.01">£0.01</option>
-                                                        <option value="0.02">£0.02</option>
-                                                        <option value="0.03">£0.03</option>
-                                                        <option value="0.04">£0.04</option>
-                                                        <option value="0.05">£0.05</option>
-                                                        <option value="0.06">£0.06</option>
-                                                        <option value="0.07">£0.07</option>
-                                                        <option value="0.08">£0.08</option>
-                                                        <option value="0.09">£0.09</option>
-                                                        <option value="0.10">£0.10</option>
-                                                        <option value="0.11">£0.11</option>
-                                                        <option value="0.12">£0.12</option>
-                                                        <option value="0.13">£0.13</option>
-                                                        <option value="0.14">£0.14</option>
-                                                        <option value="0.15">£0.15</option>
-                                                        <option value="0.16">£0.16</option>
-                                                        <option value="0.17">£0.17</option>
-                                                        <option value="0.18">£0.18</option>
-                                                        <option value="0.19">£0.19</option>
-                                                        <option value="0.20">£0.20</option>
-                                                        <option value="0.21">£0.21</option>
-                                                        <option value="0.22">£0.22</option>
-                                                        <option value="0.23">£0.23</option>
-                                                        <option value="0.24">£0.24</option>
-                                                        <option value="0.25">£0.25</option>
-                                                        <option value="0.26">£0.26</option>
-                                                        <option value="0.27">£0.27</option>
-                                                        <option value="0.28">£0.28</option>
-                                                        <option value="0.29">£0.29</option>
-                                                        <option value="0.30">£0.30</option>
-                                                    </select>
-                                                </div>
-                                        </div>
-                                        <!--Budget -->     
-                                        <div class="row" style="padding-top: 5px; padding-bottom: 5px">
-                                            <div class="col-md">
-                                                <strong>Monthly Budget:&ensp;</strong>
-                                            </div>
-                                                <div class="col-md">
-                                                    <input id="ud8" class="form-control" type="number" placeholder="$budget">
-                                                </div>
-                                        </div>
-                                        
-                                        <!--Soler Rateing --> 
-                                        <div class="row" style="padding-top: 5px; padding-bottom: 5px">
-                                            <div class="col-md">
-                                                <strong>Solar rating:&ensp;</strong>
-                                            </div>
-                                                <div class="col-md">
-                                                    <input id="ud9" class="form-control" type="number" placeholder="$solargen">
                                                 </div>
                                         </div>
                                         <!--Model footer-->    

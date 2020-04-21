@@ -165,11 +165,10 @@ function hourly_calc($case, $percentage, $P, $d, $m, $hub_id) {
         elseif ($repeat){$repeat=false;}
         else {$N--;}
         $watts = $N * $qV * $P;
+        echo "$watts = $N *$P <br>";
 		if ($h == (intval(date('H'))+1)){ 
-            
-			echo "| * $N  * | <br>";
+			echo "| * $N  * | ";
             echo "hour[ $h ]::";
-            
             echo "$watts <br>";
             $inst_hourly_gen = $db->prepare("INSERT INTO hourly_gen (hub_id, entry_month, entry_day, entry_hour, energy_gen) VALUES (?, ?, ?, ?, ?)");
             $inst_hourly_gen->bind_param("iiiid", $hub_id, $m, $d, $h, $watts);

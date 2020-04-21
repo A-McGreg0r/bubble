@@ -37,8 +37,8 @@ html;
         session_write_close();
         $price = 0;
 
-        $stmt4 = $db->prepare("SELECT energy_cost FROM user_info WHERE user_id = ?");
-        $stmt4->bind_param("i", $user_id);
+        $stmt4 = $db->prepare("SELECT * FROM hub_cost WHERE hub_id = ?");
+        $stmt4->bind_param("i", $hub_id);
         $stmt4->execute();
         $result4 = $stmt4->get_result();
         while($row4 = $result4->fetch_assoc()) {

@@ -34,7 +34,7 @@ function generateHomeTab()
         if ($resultHubCost->num_rows === 1) {
             extract($resultHubCost->fetch_assoc());
         }
-        $stmtUser->close();
+        $stmtHubCost->close();
 
         //GRAB HUB INFORMATION FOR HUB ID, STORED IN SESSION
         $stmtHub = $db->prepare("SELECT * FROM hub_info WHERE hub_id = ?");

@@ -216,8 +216,10 @@ $hub_cost_data = $hub_cost->get_result();
 if ($hub_cost_data->num_rows >= 1) {
     $data = $hub_cost_data->fetch_all(MYSQLI_ASSOC);
     foreach($data as $row){
-        $P=intval($row['solargen'])*$diy;
+        $solargen=intval($row['solargen']);
+        $P=$solargen*$diy;
 		$hub_id=intval($row['hub_id']);
+		echo "$solargen <br>";
 		daily_calc($i, $S, $inc, $P, $Y, $hub_id);
 	}
 }

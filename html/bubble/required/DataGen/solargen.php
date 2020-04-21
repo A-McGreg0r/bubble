@@ -119,7 +119,7 @@ function _main($Y, $hourly_power_gen, $hub_id) {
         }
     }
 
-    function hourly_calc($case, $percentage, $P, $d, $m) {
+    function hourly_calc($case, $percentage, $P, $d, $m, $hub_id) {
         $S=0;
         switch ($case) {
             case 0:
@@ -161,7 +161,6 @@ function _main($Y, $hourly_power_gen, $hub_id) {
             $qV = ($percentage)/($sum);
         }
         
-		$hub_id=1;
         for ($h=0; $h <= 23; $h++) {
             //INSERT INTO TABLE
             $i=$h-$rise;
@@ -228,6 +227,7 @@ if ($hub_cost_data->num_rows >= 1) {
     foreach($data as $row){
 		$hub_id = $row['hub_id'];
 		$solargen = $row['solargen'];
+		echo "$hub_id $solargen <br>";
 		_main(intval(date('Y')), $solargen, $hub_id);
 	}
 }

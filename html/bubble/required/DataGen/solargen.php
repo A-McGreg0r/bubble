@@ -228,7 +228,7 @@ $hub_cost_data = $hub_cost->get_result();
 if ($hub_cost_data->num_rows >= 1) {
     $data = $hub_cost_data->fetch_all(MYSQLI_ASSOC);
     foreach($data as $row){
-		_main(intval(date('Y')), intval($solargen), intval($hub_id));
+		_main(intval(date('Y')), intval($row['solargen']), intval($row['hub_id']));
 	}
 }
 ?>

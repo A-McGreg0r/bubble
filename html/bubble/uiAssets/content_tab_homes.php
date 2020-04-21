@@ -380,9 +380,9 @@ change_button;
                         <div class="container">
                             <div class="col-lg-12">
                                 <div class="row alter-display align-middle reduce-space">
-                                    <div class="md-form">
+                                    <div class="form-group">
                                         <label for="energyCostInputBox">Select energy price per kWh</label>
-                                        <select id="energyCostInputBox" class="form-control form-control-sm dropdown" value="$energy_cost">
+                                        <select id="energyCostInputBox" class="form-control dropdown" value="$energy_cost">
                                             <option value="0.01">£0.01</option>
                                             <option value="0.02">£0.02</option>
                                             <option value="0.03">£0.03</option>
@@ -417,23 +417,23 @@ change_button;
                                     </div>
 
                                     <!-- Budget -->
-                                    <div class="md-form">
+                                    <div class="form-group">
                                         <label for="budgetInputBox">Budget</label>
                                         <input type="text"
                                             id="budgetInputBox"
                                             class="form-control"
                                             name="energy_cost"
-                                            placeholder=" "
+                                            placeholder="."
                                             value="$budget"/>
                                     </div>
                                     <!-- Solar gen -->
-                                    <div class="md-form">
+                                    <div class="form-group">
                                         <label for="solarGenInputBox">Solar Panel Rating(Watts Per Hour)</label>
                                         <input type="text"
                                             id="solarGenInputBox"
                                             class="form-control"
                                             name="energy_cost"
-                                            placeholder=" "
+                                            placeholder="."
                                             value="$solargen"/>
                                     </div>
                                 </div>

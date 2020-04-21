@@ -249,6 +249,22 @@ function generateHomeTab()
                 $s_or_not = "devices";
             }
 
+            //ADD BUTTON THAT ALLOWS CHANGING OF COSTINGS
+            $change_costings = <<<change_button
+            <div class='col col-md justify-content-center' style='max-width: 575px'>
+            <!--function call-->
+                <div id='reload_device_id' class='home-left' style='text-align:center' onclick=''>
+                    <!--left text-->
+                    <div id='device_3_device_id' class='justify-content-center'>
+                        <strong class='room_icon'>
+                            <i class="fas fa-file-invoice-dollar"></i>
+                            <br>Change Costings<br>
+                            <strong style='color:black'></strong>
+                        </strong>
+                    </div>
+                </div>
+            </div>
+change_button;
             //FIND ALL HUBS REGISTERED TO USER, ADD MODAL AND BUTTONS THAT ALLOW CHANGING BETWEEN HUBS
 
             $change_button = "";
@@ -371,11 +387,14 @@ change_button;
 
 
 
-                <!-- testing new buttons -->
+                <!-- new buttons -->
                     <div class="row justify-content-center" id="top-buttons" style="padding: 20px;padding-bottom: 5px;">
                         <!--left col-->
                         $change_button
                         
+                        <!--left col-->
+                        $change_costings
+
                         <!--right col-->
                         $home_button_style
                             <div id="home_devices" class="home-right" style="text-align:center;">
@@ -402,7 +421,7 @@ change_button;
                         </div>
                         <!--right col end -->   
                     </div>     
-                <!-- testing new buttons -->
+                <!-- new buttons -->
 
             <div class="modal modalTimer" id="modal_timer_home">
                 <!--todo comment this-->                   

@@ -25,6 +25,17 @@ function generateHomeTab()
         }
         $stmtUser->close();
 
+        //GRAB HUB COSTING INFORMATION
+        $stmtHubCost = $db->prepare("SELECT * FROM hub_cst WHERE hub_id = ?");
+        $stmtHubCost->bind_param("i", $hub_id);
+        $stmtHubCost->execute();
+        $resultHubCost = $stmtHubCost->get_result();
+        //EXTRACT TO CURRENT NAME SPACE
+        if ($resultHubCost->num_rows === 1) {
+            extract($resultHubCost->fetch_assoc());
+        }
+        $stmtUser->close();
+
         //GRAB HUB INFORMATION FOR HUB ID, STORED IN SESSION
         $stmtHub = $db->prepare("SELECT * FROM hub_info WHERE hub_id = ?");
         $stmtHub->bind_param("i", $hub_id);

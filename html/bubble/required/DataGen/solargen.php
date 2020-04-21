@@ -1,11 +1,11 @@
-<?php
++<?php
 require "../config.php";
 global $db;
 
 function cal_days_in_year($Y){
     $d=0; 
     for($m=1;$m<=12;$m++){ $d = $d + cal_days_in_month(CAL_GREGORIAN,$m,$Y); }
-    return intval($d*9);
+    return intval($d);
 }
 
 function inti_seasons($Y) {
@@ -117,7 +117,6 @@ function daily_calc($case, $S, $I, $P, $Y, $hub_id) {
 }
 
 function hourly_calc($case, $percentage, $P, $d, $m, $hub_id) {
-    $S=0;$i=0;$N=0;
     switch ($case) {
         case 0:
             $rise=8;
@@ -156,15 +155,19 @@ function hourly_calc($case, $percentage, $P, $d, $m, $hub_id) {
         $sum=(2*$S)-$peak;
         $qV = ($percentage)/($sum);
     }
-    
+    $S=0;$i=0;$N=0;
     for ($h=0; $h <= 23; $h++) {
         //INSERT INTO TABLE
-
-        if ($i < $peak) {$N++;$i++;}
-        elseif ($repeat){$repeat=false;}
-        else {$N--;}
-        $watts = $N * $qV * $P;
-        echo "$watts = $N * $qV * $P <br>";
+        
+        if ($h>=$rise && $h<=$set) {
+            if ($i < $peak) {$N++;$i++;}
+            elseif ($repeat){$repeat=false;}
+            else {$N--;}
+            $watts = 4 * $N * $qV * $P;
+            //echo "$watts = $N * $qV * $P <br>";
+        }
+        else { $watts = 0; }
+        
 		if ($h == (intval(date('H'))+1)){ 
 			echo "| * $N  * | ";
             echo "hour[ $h ]::";
@@ -211,8 +214,10 @@ $hub_cost_data = $hub_cost->get_result();
 if ($hub_cost_data->num_rows >= 1) {
     $data = $hub_cost_data->fetch_all(MYSQLI_ASSOC);
     foreach($data as $row){
-        $P=intval($row['solargen'])*$diy;
+        $solargen=intval($row['solargen']);
+        $P=$solargen*$diy;
 		$hub_id=intval($row['hub_id']);
+		echo "$solargen <br>";
 		daily_calc($i, $S, $inc, $P, $Y, $hub_id);
 	}
 }

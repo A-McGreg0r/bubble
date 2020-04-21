@@ -1,4 +1,3 @@
-
 +<?php
 require "../config.php";
 global $db;
@@ -6,7 +5,7 @@ global $db;
 function cal_days_in_year($Y){
     $d=0; 
     for($m=1;$m<=12;$m++){ $d = $d + cal_days_in_month(CAL_GREGORIAN,$m,$Y); }
-    return intval($d*9);
+    return intval($d*8);
 }
 
 function inti_seasons($Y) {
@@ -160,11 +159,17 @@ function hourly_calc($case, $percentage, $P, $d, $m, $hub_id) {
     for ($h=0; $h <= 23; $h++) {
         //INSERT INTO TABLE
         
-        if ($i < $peak) {$N++;$i++;}
-        elseif ($repeat){$repeat=false;}
-        else {$N--;}
-        $watts = $N * $qV * $P;
-        echo "$watts = $N * $qV * $P <br>";
+        if ($h>=$rise && $h<=$set) {
+            if ($i < $peak) {$N++;$i++;}
+            elseif ($repeat){$repeat=false;}
+            else {$N--;}
+            $watts = $N * $qV * $P;
+            echo "$watts = $N * $qV * $P <br>";
+        }
+        else {
+            $watts = 0;
+        }
+        
 		if ($h == (intval(date('H'))+1)){ 
 			echo "| * $N  * | ";
             echo "hour[ $h ]::";

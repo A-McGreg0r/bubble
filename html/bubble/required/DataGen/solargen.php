@@ -205,6 +205,7 @@ function _main($Y, $daily_power_gen, $hub_id) {
     
     $Y=$Y;//INT::Year
     $P=$daily_power_gen*cal_days_in_year($Y);
+    echo "P $P <br>";
     $S=inti_seasons($Y);//Array::Sum of number of days per season
     $inc = array();//Array::Seasonal incruments
     $m=intval(date('m'));

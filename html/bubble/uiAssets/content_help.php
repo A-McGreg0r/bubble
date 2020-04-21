@@ -309,26 +309,57 @@ function generateHelpPage() {
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td onclick="openModalHelp('help16')">
                             Delete my account
                         </td>
                     </tr>
-                    <tr>
+                    <tr style="display:none!important" id="help16">
                         <td>
+                            <div class="modalStats" style="border: 1px solid black;" >
+                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" onclick="openModalHelp('help16')"><i class="fas fa-times"></i></i></div>
+                                <div class="modalHeader">
+                                    <h3 class="bold-title">Delete my account</h3>
+                                </div>
+                                <div class="modalBody">
+                                    Hello
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td onclick="openModalHelp('help17')">
                             How to logout
                         </td>
                     </tr>
-                    <tr>
+                    <tr style="display:none!important" id="help17">
                         <td>
+                            <div class="modalStats" style="border: 1px solid black;" >
+                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" onclick="openModalHelp('help17')"><i class="fas fa-times"></i></i></div>
+                                <div class="modalHeader">
+                                    <h3 class="bold-title">How to logout</h3>
+                                </div>
+                                <div class="modalBody">
+                                    Hello
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td onclick="openModalHelp('help18')">
                             How to unsubscribe from email notifications
                         </td>
                     </tr>
-                    <tr>
+                    <tr style="display:none!important" id="help18">
                         <td>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
+                            <div class="modalStats" style="border: 1px solid black;" >
+                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" onclick="openModalHelp('help18')"><i class="fas fa-times"></i></i></div>
+                                <div class="modalHeader">
+                                    <h3 class="bold-title">How to unsubscribe from email notifications</h3>
+                                </div>
+                                <div class="modalBody">
+                                    Hello
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 </table>

@@ -21,6 +21,7 @@
     //END SESSION
     session_write_close();
 
+    //UPDATE ANY DEVICES CURRENTLY IN THE ROOM TO BE REMOVED
     $stmtUpdateDevices = $db->prepare("UPDATE device_info SET room_id = 0 WHERE room_id = ?");
     $stmtUpdateDevices->bind_param("i", $room_id);
     if(!$stmtUpdateDevices->execute()){

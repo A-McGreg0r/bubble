@@ -419,7 +419,7 @@ change_button;
                                     <!-- Budget -->
                                     <div class="form-group">
                                         <label for="budgetInputBox">Budget</label>
-                                        <input type="text"
+                                        <input type="number"
                                             id="budgetInputBox"
                                             class="form-control"
                                             name="energy_cost"
@@ -429,7 +429,7 @@ change_button;
                                     <!-- Solar gen -->
                                     <div class="form-group">
                                         <label for="solarGenInputBox">Solar Panel Rating(Watts Per Hour)</label>
-                                        <input type="text"
+                                        <input type="number"
                                             id="solarGenInputBox"
                                             class="form-control"
                                             name="energy_cost"
@@ -505,7 +505,7 @@ change_button;
                             <div class="timer-end" id="timer_end_home"><strong></strong></div>
                                 <form>
                                     <div class="timerModal">
-                                        <select id="hour_home" name="energy_cost" class="form-control-sm dropdown validate drop-up">
+                                        <select id="hour_home" class="form-control-sm dropdown validate drop-up">
                                             <option value="0" selected>00</option>
                                             <option value="1">01</option>
                                             <option value="2">02</option>
@@ -522,7 +522,7 @@ change_button;
                                         <p class="shiftSub"><strong>&nbsp;hour(s)&nbsp;</strong></p>
                                         <p><strong><h4>:&nbsp;</h4></strong></p>
 
-                                        <select id="minute_home" name="energy_cost" class="form-control-sm dropdown validate drop-up">
+                                        <select id="minute_home" class="form-control-sm dropdown validate drop-up">
                                             <option value="0" selected>00</option>
                                             <option value="1">01</option>
                                             <option value="2">02</option>

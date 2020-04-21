@@ -223,6 +223,15 @@ function openModalAccount(id){
     }
 }
 
+function openModalHelp(id){
+    var id = document.getElementById(id);
+    if (id.style.display == "table-row") {
+        id.style.display = "none";
+    } else {
+        id.style.display = "table-row";
+    }
+}
+
 function openModalRoom(id, close, open){
     //Prevent parent onclick events
     event.stopPropagation();

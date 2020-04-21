@@ -169,7 +169,7 @@ function hourly_calc($case, $percentage, $P, $d, $m, $hub_id) {
 			echo "| * $rise - $set * | ";
             echo "hour[ $h ]::";
             if($h > $rise && $h < $set){
-                $watts = $watts /5 * (rand(40,100)/100);
+                $watts = $watts / 5 * (rand(50,100)/100);
             } else {
                 $watts = 0;
             }

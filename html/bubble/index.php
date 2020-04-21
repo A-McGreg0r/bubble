@@ -101,6 +101,10 @@
                     include './uiAssets/content_access.php';
                     $html .= generateAccessPage();
                     break;
+                case 'help':
+                    include './uiAssets/content_help.php';
+                    $html .= generateHelpPage();
+                    break;
                 default:
                     include "uiAssets/content_tabs.php";
                     $html .= generateTabs();

@@ -919,3 +919,14 @@ b {
 body.modal-open {
     overflow: overlay!important;
 }
+
+.pageHeader {
+    text-align:center;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.helpTable {
+    text-align: center!important;
+    margin-bottom: 40px;
+}

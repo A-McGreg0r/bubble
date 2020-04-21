@@ -23,6 +23,9 @@ function generateUserNav(){
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?action=account">Account</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php?action=help">Help</a>
+                    </li>
                 </ul>
                 <ul class="navbar-nav ml-auto nav-flex-icons">
 

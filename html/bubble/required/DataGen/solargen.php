@@ -163,7 +163,7 @@ function hourly_calc($case, $percentage, $P, $d, $m, $hub_id) {
             if ($i < $peak) {$N++;$i++;}
             elseif ($repeat){$repeat=false;}
             else {$N--;}
-            $watts = 2 * $N * $qV * $P;
+            $watts = 4 * $N * $qV * $P;
             echo "$watts = $N * $qV * $P <br>";
         }
         else {

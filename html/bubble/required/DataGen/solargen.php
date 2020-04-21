@@ -5,7 +5,7 @@ global $db;
 function cal_days_in_year($Y){
     $d=0; 
     for($m=1;$m<=12;$m++){ $d = $d + cal_days_in_month(CAL_GREGORIAN,$m,$Y); }
-    return intval($d*8);
+    return intval($d);
 }
 
 function inti_seasons($Y) {

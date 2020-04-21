@@ -24,53 +24,68 @@ if(isset($_POST['mb'])) $budget = $_POST['mb'];
 $solar = 0;
 if(isset($_POST['sp'])) $solar = $_POST['sp'];
 
-//Loop through devices
+//If an edit has been made, update the user information
 if($first_name != ''){
-    $stmt1 = $db->prepare("UPDATE user_info SET first_name = ? WHERE user_id = ?");
-    $stmt1->bind_param("si", $first_name, $id);
-    $stmt1->execute();
+    $stmt = $db->prepare("UPDATE user_info SET first_name = ? WHERE user_id = ?");
+    $stmt->bind_param("si", $first_name, $id);
+    $stmt->execute();
+    $stmt->close();
 }
 
+//If an edit has been made, update the user information
 if($last_name != ''){
-    $stmt1 = $db->prepare("UPDATE user_info SET last_name = ? WHERE user_id = ?");
-    $stmt1->bind_param("si", $last_name, $id);
-    $stmt1->execute();
+    $stmt = $db->prepare("UPDATE user_info SET last_name = ? WHERE user_id = ?");
+    $stmt->bind_param("si", $last_name, $id);
+    $stmt->execute();
+    $stmt->close();
 }
 
+//If an edit has been made, update the user information
 if($email != ''){
-    $stmt1 = $db->prepare("UPDATE user_info SET email = ? WHERE user_id = ?");
-    $stmt1->bind_param("si", $email, $id);
-    $stmt1->execute();
+    $stmt = $db->prepare("UPDATE user_info SET email = ? WHERE user_id = ?");
+    $stmt->bind_param("si", $email, $id);
+    $stmt->execute();
+    $stmt->close();
 }
 
+//If an edit has been made, update the user information
 if($adr1 != ''){
-    $stmt1 = $db->prepare("UPDATE user_info SET address_l1 = ? WHERE user_id = ?");
-    $stmt1->bind_param("si", $adr1, $id);
-    $stmt1->execute();
+    $stmt = $db->prepare("UPDATE user_info SET address_l1 = ? WHERE user_id = ?");
+    $stmt->bind_param("si", $adr1, $id);
+    $stmt->execute();
+    $stmt->close();
 }
 
+//If an edit has been made, update the user information
 if($adr2 != ''){
-    $stmt1 = $db->prepare("UPDATE user_info SET address_l2 = ? WHERE user_id = ?");
-    $stmt1->bind_param("si", $adr2, $id);
-    $stmt1->execute();
+    $stmt = $db->prepare("UPDATE user_info SET address_l2 = ? WHERE user_id = ?");
+    $stmt->bind_param("si", $adr2, $id);
+    $stmt->execute();
+    $stmt->close();
 }
 
+//If an edit has been made, update the user information
 if($postcode != ''){
-    $stmt1 = $db->prepare("UPDATE user_info SET postcode = ? WHERE user_id = ?");
-    $stmt1->bind_param("si", $postcode, $id);
-    $stmt1->execute();
+    $stmt = $db->prepare("UPDATE user_info SET postcode = ? WHERE user_id = ?");
+    $stmt->bind_param("si", $postcode, $id);
+    $stmt->execute();
+    $stmt->close();
 }
 
+//If an edit has been made, update the user information
 if($energy_price != 0){
-    $stmt1 = $db->prepare("UPDATE user_info SET energy_cost = ? WHERE user_id = ?");
-    $stmt1->bind_param("di", $energy_price, $id);
-    $stmt1->execute();
+    $stmt = $db->prepare("UPDATE user_info SET energy_cost = ? WHERE user_id = ?");
+    $stmt->bind_param("di", $energy_price, $id);
+    $stmt->execute();
+    $stmt->close();
 }
 
+//If an edit has been made, update the user information
 if($budget != 0){
-    $stmt1 = $db->prepare("UPDATE user_info SET budget = ? WHERE user_id = ?");
-    $stmt1->bind_param("ii", $budget, $id);
-    $stmt1->execute();
+    $stmt = $db->prepare("UPDATE user_info SET budget = ? WHERE user_id = ?");
+    $stmt->bind_param("ii", $budget, $id);
+    $stmt->execute();
+    $stmt->close();
 }
 
 ?>

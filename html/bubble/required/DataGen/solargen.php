@@ -1,5 +1,6 @@
 <?php
 require "../config.php";
+global $db;
 
 function cal_days_in_year($Y){
     $d=0; 
@@ -166,19 +167,13 @@ function hourly_calc($case, $percentage, $P, $d, $m, $hub_id) {
         $watts = $N * $qV * $P;
 		if ($h == (intval(date('H'))+1)){ 
             
-			echo "| * $rise - $set * | ";
+			echo "| * $N  * | <br>";
             echo "hour[ $h ]::";
-            if($h > $rise && $h < $set){
-                $watts = $watts /5 * (rand(40,100)/100);
-            } else {
-                $watts = 0;
-            }
-            echo $watts;echo "\n";
-            global $db;
+            
+            echo "$watts <br>";
             $inst_hourly_gen = $db->prepare("INSERT INTO hourly_gen (hub_id, entry_month, entry_day, entry_hour, energy_gen) VALUES (?, ?, ?, ?, ?)");
             $inst_hourly_gen->bind_param("iiiid", $hub_id, $m, $d, $h, $watts);
             $inst_hourly_gen->execute();
-
             $stmt13 = $db->prepare("SELECT * FROM hourly_gen WHERE hub_id = ?");
             $stmt13->bind_param("i", $hub_id);
             $stmt13->execute();

@@ -168,6 +168,7 @@ function _main($Y, $hourly_power_gen, $hub_id) {
             elseif ($repeat){$repeat=false;}
             else {$N--;}
             $watts = $N * $qV * $P;
+            echo "<br> $watts = $N * $qV * $P <br>";
 			if ($h == (intval(date('H'))+1)){ 
                 
 				echo "| * $rise - $set * | ";
@@ -225,9 +226,6 @@ $hub_cost_data = $hub_cost->get_result();
 if ($hub_cost_data->num_rows >= 1) {
     $data = $hub_cost_data->fetch_all(MYSQLI_ASSOC);
     foreach($data as $row){
-		$hub_id = $row['hub_id'];
-		$solargen = $row['solargen'];
-		echo "$hub_id $solargen <br>";
 		_main(intval(date('Y')), intval($solargen), intval($hub_id));
 	}
 }

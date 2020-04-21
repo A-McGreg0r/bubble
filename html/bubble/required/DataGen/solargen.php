@@ -164,7 +164,7 @@ function hourly_calc($case, $percentage, $P, $d, $m, $hub_id) {
             elseif ($repeat){$repeat=false;}
             else {$N--;}
             $watts = 4 * $N * $qV * $P;
-            echo "$watts = $N * $qV * $P <br>";
+            //echo "$watts = $N * $qV * $P <br>";
         }
         else {
             $watts = 0;

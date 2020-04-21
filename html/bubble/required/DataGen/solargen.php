@@ -3,11 +3,11 @@ require "../config.php";
 
 function _main($Y, $hourly_power_gen, $hub_id) {
 	
-	function cal_days_in_year($Y){
-    $d=0; 
-    for($m=1;$m<=12;$m++){ $d = $d + cal_days_in_month(CAL_GREGORIAN,$m,$Y); }
-	return intval($d*10);
-	}
+    function cal_days_in_year($Y){
+        $d=0; 
+        for($m=1;$m<=12;$m++){ $d = $d + cal_days_in_month(CAL_GREGORIAN,$m,$Y); }
+        return intval($d*10);
+    }
 	
     function inti_seasons($Y) {
         $sum_winter=0;

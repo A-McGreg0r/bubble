@@ -187,7 +187,11 @@ function generateLoginPage(){
                                 </div>
 
                                 <div class="md-form">
-                                    <small class="form-text text-muted mb-4"><input id="registerFormAllowEmails" type="checkbox" checked="checked" name="allow_emails" value="Yes"/>&nbsp;I would like to receive email updates tailored to me</small>
+                                    <small>Would you like to receive personalise emails that will help you save money?</small>
+                                    <select id="registerFormAllowEmails" name="allow_emails">
+                                        <option value="Yes" selected>Yes</option>
+                                        <option value="No">No</option>
+                                    </select>
                                 </div>
 
                                 <div id="registerErrorBox" class="text-center alert alert-danger">

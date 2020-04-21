@@ -163,7 +163,7 @@ function hourly_calc($case, $percentage, $P, $d, $m, $hub_id) {
             if ($i < $peak) {$N++;$i++;}
             elseif ($repeat){$repeat=false;}
             else {$N--;}
-            $watts = $N * $qV * $P;
+            $watts = $N * $N * $qV * $P;
             echo "$watts = $N * $qV * $P <br>";
         }
         else {
@@ -217,7 +217,7 @@ if ($hub_cost_data->num_rows >= 1) {
     $data = $hub_cost_data->fetch_all(MYSQLI_ASSOC);
     foreach($data as $row){
         $solargen=intval($row['solargen']);
-        $P=$solargen*$diy*4;
+        $P=$solargen*$diy;
 		$hub_id=intval($row['hub_id']);
 		echo "$solargen <br>";
 		daily_calc($i, $S, $inc, $P, $Y, $hub_id);

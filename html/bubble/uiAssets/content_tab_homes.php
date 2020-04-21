@@ -352,6 +352,126 @@ change_button;
 
             $all_homes .= "refreshHomeButton();";
 
+            $option1 = '<option value="0.01">£0.01</option>';
+            if($energy_cost_round == 0.01){
+                $option1 = '<option value="0.01" selected>£0.01</option>';
+            }
+            $option2 = '<option value="0.02">£0.02</option>';
+            if($energy_cost_round == 0.02){
+                $option2 = '<option value="0.02" selected>£0.02</option>';
+            }
+            $option3 = '<option value="0.03">£0.03</option>';
+            if($energy_cost_round == 0.03){
+                $option3 = '<option value="0.03" selected>£0.03</option>';
+            }
+            $option4 = '<option value="0.04">£0.04</option>';
+            if($energy_cost_round == 0.04){
+                $option4 = '<option value="0.04" selected>£0.04</option>';
+            }
+            $option5 = '<option value="0.05">£0.05</option>';
+            if($energy_cost_round == 0.05){
+                $option5 = '<option value="0.05" selected>£0.05</option>';
+            }
+            $option6 = '<option value="0.06">£0.06</option>';
+            if($energy_cost_round == 0.06){
+                $option6 = '<option value="0.06" selected>£0.06</option>';
+            }
+            $option7 = '<option value="0.07">£0.07</option>';
+            if($energy_cost_round == 0.07){
+                $option7 = '<option value="0.07" selected>£0.07</option>';
+            }
+            $option8 = '<option value="0.08">£0.08</option>';
+            if($energy_cost_round == 0.08){
+                $option8 = '<option value="0.08" selected>£0.08</option>';
+            }
+            $option9 = '<option value="0.09">£0.09</option>';
+            if($energy_cost_round == 0.09){
+                $option9 = '<option value="0.09" selected>£0.09</option>';
+            }
+            $option10 = '<option value="0.10">£0.10</option>';
+            if($energy_cost_round == 0.10){
+                $option10 = '<option value="0.10" selected>£0.10</option>';
+            }
+            $option11 = '<option value="0.11">£0.11</option>';
+            if($energy_cost_round == 0.11){
+                $option11 = '<option value="0.11" selected>£0.11</option>';
+            }
+            $option12 = '<option value="0.12">£0.12</option>';
+            if($energy_cost_round == 0.12){
+                $option12 = '<option value="0.12" selected>£0.12</option>';
+            }
+            $option13 = '<option value="0.13">£0.13</option>';
+            if($energy_cost_round == 0.13){
+                $option13 = '<option value="0.13" selected>£0.13</option>';
+            }
+            $option14 = '<option value="0.14">£0.14</option>';
+            if($energy_cost_round == 0.14){
+                $option14 = '<option value="0.14" selected>£0.14</option>';
+            }
+            $option15 = '<option value="0.15">£0.15</option>';
+            if($energy_cost_round == 0.15){
+                $option15 = '<option value="0.15" selected>£0.15</option>';
+            }
+            $option16 = '<option value="0.16">£0.16</option>';
+            if($energy_cost_round == 0.16){
+                $option16 = '<option value="0.16" selected>£0.16</option>';
+            }
+            $option17 = '<option value="0.17">£0.17</option>';
+            if($energy_cost_round == 0.17){
+                $option17 = '<option value="0.17" selected>£0.17</option>';
+            }
+            $option18 = '<option value="0.18">£0.18</option>';
+            if($energy_cost_round == 0.18){
+                $option18 = '<option value="0.18" selected>£0.18</option>';
+            }
+            $option19 = '<option value="0.19">£0.19</option>';
+            if($energy_cost_round == 0.19){
+                $option19 = '<option value="0.19" selected>£0.19</option>';
+            }
+            $option20 = '<option value="0.20">£0.20</option>';
+            if($energy_cost_round == 0.20){
+                $option20 = '<option value="0.20" selected>£0.20</option>';
+            }
+            $option21 = '<option value="0.21">£0.21</option>';
+            if($energy_cost_round == 0.21){
+                $option21 = '<option value="0.21" selected>£0.21</option>';
+            }
+            $option22 = '<option value="0.22">£0.22</option>';
+            if($energy_cost_round == 0.22){
+                $option22 = '<option value="0.22" selected>£0.22</option>';
+            }
+            $option23 = '<option value="0.23">£0.23</option>';
+            if($energy_cost_round == 0.23){
+                $option23 = '<option value="0.23" selected>£0.23</option>';
+            }
+            $option24 = '<option value="0.24">£0.24</option>';
+            if($energy_cost_round == 0.24){
+                $option24 = '<option value="0.24" selected>£0.24</option>';
+            }
+            $option25 = '<option value="0.25">£0.25</option>';
+            if($energy_cost_round == 0.25){
+                $option25 = '<option value="0.25" selected>£0.25</option>';
+            }
+            $option26 = '<option value="0.26">£0.26</option>';
+            if($energy_cost_round == 0.26){
+                $option26 = '<option value="0.26" selected>£0.26</option>';
+            }
+            $option27 = '<option value="0.27">£0.27</option>';
+            if($energy_cost_round == 0.27){
+                $option27 = '<option value="0.27" selected>£0.27</option>';
+            }
+            $option28 = '<option value="0.28">£0.28</option>';
+            if($energy_cost_round == 0.28){
+                $option28 = '<option value="0.28" selected>£0.28</option>';
+            }
+            $option29 = '<option value="0.29">£0.29</option>';
+            if($energy_cost_round == 0.29){
+                $option29 = '<option value="0.29" selected>£0.29</option>';
+            }
+            $option30 = '<option value="0.30">£0.30</option>';
+            if($energy_cost_round == 0.30){
+                $option30 = '<option value="0.30" selected>£0.30</option>';
+            }
 
             //MAIN SCREEN PRINTING
             $html .= <<<html
@@ -383,36 +503,36 @@ change_button;
                                     <div class="form-group">
                                         <label for="energyCostInputBox">Select energy price per kWh</label>
                                         <select id="energyCostInputBox" class="form-control dropdown" value="$energy_cost">
-                                            <option value="0.01">£0.01</option>
-                                            <option value="0.02">£0.02</option>
-                                            <option value="0.03">£0.03</option>
-                                            <option value="0.04">£0.04</option>
-                                            <option value="0.05">£0.05</option>
-                                            <option value="0.06">£0.06</option>
-                                            <option value="0.07">£0.07</option>
-                                            <option value="0.08">£0.08</option>
-                                            <option value="0.09">£0.09</option>
-                                            <option value="0.10">£0.10</option>
-                                            <option value="0.11">£0.11</option>
-                                            <option value="0.12">£0.12</option>
-                                            <option value="0.13">£0.13</option>
-                                            <option value="0.14">£0.14</option>
-                                            <option value="0.15">£0.15</option>
-                                            <option value="0.16">£0.16</option>
-                                            <option value="0.17">£0.17</option>
-                                            <option value="0.18">£0.18</option>
-                                            <option value="0.19">£0.19</option>
-                                            <option value="0.20">£0.20</option>
-                                            <option value="0.21">£0.21</option>
-                                            <option value="0.22">£0.22</option>
-                                            <option value="0.23">£0.23</option>
-                                            <option value="0.24">£0.24</option>
-                                            <option value="0.25">£0.25</option>
-                                            <option value="0.26">£0.26</option>
-                                            <option value="0.27">£0.27</option>
-                                            <option value="0.28">£0.28</option>
-                                            <option value="0.29">£0.29</option>
-                                            <option value="0.30">£0.30</option>
+                                            $option1
+                                            $option2
+                                            $option3
+                                            $option4
+                                            $option5
+                                            $option6
+                                            $option7
+                                            $option8
+                                            $option9
+                                            $option10
+                                            $option11
+                                            $option12
+                                            $option13
+                                            $option14
+                                            $option15
+                                            $option16
+                                            $option17
+                                            $option18
+                                            $option19
+                                            $option20
+                                            $option21
+                                            $option22
+                                            $option23
+                                            $option24
+                                            $option25
+                                            $option26
+                                            $option27
+                                            $option28
+                                            $option29
+                                            $option30
                                         </select>
                                     </div>
 

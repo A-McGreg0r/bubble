@@ -182,22 +182,13 @@ function generateAccount(){
                                     <div class="modalHeader">
                                         <h3 class="bold-title">Update Account</h3>
                                     </div>                                
-                                    <div class="col-lg">
+                                    <div class="col-lg" style="padding-left:15px!important;padding-right:15px!important;">
                                     <!--Body-->
-                                    <div class="row" style="margin: 0; padding-top: 5px; padding-bottom: 5px">
-                                        <div class="col-md">
-                                            <h4>Account details</h4>
-                                        </div>
-                                        
-                                        <div class="col-md">
-                                            <h4>New details</h4>
-                                        </div>
-                                    </div>
                                     
                                      <!--First Name-->  
                                         <div class="row" style="padding-top: 5px; padding-bottom: 5px">
                                             <div class="col-md">
-                                                <strong>&ensp;First Name: $first_name&ensp;</strong>
+                                                <strong>First Name:&ensp;</strong>
                                             </div>
                                                 <div class="col-md">
                                                     <input id="ud1" class="form-control" type="text" placeholder="$first_name">
@@ -207,7 +198,7 @@ function generateAccount(){
                                         <!--Last Name-->
                                         <div class="row" style="padding-top: 5px; padding-bottom: 5px">
                                             <div class="col-md">
-                                                <strong>&ensp;Last Name: $last_name&ensp;</strong>
+                                                <strong>Last Name:&ensp;</strong>
                                             </div>
                                             <div class="col-md"">
                                                 <input id="ud2" class="form-control" type="text" placeholder="$last_name">
@@ -217,7 +208,7 @@ function generateAccount(){
                                         <!--E-mail-->
                                         <div class="row" style="padding-top: 5px; padding-bottom: 5px">
                                             <div class="col-md">
-                                                <strong>&ensp;Email Address: $email&ensp;</strong><!--todo fix md size alinment issue-->
+                                                <strong>Email Address:&ensp;</strong><!--todo fix md size alinment issue-->
                                             </div>
                                             <div class="col-md">
                                                 <input id="ud3" class="form-control" type="text" placeholder="$email">
@@ -225,39 +216,33 @@ function generateAccount(){
                                         </div>
                                         
                                         <!--Address-->
-                                        <div class="row" style="margin-left: 0; padding-top: 5px; padding-bottom: 5px">
 
-                                                <div class="col-md">
-                                                    <div class="row" >
-                                                        <strong>&ensp;Address:</strong>  
+                                                
+                                                <div class="row" style="padding-top: 5px; padding-bottom: 5px">
+                                                    <div class="col-md">
+                                                        <strong>Address:</strong>  
                                                     </div>
-                                                    <div class="row" style="padding-top: 5px; padding-bottom: 5px">
-                                                        <div class="col-md">
-                                                            <strong>$address_l1</strong>
-                                                        </div>
-                                                        <div class="col-md" style="margin-left: -2%;">
-                                                            <input id="ud4" class="form-control" type="text" placeholder="$address_l1">
-                                                        </div>
+
+                                                    <div class="col-md">
+                                                        <input id="ud4" class="form-control" type="text" placeholder="$address_l1">
                                                     </div>
+                                                </div>
                                                     
-                                                     <div class="row" style=" padding-top: 5px; padding-bottom: 5px">
-                                                        <div class="col-md">
-                                                            <strong>$address_l2</strong>
-                                                        </div>
-                                                        <div class="col-md" style="margin-left: -2%;">
-                                                            <input id="ud5" class="form-control" type="text" placeholder="$address_l2">
-                                                        </div> 
+                                                <div class="row" style=" padding-top: 5px; padding-bottom: 5px">
+                                                    <div class="col-md">
+                                                        <strong></strong>
                                                     </div>
-                                                    
+                                                    <div class="col-md">
+                                                        <input id="ud5" class="form-control" type="text" placeholder="$address_l2">
+                                                    </div> 
                                                 </div>
                                     
                       
-                                        </div>
 
                                         <!--Postcode-->
                                         <div class="row" style="padding-top: 5px; padding-bottom: 5px">
                                             <div class="col-md">
-                                                <strong>&ensp;Postcode:$postcode&ensp;</strong>
+                                                <strong>Postcode:&ensp;</strong>
                                             </div>
                                                 <div class="col-md">
                                                     <input id="ud6" class="form-control" type="text" placeholder="$postcode">
@@ -266,7 +251,7 @@ function generateAccount(){
                                          <!--Energy Cost -->     
                                         <div class="row" style="padding-top: 5px; padding-bottom: 5px">
                                             <div class="col-md">
-                                                <strong>&ensp;Energy Price: $energy_cost&ensp;</strong>
+                                                <strong>Energy Price:&ensp;</strong>
                                             </div>
                                                 <div class="col-md">
                                                     <select id="ud7" class="form-control form-control-sm dropdown validate drop-up">
@@ -307,24 +292,24 @@ function generateAccount(){
                                         <!--Budget -->     
                                         <div class="row" style="padding-top: 5px; padding-bottom: 5px">
                                             <div class="col-md">
-                                                <strong>&ensp;Monthly Budget: $budget&ensp;</strong>
+                                                <strong>Monthly Budget:&ensp;</strong>
                                             </div>
                                                 <div class="col-md">
-                                                    <input id="ud8" class="form-control" type="text" placeholder="$budget">
+                                                    <input id="ud8" class="form-control" type="number" placeholder="$budget">
                                                 </div>
                                         </div>
                                         
                                         <!--Soler Rateing --> 
                                         <div class="row" style="padding-top: 5px; padding-bottom: 5px">
                                             <div class="col-md">
-                                                <strong>&ensp;Solar rating: $solargen Watts per hour&ensp;</strong>
+                                                <strong>Solar rating:&ensp;</strong>
                                             </div>
                                                 <div class="col-md">
-                                                    <input id="ud9" class="form-control" type="text" placeholder="$solargen">
+                                                    <input id="ud9" class="form-control" type="number" placeholder="$solargen">
                                                 </div>
                                         </div>
                                         <!--Model footer-->    
-                                        <div class="modal-footer justify-content-lg-between" style="margin 50px">
+                                        <div class="modal-footer justify-content-lg-between" style="border:none!important">
                                             <div class="col-md">
                                                   <button class="btn btn-danger btn-sm btn-rounded" data-dismiss="modal" >Cancel</button>
                                         

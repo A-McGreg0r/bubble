@@ -160,12 +160,12 @@ function hourly_calc($case, $percentage, $P, $d, $m, $hub_id) {
     
     for ($h=0; $h <= 23; $h++) {
         //INSERT INTO TABLE
-        $i=$h-$rise;
+        $i=1;
         if ($i < $peak) {$N++;}
         elseif ($repeat){$repeat=false;}
         else {$N--;}
         $watts = $N * $qV * $P;
-        echo "$watts = $N *$P <br>";
+        echo "$watts = $N * $qV * $P <br>";
 		if ($h == (intval(date('H'))+1)){ 
 			echo "| * $N  * | ";
             echo "hour[ $h ]::";

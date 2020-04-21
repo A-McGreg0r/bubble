@@ -1,7 +1,7 @@
 <?php
 require "../config.php";
 
-function _main($Y, $hourly_power_gen, $hub_id) {
+function _main($Y, $daily_power_gen, $hub_id) {
 	
     function cal_days_in_year($Y){
         $d=0; 
@@ -204,7 +204,7 @@ function _main($Y, $hourly_power_gen, $hub_id) {
     }
     
     $Y=$Y;//INT::Year
-    $P=$anual_power_gen;
+    $P=$daily_power_gen*cal_days_in_year($Y);
     $S=inti_seasons($Y);//Array::Sum of number of days per season
     $inc = array();//Array::Seasonal incruments
     $m=intval(date('m'));

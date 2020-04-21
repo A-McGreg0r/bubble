@@ -1,5 +1,6 @@
 <?php
 require "../config.php";
+global $db;
 
 function cal_days_in_year($Y){
     $d=0; 
@@ -139,10 +140,10 @@ function hourly_calc($case, $percentage, $P, $d, $m, $hub_id) {
     }
     //from rise to set, allocate percentage
     $daylight_hours = ($set-$rise);
-
+    
     if (is_float($peak=$daylight_hours/2)) {$peak=round($daylight_hours/2, 0);$repeat=true;}
     else{$peak=(round($daylight_hours/2, 0)+1);$repeat=false;}
-
+    echo "$peak peak <br>";
     $N=0;
     for ($i=0; $i <= $peak; $i++) {
         if ($repeat && $i=$peak){$S = $S + ($i*2);}
@@ -159,14 +160,14 @@ function hourly_calc($case, $percentage, $P, $d, $m, $hub_id) {
     
     for ($h=0; $h <= 23; $h++) {
         //INSERT INTO TABLE
-        $i=$h-$rise;
+        $i=1;
         if ($i < $peak) {$N++;}
         elseif ($repeat){$repeat=false;}
         else {$N--;}
         $watts = $N * $qV * $P;
+        echo "$watts = $N * $qV * $P <br>";
 		if ($h == (intval(date('H'))+1)){ 
-            
-			echo "| * $rise - $set * | ";
+			echo "| * $N  * | ";
             echo "hour[ $h ]::";
             if($h > $rise && $h < $set){
                 $watts = $watts / 5 * (rand(50,100)/100);
@@ -178,7 +179,6 @@ function hourly_calc($case, $percentage, $P, $d, $m, $hub_id) {
             $inst_hourly_gen = $db->prepare("INSERT INTO hourly_gen (hub_id, entry_month, entry_day, entry_hour, energy_gen) VALUES (?, ?, ?, ?, ?)");
             $inst_hourly_gen->bind_param("iiiid", $hub_id, $m, $d, $h, $watts);
             $inst_hourly_gen->execute();
-
             $stmt13 = $db->prepare("SELECT * FROM hourly_gen WHERE hub_id = ?");
             $stmt13->bind_param("i", $hub_id);
             $stmt13->execute();

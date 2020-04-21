@@ -166,7 +166,6 @@ function _main($Y, $daily_power_gen, $hub_id) {
             elseif ($repeat){$repeat=false;}
             else {$N--;}
             $watts = $N * $qV * $P;
-            echo "<br> $watts = $N * $qV * $P <br>";
 			if ($h == (intval(date('H'))+1)){ 
                 
 				echo "| * $rise - $set * | ";
@@ -206,9 +205,6 @@ function _main($Y, $daily_power_gen, $hub_id) {
     $Y=$Y;//INT::Year
     $diy=cal_days_in_year($Y);
     $P=$daily_power_gen*$diy;
-    echo "P $P <br>";
-    echo "dpg $daily_power_gen <br>";
-    echo "diy $diy <br>";
     $S=inti_seasons($Y);//Array::Sum of number of days per season
     $inc = array();//Array::Seasonal incruments
     $m=intval(date('m'));

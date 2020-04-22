@@ -592,6 +592,7 @@ change_button;
                             <div id="home_devices" class="home-right" style="text-align:center;">
                           
                             <!--right button-->
+                            
                             <!--function call-->
                                 <div id="home_off_content" onclick="$all_homes">
                                         

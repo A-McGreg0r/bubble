@@ -123,7 +123,7 @@ if($type == "account"){
 
     echo("{\"success\":\"Success \"}");
 
-} elseif($type == "costings"){
+} else if($type == "costings"){
     //GET VALID ENERGY COST
     $energy_cost = filter_input(INPUT_POST, "energy_cost", FILTER_SANITIZE_STRING);
     if($energy_cost == FALSE && $_POST['energy_cost'] != ""){

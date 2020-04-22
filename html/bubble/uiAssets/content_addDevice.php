@@ -19,7 +19,7 @@ html;
     $html .= <<<pageHTML
 
     <div class="modal fade modalStatsWrap" id="addDeviceModal" tabindex="-1" role="dialog" aria-labelledby="addDeviceModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modalStats modalContent" >
+        <div class="modalStats modalContent" >
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <i class="fas fa-times"></i>
             </button>

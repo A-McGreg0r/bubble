@@ -168,7 +168,7 @@ html;
                 if(($total_price + $price_month) != 0){
                     $percent = number_format(((100 / ($total_price + $price_month)) * $price_month), 1);
                     $graph = <<<graph
-                        <canvas class="stats-pie " style="max-width:400px display:inline-block" id="room_stats_doughnut_$room_id.$random_id" width="924" height="426"></canvas>
+                        <canvas class="stats-pie " room-name="$room_name" price-month=$price_month" total-price="$total_price" "style="max-width:400px display:inline-block" id="room_stats_doughnut_$room_id.$random_id" width="924" height="426"></canvas>
                                             
                         <table class="stats-table comparison">
                         <tr class="stats-row">
@@ -237,26 +237,6 @@ graph;
                                         <h4 class="modalSub">Month's Comparison</h4>
                                         
                                         $graph
-
-                                        <script>
-                                            //doughnut
-                                            var ctxD = document.getElementById("room_stats_doughnut_$room_id.$random_id").getContext("2d");
-                                            var myLineChart = new Chart(ctxD, {
-                                            type: "doughnut",
-                                            data: {
-                                            labels: ["$room_name [£]", "Other Rooms [£]"],
-                                            datasets: [{
-                                            data: [$price_month, $total_price],
-                                            backgroundColor: ["rgb(226, 183, 28)", "rgb(56,56,56)"],
-                                            hoverBackgroundColor: ["rgb(246, 203, 48)", "rgb(76,76,76)"]
-                                            }]
-                                            },
-                                            options: {
-                                                responsive: [true],
-                                                
-                                                }
-                                            });
-                                        </script>
                                     </div>
                             </div>      
                             <hr>

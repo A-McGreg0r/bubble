@@ -21,7 +21,7 @@ html;
     
     <div class="modal modalStatsWrap" id="addDeviceModal">
         <div class="modalContent modalStats" id="">
-            <div class="x-adjust"><i class="stats_icon_x " id="" style="display:flex" onclick="openModalHome('addDeviceModal')"><i class="fas fa-times"></i></i>
+            <div class="x-adjust"><i class="stats_icon_x " id="" style="display:flex" onclick="openModalHome('addDeviceModal');closeCamera();"><i class="fas fa-times"></i></i>
             </div>
             <div class="modalHeader"><strong>Add a new device</strong></div>
             <div class="modalBody">

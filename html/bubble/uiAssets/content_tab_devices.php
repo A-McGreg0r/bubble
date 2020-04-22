@@ -11,7 +11,7 @@ function generateDeviceTab(){
     $html = '<div id="device-encompass">';
 
     $html .= <<<html
-        <a onclick='$("#addDeviceModal").modal();openCamera();'>
+        <a onclick='addDeviceModal();openCamera();'>
             <div class="card mb-4 container">
                 <!--Card image-->
                 <div class="view overlay">

@@ -164,11 +164,11 @@ html;
                 $percent = 0;
 
                 $graph = '<strong style="color:red">Graph will generate shortly.</strong>';
-
+                $random_id = rand(1, 100000);
                 if(($total_price + $price_month) != 0){
                     $percent = number_format(((100 / ($total_price + $price_month)) * $price_month), 1);
                     $graph = <<<graph
-                        <canvas class="stats-pie " style="max-width:400px display:inline-block" id="room_stats_doughnut_$room_id" width="924" height="426"></canvas>
+                        <canvas class="stats-pie " style="max-width:400px display:inline-block" id="room_stats_doughnut_$room_id.$random_id" width="924" height="426"></canvas>
                                             
                         <table class="stats-table comparison">
                         <tr class="stats-row">
@@ -240,7 +240,7 @@ graph;
 
                                         <script>
                                             //doughnut
-                                            var ctxD = document.getElementById("room_stats_doughnut_$room_id").getContext("2d");
+                                            var ctxD = document.getElementById("room_stats_doughnut_$room_id.$random_id").getContext("2d");
                                             var myLineChart = new Chart(ctxD, {
                                             type: "doughnut",
                                             data: {

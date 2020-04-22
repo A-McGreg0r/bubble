@@ -457,6 +457,12 @@ function refreshRoom(room_id) {
     $('#room_reload_' + room_id).load(document.URL + ' #room_reload_' + room_id);
 }
 
+function refreshRooms() {
+    //Refresh rooms
+    $('#room-encompass').load(document.URL + ' #room-encompass');
+}
+
+
 function refreshDevice(device_id) {
     //Refresh device
     $('#reload_' + device_id).load(document.URL + ' #reload_' + device_id, function(){
@@ -596,7 +602,7 @@ function addRoomModalSubmit(){
             }
             //ADD ROOM SUCCESS
             if(result.success){
-                $('#room-encompass').load(document.URL + ' #room-encompass');
+                refreshRooms();
                 $('#addRoomModal').modal("hide");
                 $("#roomFormName").removeAttr("disabled");
                 $("#roomFormIcon").removeAttr("disabled");
@@ -638,7 +644,7 @@ function confirmDeleteRoomModalConfirm(room_id){
             if(result.success){
                 $("#confirmDeleteRoomModalButton").removeAttr("disabled");
                 $('#confirmDeleteRoom_'+room_id).modal("hide");
-                $('#room-encompass').load(document.URL + ' #room-encompass');
+                refreshRooms();
             }
         },
         error: function(data){

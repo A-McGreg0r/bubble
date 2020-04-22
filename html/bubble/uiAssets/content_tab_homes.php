@@ -251,7 +251,7 @@ function generateHomeTab()
 
             //ADD BUTTON THAT ALLOWS CHANGING OF COSTINGS
             $change_costings = <<<change_button
-            <div class='col col-md justify-content-center' style='max-width: 575px'>
+            <div class='homeButtons col col-md justify-content-center' style='max-width: 575px'>
             <!--function call-->
                 <div id='reload_device_id' class='home-left' style='text-align:center' onclick='openModalHome("costing_select")'>
                     <!--left text-->
@@ -270,7 +270,7 @@ change_button;
             //FIND ALL HUBS REGISTERED TO USER, ADD MODAL AND BUTTONS THAT ALLOW CHANGING BETWEEN HUBS
 
             $change_button = "";
-            $home_button_style = "<div class='col col-md justify-content-center' style='max-width: 1050px'>";
+            $home_button_style = "<div class='homeButtons col col-md justify-content-center' style='max-width: 1050px'>";
 
             $all_hubs = "<table style='width:100%'>";
             $stmt12 = $db->prepare("SELECT * FROM hub_users WHERE user_id = ?");
@@ -281,7 +281,7 @@ change_button;
                 while ($row12 = $result12->fetch_assoc()) {
                     if($result12->num_rows > 1){
                         $change_button = <<<change_button
-                        <div class='col col-md justify-content-center' style='max-width: 575px'>
+                        <div class='homeButtons col col-md justify-content-center' style='max-width: 575px'>
                         <!--function call-->
                             <div id='reload_device_id' class='home-left' style='text-align:center' onclick='openModalHome("hub_select")'>
                                 <!--left text-->
@@ -295,7 +295,7 @@ change_button;
                             </div>
                         </div>
 change_button;
-                        $home_button_style = "<div class='col col-md justify-content-center' style='max-width: 575px'>";
+                        $home_button_style = "<div class='homeButtons col col-md justify-content-center' style='max-width: 575px'>";
                     }
                     $row_id = $row12['hub_id'];
                     $stmt13 = $db->prepare("SELECT * FROM hub_info WHERE hub_id = ?");

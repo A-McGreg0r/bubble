@@ -18,10 +18,18 @@ function generateHelpPage() {
         <div class="container justify-content-center">
             <div class="card justify-content-center" style="border:none!important">
 
-                <div class="pageHeader" style="padding-top:15px">Hi $first_name, how can we help?</div>
+                <div class="pageHeader" style="padding-top:15px">Hi $first_name, what can we help you with?</div>
+                <hr style="width:100%!important;margin-left:0!important;margin-right:0!important;">
+                <ul style="text-align:center;list-style-type:none;padding-left:0;margin-bottom:0;">
+                    <li><a href="#homeHelp" style="font-size:20px;padding:5px;">Home</a></li>
+                    <li><a href="#roomsHelp" style="font-size:20px;padding:5px;">Rooms</a></li>
+                    <li><a href="#deviceHelp" style="font-size:20px;padding:5px;">Devices</a></li>
+                    <li><a href="#adviceHelp" style="font-size:20px;padding:5px;">Advice</a></li>
+                    <li><a href="#accountHelp" style="font-size:20px;padding:5px;">Account</a></li>
+                </ul>
                 <hr style="width:100%!important;margin-left:0!important;margin-right:0!important;">
 
-                <div class="section-title"><h4>Home Tab</h4></div>
+                <div class="section-title" id="homeHelp"><h4 style="color:rgb(226, 183, 28);font-weight:600!important;">Home</h4></div>
                 <table class="helpTable">
                     
                     <tr>
@@ -57,7 +65,7 @@ function generateHelpPage() {
                             <div class="modalStats" style="border: 1px solid black;" >
                                 <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help2', 'arrow2')"><i class="fas fa-times"></i></i></div>
                                 <div class="modalHeader">
-                                    <h3 class="bold-title">Change Home</h3>
+                                    <h3 class="bold-title">Change house</h3>
                                 </div>
                                 <div class="modalBody" style="text-align:justify!important;text-align-last:center!important;"">
                                     <div>If you are connected to more than one hub, it is possible to switch between them by 
@@ -71,7 +79,7 @@ function generateHelpPage() {
                     </tr>
                     <tr>
                         <td style="cursor:pointer" onclick="openModalHelp('help3', 'arrow3')">
-                            Change my budget, energy price or solar panel rating<div style="height:0px;margin-bottom:-8px;"></div><i class="arrow down" id="arrow3"></i>
+                            Change costings: my budget, energy price or solar panel rating<div style="height:0px;margin-bottom:-8px;"></div><i class="arrow down" id="arrow3"></i>
                         </td>
                     </tr>
                     <tr style="display:none!important" id="help3">
@@ -79,7 +87,7 @@ function generateHelpPage() {
                             <div class="modalStats" style="border: 1px solid black;" >
                                 <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help3', 'arrow3')"><i class="fas fa-times"></i></i></div>
                                 <div class="modalHeader">
-                                    <h3 class="bold-title">Change my budget, energy price or solar panel rating</h3>
+                                    <h3 class="bold-title">Change costings: my budget, energy price or solar panel rating</h3>
                                 </div>
                                 <div class="modalBody" style="text-align:justify!important;text-align-last:center!important;"">
                                     <div>If you would like to change your budget, current energy price, or solar panel rating, then
@@ -125,52 +133,7 @@ function generateHelpPage() {
                     </tr>
                     
                 </table>
-                <div class="section-title"><h4>Advice Tab</h4></div>
-                <table class="helpTable">
-                    <tr>
-                        <td style="cursor:pointer" onclick="openModalHelp('help5', 'arrow5')">
-                            What is the advice for? <div style="height:0px;margin-bottom:-8px;"></div><i class="arrow down" id="arrow5"></i>
-                        </td>
-                    </tr>
-                    <tr style="display:none!important" id="help5">
-                        <td>
-                            <div class="modalStats" style="border: 1px solid black;" >
-                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help5', 'arrow5')"><i class="fas fa-times"></i></i></div>
-                                <div class="modalHeader">
-                                    <h3 class="bold-title">What is the advice for?</h3>
-                                </div>
-                                <div class="modalBody" style="text-align:justify!important;text-align-last:center!important;"">
-                                    <div>Our advice page offers suggestions that could help you save energy and money.
-                                        By looking at the weather, we can advise you on ways in which you could reduce
-                                        your energy consumption in the current temperature. Bubble is dedicated to helping
-                                        everyone save energy, save money, and tries to inspire a more eco-friendly outlook.</div>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="cursor:pointer" onclick="openModalHelp('help4', 'arrow4')">
-                            How do you know my location?<div style="height:0px;margin-bottom:-8px;"></div><i class="arrow down" id="arrow4"></i>
-                        </td>
-                    </tr>
-                    <tr style="display:none!important" id="help4">
-                        <td>
-                            <div class="modalStats" style="border: 1px solid black;" >
-                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help4', 'arrow4')"><i class="fas fa-times"></i></i></div>
-                                <div class="modalHeader">
-                                    <h3 class="bold-title">How do you know my location?</h3>
-                                </div>
-                                <div class="modalBody" style="text-align:justify!important;text-align-last:center!important;"">
-                                    <div>When you set up your hub, we store the IP address of the hub. The IP address is a numerical label
-                                    assigned to a device that can be interpreted to find a nearby location. 
-                                    Using this, we can determine the weather of the local area. This information is completely
-                                    secure, stored on our secure database.</div>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-                <div class="section-title"><h4>Room Tab</h4></div>
+                <div class="section-title" id="roomsHelp"><h4 style="color:rgb(226, 183, 28);font-weight:600!important;">Rooms</h4></div>
                 <table class="helpTable">
                     <tr>
                         <td style="cursor:pointer" onclick="openModalHelp('help6', 'arrow6')">
@@ -289,7 +252,7 @@ function generateHelpPage() {
                         </td>
                     </tr>
                 </table>
-                <div class="section-title"><h4>Device Tab</h4></div>
+                <div class="section-title" id="deviceHelp"><h4 style="color:rgb(226, 183, 28);font-weight:600!important;">Device</h4></div>
                 <table class="helpTable">
                     <tr>
                         <td style="cursor:pointer" onclick="openModalHelp('help20', 'arrow20')">
@@ -454,7 +417,52 @@ function generateHelpPage() {
                         </td>
                     </tr>
                 </table>
-                <div class="section-title"><h4>Account</h4></div>
+                <div class="section-title" id="adviceHelp"><h4 style="color:rgb(226, 183, 28);font-weight:600!important;">Advice</h4></div>
+                <table class="helpTable">
+                    <tr>
+                        <td style="cursor:pointer" onclick="openModalHelp('help5', 'arrow5')">
+                            What is the advice for? <div style="height:0px;margin-bottom:-8px;"></div><i class="arrow down" id="arrow5"></i>
+                        </td>
+                    </tr>
+                    <tr style="display:none!important" id="help5">
+                        <td>
+                            <div class="modalStats" style="border: 1px solid black;" >
+                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help5', 'arrow5')"><i class="fas fa-times"></i></i></div>
+                                <div class="modalHeader">
+                                    <h3 class="bold-title">What is the advice for?</h3>
+                                </div>
+                                <div class="modalBody" style="text-align:justify!important;text-align-last:center!important;"">
+                                    <div>Our advice page offers suggestions that could help you save energy and money.
+                                        By looking at the weather, we can advise you on ways in which you could reduce
+                                        your energy consumption in the current temperature. Bubble is dedicated to helping
+                                        everyone save energy, save money, and tries to inspire a more eco-friendly outlook.</div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="cursor:pointer" onclick="openModalHelp('help4', 'arrow4')">
+                            How do you know my location?<div style="height:0px;margin-bottom:-8px;"></div><i class="arrow down" id="arrow4"></i>
+                        </td>
+                    </tr>
+                    <tr style="display:none!important" id="help4">
+                        <td>
+                            <div class="modalStats" style="border: 1px solid black;" >
+                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help4', 'arrow4')"><i class="fas fa-times"></i></i></div>
+                                <div class="modalHeader">
+                                    <h3 class="bold-title">How do you know my location?</h3>
+                                </div>
+                                <div class="modalBody" style="text-align:justify!important;text-align-last:center!important;"">
+                                    <div>When you set up your hub, we store the IP address of the hub. The IP address is a numerical label
+                                    assigned to a device that can be interpreted to find a nearby location. 
+                                    Using this, we can determine the weather of the local area. This information is completely
+                                    secure, stored on our secure database.</div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <div class="section-title" id="accountHelp"><h4 style="color:rgb(226, 183, 28);font-weight:600!important;">Account</h4></div>
                 <table class="helpTable">
                     <tr>
                         <td style="cursor:pointer" onclick="openModalHelp('help15', 'arrow15')">

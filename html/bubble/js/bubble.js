@@ -77,9 +77,9 @@ $(window).on("load", function(){
         // swipedir contains either "none", "left", "right", "top", or "down"
         if (swipedir =='left') {
             document.getElementById('home-attr').classList.remove("active");
-            document.getElementById('advice-attr').classList.add("active");
+            document.getElementById('profile-attr').classList.add("active");
             document.getElementById('home-tab-attr').classList.remove("active");
-            document.getElementById('advice-tab-attr').classList.add("active");
+            document.getElementById('profile-tab-attr').classList.add("active");
         }
     });
 
@@ -89,9 +89,9 @@ $(window).on("load", function(){
         // swipedir contains either "none", "left", "right", "top", or "down"
         if (swipedir =='left') {
             document.getElementById('home-attr').classList.remove("active");
-            document.getElementById('advice-attr').classList.add("active");
+            document.getElementById('profile-attr').classList.add("active");
             document.getElementById('home-tab-attr').classList.remove("active");
-            document.getElementById('advice-tab-attr').classList.add("active");
+            document.getElementById('profile-tab-attr').classList.add("active");
         }
     });
 
@@ -101,9 +101,9 @@ $(window).on("load", function(){
         // swipedir contains either "none", "left", "right", "top", or "down"
         if (swipedir =='left') {
             document.getElementById('home-attr').classList.remove("active");
-            document.getElementById('advice-attr').classList.add("active");
+            document.getElementById('profile-attr').classList.add("active");
             document.getElementById('home-tab-attr').classList.remove("active");
-            document.getElementById('advice-tab-attr').classList.add("active");
+            document.getElementById('profile-tab-attr').classList.add("active");
         }
     });
 
@@ -113,26 +113,20 @@ $(window).on("load", function(){
         // swipedir contains either "none", "left", "right", "top", or "down"
         if (swipedir =='left') {
             document.getElementById('home-attr').classList.remove("active");
-            document.getElementById('advice-attr').classList.add("active");
+            document.getElementById('profile-attr').classList.add("active");
             document.getElementById('home-tab-attr').classList.remove("active");
-            document.getElementById('advice-tab-attr').classList.add("active");
+            document.getElementById('profile-tab-attr').classList.add("active");
         }
     });
 
     var swipe_advice = document.getElementById('advice-encompass');
     swipedetect(swipe_advice, function(swipedir){
         // swipedir contains either "none", "left", "right", "top", or "down"
-        if (swipedir =='left') {
-            document.getElementById('advice-attr').classList.remove("active");
-            document.getElementById('profile-attr').classList.add("active");
-            document.getElementById('advice-tab-attr').classList.remove("active");
-            document.getElementById('profile-tab-attr').classList.add("active");
-        }
         if (swipedir =='right') {
             document.getElementById('advice-attr').classList.remove("active");
-            document.getElementById('home-attr').classList.add("active");
+            document.getElementById('messages-attr').classList.add("active");
             document.getElementById('advice-tab-attr').classList.remove("active");
-            document.getElementById('home-tab-attr').classList.add("active");
+            document.getElementById('messages-tab-attr').classList.add("active");
         }
     });
     var swipe_room = document.getElementById('profile-attr');
@@ -146,9 +140,9 @@ $(window).on("load", function(){
         }
         if (swipedir =='right') {
             document.getElementById('profile-attr').classList.remove("active");
-            document.getElementById('advice-attr').classList.add("active");
+            document.getElementById('home-attr').classList.add("active");
             document.getElementById('profile-tab-attr').classList.remove("active");
-            document.getElementById('advice-tab-attr').classList.add("active");
+            document.getElementById('home-tab-attr').classList.add("active");
         }
     });
 
@@ -161,6 +155,12 @@ $(window).on("load", function(){
             document.getElementById('profile-attr').classList.add("active");
             document.getElementById('messages-tab-attr').classList.remove("active");
             document.getElementById('profile-tab-attr').classList.add("active");
+        }
+        if (swipedir =='left') {
+            document.getElementById('messages-attr').classList.remove("active");
+            document.getElementById('advice-attr').classList.add("active");
+            document.getElementById('messages-tab-attr').classList.remove("active");
+            document.getElementById('advice-tab-attr').classList.add("active");
         }
     });
 });

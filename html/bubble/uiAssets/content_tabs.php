@@ -16,11 +16,6 @@ function generateTabs(){
                aria-selected="true">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="advice-tab-attr" data-toggle="tab" href="#advice-attr" role="tab"
-               aria-controls="advice-attr"
-               aria-selected="true">Advice</a>
-        </li>
-        <li class="nav-item">
             <a class="nav-link " id="profile-tab-attr" data-toggle="tab" href="#profile-attr" role="tab"
                aria-controls="profile-attr"
                aria-selected="false">Rooms</a>
@@ -30,6 +25,11 @@ function generateTabs(){
                aria-controls="messages-attr"
                aria-selected="false">Devices</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" id="advice-tab-attr" data-toggle="tab" href="#advice-attr" role="tab"
+               aria-controls="advice-attr"
+               aria-selected="true">Advice</a>
+        </li>
     </ul>
     
     
@@ -38,14 +38,14 @@ function generateTabs(){
         <div class="tab-pane active" id="home-attr" role="tabpanel" aria-labelledby="home-tab-attr">
             '.generateHomeTab().'
         </div>
-        <div class="tab-pane" id="advice-attr" role="tabpanel" aria-labelledby="advice-tab-attr">
-            '.generateAdviceTab().'
-        </div>
         <div class="tab-pane" id="profile-attr" role="tabpanel" aria-labelledby="profile-tab-attr">
             '.generateRoomTab().'
         </div>
         <div class="tab-pane" id="messages-attr" role="tabpanel" aria-labelledby="messages-tab-attr">
             '.generateDeviceTab().'
+        </div>
+        <div class="tab-pane" id="advice-attr" role="tabpanel" aria-labelledby="advice-tab-attr">
+            '.generateAdviceTab().'
         </div>
     
     

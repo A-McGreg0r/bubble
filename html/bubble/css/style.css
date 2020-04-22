@@ -4,6 +4,7 @@ html, body {
     overflow-y: overlay;
     overflow-x: hidden;
     transition: all .2s ease-in-out!important;
+    scroll-behavior: smooth;
 }
 
 h2 {

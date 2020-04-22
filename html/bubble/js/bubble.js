@@ -193,7 +193,8 @@ function changeHub(id) {
 //------------------------Modal Functions----------------------------------------------------
 function openModalHome(id){
     //Prevent parent onclick events
-    event.stopPropagation();
+    if(!event)
+        event.stopPropagation();
 
     //Change display of modal
     var id = document.getElementById(id);

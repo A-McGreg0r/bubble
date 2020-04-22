@@ -223,12 +223,17 @@ function openModalAccount(id){
     }
 }
 
-function openModalHelp(id){
+function openModalHelp(id, arrow){
     var id = document.getElementById(id);
+    var arrow = document.getElementById(arrow);
     if (id.style.display == "table-row") {
         id.style.display = "none";
+        arrow.classList.remove("up");
+        arrow.classList.add("down");
     } else {
         id.style.display = "table-row";
+        arrow.classList.remove("down");
+        arrow.classList.add("up");
     }
 }
 

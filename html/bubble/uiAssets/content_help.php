@@ -25,14 +25,14 @@ function generateHelpPage() {
                 <table class="helpTable">
                     
                     <tr>
-                        <td style="cursor:pointer" onclick="openModalHelp('help1')">
-                            Turn off all devices in my home
+                        <td style="cursor:pointer" onclick="openModalHelp('help1', 'arrow1')">
+                            Turn off all devices in my home<div style="height:0px;margin-bottom:-8px;"></div><i class="arrow down" id="arrow1"></i>
                         </td>
                     </tr>
                     <tr style="display:none!important" id="help1">
                         <td>
                             <div class="modalStats" style="border: 1px solid black;" >
-                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help1')"><i class="fas fa-times"></i></i></div>
+                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help1', 'arrow1')"><i class="fas fa-times"></i></i></div>
                                 <div class="modalHeader">
                                     <h3 class="bold-title">Turn off all devices in my home</h3>
                                 </div>
@@ -48,14 +48,14 @@ function generateHelpPage() {
                         </td>
                     </tr>
                     <tr>
-                        <td style="cursor:pointer" onclick="openModalHelp('help2')">
-                            Change house
+                        <td style="cursor:pointer" onclick="openModalHelp('help2', 'arrow2')">
+                            Change house <div style="height:0px;margin-bottom:-8px;"></div><i class="arrow down" id="arrow2"></i>
                         </td>
                     </tr>
                     <tr style="display:none!important" id="help2">
                         <td>
                             <div class="modalStats" style="border: 1px solid black;" >
-                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help2')"><i class="fas fa-times"></i></i></div>
+                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help2', 'arrow2')"><i class="fas fa-times"></i></i></div>
                                 <div class="modalHeader">
                                     <h3 class="bold-title">Change Home</h3>
                                 </div>
@@ -70,14 +70,14 @@ function generateHelpPage() {
                         </td>
                     </tr>
                     <tr>
-                        <td style="cursor:pointer" onclick="openModalHelp('help3')">
-                            Change my budget, energy price or solar panel rating
+                        <td style="cursor:pointer" onclick="openModalHelp('help3', 'arrow3')">
+                            Change my budget, energy price or solar panel rating<div style="height:0px;margin-bottom:-8px;"></div><i class="arrow down" id="arrow3"></i>
                         </td>
                     </tr>
                     <tr style="display:none!important" id="help3">
                         <td>
                             <div class="modalStats" style="border: 1px solid black;" >
-                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help3')"><i class="fas fa-times"></i></i></div>
+                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help3', 'arrow3')"><i class="fas fa-times"></i></i></div>
                                 <div class="modalHeader">
                                     <h3 class="bold-title">Change my budget, energy price or solar panel rating</h3>
                                 </div>
@@ -96,14 +96,14 @@ function generateHelpPage() {
                 <div class="section-title"><h4>Advice Tab</h4></div>
                 <table class="helpTable">
                     <tr>
-                        <td style="cursor:pointer" onclick="openModalHelp('help5')">
-                            What is the advice for?
+                        <td style="cursor:pointer" onclick="openModalHelp('help5', 'arrow5')">
+                            What is the advice for? <div style="height:0px;margin-bottom:-8px;"></div><i class="arrow down" id="arrow5"></i>
                         </td>
                     </tr>
                     <tr style="display:none!important" id="help5">
                         <td>
                             <div class="modalStats" style="border: 1px solid black;" >
-                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help5')"><i class="fas fa-times"></i></i></div>
+                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help5', 'arrow5)"><i class="fas fa-times"></i></i></div>
                                 <div class="modalHeader">
                                     <h3 class="bold-title">What is the advice for?</h3>
                                 </div>
@@ -117,14 +117,14 @@ function generateHelpPage() {
                         </td>
                     </tr>
                     <tr>
-                        <td style="cursor:pointer" onclick="openModalHelp('help4')">
-                            How do you know my location?
+                        <td style="cursor:pointer" onclick="openModalHelp('help4', 'arrow4')">
+                            How do you know my location?<div style="height:0px;margin-bottom:-8px;"></div><i class="arrow down" id="arrow4"></i>
                         </td>
                     </tr>
                     <tr style="display:none!important" id="help4">
                         <td>
                             <div class="modalStats" style="border: 1px solid black;" >
-                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help4')"><i class="fas fa-times"></i></i></div>
+                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help4', 'arrow4')"><i class="fas fa-times"></i></i></div>
                                 <div class="modalHeader">
                                     <h3 class="bold-title">How do you know my location?</h3>
                                 </div>
@@ -141,14 +141,14 @@ function generateHelpPage() {
                 <div class="section-title"><h4>Room Tab</h4></div>
                 <table class="helpTable">
                     <tr>
-                        <td style="cursor:pointer" onclick="openModalHelp('help6')">
-                            Turn on a room
+                        <td style="cursor:pointer" onclick="openModalHelp('help6', 'arrow6')">
+                            Turn on a room<div style="height:0px;margin-bottom:-8px;"></div><i class="arrow down" id="arrow6"></i>
                         </td>
                     </tr>
                     <tr style="display:none!important" id="help6">
                         <td>
                             <div class="modalStats" style="border: 1px solid black;" >
-                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help6')"><i class="fas fa-times"></i></i></div>
+                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help6', 'arrow6')"><i class="fas fa-times"></i></i></div>
                                 <div class="modalHeader">
                                     <h3 class="bold-title">Turn on a room</h3>
                                 </div>
@@ -167,14 +167,14 @@ function generateHelpPage() {
                         </td>
                     </tr>
                     <tr>
-                        <td style="cursor:pointer" onclick="openModalHelp('help7')">
-                            Setting a timer
+                        <td style="cursor:pointer" onclick="openModalHelp('help7', 'arrow7')">
+                            Setting a timer<div style="height:0px;margin-bottom:-8px;"></div><i class="arrow down" id="arrow7"></i>
                         </td>
                     </tr>
                     <tr style="display:none!important" id="help7">
                         <td>
                             <div class="modalStats" style="border: 1px solid black;" >
-                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help7')"><i class="fas fa-times"></i></i></div>
+                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help7', 'arrow7')"><i class="fas fa-times"></i></i></div>
                                 <div class="modalHeader">
                                     <h3 class="bold-title">Setting a timer</h3>
                                 </div>
@@ -189,14 +189,14 @@ function generateHelpPage() {
                         </td>
                     </tr>
                     <tr>
-                        <td style="cursor:pointer" onclick="openModalHelp('help8')">
-                            Adding a room
+                        <td style="cursor:pointer" onclick="openModalHelp('help8', 'arrow8')">
+                            Adding a room<div style="height:0px;margin-bottom:-8px;"></div><i class="arrow down" id="arrow8"></i>
                         </td>
                     </tr>
                     <tr style="display:none!important" id="help8">
                         <td>
                             <div class="modalStats" style="border: 1px solid black;" >
-                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help8')"><i class="fas fa-times"></i></i></div>
+                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help8', 'arrow8')"><i class="fas fa-times"></i></i></div>
                                 <div class="modalHeader">
                                     <h3 class="bold-title">Adding a room</h3>
                                 </div>
@@ -210,14 +210,14 @@ function generateHelpPage() {
                         </td>
                     </tr>
                     <tr>
-                        <td style="cursor:pointer" onclick="openModalHelp('help9')">
-                            Removing a room
+                        <td style="cursor:pointer" onclick="openModalHelp('help9', 'arrow9')">
+                            Removing a room<div style="height:0px;margin-bottom:-8px;"></div><i class="arrow down" id="arrow9"></i>
                         </td>
                     </tr>
                     <tr style="display:none!important" id="help9">
                         <td>
                             <div class="modalStats" style="border: 1px solid black;" >
-                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help9')"><i class="fas fa-times"></i></i></div>
+                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help9', 'arrow9')"><i class="fas fa-times"></i></i></div>
                                 <div class="modalHeader">
                                     <h3 class="bold-title">Removing a room</h3>
                                 </div>
@@ -235,14 +235,14 @@ function generateHelpPage() {
                 <div class="section-title"><h4>Device Tab</h4></div>
                 <table class="helpTable">
                     <tr>
-                        <td style="cursor:pointer" onclick="openModalHelp('help20')">
-                            Turn on a device
+                        <td style="cursor:pointer" onclick="openModalHelp('help20', 'arrow20')">
+                            Turn on a device<div style="height:0px;margin-bottom:-8px;"></div><i class="arrow down" id="arrow20"></i>
                         </td>
                     </tr>
                     <tr style="display:none!important" id="help20">
                         <td>
                             <div class="modalStats" style="border: 1px solid black;" >
-                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help20')"><i class="fas fa-times"></i></i></div>
+                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help20', 'arrow20')"><i class="fas fa-times"></i></i></div>
                                 <div class="modalHeader">
                                     <h3 class="bold-title">Turn on a device</h3>
                                 </div>
@@ -261,14 +261,14 @@ function generateHelpPage() {
                         </td>
                     </tr>
                     <tr>
-                        <td style="cursor:pointer" onclick="openModalHelp('help10')">
-                            Setting a timer on a device
+                        <td style="cursor:pointer" onclick="openModalHelp('help10', 'arrow10')">
+                            Setting a timer on a device<div style="height:0px;margin-bottom:-8px;"></div><i class="arrow down" id="arrow10"></i>
                         </td>
                     </tr>
                     <tr style="display:none!important" id="help10">
                         <td>
                             <div class="modalStats" style="border: 1px solid black;" >
-                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help10')"><i class="fas fa-times"></i></i></div>
+                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help10', 'arrow10')"><i class="fas fa-times"></i></i></div>
                                 <div class="modalHeader">
                                     <h3 class="bold-title">Setting a timer</h3>
                                 </div>
@@ -283,14 +283,14 @@ function generateHelpPage() {
                         </td>
                     </tr>
                     <tr>
-                        <td style="cursor:pointer" onclick="openModalHelp('help11')">
-                            Review my device statistics
+                        <td style="cursor:pointer" onclick="openModalHelp('help11', 'arrow11')">
+                            Review my device statistics<div style="height:0px;margin-bottom:-8px;"></div><i class="arrow down" id="arrow11"></i>
                         </td>
                     </tr>
                     <tr style="display:none!important" id="help11">
                         <td>
                             <div class="modalStats" style="border: 1px solid black;" >
-                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help11')"><i class="fas fa-times"></i></i></div>
+                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help11', 'arrow11')"><i class="fas fa-times"></i></i></div>
                                 <div class="modalHeader">
                                     <h3 class="bold-title">Review my device statistics</h3>
                                 </div>
@@ -308,14 +308,14 @@ function generateHelpPage() {
                         </td>
                     </tr>
                     <tr>
-                        <td style="cursor:pointer" onclick="openModalHelp('help12')">
-                            Adding a device
+                        <td style="cursor:pointer" onclick="openModalHelp('help12', 'arrow12')">
+                            Adding a device<div style="height:0px;margin-bottom:-8px;"></div><i class="arrow down" id="arrow12"></i>
                         </td>
                     </tr>
                     <tr style="display:none!important" id="help12">
                         <td>
                             <div class="modalStats" style="border: 1px solid black;" >
-                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help12')"><i class="fas fa-times"></i></i></div>
+                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help12', 'arrow12')"><i class="fas fa-times"></i></i></div>
                                 <div class="modalHeader">
                                     <h3 class="bold-title">Adding a device</h3>
                                 </div>
@@ -330,14 +330,14 @@ function generateHelpPage() {
                         </td>
                     </tr>
                     <tr>
-                        <td style="cursor:pointer" onclick="openModalHelp('help13')">
-                            Moving a device to a different room
+                        <td style="cursor:pointer" onclick="openModalHelp('help13', 'arrow13')">
+                            Moving a device to a different room<div style="height:0px;margin-bottom:-8px;"></div><i class="arrow down" id="arrow13"></i>
                         </td>
                     </tr>
                     <tr style="display:none!important" id="help13">
                         <td>
                             <div class="modalStats" style="border: 1px solid black;" >
-                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help13')"><i class="fas fa-times"></i></i></div>
+                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help13', 'arrow13')"><i class="fas fa-times"></i></i></div>
                                 <div class="modalHeader">
                                     <h3 class="bold-title">Moving a device to a different room</h3>
                                 </div>
@@ -349,14 +349,14 @@ function generateHelpPage() {
                         </td>
                     </tr>
                     <tr>
-                        <td style="cursor:pointer" onclick="openModalHelp('help14')">
-                            Removing a device
+                        <td style="cursor:pointer" onclick="openModalHelp('help14', 'arrow14')">
+                            Removing a device<div style="height:0px;margin-bottom:-8px;"></div><i class="arrow down" id="arrow14"></i>
                         </td>
                     </tr>
                     <tr style="display:none!important" id="help14">
                         <td>
                             <div class="modalStats" style="border: 1px solid black;" >
-                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help14')"><i class="fas fa-times"></i></i></div>
+                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help14', 'arrow14')"><i class="fas fa-times"></i></i></div>
                                 <div class="modalHeader">
                                     <h3 class="bold-title">Removing a device</h3>
                                 </div>
@@ -367,14 +367,14 @@ function generateHelpPage() {
                         </td>
                     </tr>
                     <tr>
-                        <td style="cursor:pointer" onclick="openModalHelp('help19')">
-                            Why is my device red?
+                        <td style="cursor:pointer" onclick="openModalHelp('help19', 'arrow19')">
+                            Why is my device red?<div style="height:0px;margin-bottom:-8px;"></div><i class="arrow down" id="arrow19"></i>
                         </td>
                     </tr>
                     <tr style="display:none!important" id="help19">
                         <td>
                             <div class="modalStats" style="border: 1px solid black;" >
-                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help19')"><i class="fas fa-times"></i></i></div>
+                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help19', 'arrow19')"><i class="fas fa-times"></i></i></div>
                                 <div class="modalHeader">
                                     <h3 class="bold-title">Why is my device red?</h3>
                                 </div>
@@ -388,14 +388,14 @@ function generateHelpPage() {
                 <div class="section-title"><h4>Account</h4></div>
                 <table class="helpTable">
                     <tr>
-                        <td style="cursor:pointer" onclick="openModalHelp('help15')">
-                            Change my account details
+                        <td style="cursor:pointer" onclick="openModalHelp('help15', 'arrow15')">
+                            Change my account details<div style="height:0px;margin-bottom:-8px;"></div><i class="arrow down" id="arrow15"></i>
                         </td>
                     </tr>
                     <tr style="display:none!important" id="help15">
                         <td>
                             <div class="modalStats" style="border: 1px solid black;" >
-                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help15')"><i class="fas fa-times"></i></i></div>
+                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help15', 'arrow15')"><i class="fas fa-times"></i></i></div>
                                 <div class="modalHeader">
                                     <h3 class="bold-title">Change my account details</h3>
                                 </div>
@@ -406,14 +406,14 @@ function generateHelpPage() {
                         </td>
                     </tr>
                     <tr>
-                        <td style="cursor:pointer" onclick="openModalHelp('help16')">
-                            Delete my account
+                        <td style="cursor:pointer" onclick="openModalHelp('help16', 'arrow16')">
+                            Delete my account<div style="height:0px;margin-bottom:-8px;"></div><i class="arrow down" id="arrow16"></i>
                         </td>
                     </tr>
                     <tr style="display:none!important" id="help16">
                         <td>
                             <div class="modalStats" style="border: 1px solid black;" >
-                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help16')"><i class="fas fa-times"></i></i></div>
+                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help16', 'arrow16')"><i class="fas fa-times"></i></i></div>
                                 <div class="modalHeader">
                                     <h3 class="bold-title">Delete my account</h3>
                                 </div>
@@ -424,14 +424,14 @@ function generateHelpPage() {
                         </td>
                     </tr>
                     <tr>
-                        <td style="cursor:pointer" onclick="openModalHelp('help17')">
-                            How to logout
+                        <td style="cursor:pointer" onclick="openModalHelp('help17', 'arrow17')">
+                            How to logout<div style="height:0px;margin-bottom:-8px;"></div><i class="arrow down" id="arrow17"></i>
                         </td>
                     </tr>
                     <tr style="display:none!important" id="help17">
                         <td>
                             <div class="modalStats" style="border: 1px solid black;" >
-                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help17')"><i class="fas fa-times"></i></i></div>
+                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help17', 'arrow17')"><i class="fas fa-times"></i></i></div>
                                 <div class="modalHeader">
                                     <h3 class="bold-title">How to logout</h3>
                                 </div>
@@ -442,14 +442,14 @@ function generateHelpPage() {
                         </td>
                     </tr>
                     <tr>
-                        <td style="cursor:pointer" onclick="openModalHelp('help18')">
-                            How to unsubscribe from email notifications
+                        <td style="cursor:pointer" onclick="openModalHelp('help18', 'arrow18')">
+                            How to unsubscribe from email notifications<div style="height:0px;margin-bottom:-8px;"></div><i class="arrow down" id="arrow18"></i>
                         </td>
                     </tr>
                     <tr style="display:none!important" id="help18">
                         <td>
                             <div class="modalStats" style="border: 1px solid black;" >
-                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help18')"><i class="fas fa-times"></i></i></div>
+                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help18', 'arrow18')"><i class="fas fa-times"></i></i></div>
                                 <div class="modalHeader">
                                     <h3 class="bold-title">How to unsubscribe from email notifications</h3>
                                 </div>

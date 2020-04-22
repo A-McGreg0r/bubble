@@ -163,18 +163,16 @@ function hourly_calc($case, $percentage, $P, $d, $m, $hub_id) {
             if ($i < $peak) {$N++;$i++;}
             elseif ($repeat){$repeat=false;}
             else {$N--;}
-            $watts = 4 * $N * $qV * $P;
-            //echo "$watts = $N * $qV * $P <br>";
+            $watts = ($N/2) * $N * $qV * $P;
         }
         else { $watts = 0; }
         
 		if ($h == (intval(date('H'))+1)){ 
-			echo "| * $N  * | ";
-            echo "hour[ $h ]::";
-            echo "$watts <br>";
             $inst_hourly_gen = $db->prepare("INSERT INTO hourly_gen (hub_id, entry_month, entry_day, entry_hour, energy_gen) VALUES (?, ?, ?, ?, ?)");
             $inst_hourly_gen->bind_param("iiiid", $hub_id, $m, $d, $h, $watts);
+            echo "INSERT INTO hourly_gen ( $hid_id , $m , $d , $h , $watts ) <br>";
             $inst_hourly_gen->execute();
+            $inst_hourly_gen->close();
             $stmt13 = $db->prepare("SELECT * FROM hourly_gen WHERE hub_id = ?");
             $stmt13->bind_param("i", $hub_id);
             $stmt13->execute();

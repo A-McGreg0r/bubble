@@ -1,6 +1,5 @@
 +<?php
 require "../config.php";
-global $db;
 
 function cal_days_in_year($Y){
     $d=0; 
@@ -59,29 +58,29 @@ function daily_calc($case, $S, $I, $P, $Y, $hub_id) {
     $sum = $S[$case]; //sum of days in season
     $mid = round(($sum/2),0); //nth day = total days / 2
     $previous_max_days=0; //sum of previous moths days
-	$even=$sum % 2 == 0;
-	$watts_sum=0;
+    $even=$sum % 2 == 0;
+    $watts_sum=0;
 
     switch ($case) {
         case 0:
             $m=12;
-			$pointer=$mid; //warm to cold - cooling
-			$x=-1; //decrument initially
+            $pointer=$mid; //warm to cold - cooling
+            $x=-1; //decrument initially
             break;
         case 1:
             $m=3;
-			$pointer=1; //cold to warm - warming
-			$x=1; //incrument initially
+            $pointer=1; //cold to warm - warming
+            $x=1; //incrument initially
             break;
         case 2:
             $m=6;
             $pointer=1; //warm to hot - warming
-			$x=1; //incrument initially
+            $x=1; //incrument initially
             break;
         case 3:
             $m=9;
             $pointer=$mid; //hot to warm - cooling
-			$x=-1; //decrument initially
+            $x=-1; //decrument initially
             break;
         default:
             echo "Invalid Season.";
@@ -163,18 +162,19 @@ function hourly_calc($case, $percentage, $P, $d, $m, $hub_id) {
             if ($i < $peak) {$N++;$i++;}
             elseif ($repeat){$repeat=false;}
             else {$N--;}
-            $watts = 4 * $N * $qV * $P;
-            //echo "$watts = $N * $qV * $P <br>";
+            $watts = ($N/2) * $N * $qV * $P;
         }
         else { $watts = 0; }
         
 		if ($h == (intval(date('H'))+1)){ 
-			echo "| * $N  * | ";
-            echo "hour[ $h ]::";
-            echo "$watts <br>";
+		    global $db;
             $inst_hourly_gen = $db->prepare("INSERT INTO hourly_gen (hub_id, entry_month, entry_day, entry_hour, energy_gen) VALUES (?, ?, ?, ?, ?)");
+            echo "INSERT INTO hourly_gen ( $hub_id , $m , $d , $h , $watts ) <br>";
             $inst_hourly_gen->bind_param("iiiid", $hub_id, $m, $d, $h, $watts);
+            echo "bind_param <br>";
             $inst_hourly_gen->execute();
+            echo "execute <br>";
+            $inst_hourly_gen->close();
             $stmt13 = $db->prepare("SELECT * FROM hourly_gen WHERE hub_id = ?");
             $stmt13->bind_param("i", $hub_id);
             $stmt13->execute();

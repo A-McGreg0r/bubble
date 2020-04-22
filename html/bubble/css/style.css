@@ -971,3 +971,34 @@ body.modal-open {
     padding-left: 7.5px!important;
     padding-right: 7.5px!important;
 }
+
+.helpDrop {
+    color: black!important;
+    font-size: 1rem!important;
+}
+
+.helpHead {
+    background-color: white!important;
+    padding-right: 2rem!important;
+    cursor: pointer!important;
+}
+
+.helpHeader {
+    margin-bottom: 0!important;
+    border-bottom: none!important;
+    border: 1px solid black;
+    text-align: center!important;
+}
+
+.helpCard {
+    border: none!important;
+    cursor: pointer!important;
+}
+
+.helpBody {
+    border: 1px solid black;
+}
+
+.bot-mar {
+    margin-bottom: 40px!important;
+}

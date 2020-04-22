@@ -19,14 +19,12 @@ html;
     $html .= <<<pageHTML
 
     <div class="modal fade modalStatsWrap" id="addDeviceModal" tabindex="-1" role="dialog" aria-labelledby="addDeviceModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modalStats modalContent">
-                <div class="modal-header">
-                    <div class="x-adjust">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true"><i class="stats_icon_x " id="" style="display:flex"><i class="fas fa-times"></i></i></span>
-                        </button>
-                    </div>
+        <div class="modalStats modalContent">
+            <div class="modal-dialog" role="document">
+                <div class="x-adjust">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="stats_icon_x " id="" style="display:flex"><i class="fas fa-times"></i></i></span>
+                    </button>
                 </div>
                 <div class="modalHeader"><strong>Add a new device</strong></div>
                 <div class="modal-body">

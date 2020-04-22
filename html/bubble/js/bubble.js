@@ -220,12 +220,12 @@ function openModalAccount(id){
 
 function arrow(arrow){
     var arrow = document.getElementById(arrow);
-    if (arrow.classList.contains("up")) {
-        arrow.classList.remove("up");
-        arrow.classList.add("down");
-    } else {
+    if (!arrow.classList.contains("up")) {
         arrow.classList.remove("down");
         arrow.classList.add("up");
+    } else {
+        arrow.classList.remove("up");
+        arrow.classList.add("down");
     }
 }
 

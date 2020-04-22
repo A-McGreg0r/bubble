@@ -20,7 +20,7 @@ html;
 
     <div class="modal modalStatsWrap" id="addDeviceModal" tabindex="-1" role="dialog" aria-labelledby="addDeviceModalLabel" aria-hidden="true">
         <div class="modalStats modalContent" >
-            <div class="x-adjust"><i class="stats_icon_x " id="" style="display:flex" onclick=""><i class="fas fa-times"></i></i></div>
+            <div class="x-adjust"><i class="stats_icon_x " id="" style="display:flex" onclick="$('#addDeviceModal').modal().toggle();"><i class="fas fa-times"></i></i></div>
             <div class="modalHeader"><strong>Add a new device</strong></div>
             <div class="modal-body">
                 <div class="container">

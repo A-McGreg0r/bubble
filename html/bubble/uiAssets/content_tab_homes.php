@@ -604,7 +604,7 @@ change_button;
                                             <i class="fa fa-home"></i>
                                             <br>Turn Off Home <br>
                                             <strong style="color:black">$count $s_or_not on </strong>
-                                            <strong class="timer_icon" id="timer_home" style="display:$icon;color:black;margin-right:15px;" onclick="openModal('modal_timer_home', 'timer_x_home')">$timer</strong>
+                                            <strong class="timer_icon" id="timer_home" style="display:$icon;color:black;margin-right:7.5px;" onclick="openModal('modal_timer_home', 'timer_x_home')">$timer</strong>
                                         </strong>
                                                     
                                     </div> 

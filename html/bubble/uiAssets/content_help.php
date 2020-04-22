@@ -36,7 +36,7 @@ function generateHelpPage() {
                                 <div class="modalHeader">
                                     <h3 class="bold-title">Turn off all devices in my home</h3>
                                 </div>
-                                <div class="modalBody">
+                                <div class="modalBody" style="text-align:justify!important;text-align-last:center!important;"">
                                     <div>To turn off all devices in your home, perhaps as you're leaving for work,
                                         there is a button on the home page labelled 'Turn off Home'. Clicking on this button
                                         will turn off all devices in your home. If you would like to set a timer that will
@@ -59,7 +59,7 @@ function generateHelpPage() {
                                 <div class="modalHeader">
                                     <h3 class="bold-title">Change Home</h3>
                                 </div>
-                                <div class="modalBody">
+                                <div class="modalBody" style="text-align:justify!important;text-align-last:center!important;"">
                                     <div>If you are connected to more than one hub, it is possible to switch between them by 
                                         clicking on the 'Change House' button on the home page. Clicking on this will open a list 
                                         of all of your homes, and by selecting one, you can view all of the statistics, rooms and
@@ -81,7 +81,7 @@ function generateHelpPage() {
                                 <div class="modalHeader">
                                     <h3 class="bold-title">Change my budget, energy price or solar panel rating</h3>
                                 </div>
-                                <div class="modalBody">
+                                <div class="modalBody" style="text-align:justify!important;text-align-last:center!important;"">
                                     <div>If you would like to change your budget, current energy price, or solar panel rating, then
                                         click on the 'Change Costing' button on the home page. This will open a form that you can fill
                                         in to change the stored values of each. If you don't want to change one of the values, just 
@@ -104,7 +104,7 @@ function generateHelpPage() {
                                 <div class="modalHeader">
                                     <h3 class="bold-title">What do all of the statistics mean?</h3>
                                 </div>
-                                <div class="modalBody">
+                                <div class="modalBody" style="text-align:justify!important;text-align-last:center!important;"">
                                     <div>At the top of the home page, underneath the buttons, there is a cost overview that
                                     tells you how much energy you have used over the past day, month and year. It also provides
                                     a costing estimate based on the energy cost set up on the hub. Under the monthly section,
@@ -139,7 +139,7 @@ function generateHelpPage() {
                                 <div class="modalHeader">
                                     <h3 class="bold-title">What is the advice for?</h3>
                                 </div>
-                                <div class="modalBody">
+                                <div class="modalBody" style="text-align:justify!important;text-align-last:center!important;"">
                                     <div>Our advice page offers suggestions that could help you save energy and money.
                                         By looking at the weather, we can advise you on ways in which you could reduce
                                         your energy consumption in the current temperature. Bubble is dedicated to helping
@@ -160,7 +160,7 @@ function generateHelpPage() {
                                 <div class="modalHeader">
                                     <h3 class="bold-title">How do you know my location?</h3>
                                 </div>
-                                <div class="modalBody">
+                                <div class="modalBody" style="text-align:justify!important;text-align-last:center!important;"">
                                     <div>When you set up your hub, we store the IP address of the hub. The IP address is a numerical label
                                     assigned to a device that can be interpreted to find a nearby location. 
                                     Using this, we can determine the weather of the local area. This information is completely
@@ -184,7 +184,7 @@ function generateHelpPage() {
                                 <div class="modalHeader">
                                     <h3 class="bold-title">Turn on a room</h3>
                                 </div>
-                                <div class="modalBody">
+                                <div class="modalBody" style="text-align:justify!important;text-align-last:center!important;"">
                                     <div>To turn on all of the devices in a room, click on your desired room. The button
                                         will turn yellow to indicate it is turning on, you will see
                                         a loading symbol as the devices are turned on, then a status to the right of the button
@@ -210,7 +210,7 @@ function generateHelpPage() {
                                 <div class="modalHeader">
                                     <h3 class="bold-title">Setting a timer on a room</h3>
                                 </div>
-                                <div class="modalBody">
+                                <div class="modalBody" style="text-align:justify!important;text-align-last:center!important;"">
                                     <div>If a room is currently on, a small clock icon will appear in the top right corner of the button.
                                         Clicking on this button will open up a small window that will allow you to set a timer that
                                         will schedule the devices in that room to turn off. It will only set timers for devices that
@@ -232,7 +232,7 @@ function generateHelpPage() {
                                 <div class="modalHeader">
                                     <h3 class="bold-title">Review the statistics of a room</h3>
                                 </div>
-                                <div class="modalBody">
+                                <div class="modalBody" style="text-align:justify!important;text-align-last:center!important;"">
                                     <div>To review your room's statistics, click on the information button in the top left corner of the room button.
                                     This will open up the statistics popup for the room. At the top there is a pie chart diplaying
                                     a comparison between the amount this device is costing you against all of the other devices
@@ -257,7 +257,7 @@ function generateHelpPage() {
                                 <div class="modalHeader">
                                     <h3 class="bold-title">Adding a room</h3>
                                 </div>
-                                <div class="modalBody">
+                                <div class="modalBody" style="text-align:justify!important;text-align-last:center!important;"">
                                     <div>In order to add a new room, there is a button at the very top of the Room Tab. Clicking on this button
                                         will open up a small form in which you can input the name of the room and the icon you would like
                                         it to have. Click on 'Add Room' at the bottom, and the new room will be added to the list.</div>
@@ -278,7 +278,7 @@ function generateHelpPage() {
                                 <div class="modalHeader">
                                     <h3 class="bold-title">Removing a room</h3>
                                 </div>
-                                <div class="modalBody">
+                                <div class="modalBody" style="text-align:justify!important;text-align-last:center!important;"">
                                     <div>To remove a room, click on the information button in the top left corner of the room button.
                                     This will open up the statistics popup for the room. At the bottom of this popup, there
                                     is a button that says 'Delete Room'. Click this button and another popup will appear asking for
@@ -303,7 +303,7 @@ function generateHelpPage() {
                                 <div class="modalHeader">
                                     <h3 class="bold-title">Turn on a device</h3>
                                 </div>
-                                <div class="modalBody">
+                                <div class="modalBody" style="text-align:justify!important;text-align-last:center!important;"">
                                     <div>To turn on a device, simply click on the device you would like to turn on.
                                         A loading symbol will appear and the device button will refresh with it's new status.
                                         If a device button is yellow, then it is turned on. If it is grey, then it is turned off.
@@ -329,7 +329,7 @@ function generateHelpPage() {
                                 <div class="modalHeader">
                                     <h3 class="bold-title">Setting a timer</h3>
                                 </div>
-                                <div class="modalBody">
+                                <div class="modalBody" style="text-align:justify!important;text-align-last:center!important;"">
                                     <div>When a device is turned on, a clock icon will appear in the top right corner of the button.
                                         Clicking on this button will open up a small popup in which you can set a timer to turn off your device.
                                         The time that the device is scheduled to turn off will appear. If the device is turned off before
@@ -351,7 +351,7 @@ function generateHelpPage() {
                                 <div class="modalHeader">
                                     <h3 class="bold-title">Review my device statistics</h3>
                                 </div>
-                                <div class="modalBody">
+                                <div class="modalBody" style="text-align:justify!important;text-align-last:center!important;"">
                                     <div>To access the statistics of a device, click on the information icon in the top left of the button.
                                         Opening this popup, you will see a pie chart that shows a comparison between the amount this device
                                         is costing you compared to all other devices put together. Underneath, you will see the numbers laid
@@ -376,7 +376,7 @@ function generateHelpPage() {
                                 <div class="modalHeader">
                                     <h3 class="bold-title">Adding a device</h3>
                                 </div>
-                                <div class="modalBody">
+                                <div class="modalBody" style="text-align:justify!important;text-align-last:center!important;"">
                                     <div>To add a new device, click on the 'Add new device' button at the top of the devics tab.
                                         This will open up a popup, and, assuming you have allowed access to your camera, will show
                                         the view from your camera. Scan the QR code that came with your device, and the device will
@@ -398,7 +398,7 @@ function generateHelpPage() {
                                 <div class="modalHeader">
                                     <h3 class="bold-title">Moving a device to a different room</h3>
                                 </div>
-                                <div class="modalBody">
+                                <div class="modalBody" style="text-align:justify!important;text-align-last:center!important;"">
                                     <div>To move a device to a different room, click on the information icon in the top left
                                         of the device button. This will open the statistics popup. If you scroll to the very 
                                         bottom of this popup, there is a button that says 'Move Device'. Clicking on this
@@ -421,7 +421,7 @@ function generateHelpPage() {
                                 <div class="modalHeader">
                                     <h3 class="bold-title">Removing a device</h3>
                                 </div>
-                                <div class="modalBody">
+                                <div class="modalBody" style="text-align:justify!important;text-align-last:center!important;"">
                                     <div>To remove a device, click on the information icon in the top left
                                     of the device button. This will open the statistics popup. If you scroll to the very 
                                     bottom of this popup, there is a button that says 'Delete Device'. Click on this and
@@ -444,7 +444,7 @@ function generateHelpPage() {
                                 <div class="modalHeader">
                                     <h3 class="bold-title">Why is my device red?</h3>
                                 </div>
-                                <div class="modalBody">
+                                <div class="modalBody" style="text-align:justify!important;text-align-last:center!important;"">
                                     <div>If a device appears as red with the status set to 'Fault', this means that there is an
                                         issue with your device. To rectify this, you will either need to replace the faulty device
                                         or contact us at bubblehome.care@gmail.com to enquire about a repair.</div>
@@ -468,7 +468,7 @@ function generateHelpPage() {
                                 <div class="modalHeader">
                                     <h3 class="bold-title">Change my account details</h3>
                                 </div>
-                                <div class="modalBody">
+                                <div class="modalBody" style="text-align:justify!important;text-align-last:center!important;"">
                                     <div>To update your account, navigate to the account page, found at the top of the screen
                                     on laptops and desktops, or in the dropdown menu on mobile or tablet. Here, you will be able
                                     to view your current details. By pressing the 'Update Account' button at the bottom, a popup
@@ -491,7 +491,7 @@ function generateHelpPage() {
                                 <div class="modalHeader">
                                     <h3 class="bold-title">Delete my account</h3>
                                 </div>
-                                <div class="modalBody">
+                                <div class="modalBody" style="text-align:justify!important;text-align-last:center!important;"">
                                     <div>To delete your account, navigate to the account page, found at the top of the screen
                                     on laptops and desktops, or in the dropdown menu on mobile or tablet. Here, you will be able
                                     to view your current details. By pressing the 'Delete Account' button at the bottom, you will open a popup
@@ -515,7 +515,7 @@ function generateHelpPage() {
                                 <div class="modalHeader">
                                     <h3 class="bold-title">How to logout</h3>
                                 </div>
-                                <div class="modalBody">
+                                <div class="modalBody" style="text-align:justify!important;text-align-last:center!important;"">
                                     <div>To logout, the button can be found at the top of the screen
                                     on laptops and desktops, or in the dropdown menu on mobile or tablet. Here, you will be able
                                     to select the logout button, and you will be returned to the login page.</div>
@@ -536,7 +536,7 @@ function generateHelpPage() {
                                 <div class="modalHeader">
                                     <h3 class="bold-title">How to unsubscribe from email notifications</h3>
                                 </div>
-                                <div class="modalBody">
+                                <div class="modalBody" style="text-align:justify!important;text-align-last:center!important;"">
                                 <div>To update your account, navigate to the account page, found at the top of the screen
                                     on laptops and desktops, or in the dropdown menu on mobile or tablet. Here, you will be able
                                     to view your current details. By pressing the 'Update Account' button at the bottom, a popup

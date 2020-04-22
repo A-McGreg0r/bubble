@@ -456,12 +456,16 @@ function alterDevice(hub_id, device_id, device_type, current_state){
 
 function refreshRoom(room_id) {
     //Refresh room
-    $('#room_reload_' + room_id).load(document.URL + ' #room_reload_' + room_id);
+    $('#room_reload_' + room_id).load(document.URL + ' #room_reload_' + room_id, function(){
+        refreshDoughnuts();
+    });
 }
 
 function refreshRooms() {
     //Refresh rooms
-    $('#room-encompass').load(document.URL + ' #room-encompass');
+    $('#room-encompass').load(document.URL + ' #room-encompass', function(){
+        refreshDoughnuts();
+    });
 }
 
 
@@ -469,6 +473,7 @@ function refreshDevice(device_id) {
     //Refresh device
     $('#reload_' + device_id).load(document.URL + ' #reload_' + device_id, function(){
         attachDropdownSelectors();
+        refreshDoughnuts();
     });
 }
 
@@ -476,6 +481,7 @@ function refreshDevices() {
     //Refresh device
     $('#messages-attr').load(document.URL + ' #device-encompass', function(){
         attachDropdownSelectors();
+        refreshDoughnuts();
     });
 }
 
@@ -508,6 +514,7 @@ function refreshDoughnuts(){
         });
     });
 
+    //FIND ALL DEVICE DOUGHNUTS ON THE SCREEN AND UPDATE
     $('canvas[id^="stats_doughnut_"]').each(function () {
         var ctxD = $(this).get(0).getContext("2d");
         var myLineChart = new Chart(ctxD, {

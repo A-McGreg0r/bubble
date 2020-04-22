@@ -26,7 +26,7 @@ html;
                         <span aria-hidden="true"><i class="stats_icon_x " id="" style="display:flex"><i class="fas fa-times"></i></i></span>
                     </button>
                 </div>
-                <div class="modalHeader"><strong>Add a new device</strong></div>
+                <div class="modalHeader modal-header"><strong>Add a new device</strong></div>
                 <div class="modal-body">
                     <div class="container">
                         <div class="col-lg-12">

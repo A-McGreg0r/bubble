@@ -20,8 +20,8 @@ html;
 
     <div class="modal fade modalStatsWrap" id="addDeviceModal" tabindex="-1" role="dialog" aria-labelledby="addDeviceModalLabel" aria-hidden="true">
         <div class="modalStats modalContent">
-            <div class="modal-dialog" role="document">
-                <div class="modalHeader modal-header">
+            <div class="" role="document">
+                <div class="modal-header modalHeader">
                     <strong>Add a new device</strong>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true"><i class="stats_icon_x " id="" style="display:flex"><i class="fas fa-times"></i></i></span>

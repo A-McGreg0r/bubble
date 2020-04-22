@@ -10,9 +10,14 @@ function generateQRReader($autoOpen = FALSE){
                 $(document).ready(function(){
                     openModalHome('addDeviceModal');
                     $('#addDeviceModal').attr("auto-reload", true);
-
                     openCamera();
                 });
+
+                function checkClose(){
+                    if($("#addDeviceModal").attr("auto-reload")){
+                        location.reload();
+                    }
+                }
             </script>
 html;
     }
@@ -21,7 +26,7 @@ html;
     
     <div class="modal modalStatsWrap" id="addDeviceModal">
         <div class="modalContent modalStats" id="">
-            <div class="x-adjust"><i class="stats_icon_x " id="" style="display:flex" onclick="openModalHome('addDeviceModal');closeCamera();"><i class="fas fa-times"></i></i>
+            <div class="x-adjust"><i class="stats_icon_x " id="" style="display:flex" onclick="openModalHome('addDeviceModal');closeCamera();checkClose();"><i class="fas fa-times"></i></i>
             </div>
             <div class="modalHeader"><strong>Add a new device</strong></div>
             <div class="modalBody">

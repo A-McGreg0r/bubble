@@ -31,7 +31,7 @@ function generateLoginPage(){
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link login-links" data-toggle="tab" href="#panel3" role="tab">
-                                <i class="fas fa-user-plus mr-1"></i><br>Reset
+                                <i class="far fa-question-circle"></i></i></i><br>About
                             </a>
                         </li>
                     </ul>
@@ -239,26 +239,11 @@ function generateLoginPage(){
                         <div class="tab-pane fade" id="panel3" role="tabpanel">
 
                             <!--Body-->
-                            <div class="modal-body mb-1">
-
-                                <!-- Form -->
-                                <form class="text-center" style="color: rgb(39,104,88);" action="required/action_forgotPassword.php" method="POST">
-
-                                    <!-- Email -->
-                                    <div class="md-form">
-                                        <label for="materialLoginFormEmail">E-mail</label>
-                                        <input type="email"
-                                            id="materialLoginFormEmail"
-                                            class="form-control form-control-sm validate"
-                                            name="email"
-                                            required size="20"
-                                            value=""/>
-                                    </div>
-
-                                    <!-- Sign in button -->
-                                    <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit" value="submit">Submit</button>
-
-                                </form>
+                            <div class="modal-body mb-1" style="text-align:center">
+                                <div class="section-title"><h4 style="font-weight:500!important">About Bubble<h4></div>
+                                Bubble aims to provide an easy solution to energy conservation around the home.
+                                <br><br>
+                                Brought to you by Esteem in collaboration with <a href="https://rorydobson.com/e-SavingSolutions">e-Saving Solutions</a>
                             </div>
                         </div>
                         <!--Panel 3 Forgot Password Tab -->

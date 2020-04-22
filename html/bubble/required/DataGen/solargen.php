@@ -168,7 +168,7 @@ function hourly_calc($case, $percentage, $P, $d, $m, $hub_id) {
         else { $watts = 0; }
         
 		if ($h == (intval(date('H'))+1)){ 
-		    echo "INSERT INTO hourly_gen ( $hid_id , $m , $d , $h , $watts ) <br>";
+		    echo "INSERT INTO hourly_gen ( $hud_id , $m , $d , $h , $watts ) <br>";
             $inst_hourly_gen = $db->prepare("INSERT INTO hourly_gen (hub_id, entry_month, entry_day, entry_hour, energy_gen) VALUES (?, ?, ?, ?, ?)");
             $inst_hourly_gen->bind_param("iiiid", $hub_id, $m, $d, $h, $watts);
             $inst_hourly_gen->execute();

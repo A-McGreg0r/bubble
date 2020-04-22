@@ -21,13 +21,13 @@ function generateHelpPage() {
                 <div class="pageHeader" style="padding-top:15px">Hi $first_name, what can we help you with?</div>
                 <hr style="width:100%!important;margin-left:0!important;margin-right:0!important;">
                 <ul style="text-align:center;list-style-type:none;padding-left:0;margin-bottom:0;">
-                    <li><a href="#homeHelp" style="font-size:20px;padding:5px;">Home</a></li>
-                    <li><a href="#roomsHelp" style="font-size:20px;padding:5px;">Rooms</a></li>
-                    <li><a href="#deviceHelp" style="font-size:20px;padding:5px;">Devices</a></li>
-                    <li><a href="#adviceHelp" style="font-size:20px;padding:5px;">Advice</a></li>
-                    <li><a href="#accountHelp" style="font-size:20px;padding:5px;">Account</a></li>
+                    <li><a href="#homeHelp" style="font-size:22px;padding:5px;">Home</a></li>
+                    <li><a href="#roomsHelp" style="font-size:22px;padding:5px;">Rooms</a></li>
+                    <li><a href="#deviceHelp" style="font-size:22px;padding:5px;">Devices</a></li>
+                    <li><a href="#adviceHelp" style="font-size:22px;padding:5px;">Advice</a></li>
+                    <li><a href="#accountHelp" style="font-size:22px;padding:5px;">Account</a></li>
                 </ul>
-                <hr style="width:100%!important;margin-left:0!important;margin-right:0!important;">
+                <hr style="width:100%!important;margin-left:0!important;margin-right:0!important;margin-bottom:40px;">
 
                 <div class="section-title" id="homeHelp"><h4 style="color:rgb(226, 183, 28);font-weight:600!important;">Home</h4></div>
                 <table class="helpTable">

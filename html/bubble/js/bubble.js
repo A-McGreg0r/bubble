@@ -12,8 +12,23 @@ $(document).ready(function(){
     attachDropdownSelectors();
     
     //HANDLE CLOSING THE CAMERA WHEN THE ADD DEVICE MODAL IS CLOSED
-    $('#addDeviceModal').on('hidden.bs.modal', function () {
-
+    $('canvas[name^="room_stats_doughnut_"]').each(function () {
+        var ctxD = $(this).getContext("2d");
+        var myLineChart = new Chart(ctxD, {
+        type: "doughnut",
+        data: {
+        labels: [$(this).attr("room-name") + " [£]", "Other Rooms [£]"],
+        datasets: [{
+        data: [$(this).attr("price-month"), $(this).attr("total-price")],
+        backgroundColor: ["rgb(226, 183, 28)", "rgb(56,56,56)"],
+        hoverBackgroundColor: ["rgb(246, 203, 48)", "rgb(76,76,76)"]
+        }]
+        },
+        options: {
+            responsive: [true],
+            
+            }
+        });
     });
 });
 

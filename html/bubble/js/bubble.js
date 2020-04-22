@@ -324,7 +324,7 @@ function updateAccount(id, fn, ln, email, adl1, adl2, post, ae) {
         type:'POST',
         url: url,
         data:{type: "account", fn: first_name, ln: last_name, email: email_adr, adl1: address_1, adl2: address_2, post: postcode, ae: allow_email},
-        success:function(){
+        success:function(data){
             //PARSE RESPONSE JSON DATA
             var result = JSON.parse(data);
 
@@ -357,7 +357,7 @@ function updateCostings() {
         type:'POST',
         url: url,
         data:{type: "costings", energy_cost: user_energy_cost, budget: user_budget, solargen: user_solargen},
-        success:function(){
+        success:function(data){
             //PARSE RESPONSE JSON DATA
             var result = JSON.parse(data);
 

@@ -10,7 +10,7 @@ session_write_close();
 //GRAB INFORMATION SENT OVER AJAX
 
 
-$type = filter_input(INPUT_POST, "type", FILTER_VALIDATE_STRING);
+$type = filter_input(INPUT_POST, "type", FILTER_SANITIZE_STRING);
 if($type == FALSE){
     echo("{\"error\":\"Invalid type\"}");
     exit(0);
@@ -19,14 +19,14 @@ if($type == FALSE){
 if($type == "account"){
     
     //GET FIRST NAME
-    $first_name = filter_input(INPUT_POST, "fn", FILTER_VALIDATE_STRING);
+    $first_name = filter_input(INPUT_POST, "fn", FILTER_SANITIZE_STRING);
     if($first_name == FALSE && $_POST['fn'] != ""){
         echo("{\"error\":\"Invalid first name\"}");
         exit(0);
     }
 
     //GET VALID LAST NAME
-    $last_name = filter_input(INPUT_POST, "ln", FILTER_VALIDATE_STRING);
+    $last_name = filter_input(INPUT_POST, "ln", FILTER_SANITIZE_STRING);
     if($last_name == FALSE && $_POST['ln'] != ""){
         echo("{\"error\":\"Invalid last name\"}");
         exit(0);
@@ -40,28 +40,28 @@ if($type == "account"){
     }
 
     //GET VALID ADDRESS LINE 1
-    $adr1 = filter_input(INPUT_POST, "adl1", FILTER_VALIDATE_STRING);
+    $adr1 = filter_input(INPUT_POST, "adl1", FILTER_SANITIZE_STRING);
     if($adr1 == FALSE && $_POST['adl1'] != ""){
         echo("{\"error\":\"Invalid address line 1\"}");
         exit(0);
     }
 
     //GET VALID ADDRESS LINE 2
-    $adr2 = filter_input(INPUT_POST, "adl2", FILTER_VALIDATE_STRING);
+    $adr2 = filter_input(INPUT_POST, "adl2", FILTER_SANITIZE_STRING);
     if($adr2 == FALSE && $_POST['adl2'] != ""){
         echo("{\"error\":\"Invalid address line \"}");
         exit(0);
     }
 
     //GET VALID POSTCODE
-    $postcode = filter_input(INPUT_POST, "post", FILTER_VALIDATE_STRING);
+    $postcode = filter_input(INPUT_POST, "post", FILTER_SANITIZE_STRING);
     if($postcode == FALSE && $_POST['post'] != ""){
         echo("{\"error\":\"Invalid address postcode \"}");
         exit(0);
     }
 
     //GET VALID ACCEPT EMAILS
-    $allow_email = filter_input(INPUT_POST, "ae", FILTER_VALIDATE_STRING);
+    $allow_email = filter_input(INPUT_POST, "ae", FILTER_SANITIZE_STRING);
     if($allow_email == FALSE && $_POST['ae'] != ""){
         echo("{\"error\":\"Invalid ae \"}");
         exit(0);
@@ -125,21 +125,21 @@ if($type == "account"){
 
 } elseif($type == "costings"){
     //GET VALID ENERGY COST
-    $energy_cost = filter_input(INPUT_POST, "energy_cost", FILTER_VALIDATE_STRING);
+    $energy_cost = filter_input(INPUT_POST, "energy_cost", FILTER_SANITIZE_STRING);
     if($energy_cost == FALSE && $_POST['energy_cost'] != ""){
         echo("{\"error\":\"Invalid energy cost \"}");
         exit(0);
     }
 
     //GET VALID BUDGET
-    $budget = filter_input(INPUT_POST, "budget", FILTER_VALIDATE_NUMBER_INT);
+    $budget = filter_input(INPUT_POST, "budget", FILTER_SANITIZE_NUMBER_INT);
     if($budget == FALSE && $_POST['budget'] != ""){
         echo("{\"error\":\"Invalid budget \"}");
         exit(0);
     }
 
     //GET VALID solargen
-    $solargen = filter_input(INPUT_POST, "solargen", FILTER_VALIDATE_STRING);
+    $solargen = filter_input(INPUT_POST, "solargen", FILTER_SANITIZE_STRING);
     if($solargen == FALSE && $_POST['solargen'] != ""){
         echo("{\"error\":\"Invalid solargen \"}");
         exit(0);

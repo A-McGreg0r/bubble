@@ -1,6 +1,5 @@
 +<?php
 require "../config.php";
-global $db;
 
 function cal_days_in_year($Y){
     $d=0; 
@@ -168,6 +167,7 @@ function hourly_calc($case, $percentage, $P, $d, $m, $hub_id) {
         else { $watts = 0; }
         
 		if ($h == (intval(date('H'))+1)){ 
+		    global $db;
             $inst_hourly_gen = $db->prepare("INSERT INTO hourly_gen (hub_id, entry_month, entry_day, entry_hour, energy_gen) VALUES (?, ?, ?, ?, ?)");
             echo "INSERT INTO hourly_gen ( $hub_id , $m , $d , $h , $watts ) <br>";
             $inst_hourly_gen->bind_param("iiiid", $hub_id, $m, $d, $h, $watts);

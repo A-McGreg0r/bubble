@@ -129,6 +129,7 @@ html;
                 $room_day = 0;
                 $room_month = 0;
                 $room_year = 0;
+                $devices = 'noDevices();';
                 $stmt3 = $db->prepare("SELECT * FROM device_info WHERE hub_id = ? AND room_id = ?");
                 $stmt3->bind_param("ii", $hub_id, $room_id);
                 $stmt3->execute();
@@ -141,6 +142,7 @@ html;
                         $room_month = $room_month + $rowDevice3['day_data'];
                         $room_year = $room_year + $rowDevice3['month_data'];
                         $html .= "refreshDevice($id);";
+                        $devices = '';
                     }
                 }
                 $total_usage = number_format(($total_usage / 1000),3);
@@ -198,7 +200,7 @@ graph;
                 }
 
                 $html .= <<<html
-                        refreshRoom($room_id);refreshHomeButton();">
+                        refreshRoom($room_id);refreshHomeButton();$devices">
                         <!--Card image-->
                         <div class="view overlay">
                             <div class="mask rgba-white-slight"></div>
@@ -434,6 +436,14 @@ html;
     $html .= <<<html
     </div>
     <!-- Modal -->
+    <div class="modalStats modal" id="noDevices" style="background-color:rgba(0,0,0,0.9)!important;padding-left:5vh;padding-right:5vh!important;padding-bottom:0!important;padding-bottom:100%!important;padding-top:40vh!important;">
+        <div class="modalContent">
+            <div class="modalHeader" style="margin-bottom:0!important;padding:40px;">
+                No devices in room
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade" id="addRoomModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">

@@ -319,7 +319,7 @@ function updateAccount(id, fn, ln, email, adl1, adl2, post, ae) {
     var postcode = $('#' + post).val();
     var allow_email = $('#' + ae).val();
     
-    //Call action device to toggle room
+    //Call action device to update account
     $.ajax({
         type:'POST',
         url: url,
@@ -373,6 +373,14 @@ function styleRoomTimer(id) {
         document.getElementById('timer-tick-room-' + id).style.display = "none";
         $('#modal_room_' + id).load(document.URL + ' #content_room_timer_' + id);
     }, 2000);
+}
+
+function noDevices() {
+    var no = document.getElementById("noDevices");
+    no.style.display = "block";
+    setTimeout(function(){
+        no.style.display = "none";
+    }, 1500);
 }
 
 function toggleRoom(hub_id, room_id){

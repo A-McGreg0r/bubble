@@ -655,7 +655,7 @@ function addRoomModalSubmit(){
             if(result.success){
                 refreshRooms();
                 refreshDevices();
-                $('#addRoomModal').modal("hide");
+                openModalHome("addRoomModal");
                 $("#roomFormName").removeAttr("disabled");
                 $("#roomFormIcon").removeAttr("disabled");
                 $("#roomFormName").val("");

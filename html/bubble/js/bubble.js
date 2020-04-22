@@ -323,9 +323,51 @@ function updateAccount(id, fn, ln, email, adl1, adl2, post, ae) {
     $.ajax({
         type:'POST',
         url: url,
-        data:{id : id, fn: first_name, ln: last_name, email: email_adr, adl1: address_1, adl2: address_2, post: postcode, ae: allow_email},
+        data:{type: "account", fn: first_name, ln: last_name, email: email_adr, adl1: address_1, adl2: address_2, post: postcode, ae: allow_email},
         success:function(){
-            location.reload();
+            //PARSE RESPONSE JSON DATA
+            var result = JSON.parse(data);
+
+            //ADD ROOM ERROR, DISPLAY ERROR TO USER
+            if(result.error){
+                alert(result.error);
+            }
+            if(result.success){
+                location.reload();
+            }
+        },
+        error: function(data){
+            alert("error!");
+        }
+    });
+}
+
+//------------------------End Update account function--------------------------------------------
+
+//------------------------Update costings function--------------------------------------------
+
+function updateCostings() {
+    let url = "required/action_updateAccount.php";
+    var user_energy_cost = $('#energyCostInputBox').val();
+    var user_budget = $('#budgetInputBox').val();
+    var user_solargen = $('#solarGenInputBox').val();
+    
+    //Call action device to update account
+    $.ajax({
+        type:'POST',
+        url: url,
+        data:{type: "costings", energy_cost: user_energy_cost, budget: user_budget, solargen: user_solargen},
+        success:function(){
+            //PARSE RESPONSE JSON DATA
+            var result = JSON.parse(data);
+
+            //ADD ROOM ERROR, DISPLAY ERROR TO USER
+            if(result.error){
+                alert(result.error);
+            }
+            if(result.success){
+                location.reload();
+            }
         },
         error: function(data){
             alert("error!");

@@ -18,7 +18,7 @@ function generateHelpPage() {
         <div class="container justify-content-center">
             <div class="card justify-content-center" style="border:none!important">
 
-                <div class="pageHeader">Hi $first_name, how can we help?</div>
+                <div class="pageHeader" style="padding-top:15px">Hi $first_name, how can we help?</div>
                 <hr style="width:100%!important;margin-left:0!important;margin-right:0!important;">
 
                 <div class="section-title"><h4>Home Tab</h4></div>
@@ -103,7 +103,7 @@ function generateHelpPage() {
                     <tr style="display:none!important" id="help5">
                         <td>
                             <div class="modalStats" style="border: 1px solid black;" >
-                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help5', 'arrow5)"><i class="fas fa-times"></i></i></div>
+                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help5', 'arrow5')"><i class="fas fa-times"></i></i></div>
                                 <div class="modalHeader">
                                     <h3 class="bold-title">What is the advice for?</h3>
                                 </div>
@@ -412,7 +412,12 @@ function generateHelpPage() {
                                     <h3 class="bold-title">Change my account details</h3>
                                 </div>
                                 <div class="modalBody">
-                                    Hello
+                                    <div>To update your account, navigate to the account page, found at the top of the screen
+                                    on laptops and desktops, or in the dropdown menu on mobile or tablet. Here, you will be able
+                                    to view your current details. By pressing the 'Update Account' button at the bottom, a popup
+                                    will open where you can enter your new details. If you wish for part of your account details to
+                                    remain the same, just leave the field blank. Press 'Update', and you're account details will update.</div>
+                                    <br><img src="img/updateAccount.png" style="max-width:90%;"/>
                                 </div>
                             </div>
                         </td>
@@ -430,7 +435,13 @@ function generateHelpPage() {
                                     <h3 class="bold-title">Delete my account</h3>
                                 </div>
                                 <div class="modalBody">
-                                    Hello
+                                    <div>To delete your account, navigate to the account page, found at the top of the screen
+                                    on laptops and desktops, or in the dropdown menu on mobile or tablet. Here, you will be able
+                                    to view your current details. By pressing the 'Delete Account' button at the bottom, you will open a popup
+                                    that will ask for confirmation. If you wish to delete your accout, select 'Yes: Delete Account'. This
+                                    will permanently delete your details, and, should you wish to access the app again, you will need to 
+                                    create a new one. We'd be sad to see you go!</div>
+                                    <br><img src="img/deleteAccount.png" style="max-width:90%;"/>
                                 </div>
                             </div>
                         </td>
@@ -448,7 +459,10 @@ function generateHelpPage() {
                                     <h3 class="bold-title">How to logout</h3>
                                 </div>
                                 <div class="modalBody">
-                                    Hello
+                                    <div>To logout, the button can be found at the top of the screen
+                                    on laptops and desktops, or in the dropdown menu on mobile or tablet. Here, you will be able
+                                    to select the logout button, and you will be returned to the login page.</div>
+                                    <br><img src="img/logout.png" style="max-width:90%;"/>
                                 </div>
                             </div>
                         </td>
@@ -466,7 +480,12 @@ function generateHelpPage() {
                                     <h3 class="bold-title">How to unsubscribe from email notifications</h3>
                                 </div>
                                 <div class="modalBody">
-                                    Hello
+                                <div>To update your account, navigate to the account page, found at the top of the screen
+                                    on laptops and desktops, or in the dropdown menu on mobile or tablet. Here, you will be able
+                                    to view your current details. By pressing the 'Update Account' button at the bottom, a popup
+                                    will open where you can enter your new details. Here, there is the option to change whether or
+                                    not you receive email notifications. Press 'Update', and you're account details will update.</div>
+                                    <br><img src="img/updateAccount.png" style="max-width:90%;"/>
                                 </div>
                             </div>
                         </td>

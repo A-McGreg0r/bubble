@@ -342,7 +342,11 @@ function generateHelpPage() {
                                     <h3 class="bold-title">Moving a device to a different room</h3>
                                 </div>
                                 <div class="modalBody">
-                                    Hello
+                                    <div>To move a device to a different room, click on the information icon in the top left
+                                        of the device button. This will open the statistics popup. If you scroll to the very 
+                                        bottom of this popup, there is a button that says 'Move Device'. Clicking on this
+                                        will open a dropdown menu that allows you to select the room you'd like to move the 
+                                        device to, click 'Save Changes' and your device will be moved.</div>
                                     <br><img src="img/deviceStats.png" style="max-width:90%;"/>
                                 </div>
                             </div>
@@ -361,7 +365,12 @@ function generateHelpPage() {
                                     <h3 class="bold-title">Removing a device</h3>
                                 </div>
                                 <div class="modalBody">
-                                    Hello
+                                    <div>To remove a device, click on the information icon in the top left
+                                    of the device button. This will open the statistics popup. If you scroll to the very 
+                                    bottom of this popup, there is a button that says 'Delete Device'. Click on this and
+                                    the app will ask for confirmation. Click on 'Delete Device' and your device will be remved
+                                    from your account.</div>
+                                    <br><img src="img/deviceStats.png" style="max-width:90%;"/>
                                 </div>
                             </div>
                         </td>
@@ -379,7 +388,10 @@ function generateHelpPage() {
                                     <h3 class="bold-title">Why is my device red?</h3>
                                 </div>
                                 <div class="modalBody">
-                                    Hello
+                                    <div>If a device appears as red with the status set to 'Fault', this means that there is an
+                                        issue with your device. To rectify this, you will either need to replace the faulty device
+                                        or contact us at bubblehome.care@gmail.com to enquire about a repair.</div>
+                                    <br><img src="img/redButton.JPG" style="max-width:90%;"/>
                                 </div>
                             </div>
                         </td>

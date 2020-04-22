@@ -368,7 +368,7 @@ function generateHelpPage() {
 
 
     <!--Section :4-->      
-    <div class="section-title" id="roomsHelp">
+    <div class="section-title" id="deviceHelp">
         <h4 style="color:rgb(226, 183, 28);font-weight:600!important;">Devices</h4>
     </div>
       <!--Accordion wrapper-->
@@ -612,7 +612,7 @@ function generateHelpPage() {
   
   
   <!--Section :5-->      
-    <div class="section-title" id="roomsHelp">
+    <div class="section-title" id="adviceHelp">
         <h4 style="color:rgb(226, 183, 28);font-weight:600!important;">Advice</h4>
     </div>
       <!--Accordion wrapper-->
@@ -689,7 +689,7 @@ function generateHelpPage() {
     
     
     <!--Section :6-->      
-    <div class="section-title" id="roomsHelp">
+    <div class="section-title" id="accountHelp">
         <h4 style="color:rgb(226, 183, 28);font-weight:600!important;">Account</h4>
     </div>
       <!--Accordion wrapper-->

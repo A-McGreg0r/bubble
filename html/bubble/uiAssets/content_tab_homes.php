@@ -561,7 +561,7 @@ change_button;
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" onclick="updateCostings()" class="btn btn-secondary">Add Room</button>
+                        <button type="button" onclick="updateCostings()" class="btn">Update Costings</button>
                     </div>
                 </div>
             </div>

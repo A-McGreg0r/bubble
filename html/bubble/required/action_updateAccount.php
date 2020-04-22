@@ -4,6 +4,8 @@ include_once 'config.php';
 //BEGIN SESSION
 session_start();
 $user_id = $_SESSION['user_id'];
+$hub_id = $_SESSION['hub_id'];
+
 //END SESSION
 session_write_close();
 
@@ -123,7 +125,7 @@ if($type == "account"){
 
     echo("{\"success\":\"Success \"}");
 
-} elseif($type == "costings"){
+} else if($type == "costings"){
     //GET VALID ENERGY COST
     $energy_cost = filter_input(INPUT_POST, "energy_cost", FILTER_SANITIZE_STRING);
     if($energy_cost == FALSE && $_POST['energy_cost'] != ""){
@@ -147,30 +149,31 @@ if($type == "account"){
     
     //If an edit has been made, update the user information with the new value
     if($energy_cost != ''){
-        $stmt = $db->prepare("UPDATE hub_cost SET energy_cost = ? WHERE user_id = ?");
-        $stmt->bind_param("di", $energy_cost, $user_id);
+        $stmt = $db->prepare("UPDATE hub_cost SET energy_cost = ? WHERE hub_id = ?");
+        $stmt->bind_param("di", $energy_cost, $hub_id);
         $stmt->execute();
         $stmt->close();
     }
 
     //If an edit has been made, update the user information with the new value
     if($budget != ''){
-        $stmt = $db->prepare("UPDATE hub_cost SET budget = ? WHERE user_id = ?");
-        $stmt->bind_param("ii", $budget, $user_id);
+        $stmt = $db->prepare("UPDATE hub_cost SET budget = ? WHERE hub_id = ?");
+        $stmt->bind_param("ii", $budget, $hub_id);
         $stmt->execute();
         $stmt->close();
     }
 
     //If an edit has been made, update the user information with the new value
     if($solargen != ''){
-        $stmt = $db->prepare("UPDATE hub_cost SET solargen = ? WHERE user_id = ?");
-        $stmt->bind_param("si", $solargen, $user_id);
+        $stmt = $db->prepare("UPDATE hub_cost SET solargen = ? WHERE hub_id = ?");
+        $stmt->bind_param("si", $solargen, $hub_id);
         $stmt->execute();
         $stmt->close();
     }
+
+    echo("{\"success\":\"Success \"}");
 }else{
     echo("{\"error\":\"Invalid request \"}");
-
 }
 
 

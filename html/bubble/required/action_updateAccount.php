@@ -170,6 +170,8 @@ if($type == "account"){
         $stmt->execute();
         $stmt->close();
     }
+
+    echo("{\"success\":\"Success \"}");
 }else{
     echo("{\"error\":\"Invalid request \"}");
 

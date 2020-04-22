@@ -10,14 +10,6 @@ $(document).ready(function(){
     $("#registerErrorBox").hide();
 
     attachDropdownSelectors();
-
-    //HANDLE CLOSING THE CAMERA WHEN THE ADD DEVICE MODAL IS CLOSED
-    $('#addDeviceModal').on('hidden.bs.modal', function () {
-        closeCamera();
-        if($(this).attr("auto-reload")){
-            location.reload();
-        }
-    });
 });
 
 //------------------------DOCUMENT READY----------------------------------------------------

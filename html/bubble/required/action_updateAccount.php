@@ -174,7 +174,6 @@ if($type == "account"){
     echo("{\"success\":\"Success \"}");
 }else{
     echo("{\"error\":\"Invalid request \"}");
-
 }
 
 

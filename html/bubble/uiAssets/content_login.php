@@ -239,9 +239,19 @@ function generateLoginPage(){
                         <div class="tab-pane fade" id="panel3" role="tabpanel">
 
                             <!--Body-->
-                            <div class="modal-body mb-1" style="text-align:center">
+                            <div class="modal-body mb-1" style="text-align:justify;text-align-last: center;">
                                 <div class="section-title"><h4 style="font-weight:500!important">About Bubble<h4></div>
-                                Bubble aims to provide an easy solution to energy conservation around the home.
+                                Bubble aims to provide an easy solution to energy conservation around the home. With easy
+                                controls that allow for toggling devices in the home, email notifications that provide
+                                advice and statistics to help lower energy consumption, and a weather monitoring system
+                                that presents the user with advice on how to save energy in the current climate, this is
+                                the app for anyone who is eco conscious, is interested in saving some money, or is just looking
+                                for an easy way to toggle their devices.
+                                <br><br>
+                                Bubble offers a system that allows for personalisation of the layout, so you can organise your
+                                devices into different rooms. It will present you with personalised data based on your interaction
+                                with your devices. Set budgets, energy cost and solar panel ratings to ensure you have a fully personalised experience with 
+                                accurate costings and accurate data generation.
                                 <br><br>
                                 Brought to you by <a href="https://www.facebook.com/teamesteem2020/">Esteem</a> in collaboration with <a href="https://rorydobson.com/e-SavingSolutions">e-Saving Solutions</a>
                             </div>

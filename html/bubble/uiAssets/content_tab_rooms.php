@@ -469,7 +469,7 @@ html;
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
+            <div class="">
                 <button type="button" onclick="addRoomModalSubmit()" class="btn btn-secondary">Add Room</button>
             </div>
         </div>

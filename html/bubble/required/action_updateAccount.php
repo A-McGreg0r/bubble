@@ -145,13 +145,13 @@ if($type == "account"){
         exit(0);
     }
     
-    //If an edit has been made, update the user information with the new value
-    if($energy_cost != ''){
-        $stmt = $db->prepare("UPDATE hub_cost SET energy_cost = ? WHERE user_id = ?");
-        $stmt->bind_param("di", $energy_cost, $user_id);
-        $stmt->execute();
-        $stmt->close();
-    }
+    // //If an edit has been made, update the user information with the new value
+    // if($energy_cost != ''){
+    //     $stmt = $db->prepare("UPDATE hub_cost SET energy_cost = ? WHERE user_id = ?");
+    //     $stmt->bind_param("di", $energy_cost, $user_id);
+    //     $stmt->execute();
+    //     $stmt->close();
+    // }
 
     //If an edit has been made, update the user information with the new value
     if($budget != ''){
@@ -161,13 +161,13 @@ if($type == "account"){
         $stmt->close();
     }
 
-    //If an edit has been made, update the user information with the new value
-    if($solargen != ''){
-        $stmt = $db->prepare("UPDATE hub_cost SET solargen = ? WHERE user_id = ?");
-        $stmt->bind_param("si", $solargen, $user_id);
-        $stmt->execute();
-        $stmt->close();
-    }
+    // //If an edit has been made, update the user information with the new value
+    // if($solargen != ''){
+    //     $stmt = $db->prepare("UPDATE hub_cost SET solargen = ? WHERE user_id = ?");
+    //     $stmt->bind_param("si", $solargen, $user_id);
+    //     $stmt->execute();
+    //     $stmt->close();
+    // }
 }else{
     echo("{\"error\":\"Invalid request \"}");
 

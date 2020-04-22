@@ -9,8 +9,10 @@ $(document).ready(function(){
     $("#loginErrorBox").hide();
     $("#registerErrorBox").hide();
 
+    //ATTACH DROPDOWN SELECTORS FOR MOVING DEVICES
     attachDropdownSelectors();
     
+    //REFRESH DOUGHNUTS ON DEVICE AND ROOM PAGES
     refreshDoughnuts();
 });
 

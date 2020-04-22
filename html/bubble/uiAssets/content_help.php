@@ -200,7 +200,7 @@ function generateHelpPage() {
                     </tr>
                     <tr>
                         <td style="cursor:pointer" onclick="openModalHelp('help7', 'arrow7')">
-                            Setting a timer<div style="height:0px;margin-bottom:-8px;"></div><i class="arrow down" id="arrow7"></i>
+                            Setting a timer on a room<div style="height:0px;margin-bottom:-8px;"></div><i class="arrow down" id="arrow7"></i>
                         </td>
                     </tr>
                     <tr style="display:none!important" id="help7">
@@ -208,7 +208,7 @@ function generateHelpPage() {
                             <div class="modalStats" style="border: 1px solid black;" >
                                 <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help7', 'arrow7')"><i class="fas fa-times"></i></i></div>
                                 <div class="modalHeader">
-                                    <h3 class="bold-title">Setting a timer</h3>
+                                    <h3 class="bold-title">Setting a timer on a room</h3>
                                 </div>
                                 <div class="modalBody">
                                     <div>If a room is currently on, a small clock icon will appear in the top right corner of the button.
@@ -216,6 +216,31 @@ function generateHelpPage() {
                                         will schedule the devices in that room to turn off. It will only set timers for devices that
                                         are currently turned on, and any timer that has been set will be deleted if the room is turned off.</div>
                                     <br><img src="img/roomTimer.png" style="max-width:90%;"/>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="cursor:pointer" onclick="openModalHelp('help22', 'arrow22')">
+                            Review the statistics of a room<div style="height:0px;margin-bottom:-8px;"></div><i class="arrow down" id="arrow22"></i>
+                        </td>
+                    </tr>
+                    <tr style="display:none!important" id="help22">
+                        <td>
+                            <div class="modalStats" style="border: 1px solid black;" >
+                                <div class="x-adjust"><i class="stats_icon_x " id="" style="display:block" style="cursor:pointer" onclick="openModalHelp('help22', 'arrow22')"><i class="fas fa-times"></i></i></div>
+                                <div class="modalHeader">
+                                    <h3 class="bold-title">Review the statistics of a room</h3>
+                                </div>
+                                <div class="modalBody">
+                                    <div>To review your room's statistics, click on the information button in the top left corner of the room button.
+                                    This will open up the statistics popup for the room. At the top there is a pie chart diplaying
+                                    a comparison between the amount this device is costing you against all of the other devices
+                                    put together. It is also displayed below the chart, along with the percentage of this device
+                                    against all others.<br><br>
+                                    The second section shows a costing overview for the selected room, with the previous hour, day, month
+                                    and year statistics all displayed with their estimated costing.</div>
+                                    <br><img src="img/removeRoom.png" style="max-width:90%;"/>
                                 </div>
                             </div>
                         </td>

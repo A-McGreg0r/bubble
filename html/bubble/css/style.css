@@ -767,6 +767,11 @@ select {
         }
     }
 
+    .home-left, .home-right {
+        padding-top:0!important;
+        padding-bottom:0!important;
+    }
+
     @media (orientation:portrait){
         .landscape {
             display: none!important;
@@ -960,4 +965,9 @@ body.modal-open {
     padding-bottom:0!important;
     padding-bottom:100%!important;
     padding-top:40vh!important;
+}
+
+.homeButtons {
+    padding-left: 7.5px!important;
+    padding-right: 7.5px!important;
 }

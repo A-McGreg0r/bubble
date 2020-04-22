@@ -470,7 +470,7 @@ html;
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" onclick="addRoomModalSubmit()" class="btn btn-secondary">Add Room</button>
+                <button type="button" onclick="addRoomModalSubmit()" class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0">Add Room</button>
             </div>
         </div>
     </div>

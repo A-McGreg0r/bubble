@@ -436,7 +436,7 @@ html;
     $html .= <<<html
     </div>
     <!-- Modal -->
-    <div class="modalStats modal" id="noDevices" style="background-color:rgba(0,0,0,0.9)!important;padding-left:5vh;padding-right:5vh!important;padding-bottom:0!important;padding-bottom:100%!important;padding-top:40vh!important;">
+    <div class="modalStats modal" id="noDevices">
         <div class="modalContent">
             <div class="modalHeader" style="margin-bottom:0!important;padding:40px;">
                 No devices in room

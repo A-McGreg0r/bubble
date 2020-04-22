@@ -951,3 +951,12 @@ body.modal-open {
     transform: rotate(-135deg);
     -webkit-transform: rotate(-135deg);
 }
+
+#noDevices {
+    background-color:rgba(0,0,0,0.9)!important;
+    padding-left:5vh;
+    padding-right:5vh!important;
+    padding-bottom:0!important;
+    padding-bottom:100%!important;
+    padding-top:40vh!important;
+}

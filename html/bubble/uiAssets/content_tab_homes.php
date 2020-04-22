@@ -898,7 +898,7 @@ change_button;
                     <!--col 3-->
 
                     <div class="col-lg swipe" id="graph">
-                    <h4 class="section-title overview">Power Usage</h4>
+                    <h4 class="section-title overview">Energy Usage</h4>
                     <!--Place holder for large graph if screen is to small-->
                     <div class="orientation">
                         <img src="../img/orientation.png" class="tilt-icon">

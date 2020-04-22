@@ -13,7 +13,7 @@ $(document).ready(function(){
     
     //HANDLE CLOSING THE CAMERA WHEN THE ADD DEVICE MODAL IS CLOSED
     $('canvas[id^="room_stats_doughnut_"]').each(function () {
-        var ctxD = $(this).getContext("2d");
+        var ctxD = $(this).get(0).getContext("2d");
         var myLineChart = new Chart(ctxD, {
         type: "doughnut",
         data: {

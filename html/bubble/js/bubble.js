@@ -220,7 +220,7 @@ function openModalAccount(id){
 
 function arrow(arrow){
     var arrow = document.getElementById(arrow);
-    if (!arrow.classList.contains("up")) {
+    if (arrow.classList.contains("up")) {
         arrow.classList.remove("up");
         arrow.classList.add("down");
     } else {

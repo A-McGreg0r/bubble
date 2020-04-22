@@ -587,10 +587,10 @@ function generateHelpPage() {
         <div class="card helpCard">
     
           <!-- Card header -->
-          <div class="card-header helpHead" role="tab" id="headingOne1" onclick="arrow('arrow1');">
+          <div class="card-header helpHead" role="tab" id="headingOne1">
             <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne1" aria-expanded="true"
               aria-controls="collapseOne1">
-              <h5 class="mb-0 helpDrop" style="text-align: center">
+              <h5 class="mb-0 helpDrop" style="text-align: center" onclick='arrow("arrow1")'>
               Turn off all devices in my home<div style="height:0px;margin-bottom:-2px;"></div><i class="arrow down" id="arrow1"></i>
               </h5>
             </a>

@@ -195,7 +195,7 @@ function addDevice($hub_id, $user_id, $room_name, $row){
     if(($total_price + $price_month) != 0){
         $percent = number_format(((100 / ($total_price + $price_month)) * $price_month), 1);
         $graph = <<<graph
-        <canvas class="stats-pie " style="max-width:400px display:inline-block" id="stats_doughnut_$device_id" width="924" height="426"></canvas>
+        <canvas class="stats-pie" device-name="$device_name" price-month="$price_month" total-price="$total_price" style="max-width:400px display:inline-block" id="stats_doughnut_$device_id" width="924" height="426"></canvas>
         <table class="stats-table comparison">
         <tr class="stats-row">
             <td class="stats-left l-pad-stats tighten"><strong>
@@ -333,26 +333,6 @@ graph;
                             <h4 class="modalSub">Month's Comparison</h4>
 
                             $graph
-
-                            <script>
-                                //doughnut
-                                var ctxD = document.getElementById("stats_doughnut_$device_id").getContext("2d");
-                                var myLineChart = new Chart(ctxD, {
-                                type: "doughnut",
-                                data: {
-                                labels: ["$device_name [£]", "Other Devices [£]"],
-                                datasets: [{
-                                data: [$price_month, $total_price],
-                                backgroundColor: ["rgb(226, 183, 28)", "rgb(56,56,56)"],
-                                hoverBackgroundColor: ["rgb(246, 203, 48)", "rgb(76,76,76)"]
-                                }]
-                                },
-                                options: {
-                                    responsive: [true],
-                                    
-                                    }
-                                });
-                            </script>
                         </div>
                 </div>      
                 <hr>

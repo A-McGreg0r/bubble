@@ -11,25 +11,7 @@ $(document).ready(function(){
 
     attachDropdownSelectors();
     
-    //HANDLE CLOSING THE CAMERA WHEN THE ADD DEVICE MODAL IS CLOSED
-    $('canvas[id^="room_stats_doughnut_"]').each(function () {
-        var ctxD = $(this).get(0).getContext("2d");
-        var myLineChart = new Chart(ctxD, {
-        type: "doughnut",
-        data: {
-        labels: [$(this).attr("room-name") + " [£]", "Other Rooms [£]"],
-        datasets: [{
-            data: [$(this).attr("price-month"), $(this).attr("total-price")],
-            backgroundColor: ["rgb(226, 183, 28)", "rgb(56,56,56)"],
-            hoverBackgroundColor: ["rgb(246, 203, 48)", "rgb(76,76,76)"]
-            }]
-        },
-        options: {
-            responsive: [true],
-            
-            }
-        });
-    });
+    refreshDoughnuts();
 });
 
 //------------------------DOCUMENT READY----------------------------------------------------
@@ -502,6 +484,47 @@ function refreshHomeButton() {
     //Refresh home button and reset background colour
     $('#home_devices').load(document.URL + ' #home_off_content', function(){
         document.getElementById('home_devices').style.backgroundColor = "rgb(110, 110, 110)";
+    });
+}
+
+function refreshDoughnuts(){
+    //FIND ALL ROOM DOUGHNUTS ON THE SCREEN AND UPDATE
+    $('canvas[id^="room_stats_doughnut_"]').each(function () {
+        var ctxD = $(this).get(0).getContext("2d");
+        var myLineChart = new Chart(ctxD, {
+        type: "doughnut",
+        data: {
+        labels: [$(this).attr("room-name") + " [£]", "Other Rooms [£]"],
+        datasets: [{
+            data: [$(this).attr("price-month"), $(this).attr("total-price")],
+            backgroundColor: ["rgb(226, 183, 28)", "rgb(56,56,56)"],
+            hoverBackgroundColor: ["rgb(246, 203, 48)", "rgb(76,76,76)"]
+            }]
+        },
+        options: {
+            responsive: [true],
+            
+            }
+        });
+    });
+
+    $('canvas[id^="stats_doughnut_"]').each(function () {
+        var ctxD = $(this).get(0).getContext("2d");
+        var myLineChart = new Chart(ctxD, {
+        type: "doughnut",
+        data: {
+        labels: [$(this).attr("device-name") + " [£]", "Other Devices [£]"],
+        datasets: [{
+            data: [$(this).attr("price-month"), $(this).attr("total-price")],
+            backgroundColor: ["rgb(226, 183, 28)", "rgb(56,56,56)"],
+            hoverBackgroundColor: ["rgb(246, 203, 48)", "rgb(76,76,76)"]
+            }]
+        },
+        options: {
+            responsive: [true],
+            
+            }
+        });
     });
 }
 

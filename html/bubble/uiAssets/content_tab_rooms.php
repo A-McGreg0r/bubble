@@ -7,7 +7,7 @@ function generateRoomTab(){
     $html = '<div id="room-encompass">';
     //ADD NEW ROOM CARD, GENERATE ALWAYS AT TOP!
     $html .= <<<html
-        <a onclick='$("#addRoomModal").modal();'>
+        <a onclick='openModalHome("addRoomModal");'>
             <div class="card mb-4 container">
                 <!--Card image-->
                 <div class="view overlay">

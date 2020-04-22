@@ -22,12 +22,10 @@ html;
         <div class="modalStats modalContent">
             <div class="modal-dialog" role="document">
                 <div class="modalHeader modal-header">
-                    <div class="x-adjust">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true"><i class="stats_icon_x " id="" style="display:flex"><i class="fas fa-times"></i></i></span>
-                        </button>
-                    </div>
                     <strong>Add a new device</strong>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="stats_icon_x " id="" style="display:flex"><i class="fas fa-times"></i></i></span>
+                    </button>
                 </div>
                 <div class="modal-body">
                     <div class="container">

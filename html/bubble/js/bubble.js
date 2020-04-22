@@ -653,6 +653,7 @@ function addRoomModalSubmit(){
             //ADD ROOM SUCCESS
             if(result.success){
                 refreshRooms();
+                refreshDevices();
                 $('#addRoomModal').modal("hide");
                 $("#roomFormName").removeAttr("disabled");
                 $("#roomFormIcon").removeAttr("disabled");
@@ -695,6 +696,7 @@ function confirmDeleteRoomModalConfirm(room_id){
                 $("#confirmDeleteRoomModalButton").removeAttr("disabled");
                 $('#confirmDeleteRoom_'+room_id).modal("hide");
                 refreshRooms();
+                refreshDevices();
             }
         },
         error: function(data){

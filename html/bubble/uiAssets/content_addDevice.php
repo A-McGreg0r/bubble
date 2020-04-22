@@ -19,8 +19,8 @@ html;
     $html .= <<<pageHTML
 
     <div class="modal fade modalStatsWrap" id="addDeviceModal" tabindex="-1" role="dialog" aria-labelledby="addDeviceModalLabel" aria-hidden="true">
-        <div class="modalStats modalContent" role="document">
-            <div class="modal-content">
+        <div class="modal-dialog modalStats modalContent" role="document">
+            <div class="modalContent">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true"><i class="stats_icon_x " id="" style="display:flex"><i class="fas fa-times"></i></i></span>
                 </button>

@@ -168,7 +168,7 @@ html;
                 if(($total_price + $price_month) != 0){
                     $percent = number_format(((100 / ($total_price + $price_month)) * $price_month), 1);
                     $graph = <<<graph
-                        <canvas class="stats-pie " room-name="$room_name" price-month=$price_month" total-price="$total_price" "style="max-width:400px display:inline-block" id="room_stats_doughnut_$room_id.$random_id" width="924" height="426"></canvas>
+                        <canvas class="stats-pie " room-name="$room_name" price-month=$price_month" total-price="$total_price" style="max-width:400px display:inline-block" id="room_stats_doughnut_$room_id.$random_id" width="924" height="426"></canvas>
                                             
                         <table class="stats-table comparison">
                         <tr class="stats-row">

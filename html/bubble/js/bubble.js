@@ -19,10 +19,10 @@ $(document).ready(function(){
         data: {
         labels: [$(this).attr("room-name") + " [£]", "Other Rooms [£]"],
         datasets: [{
-        data: [$(this).attr("price-month"), $(this).attr("total-price")],
-        backgroundColor: ["rgb(226, 183, 28)", "rgb(56,56,56)"],
-        hoverBackgroundColor: ["rgb(246, 203, 48)", "rgb(76,76,76)"]
-        }]
+            data: [$(this).attr("price-month"), $(this).attr("total-price")],
+            backgroundColor: ["rgb(226, 183, 28)", "rgb(56,56,56)"],
+            hoverBackgroundColor: ["rgb(246, 203, 48)", "rgb(76,76,76)"]
+            }]
         },
         options: {
             responsive: [true],

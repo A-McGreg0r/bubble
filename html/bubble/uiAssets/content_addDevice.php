@@ -15,14 +15,17 @@ function generateQRReader($autoOpen = FALSE){
 
                 function checkClose(){
                     if($("#addDeviceModal").attr("auto-reload")){
-                        location.reload();
+                        $("#reloadNotification").html("Page refreshing in 5 seconds. Please add a hub to continue");
+                        setTimeout(function () {
+                            location.reload();
+                        }, 5000);
                     }
                 }
             </script>
 html;
     }
     $html .= <<<pageHTML
-
+    <p id="reloadNotification"></p>
     
     <div class="modal modalStatsWrap" id="addDeviceModal">
         <div class="modalContent modalStats" id="">

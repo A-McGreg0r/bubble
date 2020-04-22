@@ -495,7 +495,7 @@ function refreshHomeButton() {
 
 function refreshDoughnuts(){
     //FIND ALL ROOM DOUGHNUTS ON THE SCREEN AND UPDATE
-    $('canvas[id^="room_stats_doughnut_"]').each(function () {
+    $('canvas[id^="room_stats_doughnut_"].not(.chartjs-render-monitor)').each(function () {
         var ctxD = $(this).get(0).getContext("2d");
         var myLineChart = new Chart(ctxD, {
         type: "doughnut",
@@ -515,7 +515,7 @@ function refreshDoughnuts(){
     });
 
     //FIND ALL DEVICE DOUGHNUTS ON THE SCREEN AND UPDATE
-    $('canvas[id^="stats_doughnut_"]').each(function () {
+    $('canvas[id^="stats_doughnut_"].not(.chartjs-render-monitor)').each(function () {
         var ctxD = $(this).get(0).getContext("2d");
         var myLineChart = new Chart(ctxD, {
         type: "doughnut",

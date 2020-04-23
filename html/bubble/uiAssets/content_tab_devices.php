@@ -89,27 +89,18 @@ html;
                 }
             }else{
                 $html.= <<<html
-                <a onclick=''>
-                    <div class="card mb-4 container">
+                    <div style="padding-left:30px;padding-right:30px;text-align:center;">
                         <!--Card image-->
-                        <div class="view overlay">
-                            <div class="mask rgba-white-slight"></div>
-                        </div>
                 
                         <!--Card content-->
-                        <div class="card-body d-flex justify-content-between">
+                        <div>
                 
                         <!--Title-->      
-                            <div class="d-flex flex-column">  
-                                <strong>There are no devices in this room. Click on a device to move it too this room</strong>
-                            </div>
-                            
-                            <div class="d-flex flex-column">
-                                <i class="far fa-plus-square"></i>
+                            <div>  
+                                <strong>There are no devices in this room</strong>
                             </div>
                         </div>
                     </div>
-                </a>
 html;
             }
             $stmtDevice->close();

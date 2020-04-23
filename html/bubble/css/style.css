@@ -767,6 +767,11 @@ select {
         }
     }
 
+    .modal-dialog {
+        max-width: 280px;
+        margin: 1.75rem auto;
+    }
+
     .home-left, .home-right {
         padding-top:0!important;
         padding-bottom:0!important;
@@ -877,9 +882,6 @@ b {
     animation: spin 2s linear infinite;
 }
 
-.fa-fire-alt {
-    animation:shake 0.2s infinite;
-}
 
 @keyframes spin {
     0% { transform: rotate(0deg); }

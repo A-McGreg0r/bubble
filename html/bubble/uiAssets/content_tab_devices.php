@@ -374,7 +374,7 @@ graph;
                 </button>
                 <div class="modal fade" id="confirmDeleteDevice_$device_id" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteDeviceModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
-                        <div class="modal-content">
+                        <div class="modal-content inchleft">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="confirmDeleteDeviceModalLabel">Confirm Delete Device</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -390,7 +390,7 @@ graph;
                 </div>
                 <div class="modal fade" id="moveDevice_$device_id" tabindex="-1" role="dialog" aria-labelledby="moveDeviceLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
-                        <div class="modal-content">
+                        <div class="modal-content inchleft">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="moveDeviceLabel">Move Device</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">

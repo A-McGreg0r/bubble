@@ -882,6 +882,10 @@ b {
     animation: spin 2s linear infinite;
 }
 
+.inchleft {
+    margin-left: -5px;
+}
+
 
 @keyframes spin {
     0% { transform: rotate(0deg); }

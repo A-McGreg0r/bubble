@@ -284,7 +284,7 @@ graph;
                             </button>
                             <div class="modal fade" id="confirmDeleteRoom_$room_id" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteRoomModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
+                                    <div class="modal-content inchleft">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="confirmDeleteRoomModalLabel">Confirm Delete Room</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">

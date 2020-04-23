@@ -220,18 +220,24 @@ function openModalAccount(id){
     }
 }
 
-function openModalHelp(id, arrow){
-    var id = document.getElementById(id);
-    var arrow = document.getElementById(arrow);
-    if (id.style.display == "table-row") {
-        id.style.display = "none";
-        arrow.classList.remove("up");
-        arrow.classList.add("down");
-    } else {
-        id.style.display = "table-row";
-        arrow.classList.remove("down");
-        arrow.classList.add("up");
-    }
+function arrow(arrow){
+    // var arrow = document.getElementById("arrow" + arrow);
+    // if (!arrow.classList.contains("up")) {
+    //     arrow.classList.remove("down");
+    //     arrow.classList.add("up");
+    // } else {
+    //     arrow.classList.remove("up");
+    //     arrow.classList.add("down");
+    // }
+
+    // var i;
+    // for(i = 1; i <= 22; i++){
+    //     if(i !== arrow){
+    //         var arrow1 = document.getElementById("arrow" + i);
+    //         arrow1.classList.remove("up");
+    //         arrow1.classList.add("down");
+    //     }
+    // }
 }
 
 function openModalRoom(id, close, open){

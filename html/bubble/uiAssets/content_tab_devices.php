@@ -89,27 +89,18 @@ html;
                 }
             }else{
                 $html.= <<<html
-                <a onclick=''>
-                    <div class="card mb-4 container">
+                    <div style="padding-left:30px;padding-right:30px;text-align:center;">
                         <!--Card image-->
-                        <div class="view overlay">
-                            <div class="mask rgba-white-slight"></div>
-                        </div>
                 
                         <!--Card content-->
-                        <div class="card-body d-flex justify-content-between">
+                        <div>
                 
                         <!--Title-->      
-                            <div class="d-flex flex-column">  
-                                <strong>There are no devices in this room. Click on a device to move it too this room</strong>
-                            </div>
-                            
-                            <div class="d-flex flex-column">
-                                <i class="far fa-plus-square"></i>
+                            <div>  
+                                <strong>There are no devices in this room</strong>
                             </div>
                         </div>
                     </div>
-                </a>
 html;
             }
             $stmtDevice->close();
@@ -383,7 +374,7 @@ graph;
                 </button>
                 <div class="modal fade" id="confirmDeleteDevice_$device_id" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteDeviceModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
-                        <div class="modal-content">
+                        <div class="modal-content inchleft">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="confirmDeleteDeviceModalLabel">Confirm Delete Device</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -399,7 +390,7 @@ graph;
                 </div>
                 <div class="modal fade" id="moveDevice_$device_id" tabindex="-1" role="dialog" aria-labelledby="moveDeviceLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
-                        <div class="modal-content">
+                        <div class="modal-content inchleft">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="moveDeviceLabel">Move Device</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
